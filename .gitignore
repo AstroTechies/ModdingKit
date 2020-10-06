@@ -1,0 +1,12 @@
+.vs
+Binaries
+Build
+Intermediate
+Saved
+Config
+Content/Atenfyr
+Content/Developers
+Content/StarterContent
+/*.py
+Content/*.umap
+Content/TestActor.uasset
