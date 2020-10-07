@@ -31,6 +31,7 @@ public:
 		// Should this machine generate power?
 		bool bIsGenerator;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		// If this number is positive, it is the U/s that this machine will output. If this number is negative, it is the U/s that this machine will draw 
 		float NetPowerOutput;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		// Unsure, only rovers seem to use this field

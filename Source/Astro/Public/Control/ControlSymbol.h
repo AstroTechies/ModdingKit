@@ -24,8 +24,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FText Description;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		// This seems to be completely unused, you can probably just ignore it
-		UStaticMesh* IconMesh;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FString SoundEvent;
+
+	// This seems to be completely unused, you can probably just ignore it
+	UStaticMesh* IconMesh;
 };

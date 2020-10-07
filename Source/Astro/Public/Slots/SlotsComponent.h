@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Slots/ItemSlot.h"
 #include "SlotsComponent.generated.h"
 
 
@@ -24,6 +25,6 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-		
-	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TArray<FSlot> Slots;
 };
