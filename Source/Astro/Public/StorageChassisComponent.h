@@ -4,16 +4,17 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "TooltipComponent.generated.h"
+#include "StorageChassisComponent.generated.h"
+
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class ASTRO_API UTooltipComponent : public UActorComponent
+class ASTRO_API UStorageChassisComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
 public:	
 	// Sets default values for this component's properties
-	UTooltipComponent();
+	UStorageChassisComponent();
 
 protected:
 	// Called when the game starts
@@ -23,9 +24,5 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FVector2D ScreenOffset;
-	UPROPERTY(EditAnywhere)
-		FComponentReference AttachComponent;
-	
+		
 };

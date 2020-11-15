@@ -52,13 +52,19 @@ public:
 		UProceduralStateComponent* ProceduralState;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		// no idea
+		float HoverHeight;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		// The height of the printer, overrides the default determined height value if defined
 		float PrinterHeight;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0", UIMax = "4"))
-		// The tier of the object. 1 = T1, 2 = T2, etc. Controls default slot size as well as walking speed
+		// The tier of the object. 1 = T1, 2 = T2, etc. Controls fallback slot size as well as walking speed
 		int ToolMoveTier;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		// Can this item be picked up and moved around with the cursor?
 		bool IsMovable = true;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		// Can this item be directly attached to the body of an object (like packagers and dynamite do)?
+		bool SlotQueryAllowBodyPlacement = false;
 	
 };

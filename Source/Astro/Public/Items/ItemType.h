@@ -74,7 +74,7 @@ public:
 		// Y value (0 = first row of the tab, 1 = second row of the tab, etc.)
 		int CategorySequenceNumber;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		// A reference to the item that is the base of the catalog row (If this is the base item, leave this blank)
+		// A reference to the item that is the base of the catalog row (If this is the base item, leave this as None)
 		TSubclassOf<UItemType> BaseItemType;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		// Is this entry to the left or the right of the base item in the catalog row? (If this is the base item, leave this as Left)

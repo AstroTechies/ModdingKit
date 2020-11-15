@@ -42,4 +42,10 @@ void AAstroCharacter::AuthoritySetLocalSolarBody(ASolarBody * solarBody)
 
 void AAstroCharacter::DetachFromSeat(bool bImmediate, bool bForce)
 {
+
+}
+
+FString AAstroCharacter::GetOnlinePlayerName()
+{
+	return "";
 }

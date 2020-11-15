@@ -8,15 +8,15 @@ APhysicalItem::APhysicalItem()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	ItemComponent = CreateDefaultSubobject<UItemComponent>(TEXT("UItemComponent"));
-	EntityLinkComponent = CreateDefaultSubobject<UActorEntityLinkComponent>(TEXT("UActorEntityLinkComponent"));
-	TerrainComponent = CreateDefaultSubobject<UTerrainPhysicsComponent>(TEXT("UTerrainPhysicsComponent"));
-	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("UStaticMeshComponent"));
-	GravityComponent = CreateDefaultSubobject<UWorldGravity>(TEXT("UWorldGravity"));
-	ClickableComponent = CreateDefaultSubobject<UClickableComponent>(TEXT("UClickableComponent"));
-	SlotsComponent = CreateDefaultSubobject<USlotsComponent>(TEXT("USlotsComponent"));
-	TooltipComponent = CreateDefaultSubobject<UTooltipComponent>(TEXT("UTooltipComponent"));
-	ProceduralState = CreateDefaultSubobject<UProceduralStateComponent>(TEXT("UProceduralStateComponent"));
+	ItemComponent = CreateDefaultSubobject<UItemComponent>(TEXT("ItemComponent"));
+	EntityLinkComponent = CreateDefaultSubobject<UActorEntityLinkComponent>(TEXT("EntityLinkComponent"));
+	TerrainComponent = CreateDefaultSubobject<UTerrainPhysicsComponent>(TEXT("Terrain Physics"));
+	GravityComponent = CreateDefaultSubobject<UWorldGravity>(TEXT("WorldGravity"));
+	ClickableComponent = CreateDefaultSubobject<UClickableComponent>(TEXT("ItemClickableComponent"));
+	SlotsComponent = CreateDefaultSubobject<USlotsComponent>(TEXT("SlotsComponent"));
+	TooltipComponent = CreateDefaultSubobject<UTooltipComponent>(TEXT("TooltipComponent"));
+	ProceduralState = CreateDefaultSubobject<UProceduralStateComponent>(TEXT("ProceduralStateComponent"));
+	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Root"));
 	RootComponent = StaticMeshComponent;
 }
 

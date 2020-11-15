@@ -36,6 +36,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void DetachFromSeat(bool bImmediate, bool bForce);
 
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+		FString GetOnlinePlayerName();
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		AActor* AttachOwner;
 };
