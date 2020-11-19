@@ -2,7 +2,17 @@
 
 #include "AstroPlayStatics.h"
 
-APlayController * UAstroPlayStatics::GetPlayController(UObject * WorldContextObject, int Index)
+APlayController* UAstroPlayStatics::GetPlayController(UObject* WorldContextObject, int Index)
+{
+	return nullptr;
+}
+
+APlayController* UAstroPlayStatics::GetLocalPlayController(UObject* WorldContextObject)
+{
+	return nullptr;
+}
+
+AAstroCharacter* UAstroPlayStatics::GetLocalAstroCharacter(UObject* WorldContextObject)
 {
 	return nullptr;
 }

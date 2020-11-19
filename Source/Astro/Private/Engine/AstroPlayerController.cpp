@@ -7,3 +7,8 @@ void AAstroPlayerController::TravelToDedicatedServerByURL(FString serverURL, FSt
 {
 
 }
+
+void AAstroPlayerController::ServerAdminListPlayers()
+{
+
+}

@@ -14,8 +14,11 @@ class ASTRO_API UAstroPlayStatics : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 
-		UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
 		static APlayController* GetPlayController(UObject* WorldContextObject, int Index);
-	
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
+		static APlayController* GetLocalPlayController(UObject* WorldContextObject);
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
+		static AAstroCharacter* GetLocalAstroCharacter(UObject* WorldContextObject);
 	
 };

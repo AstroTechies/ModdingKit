@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "AstroCharacter.h"
-
+#include "GameFramework/PlayerController.h"
 
 // Sets default values
 AAstroCharacter::AAstroCharacter()
@@ -25,12 +25,17 @@ void AAstroCharacter::Tick(float DeltaTime)
 
 }
 
-AAstroPlanet * AAstroCharacter::GetLocalPlanet()
+APlayController* AAstroCharacter::GetPlayController()
 {
 	return nullptr;
 }
 
-AAstroPlanet * AAstroCharacter::GetLocalSolarBody()
+AAstroPlanet* AAstroCharacter::GetLocalPlanet()
+{
+	return nullptr;
+}
+
+AAstroPlanet* AAstroCharacter::GetLocalSolarBody()
 {
 	return nullptr;
 }
@@ -48,4 +53,24 @@ void AAstroCharacter::DetachFromSeat(bool bImmediate, bool bForce)
 FString AAstroCharacter::GetOnlinePlayerName()
 {
 	return "";
+}
+
+UAstroCharacterHat* AAstroCharacter::GetCharacterHat(ECharacterHatCategory category)
+{
+	return nullptr;
+}
+
+UAstroCharacterPalette* AAstroCharacter::GetCharacterPalette()
+{
+	return nullptr;
+}
+
+UAstroCharacterSuit* AAstroCharacter::GetCharacterSuit()
+{
+	return nullptr;
+}
+
+UAstroVisorMaterial* AAstroCharacter::GetCharacterVisorMaterial()
+{
+	return nullptr;
 }

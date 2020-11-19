@@ -25,7 +25,7 @@ void APlayController::Tick(float DeltaTime)
 
 }
 
-void APlayController::OnCharacterLocalSolarBodyChanged(ASolarBody * newLocalSolarBody)
+void APlayController::OnCharacterLocalSolarBodyChanged(ASolarBody* newLocalSolarBody)
 {
 }
 

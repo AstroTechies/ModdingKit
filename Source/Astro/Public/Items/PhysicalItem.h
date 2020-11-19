@@ -12,6 +12,7 @@
 #include "Interaction/TooltipComponent.h"
 #include "EntityModel/EntityComponents/AstroEntityProceduralStateComponent.h"
 #include "Planet/WorldGravity.h"
+#include "Utilities/ActivationSignals.h"
 #include "GameFramework/Actor.h"
 #include "PhysicalItem.generated.h"
 
@@ -64,7 +65,45 @@ public:
 		// Can this item be picked up and moved around with the cursor?
 		bool IsMovable = true;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		// Can this item be slotted?
+		bool IsUnslottable = false;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		// Can this item be directly attached to the body of an object (like packagers and dynamite do)?
 		bool SlotQueryAllowBodyPlacement = false;
-	
+
+public:
+	/* Signals */
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
+		FSignal OnItemUnpacked;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
+		FSignal OnPlacedInSlot;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
+		FSignal OnSpawnedInSlot;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
+		FSignal OnEmplacedInSlot;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
+		FSignal OnUnemplacedFromSlot;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
+		FSignal OnFullyEmplaced;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
+		FOnSlotReleased OnReleasedFromSlot;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
+		FSignal OnReleasedFromSlotClientSafe;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
+		FItemDropInWorldDelegate OnDroppedInWorld;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
+		FItemDropInWorldTerrainDelegate OnDroppedInWorldTerrain;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
+		FOnPickedUp OnPickedUpFromWorld;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
+		FSignal OnStartInWorld;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
+		FOnMoved OnMoved;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
+		FSignal OnMotionStateChanged;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
+		FSignal OnSetCardinalDirection;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
+		FOnReplicationDataChanged OnReplicationDataChanged;
 };

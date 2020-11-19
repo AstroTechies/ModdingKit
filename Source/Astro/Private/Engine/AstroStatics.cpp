@@ -56,8 +56,3 @@ bool UAstroStatics::IsShippingBuild()
 {
 	return false;
 }
-
-/*uint64 UAstroStatics::GetGuidForController(APlayerController* controller)
-{
-	return 0;
-}*/

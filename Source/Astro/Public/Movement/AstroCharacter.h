@@ -4,8 +4,15 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "GameFramework/PlayerController.h" 
 #include "AstroPlanet.h"
 #include "AstroCharacter.generated.h"
+
+UENUM(BlueprintType)
+enum class ECharacterHatCategory : uint8 {
+	Head = 0,
+	Mask = 1
+};
 
 UCLASS()
 class ASTRO_API AAstroCharacter : public APawn
@@ -25,6 +32,9 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
+		APlayController* GetPlayController();
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
 		AAstroPlanet* GetLocalPlanet();
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -35,6 +45,18 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 		void DetachFromSeat(bool bImmediate, bool bForce);
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+		UAstroCharacterHat* GetCharacterHat(ECharacterHatCategory category);
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+		UAstroCharacterPalette* GetCharacterPalette();
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+		UAstroCharacterSuit* GetCharacterSuit();
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+		UAstroVisorMaterial* GetCharacterVisorMaterial();
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 		FString GetOnlinePlayerName();

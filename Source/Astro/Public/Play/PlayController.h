@@ -5,10 +5,11 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "SolarBody.h"
+#include "AstroPlayerController.h"
 #include "PlayController.generated.h"
 
 UCLASS()
-class ASTRO_API APlayController : public AActor
+class ASTRO_API APlayController : public AAstroPlayerController
 {
 	GENERATED_BODY()
 	

@@ -51,10 +51,6 @@ class ASTRO_API UAstroStatics : public UBlueprintFunctionLibrary
 		static bool IsShippingBuild();
 
 	//UFUNCTION(BlueprintCallable, BlueprintPure)
-		static EPlatform GetGamePlatform(); // Doesn't seem to actually work
-
-	//UFUNCTION(BlueprintCallable, BlueprintPure)
-		static uint64 GetGuidForController(APlayerController* controller); // Not callable with the regular engine
-	
+		static EPlatform GetGamePlatform(); // doesn't seem to actually do what it says	
 	
 };

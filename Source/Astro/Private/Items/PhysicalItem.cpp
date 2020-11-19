@@ -2,7 +2,6 @@
 
 #include "PhysicalItem.h"
 
-
 // Sets default values
 APhysicalItem::APhysicalItem()
 {
