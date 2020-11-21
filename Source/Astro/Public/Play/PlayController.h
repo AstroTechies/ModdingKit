@@ -28,4 +28,6 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void OnCharacterLocalSolarBodyChanged(ASolarBody* newLocalSolarBody);
 	
+	UFUNCTION() // BlueprintCallable, BlueprintPure
+		UTooltipManager* GetTooltipManager();
 };

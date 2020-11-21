@@ -1,2 +1,2 @@
 # ModdingKit
-A "modding kit" for Astroneer, including blueprint and source files for proxing.
+A collection of reconstructed Astroneer proxy blueprint source files used for creating custom mod blueprints that interact with elements of the game itself. It is not a perfect solution, but it gets the job done.

@@ -29,3 +29,7 @@ void APlayController::OnCharacterLocalSolarBodyChanged(ASolarBody* newLocalSolar
 {
 }
 
+UTooltipManager* APlayController::GetTooltipManager()
+{
+	return nullptr;
+}
