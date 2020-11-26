@@ -3,7 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Interaction/TooltipComponent.h"
 #include "Components/ActorComponent.h"
 #include "TooltipManager.generated.h"
 

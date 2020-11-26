@@ -4,11 +4,30 @@
 
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
+#include "Engine/Texture2D.h"
 #include "CharacterCustomization.generated.h"
 
-/**
- * 
- */
+
+
+UENUM()
+enum class ECharacterCustomizationVisibility : uint8 {
+	HiddenToAll = 0,
+	HiddenUnlessUnlocked = 1,
+	ObfuscatedUnlessUnlocked = 2,
+	VisibleButUnlockRequired = 3,
+	AvailableToAll = 4
+};
+
+UENUM()
+enum class EMicroTxnStoreTileTypes : uint8 {
+	None = 0,
+	Normal = 1,
+	Featured = 2,
+	Tall = 3,
+	Wide = 4,
+	Large = 5
+};
+
 UCLASS(BlueprintType)
 class ASTRO_API UAstroCustomizationItem : public UDataAsset
 {
@@ -16,31 +35,32 @@ class ASTRO_API UAstroCustomizationItem : public UDataAsset
 	
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FText DisplayName;
+	FText DisplayName;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FText DescriptionText;
-};
+	FText DescriptionText;
 
-UCLASS(BlueprintType)
-class ASTRO_API UAstroCharacterHat : public UAstroCustomizationItem
-{
-	GENERATED_BODY()
-};
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ECharacterCustomizationVisibility DisplayVisibility;
 
-UCLASS(BlueprintType)
-class ASTRO_API UAstroCharacterPalette : public UAstroCustomizationItem
-{
-	GENERATED_BODY()
-};
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText UnlockConditionText;
 
-UCLASS(BlueprintType)
-class ASTRO_API UAstroCharacterSuit : public UAstroCustomizationItem
-{
-	GENERATED_BODY()
-};
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	uint8 IsNonAchievementUnlock = 1;
 
-UCLASS(BlueprintType)
-class ASTRO_API UAstroVisorMaterial : public UAstroCustomizationItem
-{
-	GENERATED_BODY()
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSoftObjectPtr<UTexture2D> TileIconTexture;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSoftObjectPtr<UObject> TileItemTexture;
+		
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSoftObjectPtr<UTexture2D> TileBackgroundTexture;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSoftObjectPtr<UTexture2D> FeaturedTileBackgroundTexture;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	EMicroTxnStoreTileTypes TileType;
 };
