@@ -3,6 +3,12 @@
 
 #include "CharacterHat.h"
 
+
+
+void UAstroCharacterHat::ApplyToMesh(UStaticMeshComponent* targetMesh, UAstroCharacterSuit* suit, UAstroCharacterHat* hatDef, UAstroCharacterPalette* palette) {
+
+};
+
 /*
 UAstroCharacterPalette* AAstroCharacter::GetCharacterPalette()
 {

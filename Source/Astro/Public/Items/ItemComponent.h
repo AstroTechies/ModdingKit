@@ -7,7 +7,7 @@
 #include "ItemType.h"
 #include "ItemComponent.generated.h"
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(BlueprintType, Blueprintable)
 class ASTRO_API UItemComponent : public UActorComponent
 {
 	GENERATED_BODY()
@@ -25,6 +25,9 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TSubclassOf<UItemType> ItemType;
-	
+	TSubclassOf<UItemType> ItemType;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<UItemType> StoredSubItemType;
+
 };
