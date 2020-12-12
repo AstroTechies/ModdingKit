@@ -22,6 +22,4 @@ void AItemSlot::BeginPlay()
 void AItemSlot::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
-

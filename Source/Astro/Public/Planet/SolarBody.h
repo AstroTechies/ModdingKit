@@ -38,9 +38,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float Gravity;
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, BlueprintPure)
 		struct FVector GetCenter();
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, BlueprintPure)
 		struct FVector GetProxyCenter();
 };

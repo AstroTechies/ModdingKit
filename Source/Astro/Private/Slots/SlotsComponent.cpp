@@ -2,7 +2,6 @@
 
 #include "SlotsComponent.h"
 
-
 // Sets default values for this component's properties
 USlotsComponent::USlotsComponent()
 {
@@ -31,4 +30,3 @@ void USlotsComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActor
 
 	// ...
 }
-

@@ -74,3 +74,8 @@ UAstroVisorMaterial* AAstroCharacter::GetCharacterVisorMaterial()
 {
 	return nullptr;
 }
+
+ABackpack* AAstroCharacter::GetBackpack()
+{
+	return nullptr;
+}

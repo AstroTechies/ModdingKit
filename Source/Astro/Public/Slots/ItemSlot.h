@@ -168,6 +168,8 @@ public:
 		float TraceRadius;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float IndicatorScale;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	//	FSlotReference CurrentBodySlot;
 };
 
 UCLASS(BlueprintType, Blueprintable, ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))

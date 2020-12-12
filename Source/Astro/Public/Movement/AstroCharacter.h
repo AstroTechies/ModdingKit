@@ -14,6 +14,8 @@ enum class ECharacterHatCategory : uint8 {
 	Mask = 1
 };
 
+class ABackpack;
+
 UCLASS()
 class ASTRO_API AAstroCharacter : public APawn
 {
@@ -30,6 +32,15 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float FatigueLevel;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float OxygenLevel;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float Health;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float MaxHealth;
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 		APlayController* GetPlayController();
@@ -60,6 +71,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 		FString GetOnlinePlayerName();
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+		ABackpack* GetBackpack();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		AActor* AttachOwner;

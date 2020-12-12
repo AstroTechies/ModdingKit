@@ -108,3 +108,8 @@ float AAstroPlanet::GetRadius()
 {
 	return 0.0f;
 }
+
+FVector AAstroPlanet::GetNorthVector()
+{
+	return FVector();
+}

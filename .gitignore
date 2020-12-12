@@ -1,6 +1,7 @@
 .vs
 Binaries
 Build
+DerivedDataCache
 Intermediate
 Saved
 Config
@@ -10,3 +11,4 @@ Content/StarterContent
 /*.py
 Content/*.umap
 Content/TestActor.uasset
+*.uproject

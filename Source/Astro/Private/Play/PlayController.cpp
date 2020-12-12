@@ -27,6 +27,7 @@ void APlayController::Tick(float DeltaTime)
 
 void APlayController::OnCharacterLocalSolarBodyChanged(ASolarBody* newLocalSolarBody)
 {
+
 }
 
 UTooltipManager* APlayController::GetTooltipManager()
