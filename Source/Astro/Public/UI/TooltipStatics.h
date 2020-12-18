@@ -14,8 +14,4 @@ UCLASS()
 class ASTRO_API UTooltipStatics : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
-	
-public:
-	UFUNCTION() // BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject")
-		static UTooltipManager* GetTooltipManager(UObject* WorldContextObject);
 };

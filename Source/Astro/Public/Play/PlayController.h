@@ -30,4 +30,7 @@ public:
 	
 	UFUNCTION() // BlueprintCallable, BlueprintPure
 		UTooltipManager* GetTooltipManager();
+
+	UFUNCTION(BlueprintCallable)
+		void TeleportToCursor();
 };

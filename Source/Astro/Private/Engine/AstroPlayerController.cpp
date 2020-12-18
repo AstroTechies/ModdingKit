@@ -12,3 +12,8 @@ void AAstroPlayerController::ServerAdminListPlayers()
 {
 
 }
+
+void AAstroPlayerController::DebugTeleportCoord(FVector location)
+{
+
+}

@@ -65,6 +65,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void ServerAdminListPlayers();
 
+	UFUNCTION(BlueprintCallable)
+		void DebugTeleportCoord(FVector location);
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FClientListPlayersResponseDelegate OnClientListPlayersResponse;
 };

@@ -51,9 +51,9 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 		AAstroPlanet* GetLocalSolarBody();
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly)
 		void AuthoritySetLocalSolarBody(ASolarBody* solarBody);
-	
+
 	UFUNCTION(BlueprintCallable)
 		void DetachFromSeat(bool bImmediate, bool bForce);
 

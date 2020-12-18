@@ -26,3 +26,24 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMoved, bool, Unknown);
 
 UDELEGATE()
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnReplicationDataChanged, APhysicalItem*, Unknown);
+
+UDELEGATE()
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnGameplayStarted, bool, StartedInExistingSavedGame);
+
+UDELEGATE()
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FTutorialSignal, FName, Unknown1, bool, Unknown2, bool, Unknown3);
+
+UDELEGATE()
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FStarterItemCreated, APhysicalItem*, NewStarterItem);
+
+UDELEGATE()
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnCurrentResearchPointBalanceChanged, float, NewPointBalance);
+
+UDELEGATE()
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnItemTypeListChanged, TArray<TSubclassOf<UItemType>>, NewItemTypeList);
+
+UDELEGATE()
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FEnableSignal, bool, Unknown);
+
+UDELEGATE()
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOutroSequenceActorCreated, ALevelSequenceActor*, Unknown);
