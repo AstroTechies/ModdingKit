@@ -6,11 +6,18 @@
 #include "AstroCharacter.h"
 #include "Character/CharacterCustomization.h"
 #include "Character/Charactersuit.h"
+#include "Character/CharacterPalette.h"
 #include "Components/StaticMeshComponent.h"
 #include "Materials/MaterialInstanceConstant.h"
 #include "Containers/ContainerAllocationPolicies.h"
 #include "CharacterHat.generated.h"
 
+
+UENUM()
+enum class ECharacterHatCategory : uint8 {
+	Head = 0,
+	Mask = 1,
+};
 
 USTRUCT(BlueprintType)
 struct ASTRO_API FCharacterHatPerSuitModifiers
@@ -18,6 +25,8 @@ struct ASTRO_API FCharacterHatPerSuitModifiers
 	GENERATED_USTRUCT_BODY();
 
 public:
+
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FTransform Offset;
 
@@ -38,12 +47,13 @@ class ASTRO_API UAstroCharacterHat : public UAstroCustomizationItem
 	GENERATED_BODY()
 
 	public:
+		virtual void ApplyToMesh(UStaticMeshComponent* targetMesh, UAstroCharacterSuit* suit, UAstroCharacterHat* hatDef, UAstroCharacterPalette* palette);
 
 		UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TSoftObjectPtr<UStaticMesh> StaticMesh;
 
-		//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	    //TMap<UAstroCharacterSuit*, FCharacterHatPerSuitModifiers,  TDefaultMapHashableKeyFuncs<UAstroCharacterSuit*, FCharacterHatPerSuitModifiers, 0> > SuitSpecificModifiers;
+		UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	    TMap<UAstroCharacterSuit*, FCharacterHatPerSuitModifiers> SuitSpecificModifiers;
 		
 		UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool AcceptSuitColors;
