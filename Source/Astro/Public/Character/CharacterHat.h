@@ -12,13 +12,6 @@
 #include "Containers/ContainerAllocationPolicies.h"
 #include "CharacterHat.generated.h"
 
-
-UENUM()
-enum class ECharacterHatCategory : uint8 {
-	Head = 0,
-	Mask = 1,
-};
-
 USTRUCT(BlueprintType)
 struct ASTRO_API FCharacterHatPerSuitModifiers
 {

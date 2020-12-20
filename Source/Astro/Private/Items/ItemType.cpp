@@ -14,6 +14,6 @@ UItemType::UItemType() {};
 //UItemType::new()
 //virtual void UItemType::__DefaultConstructor()
 //virtual UObject* UItemType::__VTableCtorCaller()
-void UItemType::ApplyToIconActor(AActor* Actor) {};
+//void UItemType::ApplyToIconActor(AActor* Actor) {};
 //FRecipe UItemType::GetConstructionRecipe(){}
 //UItemType::virtual void* __vecDelDtor()
