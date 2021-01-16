@@ -47,3 +47,9 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FEnableSignal, bool, Unknown);
 
 UDELEGATE()
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOutroSequenceActorCreated, ALevelSequenceActor*, Unknown);
+
+UDELEGATE()
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FPlayerJoinSignal, APlayerController*, Player);
+
+UDELEGATE()
+DECLARE_DYNAMIC_DELEGATE(FFailedToSaveGameOnQuit);

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Utilities/ActivationSignals.h"
+#include "AstroServerComm/AstroServerComm.h"
 #include "AstroGameInstance.generated.h"
 
 UCLASS(BlueprintType)
@@ -150,9 +151,9 @@ public:
 		UAstroGameInstance::FMessageOfTheDayUpdated OnMessageOfTheDayUpdated;*/
 	UPROPERTY(EditAnywhere, BlueprintAssignable, BlueprintReadWrite)
 		FSignal OnPlayTogetherEventReceived;
-	/*UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		UAstroServerCommExecutor* AstroServerCommSingleton;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		UAstroServerCommExecutor* AstroServerCommSingleton;
+	/*UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FAstroServerInfo InviteServerInfo;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TMap<UWorld *,FWorldSingletons> WorldSingletons;

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Utilities/ActivationSignals.h"
 #include "GameFramework/GameMode.h"
 #include "AstroGameMode.generated.h"
 
@@ -19,5 +20,7 @@ public:
 		FVector DefaultSpawnLocation;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FRotator DefaultSpawnRotation;
+	UPROPERTY(EditAnywhere, BlueprintAssignable, BlueprintReadWrite)
+		FPlayerJoinSignal OnPlayerJoin;
 	
 };

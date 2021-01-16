@@ -7,6 +7,8 @@
 #include "Engine/LocalPlayer.h"
 #include "AstroStatics.generated.h"
 
+class UPanelWidget;
+
 UENUM(BlueprintType)
 enum class EPlatform : uint8 {
 	PC = 0,
@@ -20,6 +22,12 @@ class ASTRO_API UAstroStatics : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 	
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
+		static AAstroGameMode* GetGameMode(UObject* WorldContextObject);
+
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
+		static AAstroGameState* GetGameState(UObject* WorldContextObject);
+
     UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
 		static void JoinToURL(UPARAM(ref) FString& Name, UObject* WorldContextObject);
 
@@ -50,7 +58,19 @@ class ASTRO_API UAstroStatics : public UBlueprintFunctionLibrary
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 		static bool IsShippingBuild();
 
+	UFUNCTION(BlueprintCallable)
+		static void PopulateLoadablePresets(UPanelWidget* widget);
+	UFUNCTION(BlueprintCallable)
+		static void PopulateSpawnableObjects(UPanelWidget* widget, FString nameFilter);
+	UFUNCTION(BlueprintCallable)
+		static void PopulateResourceTypes(UPanelWidget* widget);
+	UFUNCTION(BlueprintCallable)
+		static void PopulateSaveGames(UPanelWidget* widget);
+
 	//UFUNCTION(BlueprintCallable, BlueprintPure)
-		static EPlatform GetGamePlatform(); // doesn't seem to actually do what it says	
+		static EPlatform GetGamePlatform(); // doesn't seem to actually do what it says
+
+		UFUNCTION(BlueprintCallable)
+			static void ThisMethodDoesNotExist();
 	
 };

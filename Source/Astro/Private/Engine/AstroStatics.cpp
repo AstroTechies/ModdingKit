@@ -2,6 +2,16 @@
 
 #include "AstroStatics.h"
 
+AAstroGameMode* UAstroStatics::GetGameMode(UObject* WorldContextObject)
+{
+	return nullptr;
+}
+
+AAstroGameState* UAstroStatics::GetGameState(UObject* WorldContextObject)
+{
+	return nullptr;
+}
+
 void UAstroStatics::JoinToURL(UPARAM(ref)FString & Name, UObject* WorldContextObject)
 {
 
@@ -55,4 +65,29 @@ bool UAstroStatics::IsLanMatch(UObject* WorldContextObject)
 bool UAstroStatics::IsShippingBuild()
 {
 	return false;
+}
+
+void UAstroStatics::PopulateLoadablePresets(UPanelWidget* widget)
+{
+	
+}
+
+void UAstroStatics::PopulateSpawnableObjects(UPanelWidget* widget, FString nameFilter)
+{
+	
+}
+
+void UAstroStatics::PopulateResourceTypes(UPanelWidget* widget)
+{
+	
+}
+
+void UAstroStatics::PopulateSaveGames(UPanelWidget* widget)
+{
+	
+}
+
+void UAstroStatics::ThisMethodDoesNotExist()
+{
+
 }

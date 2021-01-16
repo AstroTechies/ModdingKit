@@ -16,7 +16,7 @@ class ASTRO_API UPlanetStatics : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 	
 	UFUNCTION(BlueprintCallable)
-	static AAstroPlanet* GetPlanet(UPARAM(ref) AActor* actor, bool bBoundsCheck);
-	
-	
+		static AAstroPlanet* GetPlanet(UPARAM(ref) AActor* actor, bool bBoundsCheck);
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
+		static bool IsTerrainReadyAtLocation(UObject* WorldContextObject, FVector location);
 };

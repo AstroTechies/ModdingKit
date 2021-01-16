@@ -9,3 +9,8 @@ AAstroPlanet* UPlanetStatics::GetPlanet(UPARAM(ref)AActor * actor, bool bBoundsC
 {
 	return nullptr;
 }
+
+bool UPlanetStatics::IsTerrainReadyAtLocation(UObject* WorldContextObject, FVector location)
+{
+	return true;
+}

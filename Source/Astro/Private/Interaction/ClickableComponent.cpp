@@ -32,3 +32,13 @@ void UClickableComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 	// ...
 }
 
+
+EUseContext UClickableComponent::GetActiveUseContext()
+{
+	return EUseContext::UC_Use;
+}
+
+void UClickableComponent::SetActiveUseContext(EUseContext NewUseContext)
+{
+
+}

@@ -70,4 +70,11 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FClientListPlayersResponseDelegate OnClientListPlayersResponse;
+
+	UFUNCTION(BlueprintCallable)
+		void AdminKickPlayer(FString playerGuid);
+	UFUNCTION(BlueprintCallable, Reliable, Client)
+		void ClientKickPlayerResponse(bool success);
+	UFUNCTION(BlueprintCallable)
+		void ForceCrash();
 };

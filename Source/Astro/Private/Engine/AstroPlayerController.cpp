@@ -17,3 +17,18 @@ void AAstroPlayerController::DebugTeleportCoord(FVector location)
 {
 
 }
+
+void AAstroPlayerController::AdminKickPlayer(FString playerGuid)
+{
+
+}
+
+void AAstroPlayerController::ClientKickPlayerResponse_Implementation(bool success)
+{
+
+}
+
+void AAstroPlayerController::ForceCrash()
+{
+
+}
