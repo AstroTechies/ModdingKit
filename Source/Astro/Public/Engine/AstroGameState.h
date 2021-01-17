@@ -3,7 +3,6 @@
 #pragma once
 
 #include "GameFramework/GameState.h"
-#include "LevelSequencePlayer.h"
 #include "Particles/ParticleSystem.h" 
 #include "Items/ItemType.h"
 #include "Items/PhysicalItem.h"
@@ -164,8 +163,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintAssignable, BlueprintReadWrite)
 		FSignal OnOutroCinematicStarted;
 	UPROPERTY(EditAnywhere, BlueprintAssignable, BlueprintReadWrite)
-		FOutroSequenceActorCreated OnOutroSequenceActorCreated;
-	UPROPERTY(EditAnywhere, BlueprintAssignable, BlueprintReadWrite)
 		FSignal OnOutroCinematicCompleted;
 	/*UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		UActivation* DeformToolActivation;*/
@@ -217,10 +214,6 @@ public:
 		TArray<FScannableStatus> ScannableStatuses;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TArray<FProbeUnlockState> ProbeUnlockStates;*/
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		ULevelSequencePlayer* OutroCinematicPlayer;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		ALevelSequenceActor* OutroSequenceActor;
 	/*UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TArray<FDebugLocation> DebugLocations;*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

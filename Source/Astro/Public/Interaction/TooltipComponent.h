@@ -118,7 +118,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FText SubTitle;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	ETooltipPresentationStyleTypes PresentationStyle;
+		ETooltipPresentationStyleTypes PresentationStyle;
 	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	//ETooltipAnimationDirection AnimationDirection;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -151,126 +151,124 @@ protected:
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-	
-
-
 		
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FVector2D ScreenOffset;
-
-	/*
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	//FTooltipInteractionActiveDelegate InteractionActivated;
-	
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	//FTooltipInputUnhandledDelegate InputUnhandled;
-	
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	//FSignal OnOverrideChanged;
-
-	*/
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	uint8 bIsActorDefaultTooltip;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	ETooltipArchetype TooltipArchetype;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	ETooltipVisibilityControl VisibilityControl;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	uint8 bRemainsVisibleWhenHeld;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	uint8 bSuppressOtherTooltipsWhenExpanded;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	uint8 bAlwaysShowLiteralItemType;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	uint8 bSuppressTooltipUse;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FTooltipProximityBadgeVisibilityData ProximityVisibilityData;
-	
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	//FComponentReference AttachComponent;
-	
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	//FComponentReference InputRespondingColliderComponent;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	//USceneComponent* AnchorReferenceComponent;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	//TArray<FTooltipWidgetOverride> WidgetOverrideStack;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FTooltipWidgetDisplayData DefaultDisplayData;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	//bool bCanDisplayWhenCracked;
+		FVector2D ScreenOffset;
 
 	/*
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UAstroTooltipWidget* TooltipWidget;
+		FTooltipInteractionActiveDelegate InteractionActivated;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	USphereComponent* PrimaryProximitySphereBadge;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	USphereComponent* SecondaryProximitySphereBadge;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	USphereComponent* ProximitySphereDetails;
-	*/
-	/*
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UPrimitiveComponent* InputRespondingCollider;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	//FHoldInputActionProgress ActiveHoldInputAction;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	//TWeakObjectPtr<UInputComponent, FWeakObjectPtr> BoundInputComponent;
-	*/
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	ETooltipState DesiredTooltipState;
-	/*
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float TooltipExpansionSpeedMultiplier;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float TooltipCollapseSpeedMultiplier;
-	*/
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	uint8 bHasFocus;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	uint8 bIsOwnerPickedUp;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	uint8 bIsLocalPlayerWithinPrimaryProximitySphere;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	uint8 bIsLongDistanceSecondaryBadgeActive;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	uint8 bWidgetIsAboutToDie;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	uint8 bChooseDefaultCollider;
+		FTooltipInputUnhandledDelegate InputUnhandled;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	ETooltipProximityState TooltipProximityState;
+		FSignal OnOverrideChanged;
+	*/
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool bIsActorDefaultTooltip;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		ETooltipArchetype TooltipArchetype = ETooltipArchetype::Salvage; // for testing
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		ETooltipVisibilityControl VisibilityControl;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool bRemainsVisibleWhenHeld;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool bSuppressOtherTooltipsWhenExpanded;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool bAlwaysShowLiteralItemType;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool bSuppressTooltipUse;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		FTooltipProximityBadgeVisibilityData ProximityVisibilityData;
+	
 	/*
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FName ActiveOverrideName;
-	*/
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	//APawn* LocalPawnDisplayingProximityTooltip;
+		FComponentReference AttachComponent;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		FComponentReference InputRespondingColliderComponent;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	//uint8 NumActiveLocalPawnOverlapEvents;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		USceneComponent* AnchorReferenceComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TArray<FTooltipWidgetOverride> WidgetOverrideStack;
+	*/
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		FTooltipWidgetDisplayData DefaultDisplayData;
+
+	/*
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool bCanDisplayWhenCracked;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		UAstroTooltipWidget* TooltipWidget;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		USphereComponent* PrimaryProximitySphereBadge;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		USphereComponent* SecondaryProximitySphereBadge;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		USphereComponent* ProximitySphereDetails;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		UPrimitiveComponent* InputRespondingCollider;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		FHoldInputActionProgress ActiveHoldInputAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TWeakObjectPtr<UInputComponent, FWeakObjectPtr> BoundInputComponent;
+	*/
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		ETooltipState DesiredTooltipState;
+
+	/*
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float TooltipExpansionSpeedMultiplier;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float TooltipCollapseSpeedMultiplier;
+	*/
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool bHasFocus;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool bIsOwnerPickedUp;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool bIsLocalPlayerWithinPrimaryProximitySphere;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool bIsLongDistanceSecondaryBadgeActive;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool bWidgetIsAboutToDie;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool bChooseDefaultCollider;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		ETooltipProximityState TooltipProximityState;
+	/*
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		FName ActiveOverrideName;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		APawn* LocalPawnDisplayingProximityTooltip;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		uint8 NumActiveLocalPawnOverlapEvents;*/
 	
 };

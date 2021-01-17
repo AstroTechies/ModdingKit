@@ -3,8 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Items/ItemType.h"
 #include "UObject/NoExportTypes.h"
 #include "ActivationSignals.generated.h"
+
+class APhysicalItem;
 
 UDELEGATE()
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FSignal);
@@ -44,9 +47,6 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnItemTypeListChanged, TArray<TSubc
 
 UDELEGATE()
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FEnableSignal, bool, Unknown);
-
-UDELEGATE()
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOutroSequenceActorCreated, ALevelSequenceActor*, Unknown);
 
 UDELEGATE()
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FPlayerJoinSignal, APlayerController*, Player);
