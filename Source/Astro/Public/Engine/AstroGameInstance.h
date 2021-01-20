@@ -6,6 +6,20 @@
 #include "AstroServerComm/AstroServerComm.h"
 #include "AstroGameInstance.generated.h"
 
+USTRUCT(BlueprintType)
+struct ASTRO_API FAstroGameMenuEntryWidgetDisplayData
+{
+	GENERATED_USTRUCT_BODY();
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		FText LeftText;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		FText RightText;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool IsRightTextBold;
+};
+
 UCLASS(BlueprintType)
 class ASTRO_API UAstroGameInstance : public UGameInstance
 {

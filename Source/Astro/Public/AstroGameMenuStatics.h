@@ -8,6 +8,7 @@
 #include "AstroGameMenuStatics.generated.h"
 
 class UUserWidget;
+class UAstroGameMenuWidget;
 struct FVector2D;
 
 UENUM(BlueprintType)
@@ -104,6 +105,6 @@ public:
 		static UUserWidget* GetAchievementProgressionWarningWidget(UObject* WorldContextObject);
 	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
 		static UUserWidget* GetMOTDWidget(UObject* WorldContextObject);
-	/*UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static UAstroGameMenuWidget* GetGameMenuWidget(UObject* WorldContextObject);*/
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
+		static UAstroGameMenuWidget* GetGameMenuWidget(UObject* WorldContextObject);
 };

@@ -173,7 +173,7 @@ UUserWidget* UAstroGameMenuStatics::GetMOTDWidget(UObject* WorldContextObject)
 	return nullptr;
 }
 
-/*UAstroGameMenuWidget* UAstroGameMenuStatics::GetGameMenuWidget(UObject* WorldContextObject)
+UAstroGameMenuWidget* UAstroGameMenuStatics::GetGameMenuWidget(UObject* WorldContextObject)
 {
 	return nullptr;
-}*/
+}

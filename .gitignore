@@ -10,5 +10,6 @@ Content/Developers
 Content/StarterContent
 /*.py
 Content/*.umap
+Content/Level_BuildData.uasset
 Content/TestActor.uasset
 *.uproject
