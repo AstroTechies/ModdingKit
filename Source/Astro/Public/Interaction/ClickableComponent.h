@@ -65,7 +65,7 @@ enum class EUseContext : uint8 {
 	UC_Unlock = 54
 };
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(EditInlineNew, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class ASTRO_API UClickableComponent : public UActorComponent
 {
 	GENERATED_BODY()

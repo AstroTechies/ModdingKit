@@ -7,7 +7,7 @@
 #include "WorldGravity.generated.h"
 
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(EditInlineNew, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class ASTRO_API UWorldGravity : public UActorComponent
 {
 	GENERATED_BODY()

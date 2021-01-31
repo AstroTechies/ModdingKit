@@ -7,7 +7,7 @@
 #include "AstroEntityProceduralStateComponent.generated.h"
 
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(EditInlineNew, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class ASTRO_API UProceduralStateComponent : public UActorComponent
 {
 	GENERATED_BODY()

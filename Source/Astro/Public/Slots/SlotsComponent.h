@@ -7,7 +7,7 @@
 #include "Slots/ItemSlot.h"
 #include "SlotsComponent.generated.h"
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(EditInlineNew, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class ASTRO_API USlotsComponent : public UActorComponent
 {
 	GENERATED_BODY()

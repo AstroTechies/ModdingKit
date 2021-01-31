@@ -7,7 +7,7 @@
 #include "TerrainPhysicsComponent.generated.h"
 
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(EditInlineNew, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class ASTRO_API UTerrainPhysicsComponent : public UActorComponent
 {
 	GENERATED_BODY()

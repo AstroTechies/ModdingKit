@@ -95,7 +95,7 @@ public:
 		TArray<FNamedEntityComponentDefinition> Components;
 };
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(EditInlineNew, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class ASTRO_API UActorEntityLinkComponent : public UActorComponent
 {
 	GENERATED_BODY()

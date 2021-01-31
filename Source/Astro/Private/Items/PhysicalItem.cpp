@@ -7,10 +7,10 @@ APhysicalItem::APhysicalItem()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	ItemComponent = CreateDefaultSubobject<UItemComponent>(TEXT("ItemComponent"));
+	ItemComponent = CreateDefaultSubobject<UItemComponent>(TEXT("Item"));
 	EntityLinkComponent = CreateDefaultSubobject<UActorEntityLinkComponent>(TEXT("EntityLinkComponent"));
 	TerrainComponent = CreateDefaultSubobject<UTerrainPhysicsComponent>(TEXT("Terrain Physics"));
-	GravityComponent = CreateDefaultSubobject<UWorldGravity>(TEXT("WorldGravity"));
+	GravityComponent = CreateDefaultSubobject<UWorldGravity>(TEXT("Gravity"));
 	ClickableComponent = CreateDefaultSubobject<UClickableComponent>(TEXT("ItemClickableComponent"));
 	SlotsComponent = CreateDefaultSubobject<USlotsComponent>(TEXT("SlotsComponent"));
 	TooltipComponent = CreateDefaultSubobject<UTooltipComponent>(TEXT("TooltipComponent"));

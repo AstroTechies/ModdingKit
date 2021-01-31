@@ -7,7 +7,7 @@
 #include "ItemType.h"
 #include "ItemComponent.generated.h"
 
-UCLASS(BlueprintType, Blueprintable)
+UCLASS(BlueprintType, Blueprintable, EditInlineNew)
 class ASTRO_API UItemComponent : public UActorComponent
 {
 	GENERATED_BODY()

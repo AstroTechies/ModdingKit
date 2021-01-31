@@ -4,14 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-//#include "Math/Vector2D.h"
-//#include "Engine/EngineTypes.h"
-//#include "Components/SceneComponent.h"
-//#include "Components/PrimitiveComponent.h"
-//#include "GameFramework/Pawn.h"
 #include "TooltipComponent.generated.h"
 
-
+struct FComponentReference;
 
 UENUM()
 enum class ETooltipProximityState : uint8 {
@@ -59,7 +54,6 @@ enum class ETooltipPresentationStyleTypes : uint8 {
 	AstroInteraction = 2
 };
 
-
 USTRUCT(BlueprintType)
 struct ASTRO_API FTooltipProximityBadgeVisibilityData
 {
@@ -73,7 +67,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float SecondaryLongDistanceBadgeProximityRadius;
 };
-
 
 USTRUCT(BlueprintType)
 struct ASTRO_API FInteractionPromptEntryData
@@ -127,15 +120,9 @@ public:
 	//EAstroGameMenuTutorialSlideDeckKey OpenAstropediaDeck;
 	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	//EAstroGameMenuTutoriaSlideCardKey OpenAstropediaCard;
-
-
-
-
-
 };
 
-
-UCLASS(BlueprintType, Blueprintable)
+UCLASS(EditInlineNew, BlueprintType, Blueprintable)
 class ASTRO_API UTooltipComponent : public UActorComponent
 {
 	GENERATED_BODY()
@@ -155,22 +142,14 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FVector2D ScreenOffset;
 
-	/*
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FTooltipInteractionActiveDelegate InteractionActivated;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FTooltipInputUnhandledDelegate InputUnhandled;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FSignal OnOverrideChanged;
-	*/
+	UPROPERTY(EditAnywhere)
+		FComponentReference AttachComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool bIsActorDefaultTooltip;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		ETooltipArchetype TooltipArchetype = ETooltipArchetype::Salvage; // for testing
+		ETooltipArchetype TooltipArchetype;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		ETooltipVisibilityControl VisibilityControl;
@@ -189,60 +168,13 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FTooltipProximityBadgeVisibilityData ProximityVisibilityData;
-	
-	/*
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FComponentReference AttachComponent;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FComponentReference InputRespondingColliderComponent;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		USceneComponent* AnchorReferenceComponent;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TArray<FTooltipWidgetOverride> WidgetOverrideStack;
-	*/
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FTooltipWidgetDisplayData DefaultDisplayData;
 
-	/*
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool bCanDisplayWhenCracked;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		UAstroTooltipWidget* TooltipWidget;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		USphereComponent* PrimaryProximitySphereBadge;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		USphereComponent* SecondaryProximitySphereBadge;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		USphereComponent* ProximitySphereDetails;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		UPrimitiveComponent* InputRespondingCollider;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FHoldInputActionProgress ActiveHoldInputAction;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TWeakObjectPtr<UInputComponent, FWeakObjectPtr> BoundInputComponent;
-	*/
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		ETooltipState DesiredTooltipState;
 
-	/*
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		float TooltipExpansionSpeedMultiplier;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		float TooltipCollapseSpeedMultiplier;
-	*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool bHasFocus;
 
@@ -263,12 +195,5 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		ETooltipProximityState TooltipProximityState;
-	/*
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FName ActiveOverrideName;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		APawn* LocalPawnDisplayingProximityTooltip;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		uint8 NumActiveLocalPawnOverlapEvents;*/
 	
 };

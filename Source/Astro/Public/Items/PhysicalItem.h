@@ -33,23 +33,23 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, Instanced, BlueprintReadWrite)
 		UItemComponent* ItemComponent;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, Instanced, BlueprintReadWrite)
 		UActorEntityLinkComponent* EntityLinkComponent;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, Instanced, BlueprintReadWrite)
 		UTerrainPhysicsComponent* TerrainComponent;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, Instanced, BlueprintReadWrite)
 		UStaticMeshComponent* StaticMeshComponent;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, Instanced, BlueprintReadWrite)
 		UWorldGravity* GravityComponent;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, Instanced, BlueprintReadWrite)
 		UClickableComponent* ClickableComponent;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, Instanced, BlueprintReadWrite)
 		USlotsComponent* SlotsComponent;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, Instanced, BlueprintReadWrite)
 		UTooltipComponent* TooltipComponent;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, Instanced, BlueprintReadWrite)
 		UProceduralStateComponent* ProceduralState;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -59,7 +59,7 @@ public:
 		// The height of the printer, overrides the default determined height value if defined
 		float PrinterHeight;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0", UIMax = "4"))
-		// The tier of the object. 1 = T1, 2 = T2, etc. Controls fallback slot size as well as walking speed
+		// The tier of the object. 1 = T1, 2 = T2, etc. Controls fallback slot size, default package size, as well as walking speed
 		int ToolMoveTier;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		// Can this item be picked up and moved around with the cursor?
