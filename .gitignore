@@ -8,6 +8,7 @@ Config/DefaultGame.ini
 Content/Atenfyr
 Content/Developers
 Content/StarterContent
+Content/Examples/RocketLauncherMod
 /*.py
 Content/*.umap
 Content/Level_BuildData.uasset
