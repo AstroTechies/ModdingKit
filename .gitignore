@@ -14,3 +14,4 @@ Content/*.umap
 Content/Level_BuildData.uasset
 Content/TestActor.uasset
 *.uproject
+Astro.sln
