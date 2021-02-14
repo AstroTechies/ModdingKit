@@ -53,3 +53,9 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FPlayerJoinSignal, APlayerController
 
 UDELEGATE()
 DECLARE_DYNAMIC_DELEGATE(FFailedToSaveGameOnQuit);
+
+UDELEGATE()
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSlotEventSignal, APhysicalItem *, Unknown0);
+
+UDELEGATE()
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FEnterExitSignal, bool, Unknown0);

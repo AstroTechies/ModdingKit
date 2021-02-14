@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Slots/SlotReference.h"
 #include "Components/StaticMeshComponent.h"
 #include "Items/ItemComponent.h"
 #include "EntityModel/ActorEntityLinkComponent.h"
@@ -14,7 +15,21 @@
 #include "Planet/WorldGravity.h"
 #include "Utilities/ActivationSignals.h"
 #include "GameFramework/Actor.h"
+#include "Engine/EngineTypes.h"
 #include "PhysicalItem.generated.h"
+
+class UPrimitiveComponent;
+class UChildSlotComponent;
+class APawn;
+
+UENUM(BlueprintType)
+enum class EPhysicalItemMotionState : uint8 {
+	Simulating = 0,
+	PickedUp = 1,
+	Slotted = 2,
+	NonSimulating = 3,
+	Indicator = 4
+};
 
 UCLASS(BlueprintType)
 class ASTRO_API APhysicalItem : public AActor
@@ -32,6 +47,89 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION(BlueprintCallable)
+		bool Movable(int ToolTier);
+	UFUNCTION(BlueprintCallable)
+		void StartItemInWorld();
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+		UChildSlotComponent* GetBodySlotLegacy();
+	UFUNCTION(BlueprintCallable)
+		FSlotReference GetBodySlot();
+	UFUNCTION(BlueprintCallable)
+		FTransform PlacementTransform(FHitResult Hit);
+	UFUNCTION(BlueprintCallable)
+		void DropInWorld(UPrimitiveComponent* Component, bool terrainComponent, FVector Point, FVector Normal);
+	UFUNCTION(BlueprintCallable)
+		void PickUpFromWorld(bool physicalMovement);
+	UFUNCTION(BlueprintCallable)
+		FTransform GetBaseLocation();
+	UFUNCTION(BlueprintCallable)
+		FText GetItemName();
+	UFUNCTION(BlueprintCallable)
+		float GetPrinterHeight();
+	UFUNCTION(BlueprintCallable)
+		TSubclassOf<UItemType> GetFunctionalItemTypeClass();
+	UFUNCTION(BlueprintCallable)
+		TSubclassOf<UItemType> GetStoredSubItemTypeClass();
+	UFUNCTION(BlueprintCallable)
+		TSubclassOf<UItemType> GetLiteralItemTypeClass();
+	UFUNCTION(BlueprintCallable)
+		UItemType* GetFunctionalItemTypeCDO();
+	UFUNCTION(BlueprintCallable)
+		UItemType* GetStoredSubItemTypeCDO();
+	UFUNCTION(BlueprintCallable)
+		UItemType* GetLiteralItemTypeCDO();
+	UFUNCTION(BlueprintCallable)
+		int GetPickupToolTier();
+	UFUNCTION(BlueprintCallable)
+		APhysicalItem* GetPickupItemDefault();
+	UFUNCTION(BlueprintCallable)
+		EPhysicalItemMotionState GetMotionState();
+	UFUNCTION(BlueprintCallable)
+		void SetAttachPhysics(USceneComponent* Component, FName socketName, bool DoWeld);
+	UFUNCTION(BlueprintCallable)
+		void SetWorldPhysics();
+	UFUNCTION(BlueprintCallable)
+		void SetPuppetPhysics();
+	UFUNCTION(BlueprintCallable)
+		void SetIndicatorPhysics();
+	UFUNCTION(BlueprintCallable)
+		void SetNonSimulatingPhysics();
+	UFUNCTION(BlueprintCallable)
+		void SetPhysicsState(EPhysicalItemMotionState state, USceneComponent* attachParent, FName socketName, bool weld);
+	UFUNCTION(BlueprintCallable)
+		int GetSubSlotIndex();
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+		void ServerTakePossession(APawn* controllingPawn, bool physicalMovement, bool partOfSwap);
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+		void ServerReleasePossession(UPrimitiveComponent* hitComponent, bool terrainComponent, FVector hitLocation, FVector_NetQuantizeNormal hitNormal);
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+		void ServerSlotSetItem(FSlotReference itemSlot, int subslotIndex, FSlotReference sourceTransitionSlot, bool useSourceTransform, bool fromTool, bool SlottedDuringInitialization, bool partOfSwap, bool skipBundling);
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+		void ServerSlotReleaseItem(bool newOwner, bool FromTool, float RandomForce, bool PartOfSwap);
+	UFUNCTION(BlueprintCallable)
+		void MulticastDroppedInWorld(UPrimitiveComponent* Component, bool terrainComponent, FVector Point, FVector Normal);
+	UFUNCTION(BlueprintCallable)
+		void MulticastPickedUpFromWorld(bool physicalMovement);
+	UFUNCTION(BlueprintCallable)
+		void MulticastReleasedFromSlot(bool FromTool, bool newOwner);
+	UFUNCTION(BlueprintCallable)
+		void MulticastSetFullyEmplaced(FSlotReference Slot, int subslotIndex);
+	UFUNCTION(BlueprintCallable)
+		bool CanNeverBeSlotted();
+	UFUNCTION(BlueprintCallable)
+		UWorldGravity* GetGravity();
+	UFUNCTION(BlueprintCallable)
+		float GetItemTypeDefaultScale(TSubclassOf<APhysicalItem> Type);
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+		void ServerSlotEmplaceItem(FSlotReference slot, int subslotIndex, bool snapTo, bool weld);
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+		void ServerSetSlotCardinalDirection(uint8 direction);
+	UFUNCTION(BlueprintCallable)
+		void OnRep_ItemState();
+	UFUNCTION(BlueprintCallable)
+		void OnRep_EmplacementData();
 
 	UPROPERTY(EditAnywhere, Instanced, BlueprintReadWrite)
 		UItemComponent* ItemComponent;

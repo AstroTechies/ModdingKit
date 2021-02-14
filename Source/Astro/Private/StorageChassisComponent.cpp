@@ -32,3 +32,93 @@ void UStorageChassisComponent::TickComponent(float DeltaTime, ELevelTick TickTyp
 	// ...
 }
 
+bool UStorageChassisComponent::QueryTertiary(APlayerController* Controller, FTransform OutTransform)
+{
+	return false;
+}
+
+void UStorageChassisComponent::TertiaryUse(APlayerController* Controller)
+{
+
+}
+
+void UStorageChassisComponent::SlotEvent(APhysicalItem* item)
+{
+
+}
+
+void UStorageChassisComponent::ItemAmountChangeEvent()
+{
+
+}
+
+UStorageChassisComponent* UStorageChassisComponent::GetActorStorageChassisComponent(AActor* Actor)
+{
+	return nullptr;
+}
+
+int UStorageChassisComponent::ChangeDeformationDeltaInConnectedSlotNetwork(int sedimentAmount, TSubclassOf<UItemType> deformedItemType)
+{
+	return 0;
+}
+
+void UStorageChassisComponent::CalculateItemReservesInConnectedSlotNetwork(TSubclassOf<UItemType> ItemType, int outCurrentStoredItemAmount, int outMaxStorageSize)
+{
+
+}
+
+bool UStorageChassisComponent::AuthorityPlaceItemInConnectedSlotNetwork(APhysicalItem* Item, AActor* SourceOwner)
+{
+	return false;
+}
+
+bool UStorageChassisComponent::AuthorityPlaceItemInLocalStorage(APhysicalItem* Item)
+{
+	return false;
+}
+
+int UStorageChassisComponent::AddItem(TSubclassOf<UItemType> itemType, int itemAmount)
+{
+	return 0;
+}
+
+UStorageChassisComponent* UStorageChassisComponent::GetOutermostStorage(AActor* Actor, bool Inclusive)
+{
+	return nullptr;
+}
+
+TArray<FSlotReference> UStorageChassisComponent::GetUnmanagedSlots()
+{
+	TArray<FSlotReference> x;
+	return x;
+}
+
+USlotOrganizationRule* UStorageChassisComponent::FindRuleByName(FName ruleName)
+{
+	return nullptr;
+}
+
+void UStorageChassisComponent::AuthorityApplyOrganizationRules()
+{
+
+}
+
+void UStorageChassisComponent::OnRep_SlotIndicatorLocations()
+{
+
+}
+
+void UStorageChassisComponent::OnRep_ActorAttachments()
+{
+
+}
+
+void UStorageChassisComponent::OnPlayerEnterExitAttachment(bool entered)
+{
+
+}
+
+void UStorageChassisComponent::OnOwnerDestroyed(AActor* owner)
+{
+
+}

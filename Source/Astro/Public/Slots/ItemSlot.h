@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Slots/SlotReference.h"
 #include "GameFramework/Actor.h"
 #include "Items/ItemType.h"
 #include "Slots/SlotConnection.h"
@@ -168,8 +169,8 @@ public:
 		float TraceRadius;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float IndicatorScale;
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	//	FSlotReference CurrentBodySlot;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		FSlotReference CurrentBodySlot;
 };
 
 UCLASS(BlueprintType, Blueprintable, ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
@@ -188,6 +189,9 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UPROPERTY(EditAnywhere, Instanced, BlueprintReadWrite)
+		UClickableComponent* ClickableComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		ESlotType SlotType;
@@ -222,8 +226,6 @@ public:
 		int SlotTierCount;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool CanHoldItem;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		UClickableComponent* ClickableComponent;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool CanAcceptItems;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

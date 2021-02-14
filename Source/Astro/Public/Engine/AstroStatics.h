@@ -70,7 +70,7 @@ class ASTRO_API UAstroStatics : public UBlueprintFunctionLibrary
 	//UFUNCTION(BlueprintCallable, BlueprintPure)
 		static EPlatform GetGamePlatform(); // doesn't seem to actually do what it says
 
-		UFUNCTION(BlueprintCallable)
-			static void ThisMethodDoesNotExist();
+	UFUNCTION(BlueprintCallable)
+		static void ThisMethodDoesNotExist();
 	
 };
