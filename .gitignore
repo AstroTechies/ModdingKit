@@ -4,13 +4,14 @@ Build
 DerivedDataCache
 Intermediate
 Saved
+Plugins
+*_WwiseProject
 Config/DefaultGame.ini
 Content/Atenfyr
 Content/Developers
 Content/StarterContent
-/*.py
 Content/*.umap
 Content/Level_BuildData.uasset
-Content/TestActor.uasset
 *.uproject
-Astro.sln
+*.sln
+*.py
