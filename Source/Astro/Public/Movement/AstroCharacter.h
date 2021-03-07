@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "GameFramework/PlayerController.h" 
+#include "Items/DroneBase.h" 
 #include "AstroPlanet.h"
 #include "AstroCharacter.generated.h"
 
@@ -41,7 +42,13 @@ public:
 		float Health;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float MaxHealth;
-
+		
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+		ADroneBase* GetCreativeDrone();
+	
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+		bool IsCreativeDroneCameraPerspectiveActive();
+		
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 		APlayController* GetPlayController();
 
