@@ -25,6 +25,16 @@ void AAstroCharacter::Tick(float DeltaTime)
 
 }
 
+ADroneBase* AAstroCharacter::GetCreativeDrone()
+{
+	return nullptr;
+}
+
+bool AAstroCharacter::IsCreativeDroneCameraPerspectiveActive()
+{
+	return false;
+}
+
 APlayController* AAstroCharacter::GetPlayController()
 {
 	return nullptr;
