@@ -28,6 +28,11 @@ void AAstroPlayerController::ClientKickPlayerResponse_Implementation(bool succes
 
 }
 
+bool AAstroPlayerController::HasAdminAccess()
+{
+	return true;
+}
+
 void AAstroPlayerController::ForceCrash()
 {
 

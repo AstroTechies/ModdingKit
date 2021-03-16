@@ -61,20 +61,19 @@ class ASTRO_API AAstroPlayerController : public APlayerController
 public:
 	UFUNCTION(BlueprintCallable)
 		void TravelToDedicatedServerByURL(FString serverURL, FString password, FDSTravelInitiatedDelegate TravelInitiated);
-
 	UFUNCTION(BlueprintCallable)
 		void ServerAdminListPlayers();
-
 	UFUNCTION(BlueprintCallable)
 		void DebugTeleportCoord(FVector location);
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FClientListPlayersResponseDelegate OnClientListPlayersResponse;
-
 	UFUNCTION(BlueprintCallable)
 		void AdminKickPlayer(FString playerGuid);
 	UFUNCTION(BlueprintCallable, Reliable, Client)
 		void ClientKickPlayerResponse(bool success);
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+		bool HasAdminAccess();
 	UFUNCTION(BlueprintCallable)
 		void ForceCrash();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		FClientListPlayersResponseDelegate OnClientListPlayersResponse;
 };
