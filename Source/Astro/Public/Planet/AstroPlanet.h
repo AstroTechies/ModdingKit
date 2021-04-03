@@ -15,8 +15,8 @@ class ASTRO_API AAstroPlanet : public ASolarBody
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintCallable, BlueprintPure, DisplayName = "Get South Vector")
-		// Returns a vector that points South
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+		// Returns a vector that points North
 		FVector GetNorthVector();
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)

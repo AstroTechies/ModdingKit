@@ -17,6 +17,11 @@ void UAstroStatics::JoinToURL(UPARAM(ref)FString & Name, UObject* WorldContextOb
 
 }
 
+AAstroMissionsManager* UAstroStatics::GetAstroMissionsManager(UObject* WorldContextObject)
+{
+	return nullptr;
+}
+
 FString UAstroStatics::GetControllingPlayerNickname()
 {
 	return "";

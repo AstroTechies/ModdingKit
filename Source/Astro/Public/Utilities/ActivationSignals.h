@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Items/ItemType.h"
+#include "Missions/AstroMissionData.h"
 #include "UObject/NoExportTypes.h"
 #include "ActivationSignals.generated.h"
 
@@ -59,3 +60,21 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSlotEventSignal, APhysicalItem *,
 
 UDELEGATE()
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FEnterExitSignal, bool, Unknown0);
+
+UDELEGATE()
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FItemPrintedSignal, APhysicalItem*, PrintedItem);
+
+UDELEGATE()
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnCrackedStateChanged, UCrackableActorComponent *, Unknown0, bool, Unknown1);
+
+UDELEGATE()
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAstroMissionActivatedDelegate, FName, missionId);
+
+UDELEGATE()
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FAstroMissionObjectiveUpdatedDelegate, FName, missionId, FAstroMissionObjectiveProgress, objectiveProgress, int, objectiveIndex);
+
+UDELEGATE()
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAstroMissionCompletedDelegate, FName, missionId);
+
+UDELEGATE()
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAstroMissionRewardClaimedDelegate, FName, missionId);

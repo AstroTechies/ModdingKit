@@ -154,6 +154,9 @@ public:
 		// no idea
 		float HoverHeight;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		// no idea
+		bool IgnoreBodySlotForHover = false;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		// The height of the printer, overrides the default determined height value if defined
 		float PrinterHeight;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0", UIMax = "4"))
