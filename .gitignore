@@ -11,7 +11,8 @@ Content/Atenfyr
 Content/Developers
 Content/StarterContent
 Content/*.umap
-Content/Level_BuildData.uasset
+Level_BuildData.uasset
+Level_BuiltData.uasset
 *.uproject
 *.sln
 *.py
