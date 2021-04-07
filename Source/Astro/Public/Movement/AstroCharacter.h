@@ -84,4 +84,7 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		AActor* AttachOwner;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		AActor* HeldItem;
 };

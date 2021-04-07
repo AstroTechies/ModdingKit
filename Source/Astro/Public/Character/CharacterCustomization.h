@@ -47,13 +47,13 @@ public:
 	FText UnlockConditionText;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	uint8 IsNonAchievementUnlock = 1;
+	bool IsNonAchievementUnlock = false;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSoftObjectPtr<UTexture2D> TileIconTexture;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSoftObjectPtr<UObject> TileItemTexture;
+	TSoftObjectPtr<UTexture2D> TileItemTexture;
 		
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSoftObjectPtr<UTexture2D> TileBackgroundTexture;

@@ -29,14 +29,16 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintPure) bool GetMissionDataBP(FName missionId, FAstroMissionData& outMissionData);
 	UFUNCTION(BlueprintCallable, BlueprintPure) bool GetMissionStateBP(FName missionId, FAstroMissionState& outMissionState);
 	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly) void AuthorityRaiseMissionEvent(EAstroMissionObjectiveType objectiveType, TSubclassOf<UItemType> targetType, TSubclassOf<UItemType> secondaryTargetType, const float count, EPlanetIdentifier planet, FString CustomTag);
+	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly) void AuthorityActivateMission(FName missionId);
+	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly) void AuthorityCompleteMission(FName missionId);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite) TMap<FName, FAstroMissionData> AllMissions;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite) TArray<FAstroMissionState> CompletedMissions;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite) TArray<FAstroMissionState> ActiveMissions;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite) TArray<FString> CompletedCustomTags;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite) FSignal OnMissionsInitialized;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite) FAstroMissionActivatedDelegate OnMissionActivated;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite) FAstroMissionObjectiveUpdatedDelegate OnMissionObjectiveUpdated;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite) FAstroMissionCompletedDelegate OnMissionCompleted;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite) FAstroMissionRewardClaimedDelegate OnMissionRewardClaimed;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable) FSignal OnMissionsInitialized;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable) FAstroMissionActivatedDelegate OnMissionActivated;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable) FAstroMissionObjectiveUpdatedDelegate OnMissionObjectiveUpdated;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable) FAstroMissionCompletedDelegate OnMissionCompleted;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable) FAstroMissionRewardClaimedDelegate OnMissionRewardClaimed;
 };

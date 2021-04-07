@@ -40,3 +40,13 @@ void AAstroMissionsManager::AuthorityRaiseMissionEvent(EAstroMissionObjectiveTyp
 {
 
 }
+
+void AAstroMissionsManager::AuthorityActivateMission(FName missionId)
+{
+
+}
+
+void AAstroMissionsManager::AuthorityCompleteMission(FName missionId)
+{
+
+}
