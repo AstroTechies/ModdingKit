@@ -32,3 +32,32 @@ void UTerrainPhysicsComponent::TickComponent(float DeltaTime, ELevelTick TickTyp
 	// ...
 }
 
+void UTerrainPhysicsComponent::SetWorldPhysics()
+{
+
+}
+
+void UTerrainPhysicsComponent::SetBuryPhysics()
+{
+
+}
+
+void UTerrainPhysicsComponent::SetPickupPhysics()
+{
+
+}
+
+bool UTerrainPhysicsComponent::GetIsBuried()
+{
+	return false;
+}
+
+void UTerrainPhysicsComponent::SetIsBuried(bool NewIsBuried)
+{
+
+}
+
+bool UTerrainPhysicsComponent::IsTerrainBuried()
+{
+	return false;
+}
