@@ -108,13 +108,21 @@ public:
 		void ServerSlotSetItem(FSlotReference itemSlot, int subslotIndex, FSlotReference sourceTransitionSlot, bool useSourceTransform, bool fromTool, bool SlottedDuringInitialization, bool partOfSwap, bool skipBundling);
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
 		void ServerSlotReleaseItem(bool newOwner, bool FromTool, float RandomForce, bool PartOfSwap);
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintNativeEvent)
+		void PlacedInSlot(FSlotReference Slot, bool FromTool, bool SlottedDuringInitialization);
+	UFUNCTION(BlueprintNativeEvent)
+		void DroppedInWorld(UPrimitiveComponent* Component, bool terrainComponent, FVector Point, FVector Normal);
+	UFUNCTION(BlueprintNativeEvent)
+		void PickedUpFromWorld();
+	UFUNCTION(BlueprintNativeEvent)
+		void ReleasedFromSlot(bool FromTool, bool newOwner);
+	UFUNCTION(BlueprintNativeEvent)
 		void MulticastDroppedInWorld(UPrimitiveComponent* Component, bool terrainComponent, FVector Point, FVector Normal);
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintNativeEvent)
 		void MulticastPickedUpFromWorld(bool physicalMovement);
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintNativeEvent)
 		void MulticastReleasedFromSlot(bool FromTool, bool newOwner);
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintNativeEvent)
 		void MulticastSetFullyEmplaced(FSlotReference Slot, int subslotIndex);
 	UFUNCTION(BlueprintCallable)
 		bool CanNeverBeSlotted();

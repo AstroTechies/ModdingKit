@@ -206,22 +206,42 @@ bool APhysicalItem::ServerSlotReleaseItem_Validate(bool newOwner, bool FromTool,
 	return true;
 }
 
-void APhysicalItem::MulticastDroppedInWorld(UPrimitiveComponent* Component, bool terrainComponent, FVector Point, FVector Normal)
+void APhysicalItem::PlacedInSlot_Implementation(FSlotReference Slot, bool FromTool, bool SlottedDuringInitialization)
 {
 
 }
 
-void APhysicalItem::MulticastPickedUpFromWorld(bool physicalMovement)
+void APhysicalItem::DroppedInWorld_Implementation(UPrimitiveComponent* Component, bool terrainComponent, FVector Point, FVector Normal)
 {
 
 }
 
-void APhysicalItem::MulticastReleasedFromSlot(bool FromTool, bool newOwner)
+void APhysicalItem::PickedUpFromWorld_Implementation()
 {
 
 }
 
-void APhysicalItem::MulticastSetFullyEmplaced(FSlotReference Slot, int subslotIndex)
+void APhysicalItem::ReleasedFromSlot_Implementation(bool FromTool, bool newOwner)
+{
+
+}
+
+void APhysicalItem::MulticastDroppedInWorld_Implementation(UPrimitiveComponent* Component, bool terrainComponent, FVector Point, FVector Normal)
+{
+
+}
+
+void APhysicalItem::MulticastPickedUpFromWorld_Implementation(bool physicalMovement)
+{
+
+}
+
+void APhysicalItem::MulticastReleasedFromSlot_Implementation(bool FromTool, bool newOwner)
+{
+
+}
+
+void APhysicalItem::MulticastSetFullyEmplaced_Implementation(FSlotReference Slot, int subslotIndex)
 {
 
 }

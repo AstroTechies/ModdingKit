@@ -18,4 +18,6 @@ class ASTRO_API UItemStatics : public UBlueprintFunctionLibrary
 public:
 	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
 		static APhysicalItem* SpawnDeployablePackagedItem(UObject* WorldContextObject, TSubclassOf<APhysicalItem> PhysicalItemClassPackagedItemWillContain, FTransform SpawnTransform);
+	UFUNCTION(BlueprintCallable)
+		static APhysicalItem* PhysicalItemDefault(TSubclassOf<APhysicalItem> PhysicalItemClass);
 };

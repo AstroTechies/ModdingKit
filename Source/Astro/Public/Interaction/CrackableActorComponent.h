@@ -22,7 +22,7 @@ enum class ECrackableActorNetworkingPolicy : uint8 {
 	AnyoneSingleUserWithNetworking = 2
 };
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(EditInlineNew, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class ASTRO_API UCrackableActorComponent : public UActorComponent
 {
 	GENERATED_BODY()

@@ -17,10 +17,10 @@ UDELEGATE()
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSlotReleased, bool, Unknown);
 
 UDELEGATE()
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FItemDropInWorldDelegate, UPrimitiveComponent*, Unknown1, FVector, Unknown2, FVector, Unknown3);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FItemDropInWorldDelegate, UPrimitiveComponent*, Component, FVector, Point, FVector, Normal);
 
 UDELEGATE()
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams(FItemDropInWorldTerrainDelegate, UPrimitiveComponent*, Unknown1, FVector, Unknown2, FVector, Unknown3, bool, Unknown4);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams(FItemDropInWorldTerrainDelegate, UPrimitiveComponent*, Component, FVector, Point, FVector, Normal, bool, Unknown4);
 
 UDELEGATE()
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPickedUp, bool, Unknown);

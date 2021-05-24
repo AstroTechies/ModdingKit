@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine/EngineTypes.h"
 #include "Utilities/ActivationSignals.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "Components/SpotLightComponent.h"
+#include "Interaction/CrackableActorComponent.h"
+#include "Interaction/ClickableComponent.h"
 #include "GameFramework/Actor.h"
 #include "ControlPanel.generated.h"
-
-class USkeletalMeshComponent;
-class USpotLightComponent;
-class UClickableComponent;
-class UCrackableActorComponent;
 
 UENUM()
 enum class EControlPanelNavigationDirection : uint8 {

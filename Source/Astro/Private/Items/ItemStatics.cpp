@@ -7,3 +7,8 @@ APhysicalItem* UItemStatics::SpawnDeployablePackagedItem(UObject* WorldContextOb
 {
 	return nullptr;
 }
+
+APhysicalItem* UItemStatics::PhysicalItemDefault(TSubclassOf<APhysicalItem> PhysicalItemClass)
+{
+	return nullptr;
+}
