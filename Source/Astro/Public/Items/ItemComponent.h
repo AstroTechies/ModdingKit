@@ -32,4 +32,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<UItemType> StoredSubItemType;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		// If this is a canister, how much can it hold?
+		float Capacity;
+
 };

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Slots/SlotReference.h"
 #include "GameFramework/Actor.h"
+#include "Items/ItemList.h"
 #include "Items/ItemType.h"
 #include "Slots/SlotConnection.h"
 #include "Interaction/ClickableComponent.h"
@@ -171,6 +172,10 @@ public:
 		float IndicatorScale;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FSlotReference CurrentBodySlot;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TSubclassOf<UItemList> SlottableItemsFiltrationList;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		ESlottableItemsFiltrationListBehavior SlottableItemsFiltrationListBehavior;
 };
 
 UCLASS(BlueprintType, Blueprintable, ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))

@@ -8,6 +8,13 @@
 #include "Engine/Texture2D.h"
 #include "ItemType.generated.h"
 
+UENUM()
+enum class EItemStorageBehavior : uint8 {
+	None = 0,
+	IsContainedOnly = 1,
+	Container = 2,
+	DeployablePackage = 3
+};
 
 USTRUCT(BlueprintType)
 struct ASTRO_API FItemRecipeIngredient
@@ -121,7 +128,12 @@ public:
 		bool bApplyTintToHarvestActors;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		// Can this item not be packaged with a packager?
-		bool bIsUnrepackageable = false; 
+		bool bIsUnrepackageable = false;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		EItemStorageBehavior InternalStorageBehavior;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		// What items can go into this container?
+		TArray<TSubclassOf<UItemType>> ContainerSubtypeWhitelist;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		// Not needed
