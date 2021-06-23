@@ -32,7 +32,11 @@ enum class EAstroMissionObjectiveType : uint8 {
 	ItemExists = 21,
 	ConnectToOxygen = 22,
 	SlotInDeformTool = 23,
-	None = 24
+	ExplodeItem = 24,
+	DrainItem = 25,
+	ConsumeItem = 26,
+	ItemPickedUp = 27,
+	None = 28
 };
 
 USTRUCT(BlueprintType)

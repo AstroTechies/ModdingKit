@@ -24,6 +24,8 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+	UFUNCTION(BlueprintCallable) void SetItem(TSubclassOf<UItemType> itemType, int amount, bool suppressItemDrainedFillChangeEventBroadcast);
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<UItemType> ItemType;
 

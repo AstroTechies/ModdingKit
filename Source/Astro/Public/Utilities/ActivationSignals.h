@@ -81,3 +81,6 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAstroMissionRewardClaimedDelegate, 
 
 UDELEGATE()
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FIsBuriedChangedEvent, UTerrainPhysicsComponent *, TargetComponent);
+
+UDELEGATE()
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnLandedChanged, bool, Unknown0);

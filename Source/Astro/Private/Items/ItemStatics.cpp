@@ -12,3 +12,13 @@ APhysicalItem* UItemStatics::PhysicalItemDefault(TSubclassOf<APhysicalItem> Phys
 {
 	return nullptr;
 }
+
+int UItemStatics::AmountFromRecipe(float Count)
+{
+	return 0;
+}
+
+float UItemStatics::RecipeFromAmount(int Amount)
+{
+	return 0;
+}

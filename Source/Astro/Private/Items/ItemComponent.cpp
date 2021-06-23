@@ -32,3 +32,7 @@ void UItemComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorC
 	// ...
 }
 
+void UItemComponent::SetItem(TSubclassOf<UItemType> itemType, int amount, bool suppressItemDrainedFillChangeEventBroadcast)
+{
+
+}
