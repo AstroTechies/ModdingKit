@@ -12,6 +12,11 @@ AAstroGameState* UAstroStatics::GetGameState(UObject* WorldContextObject)
 	return nullptr;
 }
 
+UAstroGameInstance* UAstroStatics::GetGameInstance(UObject* WorldContextObject)
+{
+	return nullptr;
+}
+
 void UAstroStatics::JoinToURL(UPARAM(ref)FString & Name, UObject* WorldContextObject)
 {
 

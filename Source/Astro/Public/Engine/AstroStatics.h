@@ -65,6 +65,8 @@ class ASTRO_API UAstroStatics : public UBlueprintFunctionLibrary
 	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
 		static AAstroGameState* GetGameState(UObject* WorldContextObject);
 	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
+		static UAstroGameInstance* GetGameInstance(UObject* WorldContextObject);
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
 		static AAstroMissionsManager* GetAstroMissionsManager(UObject* WorldContextObject);
 
 	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
