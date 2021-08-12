@@ -88,6 +88,8 @@ class ASTRO_API UAstroStatics : public UBlueprintFunctionLibrary
 		static bool IsConnectedToDedicatedServer(UObject* WorldContextObject);
 	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
 		static bool IsLanMatch(UObject* WorldContextObject);
+	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "worldContextObject"))
+		static bool IsCreativeMode(UObject* worldContextObject);
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 		static bool IsShippingBuild();
 

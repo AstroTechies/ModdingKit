@@ -72,6 +72,11 @@ bool UAstroStatics::IsLanMatch(UObject* WorldContextObject)
 	return false;
 }
 
+bool UAstroStatics::IsCreativeMode(UObject* worldContextObject)
+{
+	return false;
+}
+
 bool UAstroStatics::IsShippingBuild()
 {
 	return false;

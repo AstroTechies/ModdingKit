@@ -25,6 +25,51 @@ void APlayController::Tick(float DeltaTime)
 
 }
 
+void APlayController::SetFreeCam()
+{
+
+}
+
+FString APlayController::RunScript(FString script)
+{
+	return FString();
+}
+
+void APlayController::Ping()
+{
+
+}
+
+void APlayController::SetCurrentSpawnPoint(AActor* spawn)
+{
+
+}
+
+AAstroCharacter* APlayController::GetAstroCharacter()
+{
+	return nullptr;
+}
+
+USceneComponent* APlayController::GetSpawnLocation()
+{
+	return nullptr;
+}
+
+UCameraComponent* APlayController::GetCamera()
+{
+	return nullptr;
+}
+
+FRotator APlayController::GetCameraRotation()
+{
+	return FRotator();
+}
+
+FVector APlayController::GetCameraLocation()
+{
+	return FVector();
+}
+
 void APlayController::OnCharacterLocalSolarBodyChanged(ASolarBody* newLocalSolarBody)
 {
 
