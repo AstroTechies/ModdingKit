@@ -1,124 +1,99 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "StorageChassisComponent.h"
+#include "Net/UnrealNetwork.h"
+#include "Templates/SubclassOf.h"
 
-// Sets default values for this component's properties
-UStorageChassisComponent::UStorageChassisComponent()
-{
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
-	PrimaryComponentTick.bCanEverTick = true;
+class APlayerController;
+class APhysicalItem;
+class USlotOrganizationRule;
+class AActor;
+class UItemType;
+class UStorageChassisComponent;
 
-	// ...
+void UStorageChassisComponent::TertiaryUse(APlayerController* Controller) {
 }
 
-
-// Called when the game starts
-void UStorageChassisComponent::BeginPlay()
-{
-	Super::BeginPlay();
-
-	// ...
-	
+void UStorageChassisComponent::SlotEvent(APhysicalItem* Item) {
 }
 
-
-// Called every frame
-void UStorageChassisComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
-{
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
-	// ...
+bool UStorageChassisComponent::QueryTertiary(APlayerController* Controller, FTransform& OutTransform) {
+    return false;
 }
 
-bool UStorageChassisComponent::QueryTertiary(APlayerController* Controller, FTransform OutTransform)
-{
-	return false;
+void UStorageChassisComponent::OnRep_SlotIndicatorLocations() {
 }
 
-void UStorageChassisComponent::TertiaryUse(APlayerController* Controller)
-{
-
+void UStorageChassisComponent::OnRep_ActorAttachments() {
 }
 
-void UStorageChassisComponent::SlotEvent(APhysicalItem* item)
-{
-
+void UStorageChassisComponent::OnPlayerEnterExitAttachment(bool Entered) {
 }
 
-void UStorageChassisComponent::ItemAmountChangeEvent()
-{
-
+void UStorageChassisComponent::OnOwnerDestroyed(AActor* Owner) {
 }
 
-UStorageChassisComponent* UStorageChassisComponent::GetActorStorageChassisComponent(AActor* Actor)
-{
-	return nullptr;
+void UStorageChassisComponent::ItemAmountChangeEvent() {
 }
 
-int UStorageChassisComponent::ChangeDeformationDeltaInConnectedSlotNetwork(int sedimentAmount, TSubclassOf<UItemType> deformedItemType)
-{
-	return 0;
+TArray<FSlotReference> UStorageChassisComponent::GetUnmanagedSlots() const {
+    return TArray<FSlotReference>();
 }
 
-void UStorageChassisComponent::CalculateItemReservesInConnectedSlotNetwork(TSubclassOf<UItemType> ItemType, int outCurrentStoredItemAmount, int outMaxStorageSize)
-{
-
+UStorageChassisComponent* UStorageChassisComponent::GetOutermostStorage(AActor* Actor, bool Inclusive) {
+    return NULL;
 }
 
-bool UStorageChassisComponent::AuthorityPlaceItemInConnectedSlotNetwork(APhysicalItem* Item, AActor* SourceOwner)
-{
-	return false;
+UStorageChassisComponent* UStorageChassisComponent::GetActorStorageChassisComponent(AActor* Actor) {
+    return NULL;
 }
 
-bool UStorageChassisComponent::AuthorityPlaceItemInLocalStorage(APhysicalItem* Item)
-{
-	return false;
+USlotOrganizationRule* UStorageChassisComponent::FindRuleByName(FName RuleName) {
+    return NULL;
 }
 
-int UStorageChassisComponent::AddItem(TSubclassOf<UItemType> itemType, int itemAmount)
-{
-	return 0;
+int32 UStorageChassisComponent::ChangeDeformationDeltaInConnectedSlotNetwork(int32 sedimentAmount, TSubclassOf<UItemType> deformedItemType) {
+    return 0;
 }
 
-UStorageChassisComponent* UStorageChassisComponent::GetOutermostStorage(AActor* Actor, bool Inclusive)
-{
-	return nullptr;
+void UStorageChassisComponent::CalculateItemReservesInConnectedSlotNetwork(TSubclassOf<UItemType> ItemType, int32& outCurrentStoredItemAmount, int32& outMaxStorageSize) {
 }
 
-TArray<FSlotReference> UStorageChassisComponent::GetUnmanagedSlots()
-{
-	TArray<FSlotReference> x;
-	return x;
+bool UStorageChassisComponent::AuthorityPlaceItemInLocalStorage(APhysicalItem* Item) {
+    return false;
 }
 
-USlotOrganizationRule* UStorageChassisComponent::FindRuleByName(FName ruleName)
-{
-	return nullptr;
+bool UStorageChassisComponent::AuthorityPlaceItemInConnectedSlotNetwork(APhysicalItem* Item, AActor* SourceOwner) {
+    return false;
 }
 
-void UStorageChassisComponent::AuthorityApplyOrganizationRules()
-{
-
+void UStorageChassisComponent::AuthorityApplyOrganizationRules() {
 }
 
-void UStorageChassisComponent::OnRep_SlotIndicatorLocations()
-{
-
+int32 UStorageChassisComponent::AddItem(TSubclassOf<UItemType> ItemType, int32 ItemAmount) {
+    return 0;
 }
 
-void UStorageChassisComponent::OnRep_ActorAttachments()
-{
-
+void UStorageChassisComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {
+    Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+    
+    DOREPLIFETIME(UStorageChassisComponent, ActorAttachments);
+    DOREPLIFETIME(UStorageChassisComponent, OwnerFacingBack);
+    DOREPLIFETIME(UStorageChassisComponent, SlotIndicatorLocations);
 }
 
-void UStorageChassisComponent::OnPlayerEnterExitAttachment(bool entered)
-{
-
+UStorageChassisComponent::UStorageChassisComponent() {
+    this->CanExit = true;
+    this->IndicateExit = true;
+    this->OwnerFacingBack = false;
+    this->TertiaryUsable = false;
+    this->SaveOnEnter = false;
+    this->CanTransferItemsAcrossConnections = false;
+    this->OverrideParentStorage = NULL;
+    this->bPrioritizeNestedStorage = true;
+    this->bPassActuateEventsToSlottedItems = true;
+    this->bCanNest = true;
+    this->IsSpawnPoint = false;
+    this->IsNewPlayerSpawnPoint = false;
+    this->IsDefaultSpawnPoint = false;
+    this->SpawnPointPriority = 0;
 }
 
-void UStorageChassisComponent::OnOwnerDestroyed(AActor* owner)
-{
-
-}

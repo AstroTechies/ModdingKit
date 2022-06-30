@@ -1,120 +1,119 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #include "ActorAttachmentsComponent.h"
+#include "Net/UnrealNetwork.h"
 
+class APlayerController;
+class UStorageChassisComponent;
+class AActor;
+class UAstroSaveCustomArchiveProxy;
+class APlayController;
+class UActorAttachmentsComponent;
+class USceneComponent;
 
-bool UActorAttachmentsComponent::CanExit()
-{
-	return false;
+bool UActorAttachmentsComponent::TogglePlayerAttachedStorage(APlayerController* Controller, UStorageChassisComponent* storage, bool& Toggled, bool bImmediate, bool bForce) {
+    return false;
 }
 
-void UActorAttachmentsComponent::PushExitSuppression()
-{
-
+bool UActorAttachmentsComponent::ToggleClickPlayerAttached(bool& Toggled) {
+    return false;
 }
 
-void UActorAttachmentsComponent::PopExitSuppression()
-{
-
+bool UActorAttachmentsComponent::ToggleAttached(AActor* Actor, bool& Toggled, bool setViewTarget, bool bImmediate) {
+    return false;
 }
 
-bool UActorAttachmentsComponent::ToggleAttached(AActor* Actor, bool Toggled, bool setViewTarget, bool bImmediate)
-{
-	return false;
+void UActorAttachmentsComponent::SetupAttachedViewTargetsDelayed() {
 }
 
-bool UActorAttachmentsComponent::ToggleClickPlayerAttached(bool Toggled)
-{
-	return false;
+void UActorAttachmentsComponent::SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy) {
 }
 
-bool UActorAttachmentsComponent::TogglePlayerAttachedStorage(APlayerController* Controller, UStorageChassisComponent* storage, bool toggled, bool bImmediate, bool bForce)
-{
-	return false;
+void UActorAttachmentsComponent::PushExitSuppression() {
 }
 
-UActorAttachmentsComponent* UActorAttachmentsComponent::AttachedArrayHasActor(TArray<UActorAttachmentsComponent *> Attachments, AActor* Actor, int outIndex)
-{
-	return nullptr;
+void UActorAttachmentsComponent::PopExitSuppression() {
 }
 
-bool UActorAttachmentsComponent::AttachedArrayHasPlayer(TArray<UActorAttachmentsComponent *> Attachments)
-{
-	return false;
+void UActorAttachmentsComponent::OnRep_Attachments() {
 }
 
-TArray<APlayController *> UActorAttachmentsComponent::AttachedArrayPlayers(TArray<UActorAttachmentsComponent *> Attachments)
-{
-	TArray<APlayController *> x;
-	return x;
+void UActorAttachmentsComponent::OnAttachedActorDestroyed(AActor* DestroyedActor) {
 }
 
-USceneComponent* UActorAttachmentsComponent::AttachedArrayAvailable(TArray<UActorAttachmentsComponent *> Attachments, FVector Location)
-{
-	return nullptr;
+bool UActorAttachmentsComponent::HasPlayer() {
+    return false;
 }
 
-FTransform UActorAttachmentsComponent::GetAttachTransform(int i)
-{
-	return FTransform::FTransform();
+bool UActorAttachmentsComponent::HasController(APlayController* Controller) {
+    return false;
 }
 
-FTransform UActorAttachmentsComponent::GetDetachTransform(int i)
-{
-	return FTransform::FTransform();
+bool UActorAttachmentsComponent::HasClickPlayer() {
+    return false;
 }
 
-void UActorAttachmentsComponent::DetachAll(bool bImmediate)
-{
-
+bool UActorAttachmentsComponent::HasActor(AActor* Actor, int32& outIndex) {
+    return false;
 }
 
-AActor* UActorAttachmentsComponent::GetFirstAttachedActor(bool bIgnoreExiting)
-{
-	return nullptr;
+AActor* UActorAttachmentsComponent::GetFirstAttachedActor(bool bIgnoreExiting) {
+    return NULL;
 }
 
-bool UActorAttachmentsComponent::HasActor(AActor* Actor, int outIndex)
-{
-	return false;
+FTransform UActorAttachmentsComponent::GetDetachTransform(int32 I) const {
+    return FTransform{};
 }
 
-bool UActorAttachmentsComponent::HasPlayer()
-{
-	return false;
+FTransform UActorAttachmentsComponent::GetAttachTransform(int32 I) const {
+    return FTransform{};
 }
 
-bool UActorAttachmentsComponent::HasClickPlayer()
-{
-	return false;
+void UActorAttachmentsComponent::FinishExiting(int32 I) {
 }
 
-bool UActorAttachmentsComponent::HasController(APlayController* Controller)
-{
-	return false;
+void UActorAttachmentsComponent::DetachAll(bool bImmediate) {
 }
 
-UActorAttachmentsComponent* UActorAttachmentsComponent::ActorActorAttachmentsComponent(AActor* Actor)
-{
-	return nullptr;
+bool UActorAttachmentsComponent::CanExit() const {
+    return false;
 }
 
-void UActorAttachmentsComponent::FinishExiting(int i)
-{
-
+TArray<APlayController*> UActorAttachmentsComponent::AttachedArrayPlayers(const TArray<UActorAttachmentsComponent*>& Attachments) {
+    return TArray<APlayController*>();
 }
 
-void UActorAttachmentsComponent::OnAttachedActorDestroyed(AActor* destroyedActor)
-{
-
+bool UActorAttachmentsComponent::AttachedArrayHasPlayer(const TArray<UActorAttachmentsComponent*>& Attachments) {
+    return false;
 }
 
-void UActorAttachmentsComponent::OnRep_Attachments()
-{
-
+UActorAttachmentsComponent* UActorAttachmentsComponent::AttachedArrayHasActor(const TArray<UActorAttachmentsComponent*>& Attachments, AActor* Actor, int32& outIndex) {
+    return NULL;
 }
 
-/*void UActorAttachmentsComponent::SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy)
-{
+USceneComponent* UActorAttachmentsComponent::AttachedArrayAvailable(const TArray<UActorAttachmentsComponent*>& Attachments, const FVector& Location) {
+    return NULL;
+}
 
-}*/
+UActorAttachmentsComponent* UActorAttachmentsComponent::ActorActorAttachmentsComponent(AActor* Actor) {
+    return NULL;
+}
+
+void UActorAttachmentsComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {
+    Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+    
+    DOREPLIFETIME(UActorAttachmentsComponent, AttachmentStates);
+}
+
+UActorAttachmentsComponent::UActorAttachmentsComponent() {
+    this->MaxAttachedPlayerCount = 0;
+    this->UsePlanetCameraUp = false;
+    this->AllowFreeCam = false;
+    this->DisableViewTargetChangeOnExit = false;
+    this->EntryInterpolationTime = 1.25f;
+    this->EntryInterpolationEaseOutExponent = 3.00f;
+    this->ExitInterpolationTime = 0.75f;
+    this->ExitInterpolationEaseOutExponent = 3.00f;
+    this->DetachGroundedTrace = 0.00f;
+    this->CanEnter = true;
+    this->ExitSuppressionCount = 0;
+}
+

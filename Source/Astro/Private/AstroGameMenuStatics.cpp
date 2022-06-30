@@ -1,179 +1,139 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "AstroGameMenuStatics.h"
+#include "Templates/SubclassOf.h"
 
-/*void UAstroGameMenuStatics::ChangeSubPaneOnTopOfNavigationStack(UObject* WorldContextObject, TSubclassOf<UAstroGameMenuSubPaneWidget> NewSubPane)
-{
+class UObject;
+class UAstroGameMenuPopoutWidgetContentsBase;
+class UAstroGameMenuFocusItemWidget;
+class UUserWidget;
+class UAstroGameMenuPopoutWidget;
+class UAstroGameMenuWidget;
+class UAstroGameMenuSubPaneWidget;
 
+bool UAstroGameMenuStatics::TryGetCurrentGameMenuContext(UObject* WorldContextObject, EAstroGameMenuContext& OutCurrentMenuContext) {
+    return false;
 }
 
-void UAstroGameMenuStatics::PushNavigationStackCoordinates(UObject* WorldContextObject, FAstroGameMenuNavigationCoordinates NavCoordinates)
-{
-
-}*/
-
-void UAstroGameMenuStatics::PopNavigationStack(UObject* WorldContextObject)
-{
-
+void UAstroGameMenuStatics::SetIsPreviewingCharacterCustomizationFromTitleScreen(UObject* WorldContextObject, bool IsPreviewing) {
 }
 
-void UAstroGameMenuStatics::RestoreKeyboardFocusToGameMenu(UObject* WorldContextObject)
-{
-
+void UAstroGameMenuStatics::RestoreKeyboardFocusToGameMenu(UObject* WorldContextObject) {
 }
 
-/*UAstroGameMenuPopoutWidget* UAstroGameMenuStatics::PresentGameMenuPopoutWidget(UObject* WorldContextObject, UAstroGameMenuFocusItemWidget* OwningFocusItem, UAstroGameMenuPopoutWidgetContentsBase* PopoutContents, TSubclassOf<UAstroGameMenuPopoutWidget> OptionalCustomPopoutWrapper)
-{
-	return nullptr;
+void UAstroGameMenuStatics::ResizeCurrentPopout(UObject* WorldContextObject) {
 }
 
-UAstroGameMenuPopoutWidget* UAstroGameMenuStatics::PresentGameMenuPopoutWidgetPreconstructed(UObject* WorldContextObject, UAstroGameMenuFocusItemWidget* OwningFocusItem, UAstroGameMenuPopoutWidgetContentsBase* PopoutContents, UAstroGameMenuPopoutWidget* PopoutWrapper)
-{
-	return nullptr;
-}*/
-
-void UAstroGameMenuStatics::DismissCurrentGameMenuPopoutWidget(UObject* WorldContextObject)
-{
-
+void UAstroGameMenuStatics::RemoveMouseFocusSuppressionFromCurrentSubPane(UObject* WorldContextObject, EMouseFocusChangeSuppressionSource MouseSuppression) {
 }
 
-/*bool UAstroGameMenuStatics::IsGameMenuTabBarAuthoringDataValid(FAstroGameMenuTabBarAuthoringData tabBarData)
-{
-	return false;
+void UAstroGameMenuStatics::PushNavigationStackCoordinates(UObject* WorldContextObject, const FAstroGameMenuNavigationCoordinates& NavCoordinates) {
 }
 
-bool UAstroGameMenuStatics::AreGameMenuTabBarAuthoringDataEqual(FAstroGameMenuTabBarAuthoringData tabBarDataA, FAstroGameMenuTabBarAuthoringData tabBarDataB)
-{
-	return false;
+void UAstroGameMenuStatics::PresentTitleGameMenu(UObject* WorldContextObject) {
 }
 
-bool UAstroGameMenuStatics::GetTutorialSlideDeck(UObject* WorldContextObject, EAstroGameMenuTutorialSlideDeckKey TutorialSlideDeckKey, FAstroGameMenuTutorialSlideDeck OutTutorialSlideDeckData)
-{
-	return false;
+UAstroGameMenuPopoutWidget* UAstroGameMenuStatics::PresentGameMenuPopoutWidgetPreconstructed(UObject* WorldContextObject, UAstroGameMenuFocusItemWidget* OwningFocusItem, UAstroGameMenuPopoutWidgetContentsBase* PopoutContents, UAstroGameMenuPopoutWidget* PopoutWrapper) {
+    return NULL;
 }
 
-bool UAstroGameMenuStatics::GetTutorialSlideCard(UObject* WorldContextObject, EAstroGameMenuTutoriaSlideCardKey TutorialSlideCardKey, FAstroGameMenuTutorialSlide OutTutorialSlideCardData)
-{
-	return false;
-}*/
-
-bool UAstroGameMenuStatics::IsMenuEntryBeingEditedOrDragged(UObject* WorldContextObject)
-{
-	return false;
+UAstroGameMenuPopoutWidget* UAstroGameMenuStatics::PresentGameMenuPopoutWidget(UObject* WorldContextObject, UAstroGameMenuFocusItemWidget* OwningFocusItem, UAstroGameMenuPopoutWidgetContentsBase* PopoutContents, TSubclassOf<UAstroGameMenuPopoutWidget> OptionalCustomPopoutWrapper) {
+    return NULL;
 }
 
-/*bool UAstroGameMenuStatics::GetKeybindingForDiscreteInputMapping(FAstroDiscreteInputDefinition* DiscreteInputDefinition, FKey OutKey, bool OutIsAxis)
-{
-	return false;
-}*/
-
-void UAstroGameMenuStatics::GameMenuTryToSaveAndQuitGame(UObject* worldContextObject, bool returnToTitleScreen, FFailedToSaveGameOnQuit onFailedToSaveGame)
-{
-
+void UAstroGameMenuStatics::PopNavigationStack(UObject* WorldContextObject) {
 }
 
-void UAstroGameMenuStatics::GameMenuForceQuitGame(UObject* worldContextObject, bool returnToTitleScreen, bool attemptToSave)
-{
-
+void UAstroGameMenuStatics::LockGameMenuControls(UObject* WorldContextObject, bool IsLocked) {
 }
 
-void UAstroGameMenuStatics::PresentTitleGameMenu(UObject* WorldContextObject)
-{
-
+void UAstroGameMenuStatics::LayoutGameMenuActiveSubPane(UObject* WorldContextObject) {
 }
 
-void UAstroGameMenuStatics::DismissTitleGameMenu(UObject* WorldContextObject)
-{
-
+void UAstroGameMenuStatics::LayoutGameMenu(UObject* WorldContextObject) {
 }
 
-void UAstroGameMenuStatics::DismissGameMenu(UObject* WorldContextObject)
-{
-
+bool UAstroGameMenuStatics::IsPreviewingCharacterCustomizationFromTitleScreen(UObject* WorldContextObject) {
+    return false;
 }
 
-void UAstroGameMenuStatics::ChangeMenuContext(UObject* WorldContextObject, EAstroGameMenuContext NewMenuContext)
-{
-
+bool UAstroGameMenuStatics::IsMenuEntryBeingEditedOrDragged(UObject* WorldContextObject) {
+    return false;
 }
 
-void UAstroGameMenuStatics::LayoutGameMenu(UObject* WorldContextObject)
-{
-
+bool UAstroGameMenuStatics::IsGameMenuTabBarAuthoringDataValid(const FAstroGameMenuTabBarAuthoringData& tabBarData) {
+    return false;
 }
 
-void UAstroGameMenuStatics::LayoutGameMenuActiveSubPane(UObject* WorldContextObject)
-{
-
+EAstroGameMenuTutorialSlideDeckKey UAstroGameMenuStatics::GetTutorialSlideDeckForCard(UObject* WorldContextObject, EAstroGameMenuTutoriaSlideCardKey TutorialSlideCardKey) {
+    return EAstroGameMenuTutorialSlideDeckKey::Invalid;
 }
 
-void UAstroGameMenuStatics::ResizeCurrentPopout(UObject* WorldContextObject)
-{
-
+bool UAstroGameMenuStatics::GetTutorialSlideDeck(UObject* WorldContextObject, EAstroGameMenuTutorialSlideDeckKey TutorialSlideDeckKey, FAstroGameMenuTutorialSlideDeck& OutTutorialSlideDeckData) {
+    return false;
 }
 
-void UAstroGameMenuStatics::LockGameMenuControls(UObject* WorldContextObject, bool IsLocked)
-{
-
+bool UAstroGameMenuStatics::GetTutorialSlideCard(UObject* WorldContextObject, EAstroGameMenuTutoriaSlideCardKey TutorialSlideCardKey, FAstroGameMenuTutorialSlide& OutTutorialSlideCardData) {
+    return false;
 }
 
-void UAstroGameMenuStatics::AddMouseFocusSuppressionToCurrentSubPane(UObject* worldContextObject, EMouseFocusChangeSuppressionSource mouseSuppression)
-{
-
+FVector2D UAstroGameMenuStatics::GetOriginOfActiveSubPaneContentsRegion(UObject* WorldContextObject) {
+    return FVector2D{};
 }
 
-void UAstroGameMenuStatics::RemoveMouseFocusSuppressionFromCurrentSubPane(UObject* worldContextObject, EMouseFocusChangeSuppressionSource mouseSuppression)
-{
-
+UUserWidget* UAstroGameMenuStatics::GetMOTDWidget(UObject* WorldContextObject) {
+    return NULL;
 }
 
-bool UAstroGameMenuStatics::AreGameMenuControlsLocked(UObject* WorldContextObject)
-{
-	return false;
+bool UAstroGameMenuStatics::GetKeybindingForDiscreteInputMapping(FAstroDiscreteInputDefinition DiscreteInputDefinition, FKey& OutKey, bool& OutIsAxis, bool ForGamepad) {
+    return false;
 }
 
-void UAstroGameMenuStatics::ClearGameMenuSelection(UObject* WorldContextObject)
-{
-
+UAstroGameMenuWidget* UAstroGameMenuStatics::GetGameMenuWidget(UObject* WorldContextObject) {
+    return NULL;
 }
 
-bool UAstroGameMenuStatics::TryGetCurrentGameMenuContext(UObject* WorldContextObject, EAstroGameMenuContext OutCurrentMenuContext)
-{
-	return false;
+FVector2D UAstroGameMenuStatics::GetCachedSizeOfGameMenu(UObject* WorldContextObject, bool IncludeScrollBarSize) {
+    return FVector2D{};
 }
 
-bool UAstroGameMenuStatics::IsPreviewingCharacterCustomizationFromTitleScreen(UObject* WorldContextObject)
-{
-	return false;
+UUserWidget* UAstroGameMenuStatics::GetAchievementProgressionWarningWidget(UObject* WorldContextObject) {
+    return NULL;
 }
 
-void UAstroGameMenuStatics::SetIsPreviewingCharacterCustomizationFromTitleScreen(UObject* WorldContextObject, bool IsPreviewing)
-{
-
+void UAstroGameMenuStatics::GameMenuTryToSaveAndQuitGame(UObject* WorldContextObject, bool ReturnToTitleScreen, FFailedToSaveGameOnQuit OnFailedToSaveGame) {
 }
 
-FVector2D UAstroGameMenuStatics::GetCachedSizeOfGameMenu(UObject* WorldContextObject, bool includeScrollBarSize)
-{
-	return FVector2D(0, 0);
+void UAstroGameMenuStatics::GameMenuForceQuitGame(UObject* WorldContextObject, bool ReturnToTitleScreen, bool AttemptToSave) {
 }
 
-FVector2D UAstroGameMenuStatics::GetOriginOfActiveSubPaneContentsRegion(UObject* WorldContextObject)
-{
-	return FVector2D(0, 0);
+void UAstroGameMenuStatics::DismissTitleGameMenu(UObject* WorldContextObject) {
 }
 
-UUserWidget* UAstroGameMenuStatics::GetAchievementProgressionWarningWidget(UObject* WorldContextObject)
-{
-	return nullptr;
+void UAstroGameMenuStatics::DismissGameMenu(UObject* WorldContextObject) {
 }
 
-UUserWidget* UAstroGameMenuStatics::GetMOTDWidget(UObject* WorldContextObject)
-{
-	return nullptr;
+void UAstroGameMenuStatics::DismissCurrentGameMenuPopoutWidget(UObject* WorldContextObject) {
 }
 
-UAstroGameMenuWidget* UAstroGameMenuStatics::GetGameMenuWidget(UObject* WorldContextObject)
-{
-	return nullptr;
+void UAstroGameMenuStatics::ClearGameMenuSelection(UObject* WorldContextObject) {
 }
+
+void UAstroGameMenuStatics::ChangeSubPaneOnTopOfNavigationStack(UObject* WorldContextObject, TSubclassOf<UAstroGameMenuSubPaneWidget> NewSubPane) {
+}
+
+void UAstroGameMenuStatics::ChangeMenuContext(UObject* WorldContextObject, EAstroGameMenuContext NewMenuContext) {
+}
+
+bool UAstroGameMenuStatics::AreGameMenuTabBarAuthoringDataEqual(const FAstroGameMenuTabBarAuthoringData& tabBarDataA, const FAstroGameMenuTabBarAuthoringData& tabBarDataB) {
+    return false;
+}
+
+bool UAstroGameMenuStatics::AreGameMenuControlsLocked(UObject* WorldContextObject) {
+    return false;
+}
+
+void UAstroGameMenuStatics::AddMouseFocusSuppressionToCurrentSubPane(UObject* WorldContextObject, EMouseFocusChangeSuppressionSource MouseSuppression) {
+}
+
+UAstroGameMenuStatics::UAstroGameMenuStatics() {
+}
+

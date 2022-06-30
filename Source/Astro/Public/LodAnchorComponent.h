@@ -1,36 +1,54 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
-
 #include "CoreMinimal.h"
-#include "LodAnchorState.h"
+#include "DeformationParamsT2.h"
+#include "Components/ActorComponent.h"
+#include "UObject/NoExportTypes.h"
+#include "Engine/EngineTypes.h"
+#include "ELodAnchorState.h"
 #include "LodAnchorComponent.generated.h"
 
-UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
+UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
 class ASTRO_API ULodAnchorComponent : public UActorComponent
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
+public:
+    UPROPERTY(EditDefaultsOnly)
+    FComponentReference BeaconReference;
+
+private:
+    UPROPERTY(ReplicatedUsing = OnReplicated_IsAnchored)
+    ELodAnchorState IsAnchored;
+
+    UPROPERTY(SaveGame)
+    uint8 bIsActivated : 1;
 
 public:
-	UFUNCTION(BlueprintCallable)
-		bool UpdateInternal(FVector newPosition);
-	UFUNCTION(BlueprintCallable)
-		void ToggleActivated();
-	UFUNCTION(BlueprintCallable)
-		void SetActivated(bool makeActive, bool forceUpdate);
-	UFUNCTION(BlueprintCallable)
-		void ShowPreviz(bool show);
-	UFUNCTION(BlueprintCallable)
-		void SetBeaconVisibility(bool enabled);
-	/*UFUNCTION(BlueprintCallable)
-		void HandleDeformed(FDeformationParamsT2 params);*/
-	UFUNCTION(BlueprintCallable)
-		void OnReplicated_IsAnchored();
-	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
-		void ServerChangeActivated(bool makeActive, bool forceUpdate);
+    ULodAnchorComponent();
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
 
-	UPROPERTY(EditAnywhere)
-		FComponentReference BeaconReference;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		ELodAnchorState IsAnchored;
+    UFUNCTION(BlueprintCallable)
+    bool UpdateInternal(const FVector &NewPosition);
+
+    UFUNCTION(BlueprintCallable)
+    void ToggleActivated();
+
+    UFUNCTION(BlueprintCallable)
+    void ShowPreviz(bool show);
+
+    UFUNCTION(BlueprintCallable)
+    void SetBeaconVisibility(bool Enabled);
+
+    UFUNCTION(BlueprintCallable)
+    void SetActivated(bool makeActive, bool ForceUpdate);
+
+private:
+    UFUNCTION(Reliable, Server, WithValidation)
+    void ServerChangeActivated(bool makeActive, bool ForceUpdate);
+
+    UFUNCTION()
+    void OnReplicated_IsAnchored();
+
+public:
+    UFUNCTION(BlueprintCallable)
+    void HandleDeformed(const FDeformationParamsT2 &params);
 };

@@ -1,0 +1,31 @@
+#include "SlotOrganizationRule.h"
+#include "Net/UnrealNetwork.h"
+
+void USlotOrganizationRule::SetUnwantedItemsEjectionForce(float ejectionForce) {
+}
+
+void USlotOrganizationRule::SetPushUnwantedItems(bool push) {
+}
+
+void USlotOrganizationRule::SetEnabled(bool Enabled) {
+}
+
+void USlotOrganizationRule::SetEjectUnwantedItems(bool eject) {
+}
+
+void USlotOrganizationRule::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {
+    Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+    
+    DOREPLIFETIME(USlotOrganizationRule, bIsEnabled);
+    DOREPLIFETIME(USlotOrganizationRule, ManagedSlotRefs);
+}
+
+USlotOrganizationRule::USlotOrganizationRule() {
+    this->Priority = 3;
+    this->IndicatorType = EIndicatorTooltipType::ResourceRequest;
+    this->bPushUnwantedItems = true;
+    this->bEjectUnwantedItems = false;
+    this->bIsEnabled = true;
+    this->UnwantedItemEjectionForce = 25000.00f;
+}
+

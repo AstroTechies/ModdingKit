@@ -1,14 +1,13 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿using UnrealBuildTool;
 
-using UnrealBuildTool;
-using System.Collections.Generic;
-
-public class AstroEditorTarget : TargetRules
-{
-	public AstroEditorTarget(TargetInfo Target) : base(Target)
-	{
+public class AstroEditorTarget : TargetRules {
+	public AstroEditorTarget(TargetInfo Target) : base(Target) {
 		Type = TargetType.Editor;
-
-		ExtraModuleNames.AddRange( new string[] { "Astro" } );
+		// DefaultBuildSettings = BuildSettingsVersion.V2;
+		ExtraModuleNames.AddRange(new string[] {
+			"Astro",
+			"MessageOfTheDay",
+			"Terrain2"
+		});
 	}
 }

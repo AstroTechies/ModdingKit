@@ -1,110 +1,140 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
-
 #include "CoreMinimal.h"
-#include "Utilities/ActivationSignals.h"
+#include "Templates/SubclassOf.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
+#include "EAstroGameMenuContext.h"
+#include "EMouseFocusChangeSuppressionSource.h"
+#include "AstroGameMenuNavigationCoordinates.h"
+#include "AstroGameMenuTutorialSlide.h"
+#include "AstroGameMenuTabBarAuthoringData.h"
+#include "EAstroGameMenuTutorialSlideDeckKey.h"
+#include "EAstroGameMenuTutoriaSlideCardKey.h"
+#include "AstroGameMenuTutorialSlideDeck.h"
+#include "InputCoreTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "AstroDiscreteInputDefinition.h"
+#include "FailedToSaveGameOnQuitDelegate.h"
 #include "AstroGameMenuStatics.generated.h"
 
+class UObject;
+class UAstroGameMenuPopoutWidgetContentsBase;
 class UUserWidget;
+class UAstroGameMenuPopoutWidget;
+class UAstroGameMenuFocusItemWidget;
 class UAstroGameMenuWidget;
-struct FVector2D;
+class UAstroGameMenuSubPaneWidget;
 
-UENUM(BlueprintType)
-enum class EAstroGameMenuContext : uint8 {
-	InGame = 0,
-	TitleMenu = 1,
-	TutorialLaunching = 2,
-	OutroCinematic = 3,
-	ExitingGame = 4
-};
-
-UENUM(BlueprintType)
-enum class EMouseFocusChangeSuppressionSource : uint8 {
-	PopoutIsActive = 0,
-	NavigationCommandWasIssued = 1,
-	ScrollbarActive = 2,
-	AstropediaSlidesOpen = 3
-};
-
-/**
- * 
- */
-UCLASS()
+UCLASS(Blueprintable, BlueprintType)
 class ASTRO_API UAstroGameMenuStatics : public UBlueprintFunctionLibrary
 {
-	GENERATED_BODY()
-
+    GENERATED_BODY()
 public:
-	/*UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static void ChangeSubPaneOnTopOfNavigationStack(UObject* WorldContextObject, TSubclassOf<UAstroGameMenuSubPaneWidget> NewSubPane);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static void PushNavigationStackCoordinates(UObject* WorldContextObject, FAstroGameMenuNavigationCoordinates NavCoordinates);*/
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static void PopNavigationStack(UObject* WorldContextObject);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static void RestoreKeyboardFocusToGameMenu(UObject* WorldContextObject);
-	/*UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static UAstroGameMenuPopoutWidget* PresentGameMenuPopoutWidget(UObject* WorldContextObject, UAstroGameMenuFocusItemWidget* OwningFocusItem, UAstroGameMenuPopoutWidgetContentsBase* PopoutContents, TSubclassOf<UAstroGameMenuPopoutWidget> OptionalCustomPopoutWrapper);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static UAstroGameMenuPopoutWidget* PresentGameMenuPopoutWidgetPreconstructed(UObject* WorldContextObject, UAstroGameMenuFocusItemWidget* OwningFocusItem, UAstroGameMenuPopoutWidgetContentsBase* PopoutContents, UAstroGameMenuPopoutWidget* PopoutWrapper);*/
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static void DismissCurrentGameMenuPopoutWidget(UObject* WorldContextObject);
-	/*UFUNCTION(BlueprintCallable)
-		static bool IsGameMenuTabBarAuthoringDataValid(FAstroGameMenuTabBarAuthoringData tabBarData);
-	UFUNCTION(BlueprintCallable)
-		static bool AreGameMenuTabBarAuthoringDataEqual(FAstroGameMenuTabBarAuthoringData tabBarDataA, FAstroGameMenuTabBarAuthoringData tabBarDataB);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static bool GetTutorialSlideDeck(UObject* WorldContextObject, EAstroGameMenuTutorialSlideDeckKey TutorialSlideDeckKey, FAstroGameMenuTutorialSlideDeck OutTutorialSlideDeckData);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static bool GetTutorialSlideCard(UObject* WorldContextObject, EAstroGameMenuTutoriaSlideCardKey TutorialSlideCardKey, FAstroGameMenuTutorialSlide OutTutorialSlideCardData);*/
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static bool IsMenuEntryBeingEditedOrDragged(UObject* WorldContextObject);
-	/*UFUNCTION(BlueprintCallable)
-		static bool GetKeybindingForDiscreteInputMapping(FAstroDiscreteInputDefinition* DiscreteInputDefinition, FKey OutKey, bool OutIsAxis);*/
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "worldContextObject"))
-		static void GameMenuTryToSaveAndQuitGame(UObject* worldContextObject, bool returnToTitleScreen, FFailedToSaveGameOnQuit onFailedToSaveGame);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "worldContextObject"))
-		static void GameMenuForceQuitGame(UObject* worldContextObject, bool returnToTitleScreen, bool attemptToSave);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static void PresentTitleGameMenu(UObject* WorldContextObject);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static void DismissTitleGameMenu(UObject* WorldContextObject);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static void DismissGameMenu(UObject* WorldContextObject);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static void ChangeMenuContext(UObject* WorldContextObject, EAstroGameMenuContext NewMenuContext);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static void LayoutGameMenu(UObject* WorldContextObject);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static void LayoutGameMenuActiveSubPane(UObject* WorldContextObject);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static void ResizeCurrentPopout(UObject* WorldContextObject);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static void LockGameMenuControls(UObject* WorldContextObject, bool IsLocked);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "worldContextObject"))
-		static void AddMouseFocusSuppressionToCurrentSubPane(UObject* worldContextObject, EMouseFocusChangeSuppressionSource mouseSuppression);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "worldContextObject"))
-		static void RemoveMouseFocusSuppressionFromCurrentSubPane(UObject* worldContextObject, EMouseFocusChangeSuppressionSource mouseSuppression);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static bool AreGameMenuControlsLocked(UObject* WorldContextObject);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static void ClearGameMenuSelection(UObject* WorldContextObject);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static bool TryGetCurrentGameMenuContext(UObject* WorldContextObject, EAstroGameMenuContext OutCurrentMenuContext);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static bool IsPreviewingCharacterCustomizationFromTitleScreen(UObject* WorldContextObject);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static void SetIsPreviewingCharacterCustomizationFromTitleScreen(UObject* WorldContextObject, bool IsPreviewing);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static FVector2D GetCachedSizeOfGameMenu(UObject* WorldContextObject, bool includeScrollBarSize);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static FVector2D GetOriginOfActiveSubPaneContentsRegion(UObject* WorldContextObject);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static UUserWidget* GetAchievementProgressionWarningWidget(UObject* WorldContextObject);
-	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
-		static UUserWidget* GetMOTDWidget(UObject* WorldContextObject);
-	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
-		static UAstroGameMenuWidget* GetGameMenuWidget(UObject* WorldContextObject);
+    UAstroGameMenuStatics();
+    UFUNCTION(BlueprintPure)
+    static bool TryGetCurrentGameMenuContext(UObject *WorldContextObject, EAstroGameMenuContext &OutCurrentMenuContext);
+
+    UFUNCTION(BlueprintCallable)
+    static void SetIsPreviewingCharacterCustomizationFromTitleScreen(UObject *WorldContextObject, bool IsPreviewing);
+
+    UFUNCTION(BlueprintCallable)
+    static void RestoreKeyboardFocusToGameMenu(UObject *WorldContextObject);
+
+    UFUNCTION(BlueprintCallable)
+    static void ResizeCurrentPopout(UObject *WorldContextObject);
+
+    UFUNCTION(BlueprintCallable)
+    static void RemoveMouseFocusSuppressionFromCurrentSubPane(UObject *WorldContextObject, EMouseFocusChangeSuppressionSource MouseSuppression);
+
+    UFUNCTION(BlueprintCallable)
+    static void PushNavigationStackCoordinates(UObject *WorldContextObject, const FAstroGameMenuNavigationCoordinates &NavCoordinates);
+
+    UFUNCTION(BlueprintCallable)
+    static void PresentTitleGameMenu(UObject *WorldContextObject);
+
+    UFUNCTION(BlueprintCallable)
+    static UAstroGameMenuPopoutWidget *PresentGameMenuPopoutWidgetPreconstructed(UObject *WorldContextObject, UAstroGameMenuFocusItemWidget *OwningFocusItem, UAstroGameMenuPopoutWidgetContentsBase *PopoutContents, UAstroGameMenuPopoutWidget *PopoutWrapper);
+
+    UFUNCTION(BlueprintCallable)
+    static UAstroGameMenuPopoutWidget *PresentGameMenuPopoutWidget(UObject *WorldContextObject, UAstroGameMenuFocusItemWidget *OwningFocusItem, UAstroGameMenuPopoutWidgetContentsBase *PopoutContents, TSubclassOf<UAstroGameMenuPopoutWidget> OptionalCustomPopoutWrapper);
+
+    UFUNCTION(BlueprintCallable)
+    static void PopNavigationStack(UObject *WorldContextObject);
+
+    UFUNCTION(BlueprintCallable)
+    static void LockGameMenuControls(UObject *WorldContextObject, bool IsLocked);
+
+    UFUNCTION(BlueprintCallable)
+    static void LayoutGameMenuActiveSubPane(UObject *WorldContextObject);
+
+    UFUNCTION(BlueprintCallable)
+    static void LayoutGameMenu(UObject *WorldContextObject);
+
+    UFUNCTION(BlueprintPure)
+    static bool IsPreviewingCharacterCustomizationFromTitleScreen(UObject *WorldContextObject);
+
+    UFUNCTION(BlueprintPure)
+    static bool IsMenuEntryBeingEditedOrDragged(UObject *WorldContextObject);
+
+    UFUNCTION(BlueprintPure)
+    static bool IsGameMenuTabBarAuthoringDataValid(const FAstroGameMenuTabBarAuthoringData &tabBarData);
+
+    UFUNCTION(BlueprintPure)
+    static EAstroGameMenuTutorialSlideDeckKey GetTutorialSlideDeckForCard(UObject *WorldContextObject, EAstroGameMenuTutoriaSlideCardKey TutorialSlideCardKey);
+
+    UFUNCTION(BlueprintPure)
+    static bool GetTutorialSlideDeck(UObject *WorldContextObject, EAstroGameMenuTutorialSlideDeckKey TutorialSlideDeckKey, FAstroGameMenuTutorialSlideDeck &OutTutorialSlideDeckData);
+
+    UFUNCTION(BlueprintPure)
+    static bool GetTutorialSlideCard(UObject *WorldContextObject, EAstroGameMenuTutoriaSlideCardKey TutorialSlideCardKey, FAstroGameMenuTutorialSlide &OutTutorialSlideCardData);
+
+    UFUNCTION(BlueprintPure)
+    static FVector2D GetOriginOfActiveSubPaneContentsRegion(UObject *WorldContextObject);
+
+    UFUNCTION(BlueprintPure)
+    static UUserWidget *GetMOTDWidget(UObject *WorldContextObject);
+
+    UFUNCTION(BlueprintPure)
+    static bool GetKeybindingForDiscreteInputMapping(FAstroDiscreteInputDefinition DiscreteInputDefinition, FKey &OutKey, bool &OutIsAxis, bool ForGamepad);
+
+    UFUNCTION(BlueprintPure)
+    static UAstroGameMenuWidget *GetGameMenuWidget(UObject *WorldContextObject);
+
+    UFUNCTION(BlueprintPure)
+    static FVector2D GetCachedSizeOfGameMenu(UObject *WorldContextObject, bool IncludeScrollBarSize);
+
+    UFUNCTION(BlueprintPure)
+    static UUserWidget *GetAchievementProgressionWarningWidget(UObject *WorldContextObject);
+
+    UFUNCTION(BlueprintCallable)
+    static void GameMenuTryToSaveAndQuitGame(UObject *WorldContextObject, bool ReturnToTitleScreen, FFailedToSaveGameOnQuit OnFailedToSaveGame);
+
+    UFUNCTION(BlueprintCallable)
+    static void GameMenuForceQuitGame(UObject *WorldContextObject, bool ReturnToTitleScreen, bool AttemptToSave);
+
+    UFUNCTION(BlueprintCallable)
+    static void DismissTitleGameMenu(UObject *WorldContextObject);
+
+    UFUNCTION(BlueprintCallable)
+    static void DismissGameMenu(UObject *WorldContextObject);
+
+    UFUNCTION(BlueprintCallable)
+    static void DismissCurrentGameMenuPopoutWidget(UObject *WorldContextObject);
+
+    UFUNCTION(BlueprintCallable)
+    static void ClearGameMenuSelection(UObject *WorldContextObject);
+
+    UFUNCTION(BlueprintCallable)
+    static void ChangeSubPaneOnTopOfNavigationStack(UObject *WorldContextObject, TSubclassOf<UAstroGameMenuSubPaneWidget> NewSubPane);
+
+    UFUNCTION(BlueprintCallable)
+    static void ChangeMenuContext(UObject *WorldContextObject, EAstroGameMenuContext NewMenuContext);
+
+    UFUNCTION(BlueprintPure)
+    static bool AreGameMenuTabBarAuthoringDataEqual(const FAstroGameMenuTabBarAuthoringData &tabBarDataA, const FAstroGameMenuTabBarAuthoringData &tabBarDataB);
+
+    UFUNCTION(BlueprintCallable)
+    static bool AreGameMenuControlsLocked(UObject *WorldContextObject);
+
+    UFUNCTION(BlueprintCallable)
+    static void AddMouseFocusSuppressionToCurrentSubPane(UObject *WorldContextObject, EMouseFocusChangeSuppressionSource MouseSuppression);
 };

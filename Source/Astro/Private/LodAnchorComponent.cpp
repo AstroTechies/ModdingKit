@@ -1,49 +1,42 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #include "LodAnchorComponent.h"
+#include "Net/UnrealNetwork.h"
 
-
-bool ULodAnchorComponent::UpdateInternal(FVector newPosition)
-{
-	return false;
+bool ULodAnchorComponent::UpdateInternal(const FVector& NewPosition) {
+    return false;
 }
 
-void ULodAnchorComponent::ToggleActivated()
-{
-
+void ULodAnchorComponent::ToggleActivated() {
 }
 
-void ULodAnchorComponent::SetActivated(bool makeActive, bool forceUpdate)
-{
-
+void ULodAnchorComponent::ShowPreviz(bool show) {
 }
 
-void ULodAnchorComponent::ShowPreviz(bool show)
-{
-
+void ULodAnchorComponent::SetBeaconVisibility(bool Enabled) {
 }
 
-void ULodAnchorComponent::SetBeaconVisibility(bool enabled)
-{
-
+void ULodAnchorComponent::SetActivated(bool makeActive, bool ForceUpdate) {
 }
 
-/*void ULodAnchorComponent::HandleDeformed(FDeformationParamsT2 params)
-{
-
-}*/
-
-void ULodAnchorComponent::OnReplicated_IsAnchored()
-{
-
+void ULodAnchorComponent::ServerChangeActivated_Implementation(bool makeActive, bool ForceUpdate) {
+}
+bool ULodAnchorComponent::ServerChangeActivated_Validate(bool makeActive, bool ForceUpdate) {
+    return true;
 }
 
-void ULodAnchorComponent::ServerChangeActivated_Implementation(bool makeActive, bool forceUpdate)
-{
-
+void ULodAnchorComponent::OnReplicated_IsAnchored() {
 }
 
-bool ULodAnchorComponent::ServerChangeActivated_Validate(bool makeActive, bool forceUpdate)
-{
-	return true;
+void ULodAnchorComponent::HandleDeformed(const FDeformationParamsT2& params) {
 }
+
+void ULodAnchorComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {
+    Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+    
+    DOREPLIFETIME(ULodAnchorComponent, IsAnchored);
+}
+
+ULodAnchorComponent::ULodAnchorComponent() {
+    this->IsAnchored = ELodAnchorState::Invalid;
+    this->bIsActivated = false;
+}
+

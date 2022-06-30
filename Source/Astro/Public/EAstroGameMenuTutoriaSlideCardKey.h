@@ -1,0 +1,45 @@
+#pragma once
+#include "CoreMinimal.h"
+#include "EAstroGameMenuTutoriaSlideCardKey.generated.h"
+
+UENUM(BlueprintType)
+enum class EAstroGameMenuTutoriaSlideCardKey : uint8 {
+    Invalid,
+    Power,
+    SoilExcavation,
+    ResearchCatalog,
+    ResearchPlatform,
+    Printers,
+    BaseBuilding,
+    QHControls,
+    QHInteract,
+    QHInventory,
+    QHTerrain,
+    PlanetTerran,
+    PlanetTerranMoon,
+    PlanetArid,
+    PlanetExotic,
+    PlanetExoticMoon,
+    PlanetTundra,
+    PlanetRadiated,
+    ResourcesNatural,
+    ResourcesRefined,
+    ResourcesAtmospheric,
+    ResourcesComposite,
+    CreativeControls,
+    CreativePauseMenu,
+    CreativeTerrainTool,
+    CreativeTerrainToolWindow,
+    CreativeCatalog,
+    CreativeNewItems,
+    CreativeNewInteractions,
+    Crafting,
+    AutoItems,
+    LogicItems,
+    Missions,
+    ActionWheel,
+    DamageAndRespawning,
+    FloraHazardsDefensive,
+    FloraHazardsAggressive,
+};
+

@@ -1,150 +1,181 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
-
 #include "CoreMinimal.h"
-#include "Utilities/ActivationSignals.h"
-#include "Items/ItemType.h"
-#include "Items/SlotAutoOrganization/SlotOrganizationRule.h"
+#include "Templates/SubclassOf.h"
 #include "Components/ActorComponent.h"
+#include "EnterExitSignalDelegate.h"
+#include "SlotReference.h"
+#include "OnSlotEventSignalDelegate.h"
+#include "SignalDelegate.h"
+#include "SlotIndicatorLocation.h"
+#include "Engine/EngineTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "StorageChassisComponent.generated.h"
 
-class AActor;
-class APlayerController;
-class APhysicalItem;
 class USlotOrganizationRule;
 class UActorAttachmentsComponent;
+class UStorageChassisComponent;
+class APlayerController;
+class APhysicalItem;
+class AActor;
+class UItemType;
 
-USTRUCT(BlueprintType)
-struct ASTRO_API FSlotIndicatorDefinition
-{
-	GENERATED_USTRUCT_BODY()
-
-public:
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TSubclassOf<UItemType> IndicatorItemType;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		APhysicalItem* WhitelistCohabitationItem;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		EIndicatorTooltipType TooltipType;
-};
-
-USTRUCT(BlueprintType)
-struct ASTRO_API FSlotIndicatorLocation
-{
-	GENERATED_USTRUCT_BODY()
-
-public:
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		int SubslotIndex;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FSlotReference SlotForIndicator;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FSlotIndicatorDefinition IndicatorDef;
-};
-
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
 class ASTRO_API UStorageChassisComponent : public UActorComponent
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
+public:
+    UPROPERTY(BlueprintAssignable)
+    FOnSlotEventSignal OnSlotEvent;
 
-public:	
-	// Sets default values for this component's properties
-	UStorageChassisComponent();
+    UPROPERTY()
+    FSignal OnSlotsReset;
+
+    UPROPERTY(BlueprintAssignable)
+    FSignal OnItemAmountChangeEvent;
+
+    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    TArray<FSlotReference> ExcludeSlots;
+
+    UPROPERTY(BlueprintReadWrite, Export, ReplicatedUsing = OnRep_ActorAttachments, meta = (AllowPrivateAccess = true))
+    TArray<UActorAttachmentsComponent *> ActorAttachments;
+
+    UPROPERTY(BlueprintReadWrite, SaveGame, meta = (AllowPrivateAccess = true))
+    bool CanExit;
+
+    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    bool IndicateExit;
+
+    UPROPERTY(BlueprintReadWrite, Replicated, SaveGame, meta = (AllowPrivateAccess = true))
+    bool OwnerFacingBack;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    bool TertiaryUsable;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    bool SaveOnEnter;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    bool CanTransferItemsAcrossConnections;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    TArray<FSlotReference> RailSlots;
+
+    UPROPERTY(BlueprintAssignable)
+    FSignal OnTertiaryUse;
+
+    UPROPERTY(BlueprintAssignable)
+    FEnterExitSignal OnTertiaryEnterExit;
 
 protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
+    UPROPERTY(BlueprintReadWrite, VisibleAnywhere, meta = (AllowPrivateAccess = true))
+    TArray<FSlotReference> Slots;
 
-public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+    UPROPERTY(Export)
+    TArray<UStorageChassisComponent *> ChildStorageChassis;
 
-	UFUNCTION(BlueprintCallable)
-		bool QueryTertiary(APlayerController* Controller, FTransform OutTransform);
-	UFUNCTION(BlueprintCallable)
-		void TertiaryUse(APlayerController* Controller);
-	UFUNCTION(BlueprintCallable)
-		void SlotEvent(APhysicalItem* item);
-	UFUNCTION(BlueprintCallable)
-		void ItemAmountChangeEvent();
-	UFUNCTION(BlueprintCallable)
-		UStorageChassisComponent* GetActorStorageChassisComponent(AActor* Actor);
-	UFUNCTION(BlueprintCallable)
-		int ChangeDeformationDeltaInConnectedSlotNetwork(int sedimentAmount, TSubclassOf<UItemType> deformedItemType);
-	UFUNCTION(BlueprintCallable)
-		void CalculateItemReservesInConnectedSlotNetwork(TSubclassOf<UItemType> ItemType, int outCurrentStoredItemAmount, int outMaxStorageSize);
-	UFUNCTION(BlueprintCallable)
-		bool AuthorityPlaceItemInConnectedSlotNetwork(APhysicalItem* Item, AActor* SourceOwner);
-	UFUNCTION(BlueprintCallable)
-		bool AuthorityPlaceItemInLocalStorage(APhysicalItem* Item);
-	UFUNCTION(BlueprintCallable)
-		int AddItem(TSubclassOf<UItemType> itemType, int itemAmount);
-	UFUNCTION(BlueprintCallable)
-		UStorageChassisComponent* GetOutermostStorage(AActor* Actor, bool Inclusive);
-	UFUNCTION(BlueprintCallable)
-		TArray<FSlotReference> GetUnmanagedSlots();
-	UFUNCTION(BlueprintCallable)
-		USlotOrganizationRule* FindRuleByName(FName ruleName);
-	UFUNCTION(BlueprintCallable)
-		void AuthorityApplyOrganizationRules();
-	UFUNCTION(BlueprintCallable)
-		void OnRep_SlotIndicatorLocations();
-	UFUNCTION(BlueprintCallable)
-		void OnRep_ActorAttachments();
-	UFUNCTION(BlueprintCallable)
-		void OnPlayerEnterExitAttachment(bool entered);
-	UFUNCTION(BlueprintCallable)
-		void OnOwnerDestroyed(AActor* owner);
+    UPROPERTY(Export, SaveGame)
+    UStorageChassisComponent *OverrideParentStorage;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
-		FOnSlotEventSignal OnSlotEvent;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
-		FSignal OnSlotsReset;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
-		FSignal OnItemAmountChangeEvent;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TArray<FSlotReference> ExcludeSlots;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TArray<UActorAttachmentsComponent *> ActorAttachments;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool CanExit;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool IndicateExit;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool OwnerFacingBack;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool TertiaryUsable;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool SaveOnEnter;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool CanTransferItemsAcrossConnections;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TArray<FSlotReference> RailSlots;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
-		FSignal OnTertiaryUse;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, BlueprintAssignable)
-		FEnterExitSignal OnTertiaryEnterExit;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TArray<FSlotReference> Slots;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TArray<UStorageChassisComponent *> ChildStorageChassis;
-	UPROPERTY(EditAnywhere, Instanced, BlueprintReadWrite)
-		TArray<USlotOrganizationRule *> OrganizationRules;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TArray<FSlotIndicatorLocation> SlotIndicatorLocations;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TArray<FSlotIndicatorLocation> PreviousSlotIndicatorLocations;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool IsSpawnPoint;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool IsNewPlayerSpawnPoint;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool IsDefaultSpawnPoint;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		int SpawnPointPriority;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TArray<UActorAttachmentsComponent *> PrevActorAttachments;
+    UPROPERTY(Export)
+    TArray<UStorageChassisComponent *> OverrideChildStorageChassis;
+
+    UPROPERTY(EditDefaultsOnly, Export)
+    TArray<USlotOrganizationRule *> OrganizationRules;
+
+    UPROPERTY(ReplicatedUsing = OnRep_SlotIndicatorLocations)
+    TArray<FSlotIndicatorLocation> SlotIndicatorLocations;
+
+    UPROPERTY()
+    TArray<FSlotIndicatorLocation> PreviousSlotIndicatorLocations;
+
+    UPROPERTY(EditDefaultsOnly)
+    uint8 bPrioritizeNestedStorage : 1;
+
+    UPROPERTY(EditDefaultsOnly)
+    uint8 bPassActuateEventsToSlottedItems : 1;
+
+    UPROPERTY(EditDefaultsOnly, SaveGame)
+    uint8 bCanNest : 1;
+
+private:
+    UPROPERTY(EditDefaultsOnly)
+    bool IsSpawnPoint;
+
+    UPROPERTY(EditDefaultsOnly)
+    bool IsNewPlayerSpawnPoint;
+
+    UPROPERTY(EditDefaultsOnly)
+    bool IsDefaultSpawnPoint;
+
+    UPROPERTY(EditDefaultsOnly)
+    int32 SpawnPointPriority;
+
+    UPROPERTY(EditDefaultsOnly)
+    FComponentReference RespawnCameraReference;
+
+    UPROPERTY(Export, Transient)
+    TArray<UActorAttachmentsComponent *> PrevActorAttachments;
+
+public:
+    UStorageChassisComponent();
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
+
+    UFUNCTION(BlueprintCallable)
+    void TertiaryUse(APlayerController *Controller);
+
+    UFUNCTION()
+    void SlotEvent(APhysicalItem *Item);
+
+    UFUNCTION(BlueprintCallable)
+    bool QueryTertiary(APlayerController *Controller, FTransform &OutTransform);
+
+protected:
+    UFUNCTION()
+    void OnRep_SlotIndicatorLocations();
+
+    UFUNCTION()
+    void OnRep_ActorAttachments();
+
+private:
+    UFUNCTION()
+    void OnPlayerEnterExitAttachment(bool Entered);
+
+    UFUNCTION()
+    void OnOwnerDestroyed(AActor *Owner);
+
+public:
+    UFUNCTION()
+    void ItemAmountChangeEvent();
+
+    UFUNCTION(BlueprintPure)
+    TArray<FSlotReference> GetUnmanagedSlots() const;
+
+    UFUNCTION(BlueprintPure)
+    static UStorageChassisComponent *GetOutermostStorage(AActor *Actor, bool Inclusive);
+
+    UFUNCTION(BlueprintPure)
+    static UStorageChassisComponent *GetActorStorageChassisComponent(AActor *Actor);
+
+    UFUNCTION(BlueprintPure)
+    USlotOrganizationRule *FindRuleByName(FName RuleName);
+
+    UFUNCTION(BlueprintCallable)
+    int32 ChangeDeformationDeltaInConnectedSlotNetwork(int32 sedimentAmount, TSubclassOf<UItemType> deformedItemType);
+
+    UFUNCTION(BlueprintCallable)
+    void CalculateItemReservesInConnectedSlotNetwork(TSubclassOf<UItemType> ItemType, int32 &outCurrentStoredItemAmount, int32 &outMaxStorageSize);
+
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    bool AuthorityPlaceItemInLocalStorage(APhysicalItem *Item);
+
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    bool AuthorityPlaceItemInConnectedSlotNetwork(APhysicalItem *Item, AActor *SourceOwner);
+
+protected:
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    void AuthorityApplyOrganizationRules();
+
+public:
+    UFUNCTION(BlueprintCallable)
+    int32 AddItem(TSubclassOf<UItemType> ItemType, int32 ItemAmount);
 };

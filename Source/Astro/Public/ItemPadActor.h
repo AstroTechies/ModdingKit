@@ -1,32 +1,32 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
-
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "UObject/NoExportTypes.h"
 #include "ItemPadActor.generated.h"
 
 class UItemPad;
+class USceneComponent;
+class UPrimitiveComponent;
 
-UCLASS()
+UCLASS(Blueprintable, Blueprintable)
 class ASTRO_API AItemPadActor : public AActor
 {
-	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
-	AItemPadActor();
+    GENERATED_BODY()
+public:
+    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
+    USceneComponent *BaseLocation;
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+    UPROPERTY(BlueprintReadWrite, Export, SaveGame, meta = (AllowPrivateAccess = true))
+    UItemPad *OwnerComponent;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+    AItemPadActor();
+    UFUNCTION(BlueprintNativeEvent)
+    bool ShouldDestroyOnPickup();
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		USceneComponent* BaseLocation;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		UItemPad* OwnerComponent;
+    UFUNCTION(BlueprintImplementableEvent)
+    void OnSpawn(bool withTool, UPrimitiveComponent *Component, const FVector &Point, const FVector &Normal);
+
+private:
+    UFUNCTION()
+    void OnOwnerDestroyed(AActor *deletingOwner);
 };

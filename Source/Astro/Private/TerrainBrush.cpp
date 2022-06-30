@@ -1,27 +1,51 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "TerrainBrush.h"
 
-// Sets default values
-ATerrainBrush::ATerrainBrush()
-{
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-
+void ATerrainBrush::ShowBrushElements(EDeformType deformType, bool showElement) {
 }
 
-// Called when the game starts or when spawned
-void ATerrainBrush::BeginPlay()
-{
-	Super::BeginPlay();
-	
+void ATerrainBrush::SetResourceTooltipSuppression(bool SuppressResourceTooltip) {
 }
 
-// Called every frame
-void ATerrainBrush::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
 
+
+
+void ATerrainBrush::ManageTerrainHardnessTexture() {
+}
+
+
+void ATerrainBrush::ChangeBrushOperation(EDeformType NewType) {
+}
+
+ATerrainBrush::ATerrainBrush() {
+    this->ActiveOperation = EDeformType::Subtract;
+    this->LastTerrainHardness = 0;
+    this->BrushIndicatorScale = 0.01f;
+    this->BrushIndicatorIntensity = 0.00f;
+    this->BrushIndicatorUsing = 0.00f;
+    this->bBrushIndicatorCanUse = false;
+    this->TargetComponent = NULL;
+    this->PlayerAccentIndex = 0;
+    this->GaugePercent = 0.00f;
+    this->GaugeCapacity = 0.00f;
+    this->LowSedimentThreshold = 0.00f;
+    this->DeformEffectComponent = NULL;
+    this->BrushDiscMaterial = NULL;
+    this->HardnessTextureLevel0 = NULL;
+    this->HardnessTextureLevel1 = NULL;
+    this->HardnessTextureLevel2 = NULL;
+    this->HardnessTextureLevel3 = NULL;
+    this->FlattenGridTexture = NULL;
+    this->IsLocalBrush = false;
+    this->ResourceNodeTooltipBadgeAutoCollapseDelay = 0.10f;
+    this->ResourceNodeTooltipDetailsAutoExpandDelay = 0.50f;
+    this->CursorDetailsExpansionMovementTolerance = 1.00f;
+    this->ThrottledNativeTickInterval = 0.10f;
+    this->ResourceNodeTooltipComponent = NULL;
+    this->CurrentItemTypeForResourceTooltip = NULL;
+    this->AddBrushComponent = NULL;
+    this->SubtractBrushComponent = NULL;
+    this->FlatBrushComponent = NULL;
+    this->ColorPickerBrushComponent = NULL;
+    this->ColorPaintBrushComponent = NULL;
 }
 
