@@ -10,19 +10,19 @@ USTRUCT(BlueprintType)
 struct FAstroEntityComponent : public FAstroDatum {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FName Name;
     
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FName ViewActorComponentName;
     
-    UPROPERTY(BlueprintReadWrite, Export, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(EditAnywhere, Export, SaveGame)
     TWeakObjectPtr<UActorComponent> ViewActorComponent;
     
-    UPROPERTY(BlueprintReadWrite, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(EditAnywhere, Export)
     TWeakObjectPtr<UActorComponent> ViewActorTemplateComponent;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<UAstroEntityComponentSubobject*> OwnedSubobjects;
     
     ASTRO_API FAstroEntityComponent();

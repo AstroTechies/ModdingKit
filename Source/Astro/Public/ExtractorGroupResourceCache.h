@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "UObject/NoExportTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "CacheResourceGroup.h"
 #include "ExtractorGroupResourceCache.generated.h"
 
@@ -12,22 +12,22 @@ USTRUCT(BlueprintType)
 struct FExtractorGroupResourceCache {
     GENERATED_BODY()
 public:
-    UPROPERTY(SaveGame)
+    UPROPERTY(EditAnywhere, SaveGame)
     TWeakObjectPtr<AAstroPlanet> Planet;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FVector> ResourcePositions;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(EditAnywhere, SaveGame)
     TArray<uint8> CollectionProgress;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FCacheResourceGroup> Groups;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<UItemType>> ContainedItemTypes;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<int32> MemberStatesIndices;
     
     ASTRO_API FExtractorGroupResourceCache();

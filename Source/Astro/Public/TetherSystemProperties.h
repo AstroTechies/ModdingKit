@@ -1,45 +1,45 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "TetherSystemProperties.generated.h"
 
 class UStaticMesh;
 class UMaterialInterface;
 
-UCLASS(Blueprintable, Blueprintable)
-class UTetherSystemProperties : public UDataAsset
-{
+UCLASS(Blueprintable)
+class UTetherSystemProperties : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
-    UStaticMesh *SegmentMesh;
-
-    UPROPERTY(EditAnywhere)
-    UMaterialInterface *DefaultMaterial;
-
-    UPROPERTY(EditAnywhere)
-    UMaterialInterface *IndicatorMaterial;
-
-    UPROPERTY(EditAnywhere)
-    UMaterialInterface *NoOxygenMaterial;
-
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UStaticMesh* SegmentMesh;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInterface* DefaultMaterial;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInterface* IndicatorMaterial;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInterface* NoOxygenMaterial;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float BreakDistance;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SegmentLength;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SegmentScale;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float GravityTension;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CurveTension;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AdjustDistance;
-
+    
     UTetherSystemProperties();
 };
+

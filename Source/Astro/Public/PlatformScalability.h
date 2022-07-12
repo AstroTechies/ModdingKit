@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct ASTRO_API FPlatformScalability {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DecoratorLODDistanceScale;
     
     UPROPERTY(EditAnywhere)

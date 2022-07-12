@@ -1,48 +1,48 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "Engine/DataAsset.h"
-#include "UObject/NoExportTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
 #include "AstroPopupBadgeAuthoringData.h"
 #include "AstroPopupBadgeDatabase.generated.h"
 
-class UAstroPopupBadgeWidget;
 class UCurveFloat;
+class UAstroPopupBadgeWidget;
 
-UCLASS(Blueprintable, BlueprintType)
-class UAstroPopupBadgeDatabase : public UDataAsset
-{
+UCLASS(Blueprintable)
+class UAstroPopupBadgeDatabase : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor DefaultPopupBadgeColor;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor DefaultPopupBadgeStrokeColor;
-
-    UPROPERTY(EditAnywhere)
-    UCurveFloat *PopupBadgeDriftAnimationCurve;
-
-    UPROPERTY(EditAnywhere)
-    UCurveFloat *PopupBadgeFadeAnimationCurve;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveFloat* PopupBadgeDriftAnimationCurve;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveFloat* PopupBadgeFadeAnimationCurve;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UAstroPopupBadgeWidget> AstroPopupBadgeWidgetClass;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAstroPopupBadgeAuthoringData PowerPingCharge;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAstroPopupBadgeAuthoringData PowerPingDischarge;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAstroPopupBadgeAuthoringData Oxygen50;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAstroPopupBadgeAuthoringData Oxygen25;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float PowerPingRange;
-
+    
     UAstroPopupBadgeDatabase();
 };
+

@@ -1,9 +1,9 @@
 #include "TooltipComponent.h"
 
 class UItemType;
-class UPrimitiveComponent;
-class UObject;
 class USceneComponent;
+class UObject;
+class UPrimitiveComponent;
 class AActor;
 class UCrackableActorComponent;
 
@@ -100,7 +100,7 @@ void UTooltipComponent::OnOwnerItemTypeChanged() {
 void UTooltipComponent::OnInteractionActivated(FName ActionName) {
 }
 
-void UTooltipComponent::OnInputUnhandled(EInputEvent InputType, FName ActionName) {
+void UTooltipComponent::OnInputUnhandled(TEnumAsByte<EInputEvent> InputType, FName ActionName) {
 }
 
 void UTooltipComponent::OnActionInputReleased(FName ActionName) {

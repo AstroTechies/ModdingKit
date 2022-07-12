@@ -1,8 +1,8 @@
 #include "StreamingPowerSplitter.h"
 #include "Net/UnrealNetwork.h"
 
-class UActorStreamingPowerCableComponent;
 class ASlotConnection;
+class UActorStreamingPowerCableComponent;
 
 void AStreamingPowerSplitter::OnRep_SplitterData() {
 }

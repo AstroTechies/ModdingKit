@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "ControlPanelReadyEventDelegate.h"
 #include "ControlPanelItemComponent.generated.h"
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UControlPanelItemComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UControlPanelItemComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FControlPanelReadyEvent OnControlPanelAvailable;
-
+    
     UControlPanelItemComponent();
 };
+

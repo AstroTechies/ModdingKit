@@ -1,60 +1,60 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "AstroDatumRef.h"
 #include "AstroEntityWorld.generated.h"
 
-class UAstroSaveCustomArchiveProxy;
-class UAstroEntityComponentSubobject;
+class UAstroEntitySystem;
 class UAstroEntityTaskManager;
 class UAstroEntityContainer;
 class UAstroEntityComponentContainer;
-class UAstroEntitySystem;
+class UAstroEntityComponentSubobject;
+class UAstroSaveCustomArchiveProxy;
 
-UCLASS(Blueprintable, BlueprintType)
-class ASTRO_API UAstroEntityWorld : public UObject
-{
+UCLASS(Blueprintable)
+class ASTRO_API UAstroEntityWorld : public UObject {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(SaveGame)
-    UAstroEntityContainer *EntityContainer;
-
-    UPROPERTY(SaveGame)
-    TArray<UAstroEntityComponentContainer *> EntityComponentContainers;
-
-    UPROPERTY()
-    TArray<UAstroEntitySystem *> Systems;
-
-    UPROPERTY(SaveGame)
-    TArray<UAstroEntityComponentSubobject *> PrePhysicsTickingEntityComponentSubobjects;
-
-    UPROPERTY(SaveGame)
-    TArray<UAstroEntityComponentSubobject *> PostPhysicsTickingEntityComponentSubobjects;
-
-    UPROPERTY(Transient)
-    TArray<UAstroEntityComponentSubobject *> EntityComponentSubobjectsPendingTickDeactivation;
-
-    UPROPERTY(Transient)
-    TArray<UAstroEntityTaskManager *> EntityTaskManagers;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    UAstroEntityContainer* EntityContainer;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    TArray<UAstroEntityComponentContainer*> EntityComponentContainers;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<UAstroEntitySystem*> Systems;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    TArray<UAstroEntityComponentSubobject*> PrePhysicsTickingEntityComponentSubobjects;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    TArray<UAstroEntityComponentSubobject*> PostPhysicsTickingEntityComponentSubobjects;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    TArray<UAstroEntityComponentSubobject*> EntityComponentSubobjectsPendingTickDeactivation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    TArray<UAstroEntityTaskManager*> EntityTaskManagers;
+    
 public:
     UAstroEntityWorld();
-
 private:
     UFUNCTION()
-    void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy *proxy);
-
+    void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy);
+    
 public:
     UFUNCTION(BlueprintPure)
-    static FAstroDatumRef GetOwnerEntity(FAstroDatumRef EntityComponentRef, bool &bOutSuccess);
-
+    static FAstroDatumRef GetOwnerEntity(FAstroDatumRef EntityComponentRef, bool& bOutSuccess);
+    
     UFUNCTION(BlueprintPure)
-    static FAstroDatumRef GetEntityRootComponentRef(FAstroDatumRef EntityRef, bool &bOutSuccess);
-
+    static FAstroDatumRef GetEntityRootComponentRef(FAstroDatumRef EntityRef, bool& bOutSuccess);
+    
     UFUNCTION(BlueprintPure)
-    static FAstroDatumRef GetEntityComponentRefByName(FAstroDatumRef EntityRef, FName ComponentName, bool &bOutSuccess);
-
+    static FAstroDatumRef GetEntityComponentRefByName(FAstroDatumRef EntityRef, FName ComponentName, bool& bOutSuccess);
+    
     UFUNCTION(BlueprintPure)
-    static TArray<FAstroDatumRef> GetEntityComponentDatumRefs(FAstroDatumRef EntityRef, bool &bOutSuccess);
+    static TArray<FAstroDatumRef> GetEntityComponentDatumRefs(FAstroDatumRef EntityRef, bool& bOutSuccess);
+    
 };
+

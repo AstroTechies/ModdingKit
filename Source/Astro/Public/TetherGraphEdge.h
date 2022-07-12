@@ -9,16 +9,13 @@ struct FTetherGraphEdge {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UTetherAttachComponent* A;
     
-    UPROPERTY(Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UTetherAttachComponent* B;
     
 public:
     ASTRO_API FTetherGraphEdge();
 };
 
-FORCEINLINE uint32 GetTypeHash(const FTetherGraphEdge& TetherGraphEdge) {
-    return 0;
-}

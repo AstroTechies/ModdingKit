@@ -4,15 +4,15 @@
 #include "SlotReference.h"
 #include "SlotControlUnlockBehavior.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API USlotControlUnlockBehavior : public UUnlockBehavior
-{
+UCLASS(Blueprintable)
+class ASTRO_API USlotControlUnlockBehavior : public UUnlockBehavior {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> ControlledSlotRefs;
-
+    
 public:
     USlotControlUnlockBehavior();
 };
+

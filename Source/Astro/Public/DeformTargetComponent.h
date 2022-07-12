@@ -1,24 +1,25 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "SlotReference.h"
-#include "UObject/NoExportTypes.h"
 #include "DeformTargetSignalDelegate.h"
-#include "UObject/NoExportTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 #include "DeformTargetComponent.generated.h"
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UDeformTargetComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UDeformTargetComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> TargetSlots;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FDeformTargetSignal OnDeform;
-
+    
     UDeformTargetComponent();
     UFUNCTION(BlueprintCallable)
-    FTransform GetDeformTarget(const FVector &sourceLocation);
+    FTransform GetDeformTarget(const FVector& sourceLocation);
+    
 };
+

@@ -1,10 +1,10 @@
 #include "ActuatorComponent.h"
 #include "Net/UnrealNetwork.h"
 
+class AActor;
 class UPrimitiveComponent;
 class APlayController;
 class UClickQuery;
-class AActor;
 class UObject;
 
 void UActuatorComponent::OnRerouteNodeEndCursorOver(UPrimitiveComponent* TouchedComponent) {
@@ -40,7 +40,7 @@ void UActuatorComponent::HandlePlacedInSlot() {
 void UActuatorComponent::HandleDestroyed(AActor* DestroyedActor) {
 }
 
-void UActuatorComponent::AuthorityScheduleActuation(APlayController* Instigator, int32 tickDelay, EFullnessActuatorEventType FullnessActuatorEventType, const UObject* UniqueReference, bool makeUnique) {
+void UActuatorComponent::AuthorityScheduleActuation(APlayController* Instigator, int32 tickDelay, EFullnessActuatorEventType FullnessActuatorEventType, const UObject* UniqueReference, bool makeUnique, EAuxSlotType slotTypeToTrigger) {
 }
 
 void UActuatorComponent::AuthorityHandleSlotClick(FSlotReference clickedSlot) {

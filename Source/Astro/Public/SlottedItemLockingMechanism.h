@@ -6,20 +6,21 @@
 
 class APhysicalItem;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API USlottedItemLockingMechanism : public ULockingMechanism
-{
+UCLASS(Blueprintable)
+class ASTRO_API USlottedItemLockingMechanism : public ULockingMechanism {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FSlottedItemRequirementRuntimeState> SlotRequirementsRuntimeState;
-
+    
 public:
     USlottedItemLockingMechanism();
     UFUNCTION()
-    void OnItemSetInRelevantSlot(APhysicalItem *Item);
-
+    void OnItemSetInRelevantSlot(APhysicalItem* Item);
+    
     UFUNCTION()
-    void OnItemReleasedFromRelevantSlot(APhysicalItem *Item);
+    void OnItemReleasedFromRelevantSlot(APhysicalItem* Item);
+    
 };
+

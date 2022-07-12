@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct FAstroServerCommWorldData {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FPlayerList PlayerListCache;
     
     ASTRO_API FAstroServerCommWorldData();

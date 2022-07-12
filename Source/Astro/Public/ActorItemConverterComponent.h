@@ -1,215 +1,216 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "EOutputEjectionType.h"
-#include "OnItemConverterStateChangedDelegate.h"
-#include "OnItemConversionCompleteDelegate.h"
-#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SignalDelegate.h"
 #include "OnItemConverterActiveConversionsListChangedDelegate.h"
-#include "SlotReference.h"
+#include "OnItemConversionCompleteDelegate.h"
+#include "OnItemConverterStateChangedDelegate.h"
+#include "EItemConverterState.h"
 #include "EnableSignalDelegate.h"
-#include "ItemConversionRecipeInputStatus.h"
+#include "EOutputEjectionType.h"
 #include "EInputManagementType.h"
 #include "ItemConverterReplicationData.h"
-#include "ItemConversionInputItemStatus.h"
+#include "SlotReference.h"
 #include "ActiveItemConversion.h"
+#include "ItemConversionInputItemStatus.h"
+#include "ItemConversionRecipeInputStatus.h"
 #include "Recipe.h"
-#include "EItemConverterState.h"
 #include "ActorItemConverterComponent.generated.h"
 
-class UOutputOrganizationRule;
+class URecipeOrganizationRule;
 class UItemConversionFormula;
 class UItemList;
-class URecipeOrganizationRule;
+class UOutputOrganizationRule;
 class APhysicalItem;
 class UItemType;
 class AAstroCharacter;
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UActorItemConverterComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UActorItemConverterComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnSystemMigrationCheckStarted;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnItemConversionComplete OnAuthorityItemConversionCompleted;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnItemConverterActiveConversionsListChanged OnActiveConversionsAdded;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnItemConverterActiveConversionsListChanged OnActiveConversionsRemoved;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnItemConverterStateChanged OnStateChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FEnableSignal OnWantsToBeActiveChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FEnableSignal OnShouldLoopProductionChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnViewDataChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnReplicationDataInitialized;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> ManagedDummySlotNames;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> InputSlotNames;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> OutputSlotNames;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemConversionFormula> ConversionFormulaType;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemList> OutputItemTypeList;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinPowerUnitProductionTime;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxPowerUnitProductionTime;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EOutputEjectionType DefaultOutputEjectionType;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float OutputItemEjectionForce;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EInputManagementType InputSlotsOrganizationRuleType;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bCannotProcessConversionsInParallel : 1;
-
-    UPROPERTY(EditDefaultsOnly, SaveGame)
-    uint8 bShouldLoopProduction : 1;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bInputSlotsAreUnclickable : 1;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bOutputSlotIsUnclickable : 1;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bDetonatesVolatileInputItems : 1;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bShowOutputIndicatorsWhenSelectingRecipe : 1;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bForceRecipeSelection : 1;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bCanUseActorItemComponentAsInput : 1;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bProduceOutputsToUniqueSlots : 1;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bKeepPartialOutputBetweenSaves : 1;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bRefundInputResourcesOnCancel : 1;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bIgnoresPower : 1;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bCannotProcessConversionsInParallel: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    uint8 bShouldLoopProduction: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bInputSlotsAreUnclickable: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bOutputSlotIsUnclickable: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bDetonatesVolatileInputItems: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bShowOutputIndicatorsWhenSelectingRecipe: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bForceRecipeSelection: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bCanUseActorItemComponentAsInput: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bProduceOutputsToUniqueSlots: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bKeepPartialOutputBetweenSaves: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bRefundInputResourcesOnCancel: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bIgnoresPower: 1;
+    
 protected:
-    UPROPERTY(BlueprintReadWrite, ReplicatedUsing = OnReplicationDataChanged, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnReplicationDataChanged, meta=(AllowPrivateAccess=true))
     FItemConverterReplicationData ReplicationData;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FItemConverterReplicationData PrevReplicationData;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> InputSlotRefs;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> OutputSlotRefs;
-
-    UPROPERTY()
+    
+    UPROPERTY(EditAnywhere)
     TWeakObjectPtr<URecipeOrganizationRule> RecipeOrganizationRule;
-
-    UPROPERTY()
+    
+    UPROPERTY(EditAnywhere)
     TWeakObjectPtr<UOutputOrganizationRule> OutputOrganizationRule;
-
+    
 public:
     UActorItemConverterComponent();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
     UFUNCTION()
     void OnReplicationDataChanged();
-
+    
     UFUNCTION()
-    void OnAuthorityRemovedActiveItemConversion(const FActiveItemConversion &activeConversion);
-
+    void OnAuthorityRemovedActiveItemConversion(const FActiveItemConversion& activeConversion);
+    
     UFUNCTION()
-    void OnAuthorityAddedActiveItemConversion(const FActiveItemConversion &activeConversion);
-
+    void OnAuthorityAddedActiveItemConversion(const FActiveItemConversion& activeConversion);
+    
     UFUNCTION(BlueprintPure)
-    static bool IsItemConversionRecipeInputStatusValid(const FItemConversionRecipeInputStatus &ItemConversionRecipeInputStatus);
-
+    static bool IsItemConversionRecipeInputStatusValid(const FItemConversionRecipeInputStatus& ItemConversionRecipeInputStatus);
+    
     UFUNCTION(BlueprintPure)
-    static bool IsItemConversionInputItemStatusValid(const FItemConversionInputItemStatus &ItemConversionIngredientStatus);
-
+    static bool IsItemConversionInputItemStatusValid(const FItemConversionInputItemStatus& ItemConversionIngredientStatus);
+    
 protected:
     UFUNCTION()
-    void HandleItemChangedInResourceSlot(APhysicalItem *changedItem);
-
+    void HandleItemChangedInResourceSlot(APhysicalItem* changedItem);
+    
 public:
     UFUNCTION(BlueprintPure)
     bool GetShouldLoopProduction();
-
+    
     UFUNCTION(BlueprintPure)
     FRecipe GetSelectedOutputRecipe() const;
-
+    
     UFUNCTION(BlueprintPure)
     TSubclassOf<UItemType> GetSelectedOutputItemType() const;
-
+    
     UFUNCTION(BlueprintPure)
-    FItemConversionRecipeInputStatus GetConversionRecipeInputStatus(const FRecipe &Recipe) const;
-
+    FItemConversionRecipeInputStatus GetConversionRecipeInputStatus(const FRecipe& Recipe) const;
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthoritySetShouldLoopProduction(bool ShouldLoopProduction);
-
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthoritySetSelectedOutputItemTypeIndex(int32 newIndex);
-
+    
 protected:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthoritySetOutputEjectionType(EOutputEjectionType ActiveOutputEjectionType);
-
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
-    void AuthoritySetExternalResourceProviderSlotsForPlayer(AAstroCharacter *controllingPlayer);
-
+    void AuthoritySetExternalResourceProviderSlotsForPlayer(AAstroCharacter* controllingPlayer);
+    
 public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthoritySetConverterWantsToBeActive(bool Active);
-
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityIncrementSelectedOutputItemTypeIndex(bool AllowIndexWrapping);
-
+    
 protected:
     UFUNCTION()
     void AuthorityHandleItemComponentChanged();
-
+    
 public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintPure)
     EItemConverterState AuthorityGetItemConverterState() const;
-
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityDecrementSelectedOutputItemTypeIndex(bool AllowIndexWrapping);
-
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityCancelActiveConversions();
+    
 };
+

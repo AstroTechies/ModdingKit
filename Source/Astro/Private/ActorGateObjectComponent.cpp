@@ -1,8 +1,8 @@
 #include "ActorGateObjectComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class UPrimitiveComponent;
 class AActor;
+class UPrimitiveComponent;
 
 void UActorGateObjectComponent::OnRep_ReplicationData() {
 }

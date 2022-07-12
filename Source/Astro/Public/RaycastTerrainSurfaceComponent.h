@@ -1,42 +1,42 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SurfaceCriteria.h"
 #include "TerrainPlacementComponent.h"
 #include "ESurfaceOrientation.h"
 #include "ERaycastOrientation.h"
+#include "SurfaceCriteria.h"
 #include "RaycastTerrainSurfaceComponent.generated.h"
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class ASTRO_API URaycastTerrainSurfaceComponent : public UTerrainPlacementComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API URaycastTerrainSurfaceComponent : public UTerrainPlacementComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float RandomOrientation;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ESurfaceOrientation Orientation;
-
-    UPROPERTY(EditAnywhere)
-    uint8 bApplyOffsetDownFromHit : 1;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bApplyOffsetDownFromHit: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float OffsetDownFromHitDistance;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float RaycastDistance;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSurfaceCriteria SurfaceCriteria;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ERaycastOrientation RaycastDirection;
-
-    UPROPERTY(EditAnywhere)
-    uint8 bUseVoxelTrace : 1;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bUseVoxelTrace: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float VoxelTraceAccuracy;
-
+    
     URaycastTerrainSurfaceComponent();
 };
+

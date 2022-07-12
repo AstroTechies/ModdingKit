@@ -5,29 +5,30 @@
 #include "GatesGameStateReplicationData.h"
 #include "GatesGameState.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API AGatesGameState : public AAstroGameState
-{
+UCLASS(Blueprintable)
+class ASTRO_API AGatesGameState : public AAstroGameState {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGateObjectActivationSignal OnGateObjectActivated;
-
+    
 protected:
-    UPROPERTY(BlueprintReadWrite, SaveGame, ReplicatedUsing = OnReplicationDataReceived, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnReplicationDataReceived, meta=(AllowPrivateAccess=true))
     FGatesGameStateReplicationData ReplicationData;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 TotalActivatedChambers;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 TotalActivatedEngines;
-
+    
 public:
     AGatesGameState();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
 protected:
     UFUNCTION()
     void OnReplicationDataReceived();
+    
 };
+

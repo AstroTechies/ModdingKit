@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct FPlayerNicknameAndPlatform {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString PlayerNickname;
     
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EPlayerPlatform Platform;
     
     ASTRO_API FPlayerNicknameAndPlatform();

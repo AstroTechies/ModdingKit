@@ -1,110 +1,108 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "GameFramework/WorldSettings.h"
-#include "UObject/NoExportTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=WorldSettings -FallbackName=WorldSettings
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "AstroSettings.generated.h"
 
 class UAstroMissionDataAsset;
-class ULevelSequence;
-class AAstroSettings;
-class AActor;
 class AAstroPlanet;
+class ULevelSequence;
+class AActor;
 class AGateStation;
 class ASolarBody;
+class AAstroSettings;
 
-UCLASS(Blueprintable, Blueprintable)
-class AAstroSettings : public AWorldSettings
-{
+UCLASS(Blueprintable)
+class AAstroSettings : public AWorldSettings {
     GENERATED_BODY()
 public:
     DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnFreePowerChanged, bool, FreePowerEnabled);
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
-    uint8 bIsFlatland : 1;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
-    uint8 bFreePower : 1;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
-    uint8 bInteractionLogging : 1;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
-    uint8 bSurvival : 1;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
-    uint8 bStartAllRecipes : 1;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
-    uint8 bLoadAutoSave : 1;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
-    uint8 bTrailer : 1;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
-    uint8 bRelease : 1;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
-    uint8 bBalancePalettes : 1;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
-    uint8 bAnalyticsEnabled : 1;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
-    TArray<UAstroMissionDataAsset *> MissionData;
-
-    UPROPERTY(EditDefaultsOnly)
-    ULevelSequence *IntroCinematicSequence;
-
-    UPROPERTY(EditDefaultsOnly)
-    ULevelSequence *LatestUpdateCinematicSequence;
-
-    UPROPERTY(EditDefaultsOnly)
-    ULevelSequence *OutroCinematicSequence;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bIsFlatland: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bFreePower: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bInteractionLogging: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bSurvival: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bStartAllRecipes: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bLoadAutoSave: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bTrailer: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bRelease: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bBalancePalettes: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<UAstroMissionDataAsset*> MissionData;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    ULevelSequence* IntroCinematicSequence;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    ULevelSequence* LatestUpdateCinematicSequence;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    ULevelSequence* OutroCinematicSequence;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString OutroCinematicAudioEvent;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName OutroCinematicMusicState;
-
-    UPROPERTY(EditAnywhere)
-    TArray<AActor *> CinematicTerrainResolutionPoints;
-
-    UPROPERTY(EditAnywhere)
-    TArray<AActor *> CinematicTerrainResolutionPointsForUpdate;
-
-    UPROPERTY(EditAnywhere)
-    TArray<AAstroPlanet *> PlanetsToReseedForCinematic;
-
-    UPROPERTY(EditAnywhere)
-    TArray<AAstroPlanet *> PlanetsToReseedForUpdateCinematic;
-
-    UPROPERTY(EditAnywhere)
-    uint8 bGateStationPlacedAtRuntime : 1;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<AActor*> CinematicTerrainResolutionPoints;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<AActor*> CinematicTerrainResolutionPointsForUpdate;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<AAstroPlanet*> PlanetsToReseedForCinematic;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<AAstroPlanet*> PlanetsToReseedForUpdateCinematic;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bGateStationPlacedAtRuntime: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<AGateStation> GateStationType;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector GateStationSpawnLocation;
-
-    UPROPERTY(EditAnywhere)
-    ASolarBody *GateStationOrbitingBody;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    ASolarBody* GateStationOrbitingBody;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float GateStationOrbitDistance;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector GateStationOrbitDirection;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector GateStationOrbitAxis;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnFreePowerChanged OnFreePowerChanged;
-
+    
     AAstroSettings();
     UFUNCTION(BlueprintPure)
-    static AAstroSettings *GetAstroSettings(AActor *Actor);
+    static AAstroSettings* GetAstroSettings(AActor* Actor);
+    
 };
+

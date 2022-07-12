@@ -6,7 +6,7 @@ USTRUCT(BlueprintType)
 struct FCrackedReplicationData {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bCracked: 1;
     
     ASTRO_API FCrackedReplicationData();

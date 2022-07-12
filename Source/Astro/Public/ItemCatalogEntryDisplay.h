@@ -1,14 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "ItemCatalogEntryDisplay.generated.h"
 
-UCLASS(Blueprintable, Abstract, BlueprintType)
-class ASTRO_API UItemCatalogEntryDisplay : public UObject
-{
+UCLASS(Abstract, Blueprintable)
+class ASTRO_API UItemCatalogEntryDisplay : public UObject {
     GENERATED_BODY()
 public:
     UItemCatalogEntryDisplay();
     UFUNCTION(BlueprintCallable)
     void K2_SetVisible(bool bIsVisible);
+    
 };
+

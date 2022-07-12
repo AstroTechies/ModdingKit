@@ -3,34 +3,34 @@
 #include "CameraModifierComponent.h"
 #include "OrbitControlModifierComponent.generated.h"
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class UOrbitControlModifierComponent : public UCameraModifierComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class UOrbitControlModifierComponent : public UCameraModifierComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool UsePlanetUp;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool AffectRotation;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float PitchRate;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float YawRate;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float GamepadRotateMultiplier;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MouseSmoothingFactor;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float GamepadSmoothingFactor;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LookatHeightOffset;
-
+    
     UOrbitControlModifierComponent();
 };
+

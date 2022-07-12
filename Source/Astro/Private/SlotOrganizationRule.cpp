@@ -7,7 +7,7 @@ void USlotOrganizationRule::SetUnwantedItemsEjectionForce(float ejectionForce) {
 void USlotOrganizationRule::SetPushUnwantedItems(bool push) {
 }
 
-void USlotOrganizationRule::SetEnabled(bool Enabled) {
+void USlotOrganizationRule::SetEnabled(bool Enabled, bool broadcastSettingsChanged) {
 }
 
 void USlotOrganizationRule::SetEjectUnwantedItems(bool eject) {

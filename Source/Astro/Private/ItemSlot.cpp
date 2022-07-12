@@ -1,9 +1,9 @@
 #include "ItemSlot.h"
 #include "ClickableComponent.h"
 
-class ASlotConnection;
 class UChildSlotComponent;
 class APhysicalItem;
+class ASlotConnection;
 
 
 
@@ -19,7 +19,7 @@ bool AItemSlot::AcceptsItem_Implementation(APhysicalItem* Item) {
 }
 
 AItemSlot::AItemSlot() {
-    this->SlotType = ESlotType::Inert;
+    this->slotType = ESlotType::Inert;
     this->BaseClassType = NULL;
     this->Subslot = NULL;
     this->ConnectionClass = NULL;

@@ -3,13 +3,13 @@
 #include "CameraModifierComponent.h"
 #include "FrameTargetModifierComponent.generated.h"
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class UFrameTargetModifierComponent : public UCameraModifierComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class UFrameTargetModifierComponent : public UCameraModifierComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HeightOffset;
-
+    
     UFrameTargetModifierComponent();
 };
+

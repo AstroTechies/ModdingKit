@@ -4,12 +4,12 @@
 #include "GrantAdditionalPointsBonus.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)
-class UGrantAdditionalPointsBonus : public UResearchBonusBehavior
-{
+class UGrantAdditionalPointsBonus : public UResearchBonusBehavior {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AdditionalPointsGranted;
-
+    
     UGrantAdditionalPointsBonus();
 };
+

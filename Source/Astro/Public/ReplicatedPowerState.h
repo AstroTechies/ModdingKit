@@ -6,13 +6,13 @@ USTRUCT(BlueprintType)
 struct FReplicatedPowerState {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint8 Flags;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint8 CurrentCharge;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float StorageCapacity;
     
     ASTRO_API FReplicatedPowerState();

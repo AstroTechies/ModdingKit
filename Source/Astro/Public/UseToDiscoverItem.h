@@ -7,22 +7,22 @@
 class USingleUseConsumableComponent;
 class UItemType;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API AUseToDiscoverItem : public APhysicalItem
-{
+UCLASS(Blueprintable)
+class ASTRO_API AUseToDiscoverItem : public APhysicalItem {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemType> ItemTypeDiscoveredOnUse;
-
-    UPROPERTY(Export, VisibleAnywhere)
-    USingleUseConsumableComponent *ConsumableComponent;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USingleUseConsumableComponent* ConsumableComponent;
+    
 public:
     AUseToDiscoverItem();
-
 protected:
     UFUNCTION()
     void OnUsed();
+    
 };
+

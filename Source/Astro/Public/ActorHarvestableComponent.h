@@ -1,29 +1,29 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
 #include "HarvestableItemSpawnerDefinition.h"
-#include "Curves/CurveFloat.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=RuntimeFloatCurve -FallbackName=RuntimeFloatCurve
 #include "ActorHarvestableComponent.generated.h"
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UActorHarvestableComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UActorHarvestableComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FHarvestableItemSpawnerDefinition> PrimaryItemSpawners;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve PrimaryItemNumberProbabilityCurve;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FHarvestableItemSpawnerDefinition> SecondaryItemSpawners;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve SecondaryItemNumberWithPrimaryItemsProbabilityCurve;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve SecondaryItemNumberNoPrimaryItemsProbabilityCurve;
-
+    
     UActorHarvestableComponent();
 };
+

@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "ExplosiveEffectsConfigPair.h"
 #include "ExplosiveEffectsConfig.generated.h"
 
-UCLASS(Blueprintable, BlueprintType)
-class UExplosiveEffectsConfig : public UDataAsset
-{
+UCLASS(Blueprintable)
+class UExplosiveEffectsConfig : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString ExplosionAudioEvent;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FExplosiveEffectsConfigPair> EffectByPowerLevel;
-
+    
     UExplosiveEffectsConfig();
 };
+

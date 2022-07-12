@@ -5,18 +5,18 @@
 
 class UTetherNetwork;
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UVehicleTetherAttachComponent : public UTetherAttachComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UVehicleTetherAttachComponent : public UTetherAttachComponent {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Export)
-    UTetherAttachComponent *PreviousClosestTetherPost;
-
-    UPROPERTY()
-    UTetherNetwork *PreviousTetherNetwork;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UTetherAttachComponent* PreviousClosestTetherPost;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UTetherNetwork* PreviousTetherNetwork;
+    
 public:
     UVehicleTetherAttachComponent();
 };
+

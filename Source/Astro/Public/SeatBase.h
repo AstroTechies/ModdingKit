@@ -4,34 +4,35 @@
 #include "SeatReplicationData.h"
 #include "SeatBase.generated.h"
 
-class AVehicleBase;
 class UActorAttachmentsComponent;
+class AVehicleBase;
 
-UCLASS(Blueprintable, Abstract)
-class ASeatBase : public APhysicalItem
-{
+UCLASS(Abstract, Blueprintable)
+class ASeatBase : public APhysicalItem {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Replicated)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     FSeatReplicationData SeatReplicationData;
-
+    
 private:
-    UPROPERTY(Export)
-    UActorAttachmentsComponent *ActorAttachmentsComponent;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UActorAttachmentsComponent* ActorAttachmentsComponent;
+    
 public:
     ASeatBase();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
 private:
     UFUNCTION()
     void HandleSeatReleasedFromSlot(bool NewOwner);
-
+    
     UFUNCTION()
     void HandleSeatPlacedInSlot();
-
+    
 public:
     UFUNCTION(BlueprintPure)
-    AVehicleBase *GetVehicleSlottedTo() const;
+    AVehicleBase* GetVehicleSlottedTo() const;
+    
 };
+

@@ -5,15 +5,15 @@
 
 class UAstroEntitySceneComponentTaskManager;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UAstroEntitySceneComponentSystem : public UAstroEntitySystem
-{
+UCLASS(Blueprintable)
+class ASTRO_API UAstroEntitySceneComponentSystem : public UAstroEntitySystem {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
-    UAstroEntitySceneComponentTaskManager *SceneComponentTaskManager;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    UAstroEntitySceneComponentTaskManager* SceneComponentTaskManager;
+    
 public:
     UAstroEntitySceneComponentSystem();
 };
+

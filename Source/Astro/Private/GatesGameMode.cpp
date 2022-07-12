@@ -1,10 +1,10 @@
 #include "GatesGameMode.h"
 
-class AGateChamber;
+class AGateEngine;
 class AGateStation;
 class AAstroPlanet;
-class AGateEngine;
 class USolarSystem;
+class AGateChamber;
 
 AGateStation* AGatesGameMode::TryGetGateStationActor() const {
     return NULL;

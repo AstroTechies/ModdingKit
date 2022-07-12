@@ -9,10 +9,10 @@ USTRUCT(BlueprintType)
 struct FVehicleBaseReplicationData {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     AAstroPlayerController* DrivingController;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ASeatBase* SeatPilotingThisVehicle;
     
     ASTRO_API FVehicleBaseReplicationData();

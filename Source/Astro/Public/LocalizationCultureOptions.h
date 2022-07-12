@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "LocalizationCultureOptions.generated.h"
 
-UCLASS(Blueprintable, BlueprintType)
-class ULocalizationCultureOptions : public UDataAsset
-{
+UCLASS(Blueprintable)
+class ULocalizationCultureOptions : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FString, FString> DisplayLanguageToCultureMapping;
-
+    
     ULocalizationCultureOptions();
 };
+

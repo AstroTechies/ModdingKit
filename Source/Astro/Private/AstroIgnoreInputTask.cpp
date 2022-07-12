@@ -7,6 +7,6 @@ UAstroIgnoreInputTask* UAstroIgnoreInputTask::CreateAstroIgnoreInputTask(UAstroA
     return NULL;
 }
 
-UAstroIgnoreInputTask::UAstroIgnoreInputTask(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+UAstroIgnoreInputTask::UAstroIgnoreInputTask() : UGameplayTask(FObjectInitializer()) {
 }
 

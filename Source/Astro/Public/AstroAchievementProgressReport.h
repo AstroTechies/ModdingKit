@@ -3,17 +3,17 @@
 #include "EAstroAchievementKeys.h"
 #include "AstroAchievementProgressReport.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FAstroAchievementProgressReport {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAstroAchievementKeys Key;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Progress;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NeededCount;
     
     ASTRO_API FAstroAchievementProgressReport();

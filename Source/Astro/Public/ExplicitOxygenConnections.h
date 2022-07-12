@@ -8,10 +8,10 @@ USTRUCT(BlueprintType)
 struct FExplicitOxygenConnections {
     GENERATED_BODY()
 public:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<ASlotConnection*> Connections;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<int32> RailConnections;
     
     ASTRO_API FExplicitOxygenConnections();

@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "ProceduralExpression.generated.h"
 
-UCLASS(Blueprintable, Abstract)
-class TERRAIN2_API UProceduralExpression : public UObject
-{
+UCLASS(Abstract)
+class TERRAIN2_API UProceduralExpression : public UObject {
     GENERATED_BODY()
 public:
     UProceduralExpression();
 };
+

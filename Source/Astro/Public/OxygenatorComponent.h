@@ -1,65 +1,66 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
 #include "OxygenatorSignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "OxygenatorComponent.generated.h"
 
 class APhysicalItem;
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UOxygenatorComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UOxygenatorComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOxygenatorSignal OnSupplyingOxygenChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOxygenatorSignal OnOxygenatorEndPlay;
-
+    
 protected:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
-    uint8 bRequiresPower : 1;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bSuppliesOxygenToContainedCharactersOnly : 1;
-
-    UPROPERTY(BlueprintReadWrite, Transient, ReplicatedUsing = OnRep_IsSupplyingOxygen, meta = (AllowPrivateAccess = true))
-    uint8 bIsSupplyingOxygen : 1;
-
-    UPROPERTY(SaveGame)
-    uint8 bIsOxygenSupplyEnabled : 1;
-
-    UPROPERTY(Transient)
-    APhysicalItem *OwnerItem;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bRequiresPower: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bSuppliesOxygenToContainedCharactersOnly: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_IsSupplyingOxygen, meta=(AllowPrivateAccess=true))
+    uint8 bIsSupplyingOxygen: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    uint8 bIsOxygenSupplyEnabled: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    APhysicalItem* OwnerItem;
+    
 public:
     UOxygenatorComponent();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
 protected:
     UFUNCTION()
     void OnRep_IsSupplyingOxygen();
-
+    
     UFUNCTION()
     void OnOwnerNotFullyPowered();
-
+    
     UFUNCTION()
     void OnOwnerItemRemovedFromSlot(bool bNewOwner);
-
+    
     UFUNCTION()
     void OnOwnerItemPlacedInSlot();
-
+    
     UFUNCTION()
     void OnOwnerFullyPowered();
-
+    
     UFUNCTION()
     void OnItemPadSpawned();
-
+    
     UFUNCTION()
     void OnItemPadDestroyed();
-
+    
 public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthoritySetOxygenSupplyEnabled(bool bSupplyEnabled);
+    
 };
+

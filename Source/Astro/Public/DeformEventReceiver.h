@@ -1,29 +1,30 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
-#include "OnTerrainEventDelegate.h"
 #include "OnAcceptResourceDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "OnTerrainEventDelegate.h"
 #include "OnTerrainDeformationDensityDeltaReceivedDelegate.h"
 #include "DeformEventReceiver.generated.h"
 
 class AActor;
 class UDeformEventReceiver;
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UDeformEventReceiver : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UDeformEventReceiver : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnTerrainEvent OnTerrainEvent;
-
-    UPROPERTY(BlueprintAssignable, BlueprintCallable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintCallable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnAcceptResource OnAcceptResource;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnTerrainDeformationDensityDeltaReceived OnTerrainDeformationDensityDeltaReceived;
-
+    
     UDeformEventReceiver();
     UFUNCTION(BlueprintPure)
-    static UDeformEventReceiver *ActorDeformEventReceiver(AActor *Actor);
+    static UDeformEventReceiver* ActorDeformEventReceiver(AActor* Actor);
+    
 };
+

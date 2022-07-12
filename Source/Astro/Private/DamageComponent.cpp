@@ -1,7 +1,7 @@
 #include "DamageComponent.h"
 
-class UDamageComponent;
 class AActor;
+class UDamageComponent;
 
 bool UDamageComponent::Kill(bool ignoreIndestructible) {
     return false;

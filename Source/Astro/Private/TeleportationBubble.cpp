@@ -1,6 +1,6 @@
 #include "TeleportationBubble.h"
 #include "Net/UnrealNetwork.h"
-#include "Components/StaticMeshComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=StaticMeshComponent -FallbackName=StaticMeshComponent
 #include "ActorAttachmentsComponent.h"
 
 class AAstroCharacter;

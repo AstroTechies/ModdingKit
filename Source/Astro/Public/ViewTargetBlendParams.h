@@ -1,22 +1,22 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Camera/PlayerCameraManager.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EViewTargetBlendFunction -FallbackName=EViewTargetBlendFunction
 #include "ViewTargetBlendParams.generated.h"
 
 USTRUCT(BlueprintType)
 struct ASTRO_API FViewTargetBlendParams {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float BlendTime;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float BlendExponent;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(EditAnywhere)
     TEnumAsByte<EViewTargetBlendFunction> BlendFunction;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bLockOutgoing;
     
     FViewTargetBlendParams();

@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FAutoCraneOverlapTestRequest {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     AAutoCrane* AutoCrane;
     
     ASTRO_API FAutoCraneOverlapTestRequest();

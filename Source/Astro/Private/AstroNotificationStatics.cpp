@@ -1,11 +1,11 @@
 #include "AstroNotificationStatics.h"
 #include "Templates/SubclassOf.h"
 
-class UObject;
 class UAstroNotificationDatabase;
-class AActor;
-class UItemType;
 class USceneComponent;
+class UObject;
+class UItemType;
+class AActor;
 
 void UAstroNotificationStatics::PresentUnlockNotification(UObject* WorldContextObject, const FAstroNotificationUnlockAuthoringData& AuthoringData) {
 }

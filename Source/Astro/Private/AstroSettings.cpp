@@ -1,7 +1,7 @@
 #include "AstroSettings.h"
 
-class AAstroSettings;
 class AActor;
+class AAstroSettings;
 
 AAstroSettings* AAstroSettings::GetAstroSettings(AActor* Actor) {
     return NULL;
@@ -17,7 +17,6 @@ AAstroSettings::AAstroSettings() {
     this->bTrailer = false;
     this->bRelease = false;
     this->bBalancePalettes = false;
-    this->bAnalyticsEnabled = true;
     this->IntroCinematicSequence = NULL;
     this->LatestUpdateCinematicSequence = NULL;
     this->OutroCinematicSequence = NULL;

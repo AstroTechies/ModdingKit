@@ -10,7 +10,7 @@ struct FAstroRemotePlayerChunk : public FAstroSaveChunk {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     APlayerController* Controller;
     
 public:

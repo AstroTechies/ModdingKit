@@ -1,21 +1,21 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "FoliageDestructionInfo.h"
 #include "AstroFoliageDestructionData.generated.h"
 
 class UAstroFoliageDestructionGroup;
 
-UCLASS(Blueprintable, Blueprintable)
-class TERRAIN2_API UAstroFoliageDestructionData : public UDataAsset
-{
+UCLASS()
+class TERRAIN2_API UAstroFoliageDestructionData : public UDataAsset {
     GENERATED_BODY()
 public:
     UPROPERTY(EditDefaultsOnly)
     FFoliageDestructionInfo DefaultFoliageDestructionInfo;
-
+    
     UPROPERTY(EditDefaultsOnly)
-    TArray<UAstroFoliageDestructionGroup *> DestructionGroups;
-
+    TArray<UAstroFoliageDestructionGroup*> DestructionGroups;
+    
     UAstroFoliageDestructionData();
 };
+

@@ -1,104 +1,129 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Camera/CameraTypes.h"
-#include "GameFramework/Actor.h"
-#include "UObject/NoExportTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=MinimalViewInfo -FallbackName=MinimalViewInfo
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "Camera/CameraComponent.h"
 #include "CameraRigActor.generated.h"
 
-class UCameraModifierComponent;
 class APlayController;
-class UCameraComponent;
+class UCameraModifierComponent;
 class USceneComponent;
 
-UCLASS(Blueprintable, Blueprintable)
-class ACameraRigActor : public AActor
-{
+UCLASS(Blueprintable)
+class ACameraRigActor : public AActor {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DefaultFieldOfView;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DefaultAspectRatio;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CollisionRadius;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CollisionRecoveryInterpSpeed;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float CollisionRecoveryRampUpDuration;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float CollisionRecoveryDelay;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float CollisionImmediateRecoveryRetractThrehsold;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bForceManualZoomInwardWhenColliding: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float MinimumForcedZoom;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float CollisionZoomRetractInterpSpeed;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float CollisionZoomRetractRampUpDuration;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float CollisionZoomRetractDelay;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool UsePlanetUp;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool IgnoreMultitoolDistance;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SpringFactor;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DampingRatio;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SubstepCount;
-
-    UPROPERTY(EditAnywhere)
-    uint8 bAdoptTransitionSourceView : 1;
-
-    UPROPERTY(EditAnywhere)
-    uint8 bDistanceAutolock : 1;
-
-    UPROPERTY(EditAnywhere)
-    uint8 bHorizontalAutolock : 1;
-
-    UPROPERTY(EditAnywhere)
-    uint8 bVerticalAutolock : 1;
-
-    UPROPERTY(EditAnywhere)
-    uint8 AutoTickDisable : 1;
-
-    UPROPERTY(EditAnywhere)
-    uint8 bShouldAvoidCollisionWhenSwappingRigActor : 1;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
-    APlayController *OwningController;
-
-    UPROPERTY(Export)
-    TArray<UCameraModifierComponent *> Modifiers;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bAdoptTransitionSourceView: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bDistanceAutolock: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bHorizontalAutolock: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bVerticalAutolock: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 AutoTickDisable: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bShouldAvoidCollisionWhenSwappingRigActor: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    APlayController* OwningController;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    TArray<UCameraModifierComponent*> Modifiers;
+    
 private:
-    UPROPERTY()
-    AActor *ViewTarget;
-
-    UPROPERTY(Export)
-    USceneComponent *ViewSubTarget;
-
-    UPROPERTY(Export, VisibleAnywhere)
-    UCameraComponent *ControlledCamera;
-
-    UPROPERTY()
-    AActor *LastNearestSolarBody;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    AActor* ViewTarget;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USceneComponent* ViewSubTarget;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UCameraComponent* ControlledCamera;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    AActor* LastNearestSolarBody;
+    
 public:
     ACameraRigActor();
     UFUNCTION(BlueprintImplementableEvent)
     void OnSetView();
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void OnRemoveView();
-
+    
     UFUNCTION(BlueprintNativeEvent)
-    FVector GetViewTargetUp(const AActor *Target);
-
+    FVector GetViewTargetUp(const AActor* Target);
+    
     UFUNCTION(BlueprintNativeEvent)
-    FVector GetViewTargetLocation(const AActor *Target);
-
+    FVector GetViewTargetLocation(const AActor* Target);
+    
     UFUNCTION(BlueprintPure)
     FMinimalViewInfo GetViewInfo();
-
+    
     UFUNCTION(BlueprintPure)
-    AActor *GetTarget();
-
+    AActor* GetTarget();
+    
     UFUNCTION(BlueprintPure)
-    UCameraComponent *GetControlledCamera();
+    UCameraComponent* GetControlledCamera();
+    
 };
+

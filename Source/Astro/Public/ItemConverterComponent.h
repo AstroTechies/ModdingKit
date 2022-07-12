@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ActiveItemConversion.h"
-#include "AstroEntityComponent.h"
-#include "SlotReference.h"
-#include "PossibleItemConversion.h"
 #include "AstroDatumRef.h"
+#include "SlotReference.h"
+#include "AstroEntityComponent.h"
+#include "PossibleItemConversion.h"
+#include "ActiveItemConversion.h"
 #include "EItemConverterState.h"
 #include "ItemConverterComponent.generated.h"
 
@@ -12,34 +12,34 @@ USTRUCT(BlueprintType)
 struct FItemConverterComponent : public FAstroEntityComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> InputSlots;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> OutputSlots;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FPossibleItemConversion> PossibleConversions;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> ExternalResourceSlots;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FActiveItemConversion> ActiveItemConversions;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FAstroDatumRef> VolatileItemEntityRefsToDetonate;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     bool bWantsToBeActive;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     EItemConverterState ConverterState;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     int32 ActiveConversionIDCounter;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     int32 SelectedOutputItemTypeIndex;
     
     ASTRO_API FItemConverterComponent();

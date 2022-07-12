@@ -4,9 +4,9 @@
 #include "ItemScrappingFormula.generated.h"
 
 UCLASS(Blueprintable, NonTransient)
-class ASTRO_API UItemScrappingFormula : public UItemConversionFormula
-{
+class ASTRO_API UItemScrappingFormula : public UItemConversionFormula {
     GENERATED_BODY()
 public:
     UItemScrappingFormula();
 };
+

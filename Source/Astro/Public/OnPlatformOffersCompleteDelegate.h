@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 #include "OnPlatformOffersCompleteDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPlatformOffersComplete, bool, bSuccess);
+UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnPlatformOffersComplete, bool, bSuccess, bool, bShowHold);
 

@@ -1,10 +1,10 @@
 #include "ClickQuery.h"
 
-class AActor;
-class UClickQuery;
-class UStorageChassisComponent;
 class UPrimitiveComponent;
+class AActor;
+class UStorageChassisComponent;
 class APlayController;
+class UClickQuery;
 
 void UClickQuery::SetResultTertiary(AActor* Actor, AActor* ViewActor, EClickBehavior Behavior) {
 }

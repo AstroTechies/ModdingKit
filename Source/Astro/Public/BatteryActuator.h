@@ -5,29 +5,29 @@
 
 class APhysicalItem;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API ABatteryActuator : public AFullnessActuator
-{
+UCLASS(Blueprintable)
+class ASTRO_API ABatteryActuator : public AFullnessActuator {
     GENERATED_BODY()
 public:
     ABatteryActuator();
-
 protected:
     UFUNCTION()
     void OnAuthorityFullyCharged();
-
+    
     UFUNCTION()
     void OnAuthorityEndFullyCharged();
-
+    
     UFUNCTION()
     void OnAuthorityEndEmptyCharge();
-
+    
     UFUNCTION()
     void OnAuthorityEmptyCharge();
-
+    
     UFUNCTION()
     void AuthorityHandleTargetStorageSlotsReset();
-
+    
     UFUNCTION()
-    void AuthorityHandleAttachedStorageSlotEvent(APhysicalItem *movedItem);
+    void AuthorityHandleAttachedStorageSlotEvent(APhysicalItem* movedItem);
+    
 };
+

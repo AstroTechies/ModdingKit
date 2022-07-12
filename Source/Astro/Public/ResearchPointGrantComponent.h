@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct FResearchPointGrantComponent : public FAstroEntityComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     float ResearchPointsGranted;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint8 bResearchPointsHaveBeenGranted: 1;
     
     ASTRO_API FResearchPointGrantComponent();

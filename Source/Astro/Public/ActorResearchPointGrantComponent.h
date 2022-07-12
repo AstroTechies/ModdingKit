@@ -3,16 +3,16 @@
 #include "SingleUseConsumableComponent.h"
 #include "ActorResearchPointGrantComponent.generated.h"
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UActorResearchPointGrantComponent : public USingleUseConsumableComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UActorResearchPointGrantComponent : public USingleUseConsumableComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinPointsGranted;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxPointsGranted;
-
+    
     UActorResearchPointGrantComponent();
 };
+

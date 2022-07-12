@@ -5,13 +5,13 @@
 
 class ADeformTool;
 
-UCLASS(Blueprintable, Blueprintable)
-class UDeformToolCameraContext : public UCameraContext
-{
+UCLASS(Blueprintable)
+class UDeformToolCameraContext : public UCameraContext {
     GENERATED_BODY()
 public:
-    UPROPERTY()
-    ADeformTool *DeformTool;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    ADeformTool* DeformTool;
+    
     UDeformToolCameraContext();
 };
+

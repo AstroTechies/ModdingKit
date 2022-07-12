@@ -1,26 +1,26 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
-#include "InputCoreTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "InputKeyToIconMappingEntry.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
 #include "InputKeyToIconMapping.generated.h"
 
-UCLASS(Blueprintable, BlueprintType)
-class UInputKeyToIconMapping : public UDataAsset
-{
+UCLASS(Blueprintable)
+class UInputKeyToIconMapping : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FKey, FInputKeyToIconMappingEntry> KeyToIconMappingXbox;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FKey, FInputKeyToIconMappingEntry> KeyToIconMappingPS4;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FKey, FInputKeyToIconMappingEntry> KeyToIconMappingSwitch;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FKey, FInputKeyToIconMappingEntry> KeyToIconMappingKeyboardMouse;
-
+    
     UInputKeyToIconMapping();
 };
+

@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "ResourceExtractorState.h"
 #include "ExtractorGroupResourceCache.h"
 #include "EResourceExtractorActivationFlags.h"
@@ -8,46 +8,46 @@
 
 class AResourceExtractor;
 
-UCLASS(Blueprintable, Blueprintable)
-class UResourceExtractorManager : public UObject
-{
+UCLASS(Blueprintable)
+class UResourceExtractorManager : public UObject {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FResourceExtractorState> States;
-
-    UPROPERTY(SaveGame)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FExtractorGroupResourceCache> Caches;
-
-    UPROPERTY(SaveGame)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<int32> ReconcileOperationQueue;
-
-    UPROPERTY(SaveGame)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<int32> AddToCacheOperationQueue;
-
-    UPROPERTY(SaveGame)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<int32> RemoveFromOperationQueue;
-
-    UPROPERTY(SaveGame)
+    
+    UPROPERTY(EditAnywhere, SaveGame)
     uint32 GroupIDCounter;
-
+    
 public:
     UResourceExtractorManager();
-
 private:
     UFUNCTION()
-    void OnHammerDroppped(AResourceExtractor *Extractor);
-
+    void OnHammerDroppped(AResourceExtractor* Extractor);
+    
     UFUNCTION()
-    void OnClientVisualStateChanged(AResourceExtractor *Extractor);
-
+    void OnClientVisualStateChanged(AResourceExtractor* Extractor);
+    
     UFUNCTION()
-    void OnClientAnimProgressChanged(AResourceExtractor *Extractor);
-
+    void OnClientAnimProgressChanged(AResourceExtractor* Extractor);
+    
     UFUNCTION()
-    void OnBillowsBegin(AResourceExtractor *Extractor);
-
+    void OnBillowsBegin(AResourceExtractor* Extractor);
+    
     UFUNCTION()
-    void OnActivationStatusChanged(AResourceExtractor *Extractor, EResourceExtractorActivationFlags ChangedFlag, bool IsActive);
+    void OnActivationStatusChanged(AResourceExtractor* Extractor, EResourceExtractorActivationFlags ChangedFlag, bool IsActive);
+    
 };
+

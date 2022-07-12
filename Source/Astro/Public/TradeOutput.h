@@ -9,7 +9,7 @@ USTRUCT(BlueprintType)
 struct FTradeOutput {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSubclassOf<UItemType>, float> OutputTypes;
     
     ASTRO_API FTradeOutput();

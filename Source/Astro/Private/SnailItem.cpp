@@ -4,12 +4,11 @@
 #include "PlanetEffect.h"
 #include "AdaptiveTickComponent.h"
 
-class UItemList;
 class UCrackableActorComponent;
 class APhysicalItem;
-class APlayController;
-class UPrimitiveComponent;
 class AActor;
+class UPrimitiveComponent;
+class UItemList;
 class UItemType;
 
 
@@ -20,9 +19,6 @@ void ASnailItem::OnSnailCrackedChanged(UCrackableActorComponent* CrackableActorC
 }
 
 void ASnailItem::OnRep_OnSnailIsInteractableChanged() {
-}
-
-void ASnailItem::OnPlayerEmotePlayed(EEmoteType EmoteType, APlayController* Player) {
 }
 
 

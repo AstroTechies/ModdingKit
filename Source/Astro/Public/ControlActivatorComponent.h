@@ -1,34 +1,35 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "ControlActivatorComponent.generated.h"
 
 class AActor;
 class UControlComponent;
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UControlActivatorComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UControlActivatorComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    UControlComponent *ActiveControl;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UControlComponent* ActiveControl;
+    
 private:
-    UPROPERTY(ReplicatedUsing = OnRep_ControlledToolActor)
-    AActor *ControlledToolActor;
-
-    UPROPERTY(Replicated)
-    AActor *PassengerToolActor;
-
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_ControlledToolActor, meta=(AllowPrivateAccess=true))
+    AActor* ControlledToolActor;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
+    AActor* PassengerToolActor;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool ChangedControlActor;
-
+    
 public:
     UControlActivatorComponent();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
 private:
     UFUNCTION()
-    void OnRep_ControlledToolActor(AActor *oldActor);
+    void OnRep_ControlledToolActor(AActor* oldActor);
+    
 };
+

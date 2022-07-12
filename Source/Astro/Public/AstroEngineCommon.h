@@ -9,10 +9,10 @@ struct ASTRO_API FAstroEngineCommon {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UAstroErrorWidget* ErrorWidget;
     
-    UPROPERTY(Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UAstroErrorWidget* SessionOperationInProgressWidget;
     
 public:

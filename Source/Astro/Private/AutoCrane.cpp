@@ -1,11 +1,11 @@
 #include "AutoCrane.h"
 #include "Net/UnrealNetwork.h"
-#include "PowerComponent.h"
 #include "AstroActionComponent.h"
+#include "PowerComponent.h"
 
-class AActor;
 class UAnimationAsset;
 class APhysicalItem;
+class AActor;
 
 void AAutoCrane::OnRep_TransferProgress() {
 }

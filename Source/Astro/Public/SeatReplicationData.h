@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FSeatReplicationData {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     AVehicleBase* VehicleSlottedTo;
     
     ASTRO_API FSeatReplicationData();

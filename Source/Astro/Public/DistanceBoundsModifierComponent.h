@@ -3,22 +3,22 @@
 #include "CameraModifierComponent.h"
 #include "DistanceBoundsModifierComponent.generated.h"
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class UDistanceBoundsModifierComponent : public UCameraModifierComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class UDistanceBoundsModifierComponent : public UCameraModifierComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float InnerBound;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float OuterBound;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CorrectionSpeed;
-
-    UPROPERTY(EditAnywhere)
-    uint8 bMaintainHeightOnCorrection : 1;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bMaintainHeightOnCorrection: 1;
+    
     UDistanceBoundsModifierComponent();
 };
+

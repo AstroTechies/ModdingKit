@@ -7,13 +7,13 @@ USTRUCT(BlueprintType)
 struct FVehicleDrillReplicationData {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool ToolIsActive;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool CollectedExcessTerrain;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EVehicleDrillToolMode DrillToolMode;
     
     ASTRO_API FVehicleDrillReplicationData();

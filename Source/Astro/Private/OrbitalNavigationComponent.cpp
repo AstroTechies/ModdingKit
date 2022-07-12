@@ -1,10 +1,10 @@
 #include "OrbitalNavigationComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class ASolarBody;
 class UObject;
-class AActor;
+class ASolarBody;
 class AAstroPlayerController;
+class AActor;
 class UOrbitalNavigationComponent;
 
 void UOrbitalNavigationComponent::SetPlanetSelection(bool Enable) {

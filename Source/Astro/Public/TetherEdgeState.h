@@ -8,10 +8,10 @@ USTRUCT(BlueprintType)
 struct FTetherEdgeState {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTetherGraphEdge Edge;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FEdgeVisualComponent View;
     
     ASTRO_API FTetherEdgeState();

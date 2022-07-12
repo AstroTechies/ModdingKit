@@ -5,13 +5,13 @@
 
 class UPrimitiveComponent;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API AResourceInfoNeeded : public AResourceInfo
-{
+UCLASS(Blueprintable)
+class ASTRO_API AResourceInfoNeeded : public AResourceInfo {
     GENERATED_BODY()
 public:
-    UPROPERTY(Export)
-    UPrimitiveComponent *PlaceholderMesh;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPrimitiveComponent* PlaceholderMesh;
+    
     AResourceInfoNeeded();
 };
+

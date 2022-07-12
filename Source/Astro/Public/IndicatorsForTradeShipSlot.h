@@ -9,7 +9,7 @@ USTRUCT(BlueprintType)
 struct FIndicatorsForTradeShipSlot {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<UItemType>> IndicatorTypes;
     
     ASTRO_API FIndicatorsForTradeShipSlot();

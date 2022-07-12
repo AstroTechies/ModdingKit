@@ -9,10 +9,10 @@ USTRUCT(BlueprintType)
 struct FSublistItem {
     GENERATED_BODY()
 public:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemType> DurableType;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemType> ConsumableType;
     
     ASTRO_API FSublistItem();

@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "MaterialRemapTable.generated.h"
 
 class UMaterialInterface;
 
-UCLASS(Blueprintable, Blueprintable)
-class UMaterialRemapTable : public UDataAsset
-{
+UCLASS()
+class UMaterialRemapTable : public UDataAsset {
     GENERATED_BODY()
 public:
     UPROPERTY(EditDefaultsOnly)
-    TMap<UMaterialInterface *, UMaterialInterface *> BasicToHQMaterials;
-
+    TMap<UMaterialInterface*, UMaterialInterface*> BasicToHQMaterials;
+    
     UMaterialRemapTable();
 };
+

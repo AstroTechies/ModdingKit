@@ -5,13 +5,13 @@
 
 class UStreamingPowerSystem;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UAstroStreamingPowerTickTaskManager : public UAstroEntityTaskManager
-{
+UCLASS(Blueprintable)
+class ASTRO_API UAstroStreamingPowerTickTaskManager : public UAstroEntityTaskManager {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
-    UStreamingPowerSystem *StreamingPowerSystem;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    UStreamingPowerSystem* StreamingPowerSystem;
+    
     UAstroStreamingPowerTickTaskManager();
 };
+

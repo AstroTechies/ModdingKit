@@ -4,12 +4,12 @@
 
 class UAstroEntityWorld;
 class ATetherManager;
-class UBeaconManager;
 class USolarSystem;
-class UAutoCraneManager;
 class UCollectibleHandler;
-class UAstroServerCommWorldDataMap;
 class UResourceExtractorManager;
+class UAutoCraneManager;
+class UAstroServerCommWorldDataMap;
+class UBeaconManager;
 class UCameraFacingManager;
 class UCreativeModeData;
 class UObject;
@@ -21,46 +21,46 @@ USTRUCT(BlueprintType)
 struct FWorldSingletons {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAstroEntityWorld* EntityWorld;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATetherManager* TetherManager;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     USolarSystem* SolarSystem;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UCollectibleHandler* CollectibleHandler;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UAstroServerCommWorldDataMap* ServerComm;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UBeaconManager* BeaconManager;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAutoCraneManager* AutoCraneManager;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UResourceExtractorManager* ResourceExtractorManager;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UCameraFacingManager* CameraFacingManager;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UCreativeModeData* CreativeModeData;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UObject* PictureRenderTargetLockedObject;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UAstroFoliageDestructionManager* FoliageDestructionManager;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     USlotOrganizationRuleBroker* SlotOrganizationRuleBroker;
     
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     TArray<UVoxelVolumeComponent*> ActiveVoxelVolumes;
     
     ASTRO_API FWorldSingletons();

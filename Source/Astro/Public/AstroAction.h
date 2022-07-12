@@ -1,47 +1,48 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "OnActionEndedDelegate.h"
-#include "UObject/Object.h"
-#include "AstroActionContext.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+//CROSS-MODULE INCLUDE V2: -ModuleName=GameplayTasks -ObjectName=GameplayTaskOwnerInterface -FallbackName=GameplayTaskOwnerInterface
 #include "GameplayTaskOwnerInterface.h"
 #include "EAstroActionState.h"
 #include "AstroActionIdentifier.h"
+#include "AstroActionContext.h"
 #include "AstroAction.generated.h"
 
 class UGameplayTask;
 
-UCLASS(Blueprintable, Abstract, BlueprintType)
-class ASTRO_API UAstroAction : public UObject, public IGameplayTaskOwnerInterface
-{
+UCLASS(Abstract, Blueprintable)
+class ASTRO_API UAstroAction : public UObject, public IGameplayTaskOwnerInterface {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnActionEnded OnActionEnded;
-
+    
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(EditAnywhere)
     uint8 RequiredResources;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(EditAnywhere)
     uint8 Priority;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bInterruptedBySamePriority : 1;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bInterruptedBySamePriority: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAstroActionIdentifier Identifier;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAstroActionState State;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAstroActionContext Context;
-
-    UPROPERTY(Transient)
-    TArray<UGameplayTask *> ActiveTasks;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    TArray<UGameplayTask*> ActiveTasks;
+    
 public:
     UAstroAction();
-
+    
     // Fix for true pure virtual functions not being implemented
 };
+

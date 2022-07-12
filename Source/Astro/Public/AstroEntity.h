@@ -10,19 +10,19 @@ USTRUCT(BlueprintType)
 struct FAstroEntity : public FAstroDatum {
     GENERATED_BODY()
 public:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint8 bHasBeenInitialized: 1;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FName DefinitionName;
     
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TSubclassOf<AActor> ViewActorType;
     
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(EditAnywhere)
     TWeakObjectPtr<AActor> ViewActorTemplate;
     
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(EditAnywhere, SaveGame)
     TWeakObjectPtr<AActor> ViewActor;
     
     ASTRO_API FAstroEntity();

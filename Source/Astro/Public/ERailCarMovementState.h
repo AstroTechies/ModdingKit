@@ -8,6 +8,6 @@ enum class ERailCarMovementState : uint8 {
     Moving,
     Blocked,
     NoPower,
-    None,
+    LowPower,
 };
 

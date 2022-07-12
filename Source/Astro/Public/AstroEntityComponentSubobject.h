@@ -1,24 +1,24 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "AstroDatumRef.h"
 #include "AstroEntityComponentSubobject.generated.h"
 
 class UAstroEntityComponentSubobjectDefinition;
 
-UCLASS(Blueprintable, BlueprintType)
-class UAstroEntityComponentSubobject : public UObject
-{
+UCLASS(Blueprintable)
+class UAstroEntityComponentSubobject : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FAstroDatumRef OwnerComponentRef;
-
-    UPROPERTY(SaveGame)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FName DefinitionName;
-
-    UPROPERTY(BlueprintReadWrite, Transient, meta = (AllowPrivateAccess = true))
-    UAstroEntityComponentSubobjectDefinition *Definition;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    UAstroEntityComponentSubobjectDefinition* Definition;
+    
     UAstroEntityComponentSubobject();
 };
+

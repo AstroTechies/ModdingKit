@@ -19,6 +19,9 @@ float UFlyingVtolMovementComponent::GetFlightSpeedScalarNormalized() {
     return 0.0f;
 }
 
+void UFlyingVtolMovementComponent::DelayedGravitySourceRemoval() {
+}
+
 void UFlyingVtolMovementComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
     

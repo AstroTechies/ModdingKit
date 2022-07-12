@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "ResearchBonusTimeline.h"
 #include "ResearchProgressionTable.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class UResearchProgressionTable : public UDataAsset
-{
+UCLASS(Blueprintable)
+class UResearchProgressionTable : public UDataAsset {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FResearchBonusTimeline> BonusTimelines;
-
+    
 public:
     UResearchProgressionTable();
 };
+

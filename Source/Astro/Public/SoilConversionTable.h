@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "SoilConversion.h"
 #include "SoilConversionTable.generated.h"
 
-UCLASS(Blueprintable, BlueprintType)
-class ASTRO_API USoilConversionTable : public UDataAsset
-{
+UCLASS(Blueprintable)
+class ASTRO_API USoilConversionTable : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSoilConversion> SoilConversions;
-
+    
     USoilConversionTable();
 };
+

@@ -3,16 +3,16 @@
 #include "CameraModifierComponent.h"
 #include "FixedHorizontalOffsetModifierComponent.generated.h"
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class UFixedHorizontalOffsetModifierComponent : public UCameraModifierComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class UFixedHorizontalOffsetModifierComponent : public UCameraModifierComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float UpperLimit;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LowerLimit;
-
+    
     UFixedHorizontalOffsetModifierComponent();
 };
+

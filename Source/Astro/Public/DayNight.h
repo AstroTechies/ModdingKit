@@ -1,66 +1,67 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
-#include "UObject/NoExportTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
 #include "SolarBodyRelativeTransforms.h"
-#include "UObject/NoExportTypes.h"
+#include "Components/SkyLightComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 #include "DayNight.generated.h"
 
-class UAstroSaveCustomArchiveProxy;
 class ASolarBody;
-class USkyLightComponent;
+class UAstroSaveCustomArchiveProxy;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API ADayNight : public AActor
-{
+UCLASS(Blueprintable)
+class ASTRO_API ADayNight : public AActor {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor SpaceAmbientColor;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SpaceAmbientIntensity;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SolarSystemSpeed;
-
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     float SkyVisibility;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ServerCorrectionTime;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor SpaceFakeBounce;
-
-    UPROPERTY(Transient)
-    ASolarBody *LockLocalBody;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    ASolarBody* LockLocalBody;
+    
 protected:
-    UPROPERTY(Transient)
-    TArray<ASolarBody *> SolarBodies;
-
-    UPROPERTY(Transient)
-    TMap<ASolarBody *, FSolarBodyRelativeTransforms> SolarBodyReleativeTransforms;
-
-    UPROPERTY(Export, VisibleDefaultsOnly)
-    USkyLightComponent *SkyLight;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    TArray<ASolarBody*> SolarBodies;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    TMap<ASolarBody*, FSolarBodyRelativeTransforms> SolarBodyReleativeTransforms;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USkyLightComponent* SkyLight;
+    
 private:
-    UPROPERTY(Replicated, SaveGame, Transient)
+    UPROPERTY(EditAnywhere, Replicated, SaveGame, Transient)
     double ServerTimeStamp;
-
-    UPROPERTY(SaveGame, Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, Transient, meta=(AllowPrivateAccess=true))
     FTransform InitialTransform;
-
-    UPROPERTY(SaveGame, Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, Transient, meta=(AllowPrivateAccess=true))
     float TargetSkyVisibility;
-
+    
 public:
     ADayNight();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
 protected:
     UFUNCTION()
-    void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy *proxy);
+    void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy);
+    
 };
+

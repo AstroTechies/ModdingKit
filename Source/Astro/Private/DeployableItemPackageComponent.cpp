@@ -1,11 +1,11 @@
 #include "DeployableItemPackageComponent.h"
 #include "Templates/SubclassOf.h"
 
+class APhysicalItem;
 class UItemType;
 class UTexture;
-class UPrimitiveComponent;
-class APhysicalItem;
 class AActor;
+class UPrimitiveComponent;
 
 void UDeployableItemPackageComponent::SetupPackagedItem(TSubclassOf<UItemType> ItemTypeToDeploy) {
 }

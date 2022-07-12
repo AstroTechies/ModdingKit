@@ -2,12 +2,12 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class UItemType;
-class AControlPanel;
-class UClickQuery;
 class APhysicalItem;
+class UItemType;
 class UAstroSaveCustomArchiveProxy;
 class AActor;
+class AControlPanel;
+class UClickQuery;
 class UPrinterComponent;
 
 void UPrinterComponent::UnlockedItemsChanged(const TArray<TSubclassOf<UItemType>>& NewUnlockedItems) {

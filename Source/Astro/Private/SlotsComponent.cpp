@@ -3,15 +3,15 @@
 #include "Templates/SubclassOf.h"
 
 class APhysicalItem;
-class UItemType;
-class USlotBehavior;
-class AActor;
-class UAstroSaveCustomArchiveProxy;
 class ASlotConnection;
+class UItemType;
+class UAstroSaveCustomArchiveProxy;
+class AAstroPlayerController;
+class AActor;
 class USlotsComponent;
 class UStaticMeshComponent;
 class USlotDelegates;
-class AAstroPlayerController;
+class USlotBehavior;
 
 bool USlotsComponent::TakeSlotItemOfTypeFromOther(FSlotReference Slot, FSlotReference Other, TSubclassOf<UItemType> Type) {
     return false;
@@ -237,16 +237,16 @@ void USlotsComponent::ConnectPowerToItem(FSlotReference SlotRef, APhysicalItem* 
 void USlotsComponent::BreakAllSlotConnections(FSlotReference Slot) {
 }
 
-void USlotsComponent::AuxUseRight(AAstroPlayerController* Controller, EInputEvent InputEvent) {
+void USlotsComponent::AuxUseRight(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> InputEvent) {
 }
 
-void USlotsComponent::AuxUseLeft(AAstroPlayerController* Controller, EInputEvent InputEvent) {
+void USlotsComponent::AuxUseLeft(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> InputEvent) {
 }
 
-void USlotsComponent::AuxUseAll(AAstroPlayerController* Controller, EInputEvent InputEvent) {
+void USlotsComponent::AuxUseAll(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> InputEvent) {
 }
 
-void USlotsComponent::AuxUse(FSlotReference AuxSlot, AAstroPlayerController* Controller, EInputEvent InputEvent) {
+void USlotsComponent::AuxUse(FSlotReference AuxSlot, AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> InputEvent) {
 }
 
 void USlotsComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {

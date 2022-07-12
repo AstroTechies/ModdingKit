@@ -1,21 +1,21 @@
 #include "AstroGameState.h"
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
-#include "RewardState.h"
-#include "ActuatorQueue.h"
-#include "AstropediaAssetManager.h"
 #include "RewardSystem.h"
+#include "RewardState.h"
+#include "AstropediaAssetManager.h"
+#include "ActuatorQueue.h"
 #include "ActorEntityLinkComponent.h"
 
+class USoundBase;
+class UItemType;
+class ARailNetwork;
 class APhysicalItem;
 class UAstroSaveCustomArchiveProxy;
-class ARailNetwork;
-class AActor;
 class AAstroMissionsManager;
-class UItemType;
-class USoundBase;
-class UParticleSystem;
+class AActor;
 class AAstroPlanet;
+class UParticleSystem;
 class AAstroCharacter;
 
 void AAstroGameState::UnregisterSpawnedStartingItem(APhysicalItem* Item) {

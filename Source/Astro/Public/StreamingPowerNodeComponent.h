@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroEntityComponent.h"
 #include "AstroDatumRef.h"
+#include "AstroEntityComponent.h"
 #include "StreamingPowerNodeComponent.generated.h"
 
 class UPowerComponent;
@@ -10,38 +10,38 @@ USTRUCT(BlueprintType)
 struct FStreamingPowerNodeComponent : public FAstroEntityComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FAstroDatumRef> ConnectionsInbound;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FAstroDatumRef> ConnectionsOutbound;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FAstroDatumRef> NeighboringNodesConnectedByMergedLinkNodes;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FAstroDatumRef> MergedNodeConnections;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FAstroDatumRef> VampireConnections;
     
-    UPROPERTY(BlueprintReadWrite, Export, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<UPowerComponent*> PowerGenerators;
     
-    UPROPERTY(BlueprintReadWrite, Export, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<UPowerComponent*> PowerConsumers;
     
-    UPROPERTY(BlueprintReadWrite, Export, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<UPowerComponent*> Batteries;
     
-    UPROPERTY(BlueprintReadWrite, Export, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<UPowerComponent*> Capacitors;
     
-    UPROPERTY(BlueprintReadWrite, Export, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<UPowerComponent*> AttachedPowerComponents;
     
 private:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FAstroDatumRef ParentMergedNode;
     
 public:

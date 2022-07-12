@@ -6,10 +6,10 @@ class ASeatBase;
 
 
 
-void AVehicleBase::PerformVehicleAux2Action(AAstroPlayerController* OriginatingController, EInputEvent eventType) {
+void AVehicleBase::PerformVehicleAux2Action(AAstroPlayerController* OriginatingController, TEnumAsByte<EInputEvent> eventType) {
 }
 
-void AVehicleBase::PerformVehicleAux1Action(AAstroPlayerController* OriginatingController, EInputEvent eventType) {
+void AVehicleBase::PerformVehicleAux1Action(AAstroPlayerController* OriginatingController, TEnumAsByte<EInputEvent> eventType) {
 }
 
 void AVehicleBase::OnRep_VehicleBaseReplicationData() {

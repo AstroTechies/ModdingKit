@@ -3,18 +3,19 @@
 #include "AstroGameMenuSpatialWindow.h"
 #include "AstroGameMenuSubPaneWidget.generated.h"
 
-UCLASS(Blueprintable, Abstract, EditInlineNew)
-class UAstroGameMenuSubPaneWidget : public UAstroGameMenuSpatialWindow
-{
+UCLASS(Abstract, Blueprintable, EditInlineNew)
+class UAstroGameMenuSubPaneWidget : public UAstroGameMenuSpatialWindow {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bFullScreen;
-
+    
     UAstroGameMenuSubPaneWidget();
     UFUNCTION(BlueprintImplementableEvent)
     void NavigatedAwayFrom(bool isNavigateBack);
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void MenuBeingClosed();
+    
 };
+

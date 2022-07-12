@@ -5,13 +5,13 @@
 
 class UMultiTool;
 
-UCLASS(Blueprintable, Blueprintable)
-class UMultitoolCameraContext : public UCameraContext
-{
+UCLASS(Blueprintable)
+class UMultitoolCameraContext : public UCameraContext {
     GENERATED_BODY()
 public:
-    UPROPERTY(Export)
-    UMultiTool *MultiTool;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UMultiTool* MultiTool;
+    
     UMultitoolCameraContext();
 };
+

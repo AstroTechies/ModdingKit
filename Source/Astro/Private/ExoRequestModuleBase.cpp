@@ -2,8 +2,8 @@
 #include "Net/UnrealNetwork.h"
 
 class APhysicalItem;
-class APlayController;
 class UTexture;
+class APlayController;
 
 void AExoRequestModuleBase::UpdateScore() {
 }

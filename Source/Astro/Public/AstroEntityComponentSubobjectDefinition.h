@@ -1,25 +1,25 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "UObject/Object.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "EAstroEntityComponentSubobjectTickGroup.h"
 #include "AstroEntityComponentSubobjectDefinition.generated.h"
 
 class UAstroEntityComponentSubobject;
 
-UCLASS(Blueprintable, BlueprintType, EditInlineNew)
-class UAstroEntityComponentSubobjectDefinition : public UObject
-{
+UCLASS(Blueprintable, EditInlineNew)
+class UAstroEntityComponentSubobjectDefinition : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName Name;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UAstroEntityComponentSubobject> RuntimeSubobjectType;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAstroEntityComponentSubobjectTickGroup TickGroup;
-
+    
     UAstroEntityComponentSubobjectDefinition();
 };
+

@@ -2,15 +2,15 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class UItemType;
-class UPrinterComponent;
 class APhysicalItem;
-class AActor;
-class UVoxelVolumeComponent;
 class UControlSymbol;
+class UItemType;
+class AActor;
+class UPrinterComponent;
+class UVoxelVolumeComponent;
+class AAstroPlanet;
 class UPrimitiveComponent;
 class AAstroCharacter;
-class AAstroPlanet;
 class UObject;
 
 void AAstroPlayerController::WouldCompleteCollection_RespondToServer_Implementation(bool response, int32 RequestID) {
@@ -127,9 +127,9 @@ bool AAstroPlayerController::ServerResetGameStateAchievementProgress_Validate() 
     return true;
 }
 
-void AAstroPlayerController::ServerRequestUnlockItem_Implementation(TSubclassOf<UItemType> ItemTypeToUnlock, bool bAllowPlayFabBinding) {
+void AAstroPlayerController::ServerRequestUnlockItem_Implementation(TSubclassOf<UItemType> ItemTypeToUnlock) {
 }
-bool AAstroPlayerController::ServerRequestUnlockItem_Validate(TSubclassOf<UItemType> ItemTypeToUnlock, bool bAllowPlayFabBinding) {
+bool AAstroPlayerController::ServerRequestUnlockItem_Validate(TSubclassOf<UItemType> ItemTypeToUnlock) {
     return true;
 }
 
@@ -469,9 +469,6 @@ void AAstroPlayerController::RebuildNodeWithLogging(const FString& locationCode)
 void AAstroPlayerController::PrintDebugLocations() {
 }
 
-void AAstroPlayerController::PersistCharacterCustomization() {
-}
-
 void AAstroPlayerController::OnRep_AchievementProgress() {
 }
 
@@ -735,6 +732,12 @@ void AAstroPlayerController::ClientAwardAchievement_Implementation(const EAstroA
 }
 
 void AAstroPlayerController::ClientAuthComplete_Implementation(bool bSuccess) {
+}
+
+void AAstroPlayerController::ClientAddProxySessionReservations_Implementation(const TArray<FString>& userIdsToAdd) {
+}
+bool AAstroPlayerController::ClientAddProxySessionReservations_Validate(const TArray<FString>& userIdsToAdd) {
+    return true;
 }
 
 void AAstroPlayerController::ClearDebugLocations() {

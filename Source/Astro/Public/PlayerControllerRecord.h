@@ -6,13 +6,13 @@ USTRUCT(BlueprintType)
 struct FPlayerControllerRecord {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint32 ActorIndex;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint32 LastControlledPawn;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint64 NetworkUuid;
     
     ASTRO_API FPlayerControllerRecord();

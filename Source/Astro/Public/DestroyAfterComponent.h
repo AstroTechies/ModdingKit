@@ -1,38 +1,39 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "DestroySequenceParticlesStartedDelegate.h"
 #include "DestroyAfterComponent.generated.h"
 
 class UParticleSystemComponent;
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UDestroyAfterComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UDestroyAfterComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
-    uint8 bStartTimerOnBeginPlay : 1;
-
-    UPROPERTY(SaveGame)
-    uint8 bTimerStarted : 1;
-
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bStartTimerOnBeginPlay: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    uint8 bTimerStarted: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinLife;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxLife;
-
-    UPROPERTY(Export, Transient)
-    UParticleSystemComponent *DestroyParticles;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UParticleSystemComponent* DestroyParticles;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FDestroySequenceParticlesStarted OnParticlesStarted;
-
+    
     UDestroyAfterComponent();
     UFUNCTION(BlueprintCallable)
     void StartTimer();
-
+    
     UFUNCTION(BlueprintCallable)
-    void PlayDestroyParticlesAndDelete(UParticleSystemComponent *particles, float playParticlesAfter, float destroyAfter);
+    void PlayDestroyParticlesAndDelete(UParticleSystemComponent* particles, float playParticlesAfter, float destroyAfter);
+    
 };
+

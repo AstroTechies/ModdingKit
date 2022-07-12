@@ -8,7 +8,7 @@ struct FAstroCharacterActiveOverrides {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FMovementOverrideNetData> NetData;
     
 public:

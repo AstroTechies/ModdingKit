@@ -1,27 +1,27 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "AstroDatumRef.h"
-#include "ActiveItemConversionItemInput.h"
 #include "ActiveItemConversionItemOutput.h"
+#include "ActiveItemConversionItemInput.h"
 #include "ActiveItemConversion.generated.h"
 
 USTRUCT(BlueprintType)
 struct FActiveItemConversion {
     GENERATED_BODY()
 public:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FAstroDatumRef> InputItemEntityRefs;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FActiveItemConversionItemInput> ItemInputs;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FActiveItemConversionItemOutput> ItemOutputs;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     float ProgressRatio;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     int32 ID;
     
     ASTRO_API FActiveItemConversion();

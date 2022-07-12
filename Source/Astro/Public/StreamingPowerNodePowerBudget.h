@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "StreamingPowerNodePowerBudget.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FStreamingPowerNodePowerBudget {
     GENERATED_BODY()
 public:

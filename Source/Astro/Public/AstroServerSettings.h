@@ -1,91 +1,91 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
-#include "UObject/NoExportTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
 #include "PlayerProperties.h"
 #include "AstroServerSettings.generated.h"
 
-UCLASS(Blueprintable, DefaultConfig, Config = Game)
-class UAstroServerSettings : public UObject
-{
+UCLASS(Blueprintable, DefaultConfig, Config=AstroServerSettings)
+class UAstroServerSettings : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxServerFramerate;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxServerIdleFramerate;
-
+    
     UPROPERTY(Config, EditAnywhere)
     uint32 MaximumPlayerCount;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bLoadAutoSave;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString ExitSemaphore;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bWaitForPlayersBeforeShutdown;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 ConsolePort;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString ConsolePassword;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString PublicIP;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 HeartbeatInterval;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString ServerName;
-
-    UPROPERTY(Config)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGuid ServerGuid;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString OwnerName;
-
+    
     UPROPERTY(Config, EditAnywhere)
     uint64 OwnerGuid;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 PlayerActivityTimeout;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString ServerPassword;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bDisableServerTravel;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FPlayerProperties> PlayerProperties;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool DenyUnlistedPlayers;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool VerbosePlayerProperties;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool Dirty;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 AutoSaveGameInterval;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 BackupSaveGamesInterval;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString ActiveSaveFileDescriptiveName;
-
+    
 private:
-    UPROPERTY(Config)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString ServerAdvertisedName;
-
+    
 public:
     UAstroServerSettings();
 };
+

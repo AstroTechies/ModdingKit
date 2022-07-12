@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "CraftingOriginDependencyMap.h"
-#include "Engine/DataAsset.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "CraftingDependencyMapList.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UCraftingDependencyMapList : public UDataAsset
-{
+UCLASS(Blueprintable)
+class ASTRO_API UCraftingDependencyMapList : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FCraftingOriginDependencyMap> Dependencies;
-
+    
     UCraftingDependencyMapList();
 };
+

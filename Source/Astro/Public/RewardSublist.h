@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct FRewardSublist {
     GENERATED_BODY()
 public:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FSublistItem> Items;
     
     ASTRO_API FRewardSublist();

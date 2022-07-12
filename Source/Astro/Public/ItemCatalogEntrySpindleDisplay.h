@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ItemCatalogEntry.h"
 #include "ItemCatalogEntryDisplay.h"
-#include "InputCoreTypes.h"
+#include "ItemCatalogEntry.h"
 #include "OnItemIconMeshClickedDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
 #include "ItemCatalogEntrySpindleDisplay.generated.h"
 
 class UStaticMeshComponent;
@@ -11,51 +11,52 @@ class UMaterialInterface;
 class UMeshComponent;
 class UPrimitiveComponent;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UItemCatalogEntrySpindleDisplay : public UItemCatalogEntryDisplay
-{
+UCLASS(Blueprintable)
+class ASTRO_API UItemCatalogEntrySpindleDisplay : public UItemCatalogEntryDisplay {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnItemIconMeshClicked OnItemIconMeshClicked;
-
+    
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bItemIconMeshesAreClickable;
-
-    UPROPERTY(EditDefaultsOnly)
-    UMaterialInterface *UnavailableItemIconMaterial;
-
-    UPROPERTY(EditDefaultsOnly)
-    UMaterialInterface *AvailableItemIconMaterial;
-
-    UPROPERTY(EditDefaultsOnly)
-    UMaterialInterface *UnlockedItemIconMaterial;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    TArray<UStaticMeshComponent *> ItemIconMeshComponents;
-
-    UPROPERTY(Export, Transient)
-    UMeshComponent *ItemIconMeshParent;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInterface* UnavailableItemIconMaterial;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInterface* AvailableItemIconMaterial;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInterface* UnlockedItemIconMaterial;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    TArray<UStaticMeshComponent*> ItemIconMeshComponents;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UMeshComponent* ItemIconMeshParent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FName> ItemIconMeshSockets;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FItemCatalogEntry CatalogEntry;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 SelectedItemContinuousIndex;
-
+    
 public:
     UItemCatalogEntrySpindleDisplay();
     UFUNCTION(BlueprintCallable)
-    void SetItemIconMeshComponents(UMeshComponent *newItemIconMeshParent, const TArray<UStaticMeshComponent *> &newItemIconMeshComponents);
-
+    void SetItemIconMeshComponents(UMeshComponent* newItemIconMeshParent, const TArray<UStaticMeshComponent*>& newItemIconMeshComponents);
+    
     UFUNCTION()
-    void ItemIconMeshClicked(UPrimitiveComponent *clickedComponent, FKey ButtonPressed);
-
+    void ItemIconMeshClicked(UPrimitiveComponent* clickedComponent, FKey ButtonPressed);
+    
 protected:
     UFUNCTION(BlueprintPure)
     int32 ContinuousIndexToItemIconMeshIndex(const int32 continuousIndex) const;
+    
 };
+

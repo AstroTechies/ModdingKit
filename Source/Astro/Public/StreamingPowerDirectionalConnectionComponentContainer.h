@@ -5,15 +5,16 @@
 #include "AstroDatumRef.h"
 #include "StreamingPowerDirectionalConnectionComponentContainer.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UStreamingPowerDirectionalConnectionComponentContainer : public UAstroEntityComponentContainer
-{
+UCLASS(Blueprintable)
+class ASTRO_API UStreamingPowerDirectionalConnectionComponentContainer : public UAstroEntityComponentContainer {
     GENERATED_BODY()
 public:
     UStreamingPowerDirectionalConnectionComponentContainer();
     UFUNCTION(BlueprintPure)
-    static FStreamingPowerDirectionalConnectionComponent GetStreamingPowerConnectionComponent(FAstroDatumRef StreamingPowerConnectionComponentRef, bool &bOutSuccess);
-
+    static FStreamingPowerDirectionalConnectionComponent GetStreamingPowerConnectionComponent(FAstroDatumRef StreamingPowerConnectionComponentRef, bool& bOutSuccess);
+    
     UFUNCTION(BlueprintPure)
-    static FStreamingPowerDirectionalConnectionComponent FindStreamingPowerConnectionComponent(FAstroDatumRef EntityRef, bool &bOutSuccess);
+    static FStreamingPowerDirectionalConnectionComponent FindStreamingPowerConnectionComponent(FAstroDatumRef EntityRef, bool& bOutSuccess);
+    
 };
+

@@ -6,10 +6,10 @@ USTRUCT(BlueprintType)
 struct FVehicleDrillSedimentReplicationData {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 AvailableSediment;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 SedimentCapacity;
     
     ASTRO_API FVehicleDrillSedimentReplicationData();

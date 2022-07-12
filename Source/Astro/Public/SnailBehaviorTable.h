@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "ESnailBehaviorTriggerType.h"
 #include "SnailBehaviorData.h"
 #include "SnailBehaviorTable.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class USnailBehaviorTable : public UDataAsset
-{
+UCLASS(Blueprintable)
+class USnailBehaviorTable : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ESnailBehaviorTriggerType, FSnailBehaviorData> DefaultBehaviorMap;
-
+    
     USnailBehaviorTable();
 };
+

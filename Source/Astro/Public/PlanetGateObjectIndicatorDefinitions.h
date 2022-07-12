@@ -1,27 +1,27 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "IndicatorMeshDefinition.h"
 #include "PlanetGateObjectIndicatorDefinitions.generated.h"
 
 class UGateObjectIndicatorDefinition;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UPlanetGateObjectIndicatorDefinitions : public UDataAsset
-{
+UCLASS(Blueprintable)
+class ASTRO_API UPlanetGateObjectIndicatorDefinitions : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
-    UGateObjectIndicatorDefinition *ChamberIndicatorDefinition;
-
-    UPROPERTY(EditDefaultsOnly)
-    UGateObjectIndicatorDefinition *EngineIndicatorDefinition;
-
-    UPROPERTY(EditDefaultsOnly)
-    UGateObjectIndicatorDefinition *PlanetIndicatorDefinition;
-
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UGateObjectIndicatorDefinition* ChamberIndicatorDefinition;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UGateObjectIndicatorDefinition* EngineIndicatorDefinition;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UGateObjectIndicatorDefinition* PlanetIndicatorDefinition;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FIndicatorMeshDefinition PlanetMeshDefinition;
-
+    
     UPlanetGateObjectIndicatorDefinitions();
 };
+

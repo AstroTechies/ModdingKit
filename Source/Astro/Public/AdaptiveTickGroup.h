@@ -1,26 +1,26 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 #include "TickingObject.h"
 #include "AdaptiveTickGroup.generated.h"
 
 class AAstroCharacter;
 
-UCLASS(Blueprintable, Blueprintable)
-class AAdaptiveTickGroup : public AActor
-{
+UCLASS(Blueprintable)
+class AAdaptiveTickGroup : public AActor {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Transient)
-    TArray<AAstroCharacter *> m_characters;
-
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    TArray<AAstroCharacter*> m_characters;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FTickingObject> m_mobileObjects;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FTickingObject> m_staticObjects;
-
+    
 public:
     AAdaptiveTickGroup();
 };
+

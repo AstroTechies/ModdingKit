@@ -1,13 +1,13 @@
 #include "SlotStatics.h"
 #include "Templates/SubclassOf.h"
 
-class APhysicalItem;
-class UTooltipComponent;
-class UClickQuery;
 class UItemType;
+class APhysicalItem;
 class UItemComponent;
-class UPrimitiveComponent;
 class UObject;
+class UClickQuery;
+class UPrimitiveComponent;
+class UTooltipComponent;
 class UItemList;
 class AActor;
 
@@ -127,7 +127,7 @@ int32 USlotStatics::TakeAnyItem(FSlotReference Slot, TSubclassOf<UItemType>& Typ
     return 0;
 }
 
-bool USlotStatics::SpawnItemsInSlotArray(const TArray<FSlotReference>& Slots, const TArray<TSubclassOf<UItemType>>& ItemsToSpawn, TArray<APhysicalItem*>& OutSpawnedItems) {
+bool USlotStatics::SpawnItemsInSlotArray(const TArray<FSlotReference>& Slots, const TArray<TSubclassOf<UItemType>>& ItemsToSpawn, TArray<APhysicalItem*>& OutSpawnedItems, bool packageItem) {
     return false;
 }
 
@@ -302,6 +302,10 @@ UTooltipComponent* USlotStatics::GetIndicatorTooltipForSlot(FSlotReference SlotR
     return NULL;
 }
 
+EAuxSlotType USlotStatics::GetAuxSlotType(FSlotReference SlotRef) {
+    return EAuxSlotType::None;
+}
+
 bool USlotStatics::GetAnyItem(FSlotReference SlotRef, int32& Amount, TSubclassOf<UItemType>& Type) {
     return false;
 }
@@ -330,14 +334,6 @@ bool USlotStatics::AttemptToPlacePrimaryItemInConnectedStorageSlotNetwork(FSlotR
 }
 
 bool USlotStatics::AttemptToPlaceItemInConnectedStorageSlotNetwork(APhysicalItem* Item, AActor* ActorInStorageNetwork) {
-    return false;
-}
-
-int32 USlotStatics::AttemptToFetchItemsFromConnectedStorageSlotNetworkToSlotArray(TSubclassOf<UItemType> ItemToRetrieve, const TArray<FSlotReference>& Slots, AActor* ActorInStorageNetwork, int32 NumToTake) {
-    return 0;
-}
-
-bool USlotStatics::AttemptToFetchItemFromConnectedStorageSlotNetworkToSlotArray(TSubclassOf<UItemType> ItemToRetrieve, const TArray<FSlotReference>& Slots, AActor* ActorInStorageNetwork, EItemRetrievalQuantityFilter ItemRetrievalQuantityFilter, bool TakeAll) {
     return false;
 }
 

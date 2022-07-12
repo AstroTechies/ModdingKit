@@ -3,10 +3,10 @@
 #include "ProceduralExpression.h"
 #include "ProceduralExpression_Constant.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class TERRAIN2_API UProceduralExpression_Constant : public UProceduralExpression
-{
+UCLASS()
+class TERRAIN2_API UProceduralExpression_Constant : public UProceduralExpression {
     GENERATED_BODY()
 public:
     UProceduralExpression_Constant();
 };
+

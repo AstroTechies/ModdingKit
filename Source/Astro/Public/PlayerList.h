@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct FPlayerList {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FPlayerInfo> PlayerInfo;
     
     ASTRO_API FPlayerList();

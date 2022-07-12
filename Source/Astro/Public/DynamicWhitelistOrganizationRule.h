@@ -7,19 +7,26 @@
 class UItemType;
 
 UCLASS(Blueprintable, EditInlineNew)
-class UDynamicWhitelistOrganizationRule : public USlotOrganizationRule
-{
+class UDynamicWhitelistOrganizationRule : public USlotOrganizationRule {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<UItemType>> ItemTypeWhitelist;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bShowIndicators: 1;
+    
 public:
     UDynamicWhitelistOrganizationRule();
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
-    void SetWhitelist(const TArray<TSubclassOf<UItemType>> &Whitelist);
-
+    void SetWhitelist(const TArray<TSubclassOf<UItemType>>& Whitelist);
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetShowIndicators(bool showIndicators);
+    
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    void SetRequireNonFullItems(bool requireNonFullItems);
+    
 };
+

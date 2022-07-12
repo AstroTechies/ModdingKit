@@ -7,13 +7,13 @@ USTRUCT(BlueprintType)
 struct FCustomSerializeCallback_DEPRECATED {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FCallback_DEPRECATED Callback;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint32 ArchivePosition;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint16 ArchiveVersion;
     
     ASTRO_API FCustomSerializeCallback_DEPRECATED();

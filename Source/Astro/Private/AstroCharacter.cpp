@@ -3,17 +3,17 @@
 #include "Templates/SubclassOf.h"
 #include "AstroActionComponent.h"
 #include "AstroPlayMontageAction.h"
-#include "Components/CapsuleComponent.h"
-#include "Components/StaticMeshComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=CapsuleComponent -FallbackName=CapsuleComponent
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=StaticMeshComponent -FallbackName=StaticMeshComponent
 
-class UItemType;
-class ABackpack;
 class UChildActorComponent;
 class UControlSymbol;
+class ABackpack;
+class UItemType;
 class ASolarBody;
 class AActor;
-class APlayController;
 class AAstroPlanet;
+class APlayController;
 class ADroneBase;
 
 void AAstroCharacter::UpdatePlayerIndex() {
@@ -43,6 +43,12 @@ void AAstroCharacter::SetFreeOxygen(bool bNewFreeOxygen) {
 void AAstroCharacter::SetBackpackChildActorComponent(UChildActorComponent* NewBackpackChildActorComponent) {
 }
 
+void AAstroCharacter::ServerSetOneTimeItemTooltipTriggered_Implementation(TSubclassOf<UItemType> Item, FName tooltipID, bool bTriggered) {
+}
+bool AAstroCharacter::ServerSetOneTimeItemTooltipTriggered_Validate(TSubclassOf<UItemType> Item, FName tooltipID, bool bTriggered) {
+    return true;
+}
+
 void AAstroCharacter::ServerSetMissionTracked_Implementation(const FName missionId, bool bTracked) {
 }
 bool AAstroCharacter::ServerSetMissionTracked_Validate(const FName missionId, bool bTracked) {
@@ -52,6 +58,12 @@ bool AAstroCharacter::ServerSetMissionTracked_Validate(const FName missionId, bo
 void AAstroCharacter::ServerSetMissionSeen_Implementation(const FName missionId, bool bSeen) {
 }
 bool AAstroCharacter::ServerSetMissionSeen_Validate(const FName missionId, bool bSeen) {
+    return true;
+}
+
+void AAstroCharacter::ServerSetDataLogEntrySeen_Implementation(const FName dataEntryID, bool bSeen) {
+}
+bool AAstroCharacter::ServerSetDataLogEntrySeen_Validate(const FName dataEntryID, bool bSeen) {
     return true;
 }
 
@@ -67,9 +79,6 @@ bool AAstroCharacter::ServerDropHeavyCarriedItems_Validate() {
     return true;
 }
 
-void AAstroCharacter::ReapplySavedCharacterCustomization() {
-}
-
 
 
 void AAstroCharacter::PointItem(TSubclassOf<UItemType> ItemType, TSubclassOf<UControlSymbol> PingSymbol, const FVector& Location, const FVector& Normal) {
@@ -79,6 +88,9 @@ void AAstroCharacter::PlayDamageSound_Implementation() {
 }
 
 
+
+void AAstroCharacter::OnRep_OneTimeTooltipList() {
+}
 
 void AAstroCharacter::OnRep_LocalSolarBody(ASolarBody* oldSolarBody) {
 }
@@ -91,14 +103,15 @@ void AAstroCharacter::OnRep_Health() {
 }
 
 
-void AAstroCharacter::OnRep_CharacterCustomization() {
-}
-
 
 void AAstroCharacter::OnImmunityInitiatorDestroyed(AActor* destroyedInitiator) {
 }
 
 void AAstroCharacter::OnGameplayStarted() {
+}
+
+bool AAstroCharacter::OneTimeItemTooltipTriggered(TSubclassOf<UItemType> Item, const FName tooltipID) const {
+    return false;
 }
 
 
@@ -179,6 +192,10 @@ void AAstroCharacter::EndFocus() {
 void AAstroCharacter::DetachFromSeat(bool bImmediate, bool bForce) {
 }
 
+bool AAstroCharacter::DataLogEntrySeen(const FName dataEntryID) const {
+    return false;
+}
+
 
 
 void AAstroCharacter::AuthoritySetOnHoverboard(bool bNewOnHoverboard) {
@@ -189,6 +206,7 @@ void AAstroCharacter::AuthoritySetLocalSolarBody(ASolarBody* SolarBody) {
 
 void AAstroCharacter::AuthoritySetIsImmuneToDamage(bool bNewIsImmuneToDamage, AActor* immunityInitiator) {
 }
+
 
 
 
@@ -206,6 +224,8 @@ void AAstroCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     DOREPLIFETIME(AAstroCharacter, LocalSolarBody);
     DOREPLIFETIME(AAstroCharacter, MissionsSeen);
     DOREPLIFETIME(AAstroCharacter, MissionsTracked);
+    DOREPLIFETIME(AAstroCharacter, DataLogEntriesSeen);
+    DOREPLIFETIME(AAstroCharacter, TriggeredOneTimeItemTooltips);
     DOREPLIFETIME(AAstroCharacter, bIsOxygenFilling);
     DOREPLIFETIME(AAstroCharacter, bIsTired);
     DOREPLIFETIME(AAstroCharacter, bHaveLifeSupport);

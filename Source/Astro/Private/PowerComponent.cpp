@@ -2,8 +2,8 @@
 #include "Net/UnrealNetwork.h"
 
 class USceneComponent;
-class UPowerComponent;
 class AActor;
+class UPowerComponent;
 
 void UPowerComponent::SetSuppliedVisibility(USceneComponent* Component) {
 }
@@ -61,6 +61,10 @@ void UPowerComponent::HandleFreePowerChanged(bool NewFreePowerChanged) {
 }
 
 float UPowerComponent::GetNetPowerOutput() {
+    return 0.0f;
+}
+
+float UPowerComponent::GetDefaultNetPowerOutput() {
     return 0.0f;
 }
 

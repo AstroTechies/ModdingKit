@@ -3,25 +3,25 @@
 #include "PhysicalItem.h"
 #include "ResearchModule.generated.h"
 
-class UActorResearchComponent;
 class UPowerComponent;
+class UActorResearchComponent;
 class UAdaptiveTickComponent;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API AResearchModule : public APhysicalItem
-{
+UCLASS(Blueprintable)
+class ASTRO_API AResearchModule : public APhysicalItem {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, Export, SaveGame, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UActorResearchComponent *ActorResearchComponent;
-
-    UPROPERTY(BlueprintReadWrite, Export, SaveGame, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UPowerComponent *PowerComponent;
-
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UAdaptiveTickComponent *AdaptiveTickComponent;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, SaveGame, meta=(AllowPrivateAccess=true))
+    UActorResearchComponent* ActorResearchComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, SaveGame, meta=(AllowPrivateAccess=true))
+    UPowerComponent* PowerComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UAdaptiveTickComponent* AdaptiveTickComponent;
+    
 public:
     AResearchModule();
 };
+

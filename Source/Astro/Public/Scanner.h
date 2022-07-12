@@ -1,142 +1,143 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "PhysicalItem.h"
-#include "EScannerTargetDistance.h"
 #include "EScannerMode.h"
 #include "SignalDelegate.h"
+#include "EScannerTargetDistance.h"
 #include "MidRangeScanSettings.h"
 #include "ScannableStatus.h"
 #include "Scanner.generated.h"
 
-class AAstroCharacter;
 class UCurveFloat;
+class AAstroCharacter;
 class AAstroPlayerController;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API AScanner : public APhysicalItem
-{
+UCLASS(Blueprintable)
+class ASTRO_API AScanner : public APhysicalItem {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnPing;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnScanFailed;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnScannerModeChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnTargetDistanceChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnMidRangeDistancePercentageChanged;
-
-    UPROPERTY(BlueprintReadWrite, ReplicatedUsing = OnRep_ScannerMode, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_ScannerMode, meta=(AllowPrivateAccess=true))
     EScannerMode ScannerMode;
-
-    UPROPERTY(BlueprintReadWrite, ReplicatedUsing = OnRep_TargetDistance, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_TargetDistance, meta=(AllowPrivateAccess=true))
     EScannerTargetDistance TargetDistance;
-
-    UPROPERTY(BlueprintReadWrite, ReplicatedUsing = OnRep_MidRangeDistancePercentage, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_MidRangeDistancePercentage, meta=(AllowPrivateAccess=true))
     float MidRangeDistancePercentage;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float PitchAnimationValue;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float YawAnimationValue;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ScanCooldownTimeSeconds;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ShortRangeMaxDistance;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MidRangeMaxDistance;
-
-    UPROPERTY(EditDefaultsOnly)
-    UCurveFloat *PitchAlphaCurve;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveFloat* PitchAlphaCurve;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ShortRangeScanDurationSeconds;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LongRangeScanDurationSeconds;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FMidRangeScanSettings MidRangeMinDistanceScanParameters;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FMidRangeScanSettings MidRangeMaxDistanceScanParameters;
-
-    UPROPERTY(EditDefaultsOnly)
-    UCurveFloat *MidRangeScanSpeedTransitionCurve;
-
-    UPROPERTY(EditDefaultsOnly)
-    UCurveFloat *MidRangeScanSpeedSelectionCurve;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveFloat* MidRangeScanSpeedTransitionCurve;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveFloat* MidRangeScanSpeedSelectionCurve;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 MidRangeScanSweepCount;
-
-    UPROPERTY(EditDefaultsOnly)
-    UCurveFloat *ObfuscationYawOffsetCurve;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveFloat* ObfuscationYawOffsetCurve;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ObfuscationYawOffsetCurveFrequency;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxObfuscationYawOffsetMultiplier;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MidRangeScanIntroAnimationLengthSeconds;
-
-    UPROPERTY(Replicated)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     FScannableStatus CurrentTarget;
-
-    UPROPERTY(ReplicatedUsing = OnRep_UsingCharacter)
+    
+    UPROPERTY(EditAnywhere, ReplicatedUsing=OnRep_UsingCharacter)
     TWeakObjectPtr<AAstroCharacter> UsingCharacter;
-
+    
 public:
     AScanner();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
 protected:
     UFUNCTION()
     void OnRep_UsingCharacter();
-
+    
     UFUNCTION()
     void OnRep_TargetDistance();
-
+    
     UFUNCTION()
     void OnRep_ScannerMode();
-
+    
     UFUNCTION()
     void OnRep_MidRangeDistancePercentage();
-
+    
     UFUNCTION()
     void OnPowerAvailableChanged(bool hasPower);
-
+    
     UFUNCTION()
     void OnMidRangeScanIntroAnimationCompleted();
-
+    
     UFUNCTION()
-    void HandleVehicleUnmanned(AAstroPlayerController *oldUsingPlayer);
-
+    void HandleVehicleUnmanned(AAstroPlayerController* oldUsingPlayer);
+    
     UFUNCTION()
-    void HandleVehicleManned(AAstroPlayerController *newUsingPlayer);
-
+    void HandleVehicleManned(AAstroPlayerController* newUsingPlayer);
+    
     UFUNCTION()
     void HandleReleasedFromSlot(bool NewOwner);
-
+    
     UFUNCTION()
     void HandlePlacedInSlot();
-
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityTryScan();
-
+    
     UFUNCTION()
     void AuthorityOnScanCompleted();
+    
 };
+

@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "BoundedVoxelVolumeModifierList.generated.h"
 
 class UBoundedVoxelVolumeModifier;
 
-UCLASS(Blueprintable, Blueprintable)
-class TERRAIN2_API UBoundedVoxelVolumeModifierList : public UDataAsset
-{
+UCLASS()
+class TERRAIN2_API UBoundedVoxelVolumeModifierList : public UDataAsset {
     GENERATED_BODY()
 public:
     UPROPERTY(EditAnywhere, Export)
-    TArray<UBoundedVoxelVolumeModifier *> Modifiers;
-
+    TArray<UBoundedVoxelVolumeModifier*> Modifiers;
+    
     UBoundedVoxelVolumeModifierList();
 };
+

@@ -1,7 +1,7 @@
 #include "AstroGameUserSettings.h"
 
-class APlayerController;
 class UAstroGameUserSettings;
+class APlayerController;
 
 void UAstroGameUserSettings::UpdateHQTerrainMaterials() {
 }
@@ -341,7 +341,7 @@ UAstroGameUserSettings::UAstroGameUserSettings() {
     this->Brightness = 0;
     this->CloudQuality = 0;
     this->MouseSensitivity = 11;
-    this->MasterVol = 0.80f;
+    this->MasterVol = 0.00f;
     this->MusicVol = 0.80f;
     this->SoundFXVol = 0.80f;
     this->VoiceVol = 0.80f;
@@ -349,7 +349,7 @@ UAstroGameUserSettings::UAstroGameUserSettings() {
     this->InvertedCameraYAxixMouse = false;
     this->bHoldToSprintMouse = true;
     this->bHoldToOrbitCamera = true;
-    this->InvertedCameraYAxisGamepad = false;
+    this->InvertedCameraYAxisGamepad = true;
     this->bHoldToSprintGamepad = false;
     this->bHoldToVirtualCursorGamepad = true;
     this->bUseLegacyAddMode = false;
@@ -357,8 +357,8 @@ UAstroGameUserSettings::UAstroGameUserSettings() {
     this->bVehiclesUseAbsoluteSteering = true;
     this->bVehiclesUseYawAirControls = false;
     this->MaxPlayers = 4;
-    this->NumTimesCreativeTutorialShown = 1;
-    this->NumTimesAdventureTutorialShown = 0;
+    this->NumTimesCreativeTutorialShown = 3;
+    this->NumTimesAdventureTutorialShown = 3;
     this->AllowInitialPlanetSelection = false;
     this->FOVOffset = 0;
     this->HQTerrain = false;

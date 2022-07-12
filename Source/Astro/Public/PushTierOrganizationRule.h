@@ -4,14 +4,14 @@
 #include "PushTierOrganizationRule.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)
-class UPushTierOrganizationRule : public USlotOrganizationRule
-{
+class UPushTierOrganizationRule : public USlotOrganizationRule {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(EditAnywhere)
     uint8 RequestedItemTier;
-
+    
 public:
     UPushTierOrganizationRule();
 };
+

@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Kismet/BlueprintFunctionLibrary.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
 #include "AstroEntityStatics.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UAstroEntityStatics : public UBlueprintFunctionLibrary
-{
+UCLASS(Blueprintable)
+class ASTRO_API UAstroEntityStatics : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     UAstroEntityStatics();
 };
+

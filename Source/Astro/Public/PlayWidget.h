@@ -1,22 +1,23 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Layout/Geometry.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=UMG -ObjectName=UserWidget -FallbackName=UserWidget
+//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=Geometry -FallbackName=Geometry
 #include "Blueprint/UserWidget.h"
 #include "PlayWidget.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)
-class ASTRO_API UPlayWidget : public UUserWidget
-{
+class ASTRO_API UPlayWidget : public UUserWidget {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HealthImageOpacity;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ImmunityImageOpacity;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGeometry CachedGeometry;
-
+    
     UPlayWidget();
 };
+

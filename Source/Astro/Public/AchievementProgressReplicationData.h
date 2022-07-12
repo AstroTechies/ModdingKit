@@ -8,10 +8,10 @@ USTRUCT(BlueprintType)
 struct FAchievementProgressReplicationData {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FAstroAchievementProgressReport> AchievementProgressReportOnly;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAstroPlayerAchievementProgress AchievementProgress;
     
     ASTRO_API FAchievementProgressReplicationData();

@@ -5,8 +5,8 @@ class APlayerController;
 class UStorageChassisComponent;
 class AActor;
 class UAstroSaveCustomArchiveProxy;
-class APlayController;
 class UActorAttachmentsComponent;
+class APlayController;
 class USceneComponent;
 
 bool UActorAttachmentsComponent::TogglePlayerAttachedStorage(APlayerController* Controller, UStorageChassisComponent* storage, bool& Toggled, bool bImmediate, bool bForce) {

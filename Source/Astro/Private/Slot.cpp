@@ -2,7 +2,7 @@
 
 FSlot::FSlot() {
     this->SlotTemplate = NULL;
-    this->SlotType = ESlotType::Power;
+    this->slotType = ESlotType::Power;
     this->ConnectorType = ESlotConnectorType::Plug;
     this->SlotTier = 0;
     this->SlotBinaryTreeDepth = 0;
@@ -30,6 +30,7 @@ FSlot::FSlot() {
     this->bHideConnectorOnPull = false;
     this->bConnectionTense = false;
     this->bUnclickable = false;
+    this->bAlwaysCountsForFullness = false;
     this->bIsManagedByRule = false;
     this->bHasExternallyManagedConnection = false;
     this->bCanAcceptUnslottableItems = false;

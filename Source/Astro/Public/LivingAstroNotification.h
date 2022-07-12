@@ -10,13 +10,13 @@ USTRUCT(BlueprintType)
 struct FLivingAstroNotification {
     GENERATED_BODY()
 public:
-    UPROPERTY(Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USceneComponent* OriginAnchor;
     
-    UPROPERTY(Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UAstroNotificationTagWidget* NotificationWidget;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAstroNotificationTagAuthoringData AuthoringData;
     
     ASTRO_API FLivingAstroNotification();

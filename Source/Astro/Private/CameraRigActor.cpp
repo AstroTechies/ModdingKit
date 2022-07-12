@@ -1,5 +1,5 @@
 #include "CameraRigActor.h"
-#include "Camera/CameraComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=CameraComponent -FallbackName=CameraComponent
 
 class AActor;
 
@@ -30,6 +30,14 @@ ACameraRigActor::ACameraRigActor() {
     this->DefaultAspectRatio = 1.33f;
     this->CollisionRadius = 10.00f;
     this->CollisionRecoveryInterpSpeed = 0.90f;
+    this->CollisionRecoveryRampUpDuration = 3.00f;
+    this->CollisionRecoveryDelay = 0.00f;
+    this->CollisionImmediateRecoveryRetractThrehsold = 0.00f;
+    this->bForceManualZoomInwardWhenColliding = true;
+    this->MinimumForcedZoom = 0.20f;
+    this->CollisionZoomRetractInterpSpeed = 0.90f;
+    this->CollisionZoomRetractRampUpDuration = 3.00f;
+    this->CollisionZoomRetractDelay = 0.75f;
     this->UsePlanetUp = true;
     this->IgnoreMultitoolDistance = false;
     this->SpringFactor = 100.00f;

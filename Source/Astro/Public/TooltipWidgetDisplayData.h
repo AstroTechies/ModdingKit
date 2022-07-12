@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "InteractionPromptEntryData.h"
-#include "EAstroGameMenuTutorialSlideDeckKey.h"
-#include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
-#include "ETooltipAnimationDirection.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
 #include "ETooltipPresentationStyleTypes.h"
+#include "InteractionPromptEntryData.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+#include "EAstroGameMenuTutorialSlideDeckKey.h"
+#include "ETooltipAnimationDirection.h"
 #include "EAstroGameMenuTutoriaSlideCardKey.h"
 #include "TooltipWidgetDisplayData.generated.h"
 
@@ -42,7 +42,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ETooltipAnimationDirection AnimationDirection;
     
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector2D CustomBadgeSize;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

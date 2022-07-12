@@ -6,8 +6,6 @@ UAstroNotificationDatabase::UAstroNotificationDatabase() {
     this->ToastNotificationQueueDisplayFrequency = 0.00f;
     this->SuitUnlockNotifIconColor = EAstroColor::None;
     this->SuitUnlockNotifIcon = NULL;
-    this->EmoteUnlockNotifIconColor = EAstroColor::None;
-    this->EmoteUnlockNotifIcon = NULL;
     this->VisorUnlockNotifIconColor = EAstroColor::None;
     this->VisorUnlockNotifIcon = NULL;
     this->BundleUnlockNotifIconColor = EAstroColor::None;

@@ -1,90 +1,155 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "MarkerStationList.h"
-#include "DeformationParamsT2.h"
-#include "GameFramework/Actor.h"
-#include "RailConnectionLocalData.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 #include "RailConnection.h"
-#include "EStationMarkerType.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformationParamsT2 -FallbackName=DeformationParamsT2
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+#include "DeformationParamsT2.h"
+#include "IndicatorHoloColors.h"
+#include "RailConnectionLocalData.h"
 #include "RailNetwork.generated.h"
 
 class UStaticMesh;
+class UInstancedStaticMeshComponent;
 class UMaterialInterface;
 class UClickableComponent;
-class ASolarBody;
-class USplineMeshComponent;
+class UCapsuleComponent;
+class URailPostComponent;
 class UClickQuery;
-class ARailPostStation;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API ARailNetwork : public AActor
-{
+UCLASS(Blueprintable)
+class ASTRO_API ARailNetwork : public AActor {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxRailAttachDistance;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinRailAttachDistance;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float MaxPostSlottingDistanceSquared;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float MaxCarSlottingDistanceSquared;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float RailAttachMaxAngleDegrees;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float RailDeformVerticalOffset;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FDeformationParamsT2 RailDeformDefaultParams;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(EditAnywhere)
     uint8 MaxCaravanLength;
-
-    UPROPERTY(EditDefaultsOnly)
-    UStaticMesh *RailMesh;
-
-    UPROPERTY(EditDefaultsOnly)
-    UMaterialInterface *ShortIndicatorMaterial;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(EditAnywhere)
+    uint8 NumCapsulesPerRailSpline;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float RailSplineCapsuleRadius;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float ConnectionFinalizationDuration;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float GaugeEmissivePulseFailedTime;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float GaugeEmissiveSlowBlinksPerSecond;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float GaugeEmissiveFastBlinksPerSecond;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float GaugeEmissiveSuperFastBlinksPerSecond;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float GaugeEmissiveMin;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float GaugeEmissiveMax;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float GaugeEmissiveMinColorMultiplier;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FLinearColor GaugeOnColor;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FLinearColor GaugeOffColor;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FLinearColor GaugeWarningColor;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FLinearColor GaugePowerWarningColor;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FLinearColor GaugeErrorColor;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FLinearColor GaugeConnectionColor;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FLinearColor GaugeConnectionOptimalColor;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FIndicatorHoloColors ConnectionIndicatorColors;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FIndicatorHoloColors ConnectionIndicatorColorsOptimal;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FIndicatorHoloColors ConnectionIndicatorColorsInvalid;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UStaticMesh* RailMesh;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInterface* ConnectionIndicatorMaterial;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float PercentageOfMaxDistanceToShowGoodIndicator;
-
+    
 protected:
-    UPROPERTY(Export)
-    UClickableComponent *clickable;
-
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UClickableComponent* clickable;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UInstancedStaticMeshComponent* StopperMeshes;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     int32 NextRailConnectionID;
-
-    UPROPERTY(SaveGame, ReplicatedUsing = OnRep_RailConnections)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_RailConnections, meta=(AllowPrivateAccess=true))
     TArray<FRailConnection> RailConnections;
-
-    UPROPERTY(SaveGame)
-    TMap<ASolarBody *, FMarkerStationList> StationMarkersByPlanet;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<int32, FRailConnectionLocalData> RailConnectionLocalData;
-
-    UPROPERTY(Export)
-    TArray<USplineMeshComponent *> RailConnectionMeshPool;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FRailConnectionLocalData> RailConnectionMeshPool;
+    
+    UPROPERTY(EditAnywhere)
+    TMap<TWeakObjectPtr<UCapsuleComponent>, int32> CapsulesToConnectionIDs;
+    
 public:
     ARailNetwork();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
 protected:
     UFUNCTION()
     void OnRep_RailConnections();
-
+    
+    UFUNCTION(NetMulticast, Reliable)
+    void MulticastStartConnectionFinalization(int32 ConnectionId, URailPostComponent* nearPost, URailPostComponent* farPost);
+    
 public:
     UFUNCTION()
-    void HandleQueryClickable(UClickQuery *Query);
-
-    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
-    bool AuthoritySetStationMarkerForPlanet(ARailPostStation *Station, ASolarBody *stationPlanet, EStationMarkerType marker);
-
-    UFUNCTION(BlueprintAuthorityOnly, BlueprintPure)
-    ARailPostStation *AuthorityGetStationByMarker(ASolarBody *stationPlanet, EStationMarkerType currMarker) const;
-
-    UFUNCTION(BlueprintAuthorityOnly, BlueprintPure)
-    EStationMarkerType AuthorityGetNextAvailableStationMarkerForPlanet(ASolarBody *stationPlanet, EStationMarkerType currMarker, bool incrementSelection);
+    void HandleQueryClickable(UClickQuery* Query);
+    
 };
+

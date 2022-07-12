@@ -7,16 +7,20 @@
 class UItemList;
 
 UCLASS(Blueprintable, EditInlineNew)
-class UWhitelistOrganizationRule : public USlotOrganizationRule
-{
+class UWhitelistOrganizationRule : public USlotOrganizationRule {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemList> ItemTypeWhitelist;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bShowIndicators: 1;
+    
 public:
     UWhitelistOrganizationRule();
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetShowIndicators(bool showIndicators);
+    
 };
+

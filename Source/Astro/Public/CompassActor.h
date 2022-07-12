@@ -1,118 +1,118 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "NavpointVisualData.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 #include "NavpointTypeConfig.h"
-#include "GameFramework/Actor.h"
 #include "ENavpointType.h"
-#include "UObject/NoExportTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
+#include "NavpointVisualData.h"
 #include "CompassActor.generated.h"
 
-class UStaticMesh;
-class UMaterialInstanceDynamic;
 class UMaterial;
-class UStaticMeshComponent;
+class UStaticMesh;
 class UCurveFloat;
+class UStaticMeshComponent;
+class UMaterialInstanceDynamic;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API ACompassActor : public AActor
-{
+UCLASS(Blueprintable)
+class ASTRO_API ACompassActor : public AActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
-    UStaticMesh *RingsMeshAsset;
-
-    UPROPERTY(EditDefaultsOnly)
-    UMaterial *RingsMaterialAsset;
-
-    UPROPERTY(EditDefaultsOnly)
-    UStaticMesh *ElevationLineMesh;
-
-    UPROPERTY(EditDefaultsOnly)
-    UCurveFloat *DistanceCurve;
-
-    UPROPERTY(EditDefaultsOnly)
-    UCurveFloat *NavpointScaleCurve;
-
-    UPROPERTY(EditDefaultsOnly)
-    UCurveFloat *NavpointOpacityCurve;
-
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UStaticMesh* RingsMeshAsset;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterial* RingsMaterialAsset;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UStaticMesh* ElevationLineMesh;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveFloat* DistanceCurve;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveFloat* NavpointScaleCurve;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveFloat* NavpointOpacityCurve;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxNavpointDistanceWithinCompassInterior;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxNavpointDistanceOnCompassPerimeter;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxNavpointElevationChange;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxNavpointIconDistance;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxNavpointIconHeight;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CompassRingsScale;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NavpointScale;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NavpointIconMeshRadius;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NavpointIconMeshHalfHeight;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NavpointMinScaleOnPerimeter;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NavpointMaxScaleOnPerimeter;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NavpointFadeTime;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinOpacityCutoutThreshold;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(EditAnywhere)
     uint8 NavpointCap;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FNavpointTypeConfig DefaultNavpointConfig;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<ENavpointType, FNavpointTypeConfig> NavpointTypeConfig;
-
-    UPROPERTY(Transient)
-    UMaterialInstanceDynamic *RingsMaterial;
-
-    UPROPERTY(Export, Transient)
-    UStaticMeshComponent *Rings;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    UMaterialInstanceDynamic* RingsMaterial;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UStaticMeshComponent* Rings;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FGuid, FNavpointVisualData> Navpoints;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FNavpointVisualData> UnusedNavpointVisuals;
-
+    
 public:
     ACompassActor();
-
 protected:
     UFUNCTION()
     void HandleUserSettingsChanged();
-
+    
     UFUNCTION()
     void HandleOrbitalNavLaunch();
-
+    
     UFUNCTION()
-    void HandleNavpointRemoved(const FGuid &NavpointID);
-
+    void HandleNavpointRemoved(const FGuid& NavpointID);
+    
     UFUNCTION()
-    void HandleNavpointAdded(const FGuid &NavpointID);
-
+    void HandleNavpointAdded(const FGuid& NavpointID);
+    
     UFUNCTION()
     void HandleDrivingStatusChanged();
+    
 };
+

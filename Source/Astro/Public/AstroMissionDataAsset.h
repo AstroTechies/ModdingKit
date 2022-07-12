@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "AstroMissionData.h"
-#include "Engine/DataAsset.h"
 #include "AstroMissionDataAsset.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UAstroMissionDataAsset : public UDataAsset
-{
+UCLASS(Blueprintable)
+class ASTRO_API UAstroMissionDataAsset : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FAstroMissionData> MissionsData;
-
+    
     UAstroMissionDataAsset();
 };
+

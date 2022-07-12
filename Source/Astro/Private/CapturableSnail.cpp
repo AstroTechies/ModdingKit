@@ -11,19 +11,11 @@ void ACapturableSnail::SetOwningCaptureTerrarium(APhysicalItem* captureTerrarium
 
 
 
-
-
 void ACapturableSnail::OnEffectRelevanceChanged(bool IsInRelevancy) {
 }
 
 
 void ACapturableSnail::OnActorOnscreenChanged(AActor* Actor, bool bIsOnscreen, APlayController* Player) {
-}
-
-void ACapturableSnail::MULTI_OnEmoteWheelOpenedOrClosed_Implementation(bool bWheelOpen, APlayController* Player) {
-}
-bool ACapturableSnail::MULTI_OnEmoteWheelOpenedOrClosed_Validate(bool bWheelOpen, APlayController* Player) {
-    return true;
 }
 
 void ACapturableSnail::AuthorityStartCheckOnscreen() {

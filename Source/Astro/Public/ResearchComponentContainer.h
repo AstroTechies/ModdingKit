@@ -5,15 +5,16 @@
 #include "AstroDatumRef.h"
 #include "ResearchComponentContainer.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UResearchComponentContainer : public UAstroEntityComponentContainer
-{
+UCLASS(Blueprintable)
+class ASTRO_API UResearchComponentContainer : public UAstroEntityComponentContainer {
     GENERATED_BODY()
 public:
     UResearchComponentContainer();
     UFUNCTION(BlueprintPure)
-    static FResearchComponent GetResearchComponent(FAstroDatumRef ResearchComponentRef, bool &bOutSuccess);
-
+    static FResearchComponent GetResearchComponent(FAstroDatumRef ResearchComponentRef, bool& bOutSuccess);
+    
     UFUNCTION(BlueprintPure)
-    static FResearchComponent FindResearchComponent(FAstroDatumRef EntityRef, bool &bOutSuccess);
+    static FResearchComponent FindResearchComponent(FAstroDatumRef EntityRef, bool& bOutSuccess);
+    
 };
+

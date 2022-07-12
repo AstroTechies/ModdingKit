@@ -4,15 +4,15 @@
 #include "LockingMechanismDefinition.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)
-class ASTRO_API ULockingMechanismDefinition : public UAstroEntityComponentSubobjectDefinition
-{
+class ASTRO_API ULockingMechanismDefinition : public UAstroEntityComponentSubobjectDefinition {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
-    uint8 bCanBeClosedAfterOpening : 1;
-
-    UPROPERTY(EditAnywhere)
-    uint8 bAutoClosesAfterOpening : 1;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bCanBeClosedAfterOpening: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bAutoClosesAfterOpening: 1;
+    
     ULockingMechanismDefinition();
 };
+

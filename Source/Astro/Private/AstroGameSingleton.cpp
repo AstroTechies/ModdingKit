@@ -18,6 +18,7 @@ UAstroGameSingleton::UAstroGameSingleton() {
     this->MasterItemList = NULL;
     this->ForcedPackageIncludes = NULL;
     this->ResearchProgressionTable = NULL;
+    this->SuitTable = NULL;
     this->DeployableItemPackageCatalog = NULL;
     this->DestructionDefinitionTable = NULL;
     this->ScrapItemType = NULL;

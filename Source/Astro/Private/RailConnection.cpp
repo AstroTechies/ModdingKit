@@ -5,5 +5,6 @@ FRailConnection::FRailConnection() {
     this->bIsIndicator = false;
     this->bIsValid = false;
     this->bIsPostInternal = false;
+    this->bHasOxygen = false;
 }
 

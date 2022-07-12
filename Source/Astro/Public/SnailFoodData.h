@@ -9,10 +9,10 @@ USTRUCT(BlueprintType)
 struct FSnailFoodData {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FedDurationScalar;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemList> FoodItems;
     
     ASTRO_API FSnailFoodData();

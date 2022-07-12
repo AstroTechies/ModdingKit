@@ -1,8 +1,8 @@
 #include "PhysicalItemSpawnList.h"
 #include "Templates/SubclassOf.h"
 
-class APhysicalItem;
 class UPhysicalItemSpawnList;
+class APhysicalItem;
 
 TSubclassOf<APhysicalItem> UPhysicalItemSpawnList::PickActor() {
     return NULL;

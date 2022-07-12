@@ -12,6 +12,6 @@ UAstroInterpolateItemTask* UAstroInterpolateItemTask::CreateAstroInterpolateItem
     return NULL;
 }
 
-UAstroInterpolateItemTask::UAstroInterpolateItemTask(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+UAstroInterpolateItemTask::UAstroInterpolateItemTask() : UGameplayTask(FObjectInitializer()) {
 }
 

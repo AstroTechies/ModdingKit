@@ -1,89 +1,90 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "Engine/DeveloperSettings.h"
-#include "Curves/CurveFloat.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DeveloperSettings -FallbackName=DeveloperSettings
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=RuntimeFloatCurve -FallbackName=RuntimeFloatCurve
 #include "UISettings.generated.h"
 
 class UUserWidget;
 class UAstroErrorWidget;
-class UVirtualCursorWidget;
 class UUISettings;
+class UVirtualCursorWidget;
 
-UCLASS(Blueprintable, BlueprintType, DefaultConfig, Config = Game)
-class ASTRO_API UUISettings : public UDeveloperSettings
-{
+UCLASS(Blueprintable, DefaultConfig, Config=Game)
+class ASTRO_API UUISettings : public UDeveloperSettings {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UUserWidget> EarlyAccessWatermark;
-
-    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool DisplayEarlyAccessWatermark;
-
-    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UUserWidget> ExperimentalWatermark;
-
-    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool DisplayExperimentalWatermark;
-
+    
 private:
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UUserWidget> LoadingScreenWidget;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UUserWidget> WaitForPlayerInputWidget;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UUserWidget> ConfirmChangeProfilesWidget;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UUserWidget> ReconnectControllerWidget;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UUserWidget> PlayTogetherPromptWidget;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UAstroErrorWidget> ErrorWidgetClass;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UAstroErrorWidget> SessionOperationInProgressWidgetClass;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UVirtualCursorWidget> WidgetClass;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CursorSize;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DeadZone;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxSpeed;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxSpeedWhenHovered;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinSpeed;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AccelerationMultiplier;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve MovementCurve;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bHasIntertia;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DragCoefficient;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DragCoefficientWhenHovered;
-
+    
 public:
     UUISettings();
     UFUNCTION(BlueprintPure)
-    static UUISettings *GetAstroUISettings();
+    static UUISettings* GetAstroUISettings();
+    
 };
+

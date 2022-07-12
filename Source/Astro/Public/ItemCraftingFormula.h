@@ -4,9 +4,9 @@
 #include "ItemCraftingFormula.generated.h"
 
 UCLASS(Blueprintable, NonTransient)
-class ASTRO_API UItemCraftingFormula : public UItemConversionFormula
-{
+class ASTRO_API UItemCraftingFormula : public UItemConversionFormula {
     GENERATED_BODY()
 public:
     UItemCraftingFormula();
 };
+

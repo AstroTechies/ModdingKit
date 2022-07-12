@@ -6,15 +6,15 @@
 
 class UItemType;
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UTradeShipDockComponent_Whitelist : public UTradeShipDockComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UTradeShipDockComponent_Whitelist : public UTradeShipDockComponent {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<UItemType>> ItemTypeWhitelist;
-
+    
 public:
     UTradeShipDockComponent_Whitelist();
 };
+

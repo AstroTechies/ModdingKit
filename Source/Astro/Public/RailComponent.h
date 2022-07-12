@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "OnUpdateRailCartDelegate.h"
 #include "RailItem.h"
 #include "SlotReference.h"
@@ -10,33 +10,34 @@ class AActor;
 class APhysicalItem;
 class ASlotConnection;
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class ASTRO_API URailComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API URailComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnUpdateRailCart OnUpdateCart;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MoveSpeed;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FRailItem> RailItems;
-
+    
 private:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSlotReference NotifySlot;
-
-    UPROPERTY()
-    ASlotConnection *OwnerConnection;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    ASlotConnection* OwnerConnection;
+    
 public:
     URailComponent();
     UFUNCTION(BlueprintCallable)
-    bool SendItem(APhysicalItem *Item, AActor *Source);
-
+    bool SendItem(APhysicalItem* Item, AActor* Source);
+    
 private:
     UFUNCTION(NetMulticast, Unreliable)
     void MulticastSendRail(bool Immediate);
+    
 };
+

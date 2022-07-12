@@ -6,27 +6,27 @@
 class UCurveVector;
 class UCurveFloat;
 
-UCLASS(Blueprintable, Abstract)
-class ASTRO_API UAstroPackagingAction : public UAstroPlayMontageAction
-{
+UCLASS(Abstract, Blueprintable)
+class ASTRO_API UAstroPackagingAction : public UAstroPlayMontageAction {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
-    UCurveVector *LocationCurve;
-
-    UPROPERTY(EditDefaultsOnly)
-    UCurveVector *RotationCurve;
-
-    UPROPERTY(EditDefaultsOnly)
-    UCurveVector *ScaleCurve;
-
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveVector* LocationCurve;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveVector* RotationCurve;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveVector* ScaleCurve;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName ItemInterpolationTargetComponentName;
-
-    UPROPERTY(EditDefaultsOnly)
-    UCurveFloat *ItemTargetInterpolationProgressCurve;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveFloat* ItemTargetInterpolationProgressCurve;
+    
 public:
     UAstroPackagingAction();
 };
+

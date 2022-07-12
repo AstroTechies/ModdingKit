@@ -6,45 +6,46 @@
 #include "Repackager.generated.h"
 
 class UAstroActionComponent;
-class UAstroAction;
-class UAstroRepackAction;
 class AActor;
+class UAstroRepackAction;
+class UAstroAction;
 
-UCLASS(Blueprintable, Abstract)
-class ASTRO_API ARepackager : public APhysicalItem
-{
+UCLASS(Abstract, Blueprintable)
+class ASTRO_API ARepackager : public APhysicalItem {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UAstroActionComponent *ActionComponent;
-
-    UPROPERTY(BlueprintReadWrite, Transient, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UAstroActionComponent* ActionComponent;
+    
+    UPROPERTY(EditAnywhere, Transient)
     TWeakObjectPtr<APhysicalItem> RepackagingTarget;
-
-    UPROPERTY(BlueprintReadWrite, Transient, ReplicatedUsing = OnRepackagingTargetStateChanged, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRepackagingTargetStateChanged, meta=(AllowPrivateAccess=true))
     ERepackagingTargetState TargetState;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UAstroRepackAction> RepackActionType;
-
+    
 public:
     ARepackager();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
 protected:
     UFUNCTION()
     void UpdateRepackagingTarget();
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void OnRepackagingTargetStateChanged();
-
+    
     UFUNCTION(BlueprintImplementableEvent)
-    void OnRepackageActionFinishedAuthority(UAstroAction *repackageAction);
-
+    void OnRepackageActionFinishedAuthority(UAstroAction* repackageAction);
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void InitiateRepackaging();
-
+    
     UFUNCTION()
-    void HandleRepackagingTargetEndPlay(AActor *Actor);
+    void HandleRepackagingTargetEndPlay(AActor* Actor);
+    
 };
+

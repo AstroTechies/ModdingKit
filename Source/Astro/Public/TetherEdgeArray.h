@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct FTetherEdgeArray {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FTetherGraphEdge> Array;
     
     ASTRO_API FTetherEdgeArray();

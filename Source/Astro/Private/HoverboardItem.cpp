@@ -2,11 +2,6 @@
 #include "Net/UnrealNetwork.h"
 #include "HoverboardMovementOverrideComponent.h"
 
-class APhysicalItem;
-
-void AHoverboardItem::SelfAbortedOverride() {
-}
-
 
 void AHoverboardItem::OnRep_HoverboardActive() {
 }
@@ -15,9 +10,6 @@ void AHoverboardItem::OnMovementOverrideTick(float DeltaTime) {
 }
 
 void AHoverboardItem::OnJumpStarted() {
-}
-
-void AHoverboardItem::OnItemSelectionChanged(APhysicalItem* Item) {
 }
 
 

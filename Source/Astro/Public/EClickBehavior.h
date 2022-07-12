@@ -13,5 +13,6 @@ enum class EClickBehavior : uint8 {
     Tool,
     Slot,
     Actuator,
+    RailSpline,
 };
 

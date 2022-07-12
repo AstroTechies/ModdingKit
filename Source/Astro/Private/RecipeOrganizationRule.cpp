@@ -1,8 +1,8 @@
 #include "RecipeOrganizationRule.h"
 #include "Templates/SubclassOf.h"
 
-class APhysicalItem;
 class UItemType;
+class APhysicalItem;
 
 void URecipeOrganizationRule::SetRecipe(FRecipe Recipe) {
 }

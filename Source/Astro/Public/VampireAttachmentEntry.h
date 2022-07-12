@@ -9,13 +9,13 @@ USTRUCT(BlueprintType)
 struct FVampireAttachmentEntry {
     GENERATED_BODY()
 public:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     bool hasBeenVisited;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FAstroDatumRef VampirePowerConnection;
     
-    UPROPERTY(Export, SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, SaveGame, meta=(AllowPrivateAccess=true))
     UTetherAttachComponent* PreyTetherAttachComponent;
     
     ASTRO_API FVampireAttachmentEntry();

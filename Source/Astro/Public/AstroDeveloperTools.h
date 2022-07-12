@@ -3,10 +3,10 @@
 #include "BaseEditorTool.h"
 #include "AstroDeveloperTools.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UAstroDeveloperTools : public UBaseEditorTool
-{
+UCLASS(Blueprintable)
+class ASTRO_API UAstroDeveloperTools : public UBaseEditorTool {
     GENERATED_BODY()
 public:
     UAstroDeveloperTools();
 };
+

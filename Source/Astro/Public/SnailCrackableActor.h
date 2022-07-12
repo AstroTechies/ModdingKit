@@ -1,28 +1,28 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
-#include "Engine/EngineTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 #include "SnailCrackableActor.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API ASnailCrackableActor : public AActor
-{
+UCLASS(Blueprintable)
+class ASTRO_API ASnailCrackableActor : public AActor {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentReference ClickableComponentRef;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentReference CrackableComponentRef;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentReference SnailSkeletonComponentRef;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentReference TerrariumMeshComponentRef;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentReference SlotsComponentRef;
-
+    
     ASnailCrackableActor();
 };
+

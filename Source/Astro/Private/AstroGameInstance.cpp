@@ -34,24 +34,6 @@ void UAstroGameInstance::NotifyPlayerConfirmedChangeUsers() {
 void UAstroGameInstance::NotifyPlayerCancelledChangeUsers() {
 }
 
-void UAstroGameInstance::NotifyOnTitleScreenCharacterCustomizationUnlockTooltipInvalidated() {
-}
-
-void UAstroGameInstance::NotifyOnTitleScreenCharacterCustomizationStarted() {
-}
-
-void UAstroGameInstance::NotifyOnTitleScreenCharacterCustomizationFinalizationStarted() {
-}
-
-void UAstroGameInstance::NotifyOnTitleScreenCharacterCustomizationFinalizationCanceled() {
-}
-
-void UAstroGameInstance::NotifyOnTitleScreenCharacterCustomizationCommitted() {
-}
-
-void UAstroGameInstance::NotifyOnTitleScreenCharacterCustomizationCanceled() {
-}
-
 void UAstroGameInstance::NotifyOnMultiplayerModeChanged() {
 }
 
@@ -94,8 +76,15 @@ bool UAstroGameInstance::HasGameSessionStarted() const {
     return false;
 }
 
+void UAstroGameInstance::HandleServerListCacheUpdated() {
+}
+
+void UAstroGameInstance::HandleFriendsListCacheUpdated() {
+}
+
 void UAstroGameInstance::HandleCultureChanged() {
 }
+
 
 float UAstroGameInstance::GetEstimatedLoadPercentage(const UObject* WorldContextObject, const float dt, const bool lastCall) {
     return 0.0f;

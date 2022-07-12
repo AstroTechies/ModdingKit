@@ -6,10 +6,10 @@ USTRUCT(BlueprintType)
 struct FChildActorRecord {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint32 NameIndex;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint32 ActorIndex;
     
     ASTRO_API FChildActorRecord();

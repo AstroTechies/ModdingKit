@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "SlotConnectionSplineRenderData.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FSlotConnectionSplineRenderData {
     GENERATED_BODY()
 public:

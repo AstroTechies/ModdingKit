@@ -1,43 +1,43 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
 #include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "SolarSystem.generated.h"
 
-class ASolarBody;
+class UWorld;
+class AAstroPlanet;
 class ADayNight;
 class ASun;
 class AGateStation;
-class AAstroPlanet;
-class UWorld;
+class ASolarBody;
 
-UCLASS(Blueprintable, Blueprintable)
-class USolarSystem : public UObject
-{
+UCLASS(Blueprintable)
+class USolarSystem : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnGateStationSpawned;
-
+    
 private:
-    UPROPERTY()
-    ADayNight *DayNight;
-
-    UPROPERTY()
-    ASun *Sun;
-
-    UPROPERTY()
-    AGateStation *GateStation;
-
-    UPROPERTY()
-    TArray<AAstroPlanet *> Planets;
-
-    UPROPERTY()
-    TArray<ASolarBody *> SolarBodies;
-
-    UPROPERTY()
-    UWorld *World;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    ADayNight* DayNight;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    ASun* Sun;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    AGateStation* GateStation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<AAstroPlanet*> Planets;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<ASolarBody*> SolarBodies;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UWorld* World;
+    
 public:
     USolarSystem();
 };
+

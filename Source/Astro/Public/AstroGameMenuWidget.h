@@ -1,144 +1,144 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EAstroGameMenuContext.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+//CROSS-MODULE INCLUDE V2: -ModuleName=UMG -ObjectName=ESlateVisibility -FallbackName=ESlateVisibility
 #include "UserWidgetBlueprintDesignable.h"
-#include "UObject/NoExportTypes.h"
-#include "InputCoreTypes.h"
+#include "EAstroGameMenuContext.h"
 #include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
 #include "EGameMenuNavigationCommand.h"
-#include "Components/SlateWrapperTypes.h"
 #include "AstroGameMenuWidget.generated.h"
 
+class UBorder;
 class UAstroGameMenuTabBarWidget;
+class UCanvasPanel;
+class UAstroGameMenuFocusItemContainerWidget;
+class USpacer;
 class UAstroGameMenuScrollBarBase;
 class UAstroGameMenuSubPaneWidget;
-class USpacer;
 class UUserWidget;
 class UAstroGameMenuPopoutWidget;
-class UAstroGameMenuFocusItemContainerWidget;
 class UImage;
-class UBorder;
-class UCanvasPanel;
 class UVerticalBox;
 class UOverlay;
 
-UCLASS(Blueprintable, Abstract, EditInlineNew)
-class UAstroGameMenuWidget : public UUserWidgetBlueprintDesignable
-{
+UCLASS(Abstract, Blueprintable, EditInlineNew)
+class UAstroGameMenuWidget : public UUserWidgetBlueprintDesignable {
     GENERATED_BODY()
 public:
     DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMenuOpenClose, EAstroGameMenuContext, GameMenuContext);
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FKey> WhitelistedKeys;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FKey> WhitelistedAxis;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnMenuOpenClose OnMenuOpened;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnMenuOpenClose OnMenuClosed;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnDisplayMOTD;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnPopoutPresented;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnPopoutDismissed;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    USpacer *ScrollBarSpacer;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    UAstroGameMenuScrollBarBase *ScrollBarWidget;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    UAstroGameMenuSubPaneWidget *ActiveSubPaneWidget;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USpacer* ScrollBarSpacer;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UAstroGameMenuScrollBarBase* ScrollBarWidget;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UAstroGameMenuSubPaneWidget* ActiveSubPaneWidget;
+    
 protected:
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    UAstroGameMenuTabBarWidget *ActiveTabBarWidget;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    UAstroGameMenuPopoutWidget *ActivePopoutWidget;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UAstroGameMenuTabBarWidget* ActiveTabBarWidget;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UAstroGameMenuPopoutWidget* ActivePopoutWidget;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinimumMenuWidth;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ScrollDelta;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    UAstroGameMenuFocusItemContainerWidget *ScrollBarContainerWidget;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    UImage *PopoutConnectorWidget;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UAstroGameMenuFocusItemContainerWidget* ScrollBarContainerWidget;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UImage* PopoutConnectorWidget;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector2D PopoutPositionOffset;
-
+    
 public:
     UAstroGameMenuWidget();
-
 protected:
     UFUNCTION(BlueprintCallable)
     void RequestNavigation(EGameMenuNavigationCommand NavCommand);
-
+    
     UFUNCTION(BlueprintCallable)
     void ReCalculateMenuSize();
-
+    
 public:
     UFUNCTION(BlueprintImplementableEvent)
     void OnFullScreenPaneVisibilityChange(ESlateVisibility newVisibility);
-
+    
     UFUNCTION(BlueprintCallable)
     void LockControls(bool bLockControls);
-
+    
 private:
     UFUNCTION()
     void HandleDebugMenuVisbilityChanged(bool IsVisible);
-
+    
 public:
     UFUNCTION(BlueprintImplementableEvent, BlueprintPure)
     float GetVerticalPaddingForContentSubPaneRegion() const;
-
+    
     UFUNCTION(BlueprintImplementableEvent)
-    UAstroGameMenuTabBarWidget *GetTabBarWidget() const;
-
+    UAstroGameMenuTabBarWidget* GetTabBarWidget() const;
+    
     UFUNCTION(BlueprintImplementableEvent)
-    UBorder *GetSubPaneWrapper() const;
-
+    UBorder* GetSubPaneWrapper() const;
+    
     UFUNCTION(BlueprintImplementableEvent)
-    UCanvasPanel *GetPopoutWrapper() const;
-
+    UCanvasPanel* GetPopoutWrapper() const;
+    
     UFUNCTION(BlueprintImplementableEvent)
     FVector2D GetOriginOfActiveSubPaneContentsRegion() const;
-
+    
     UFUNCTION(BlueprintImplementableEvent, BlueprintPure)
-    UUserWidget *GetMOTDWidget() const;
-
+    UUserWidget* GetMOTDWidget() const;
+    
     UFUNCTION(BlueprintImplementableEvent)
-    UVerticalBox *GetMenuContentsWrapper() const;
-
+    UVerticalBox* GetMenuContentsWrapper() const;
+    
     UFUNCTION(BlueprintImplementableEvent, BlueprintPure)
     float GetMaxHeightOfContentSubPaneRegion() const;
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     float GetLowerBoundOfMenu() const;
-
+    
     UFUNCTION(BlueprintImplementableEvent)
-    UOverlay *GetFullScreenPaneWrapper() const;
-
+    UOverlay* GetFullScreenPaneWrapper() const;
+    
     UFUNCTION(BlueprintImplementableEvent, BlueprintPure)
     FVector2D GetBoundedSizeOfMenu() const;
-
+    
     UFUNCTION(BlueprintImplementableEvent, BlueprintPure)
-    UUserWidget *GetAchievementProgressionWarningWidget() const;
-
+    UUserWidget* GetAchievementProgressionWarningWidget() const;
+    
     UFUNCTION(BlueprintCallable, BlueprintCosmetic, BlueprintImplementableEvent)
     void BackToMainMenuHack();
+    
 };
+

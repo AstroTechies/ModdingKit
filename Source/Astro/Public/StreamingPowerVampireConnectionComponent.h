@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroEntityComponent.h"
 #include "AstroDatumRef.h"
+#include "AstroEntityComponent.h"
 #include "StreamingPowerVampireConnectionComponent.generated.h"
 
 USTRUCT(BlueprintType)
 struct FStreamingPowerVampireConnectionComponent : public FAstroEntityComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FAstroDatumRef VampireNode;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FAstroDatumRef PreyNode;
     
     ASTRO_API FStreamingPowerVampireConnectionComponent();

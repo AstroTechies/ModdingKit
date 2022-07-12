@@ -1,10 +1,10 @@
 #include "GateStation.h"
-#include "ActorGateObjectComponent.h"
-#include "Components/StaticMeshComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=StaticMeshComponent -FallbackName=StaticMeshComponent
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SceneComponent -FallbackName=SceneComponent
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SphereComponent -FallbackName=SphereComponent
 #include "ClickableComponent.h"
-#include "Components/SceneComponent.h"
+#include "ActorGateObjectComponent.h"
 #include "TooltipComponent.h"
-#include "Components/SphereComponent.h"
 #include "ActorEntityLinkComponent.h"
 
 class AActor;

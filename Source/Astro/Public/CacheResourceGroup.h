@@ -9,10 +9,10 @@ USTRUCT(BlueprintType)
 struct FCacheResourceGroup {
     GENERATED_BODY()
 public:
-    UPROPERTY(SaveGame)
+    UPROPERTY(EditAnywhere, SaveGame)
     uint32 ID;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemType> ItemType;
     
     ASTRO_API FCacheResourceGroup();

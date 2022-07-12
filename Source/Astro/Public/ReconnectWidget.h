@@ -3,10 +3,10 @@
 #include "UserWidgetBlueprintDesignable.h"
 #include "ReconnectWidget.generated.h"
 
-UCLASS(Blueprintable, Abstract, EditInlineNew)
-class ASTRO_API UReconnectWidget : public UUserWidgetBlueprintDesignable
-{
+UCLASS(Abstract, Blueprintable, EditInlineNew)
+class ASTRO_API UReconnectWidget : public UUserWidgetBlueprintDesignable {
     GENERATED_BODY()
 public:
     UReconnectWidget();
 };
+

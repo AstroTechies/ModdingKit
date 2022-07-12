@@ -1,16 +1,16 @@
 #include "MultiTool.h"
 #include "Net/UnrealNetwork.h"
-#include "Components/InputComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=InputComponent -FallbackName=InputComponent
 #include "Activation.h"
 
+class UPrimitiveComponent;
 class AActor;
 class APlayController;
-class UCrackableActorComponent;
-class ASlotConnection;
-class USceneComponent;
 class APhysicalItem;
-class UPrimitiveComponent;
+class ASlotConnection;
+class UCrackableActorComponent;
 class UActuatorComponent;
+class USceneComponent;
 class UClickableComponent;
 class UTooltipComponent;
 
@@ -25,6 +25,12 @@ void UMultiTool::SuppressClickables() {
 }
 
 void UMultiTool::StowDeformTool() {
+}
+
+void UMultiTool::ServerUpdateCurrSelectionHasTerrainTraceHit_Implementation(bool bNewHasTerrainTraceHit) {
+}
+bool UMultiTool::ServerUpdateCurrSelectionHasTerrainTraceHit_Validate(bool bNewHasTerrainTraceHit) {
+    return true;
 }
 
 void UMultiTool::ServerTraceForSlotConnection_Implementation(APlayController* Controller, ASlotConnection* SlotConnection, FVector TraceStart, FVector traceDirection) {
@@ -81,6 +87,12 @@ bool UMultiTool::ServerMakeSlotConnection_Validate(ASlotConnection* Actor, UPrim
     return true;
 }
 
+void UMultiTool::ServerInsertIntoRailConnection_Implementation(APhysicalItem* Item, UPrimitiveComponent* HitComponent, bool terrainComponent, FVector HitLocation, FVector_NetQuantizeNormal HitNormal, int32 railConnectionID) {
+}
+bool UMultiTool::ServerInsertIntoRailConnection_Validate(APhysicalItem* Item, UPrimitiveComponent* HitComponent, bool terrainComponent, FVector HitLocation, FVector_NetQuantizeNormal HitNormal, int32 railConnectionID) {
+    return true;
+}
+
 void UMultiTool::ServerEmplaceInSlot_Implementation(APhysicalItem* Item, const FSlotReference& Slot, int32 SubslotIndex, bool PhysicalMovement) {
 }
 bool UMultiTool::ServerEmplaceInSlot_Validate(APhysicalItem* Item, const FSlotReference& Slot, int32 SubslotIndex, bool PhysicalMovement) {
@@ -123,7 +135,7 @@ bool UMultiTool::ServerClearSlotEmplacement_Validate(APhysicalItem* Item) {
     return true;
 }
 
-void UMultiTool::RouteWidgetUseUnhandled(EInputEvent InputType) {
+void UMultiTool::RouteWidgetUseUnhandled(TEnumAsByte<EInputEvent> InputType) {
 }
 
 void UMultiTool::RouteInteractionWidgetUseRepeat() {
@@ -159,7 +171,7 @@ void UMultiTool::RouteInteractionCatalogActivated() {
 void UMultiTool::RouteFocusedTooltipInteractionActivated(FName ActionName) {
 }
 
-void UMultiTool::RouteFocusedTooltipInputUnhandled(EInputEvent InputType, FName ActionName) {
+void UMultiTool::RouteFocusedTooltipInputUnhandled(TEnumAsByte<EInputEvent> InputType, FName ActionName) {
 }
 
 void UMultiTool::RouteDrivingUseInteraction() {
@@ -168,7 +180,7 @@ void UMultiTool::RouteDrivingUseInteraction() {
 void UMultiTool::RouteDrivingTooltipInteractionActivated(FName ActionName) {
 }
 
-void UMultiTool::RouteDrivingTooltipInputUnhandled(EInputEvent InputType, FName ActionName) {
+void UMultiTool::RouteDrivingTooltipInputUnhandled(TEnumAsByte<EInputEvent> InputType, FName ActionName) {
 }
 
 void UMultiTool::PushInteractionOverride(AActor* Actor, USceneComponent* PivotComponent, UClickableComponent* clickable) {

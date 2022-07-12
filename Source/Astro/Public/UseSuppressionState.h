@@ -8,13 +8,13 @@ USTRUCT(BlueprintType)
 struct FUseSuppressionState {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EUseType SuppressedUseTypeFlags;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     FPerPlayerUseSuppressionMode PerPlayerMode;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     TArray<uint64> PlayerGuidWhitelist;
     
     ASTRO_API FUseSuppressionState();

@@ -5,19 +5,20 @@
 #include "Recipe.h"
 #include "RecipeOrganizationRule.generated.h"
 
-class APhysicalItem;
 class UItemType;
+class APhysicalItem;
 
 UCLASS(Blueprintable, EditInlineNew)
-class URecipeOrganizationRule : public USlotOrganizationRule
-{
+class URecipeOrganizationRule : public USlotOrganizationRule {
     GENERATED_BODY()
 public:
     URecipeOrganizationRule();
     UFUNCTION(BlueprintCallable)
     void SetRecipe(FRecipe Recipe);
-
+    
 protected:
     UFUNCTION()
-    void GetCurrentRecipeStatus(TArray<APhysicalItem *> &outUnwantedHaveItems, TArray<TSubclassOf<UItemType>> &outMissingItems) const;
+    void GetCurrentRecipeStatus(TArray<APhysicalItem*>& outUnwantedHaveItems, TArray<TSubclassOf<UItemType>>& outMissingItems) const;
+    
 };
+

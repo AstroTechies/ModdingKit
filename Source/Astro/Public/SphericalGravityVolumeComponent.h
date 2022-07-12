@@ -3,18 +3,18 @@
 #include "CustomGravityVolumeComponent.h"
 #include "SphericalGravityVolumeComponent.generated.h"
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class ASTRO_API USphericalGravityVolumeComponent : public UCustomGravityVolumeComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API USphericalGravityVolumeComponent : public UCustomGravityVolumeComponent {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SphereRadius;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bApplyGravityOutward;
-
+    
 public:
     USphericalGravityVolumeComponent();
 };
+

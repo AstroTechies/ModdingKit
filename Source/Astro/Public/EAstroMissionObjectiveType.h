@@ -33,6 +33,7 @@ enum class EAstroMissionObjectiveType : uint8 {
     ConsumeItem,
     ItemPickedUp,
     ItemDoesntExist,
+    RailPostConnection,
     None,
 };
 

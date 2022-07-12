@@ -9,10 +9,10 @@ USTRUCT(BlueprintType)
 struct FInteractionRedirect {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     AActor* NewActor;
     
-    UPROPERTY(Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USceneComponent* PivotComponent;
     
     ASTRO_API FInteractionRedirect();

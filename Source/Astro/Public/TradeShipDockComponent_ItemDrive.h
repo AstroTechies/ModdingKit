@@ -5,17 +5,18 @@
 
 class UItemDriveComponent;
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UTradeShipDockComponent_ItemDrive : public UTradeShipDockComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UTradeShipDockComponent_ItemDrive : public UTradeShipDockComponent {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Export)
-    UItemDriveComponent *ItemDriveComponent;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UItemDriveComponent* ItemDriveComponent;
+    
 public:
     UTradeShipDockComponent_ItemDrive();
     UFUNCTION(BlueprintCallable)
     void HandleActiveEventChanged();
+    
 };
+

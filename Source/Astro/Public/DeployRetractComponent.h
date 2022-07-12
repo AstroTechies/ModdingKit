@@ -1,61 +1,62 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SignalDelegate.h"
 #include "DeployRetractComponent.generated.h"
 
 class UAnimMontage;
-class UAstroAction;
 class UStaticMesh;
+class UAstroAction;
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UDeployRetractComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UDeployRetractComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnDeployedStateChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnPendingDeployedChanged;
-
+    
 protected:
-    UPROPERTY(BlueprintReadWrite, SaveGame, ReplicatedUsing = OnRep_IsDeployed, meta = (AllowPrivateAccess = true))
-    uint8 bIsDeployed : 1;
-
-    UPROPERTY(BlueprintReadWrite, ReplicatedUsing = OnRep_PendingDeployed, meta = (AllowPrivateAccess = true))
-    uint8 bPendingDeployed : 1;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimMontage *DeployMontage;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimMontage *RetractMontage;
-
-    UPROPERTY(EditDefaultsOnly)
-    UStaticMesh *DeployedCollision;
-
-    UPROPERTY(EditDefaultsOnly)
-    UStaticMesh *RetractedCollision;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_IsDeployed, meta=(AllowPrivateAccess=true))
+    uint8 bIsDeployed: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_PendingDeployed, meta=(AllowPrivateAccess=true))
+    uint8 bPendingDeployed: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimMontage* DeployMontage;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimMontage* RetractMontage;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UStaticMesh* DeployedCollision;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UStaticMesh* RetractedCollision;
+    
 public:
     UDeployRetractComponent();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
 protected:
     UFUNCTION()
     void OnRep_PendingDeployed();
-
+    
     UFUNCTION()
     void OnRep_IsDeployed();
-
+    
     UFUNCTION()
-    void OnDeployRetractMontageActionEnded(UAstroAction *montageAction);
-
+    void OnDeployRetractMontageActionEnded(UAstroAction* montageAction);
+    
 public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityRetract();
-
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityDeploy();
+    
 };
+

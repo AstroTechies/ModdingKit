@@ -2,14 +2,14 @@
 #include "CoreMinimal.h"
 #include "AchievementReward.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FAchievementReward {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString ItemId;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString Item;
     
     ASTRO_API FAchievementReward();

@@ -10,10 +10,10 @@ USTRUCT(BlueprintType)
 struct FOverrideCustomPackageItemList {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<UItemList>> ItemLists;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<APhysicalItem> OverridePackage;
     
     ASTRO_API FOverrideCustomPackageItemList();

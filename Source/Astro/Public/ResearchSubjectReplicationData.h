@@ -2,23 +2,23 @@
 #include "CoreMinimal.h"
 #include "ResearchSubjectReplicationData.generated.h"
 
-class UItemType;
 class UResearchSubjectDefinition;
+class UItemType;
 
 USTRUCT(BlueprintType)
 struct FResearchSubjectReplicationData {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(EditAnywhere)
     TWeakObjectPtr<UResearchSubjectDefinition> Definition;
     
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(EditAnywhere)
     TWeakObjectPtr<UItemType> ItemType;
     
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float TimeProgressRatio;
     
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float PointsProgressRatio;
     
     ASTRO_API FResearchSubjectReplicationData();

@@ -1,28 +1,29 @@
 #pragma once
 #include "CoreMinimal.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 #include "GameplayTask.h"
 #include "TransformCompletedDelegate.h"
-#include "UObject/NoExportTypes.h"
 #include "AstroApplyTransformTask.generated.h"
 
 class USceneComponent;
-class UAstroAction;
 class UCurveFloat;
 class UAstroApplyTransformTask;
 class UCurveVector;
+class UAstroAction;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UAstroApplyTransformTask : public UGameplayTask
-{
+UCLASS(Blueprintable)
+class ASTRO_API UAstroApplyTransformTask : public UGameplayTask {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTransformCompleted OnTransformCompleted;
-
-    UAstroApplyTransformTask(const FObjectInitializer &ObjectInitializer);
+    
+    UAstroApplyTransformTask();
     UFUNCTION(BlueprintCallable)
-    void SetTargetRelativeTransform(const FTransform &TargetRelativeTransform, UCurveFloat *relativeTransformProgressCurve);
-
+    void SetTargetRelativeTransform(const FTransform& TargetRelativeTransform, UCurveFloat* relativeTransformProgressCurve);
+    
     UFUNCTION(BlueprintCallable)
-    static UAstroApplyTransformTask *CreateAstroApplyTransformTask(UAstroAction *OwningAction, FName TaskInstanceName, USceneComponent *SceneComponent, float Duration, UCurveVector *LocationCurve, UCurveVector *RotationCurve, UCurveVector *ScaleCurve);
+    static UAstroApplyTransformTask* CreateAstroApplyTransformTask(UAstroAction* OwningAction, FName TaskInstanceName, USceneComponent* SceneComponent, float Duration, UCurveVector* LocationCurve, UCurveVector* RotationCurve, UCurveVector* ScaleCurve);
+    
 };
+

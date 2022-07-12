@@ -1,28 +1,28 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "CountAchievement.h"
-#include "Engine/DataAsset.h"
-#include "FloatCountAchievement.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "ItemCollectionAchievement.h"
+#include "CountAchievement.h"
+#include "FloatCountAchievement.h"
 #include "ThresholdAchievementDefinition.h"
 #include "AchievementDefinitionTable.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UAchievementDefinitionTable : public UDataAsset
-{
+UCLASS(Blueprintable)
+class ASTRO_API UAchievementDefinitionTable : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FCountAchievement> CountAchievements;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FFloatCountAchievement> FloatCountAchievements;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FItemCollectionAchievement> ItemCollectionAchievements;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FThresholdAchievementDefinition> ThresholdAchievements;
-
+    
     UAchievementDefinitionTable();
 };
+

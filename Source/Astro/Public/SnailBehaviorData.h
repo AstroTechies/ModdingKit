@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FSnailBehaviorData {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UAnimMontage*> Anims;
     
     ASTRO_API FSnailBehaviorData();

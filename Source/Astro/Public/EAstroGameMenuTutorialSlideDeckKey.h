@@ -18,5 +18,6 @@ enum class EAstroGameMenuTutorialSlideDeckKey : uint8 {
     Missions,
     AdventurePopup,
     Flora,
+    Rails,
 };
 

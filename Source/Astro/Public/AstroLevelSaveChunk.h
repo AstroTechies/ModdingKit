@@ -8,10 +8,10 @@ USTRUCT(BlueprintType)
 struct FAstroLevelSaveChunk : public FAstroSaveChunk {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FString Level;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FPlayerControllerRecord> PlayerControllerRecords;
     
     ASTRO_API FAstroLevelSaveChunk();

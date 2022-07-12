@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/EngineTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=RepMovement -FallbackName=RepMovement
 #include "RepLinkedChassisMovement.generated.h"
 
 class UWheeledChassisComponent;
@@ -9,10 +9,10 @@ USTRUCT(BlueprintType)
 struct FRepLinkedChassisMovement {
     GENERATED_BODY()
 public:
-    UPROPERTY(Export)
+    UPROPERTY(EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UWheeledChassisComponent* linkedChassis;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FRepMovement Movement;
     
     ASTRO_API FRepLinkedChassisMovement();

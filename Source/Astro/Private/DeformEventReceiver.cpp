@@ -1,7 +1,7 @@
 #include "DeformEventReceiver.h"
 
-class UDeformEventReceiver;
 class AActor;
+class UDeformEventReceiver;
 
 UDeformEventReceiver* UDeformEventReceiver::ActorDeformEventReceiver(AActor* Actor) {
     return NULL;

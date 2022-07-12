@@ -31,7 +31,6 @@ AAstroHUD::AAstroHUD() {
     this->CreativeDroneOverlayClass = NULL;
     this->AstropediaWidgetClass = NULL;
     this->ReconnectWidgetClass = NULL;
-    this->EmoteWheelWidgetClass = NULL;
     this->ActionWheelWidgetClass = NULL;
     this->PlayWidgetInstance = NULL;
     this->CreativeDroneOverlayInstance = NULL;

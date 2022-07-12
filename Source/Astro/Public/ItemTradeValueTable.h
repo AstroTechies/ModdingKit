@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "Engine/DataAsset.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "TradeOutput.h"
 #include "ItemTradeValueTable.generated.h"
 
 class UItemType;
 
-UCLASS(Blueprintable, BlueprintType)
-class ASTRO_API UItemTradeValueTable : public UDataAsset
-{
+UCLASS(Blueprintable)
+class ASTRO_API UItemTradeValueTable : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSubclassOf<UItemType>, FTradeOutput> ItemTradeValueTable;
-
+    
     UItemTradeValueTable();
 };
+

@@ -4,20 +4,20 @@
 #include "EIndicatorTooltipType.h"
 #include "SlotIndicatorDefinition.generated.h"
 
-class UItemType;
 class APhysicalItem;
+class UItemType;
 
 USTRUCT(BlueprintType)
 struct FSlotIndicatorDefinition {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemType> IndicatorItemType;
     
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     APhysicalItem* WhitelistCohabitationItem;
     
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EIndicatorTooltipType TooltipType;
     
     ASTRO_API FSlotIndicatorDefinition();

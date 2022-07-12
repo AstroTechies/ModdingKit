@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FCollectibleSimItem {
     GENERATED_BODY()
 public:
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* Mesh;
     
     ASTRO_API FCollectibleSimItem();

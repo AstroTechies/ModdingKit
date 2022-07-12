@@ -1,9 +1,9 @@
 #include "AstroApplyTransformTask.h"
 
-class UAstroAction;
-class UCurveFloat;
 class USceneComponent;
+class UCurveFloat;
 class UCurveVector;
+class UAstroAction;
 class UAstroApplyTransformTask;
 
 void UAstroApplyTransformTask::SetTargetRelativeTransform(const FTransform& TargetRelativeTransform, UCurveFloat* relativeTransformProgressCurve) {
@@ -13,6 +13,6 @@ UAstroApplyTransformTask* UAstroApplyTransformTask::CreateAstroApplyTransformTas
     return NULL;
 }
 
-UAstroApplyTransformTask::UAstroApplyTransformTask(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+UAstroApplyTransformTask::UAstroApplyTransformTask() : UGameplayTask(FObjectInitializer()) {
 }
 

@@ -10,13 +10,13 @@ USTRUCT(BlueprintType)
 struct FAstroActionRequestPayload {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UAstroAction> ActionType;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAstroActionIdentifier ActionIdentifier;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     TArray<uint8> PayloadData;
     
     ASTRO_API FAstroActionRequestPayload();

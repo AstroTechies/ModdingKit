@@ -3,25 +3,25 @@
 #include "AstroCharacterMovementOverrideComponent.h"
 #include "SnailBuffMovementOverrideComponent.generated.h"
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class ASTRO_API USnailBuffMovementOverrideComponent : public UAstroCharacterMovementOverrideComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API USnailBuffMovementOverrideComponent : public UAstroCharacterMovementOverrideComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AddedSprintMaxSpeedScalar;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AddedJumpImpulse;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AddedBoostImpulse;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AddedJumpImpulseScalar;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bIgnoreCarryEncumbrance : 1;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bIgnoreCarryEncumbrance: 1;
+    
     USnailBuffMovementOverrideComponent();
 };
+

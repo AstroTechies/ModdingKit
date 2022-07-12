@@ -5,12 +5,12 @@
 
 class UPersistentLocalPlayerData;
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FPersistentLocalPlayerChunk : public FAstroSaveChunk {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UPersistentLocalPlayerData* PlayerData;
     
 public:

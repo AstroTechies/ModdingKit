@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "CameraFacingManager.generated.h"
 
 class USceneComponent;
 
-UCLASS(Blueprintable, Blueprintable)
-class UCameraFacingManager : public UObject
-{
+UCLASS(Blueprintable)
+class UCameraFacingManager : public UObject {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Export, Transient)
-    TArray<USceneComponent *> SceneComponents;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    TArray<USceneComponent*> SceneComponents;
+    
 public:
     UCameraFacingManager();
 };
+

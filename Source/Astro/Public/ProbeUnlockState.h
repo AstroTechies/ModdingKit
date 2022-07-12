@@ -6,10 +6,10 @@ USTRUCT(BlueprintType)
 struct FProbeUnlockState {
     GENERATED_BODY()
 public:
-    UPROPERTY(SaveGame)
+    UPROPERTY(EditAnywhere, SaveGame)
     uint64 CharacterId;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FName> UnlockedProbes;
     
     ASTRO_API FProbeUnlockState();

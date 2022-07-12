@@ -6,10 +6,10 @@
 #include "ResourceCacheComponent.h"
 #include "StorageChassisComponent.h"
 
-class APhysicalItem;
 class UItemType;
-class UStaticMesh;
+class APhysicalItem;
 class UAstroAction;
+class UStaticMesh;
 class UPrimitiveComponent;
 
 void AResourceExtractor::OnStorageChassisSlotEventSignal(APhysicalItem* Item) {

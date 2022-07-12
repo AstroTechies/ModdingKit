@@ -10,14 +10,14 @@ struct FGateObjectReference {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     EGateObjectType GateObjectType;
     
 private:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     int32 ChamberIndex;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(EditAnywhere, SaveGame)
     TWeakObjectPtr<ASolarBody> GateObjectSolarBody;
     
 public:

@@ -9,10 +9,10 @@ USTRUCT(BlueprintType)
 struct FItemDriveRewardInGameChoice {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<UItemType>> InGameRewardItemTypes;
     
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 Weight;
     
     ASTRO_API FItemDriveRewardInGameChoice();

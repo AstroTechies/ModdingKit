@@ -3,8 +3,8 @@
 
 class UParticleSystemComponent;
 class UAstroSaveCustomArchiveProxy;
-class USceneComponent;
 class APhysicalItem;
+class USceneComponent;
 class AActor;
 class UStaticMeshComponent;
 

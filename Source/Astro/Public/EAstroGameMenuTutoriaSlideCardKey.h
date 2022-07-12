@@ -41,5 +41,7 @@ enum class EAstroGameMenuTutoriaSlideCardKey : uint8 {
     DamageAndRespawning,
     FloraHazardsDefensive,
     FloraHazardsAggressive,
+    RailsBasic,
+    RailsAdvanced,
 };
 

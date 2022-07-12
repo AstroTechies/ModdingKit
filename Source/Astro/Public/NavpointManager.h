@@ -1,28 +1,29 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "Navpoint.h"
 #include "NavpointManager.generated.h"
 
 class AActor;
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UNavpointManager : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UNavpointManager : public UActorComponent {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(ReplicatedUsing = OnRep_Navpoints)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_Navpoints, meta=(AllowPrivateAccess=true))
     TArray<FNavpoint> Navpoints;
-
-    UPROPERTY()
+    
+    UPROPERTY(EditAnywhere)
     TArray<TWeakObjectPtr<AActor>> SnailNavpointBuffTargets;
-
+    
 public:
     UNavpointManager();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
 protected:
     UFUNCTION()
     void OnRep_Navpoints();
+    
 };
+

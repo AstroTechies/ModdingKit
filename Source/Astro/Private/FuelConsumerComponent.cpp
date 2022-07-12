@@ -1,8 +1,8 @@
 #include "FuelConsumerComponent.h"
 #include "Templates/SubclassOf.h"
 
-class APhysicalItem;
 class UItemType;
+class APhysicalItem;
 
 void UFuelConsumerComponent::OnItemSlotted(APhysicalItem* Item) {
 }

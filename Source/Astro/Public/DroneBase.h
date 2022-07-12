@@ -1,167 +1,168 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "PhysicalItem.h"
-#include "EDroneFlightState.h"
 #include "SlotReference.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "EDroneFlightState.h"
 #include "SignalDelegate.h"
-#include "Engine/EngineTypes.h"
 #include "DroneBase.generated.h"
 
-class USceneComponent;
 class UFlyingDroneMovementComponent;
 class AActor;
+class USceneComponent;
 class UFixedFOVModifierComponent;
 class ASolarBody;
 class USkeletalMeshComponent;
 class APlayController;
 
-UCLASS(Blueprintable, Abstract)
-class ADroneBase : public APhysicalItem
-{
+UCLASS(Abstract, Blueprintable)
+class ADroneBase : public APhysicalItem {
     GENERATED_BODY()
 public:
-    UPROPERTY(Export, VisibleAnywhere)
-    UFlyingDroneMovementComponent *MovementComponent;
-
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UFlyingDroneMovementComponent* MovementComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FSlotReference DockingSlotRef;
-
-    UPROPERTY()
-    AActor *PrevAstroViewTarget;
-
-    UPROPERTY(BlueprintReadWrite, ReplicatedUsing = OnRep_FlightState, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    AActor* PrevAstroViewTarget;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_FlightState, meta=(AllowPrivateAccess=true))
     EDroneFlightState flightState;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnFlightStateChanged;
-
+    
 protected:
-    UPROPERTY(Transient)
-    AActor *OldOwner;
-
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    AActor* OldOwner;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName FlightSpeedRTPCName;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString ZoomInSoundEventName;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString ZoomOutSoundEventName;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ZoomedInCameraFOV;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ZoomedOutCameraFOV;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DiscreteCameraZoomIncrement;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DiscreteFlightSpeedIncrement;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ZoomSFXReplayDelay;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DockingRotationInterpolationStrength;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float UndockingRotationInterpolationStrength;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DockingLocationInterpolationStrength;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float UndockingLocationInterpolationStrength;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DockingScaleInterpolationStrength;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float UndockingScaleInterpolationStrength;
-
-    UPROPERTY(Export)
-    USceneComponent *AudioListener;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USceneComponent* AudioListener;
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentReference AudioListenerReference;
-
-    UPROPERTY(Export)
-    UFixedFOVModifierComponent *fixedFOVModifier;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UFixedFOVModifierComponent* fixedFOVModifier;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LerpStrengthScaleFactor;
-
+    
 public:
     ADroneBase();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
 protected:
     UFUNCTION()
     void ZoomOut();
-
+    
     UFUNCTION()
     void ZoomIn();
-
+    
 public:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void TakePhoto();
-
+    
 protected:
     UFUNCTION()
     void SetRiseInputInactive();
-
+    
     UFUNCTION()
     void SetRiseInputActive();
-
+    
 public:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSetFlightState(EDroneFlightState NewFlightState);
-
+    
 protected:
     UFUNCTION()
     void OnRep_FlightState();
-
+    
     UFUNCTION()
     void NudgeFlightSpeedSlower();
-
+    
     UFUNCTION()
     void NudgeFlightSpeedFaster();
-
+    
     UFUNCTION(BlueprintPure)
     bool IsLocallyControlled() const;
-
+    
     UFUNCTION()
     void HandlePlayerReachedSpaceInShuttle();
-
+    
     UFUNCTION()
     void HandlePlacedInSlot();
-
+    
     UFUNCTION()
     void HandleOutroCinematicCompleted();
-
+    
     UFUNCTION()
     void HandleOutroCinematicBecameActive();
-
+    
 public:
     UFUNCTION(BlueprintPure)
-    ASolarBody *GetLocalSolarBody() const;
-
+    ASolarBody* GetLocalSolarBody() const;
+    
     UFUNCTION(BlueprintImplementableEvent, BlueprintPure)
-    USkeletalMeshComponent *GetDroneSkeletalMesh();
-
+    USkeletalMeshComponent* GetDroneSkeletalMesh();
+    
 protected:
     UFUNCTION(BlueprintPure)
     float GetCurrentFOV() const;
-
+    
 public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityRecallDrone();
-
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
-    void AuthorityLaunchDrone(APlayController *OwningController);
-
+    void AuthorityLaunchDrone(APlayController* OwningController);
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityEmergencyRecallDrone();
+    
 };
+

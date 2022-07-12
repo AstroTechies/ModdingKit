@@ -1,168 +1,169 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "EExtractorOperationStage.h"
 #include "PhysicalItem.h"
-#include "Engine/EngineTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
 #include "EExtractorAnimStage.h"
-#include "UObject/NoExportTypes.h"
+#include "EExtractorOperationStage.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "ResourceExtractor.generated.h"
 
-class UResourceCacheComponent;
-class USceneComponent;
-class UPowerComponent;
-class UStorageChassisComponent;
 class UItemType;
 class UAstroActionComponent;
+class UPowerComponent;
 class USkeletalMeshComponent;
+class USceneComponent;
+class UPrimitiveComponent;
+class UResourceCacheComponent;
+class UStorageChassisComponent;
 class UAnimSequenceBase;
 class UAnimMontage;
-class UStaticMesh;
 class UMaterialInstanceDynamic;
 class UAstroAction;
-class UPrimitiveComponent;
+class UStaticMesh;
 
-UCLASS(Blueprintable, Blueprintable)
-class AResourceExtractor : public APhysicalItem
-{
+UCLASS(Blueprintable)
+class AResourceExtractor : public APhysicalItem {
     GENERATED_BODY()
 public:
-    UPROPERTY(SaveGame)
+    UPROPERTY(EditAnywhere, SaveGame)
     uint32 ManagerIndex;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HammerDroppedHeight;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HammerTopHeight;
-
+    
 private:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Radius;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float PostPoundHoldTime;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CycleTime;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxLowPowerCycleTime;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ResetTime;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NuggetsPerNode;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(EditAnywhere)
     uint32 ThumpsPerNugget;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(EditAnywhere)
     uint32 FullMeterThreshold;
-
-    UPROPERTY(Export, VisibleAnywhere)
-    UPowerComponent *PowerComponent;
-
-    UPROPERTY(Export, VisibleAnywhere)
-    UAstroActionComponent *ActionComponent;
-
-    UPROPERTY(Export, Transient)
-    USceneComponent *VacuumLocationComponent;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPowerComponent* PowerComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UAstroActionComponent* ActionComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    USceneComponent* VacuumLocationComponent;
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentReference SkeletonComponentReference;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentReference VacuumLocationComponentReference;
-
-    UPROPERTY(ReplicatedUsing = OnRep_NodesInArea)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_NodesInArea, meta=(AllowPrivateAccess=true))
     int32 NodesInArea;
-
+    
 public:
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UResourceCacheComponent *ResourceCache;
-
-    UPROPERTY(Export, Transient)
-    USkeletalMeshComponent *SkeletalMesh;
-
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UStorageChassisComponent *StorageChassis;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimSequenceBase *ActivateAnimation;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimSequenceBase *DeactivateAnimation;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimMontage *HammerDropMontage;
-
-    UPROPERTY(BlueprintReadWrite, SkipSerialization, Transient, meta = (AllowPrivateAccess = true))
-    UMaterialInstanceDynamic *FillBarMaterial;
-
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UResourceCacheComponent* ResourceCache;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    USkeletalMeshComponent* SkeletalMesh;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UStorageChassisComponent* StorageChassis;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimSequenceBase* ActivateAnimation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimSequenceBase* DeactivateAnimation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimMontage* HammerDropMontage;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SkipSerialization, Transient, meta=(AllowPrivateAccess=true))
+    UMaterialInstanceDynamic* FillBarMaterial;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName HammerBoneName;
-
-    UPROPERTY(ReplicatedUsing = OnRep_AnimProgress)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_AnimProgress, meta=(AllowPrivateAccess=true))
     float AnimProgress;
-
-    UPROPERTY(Replicated)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     float PowerRatio;
-
-    UPROPERTY(ReplicatedUsing = OnRep_Stages)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_Stages, meta=(AllowPrivateAccess=true))
     EExtractorAnimStage AnimStage;
-
-    UPROPERTY(ReplicatedUsing = OnRep_Stages)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_Stages, meta=(AllowPrivateAccess=true))
     EExtractorOperationStage OpStage;
-
-    UPROPERTY(SaveGame, ReplicatedUsing = OnRep_ActivationState)
-    uint8 bIsTurnedOn : 1;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_ActivationState, meta=(AllowPrivateAccess=true))
+    uint8 bIsTurnedOn: 1;
+    
     AResourceExtractor();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
 private:
     UFUNCTION()
-    void OnStorageChassisSlotEventSignal(APhysicalItem *Item);
-
+    void OnStorageChassisSlotEventSignal(APhysicalItem* Item);
+    
     UFUNCTION()
     void OnSingleAnimCustomNotifyEvent(FName NotifyName);
-
+    
     UFUNCTION()
     void OnResourceSlotFull(TSubclassOf<UItemType> Type);
-
+    
     UFUNCTION()
-    void OnResourceItemReleased(APhysicalItem *Item);
-
+    void OnResourceItemReleased(APhysicalItem* Item);
+    
 public:
     UFUNCTION()
     void OnRep_Stages();
-
+    
     UFUNCTION()
     void OnRep_NodesInArea();
-
+    
     UFUNCTION()
     void OnRep_AnimProgress();
-
+    
     UFUNCTION()
     void OnRep_ActivationState();
-
+    
 private:
     UFUNCTION()
-    void OnMontageEnded(UAstroAction *Action);
-
+    void OnMontageEnded(UAstroAction* Action);
+    
     UFUNCTION()
     void OnHasPowerAvailableChanged(bool HasAvailablePower);
-
+    
 public:
     UFUNCTION(NetMulticast, Reliable)
-    void MulticastGenerateFlecks(UStaticMesh *StaticMesh, const FVector Location, const float Recipe);
-
+    void MulticastGenerateFlecks(UStaticMesh* StaticMesh, const FVector Location, const float Recipe);
+    
 private:
     UFUNCTION()
     void HandleOnPickedUpFromWorld(bool PhysicalMovement);
-
+    
     UFUNCTION()
-    void HandleOnDroppedInWorld(UPrimitiveComponent *Component, const FVector &Point, const FVector &Normal, bool bIsTerrainComponent);
+    void HandleOnDroppedInWorld(UPrimitiveComponent* Component, const FVector& Point, const FVector& Normal, bool bIsTerrainComponent);
+    
 };
+

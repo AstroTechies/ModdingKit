@@ -6,10 +6,10 @@ USTRUCT(BlueprintType)
 struct FProgressPredictionData {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 LocalCacheItemDriveProgressDelta;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 ReportedItemDriveProgressDelta;
     
     ASTRO_API FProgressPredictionData();

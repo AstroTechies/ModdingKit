@@ -1,43 +1,44 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
-#include "InputCoreTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "SymbolFireEventDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
 #include "ControlSymbolEvents.generated.h"
 
-class UPrimitiveComponent;
-class UControlComponent;
 class UActivation;
 class UControlSymbol;
+class UControlComponent;
+class UPrimitiveComponent;
 class AActor;
 
-UCLASS(Blueprintable, BlueprintType)
-class ASTRO_API UControlSymbolEvents : public UObject
-{
+UCLASS(Blueprintable)
+class ASTRO_API UControlSymbolEvents : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable, BlueprintCallable)
+    UPROPERTY(BlueprintAssignable, BlueprintCallable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSymbolFireEvent Fired;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
-    UActivation *Activation;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
-    UControlSymbol *Symbol;
-
-    UPROPERTY(Export)
-    UControlComponent *Control;
-
-    UPROPERTY()
-    AActor *Widget;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UActivation* Activation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UControlSymbol* Symbol;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UControlComponent* Control;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    AActor* Widget;
+    
     UControlSymbolEvents();
     UFUNCTION()
-    void DoFiredFromClick(UPrimitiveComponent *Component, FKey Key);
-
+    void DoFiredFromClick(UPrimitiveComponent* Component, FKey Key);
+    
     UFUNCTION()
-    void DoFired(UControlSymbol *FiredSymbol);
-
+    void DoFired(UControlSymbol* FiredSymbol);
+    
     UFUNCTION(BlueprintCallable)
-    void BindPrimitiveClicked(UPrimitiveComponent *Primitive);
+    void BindPrimitiveClicked(UPrimitiveComponent* Primitive);
+    
 };
+

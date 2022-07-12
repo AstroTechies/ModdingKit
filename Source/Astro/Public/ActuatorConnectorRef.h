@@ -6,10 +6,10 @@ USTRUCT(BlueprintType)
 struct FActuatorConnectorRef {
     GENERATED_BODY()
 public:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     int32 ConnectorIndex;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint8 bIsRerouteNode: 1;
     
     ASTRO_API FActuatorConnectorRef();

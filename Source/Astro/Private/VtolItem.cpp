@@ -2,8 +2,8 @@
 #include "Net/UnrealNetwork.h"
 #include "FuelConsumerComponent.h"
 
-class ASolarBody;
 class AAstroPlayerController;
+class ASolarBody;
 
 void AVtolItem::UpdateWashEffectsState() {
 }
@@ -49,10 +49,10 @@ bool AVtolItem::ServerConsumeFuel_Validate(float Time) {
     return true;
 }
 
-void AVtolItem::RouteAux2ToggleUse(AAstroPlayerController* Controller, EInputEvent eventType) {
+void AVtolItem::RouteAux2ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType) {
 }
 
-void AVtolItem::RouteAux1ToggleUse(AAstroPlayerController* Controller, EInputEvent eventType) {
+void AVtolItem::RouteAux1ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType) {
 }
 
 void AVtolItem::OnSlottedItemsChanged() {

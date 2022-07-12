@@ -1,6 +1,6 @@
 #include "ResearchModule.h"
-#include "ActorResearchComponent.h"
 #include "PowerComponent.h"
+#include "ActorResearchComponent.h"
 #include "AdaptiveTickComponent.h"
 
 AResearchModule::AResearchModule() {

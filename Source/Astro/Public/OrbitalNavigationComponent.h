@@ -1,262 +1,263 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
-#include "UObject/NoExportTypes.h"
-#include "UpdateCanLaunchSignalDelegate.h"
-#include "OrbitalReplicatedData.h"
-#include "UObject/NoExportTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "OrbitalReplicatedData.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UpdateCanLaunchSignalDelegate.h"
 #include "ReplicatedOrbitalTimeData.h"
 #include "OrbitalNavigationComponent.generated.h"
 
 class UObject;
 class UStorageChassisComponent;
 class ASolarBody;
-class AActor;
 class AAstroPlayerController;
+class AActor;
 class UOrbitalNavigationComponent;
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UOrbitalNavigationComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UOrbitalNavigationComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
-    uint8 bPreventRespawnWhileDriving : 1;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bPreventRespawnWhileDriving: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LaunchLength;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DefaultOrbitSpeed;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinOrbitSpeed;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxOrbitSpeed;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float OrbitSpeedRangeStep;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float OrbitSpeedTransitionRate;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float OrbitSpeedInputRepeatDelay;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTransform LandingOffset;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool UseLaunchUpVector;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float OrbitDistance;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float EasePower;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LerpPower;
-
-    UPROPERTY(BlueprintReadWrite, SaveGame, ReplicatedUsing = OnRep_ReplicatedData, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_ReplicatedData, meta=(AllowPrivateAccess=true))
     FOrbitalReplicatedData ReplicatedData;
-
-    UPROPERTY(SaveGame)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     bool PhysicsDisabled;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
-    UObject *SelectedTarget;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UObject* SelectedTarget;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector MajorForceVector;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LaunchTime;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool planetSelection;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool shouldLaunchUpdate;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnLaunchEnd;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnLaunch;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FUpdateCanLaunchSignal OnUpdateCanLaunch;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnOrbitSpeedChanged;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SourceTime;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float TargetTime;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CurrentTime;
-
-    UPROPERTY(Export)
-    UStorageChassisComponent *storage;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UStorageChassisComponent* storage;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnPlanetSelectionChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal HandleLandBeginHover;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal HandleLandEndHover;
-
+    
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float CurrOrbitGameSpeedScalarDegree;
-
-    UPROPERTY(SaveGame, ReplicatedUsing = OnRep_TargetOrbitSpeedScalarDegree)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_TargetOrbitSpeedScalarDegree, meta=(AllowPrivateAccess=true))
     float REP_TargetOrbitGameSpeedScalarDegree;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float Local_TargetOrbitGameSpeedScalarDegree;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float DefaultOrbitSpeedScalarDegree;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float InterplanetaryTravelRange;
-
-    UPROPERTY(ReplicatedUsing = OnRep_ReplicatedTimeData)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_ReplicatedTimeData, meta=(AllowPrivateAccess=true))
     FReplicatedOrbitalTimeData TimeData;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOrbitalReplicatedData LastData;
-
-    UPROPERTY(Transient)
-    ASolarBody *SourceSolarBody;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    ASolarBody* SourceSolarBody;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float TimeSinceLastOrbitSpeedChange;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 CurrOrbitSpeedInput;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 DiscreteOrbitSpeedInput;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 AxisOrbitSpeedInput;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float MaxOrbitSpeedScalar;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float MinOrbitSpeedScalar;
-
+    
 public:
     UOrbitalNavigationComponent();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
     UFUNCTION(BlueprintCallable)
     void SetPlanetSelection(bool Enable);
-
+    
     UFUNCTION(BlueprintCallable)
     void SetActiveLaunchLength(float newLaunchLength);
-
+    
 protected:
     UFUNCTION(Reliable, Server, WithValidation)
     void ServerSetOrbitSpeedScalarDegree(float speedScalarDegree);
-
+    
 public:
     UFUNCTION(BlueprintCallable)
-    void PerformLaunch(UObject *Target);
-
+    void PerformLaunch(UObject* Target);
+    
     UFUNCTION()
     void OnStorageAttachmentsChanged(bool Entered);
-
+    
     UFUNCTION()
-    void OnSolarBodyClick(ASolarBody *SolarBody);
-
+    void OnSolarBodyClick(ASolarBody* SolarBody);
+    
 protected:
     UFUNCTION()
     void OnRep_TargetOrbitSpeedScalarDegree();
-
+    
     UFUNCTION()
     void OnRep_ReplicatedTimeData();
-
+    
     UFUNCTION()
     void OnRep_ReplicatedData();
-
+    
     UFUNCTION()
     void OnOrbitSpeedInputUpOrDown(float AxisValue);
-
+    
     UFUNCTION()
     void OnOrbitSpeedInputUp();
-
+    
     UFUNCTION()
     void OnOrbitSpeedInputEnd();
-
+    
     UFUNCTION()
     void OnOrbitSpeedInputDown();
-
+    
 public:
     UFUNCTION()
     void OnLandEndHover();
-
+    
     UFUNCTION()
-    void OnLandClick(AActor *Actor);
-
+    void OnLandClick(AActor* Actor);
+    
     UFUNCTION()
     void OnLandBeginHover();
-
+    
     UFUNCTION(BlueprintPure)
     bool LocalPlayerOnBoard();
-
+    
 protected:
     UFUNCTION()
-    void HandleVehicleUnmanned(AAstroPlayerController *VehicleDriver);
-
+    void HandleVehicleUnmanned(AAstroPlayerController* VehicleDriver);
+    
     UFUNCTION()
-    void HandleVehicleManned(AAstroPlayerController *VehicleDriver);
-
+    void HandleVehicleManned(AAstroPlayerController* VehicleDriver);
+    
 public:
     UFUNCTION(BlueprintPure)
-    ASolarBody *GetTargetOrbitingBody();
-
+    ASolarBody* GetTargetOrbitingBody();
+    
     UFUNCTION(BlueprintPure)
     float GetOrbitSpeedPercent();
-
+    
     UFUNCTION(BlueprintPure)
     float GetLaunchTime();
-
+    
     UFUNCTION(BlueprintPure)
     bool GetLaunched();
-
+    
     UFUNCTION(BlueprintPure)
     bool GetLanding();
-
+    
     UFUNCTION(BlueprintPure)
     bool GetLanded();
-
+    
     UFUNCTION(BlueprintPure)
     bool GetIsInOrbit();
-
+    
     UFUNCTION(BlueprintPure)
     bool GetCanLaunch();
-
+    
     UFUNCTION(BlueprintPure)
     FVector GetCameraUpVector();
-
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
-    void AuthoritySnapToTarget(UObject *Target);
-
+    void AuthoritySnapToTarget(UObject* Target);
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthoritySetInterplanetaryTravelRangeMultiplier(float rangeMultiplier);
-
+    
     UFUNCTION(BlueprintPure)
-    static UOrbitalNavigationComponent *ActorOrbitalNavigationComponent(AActor *Actor);
+    static UOrbitalNavigationComponent* ActorOrbitalNavigationComponent(AActor* Actor);
+    
 };
+

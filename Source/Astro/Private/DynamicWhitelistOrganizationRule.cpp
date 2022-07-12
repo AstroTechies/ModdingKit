@@ -9,6 +9,10 @@ void UDynamicWhitelistOrganizationRule::SetWhitelist(const TArray<TSubclassOf<UI
 void UDynamicWhitelistOrganizationRule::SetShowIndicators(bool showIndicators) {
 }
 
+void UDynamicWhitelistOrganizationRule::SetRequireNonFullItems(bool requireNonFullItems) {
+}
+
 UDynamicWhitelistOrganizationRule::UDynamicWhitelistOrganizationRule() {
+    this->bShowIndicators = true;
 }
 

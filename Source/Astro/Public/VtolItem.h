@@ -1,229 +1,230 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "InteractionPromptEntryData.h"
 #include "VehicleBase.h"
-#include "OnLandedChangedDelegate.h"
+#include "InteractionPromptEntryData.h"
 #include "EControlsPromptStatus.h"
-#include "UObject/NoExportTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "OnLandedChangedDelegate.h"
 #include "LandingInfo.h"
-#include "Engine/EngineBaseTypes.h"
-#include "UObject/NoExportTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 #include "VtolItem.generated.h"
 
 class UFlyingVtolMovementComponent;
 class UFuelConsumerComponent;
-class AAstroPlayerController;
 class ASolarBody;
+class AAstroPlayerController;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API AVtolItem : public AVehicleBase
-{
+UCLASS(Blueprintable)
+class ASTRO_API AVtolItem : public AVehicleBase {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CollisionMeshBottomOffset;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CeilingCheckInterval;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CeilingCheckHeight;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AutoHoverHeight;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LandingHeight;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxLandingSlope;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bMaintainHover;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float VerticalSpeedScalar;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float IgnitionDuration;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float TakeOffRotationInterpolationSpeed;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ControlsInterpRate;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinLandingSpeedScalar;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LandingSpeedInterpolationPercent;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DoubleTapInputWindow;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DoubleTapHoldThreshold;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ControlsPromptDisplayDuration;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ControlsPromptOpenDelay;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText DoubleTapActionText;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FInteractionPromptEntryData TakeOffActionPrompt;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FInteractionPromptEntryData LandActionPrompt;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FInteractionPromptEntryData AscendActionPrompt;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FInteractionPromptEntryData DescendActionPrompt;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ThrusterWashUpdateInterval;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxSpeedForHighAltitudeWash;
-
-    UPROPERTY(Export, VisibleAnywhere)
-    UFlyingVtolMovementComponent *MovementComponent;
-
-    UPROPERTY(BlueprintReadWrite, Replicated, VisibleAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UFlyingVtolMovementComponent* MovementComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     float CurrentForwardSpeedNormalized;
-
-    UPROPERTY(BlueprintReadWrite, Replicated, VisibleAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     float CurrentLateralSpeedNormalized;
-
-    UPROPERTY(BlueprintReadWrite, ReplicatedUsing = OnRep_IsNearGround, meta = (AllowPrivateAccess = true))
-    uint8 bIsNearGround : 1;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_IsNearGround, meta=(AllowPrivateAccess=true))
+    uint8 bIsNearGround: 1;
+    
 protected:
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UFuelConsumerComponent *FuelConsumerComponent;
-
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UFuelConsumerComponent* FuelConsumerComponent;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnLandedChanged OnLandedChanged;
-
-    UPROPERTY(BlueprintReadWrite, SaveGame, ReplicatedUsing = OnRep_EnginesActivated, meta = (AllowPrivateAccess = true))
-    uint8 bEnginesActive : 1;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_EnginesActivated, meta=(AllowPrivateAccess=true))
+    uint8 bEnginesActive: 1;
+    
 private:
-    UPROPERTY(ReplicatedUsing = OnRep_FuelAmount)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_FuelAmount, meta=(AllowPrivateAccess=true))
     float FuelAmount;
-
-    UPROPERTY(SaveGame)
-    uint8 bHasIgnition : 1;
-
-    UPROPERTY(SaveGame)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    uint8 bHasIgnition: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     EControlsPromptStatus MovementControlsPromptStatus;
-
+    
 public:
     AVtolItem();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
 protected:
     UFUNCTION()
     void UpdateWashEffectsState();
-
+    
     UFUNCTION(BlueprintImplementableEvent)
-    void UpdateWashEffects(int32 effectSide, bool effectiveActive, const FVector &effectLocation);
-
+    void UpdateWashEffects(int32 effectSide, bool effectiveActive, const FVector& effectLocation);
+    
     UFUNCTION(BlueprintImplementableEvent)
     void UpdateLandingInRange(bool InRange, bool canLand);
-
+    
     UFUNCTION()
     void TimeoutTooltipOverride();
-
+    
     UFUNCTION()
     void SetRiseInputInactive();
-
+    
     UFUNCTION()
     void SetRiseInputActive();
-
+    
 public:
     UFUNCTION(Reliable, Server, WithValidation)
     void ServerSetNormalizedSpeeds(float Forward, float lateral);
-
+    
 protected:
     UFUNCTION(Reliable, Server, WithValidation)
     void ServerNotifyLandedChanged(bool bLanded);
-
+    
     UFUNCTION(Reliable, Server, WithValidation)
     void ServerNearGroundChanged(bool bNearGround);
-
+    
     UFUNCTION(Reliable, Server, WithValidation)
     void ServerEnginesActivated(bool bActivated, FLandingInfo LandingInfo);
-
+    
     UFUNCTION(Reliable, Server, WithValidation)
     void ServerConsumeFuel(float Time);
-
+    
 public:
     UFUNCTION()
-    void RouteAux2ToggleUse(AAstroPlayerController *Controller, EInputEvent eventType);
-
+    void RouteAux2ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType);
+    
     UFUNCTION()
-    void RouteAux1ToggleUse(AAstroPlayerController *Controller, EInputEvent eventType);
-
+    void RouteAux1ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType);
+    
 protected:
     UFUNCTION()
     void OnSlottedItemsChanged();
-
+    
     UFUNCTION()
     void OnRep_IsNearGround(bool bPreviousValue);
-
+    
     UFUNCTION()
     void OnRep_FuelAmount();
-
+    
     UFUNCTION()
     void OnRep_EnginesActivated(bool bPreviousValue);
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void OnNearGroundChanged(bool nearGround);
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void OnIgnitionTurned(bool ignite);
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void OnIgnitionPercentChanged(float percent);
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void OnIgnitionFailed(bool hasFuel, bool onPlanet);
-
+    
     UFUNCTION()
     void OnFuelRecipeAmountChanged(float Amount);
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void OnFuelPercentChanged(float percent);
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void OnEnginesActivated(bool Activated);
-
+    
     UFUNCTION()
     void OnCreativeModeFreeFuelChanged(bool bFreeFuel);
-
+    
     UFUNCTION(NetMulticast, Reliable)
     void MulticastNotifyLandedChanged(bool bLanded);
-
+    
     UFUNCTION(BlueprintPure)
     bool IsLocallyControlled() const;
-
+    
     UFUNCTION()
-    void HandleVehicleUnmanned(AAstroPlayerController *OldPilot);
-
+    void HandleVehicleUnmanned(AAstroPlayerController* OldPilot);
+    
     UFUNCTION()
-    void HandleVehicleManned(AAstroPlayerController *NewPilot);
-
+    void HandleVehicleManned(AAstroPlayerController* NewPilot);
+    
     UFUNCTION(BlueprintImplementableEvent)
-    void GetThrusterTransform(int32 thrusterSide, FTransform &thrusterLocation);
-
+    void GetThrusterTransform(int32 thrusterSide, FTransform& thrusterLocation);
+    
 public:
     UFUNCTION(BlueprintPure)
-    ASolarBody *GetLocalSolarBody() const;
+    ASolarBody* GetLocalSolarBody() const;
+    
 };
+

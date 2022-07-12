@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "TradeShipDatabase.generated.h"
 
 class AActor;
 
-UCLASS(Blueprintable, Blueprintable)
-class UTradeShipDatabase : public UDataAsset
-{
+UCLASS(Blueprintable)
+class UTradeShipDatabase : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FString, TSoftClassPtr<AActor>> TradeShips;
-
+    
     UTradeShipDatabase();
 };
+

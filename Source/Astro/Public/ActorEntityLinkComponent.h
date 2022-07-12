@@ -1,27 +1,28 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "AstroEntityDefinition.h"
 #include "AstroDatumRef.h"
 #include "ActorEntityLinkComponent.generated.h"
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UActorEntityLinkComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UActorEntityLinkComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAstroEntityDefinition EntityDefinition;
-
+    
 protected:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FAstroDatumRef EntityRef;
-
+    
 public:
     UActorEntityLinkComponent();
     UFUNCTION(BlueprintPure)
     bool IsSpawnedFromEntity() const;
-
+    
     UFUNCTION(BlueprintPure)
-    FAstroDatumRef GetEntityDatumRef(bool &bOutSuccess) const;
+    FAstroDatumRef GetEntityDatumRef(bool& bOutSuccess) const;
+    
 };
+

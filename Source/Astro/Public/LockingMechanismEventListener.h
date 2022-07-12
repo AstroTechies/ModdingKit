@@ -6,12 +6,13 @@
 
 class ULockingMechanism;
 
-UCLASS(Blueprintable, Blueprintable)
-class ULockingMechanismEventListener : public UAstroEntityComponentSubobject
-{
+UCLASS(Blueprintable)
+class ULockingMechanismEventListener : public UAstroEntityComponentSubobject {
     GENERATED_BODY()
 public:
     ULockingMechanismEventListener();
     UFUNCTION()
-    void OnLockingMechanismOpenStateChanged(ULockingMechanism *changedLockingMechanism, const FLockChangedEventMetadata &EventData);
+    void OnLockingMechanismOpenStateChanged(ULockingMechanism* changedLockingMechanism, const FLockChangedEventMetadata& EventData);
+    
 };
+

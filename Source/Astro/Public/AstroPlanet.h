@@ -1,275 +1,278 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "AtmosphericResource.h"
 #include "SolarBody.h"
-#include "GatewayObjectPlacementProperties.h"
 #include "EPlanetIdentifier.h"
-#include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
+#include "GatewayObjectPlacementProperties.h"
+#include "AtmosphericResource.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformationParamsT2 -FallbackName=DeformationParamsT2
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelMaterial -FallbackName=VoxelMaterial
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "VoxelVolumeComponent.h"
 #include "DeformationParamsT2.h"
-#include "UObject/NoExportTypes.h"
 #include "VoxelMaterial.h"
 #include "AstroPlanet.generated.h"
 
-class UObject;
-class UVoxelVolumeComponent;
 class UItemType;
+class UObject;
 class UMaterial;
 class UMaterialInstanceDynamic;
 class UMaterialParameterCollection;
 class UStaticMeshComponent;
-class ADayNight;
 class UChildActorComponent;
 class USceneComponent;
 class UBoundedVoxelVolumeModifier;
 class AActor;
+class ADayNight;
 class ANavpointManagerActor;
 class APlanetProxyActor;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API AAstroPlanet : public ASolarBody
-{
+UCLASS(Blueprintable)
+class ASTRO_API AAstroPlanet : public ASolarBody {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EPlanetIdentifier PlanetIdentifier;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemType> PlanetItemType;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta = (AllowPrivateAccess = true))
-    UVoxelVolumeComponent *PlanetaryVoxelVolume;
-
-    UPROPERTY(Export)
-    UVoxelVolumeComponent *DefaultVoxelVolume;
-
-    UPROPERTY(Transient)
-    TArray<UObject *> CachedT2Deformables;
-
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UVoxelVolumeComponent* PlanetaryVoxelVolume;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UVoxelVolumeComponent* DefaultVoxelVolume;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    TArray<UObject*> CachedT2Deformables;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     int32 Seed;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<int32> ExplicitSeeds;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool VerticalZLandingZone;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FText> SwapStartPlanets;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool Enable;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 Difficulty;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FAtmosphericResource> AtmosphericResources;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool Cutaway;
-
-    UPROPERTY(EditAnywhere, SaveGame)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     bool CenterOrigin;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool RandomizeSeedForBuild;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool RandomizeSeedForPIE;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LodMultiplier;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float VoxelSize;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SunExposureModifier;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WindIntensityModifier;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor AmbientColor;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AmbientIntensity;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor DaytimeSkyColor;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DaytimeSkyIntensity;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor NightSkyColor;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NightSkyIntensity;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FogFalloff;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FogPower;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FogAtmosphereHeight;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FogAtmosphereThickness;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor FogColorCeiling;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor FogColorFloor;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DaytimeEnvironmentFogContribution;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor FogColorNightCeiling;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor FogColorNightFloor;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NighttimeEnvironmentFogContribution;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor FogColorUnderground;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FogUndergroundThickness;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FogMaxOpacity;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor FogSunHaloColor;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FogSunHaloIntensity;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FogSunHaloPower;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WindScale;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WindNoiseMovement;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WindDirectionChangeRate;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WindIntensityChangeRate;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AmbientWind;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxFlightHeightAdjustment;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGatewayObjectPlacementProperties GatewayObjectPlacementProperties;
-
-    UPROPERTY(EditAnywhere)
-    UMaterial *FogMaterial;
-
-    UPROPERTY()
-    UMaterialInstanceDynamic *FogMaterialDynamic;
-
-    UPROPERTY()
-    UMaterialParameterCollection *FogMaterialParameterCollection;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterial* FogMaterial;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInstanceDynamic* FogMaterialDynamic;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialParameterCollection* FogMaterialParameterCollection;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool IsLocallyVisible;
-
+    
 protected:
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    UStaticMeshComponent *FogMesh;
-
-    UPROPERTY(BlueprintReadWrite, EditInstanceOnly, Export, meta = (AllowPrivateAccess = true))
-    UChildActorComponent *ProxyComponent;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    USceneComponent *ProxyMeshComponent;
-
-    UPROPERTY(Export, Transient)
-    TArray<UBoundedVoxelVolumeModifier *> GatewayObjectPlacementVoxelVolumeModifiers;
-
-    UPROPERTY(EditAnywhere)
-    AActor *LowRezClouds;
-
-    UPROPERTY(EditAnywhere)
-    AActor *LowRezProxyClouds;
-
-    UPROPERTY(EditAnywhere)
-    AActor *AtmostphericFeatures;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UStaticMeshComponent* FogMesh;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UChildActorComponent* ProxyComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USceneComponent* ProxyMeshComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    TArray<UBoundedVoxelVolumeModifier*> GatewayObjectPlacementVoxelVolumeModifiers;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    AActor* LowRezClouds;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    AActor* LowRezProxyClouds;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    AActor* AtmostphericFeatures;
+    
 private:
-    UPROPERTY(Transient)
-    AActor *SunActor;
-
-    UPROPERTY(Transient)
-    ADayNight *DayNightActor;
-
-    UPROPERTY(Replicated, Transient)
-    ANavpointManagerActor *NavpointManagerOwner;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    AActor* SunActor;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    ADayNight* DayNightActor;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
+    ANavpointManagerActor* NavpointManagerOwner;
+    
 public:
     AAstroPlanet();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
 private:
     UFUNCTION()
-    void UpdateHasPlayersOnPlanet(ASolarBody *SolarBody);
-
+    void UpdateHasPlayersOnPlanet(ASolarBody* SolarBody);
+    
 public:
     UFUNCTION(BlueprintPure)
-    FLinearColor SampleFog(const FVector &Origin, const FVector &Ray);
-
+    FLinearColor SampleFog(const FVector& Origin, const FVector& Ray);
+    
 private:
     UFUNCTION()
-    void OnDeformationComplete(const FDeformationParamsT2 &params);
-
+    void OnDeformationComplete(const FDeformationParamsT2& params);
+    
 public:
     UFUNCTION(BlueprintPure)
-    bool LocationInAtmosphere(const FVector &Location);
-
+    bool LocationInAtmosphere(const FVector& Location);
+    
     UFUNCTION(BlueprintPure)
-    FVector GetWindDirectionAt(const FVector &Location, float &Intensity);
-
+    FVector GetWindDirectionAt(const FVector& Location, float& Intensity);
+    
     UFUNCTION(BlueprintPure)
-    FVector GetTerrainNormal(const FVector &Location);
-
+    FVector GetTerrainNormal(const FVector& Location);
+    
     UFUNCTION(BlueprintPure)
-    FVoxelMaterial GetTerrainMaterial(const FVector &Location);
-
+    FVoxelMaterial GetTerrainMaterial(const FVector& Location);
+    
     UFUNCTION(BlueprintPure)
-    float GetTerrainDensity(const FVector &Location);
-
+    float GetTerrainDensity(const FVector& Location);
+    
     UFUNCTION(BlueprintPure)
     float GetRadius() const;
-
+    
     UFUNCTION(BlueprintPure)
-    APlanetProxyActor *GetProxy();
-
+    APlanetProxyActor* GetProxy();
+    
     UFUNCTION(BlueprintPure)
     FTransform GetPlanetTransform();
-
+    
     UFUNCTION(BlueprintPure)
     FTransform GetPlanetToProxyTransform();
-
+    
     UFUNCTION(BlueprintCallable)
     FVector GetNorthVector();
-
+    
     UFUNCTION(BlueprintPure)
-    ADayNight *GetDayNightActor() const;
+    ADayNight* GetDayNightActor() const;
+    
 };
+

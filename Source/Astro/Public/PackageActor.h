@@ -5,15 +5,16 @@
 
 class UAstroActionComponent;
 
-UCLASS(Blueprintable, Abstract)
-class ASTRO_API APackageActor : public APhysicalItem
-{
+UCLASS(Abstract, Blueprintable)
+class ASTRO_API APackageActor : public APhysicalItem {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UAstroActionComponent *ActionComponent;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UAstroActionComponent* ActionComponent;
+    
     APackageActor();
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintImplementableEvent)
     void Authority_Unpack();
+    
 };
+

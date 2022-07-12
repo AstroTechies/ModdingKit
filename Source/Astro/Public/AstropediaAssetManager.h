@@ -1,27 +1,28 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "CardLoadedDelegate.h"
 #include "EAstroGameMenuTutoriaSlideCardKey.h"
 #include "LoadedCard.h"
 #include "AstropediaAssetManager.generated.h"
 
-UCLASS(Blueprintable, BlueprintType)
-class UAstropediaAssetManager : public UObject
-{
+UCLASS(Blueprintable)
+class UAstropediaAssetManager : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FCardLoaded OnCardLoaded;
-
+    
     UAstropediaAssetManager();
     UFUNCTION(BlueprintCallable)
     bool SetCardShownAndLoadAsync(EAstroGameMenuTutoriaSlideCardKey cardKey);
-
+    
     UFUNCTION(BlueprintCallable)
     void SetCardHidden(EAstroGameMenuTutoriaSlideCardKey cardKey);
-
+    
 private:
     UFUNCTION()
     void HandleCardLoaded(FLoadedCard LoadedCard);
+    
 };
+

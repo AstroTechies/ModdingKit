@@ -1,69 +1,70 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "GameFramework/Actor.h"
-#include "TextDelegateDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 #include "SlotReference.h"
-#include "InputCoreTypes.h"
+#include "TextDelegateDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
 #include "ResourceInfo.generated.h"
 
+class UPrimitiveComponent;
 class UAdaptiveTickComponent;
 class UStaticMeshComponent;
-class UItemType;
 class APhysicalItem;
-class UPrimitiveComponent;
+class UItemType;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API AResourceInfo : public AActor
-{
+UCLASS(Blueprintable)
+class ASTRO_API AResourceInfo : public AActor {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UAdaptiveTickComponent *AdaptiveTick;
-
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UStaticMeshComponent *StaticMesh;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UAdaptiveTickComponent* AdaptiveTick;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UStaticMeshComponent* StaticMesh;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemType> ItemType;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemType> storedSubItemType;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool Hovering;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
-    APhysicalItem *ItemParent;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
-    AActor *ActorParent;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    APhysicalItem* ItemParent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    AActor* ActorParent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSlotReference SlotParent;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTextDelegate SetDescription;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float OffsetDistance;
-
+    
     AResourceInfo();
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void SetTextVisible(bool Visible);
-
+    
     UFUNCTION(BlueprintCallable)
     void SetPrimaryItemTypeAndStoredSubType(TSubclassOf<UItemType> primaryItemType, TSubclassOf<UItemType> storedSubType);
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void OnSpawn();
-
+    
     UFUNCTION()
-    void MeshCursorEnd(UPrimitiveComponent *Component);
-
+    void MeshCursorEnd(UPrimitiveComponent* Component);
+    
     UFUNCTION()
-    void MeshCursorBegin(UPrimitiveComponent *Component);
-
+    void MeshCursorBegin(UPrimitiveComponent* Component);
+    
     UFUNCTION()
-    void MeshClicked(UPrimitiveComponent *Component, FKey Key);
+    void MeshClicked(UPrimitiveComponent* Component, FKey Key);
+    
 };
+

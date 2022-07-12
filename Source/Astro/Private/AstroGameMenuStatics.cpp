@@ -1,19 +1,16 @@
 #include "AstroGameMenuStatics.h"
 #include "Templates/SubclassOf.h"
 
-class UObject;
-class UAstroGameMenuPopoutWidgetContentsBase;
-class UAstroGameMenuFocusItemWidget;
 class UUserWidget;
 class UAstroGameMenuPopoutWidget;
+class UObject;
+class UAstroGameMenuFocusItemWidget;
+class UAstroGameMenuPopoutWidgetContentsBase;
 class UAstroGameMenuWidget;
 class UAstroGameMenuSubPaneWidget;
 
 bool UAstroGameMenuStatics::TryGetCurrentGameMenuContext(UObject* WorldContextObject, EAstroGameMenuContext& OutCurrentMenuContext) {
     return false;
-}
-
-void UAstroGameMenuStatics::SetIsPreviewingCharacterCustomizationFromTitleScreen(UObject* WorldContextObject, bool IsPreviewing) {
 }
 
 void UAstroGameMenuStatics::RestoreKeyboardFocusToGameMenu(UObject* WorldContextObject) {
@@ -49,10 +46,6 @@ void UAstroGameMenuStatics::LayoutGameMenuActiveSubPane(UObject* WorldContextObj
 }
 
 void UAstroGameMenuStatics::LayoutGameMenu(UObject* WorldContextObject) {
-}
-
-bool UAstroGameMenuStatics::IsPreviewingCharacterCustomizationFromTitleScreen(UObject* WorldContextObject) {
-    return false;
 }
 
 bool UAstroGameMenuStatics::IsMenuEntryBeingEditedOrDragged(UObject* WorldContextObject) {

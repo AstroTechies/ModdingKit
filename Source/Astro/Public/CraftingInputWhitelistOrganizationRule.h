@@ -8,17 +8,17 @@ class UItemList;
 class UItemType;
 
 UCLASS(Blueprintable, EditInlineNew)
-class UCraftingInputWhitelistOrganizationRule : public USlotOrganizationRule
-{
+class UCraftingInputWhitelistOrganizationRule : public USlotOrganizationRule {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemList> CraftingOutputItemList;
-
+    
 protected:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<UItemType>> Whitelist;
-
+    
 public:
     UCraftingInputWhitelistOrganizationRule();
 };
+

@@ -3,10 +3,10 @@
 #include "TerrainModifierBase.h"
 #include "TerrainModifierLocal.generated.h"
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UTerrainModifierLocal : public UTerrainModifierBase
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UTerrainModifierLocal : public UTerrainModifierBase {
     GENERATED_BODY()
 public:
     UTerrainModifierLocal();
 };
+

@@ -1,15 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=UMG -ObjectName=UserWidget -FallbackName=UserWidget
 #include "Blueprint/UserWidget.h"
 #include "VirtualCursorWidget.generated.h"
 
-UCLASS(Blueprintable, Abstract, EditInlineNew)
-class ASTRO_API UVirtualCursorWidget : public UUserWidget
-{
+UCLASS(Abstract, Blueprintable, EditInlineNew)
+class ASTRO_API UVirtualCursorWidget : public UUserWidget {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, Transient, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool IsHoveringOverInteractable;
-
+    
     UVirtualCursorWidget();
 };
+

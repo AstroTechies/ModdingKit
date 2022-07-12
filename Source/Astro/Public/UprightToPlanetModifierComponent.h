@@ -3,13 +3,13 @@
 #include "CameraModifierComponent.h"
 #include "UprightToPlanetModifierComponent.generated.h"
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class UUprightToPlanetModifierComponent : public UCameraModifierComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class UUprightToPlanetModifierComponent : public UCameraModifierComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
-    uint8 bUseTargetLocation : 1;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bUseTargetLocation: 1;
+    
     UUprightToPlanetModifierComponent();
 };
+

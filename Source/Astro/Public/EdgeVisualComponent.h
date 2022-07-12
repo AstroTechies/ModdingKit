@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FEdgeVisualComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UInstancedStaticMeshComponent* MeshComponent;
     
     ASTRO_API FEdgeVisualComponent();

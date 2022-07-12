@@ -9,7 +9,7 @@ USTRUCT(BlueprintType)
 struct FItemVariantList {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<UItemType>> Variants;
     
     ASTRO_API FItemVariantList();

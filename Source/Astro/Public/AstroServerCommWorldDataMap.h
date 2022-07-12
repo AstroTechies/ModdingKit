@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "AstroServerCommWorldData.h"
 #include "AstroServerCommWorldDataMap.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UAstroServerCommWorldDataMap : public UObject
-{
+UCLASS(Blueprintable)
+class ASTRO_API UAstroServerCommWorldDataMap : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TMap<uint64, FAstroServerCommWorldData> Map;
-
+    
     UAstroServerCommWorldDataMap();
 };
+

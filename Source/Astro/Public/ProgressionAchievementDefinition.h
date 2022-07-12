@@ -4,14 +4,14 @@
 #include "EAstroAchievementKeys.h"
 #include "ProgressionAchievementDefinition.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FProgressionAchievementDefinition {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAstroAchievementKeys AchievementKey;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAchievementSaveDataType SaveDataType;
     
     ASTRO_API FProgressionAchievementDefinition();

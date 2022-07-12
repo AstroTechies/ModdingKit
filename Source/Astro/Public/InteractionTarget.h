@@ -3,20 +3,20 @@
 #include "InteractionTarget.generated.h"
 
 class AActor;
-class UClickableComponent;
 class USceneComponent;
+class UClickableComponent;
 
 USTRUCT(BlueprintType)
 struct FInteractionTarget {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     AActor* Actor;
     
-    UPROPERTY(Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     USceneComponent* AttachParent;
     
-    UPROPERTY(Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UClickableComponent* ClickableComponent;
     
     ASTRO_API FInteractionTarget();

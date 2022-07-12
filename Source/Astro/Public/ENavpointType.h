@@ -18,5 +18,6 @@ enum class ENavpointType : uint8 {
     DataCache,
     Flora,
     Snail,
+    Deposit,
 };
 

@@ -10,10 +10,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ActivationThreshold;
     
-    UPROPERTY(BlueprintAssignable, EditAnywhere)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnBelowThreshold;
     
-    UPROPERTY(BlueprintAssignable, EditAnywhere)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnAboveThreshold;
     
     ASTRO_API FPowerThresholdEvent();

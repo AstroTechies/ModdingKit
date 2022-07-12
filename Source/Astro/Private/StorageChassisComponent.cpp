@@ -3,10 +3,10 @@
 #include "Templates/SubclassOf.h"
 
 class APlayerController;
-class APhysicalItem;
-class USlotOrganizationRule;
-class AActor;
 class UItemType;
+class APhysicalItem;
+class AActor;
+class USlotOrganizationRule;
 class UStorageChassisComponent;
 
 void UStorageChassisComponent::TertiaryUse(APlayerController* Controller) {
@@ -34,7 +34,7 @@ void UStorageChassisComponent::OnOwnerDestroyed(AActor* Owner) {
 void UStorageChassisComponent::ItemAmountChangeEvent() {
 }
 
-TArray<FSlotReference> UStorageChassisComponent::GetUnmanagedSlots() const {
+TArray<FSlotReference> UStorageChassisComponent::GetUnmanagedSlots(bool bCheckingFullness) const {
     return TArray<FSlotReference>();
 }
 
@@ -87,7 +87,6 @@ UStorageChassisComponent::UStorageChassisComponent() {
     this->TertiaryUsable = false;
     this->SaveOnEnter = false;
     this->CanTransferItemsAcrossConnections = false;
-    this->OverrideParentStorage = NULL;
     this->bPrioritizeNestedStorage = true;
     this->bPassActuateEventsToSlottedItems = true;
     this->bCanNest = true;

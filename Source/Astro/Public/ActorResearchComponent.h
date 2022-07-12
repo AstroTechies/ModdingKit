@@ -1,98 +1,99 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "OnActiveResearchSubjectsChangedDelegate.h"
-#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SignalDelegate.h"
-#include "SlotReference.h"
-#include "OnResearchSubjectListChangedDelegate.h"
 #include "OnActiveResearchSubjectExpiredDelegate.h"
-#include "ResearchReplicationData.h"
+#include "OnResearchSubjectListChangedDelegate.h"
+#include "OnActiveResearchSubjectsChangedDelegate.h"
+#include "SlotReference.h"
 #include "AstroDatumRef.h"
+#include "ResearchReplicationData.h"
 #include "AttachedResearchSubject.h"
 #include "ActorResearchComponent.generated.h"
 
 class UCurveFloat;
 class APlayController;
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UActorResearchComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UActorResearchComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnWantsToResearchChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnIsResearchingChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnResearchSubjectListChanged OnResearchSubjectListChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnResearchReplicationDataChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnResearchStateChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnActiveResearchSubjectsChanged OnAuthorityChangedActiveResearchSubjects;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnActiveResearchSubjectExpired OnActiveResearchSubjectExpiredAuthority;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> ResearchSlotNames;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ResearchPowerRequired;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinimumResearchPowerFraction;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinimumResearchRateMultiplier;
-
-    UPROPERTY(EditDefaultsOnly)
-    UCurveFloat *UnderPoweredResearchRateCurve;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveFloat* UnderPoweredResearchRateCurve;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaximumResearchPowerMultiplier;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaximumResearchRateMutliplier;
-
-    UPROPERTY(EditDefaultsOnly)
-    UCurveFloat *OverPoweredResearchRateCurve;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveFloat* OverPoweredResearchRateCurve;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bResearchSlotsUnclickableWhileActive;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bDestroyActiveResearchSubjectsOnInterruption;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ExpiredResearchSubjectDestructionDelay;
-
+    
 protected:
-    UPROPERTY(BlueprintReadWrite, Transient, ReplicatedUsing = OnRep_ResearchData, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_ResearchData, meta=(AllowPrivateAccess=true))
     FResearchReplicationData ResearchReplicationData;
-
-    UPROPERTY(BlueprintReadWrite, Transient, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> ResearchSlotRefs;
-
+    
 public:
     UActorResearchComponent();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
     UFUNCTION()
     void OnRep_ResearchData();
-
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
-    bool AuthorityStartOrInterruptResearch(APlayController *InstigatingController);
-
+    bool AuthorityStartOrInterruptResearch(APlayController* InstigatingController);
+    
     UFUNCTION()
-    void AuthorityChangedActiveResearchSubjects(FAstroDatumRef ResearchComponentRef, const TArray<FAttachedResearchSubject> &ActiveResearchSubjects);
-
+    void AuthorityChangedActiveResearchSubjects(FAstroDatumRef ResearchComponentRef, const TArray<FAttachedResearchSubject>& ActiveResearchSubjects);
+    
     UFUNCTION()
     void AuthorityActiveResearchSubjectExpired(FAstroDatumRef ResearchComponentRef, FAttachedResearchSubject ExpiredAttachedResearchSubject);
+    
 };
+

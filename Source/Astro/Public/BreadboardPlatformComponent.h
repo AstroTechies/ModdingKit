@@ -1,48 +1,49 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
 #include "LockdownEventDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "BreadboardPlatformComponent.generated.h"
 
-class APhysicalItem;
 class UPrimitiveComponent;
 class UCurveFloat;
+class APhysicalItem;
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UBreadboardPlatformComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UBreadboardPlatformComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLockdownEvent OnLockdownEnabledChanged;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    UPrimitiveComponent *LockdownSpikes;
-
-    UPROPERTY(EditDefaultsOnly)
-    UCurveFloat *AnimationCurve;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPrimitiveComponent* LockdownSpikes;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveFloat* AnimationCurve;
+    
 protected:
-    UPROPERTY(BlueprintReadWrite, SaveGame, ReplicatedUsing = OnRep_LockdownEnabledChanged, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_LockdownEnabledChanged, meta=(AllowPrivateAccess=true))
     bool REP_LockdownEnabled;
-
+    
 private:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LockdownAnimationDuration;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LockdownAnimationTravelDistance;
-
-    UPROPERTY()
-    APhysicalItem *OwningItem;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    APhysicalItem* OwningItem;
+    
 public:
     UBreadboardPlatformComponent();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
     UFUNCTION()
     void OnRep_LockdownEnabledChanged();
-
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthoritySetLockdownEnabled(bool lockdownEnabled);
+    
 };
+

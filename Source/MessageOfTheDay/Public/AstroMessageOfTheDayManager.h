@@ -1,19 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Kismet/BlueprintFunctionLibrary.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
 #include "AstroMessageOfTheDayManager.generated.h"
 
 class UMessageOfTheDay;
 
-UCLASS(Blueprintable, BlueprintType)
-class MESSAGEOFTHEDAY_API UAstroMessageOfTheDayManager : public UBlueprintFunctionLibrary
-{
+UCLASS(BlueprintType)
+class MESSAGEOFTHEDAY_API UAstroMessageOfTheDayManager : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     UAstroMessageOfTheDayManager();
     UFUNCTION(BlueprintCallable)
-    static void SetDefaultMessage(UMessageOfTheDay *Message);
-
+    static void SetDefaultMessage(UMessageOfTheDay* Message);
+    
     UFUNCTION(BlueprintCallable)
-    static UMessageOfTheDay *GetForCurrentCulture();
+    static UMessageOfTheDay* GetForCurrentCulture();
+    
 };
+

@@ -1,8 +1,8 @@
 #include "FollowComponent.h"
 
 class USceneComponent;
-class UFollowComponent;
 class AActor;
+class UFollowComponent;
 
 void UFollowComponent::SetFollowComponent(USceneComponent* Component) {
 }

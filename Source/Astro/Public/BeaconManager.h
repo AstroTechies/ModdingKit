@@ -1,42 +1,42 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "BeaconManager.generated.h"
 
-class ASolarBody;
 class ABeaconBase;
 class AAstroCharacter;
 class APlayController;
 class AAstroGameState;
+class ASolarBody;
 
-UCLASS(Blueprintable, Blueprintable)
-class UBeaconManager : public UObject
-{
+UCLASS(Blueprintable)
+class UBeaconManager : public UObject {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Transient)
-    TArray<ABeaconBase *> ActiveBeacons;
-
-    UPROPERTY(Transient)
-    TArray<ABeaconBase *> HiddenBeacons;
-
-    UPROPERTY(Transient)
-    TArray<ABeaconBase *> UpdateQueue;
-
-    UPROPERTY(Transient)
-    AAstroGameState *GameStateCache;
-
-    UPROPERTY(Transient)
-    APlayController *PlayControllerCache;
-
-    UPROPERTY(Transient)
-    AAstroCharacter *AstroCharacterCache;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    TArray<ABeaconBase*> ActiveBeacons;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    TArray<ABeaconBase*> HiddenBeacons;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    TArray<ABeaconBase*> UpdateQueue;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    AAstroGameState* GameStateCache;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    APlayController* PlayControllerCache;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    AAstroCharacter* AstroCharacterCache;
+    
 public:
     UBeaconManager();
-
 private:
     UFUNCTION()
-    void OnLocalSolarBodyChanged(ASolarBody *newBody);
+    void OnLocalSolarBodyChanged(ASolarBody* newBody);
+    
 };
+

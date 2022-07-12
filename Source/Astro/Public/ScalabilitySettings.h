@@ -1,25 +1,25 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DeveloperSettings.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DeveloperSettings -FallbackName=DeveloperSettings
 #include "PlatformScalability.h"
 #include "ScalabilitySettings.generated.h"
 
-UCLASS(Blueprintable, DefaultConfig, Config = Game)
-class ASTRO_API UScalabilitySettings : public UDeveloperSettings
-{
+UCLASS(Blueprintable, DefaultConfig, Config=Game)
+class ASTRO_API UScalabilitySettings : public UDeveloperSettings {
     GENERATED_BODY()
 public:
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinInstancedDecoratorLODDistance;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinDecoratorLODDistance;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FPlatformScalability PCSettings;
-
-    UPROPERTY(Config, EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FPlatformScalability XboxOneSettings;
-
+    
     UScalabilitySettings();
 };
+

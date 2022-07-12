@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct FBackpackOxygenTankOverride {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bIsValid;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FBackpackOxygenTankProperties OverrideProperties;
     
     ASTRO_API FBackpackOxygenTankOverride();

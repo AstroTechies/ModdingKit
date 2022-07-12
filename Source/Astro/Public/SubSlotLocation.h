@@ -1,28 +1,28 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 #include "SubSlotLocation.generated.h"
 
 USTRUCT(BlueprintType)
 struct FSubSlotLocation {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTransform RelativeOffset;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint8 Tier;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     int8 ParentSubslotIndex;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     int8 LeftChildSubslotIndex;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     int8 RightChildSubslotIndex;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint8 NumChildren;
     
     ASTRO_API FSubSlotLocation();

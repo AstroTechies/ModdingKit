@@ -5,44 +5,45 @@
 
 class UAnimMontage;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UAstroPlayMontageAction : public UAstroAction
-{
+UCLASS(Blueprintable)
+class ASTRO_API UAstroPlayMontageAction : public UAstroAction {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
-    UAnimMontage *Montage;
-
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimMontage* Montage;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName StartSection;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float PlayRate;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bShouldSuppressLookInput : 1;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bShouldSuppressMoveInput : 1;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bChooseStartSectionAtRandom : 1;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bShouldSuppressLookInput: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bShouldSuppressMoveInput: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bChooseStartSectionAtRandom: 1;
+    
 public:
     UAstroPlayMontageAction();
     UFUNCTION(BlueprintCallable)
-    void SetMontage(UAnimMontage *NewMontage);
-
+    void SetMontage(UAnimMontage* NewMontage);
+    
     UFUNCTION()
     void OnSingleAnimCustomNotify(FName NotifyName);
-
+    
     UFUNCTION()
     void OnMontageTaskInterrupted();
-
+    
     UFUNCTION()
     void OnMontageTaskFailedToStart();
-
+    
     UFUNCTION()
     void OnMontageTaskCompleted();
+    
 };
+

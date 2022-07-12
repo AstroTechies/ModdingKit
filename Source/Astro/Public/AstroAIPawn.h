@@ -1,36 +1,36 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameFramework/Pawn.h"
-#include "UObject/NoExportTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Pawn -FallbackName=Pawn
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
 #include "AstroAIPawn.generated.h"
 
 class USceneComponent;
 class UAstroActionComponent;
 
-UCLASS(Blueprintable, Blueprintable)
-class AAstroAIPawn : public APawn
-{
+UCLASS(Blueprintable)
+class AAstroAIPawn : public APawn {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    USceneComponent *TargetingOriginNode;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    USceneComponent *AttackOriginNode;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USceneComponent* TargetingOriginNode;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USceneComponent* AttackOriginNode;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRotator AttackRotator;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool CalculateAttackRotatorOnlyInZ;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool IsWarning;
-
+    
 protected:
-    UPROPERTY(BlueprintReadWrite, Export, VisibleDefaultsOnly, meta = (AllowPrivateAccess = true))
-    UAstroActionComponent *ActionComponent;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UAstroActionComponent* ActionComponent;
+    
 public:
     AAstroAIPawn();
 };
+

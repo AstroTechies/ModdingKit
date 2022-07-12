@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "Engine/DataAsset.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "ScrapConversionTable.generated.h"
 
 class UItemType;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UScrapConversionTable : public UDataAsset
-{
+UCLASS(Blueprintable)
+class ASTRO_API UScrapConversionTable : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSubclassOf<UItemType>, float> ScrapConversionTable;
-
+    
     UScrapConversionTable();
 };
+

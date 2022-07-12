@@ -1,31 +1,31 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "UObject/Object.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "CollectibleSimItem.h"
 #include "CollectibleHandler.generated.h"
 
 class AActor;
 
-UCLASS(Blueprintable, Blueprintable)
-class UCollectibleHandler : public UObject
-{
+UCLASS(Blueprintable)
+class UCollectibleHandler : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
-    AActor *RenderActor;
-
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    AActor* RenderActor;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FCollectibleSimItem> SimItems;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<int32> SimFlags;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FCollectibleSimItem> RetireQueue;
-
-    UPROPERTY(Transient)
-    TMap<TSubclassOf<AActor>, AActor *> CachedActors;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    TMap<TSubclassOf<AActor>, AActor*> CachedActors;
+    
     UCollectibleHandler();
 };
+

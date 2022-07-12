@@ -5,12 +5,12 @@
 #include "UseCapabilityOrganizationRule.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)
-class UUseCapabilityOrganizationRule : public USlotOrganizationRule
-{
+class UUseCapabilityOrganizationRule : public USlotOrganizationRule {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EUseType RequestedUseType;
-
+    
     UUseCapabilityOrganizationRule();
 };
+

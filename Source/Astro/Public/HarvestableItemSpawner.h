@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
+#include "AstroDatumRef.h"
 #include "SlotReference.h"
 #include "EHarvestableItemSpawnerType.h"
-#include "AstroDatumRef.h"
 #include "HarvestableItemSpawner.generated.h"
 
 class UItemType;
@@ -12,19 +12,19 @@ USTRUCT(BlueprintType)
 struct FHarvestableItemSpawner {
     GENERATED_BODY()
 public:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FSlotReference SlotRef;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemType> ItemType;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FAstroDatumRef EntityAwaitingHarvest;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     float SecondsUntilRespawn;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     EHarvestableItemSpawnerType SpawnerType;
     
     ASTRO_API FHarvestableItemSpawner();

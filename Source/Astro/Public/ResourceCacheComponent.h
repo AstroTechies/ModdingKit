@@ -1,55 +1,56 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SlotReference.h"
-#include "OnResourceStoredDelegate.h"
 #include "OnResourceSlotFullDelegate.h"
+#include "OnResourceStoredDelegate.h"
 #include "ResourceCacheComponent.generated.h"
 
 class UDeformEventReceiver;
-class AAstroCharacter;
 class UItemType;
+class AAstroCharacter;
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UResourceCacheComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UResourceCacheComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSlotReference ResourceOutputSlot;
-
-    UPROPERTY(BlueprintAssignable, BlueprintCallable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintCallable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnResourceSlotFull OnResourceSlotFull;
-
-    UPROPERTY(BlueprintAssignable, BlueprintCallable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintCallable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnResourceStored OnResourceStored;
-
-    UPROPERTY(Export)
-    UDeformEventReceiver *DeformEventReceiver;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UDeformEventReceiver* DeformEventReceiver;
+    
     UResourceCacheComponent();
     UFUNCTION(BlueprintCallable)
     void SwapResources(TSubclassOf<UItemType> MineralType);
-
+    
     UFUNCTION(BlueprintCallable)
     void StoreResource(TSubclassOf<UItemType> MineralType, int32 Amount);
-
+    
     UFUNCTION()
     void OnAcceptResource(TSubclassOf<UItemType> Type, int32 Amount);
-
+    
 protected:
     UFUNCTION()
-    AAstroCharacter *GetCharacter();
-
+    AAstroCharacter* GetCharacter();
+    
 public:
     UFUNCTION(BlueprintCallable)
     void CacheResources();
-
+    
 protected:
     UFUNCTION()
     bool ApplyPower(float Amount);
-
+    
     UFUNCTION()
     bool ApplyOxygen(int32 Amount);
+    
 };
+

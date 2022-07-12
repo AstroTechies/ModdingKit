@@ -3,21 +3,21 @@
 #include "CustomGravityVolumeComponent.h"
 #include "CylindricalGravityVolumeComponent.generated.h"
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UCylindricalGravityVolumeComponent : public UCustomGravityVolumeComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UCylindricalGravityVolumeComponent : public UCustomGravityVolumeComponent {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CylinderRadius;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CylinderHeight;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bApplyGravityOutward;
-
+    
 public:
     UCylindricalGravityVolumeComponent();
 };
+

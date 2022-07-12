@@ -4,9 +4,9 @@
 #include "OutputOrganizationRule.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)
-class UOutputOrganizationRule : public USlotOrganizationRule
-{
+class UOutputOrganizationRule : public USlotOrganizationRule {
     GENERATED_BODY()
 public:
     UOutputOrganizationRule();
 };
+

@@ -3,15 +3,15 @@
 #include "Activation.h"
 #include "MultiActivation.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UMultiActivation : public UActivation
-{
+UCLASS(Blueprintable)
+class ASTRO_API UMultiActivation : public UActivation {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     int32 m_activationCount;
-
+    
 public:
     UMultiActivation();
 };
+

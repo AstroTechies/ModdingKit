@@ -1,23 +1,23 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ResearchBonus.h"
 #include "EResearchBonusTimelineType.h"
+#include "ResearchBonus.h"
 #include "ResearchBonusTimeline.generated.h"
 
 USTRUCT(BlueprintType)
 struct FResearchBonusTimeline {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName Name;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> PrerequisiteTimelines;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EResearchBonusTimelineType TimelineType;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FResearchBonus> Bonuses;
     
     ASTRO_API FResearchBonusTimeline();

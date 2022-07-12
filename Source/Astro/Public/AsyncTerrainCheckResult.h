@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "AsyncTerrainCheckResult.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FAsyncTerrainCheckResult {
     GENERATED_BODY()
 public:

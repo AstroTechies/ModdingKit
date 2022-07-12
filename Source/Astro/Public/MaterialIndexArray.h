@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FMaterialIndexArray {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<UMaterialInstanceDynamic*> Mats;
     
     ASTRO_API FMaterialIndexArray();

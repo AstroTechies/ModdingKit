@@ -1,111 +1,112 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 #include "SignalDelegate.h"
-#include "UObject/NoExportTypes.h"
 #include "ETeleportationDestinationType.h"
 #include "GateObjectReference.h"
 #include "ETeleportationBubbleState.h"
-#include "UObject/NoExportTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "TeleportationBubbleReplicationData.h"
 #include "TeleportationBubble.generated.h"
 
-class AAstroCharacter;
 class UActorAttachmentsComponent;
-class UCurveFloat;
 class UStaticMeshComponent;
+class UCurveFloat;
+class AAstroCharacter;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API ATeleportationBubble : public AActor
-{
+UCLASS(Blueprintable)
+class ASTRO_API ATeleportationBubble : public AActor {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnTeleportationStateChanged;
-
+    
 protected:
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UActorAttachmentsComponent *ActorAttachComponent;
-
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UStaticMeshComponent *BubbleMesh;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    UStaticMeshComponent *ProxyBubbleMesh;
-
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UActorAttachmentsComponent* ActorAttachComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UStaticMeshComponent* BubbleMesh;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UStaticMeshComponent* ProxyBubbleMesh;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float BubbleExpansionTime;
-
-    UPROPERTY(EditDefaultsOnly)
-    UCurveFloat *BubbleExpansionCurve;
-
-    UPROPERTY(BlueprintReadWrite, SaveGame, Transient, meta = (AllowPrivateAccess = true))
-    AAstroCharacter *CharacterBeingTeleported;
-
-    UPROPERTY(SaveGame, Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveFloat* BubbleExpansionCurve;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, Transient, meta=(AllowPrivateAccess=true))
+    AAstroCharacter* CharacterBeingTeleported;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, Transient, meta=(AllowPrivateAccess=true))
     ETeleportationDestinationType DestinationType;
-
-    UPROPERTY(SaveGame, Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, Transient, meta=(AllowPrivateAccess=true))
     FTransform DestinationTransform;
-
-    UPROPERTY(SaveGame, Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, Transient, meta=(AllowPrivateAccess=true))
     FGateObjectReference DestinationGateObjectRef;
-
-    UPROPERTY(BlueprintReadWrite, SaveGame, Transient, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, Transient, meta=(AllowPrivateAccess=true))
     ETeleportationBubbleState TeleportationState;
-
-    UPROPERTY(SaveGame, Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, Transient, meta=(AllowPrivateAccess=true))
     float BubbleExpansionTimeRemaining;
-
-    UPROPERTY(SaveGame, Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, Transient, meta=(AllowPrivateAccess=true))
     FVector PersistentTerrainObservationLocation;
-
-    UPROPERTY(Transient, ReplicatedUsing = OnRep_ReplicationData)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_ReplicationData, meta=(AllowPrivateAccess=true))
     FTeleportationBubbleReplicationData ReplicationData;
-
+    
 public:
     ATeleportationBubble();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
 protected:
     UFUNCTION(BlueprintNativeEvent)
     bool TickPostArrivalEffects();
-
+    
     UFUNCTION(BlueprintNativeEvent)
     bool TickExpansionEffects();
-
+    
     UFUNCTION(BlueprintNativeEvent)
     bool TickArrivalExpansionEffects();
-
+    
     UFUNCTION(BlueprintNativeEvent)
     bool TickAbortionEffects();
-
+    
 public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
-    void TeleportCharacterToPosition(AAstroCharacter *characterToTeleport, const FVector &TargetLocation);
-
+    void TeleportCharacterToPosition(AAstroCharacter* characterToTeleport, const FVector& TargetLocation);
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
-    void TeleportCharacterToGateObject(AAstroCharacter *characterToTeleport, const FGateObjectReference &GateObjectRef);
-
+    void TeleportCharacterToGateObject(AAstroCharacter* characterToTeleport, const FGateObjectReference& GateObjectRef);
+    
 protected:
     UFUNCTION()
     void OnRep_ReplicationData();
-
+    
     UFUNCTION()
-    void OnCharacterCompletedBubbleExit(AActor *characterActor);
-
+    void OnCharacterCompletedBubbleExit(AActor* characterActor);
+    
     UFUNCTION()
-    void OnCharacterCompletedBubbleEntry(AActor *characterActor);
-
+    void OnCharacterCompletedBubbleEntry(AActor* characterActor);
+    
     UFUNCTION(BlueprintImplementableEvent)
     void InitializePostArrivalEffects();
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void InitializeExpansionEffects();
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void InitializeArrivalExpansionEffects();
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void InitializeAbortEffects();
+    
 };
+

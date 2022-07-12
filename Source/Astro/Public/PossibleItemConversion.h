@@ -4,20 +4,20 @@
 #include "AstroDatumRef.h"
 #include "PossibleItemConversion.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FPossibleItemConversion {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FItemConversionRecipe ConversionRecipe;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FAstroDatumRef> InputItemEntityRefs;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool UseLiteralItemTypeForInput;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 OutputItemIndex;
     
     ASTRO_API FPossibleItemConversion();

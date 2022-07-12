@@ -5,13 +5,13 @@
 
 class APlayController;
 
-UCLASS(Blueprintable, Blueprintable)
-class UGameMenuPopoutCameraContext : public UCameraContext
-{
+UCLASS(Blueprintable)
+class UGameMenuPopoutCameraContext : public UCameraContext {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
-    APlayController *Controller;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    APlayController* Controller;
+    
     UGameMenuPopoutCameraContext();
 };
+

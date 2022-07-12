@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "InputCoreTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
 #include "OnEditingItemUnhandledKeyPressDelegate.generated.h"
 
 class UAstroGameMenuFocusItemWidget;

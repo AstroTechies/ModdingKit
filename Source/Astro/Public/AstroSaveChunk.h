@@ -7,21 +7,21 @@
 class ULevel;
 class UAstroSaveCustomArchiveProxy;
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FAstroSaveChunk {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FObjectSaveRecord> ObjectRecords;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FActorRecord> ActorRecords;
     
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ULevel* CurrentLevel;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UAstroSaveCustomArchiveProxy* CustomSaveArchiveProxy;
     
 public:

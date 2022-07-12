@@ -10,7 +10,7 @@ USTRUCT(BlueprintType)
 struct FAstroEntitySlotBackupComponent : public FAstroEntityComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TMap<FName, TSubclassOf<APhysicalItem>> SlotContents;
     
     ASTRO_API FAstroEntitySlotBackupComponent();

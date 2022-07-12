@@ -1,23 +1,23 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroEntityComponent.h"
 #include "AstroDatumRef.h"
+#include "AstroEntityComponent.h"
 #include "StreamingPowerCableComponent.generated.h"
 
 USTRUCT(BlueprintType)
 struct FStreamingPowerCableComponent : public FAstroEntityComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FAstroDatumRef FromNode;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FAstroDatumRef ToNode;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FAstroDatumRef StreamingPowerDirectionalConnection;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FAstroDatumRef StreamingPowerMergedConnection;
     
     ASTRO_API FStreamingPowerCableComponent();

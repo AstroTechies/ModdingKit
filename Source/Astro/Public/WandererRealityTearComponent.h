@@ -1,69 +1,70 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "Components/ActorComponent.h"
-#include "Engine/EngineTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SignalDelegate.h"
 #include "WandererRealityTearComponent.generated.h"
 
+class AAstroPlayerController;
+class UItemType;
 class UWandererPhotoWidget;
 class APlayerController;
-class UItemType;
-class AAstroPlayerController;
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UWandererRealityTearComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UWandererRealityTearComponent : public UActorComponent {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DestroyTimeoutSeconds;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UWandererPhotoWidget> PhotoWidgetClass;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentReference SceneCaptureComponent;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DeformRadius;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FComponentReference> DeformLocationComponents;
-
-    UPROPERTY(SaveGame, ReplicatedUsing = OnRep_ActivatingPlayer)
+    
+    UPROPERTY(EditAnywhere, SaveGame, ReplicatedUsing=OnRep_ActivatingPlayer)
     uint64 ActivatingPlayerID;
-
-    UPROPERTY(SaveGame)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FString> UnlockItems;
-
-    UPROPERTY(SaveGame)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemType> ProbeItemType;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnActivatingPlayerSet;
-
+    
 public:
     UWandererRealityTearComponent();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
     UFUNCTION(BlueprintPure)
-    bool WasActivatedByPlayer(const APlayerController *Player);
-
+    bool WasActivatedByPlayer(const APlayerController* Player);
+    
 protected:
     UFUNCTION(BlueprintCallable)
-    void TakePhoto(APlayerController *inputPlayer);
-
+    void TakePhoto(APlayerController* inputPlayer);
+    
     UFUNCTION()
     void OnRep_ActivatingPlayer();
-
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void MarkActivated_AuthorityOnly();
-
+    
     UFUNCTION(NetMulticast, Reliable)
-    void DisplayPhotoWidget_Multicast(AAstroPlayerController *inputPlayer);
-
+    void DisplayPhotoWidget_Multicast(AAstroPlayerController* inputPlayer);
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
-    void DisplayPhotoWidget(APlayerController *inputPlayer);
+    void DisplayPhotoWidget(APlayerController* inputPlayer);
+    
 };
+

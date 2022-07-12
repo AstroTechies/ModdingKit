@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FIndicatorCollection {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<AResourceInfo*> Indicators;
     
     ASTRO_API FIndicatorCollection();

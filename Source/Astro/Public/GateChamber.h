@@ -5,15 +5,15 @@
 
 class URaycastTerrainSurfaceComponent;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API AGateChamber : public AGateObject
-{
+UCLASS(Blueprintable)
+class ASTRO_API AGateChamber : public AGateObject {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Export, VisibleAnywhere)
-    URaycastTerrainSurfaceComponent *RaycastTerrainSurfaceComponent;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    URaycastTerrainSurfaceComponent* RaycastTerrainSurfaceComponent;
+    
 public:
     AGateChamber();
 };
+

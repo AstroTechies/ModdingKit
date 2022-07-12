@@ -18,7 +18,7 @@ void UTerrainPhysicsComponent::SetBuryPhysics() {
 void UTerrainPhysicsComponent::SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy) {
 }
 
-void UTerrainPhysicsComponent::OnRep_Buried() {
+void UTerrainPhysicsComponent::OnRep_Buried(bool previousIsBuried) {
 }
 
 void UTerrainPhysicsComponent::OnDeformationComplete(const FDeformationParamsT2& deformationParams) {

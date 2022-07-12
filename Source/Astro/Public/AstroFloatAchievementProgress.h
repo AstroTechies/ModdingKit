@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct FAstroFloatAchievementProgress {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAstroAchievementKeys Key;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Progress;
     
     ASTRO_API FAstroFloatAchievementProgress();

@@ -1,56 +1,57 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
 #include "EIndicatorTooltipType.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "SlotReference.h"
 #include "SlotOrganizationRule.generated.h"
 
-UCLASS(Blueprintable, BlueprintType, EditInlineNew)
-class USlotOrganizationRule : public UObject
-{
+UCLASS(Blueprintable, EditInlineNew)
+class USlotOrganizationRule : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName RuleName;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> ManagedSlots;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 Priority;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EIndicatorTooltipType IndicatorType;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bPushUnwantedItems : 1;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bPushUnwantedItems: 1;
+    
 protected:
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bEjectUnwantedItems : 1;
-
-    UPROPERTY(EditDefaultsOnly, Replicated)
-    uint8 bIsEnabled : 1;
-
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bEjectUnwantedItems: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
+    uint8 bIsEnabled: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float UnwantedItemEjectionForce;
-
-    UPROPERTY(BlueprintReadWrite, Replicated, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> ManagedSlotRefs;
-
+    
 public:
     USlotOrganizationRule();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetUnwantedItemsEjectionForce(float ejectionForce);
-
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetPushUnwantedItems(bool push);
-
+    
     UFUNCTION(BlueprintCallable)
-    void SetEnabled(bool Enabled);
-
+    void SetEnabled(bool Enabled, bool broadcastSettingsChanged);
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetEjectUnwantedItems(bool eject);
+    
 };
+

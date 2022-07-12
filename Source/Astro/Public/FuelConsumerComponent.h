@@ -1,75 +1,75 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "Components/ActorComponent.h"
 #include "EFuelSource.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SlotReference.h"
 #include "FuelConsumerComponent.generated.h"
 
 class APhysicalItem;
-class USlotsComponent;
 class UItemType;
+class USlotsComponent;
 class AAstroCharacter;
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UFuelConsumerComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UFuelConsumerComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bOperatesOnCharacterOnly;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LowFuelThreshold;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FuelPerPortion;
-
+    
 private:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName FuelSlotName;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSlotReference FuelSlotRef;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EFuelSource FuelSource;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemType> FuelType;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ConsumptionRate;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NetworkSyncFuelTimer;
-
-    UPROPERTY(Export, Transient)
-    USlotsComponent *SlotsComponent;
-
-    UPROPERTY(Transient)
-    APhysicalItem *ItemOwner;
-
-    UPROPERTY(Transient)
-    AAstroCharacter *AstroCharacter;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    USlotsComponent* SlotsComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    APhysicalItem* ItemOwner;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    AAstroCharacter* AstroCharacter;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> DestinationSlots;
-
+    
 public:
     UFuelConsumerComponent();
-
 private:
     UFUNCTION()
-    void OnItemSlotted(APhysicalItem *Item);
-
+    void OnItemSlotted(APhysicalItem* Item);
+    
     UFUNCTION()
-    void OnItemRemoved(APhysicalItem *Item);
-
+    void OnItemRemoved(APhysicalItem* Item);
+    
     UFUNCTION()
     void OnItemAmountChanged();
-
+    
 public:
     UFUNCTION(BlueprintPure)
     TSubclassOf<UItemType> GetFuelType();
+    
 };
+

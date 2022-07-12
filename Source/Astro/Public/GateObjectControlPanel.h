@@ -1,166 +1,167 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "IndicatorMeshDefinition.h"
-#include "ControlPanel.h"
-#include "UObject/NoExportTypes.h"
-#include "InputCoreTypes.h"
-#include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
-#include "GateObjectReference.h"
-#include "UObject/NoExportTypes.h"
 #include "EGateObjectControlPanelContext.h"
+#include "ControlPanel.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
+#include "IndicatorMeshDefinition.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
 #include "GateObjectControlNode.h"
+#include "GateObjectReference.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
 #include "GateObjectControlPanel.generated.h"
 
-class UTooltipComponent;
 class UMaterialInterface;
-class USolarSystem;
 class USceneComponent;
+class UTooltipComponent;
 class UStaticMeshComponent;
+class USolarSystem;
 class UPrimitiveComponent;
 
-UCLASS(Blueprintable, Abstract)
-class ASTRO_API AGateObjectControlPanel : public AControlPanel
-{
+UCLASS(Abstract, Blueprintable)
+class ASTRO_API AGateObjectControlPanel : public AControlPanel {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector2D NodeTooltipAnchorOffset;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText TooltipOwnerNodeTitle;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText TooltipActiveNodeTitle;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText TooltipInactiveNodeTitle;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText TooltipEquatorNodeSubtitle;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText TooltipNorthPoleNodeSubtitle;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText TooltipSouthPoleNodeSubtitle;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor TooltipBadgeColor;
-
-    UPROPERTY(EditDefaultsOnly)
-    UMaterialInterface *DefaultInertIndicatorMaterial;
-
-    UPROPERTY(EditDefaultsOnly)
-    UMaterialInterface *DefaultActiveIndicatorMaterial;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInterface* DefaultInertIndicatorMaterial;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInterface* DefaultActiveIndicatorMaterial;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FIndicatorMeshDefinition PlayerMeshDefinition;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CenteredNodeRotationOffset;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ChamberIndicatorOffsetDistance;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SolarSystemViewRadius;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector StationControlNodeOffsetInPlanetView;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector StationControlNodeOffsetInSolarView;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRotator SolarViewRootRotationOffset;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ScaleInterpolationDuration;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EGateObjectControlPanelContext CurrentContext;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FGateObjectControlNode> ControlNodes;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 SelectedControlNodeIndex;
-
-    UPROPERTY(BlueprintReadWrite, ReplicatedUsing = OnRep_CurrentLocationControlNodeIndex, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_CurrentLocationControlNodeIndex, meta=(AllowPrivateAccess=true))
     int32 CurrentLocationControlNodeIndex;
-
-    UPROPERTY(Export)
-    USceneComponent *CrackedRoot;
-
-    UPROPERTY(Export)
-    USceneComponent *ControlNodeRoot;
-
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UTooltipComponent *TooltipComponent;
-
-    UPROPERTY(Export, Transient)
-    UStaticMeshComponent *SunIndicatorComponent;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USceneComponent* CrackedRoot;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USceneComponent* ControlNodeRoot;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UTooltipComponent* TooltipComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UStaticMeshComponent* SunIndicatorComponent;
+    
 public:
     AGateObjectControlPanel();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
     UFUNCTION(BlueprintCallable)
     void SetContext(EGateObjectControlPanelContext newContext);
-
+    
     UFUNCTION(BlueprintCallable)
     void SelectControlNode(int32 controlNodeIndex);
-
+    
 protected:
     UFUNCTION()
-    void OnSolarSystemInitialized(USolarSystem *SolarSystem);
-
+    void OnSolarSystemInitialized(USolarSystem* SolarSystem);
+    
 public:
     UFUNCTION(BlueprintImplementableEvent)
     void OnSelectedControlNodeGateObjectActivated();
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void OnSelectedControlNodeChanged();
-
+    
 protected:
     UFUNCTION()
     void OnRep_CurrentLocationControlNodeIndex();
-
+    
     UFUNCTION()
     void OnGateStationSpawned();
-
+    
     UFUNCTION()
-    void OnGateObjectActivated(const FGateObjectReference &ActivatedGateObjectRef);
-
+    void OnGateObjectActivated(const FGateObjectReference& ActivatedGateObjectRef);
+    
     UFUNCTION()
-    void OnControlNodeEndCursorOver(UPrimitiveComponent *hoveredControlNodeMesh);
-
+    void OnControlNodeEndCursorOver(UPrimitiveComponent* hoveredControlNodeMesh);
+    
     UFUNCTION()
-    void OnControlNodeClicked(UPrimitiveComponent *clickedControlNodeMesh, FKey ButtonPressed);
-
+    void OnControlNodeClicked(UPrimitiveComponent* clickedControlNodeMesh, FKey ButtonPressed);
+    
 public:
     UFUNCTION(BlueprintImplementableEvent)
     void OnControlNodeCenteringInterpolationFinished();
-
+    
 protected:
     UFUNCTION()
-    void OnControlNodeBeginCursorOver(UPrimitiveComponent *hoveredControlNodeMesh);
-
+    void OnControlNodeBeginCursorOver(UPrimitiveComponent* hoveredControlNodeMesh);
+    
 public:
     UFUNCTION(BlueprintPure)
     bool IsControlNodeGateObjectActivated(int32 controlNodeIndex) const;
-
+    
     UFUNCTION(BlueprintImplementableEvent)
-    void HandleControlNodeEndHover(const FGateObjectControlNode &hoveredControlNode);
-
+    void HandleControlNodeEndHover(const FGateObjectControlNode& hoveredControlNode);
+    
     UFUNCTION(BlueprintImplementableEvent)
-    void HandleControlNodeClick(const FGateObjectControlNode &clickedControlNode);
-
+    void HandleControlNodeClick(const FGateObjectControlNode& clickedControlNode);
+    
     UFUNCTION(BlueprintImplementableEvent)
-    void HandleControlNodeBeginHover(const FGateObjectControlNode &hoveredControlNode);
-
+    void HandleControlNodeBeginHover(const FGateObjectControlNode& hoveredControlNode);
+    
     UFUNCTION(BlueprintCallable)
     void CenterControlNodeInView(int32 controlNodeIndex, float InterpolationTime);
+    
 };
+

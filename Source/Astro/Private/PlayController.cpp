@@ -2,23 +2,21 @@
 #include "Templates/SubclassOf.h"
 #include "BiomeSamplerComponent.h"
 #include "AstroUnlockNotificationManager.h"
-#include "TooltipManager.h"
-#include "AstroNotificationManager.h"
 #include "AstroToastNotificationManager.h"
+#include "AstroNotificationManager.h"
+#include "TooltipManager.h"
 #include "AstroPopupBadgeManager.h"
 
-class AActor;
-class UControlComponent;
-class UItemType;
-class USceneComponent;
-class APhysicalItem;
-class UAstroCharacterSuit;
-class UAstroCharacterPalette;
-class UMultiTool;
-class UAstroCharacterHat;
 class AAstroPlanet;
+class AActor;
+class APhysicalItem;
+class UItemType;
 class ACheatPlinthBase;
+class UAstroCharacterSuit;
+class UControlComponent;
 class ASolarBody;
+class USceneComponent;
+class UMultiTool;
 class UCameraComponent;
 class AAstroCharacter;
 
@@ -106,6 +104,15 @@ void APlayController::SetCreativeRemoveDecoratorsWhilePaintingEnabled(bool Remov
 void APlayController::SetCreativeCollectResourcesWhileDeformingDisabled(bool DisableCollectResourcesWhileDeforming) {
 }
 
+void APlayController::SetCharacterVisorServerInternal_Implementation() {
+}
+bool APlayController::SetCharacterVisorServerInternal_Validate() {
+    return true;
+}
+
+void APlayController::SetCharacterVisorServer() {
+}
+
 void APlayController::SetCameraZoom(float zoom) {
 }
 
@@ -142,18 +149,6 @@ bool APlayController::ServerSetToolLocation_Validate(UControlComponent* ControlC
 void APlayController::ServerPlayerCharacterSelectionLaunch_Implementation() {
 }
 bool APlayController::ServerPlayerCharacterSelectionLaunch_Validate() {
-    return true;
-}
-
-void APlayController::ServerNotifyOnEmoteWheelOpenedOrClosed_Implementation(bool bWheelOpened) {
-}
-bool APlayController::ServerNotifyOnEmoteWheelOpenedOrClosed_Validate(bool bWheelOpened) {
-    return true;
-}
-
-void APlayController::ServerNotifyOnEmotePlayed_Implementation(EEmoteType EmoteType) {
-}
-bool APlayController::ServerNotifyOnEmotePlayed_Validate(EEmoteType EmoteType) {
     return true;
 }
 
@@ -219,13 +214,7 @@ void APlayController::ResetInputMode() {
 void APlayController::ResetCameraToSpawnPoint() {
 }
 
-void APlayController::ReapplySavedCharacterCustomization() {
-}
-
 void APlayController::Ping() {
-}
-
-void APlayController::OpenEmoteWheel() {
 }
 
 void APlayController::OnReceiveUsePressed() {
@@ -355,15 +344,6 @@ void APlayController::HandleGamepadKeyJustPressed() {
 void APlayController::HandleGameMenuPopoutCameraContext(bool GameMenuPopoutEnabled) {
 }
 
-void APlayController::HandleEmoteWheelSelection(const FSelectionWheelOption& Selection) {
-}
-
-void APlayController::HandleEmoteWheelReleased() {
-}
-
-void APlayController::HandleEmoteWheelPressed() {
-}
-
 void APlayController::HandleCreativeModeEnabledChanged(bool CreativeModeEnabled) {
 }
 
@@ -490,18 +470,6 @@ void APlayController::EnablePlanetSelection(bool Enable, ASolarBody* NewHomeBody
 void APlayController::EnableLandSelection(bool Enable, ASolarBody* Body) {
 }
 
-void APlayController::EmoteTwo() {
-}
-
-void APlayController::EmoteThree() {
-}
-
-void APlayController::EmoteOne() {
-}
-
-void APlayController::EmoteFour() {
-}
-
 void APlayController::DropHeldItem() {
 }
 
@@ -539,9 +507,6 @@ void APlayController::ContextLeftReleased() {
 }
 
 void APlayController::ContextLeftPressed() {
-}
-
-void APlayController::CloseEmoteWheel() {
 }
 
 void APlayController::CloseAllSelectionWheels() {
@@ -626,7 +591,6 @@ APlayController::APlayController() {
     this->EnableClickableIndicatorsDisplay = false;
     this->CurrentMouseZoom = 0.50f;
     this->bVirtualCursorToggleOn = false;
-    this->EmoteWheelCameraMovementCooldown = 0.70f;
     this->WheelOpenHoldThreshold = 0.00f;
     this->WindGustDeltaMinIntensity = 0.20f;
     this->WindGustScalar = 1.00f;

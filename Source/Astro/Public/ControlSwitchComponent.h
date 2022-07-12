@@ -1,41 +1,41 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SlotReference.h"
 #include "ControlSwitchComponent.generated.h"
 
-class UComponentDelegateWrapper;
 class UChildActorComponent;
+class UComponentDelegateWrapper;
 class USceneComponent;
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UControlSwitchComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UControlSwitchComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    TArray<UChildActorComponent *> ControlButtons;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    TArray<UChildActorComponent*> ControlButtons;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> Slots;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSlotReference ActiveControlSlot;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 ActiveControlIndex;
-
+    
 private:
-    UPROPERTY()
-    TArray<UComponentDelegateWrapper *> ClickDelegates;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<UComponentDelegateWrapper*> ClickDelegates;
+    
 public:
     UControlSwitchComponent();
-
 private:
     UFUNCTION()
     void SetControlledSlot(int32 Index);
-
+    
     UFUNCTION()
-    void OnSwitchClicked(USceneComponent *Component);
+    void OnSwitchClicked(USceneComponent* Component);
+    
 };
+

@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 #include "NavpointManagerActor.generated.h"
 
 class UNavpointManager;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API ANavpointManagerActor : public AActor
-{
+UCLASS(Blueprintable)
+class ASTRO_API ANavpointManagerActor : public AActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Export, Transient)
-    UNavpointManager *NavpointManager;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UNavpointManager* NavpointManager;
+    
 public:
     ANavpointManagerActor();
 };
+

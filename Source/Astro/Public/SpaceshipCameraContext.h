@@ -5,15 +5,15 @@
 
 class UOrbitalNavigationComponent;
 
-UCLASS(Blueprintable, Blueprintable)
-class USpaceshipCameraContext : public UCameraContext
-{
+UCLASS(Blueprintable)
+class USpaceshipCameraContext : public UCameraContext {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Export, Transient)
-    UOrbitalNavigationComponent *OrbitalNavComponent;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UOrbitalNavigationComponent* OrbitalNavComponent;
+    
 public:
     USpaceshipCameraContext();
 };
+

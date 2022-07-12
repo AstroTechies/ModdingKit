@@ -2,17 +2,17 @@
 #include "CoreMinimal.h"
 #include "MessageOfTheDayURL.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FMessageOfTheDayURL {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString CultureCode;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString FriendlyName;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString URL;
     
     ASTRO_API FMessageOfTheDayURL();

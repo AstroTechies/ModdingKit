@@ -5,15 +5,16 @@
 
 class AActor;
 
-UCLASS(Blueprintable, BlueprintType)
-class ASTRO_API UGateObjectSystem : public UAstroEntitySystem
-{
+UCLASS(Blueprintable)
+class ASTRO_API UGateObjectSystem : public UAstroEntitySystem {
     GENERATED_BODY()
 public:
     UGateObjectSystem();
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
-    static bool BP_TryActivateGateObject(AActor *gateObjectActor);
-
+    static bool BP_TryActivateGateObject(AActor* gateObjectActor);
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
-    static void BP_SetGateObjectCanBeActivated(AActor *gateObjectActor, bool bCanBeActivated);
+    static void BP_SetGateObjectCanBeActivated(AActor* gateObjectActor, bool bCanBeActivated);
+    
 };
+

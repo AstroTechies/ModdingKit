@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
 #include "DebrisItem.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "DestructionBundleDefinition.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class UDestructionBundleDefinition : public UDataAsset
-{
+UCLASS(Blueprintable)
+class UDestructionBundleDefinition : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FDebrisItem> DebrisItems;
-
+    
     UDestructionBundleDefinition();
 };
+

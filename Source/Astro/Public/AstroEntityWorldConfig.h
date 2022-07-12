@@ -1,26 +1,26 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "Engine/DataAsset.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "AstroEntityWorldConfig.generated.h"
 
+class UAstroEntityComponentContainer;
 class UAstroEntitySystem;
 class UAstroEntityWorld;
-class UAstroEntityComponentContainer;
 
-UCLASS(Blueprintable, Blueprintable)
-class UAstroEntityWorldConfig : public UDataAsset
-{
+UCLASS(Blueprintable)
+class UAstroEntityWorldConfig : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UAstroEntityWorld> EntityWorldType;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<UAstroEntityComponentContainer>> EntityComponentTypes;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<UAstroEntitySystem>> EntitySystemTypes;
-
+    
     UAstroEntityWorldConfig();
 };
+

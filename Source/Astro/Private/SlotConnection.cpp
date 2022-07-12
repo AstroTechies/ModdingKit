@@ -1,12 +1,12 @@
 #include "SlotConnection.h"
 #include "Net/UnrealNetwork.h"
-#include "Components/InstancedStaticMeshComponent.h"
-#include "Components/SplineMeshComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=InstancedStaticMeshComponent -FallbackName=InstancedStaticMeshComponent
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SplineMeshComponent -FallbackName=SplineMeshComponent
 #include "AdaptiveTickComponent.h"
 
-class UPrimitiveComponent;
-class UAstroSaveCustomArchiveProxy;
 class APhysicalItem;
+class UAstroSaveCustomArchiveProxy;
+class UPrimitiveComponent;
 class AActor;
 
 void ASlotConnection::ServerUpdateClientMotion_Implementation(FSlotConnectionClientMotionData motionData) {

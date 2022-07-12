@@ -1,71 +1,71 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
-#include "AutoCraneState.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "AutoCraneOverlapTestRequest.h"
+#include "AutoCraneState.h"
 #include "AutoCraneManager.generated.h"
 
-class ASolarBody;
-class AAutoCrane;
 class AActor;
 class AAstroCharacter;
 class APlayController;
+class AAutoCrane;
+class ASolarBody;
 
-UCLASS(Blueprintable, Blueprintable)
-class UAutoCraneManager : public UObject
-{
+UCLASS(Blueprintable)
+class UAutoCraneManager : public UObject {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FAutoCraneState> CraneStates;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FAutoCraneOverlapTestRequest> ShapeCastRequests;
-
-    UPROPERTY(Transient)
-    TArray<AActor *> ProcessedActorCache;
-
-    UPROPERTY(Transient)
-    APlayController *PlayControllerCache;
-
-    UPROPERTY(Transient)
-    AAstroCharacter *AstroCharacterCache;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    TArray<AActor*> ProcessedActorCache;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    APlayController* PlayControllerCache;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    AAstroCharacter* AstroCharacterCache;
+    
 public:
     UAutoCraneManager();
-
 private:
     UFUNCTION()
-    void OnTransferItemSet(AAutoCrane *Crane);
-
+    void OnTransferItemSet(AAutoCrane* Crane);
+    
     UFUNCTION()
-    void OnTransferItemReleased(AAutoCrane *Crane);
-
+    void OnTransferItemReleased(AAutoCrane* Crane);
+    
     UFUNCTION()
-    void OnTransferItemFullyEmplaced(AAutoCrane *Crane);
-
+    void OnTransferItemFullyEmplaced(AAutoCrane* Crane);
+    
     UFUNCTION()
-    void OnTransferItemDestroyed(AAutoCrane *Crane);
-
+    void OnTransferItemDestroyed(AAutoCrane* Crane);
+    
     UFUNCTION()
-    void OnLocalSolarBodyChanged(ASolarBody *newBody);
-
+    void OnLocalSolarBodyChanged(ASolarBody* newBody);
+    
     UFUNCTION()
-    void OnCraneReleasedFromSlot(AAutoCrane *Crane);
-
+    void OnCraneReleasedFromSlot(AAutoCrane* Crane);
+    
     UFUNCTION()
-    void OnCranePowerChanged(AAutoCrane *Crane);
-
+    void OnCranePowerChanged(AAutoCrane* Crane);
+    
     UFUNCTION()
-    void OnCranePlacedInSlot(AAutoCrane *Crane);
-
+    void OnCranePlacedInSlot(AAutoCrane* Crane);
+    
     UFUNCTION()
-    void OnCraneInputUse(AAutoCrane *Crane);
-
+    void OnCraneInputUse(AAutoCrane* Crane);
+    
     UFUNCTION()
-    void OnClientTransferProgressChanged(AAutoCrane *Crane);
-
+    void OnClientTransferProgressChanged(AAutoCrane* Crane);
+    
     UFUNCTION()
-    void OnClientCraneStateChanged(AAutoCrane *Crane);
+    void OnClientCraneStateChanged(AAutoCrane* Crane);
+    
 };
+

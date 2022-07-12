@@ -1,22 +1,22 @@
 #include "PhysicalItem.h"
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
+#include "TerrainPhysicsComponent.h"
+#include "ClickableComponent.h"
 #include "WorldGravity.h"
-#include "ProceduralStateComponent.h"
 #include "ItemComponent.h"
 #include "ActorEntityLinkComponent.h"
-#include "TerrainPhysicsComponent.h"
-#include "Components/StaticMeshComponent.h"
-#include "ClickableComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=StaticMeshComponent -FallbackName=StaticMeshComponent
 #include "SlotsComponent.h"
 #include "TooltipComponent.h"
+#include "ProceduralStateComponent.h"
 
 class UPrimitiveComponent;
 class APawn;
-class APhysicalItem;
 class USceneComponent;
-class UItemType;
 class UChildSlotComponent;
+class UItemType;
+class APhysicalItem;
 
 void APhysicalItem::StartItemInWorld() {
 }
@@ -50,9 +50,9 @@ bool APhysicalItem::ServerTakePossession_Validate(APawn* controllingPawn, bool P
     return true;
 }
 
-void APhysicalItem::ServerSlotSetItem_Implementation(FSlotReference ItemSlot, int32 SubslotIndex, FSlotReference sourceTransitionSlot, bool useSourceTransform, bool FromTool, bool SlottedDuringInitialization, bool PartOfSwap, bool skipBundling) {
+void APhysicalItem::ServerSlotSetItem_Implementation(FSlotReference ItemSlot, int32 SubslotIndex, FSlotReference sourceTransitionSlot, bool useSourceTransform, bool FromTool, bool SlottedDuringInitialization, bool PartOfSwap, bool skipBundling, bool skipTransformUpdate) {
 }
-bool APhysicalItem::ServerSlotSetItem_Validate(FSlotReference ItemSlot, int32 SubslotIndex, FSlotReference sourceTransitionSlot, bool useSourceTransform, bool FromTool, bool SlottedDuringInitialization, bool PartOfSwap, bool skipBundling) {
+bool APhysicalItem::ServerSlotSetItem_Validate(FSlotReference ItemSlot, int32 SubslotIndex, FSlotReference sourceTransitionSlot, bool useSourceTransform, bool FromTool, bool SlottedDuringInitialization, bool PartOfSwap, bool skipBundling, bool skipTransformUpdate) {
     return true;
 }
 
@@ -123,6 +123,9 @@ bool APhysicalItem::Movable_Implementation(int32 ToolTier) {
 
 bool APhysicalItem::IsLarge_Implementation() {
     return false;
+}
+
+void APhysicalItem::HandleIsBuriedChanged(UTerrainPhysicsComponent* terrainComp) {
 }
 
 int32 APhysicalItem::GetSubSlotIndex() const {
@@ -236,5 +239,6 @@ APhysicalItem::APhysicalItem() {
     this->bDestroyWhenDrained = false;
     this->MostRecentNetOwner = NULL;
     this->IsUnslottable = false;
+    this->bIsAttachedToTerrain = false;
 }
 

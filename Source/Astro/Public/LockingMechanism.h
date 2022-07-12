@@ -4,20 +4,21 @@
 #include "LockingMechanismSignalDelegate.h"
 #include "LockingMechanism.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API ULockingMechanism : public UAstroEntityComponentSubobject
-{
+UCLASS(Blueprintable)
+class ASTRO_API ULockingMechanism : public UAstroEntityComponentSubobject {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLockingMechanismSignal OnOpenStateChanged;
-
+    
 private:
-    UPROPERTY(SaveGame)
-    uint8 bIsOpen : 1;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    uint8 bIsOpen: 1;
+    
 public:
     ULockingMechanism();
     UFUNCTION(BlueprintPure)
     bool IsOpen() const;
+    
 };
+

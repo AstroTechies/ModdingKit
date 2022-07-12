@@ -1,100 +1,105 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "SlotReference.h"
-#include "EnableSignalDelegate.h"
+#include "AtmosphericCondenserReplicationData.h"
 #include "PhysicalItem.h"
+#include "EnableSignalDelegate.h"
 #include "ViewDataChangedDelegate.h"
 #include "ItemCondensedSignalDelegate.h"
-#include "AtmosphericCondenserReplicationData.h"
 #include "EAtmosphericCondenserState.h"
+#include "SlotReference.h"
 #include "AtmosphericCondenserBase.generated.h"
 
-class AAstroPlanet;
 class UItemType;
+class AAstroPlanet;
 class UPowerComponent;
+class UDynamicWhitelistOrganizationRule;
 
-UCLASS(Blueprintable, Abstract)
-class AAtmosphericCondenserBase : public APhysicalItem
-{
+UCLASS(Abstract, Blueprintable)
+class AAtmosphericCondenserBase : public APhysicalItem {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FViewDataChanged OnViewDataChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FEnableSignal OnLoopProductionChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FItemCondensedSignal AuthorityOnItemCondensed;
-
+    
 protected:
-    UPROPERTY(BlueprintReadWrite, ReplicatedUsing = OnReplicationDataChanged, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnReplicationDataChanged, meta=(AllowPrivateAccess=true))
     FAtmosphericCondenserReplicationData ReplicationData;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAtmosphericCondenserReplicationData PrevReplicationData;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName OutputSlotName;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float BaseProductionRate;
-
-    UPROPERTY(BlueprintReadWrite, SaveGame, ReplicatedUsing = OnRep_LoopProduction, meta = (AllowPrivateAccess = true))
-    uint8 bLoopProduction : 1;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_LoopProduction, meta=(AllowPrivateAccess=true))
+    uint8 bLoopProduction: 1;
+    
 private:
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     EAtmosphericCondenserState CondenserState;
-
-    UPROPERTY(SaveGame)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemType> CurrentAtmosphericResourceType;
-
-    UPROPERTY(SaveGame)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     float CurrentHarvestedAtmosphereAmount;
-
-    UPROPERTY(Transient)
-    AAstroPlanet *CurrentPlanet;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    AAstroPlanet* CurrentPlanet;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSlotReference OutputSlotRef;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> OutputSlotArray;
-
-    UPROPERTY(Export)
-    UPowerComponent *PowerComponent;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPowerComponent* PowerComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UDynamicWhitelistOrganizationRule* OutputOrganizationRule;
+    
 public:
     AAtmosphericCondenserBase();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
 private:
     UFUNCTION()
     void OnReplicationDataChanged();
-
+    
     UFUNCTION()
     void OnRep_LoopProduction();
-
+    
 public:
     UFUNCTION(BlueprintPure)
     float GetEffectiveProductionDuration() const;
-
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthoritySetOuputResourceIndex(int32 NewSelectedOutputResourceIndex);
-
+    
 private:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthoritySetLoopProductionEnabled(bool LoopProductionIsEnabled);
-
+    
 public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityIncrementOuputResourceIndex();
-
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityDecrementOuputResourceIndex();
-
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityAttemptToToggleProduction();
+    
 };
+

@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "ResearchBonusBehavior.generated.h"
 
-UCLASS(Blueprintable, Abstract, EditInlineNew)
-class UResearchBonusBehavior : public UObject
-{
+UCLASS(Abstract, Blueprintable, EditInlineNew)
+class UResearchBonusBehavior : public UObject {
     GENERATED_BODY()
 public:
     UResearchBonusBehavior();
 };
+

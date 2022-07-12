@@ -5,19 +5,19 @@
 
 class UActorResearchPointGrantComponent;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API AResearchPointGrantItem : public APhysicalItem
-{
+UCLASS(Blueprintable)
+class ASTRO_API AResearchPointGrantItem : public APhysicalItem {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Export, VisibleAnywhere)
-    UActorResearchPointGrantComponent *ResearchPointGrantComponent;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UActorResearchPointGrantComponent* ResearchPointGrantComponent;
+    
 public:
     AResearchPointGrantItem();
-
 protected:
     UFUNCTION()
     void OnUsed();
+    
 };
+

@@ -6,8 +6,9 @@ FRailCarMovementReplicatedData::FRailCarMovementReplicatedData() {
     this->CurrentRailConnectionID = 0;
     this->LatestValidConnectionID = 0;
     this->bInvertRotation = false;
-    this->bHasPower = false;
-    this->TargetSpeedMultiplier = 0.00f;
     this->CurrentSpeedMultiplier = 0.00f;
+    this->StartingDesiredPathLength = 0.00f;
+    this->DesiredPathLength = 0.00f;
+    this->RemainingPowerGracePeriodTicks = 0;
 }
 

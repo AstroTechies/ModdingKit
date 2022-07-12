@@ -5,15 +5,15 @@
 
 class UAstroPopupBadgeWidget;
 
-UCLASS(Blueprintable, EditInlineNew, meta = (BlueprintSpawnableComponent))
-class UPopupBadgeWidgetComponent : public UCameraFacingWidgetComponent
-{
+UCLASS(Blueprintable, EditInlineNew, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class UPopupBadgeWidgetComponent : public UCameraFacingWidgetComponent {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Export, Transient)
-    UAstroPopupBadgeWidget *PopupBadgeWidget;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UAstroPopupBadgeWidget* PopupBadgeWidget;
+    
 public:
     UPopupBadgeWidgetComponent();
 };
+

@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FAstroEntitySceneComponent : public FAstroEntityComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FTransform WorldTransform;
     
     ASTRO_API FAstroEntitySceneComponent();

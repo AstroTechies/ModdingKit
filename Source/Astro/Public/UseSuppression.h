@@ -3,14 +3,14 @@
 #include "EUseType.h"
 #include "UseSuppression.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FUseSuppression {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName SuppressionId;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EUseType SuppressionTypeFlags;
     
     ASTRO_API FUseSuppression();

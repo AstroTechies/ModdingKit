@@ -2,9 +2,9 @@
 #include "Net/UnrealNetwork.h"
 
 class AActor;
-class UClickableComponent;
-class USceneComponent;
 class APlayerController;
+class USceneComponent;
+class UClickableComponent;
 
 void UClickableComponent::SetInteractionRedirectActor(AActor* Actor, USceneComponent* PivotComponent) {
 }

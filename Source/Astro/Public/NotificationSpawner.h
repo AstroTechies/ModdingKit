@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct FNotificationSpawner {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FNotificationToSpawnPayload> NotificationsToSpawn;
     
     ASTRO_API FNotificationSpawner();

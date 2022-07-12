@@ -1,28 +1,29 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "Components/ActorComponent.h"
-#include "RewardSelectionParameters.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "RewardResult.h"
+#include "RewardSelectionParameters.h"
 #include "RewardComponent.generated.h"
 
 class URewardSelectionTemplate;
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class URewardComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class URewardComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<URewardSelectionTemplate> SelectionTemplate;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRewardSelectionParameters CustomSelectionParameters;
-
-    UPROPERTY(EditAnywhere)
-    uint8 bAllowMultipleUnlocks : 1;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bAllowMultipleUnlocks: 1;
+    
     URewardComponent();
     UFUNCTION(BlueprintCallable)
     FRewardResult SelectReward();
+    
 };
+

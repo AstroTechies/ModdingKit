@@ -1,43 +1,43 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 #include "GateObject.generated.h"
 
-class UActorGateObjectComponent;
-class UStaticMeshComponent;
-class USolarSystem;
-class USceneComponent;
-class UActorEntityLinkComponent;
 class ASolarBody;
+class UStaticMeshComponent;
+class USceneComponent;
+class UActorGateObjectComponent;
+class UActorEntityLinkComponent;
+class USolarSystem;
 
-UCLASS(Blueprintable, Abstract)
-class ASTRO_API AGateObject : public AActor
-{
+UCLASS(Abstract, Blueprintable)
+class ASTRO_API AGateObject : public AActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UStaticMeshComponent *StaticMesh;
-
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    USceneComponent *TeleporterPositioningComponent;
-
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UActorGateObjectComponent *GateObjectComponent;
-
-    UPROPERTY(Export, VisibleAnywhere)
-    UActorEntityLinkComponent *EntityLinkComponent;
-
-    UPROPERTY(Transient)
-    ASolarBody *LocalSolarBody;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UStaticMeshComponent* StaticMesh;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USceneComponent* TeleporterPositioningComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UActorGateObjectComponent* GateObjectComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UActorEntityLinkComponent* EntityLinkComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    ASolarBody* LocalSolarBody;
+    
 public:
     AGateObject();
-
 protected:
     UFUNCTION()
-    void OnSolarSystemInitialized(USolarSystem *SolarSystem);
-
+    void OnSolarSystemInitialized(USolarSystem* SolarSystem);
+    
     UFUNCTION()
-    void OnLocalPlayerChangedLocalSolarBody(ASolarBody *playerLocalSolarBody);
+    void OnLocalPlayerChangedLocalSolarBody(ASolarBody* playerLocalSolarBody);
+    
 };
+

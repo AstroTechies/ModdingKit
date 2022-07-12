@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FSpawnPointList {
     GENERATED_BODY()
 public:
-    UPROPERTY(Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     TArray<UStorageChassisComponent*> SpawnPoints;
     
     ASTRO_API FSpawnPointList();

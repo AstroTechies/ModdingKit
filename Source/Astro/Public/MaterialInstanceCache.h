@@ -8,10 +8,10 @@ USTRUCT(BlueprintType)
 struct FMaterialInstanceCache {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<FName, FMaterialColorArray> CachedColorInstances;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<FName, FMaterialIndexArray> CachedIndexInstances;
     
     ASTRO_API FMaterialInstanceCache();

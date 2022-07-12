@@ -1,10 +1,10 @@
 #include "ItemPad.h"
 #include "Net/UnrealNetwork.h"
 
-class UAstroSaveCustomArchiveProxy;
-class UPrimitiveComponent;
-class UItemPad;
 class AActor;
+class UPrimitiveComponent;
+class UAstroSaveCustomArchiveProxy;
+class UItemPad;
 
 void UItemPad::StartInWorld() {
 }

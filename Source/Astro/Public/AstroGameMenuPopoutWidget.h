@@ -3,29 +3,30 @@
 #include "AstroGameMenuSpatialWindow.h"
 #include "AstroGameMenuPopoutWidget.generated.h"
 
-class UAstroGameMenuPopoutWidgetContentsBase;
 class UPanelWidget;
+class UAstroGameMenuPopoutWidgetContentsBase;
 
-UCLASS(Blueprintable, Abstract, EditInlineNew)
-class UAstroGameMenuPopoutWidget : public UAstroGameMenuSpatialWindow
-{
+UCLASS(Abstract, Blueprintable, EditInlineNew)
+class UAstroGameMenuPopoutWidget : public UAstroGameMenuSpatialWindow {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    UAstroGameMenuPopoutWidgetContentsBase *PopoutContents;
-
-    UPROPERTY()
-    uint8 bMouseOverWidget : 1;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UAstroGameMenuPopoutWidgetContentsBase* PopoutContents;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bMouseOverWidget: 1;
+    
 public:
     UAstroGameMenuPopoutWidget();
     UFUNCTION(BlueprintImplementableEvent)
-    UPanelWidget *GetPopoutPanelWrapper() const;
-
+    UPanelWidget* GetPopoutPanelWrapper() const;
+    
     UFUNCTION(BlueprintImplementableEvent)
-    UPanelWidget *GetPopoutOutermostContainer() const;
-
+    UPanelWidget* GetPopoutOutermostContainer() const;
+    
     UFUNCTION(BlueprintImplementableEvent)
-    UPanelWidget *GetPopoutContentsWrapper() const;
+    UPanelWidget* GetPopoutContentsWrapper() const;
+    
 };
+

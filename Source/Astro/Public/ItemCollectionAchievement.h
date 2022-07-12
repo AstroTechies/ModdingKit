@@ -10,7 +10,7 @@ USTRUCT(BlueprintType)
 struct FItemCollectionAchievement : public FProgressionAchievementDefinition {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemList> CollectionItems;
     
     ASTRO_API FItemCollectionAchievement();

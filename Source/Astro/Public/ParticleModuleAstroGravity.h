@@ -1,22 +1,23 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Distributions/DistributionFloat.h"
 #include "ParticleModuleAstroBase.h"
+#include "Distributions/DistributionFloat.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=RawDistributionFloat -FallbackName=RawDistributionFloat
 #include "ParticleModuleAstroGravity.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)
-class ASTRO_API UParticleModuleAstroGravity : public UParticleModuleAstroBase
-{
+class ASTRO_API UParticleModuleAstroGravity : public UParticleModuleAstroBase {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
-    uint8 bPerturbGravity : 1;
-
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bPerturbGravity: 1;
+    
+    UPROPERTY( EditAnywhere, meta=(AllowPrivateAccess=true))
     FRawDistributionFloat PerturbAngleDegrees;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY( EditAnywhere, meta=(AllowPrivateAccess=true))
     FRawDistributionFloat GravityScale;
-
+    
     UParticleModuleAstroGravity();
 };
+

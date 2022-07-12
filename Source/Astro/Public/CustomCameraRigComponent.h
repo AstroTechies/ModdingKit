@@ -1,45 +1,46 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "CameraMode.h"
-#include "Camera/PlayerCameraManager.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ViewTargetTransitionParams -FallbackName=ViewTargetTransitionParams
 #include "CustomCameraRigComponent.generated.h"
 
 class AActor;
+class UCustomCameraRigComponent;
 class UCameraContext;
 class ACameraRigActor;
-class UCustomCameraRigComponent;
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class UCustomCameraRigComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class UCustomCameraRigComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FCameraMode> CameraModes;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UCameraContext> BehaviorContextClass;
-
+    
 private:
-    UPROPERTY()
-    ACameraRigActor *ActiveRig;
-
-    UPROPERTY(Export, Transient)
-    UCameraContext *ContextInstance;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    ACameraRigActor* ActiveRig;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UCameraContext* ContextInstance;
+    
 public:
     UCustomCameraRigComponent();
     UFUNCTION(BlueprintCallable)
-    void SetMode(FName Mode, const FViewTargetTransitionParams &params);
-
+    void SetMode(FName Mode, const FViewTargetTransitionParams& params);
+    
     UFUNCTION(BlueprintPure)
     FName GetModeName() const;
-
+    
     UFUNCTION(BlueprintPure)
-    ACameraRigActor *GetCameraRigForMode(const FName Mode) const;
-
+    ACameraRigActor* GetCameraRigForMode(const FName Mode) const;
+    
     UFUNCTION(BlueprintPure)
-    static UCustomCameraRigComponent *ActorCustomCameraRig(AActor *Actor);
+    static UCustomCameraRigComponent* ActorCustomCameraRig(AActor* Actor);
+    
 };
+

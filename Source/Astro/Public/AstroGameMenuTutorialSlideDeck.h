@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct FAstroGameMenuTutorialSlideDeck {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<EAstroGameMenuTutoriaSlideCardKey> SlidesInDeck;
     
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText DeckDescriptiveName;
     
     ASTRO_API FAstroGameMenuTutorialSlideDeck();

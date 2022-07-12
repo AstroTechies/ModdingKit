@@ -5,15 +5,16 @@
 #include "AstroDatumRef.h"
 #include "GateObjectComponentContainer.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UGateObjectComponentContainer : public UAstroEntityComponentContainer
-{
+UCLASS(Blueprintable)
+class ASTRO_API UGateObjectComponentContainer : public UAstroEntityComponentContainer {
     GENERATED_BODY()
 public:
     UGateObjectComponentContainer();
     UFUNCTION(BlueprintPure)
-    static FGateObjectComponent GetGateObjectComponent(FAstroDatumRef GateObjectComponentRef, bool &bOutSuccess);
-
+    static FGateObjectComponent GetGateObjectComponent(FAstroDatumRef GateObjectComponentRef, bool& bOutSuccess);
+    
     UFUNCTION(BlueprintPure)
-    static FGateObjectComponent FindGateObjectComponent(FAstroDatumRef EntityRef, bool &bOutSuccess);
+    static FGateObjectComponent FindGateObjectComponent(FAstroDatumRef EntityRef, bool& bOutSuccess);
+    
 };
+

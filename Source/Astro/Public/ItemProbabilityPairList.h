@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct FItemProbabilityPairList {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FItemProbabilityPair> ItemProbabilityPairs;
     
     ASTRO_API FItemProbabilityPairList();

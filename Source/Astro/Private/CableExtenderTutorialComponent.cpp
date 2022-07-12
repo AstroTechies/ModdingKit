@@ -1,7 +1,7 @@
 #include "CableExtenderTutorialComponent.h"
 
-class UPrimitiveComponent;
 class AActor;
+class UPrimitiveComponent;
 class ASlotConnection;
 
 void UCableExtenderTutorialComponent::StopTutorial() {

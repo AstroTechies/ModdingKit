@@ -1,27 +1,28 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
 #include "CreativeModeTerrainData.h"
-#include "UObject/NoExportTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "CreativeModeData.generated.h"
 
 class ULodAnchorComponent;
 
-UCLASS(Blueprintable, BlueprintType)
-class UCreativeModeData : public UObject
-{
+UCLASS(Blueprintable)
+class UCreativeModeData : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FCreativeModeTerrainData TerrainData;
-
-    UPROPERTY(Export)
-    TArray<ULodAnchorComponent *> LodAnchorComponents;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    TArray<ULodAnchorComponent*> LodAnchorComponents;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector PlayerRefPos;
-
+    
     UCreativeModeData();
     UFUNCTION(BlueprintCallable)
     FString GetTerrainPaintStatus();
+    
 };
+

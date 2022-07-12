@@ -3,7 +3,7 @@
 #include "EAstroTelemetryCounter.generated.h"
 
 UENUM()
-enum class EAstroTelemetryCounter : uint8 {
+enum class EAstroTelemetryCounter {
     KeyboardUsageTime,
     GamepadUsageTime,
     UndergroundTime,

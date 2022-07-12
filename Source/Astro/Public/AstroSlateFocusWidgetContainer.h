@@ -5,23 +5,23 @@
 
 class UAstroSlateFocusWidget;
 
-UCLASS(Blueprintable, Abstract, EditInlineNew)
-class UAstroSlateFocusWidgetContainer : public UUserWidgetBlueprintDesignable
-{
+UCLASS(Abstract, Blueprintable, EditInlineNew)
+class UAstroSlateFocusWidgetContainer : public UUserWidgetBlueprintDesignable {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Export)
-    UAstroSlateFocusWidget *ChildWidgetWithFocusHighlight;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UAstroSlateFocusWidget* ChildWidgetWithFocusHighlight;
+    
 public:
     UAstroSlateFocusWidgetContainer();
-
 protected:
     UFUNCTION(BlueprintCallable)
     void RestoreLastFocus();
-
+    
 public:
     UFUNCTION(BlueprintCallable)
-    void ChildWidgetFocusHighlightChanged(UAstroSlateFocusWidget *FocusWidget);
+    void ChildWidgetFocusHighlightChanged(UAstroSlateFocusWidget* FocusWidget);
+    
 };
+

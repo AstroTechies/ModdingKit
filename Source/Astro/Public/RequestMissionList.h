@@ -6,7 +6,7 @@ USTRUCT(BlueprintType)
 struct FRequestMissionList {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> RequestingMissions;
     
     ASTRO_API FRequestMissionList();

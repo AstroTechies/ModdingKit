@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
 #include "ActorSpecifier.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "DecoratorActorList.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UDecoratorActorList : public UObject
-{
+UCLASS(Blueprintable)
+class ASTRO_API UDecoratorActorList : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FActorSpecifier> Actors;
-
+    
     UDecoratorActorList();
 };
+

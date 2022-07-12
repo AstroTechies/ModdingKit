@@ -1,29 +1,29 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "Engine/DataAsset.h"
 #include "OverrideCustomPackageItemList.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "DeployableItemPackageCatalog.generated.h"
 
-class APhysicalItem;
 class UItemType;
+class APhysicalItem;
 
-UCLASS(Blueprintable, Blueprintable)
-class UDeployableItemPackageCatalog : public UDataAsset
-{
+UCLASS(Blueprintable)
+class UDeployableItemPackageCatalog : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<int32, TSubclassOf<APhysicalItem>> DefaultPackagesForItemTiers;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSubclassOf<APhysicalItem>, TSubclassOf<APhysicalItem>> OverrideCustomPackagesForItems;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FOverrideCustomPackageItemList> OverrideItemTypeCustomPackagesForItems;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSubclassOf<UItemType>, TSubclassOf<UItemType>> PackagedItemTypeUpgradeMapping;
-
+    
     UDeployableItemPackageCatalog();
 };
+

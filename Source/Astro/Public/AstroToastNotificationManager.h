@@ -1,31 +1,31 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "AstroNotificationToastAuthoringData.h"
-#include "Engine/EngineTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
 #include "AstroToastNotificationManager.generated.h"
 
 class UAstroNotificationToastWidget;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UAstroToastNotificationManager : public UObject
-{
+UCLASS(Blueprintable)
+class ASTRO_API UAstroToastNotificationManager : public UObject {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Export)
-    TArray<UAstroNotificationToastWidget *> LivingToastNotifications;
-
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    TArray<UAstroNotificationToastWidget*> LivingToastNotifications;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FAstroNotificationToastAuthoringData> QueueOfToastNotifsToSpawn;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTimerHandle SpawnTimerHandle;
-
+    
 public:
     UAstroToastNotificationManager();
-
 private:
     UFUNCTION()
     void HandleNotificationSpawnTimerTick();
+    
 };
+

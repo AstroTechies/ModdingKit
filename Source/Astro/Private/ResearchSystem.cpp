@@ -1,12 +1,12 @@
 #include "ResearchSystem.h"
 #include "Templates/SubclassOf.h"
 
-class AAstroGameState;
+class UItemType;
 class APhysicalItem;
 class UItemComponent;
-class UItemType;
-class APlayerController;
+class AAstroGameState;
 class UObject;
+class APlayerController;
 
 void UResearchSystem::StartOrInterruptResearch(FAstroDatumRef ResearchEntityRef, FAstroDatumRef InstigatorEntityRef, bool& bOutSuccess) {
 }

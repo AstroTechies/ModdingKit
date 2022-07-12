@@ -10,13 +10,13 @@ USTRUCT(BlueprintType)
 struct FAstroEntityDefinition {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bAllowViewRelevanceActorCreation: 1;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<UAstroEntitySystem>> SystemsDeterminingStatelessness;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FNamedEntityComponentDefinition> Components;
     
     ASTRO_API FAstroEntityDefinition();

@@ -1,61 +1,62 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
-#include "UObject/NoExportTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "ControlledVehicleMovement.generated.h"
 
-class UPowerComponent;
 class UWheeledChassisComponent;
+class UPowerComponent;
 class APlayerController;
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UControlledVehicleMovement : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UControlledVehicleMovement : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MovingValue;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float TargetMovingValue;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool DoNotBindInputToControlComponent;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float RawThrottleValue;
-
+    
 private:
-    UPROPERTY(Replicated, Transient)
-    uint8 bAuthoritativeEnabled : 1;
-
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
+    uint8 bAuthoritativeEnabled: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bEnabled;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bPhysicsEnabledCached;
-
-    UPROPERTY(Export, Transient)
-    UWheeledChassisComponent *WheeledChassis;
-
-    UPROPERTY(Export, Transient)
-    TArray<UPowerComponent *> PowerComponents;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UWheeledChassisComponent* WheeledChassis;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    TArray<UPowerComponent*> PowerComponents;
+    
 public:
     UControlledVehicleMovement();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
     UFUNCTION()
     void SetControlled(bool IsControlled);
-
+    
 private:
     UFUNCTION(Reliable, Server, WithValidation)
     void SetAuthorityControlled(bool IsControlled);
-
+    
 public:
     UFUNCTION()
     void OnUnmanned();
-
+    
     UFUNCTION()
-    void OnMove(APlayerController *Controller, const FVector &Direction);
+    void OnMove(APlayerController* Controller, const FVector& Direction);
+    
 };
+

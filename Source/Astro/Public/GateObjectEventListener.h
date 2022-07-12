@@ -5,12 +5,13 @@
 
 class AActor;
 
-UCLASS(Blueprintable, Blueprintable)
-class UGateObjectEventListener : public UAstroEntityComponentSubobject
-{
+UCLASS(Blueprintable)
+class UGateObjectEventListener : public UAstroEntityComponentSubobject {
     GENERATED_BODY()
 public:
     UGateObjectEventListener();
     UFUNCTION()
-    void OnPlayerCharacterInProximityDestroyed(AActor *playerCharacter);
+    void OnPlayerCharacterInProximityDestroyed(AActor* playerCharacter);
+    
 };
+

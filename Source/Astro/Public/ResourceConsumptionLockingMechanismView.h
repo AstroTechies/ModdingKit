@@ -7,15 +7,16 @@
 
 class ULockingMechanism;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UResourceConsumptionLockingMechanismView : public ULockingMechanismView
-{
+UCLASS(Blueprintable)
+class ASTRO_API UResourceConsumptionLockingMechanismView : public ULockingMechanismView {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLockingMechanismSignal BeginFinalResourceConsumption;
-
+    
     UResourceConsumptionLockingMechanismView();
     UFUNCTION()
-    void OnBeginFinalResourceConsumption(ULockingMechanism *LockingMechanism, const FLockChangedEventMetadata &EventData);
+    void OnBeginFinalResourceConsumption(ULockingMechanism* LockingMechanism, const FLockChangedEventMetadata& EventData);
+    
 };
+

@@ -1,7 +1,7 @@
 #include "ResourceInfo.h"
 #include "Templates/SubclassOf.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=StaticMeshComponent -FallbackName=StaticMeshComponent
 #include "AdaptiveTickComponent.h"
-#include "Components/StaticMeshComponent.h"
 
 class UItemType;
 class UPrimitiveComponent;

@@ -17,6 +17,6 @@ UAstroPlayMontageTask* UAstroPlayMontageTask::CreateAstroPlayMontageTask(UAstroA
     return NULL;
 }
 
-UAstroPlayMontageTask::UAstroPlayMontageTask(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+UAstroPlayMontageTask::UAstroPlayMontageTask() : UGameplayTask(FObjectInitializer()) {
 }
 

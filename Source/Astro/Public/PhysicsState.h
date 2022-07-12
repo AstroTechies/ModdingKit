@@ -6,10 +6,10 @@ USTRUCT(BlueprintType)
 struct FPhysicsState {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint32 PhysicsFlags;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName CollisionProfile;
     
     ASTRO_API FPhysicsState();

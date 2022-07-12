@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct FMovementOverrideCorrection {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FMovementOverrideNetData NetData;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint8 ErrorCode;
     
     ASTRO_API FMovementOverrideCorrection();

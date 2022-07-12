@@ -1,18 +1,17 @@
 #include "AstroPlayStatics.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
-class UObject;
 class UPrimitiveComponent;
+class AActor;
 class UChildActorComponent;
-class AAstroPlanet;
-class APhysicalItem;
 class USceneComponent;
+class APlayerController;
+class AAstroPlanet;
+class UObject;
 class AAstroCharacter;
 class UItemType;
+class APhysicalItem;
 class APlayController;
-class APlayerController;
-class UAstroPlayMontageAction;
 class UControlSymbol;
 class UTexture;
 
@@ -111,10 +110,6 @@ AAstroCharacter* UAstroPlayStatics::GetLocalAstroCharacter(const UObject* WorldC
 }
 
 UItemType* UAstroPlayStatics::GetItemTypeDefault(TSubclassOf<UItemType> Type) {
-    return NULL;
-}
-
-TSubclassOf<UAstroPlayMontageAction> UAstroPlayStatics::GetDefaultEmoteActionType() {
     return NULL;
 }
 

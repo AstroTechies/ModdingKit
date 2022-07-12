@@ -5,23 +5,23 @@
 
 class APhysicalItem;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API AStorageActuator : public AFullnessActuator
-{
+UCLASS(Blueprintable)
+class ASTRO_API AStorageActuator : public AFullnessActuator {
     GENERATED_BODY()
 public:
     AStorageActuator();
-
 protected:
     UFUNCTION()
     void AuthorityHandleLeadRailCarReleasedFromSlot(bool NewOwner);
-
+    
     UFUNCTION()
     void AuthorityHandleLeadRailCarPlacedInSlot();
-
+    
     UFUNCTION()
-    void AuthorityHandleAttachStorageSlotEvent(APhysicalItem *movedItem);
-
+    void AuthorityHandleAttachStorageSlotEvent(APhysicalItem* movedItem);
+    
     UFUNCTION()
     void AuthorityHandleAttachStorageItemAmountEvent();
+    
 };
+

@@ -1,35 +1,35 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "Engine/EngineTypes.h"
 #include "AstroEntityComponentSubobjectDefinition.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
 #include "AstroNotificationUnlockAuthoringData.h"
 #include "VintageProbeUnlockBehaviorDefinition.generated.h"
 
 class AActor;
 
 UCLASS(Blueprintable, EditInlineNew)
-class ASTRO_API UVintageProbeUnlockBehaviorDefinition : public UAstroEntityComponentSubobjectDefinition
-{
+class ASTRO_API UVintageProbeUnlockBehaviorDefinition : public UAstroEntityComponentSubobjectDefinition {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<AActor> RealityTearObject;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<AActor> RealityTearFlickerObject;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentReference RealityTearSpawnLocation;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAstroNotificationUnlockAuthoringData ActivatingPlayerUnlockNotification;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAstroNotificationUnlockAuthoringData OtherPlayersUnlockNotification;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FString> UnlockItems;
-
+    
     UVintageProbeUnlockBehaviorDefinition();
 };
+

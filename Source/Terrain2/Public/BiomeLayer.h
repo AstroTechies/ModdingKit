@@ -3,8 +3,8 @@
 #include "BiomeAudioEvents.h"
 #include "BiomeLayer.generated.h"
 
-class UBoundedVoxelVolumeModifier;
 class UProceduralModifier;
+class UBoundedVoxelVolumeModifier;
 class UBoundedVoxelVolumeModifierList;
 
 USTRUCT()

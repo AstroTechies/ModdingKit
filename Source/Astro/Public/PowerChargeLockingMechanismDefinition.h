@@ -4,9 +4,9 @@
 #include "PowerChargeLockingMechanismDefinition.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)
-class ASTRO_API UPowerChargeLockingMechanismDefinition : public ULockingMechanismDefinition
-{
+class ASTRO_API UPowerChargeLockingMechanismDefinition : public ULockingMechanismDefinition {
     GENERATED_BODY()
 public:
     UPowerChargeLockingMechanismDefinition();
 };
+

@@ -3,16 +3,16 @@
 #include "TerrainModifierBase.h"
 #include "TerrainPlacementComponent.generated.h"
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UTerrainPlacementComponent : public UTerrainModifierBase
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UTerrainPlacementComponent : public UTerrainModifierBase {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 OctreeResOffset;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ExclusionRadius;
-
+    
     UTerrainPlacementComponent();
 };
+

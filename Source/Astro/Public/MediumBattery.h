@@ -1,42 +1,43 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "PhysicalItem.h"
-#include "Engine/EngineTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
 #include "MediumBattery.generated.h"
 
-class USceneComponent;
 class UMaterialInstanceDynamic;
 class UPowerComponent;
+class USceneComponent;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API AMediumBattery : public APhysicalItem
-{
+UCLASS(Blueprintable)
+class ASTRO_API AMediumBattery : public APhysicalItem {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
-    UMaterialInstanceDynamic *RingMaterial;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInstanceDynamic* RingMaterial;
+    
 private:
-    UPROPERTY(Export, Transient)
-    UPowerComponent *PowerComponent;
-
-    UPROPERTY(Export, Transient)
-    USceneComponent *RingMeshComponent;
-
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPowerComponent* PowerComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    USceneComponent* RingMeshComponent;
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentReference RingMeshReference;
-
-    UPROPERTY(ReplicatedUsing = OnRep)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep, meta=(AllowPrivateAccess=true))
     float CurrentChargePercent;
-
+    
 public:
     AMediumBattery();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
 private:
     UFUNCTION()
     void OnRep();
-
+    
     UFUNCTION()
     void OnChargeLevelChangedEvent(float NewCharge, float ChargeDelta);
+    
 };
+

@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "PowerComponentState.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FPowerComponentState {
     GENERATED_BODY()
 public:

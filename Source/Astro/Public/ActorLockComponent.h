@@ -1,35 +1,36 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "EnableSignalDelegate.h"
 #include "LockingMechanismSignalDelegate.h"
-#include "AstroDatumRef.h"
 #include "LockChangedEventMetadata.h"
+#include "AstroDatumRef.h"
 #include "ActorLockComponent.generated.h"
 
-class ULockingMechanism;
 class ULockingMechanismView;
+class ULockingMechanism;
 
-UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
-class UActorLockComponent : public UActorComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class UActorLockComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FEnableSignal OnIsUnlockedChangedAuthority;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLockingMechanismSignal OnLockingMechanismOpenOrCloseAuthority;
-
+    
 protected:
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
-    TArray<ULockingMechanismView *> LockingMechanismViews;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<ULockingMechanismView*> LockingMechanismViews;
+    
 public:
     UActorLockComponent();
     UFUNCTION()
-    void OnAuthorityLockingMechanismStateChanged(ULockingMechanism *changedLockingMechanism, const FLockChangedEventMetadata &EventData);
-
+    void OnAuthorityLockingMechanismStateChanged(ULockingMechanism* changedLockingMechanism, const FLockChangedEventMetadata& EventData);
+    
     UFUNCTION()
-    void OnAuthorityLockedStateChanged(FAstroDatumRef lockComponentRef, const FLockChangedEventMetadata &EventData);
+    void OnAuthorityLockedStateChanged(FAstroDatumRef lockComponentRef, const FLockChangedEventMetadata& EventData);
+    
 };
+

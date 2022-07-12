@@ -8,13 +8,13 @@ USTRUCT(BlueprintType)
 struct FSlotIndicatorLocation {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 SubslotIndex;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSlotReference SlotForIndicator;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSlotIndicatorDefinition IndicatorDef;
     
     ASTRO_API FSlotIndicatorLocation();

@@ -1,218 +1,219 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SlotReference.h"
 #include "PhysicalItem.h"
 #include "AutoCraneStateChangeDelegate.h"
+#include "SlotReference.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
 #include "EAutoCraneTransferStage.h"
-#include "Engine/EngineTypes.h"
 #include "AutoCrane.generated.h"
 
+class UAstroActionComponent;
 class UCapsuleComponent;
 class USkeletalMeshComponent;
-class UAstroActionComponent;
-class UAnimationAsset;
-class AActor;
 class UPowerComponent;
+class UAnimationAsset;
 class UAnimMontage;
+class AActor;
 
-UCLASS(Blueprintable, Abstract)
-class AAutoCrane : public APhysicalItem
-{
+UCLASS(Abstract, Blueprintable)
+class AAutoCrane : public APhysicalItem {
     GENERATED_BODY()
 public:
-    UPROPERTY(Export, Transient)
-    UCapsuleComponent *PickupCollider;
-
-    UPROPERTY(Export, Transient)
-    UCapsuleComponent *DropoffCollider;
-
-    UPROPERTY(Export, Transient)
-    USkeletalMeshComponent *Skeleton;
-
-    UPROPERTY(Transient)
-    APhysicalItem *TransferItem;
-
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UAstroActionComponent *ActionComponent;
-
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UCapsuleComponent* PickupCollider;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UCapsuleComponent* DropoffCollider;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    USkeletalMeshComponent* Skeleton;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    APhysicalItem* TransferItem;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UAstroActionComponent* ActionComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float BaseRotationTime;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxLowPowerRotationTime;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ItemSlottingTime;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAutoCraneStateChange OnClientCraneStateChanged;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAutoCraneStateChange OnClientTransferProgressChanged;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAutoCraneStateChange OnTransferItemSet;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAutoCraneStateChange OnTransferItemReleased;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAutoCraneStateChange OnTransferItemFullyEmplaced;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAutoCraneStateChange OnTransferItemDestroyed;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAutoCraneStateChange OnCranePlacedInSlot;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAutoCraneStateChange OnCraneReleasedFromSlot;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAutoCraneStateChange OnCranePowerChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAutoCraneStateChange OnCraneInputUse;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSlotReference TransferSlotRef;
-
-    UPROPERTY(Export, VisibleAnywhere)
-    UPowerComponent *PowerComponent;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimationAsset *ActivateAnim;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimationAsset *DeactivateAnim;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimationAsset *ActivateToHeldAnim;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimationAsset *ActiveToHeldAnim;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimationAsset *HeldToInactiveAnim;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimationAsset *HeldToActiveAnim;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimationAsset *HeldIdleAnim;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimationAsset *ActiveIdleAnim;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimMontage *GrabHighAnim;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimMontage *GrabMedAnim;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimMontage *GrabLowAnim;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimMontage *PlaceHighAnim;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimMontage *PlaceMedAnim;
-
-    UPROPERTY(EditDefaultsOnly)
-    UAnimMontage *PlaceLowAnim;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPowerComponent* PowerComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimationAsset* ActivateAnim;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimationAsset* DeactivateAnim;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimationAsset* ActivateToHeldAnim;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimationAsset* ActiveToHeldAnim;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimationAsset* HeldToInactiveAnim;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimationAsset* HeldToActiveAnim;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimationAsset* HeldIdleAnim;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimationAsset* ActiveIdleAnim;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimMontage* GrabHighAnim;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimMontage* GrabMedAnim;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimMontage* GrabLowAnim;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimMontage* PlaceHighAnim;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimMontage* PlaceMedAnim;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimMontage* PlaceLowAnim;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName RotationBoneName;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float GrabLowHeight;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float GrabHighHeight;
-
+    
 private:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentReference PickupColliderReference;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentReference DropoffColliderReference;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentReference SkeletonComponentReference;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName TransferSlotName;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName FilterSlotName;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSlotReference FilterSlotRef;
-
+    
 public:
-    UPROPERTY(SaveGame, ReplicatedUsing = OnRep_TransferProgress)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_TransferProgress, meta=(AllowPrivateAccess=true))
     float TransferProgress;
-
-    UPROPERTY(BlueprintReadWrite, Replicated, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     float PowerRatio;
-
-    UPROPERTY(BlueprintReadWrite, SaveGame, ReplicatedUsing = OnRep_CraneState, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_CraneState, meta=(AllowPrivateAccess=true))
     EAutoCraneTransferStage TransferStage;
-
-    UPROPERTY(BlueprintReadWrite, SaveGame, ReplicatedUsing = OnRep_CraneState, meta = (AllowPrivateAccess = true))
-    uint8 bIsTurnedOn : 1;
-
-    UPROPERTY(BlueprintReadWrite, Replicated, meta = (AllowPrivateAccess = true))
-    uint8 bHasPower : 1;
-
-    UPROPERTY(BlueprintReadWrite, Replicated, meta = (AllowPrivateAccess = true))
-    uint8 bIsSlotted : 1;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_CraneState, meta=(AllowPrivateAccess=true))
+    uint8 bIsTurnedOn: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
+    uint8 bHasPower: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
+    uint8 bIsSlotted: 1;
+    
     AAutoCrane();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
     UFUNCTION()
     void OnRep_TransferProgress();
-
+    
     UFUNCTION()
     void OnRep_CraneState();
-
+    
     UFUNCTION(NetMulticast, Reliable)
-    void MulticastPlayOneOffAnimation(UAnimationAsset *Anim);
-
+    void MulticastPlayOneOffAnimation(UAnimationAsset* Anim);
+    
 private:
     UFUNCTION()
     void HandleSelfOnReleasedFromSlot(bool NewOwner);
-
+    
     UFUNCTION()
     void HandleSelfOnPlacedInSlot();
-
+    
     UFUNCTION()
-    void HandleOnSetItem(APhysicalItem *Item);
-
+    void HandleOnSetItem(APhysicalItem* Item);
+    
     UFUNCTION()
-    void HandleOnReleaseItem(APhysicalItem *Item);
-
+    void HandleOnReleaseItem(APhysicalItem* Item);
+    
 public:
     UFUNCTION()
     void HandleOnReleasedFromSlot(bool NewOwner);
-
+    
     UFUNCTION()
-    void HandleOnItemDestroyed(AActor *DestroyedActor);
-
+    void HandleOnItemDestroyed(AActor* DestroyedActor);
+    
 private:
     UFUNCTION()
     void HandleOnHasPowerAvailableChanged(bool HasAvailablePower);
-
+    
 public:
     UFUNCTION()
     void HandleOnFullyEmplaced();
-
+    
 private:
     UFUNCTION()
-    void HandleOnFilterSlotChanged(APhysicalItem *Item);
-
+    void HandleOnFilterSlotChanged(APhysicalItem* Item);
+    
     UFUNCTION()
-    void HandleChassisSlotEvent(APhysicalItem *Item);
+    void HandleChassisSlotEvent(APhysicalItem* Item);
+    
 };
+

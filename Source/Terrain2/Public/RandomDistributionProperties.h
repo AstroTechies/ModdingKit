@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "EPlacementType.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=FloatInterval -FallbackName=FloatInterval
 #include "EPlacementOrientation.h"
-#include "UObject/NoExportTypes.h"
 #include "RandomDistributionProperties.generated.h"
 
 USTRUCT(BlueprintType)

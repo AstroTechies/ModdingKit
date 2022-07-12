@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SolarBody.h"
+#include "SolarBody.h"	
+#include "Components/DirectionalLightComponent.h"
 #include "Sun.generated.h"
 
-class UDirectionalLightComponent;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API ASun : public ASolarBody
-{
+UCLASS(Blueprintable)
+class ASTRO_API ASun : public ASolarBody {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, Export, VisibleDefaultsOnly, meta = (AllowPrivateAccess = true))
-    UDirectionalLightComponent *SunLight;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UDirectionalLightComponent* SunLight;
+    
     ASun();
 };
+

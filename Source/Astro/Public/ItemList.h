@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "Engine/DataAsset.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "ItemList.generated.h"
 
 class UItemType;
 
-UCLASS(Blueprintable, Blueprintable, BlueprintType)
-class ASTRO_API UItemList : public UDataAsset
-{
+UCLASS(Blueprintable)
+class ASTRO_API UItemList : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<UItemType>> ItemTypes;
-
+    
     UItemList();
 };
+

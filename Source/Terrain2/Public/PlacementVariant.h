@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "ItemTypeReference.h"
-#include "UObject/NoExportTypes.h"
 #include "FoliageDestructionInfo.h"
-#include "UObject/NoExportTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Int32Interval -FallbackName=Int32Interval
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=FloatInterval -FallbackName=FloatInterval
 #include "EPlacementOrientation.h"
-#include "PhysicsEngine/BodyInstance.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BodyInstance -FallbackName=BodyInstance
 #include "PlacementVariant.generated.h"
 
 class AActor;
-class UStaticMesh;
 class UMaterialInterface;
+class UStaticMesh;
 
 USTRUCT(BlueprintType)
 struct TERRAIN2_API FPlacementVariant {

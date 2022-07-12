@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct FFloatCountAchievement : public FProgressionAchievementDefinition {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NeededCount;
     
     ASTRO_API FFloatCountAchievement();

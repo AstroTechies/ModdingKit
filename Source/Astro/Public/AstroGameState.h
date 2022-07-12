@@ -1,462 +1,466 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=GameState -FallbackName=GameState
+#include "EnableSignalDelegate.h"
 #include "OnItemTypeListChangedDelegate.h"
-#include "OnCurrentResearchPointBalanceChangedDelegate.h"
-#include "GameFramework/GameState.h"
 #include "TutorialSignalDelegate.h"
-#include "ScannableStatus.h"
-#include "OutroSequenceActorCreatedDelegate.h"
 #include "StarterItemCreatedDelegate.h"
 #include "SignalDelegate.h"
-#include "EnableSignalDelegate.h"
+#include "OnCurrentResearchPointBalanceChangedDelegate.h"
+#include "OutroSequenceActorCreatedDelegate.h"
+#include "ProbeUnlockState.h"
 #include "WanderRealityTearOpenStateEventDelegate.h"
 #include "EAstroAchievementKeys.h"
 #include "ItemCollectionAchievementProgress.h"
+#include "ScannableStatus.h"
 #include "ActiveTerrainColorChangedDelegate.h"
-#include "ProbeUnlockState.h"
 #include "DebugLocation.h"
-#include "EWandererRealityTearOpenState.h"
-#include "UObject/NoExportTypes.h"
-#include "CreativePaintMaterialMapping.h"
 #include "AstroRemotePlayerChunk.h"
-#include "UObject/NoExportTypes.h"
+#include "CreativePaintMaterialMapping.h"
 #include "PackedVoxelMaterialInfo.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=PackedVoxelMaterialInfo -FallbackName=PackedVoxelMaterialInfo
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformationParamsT2 -FallbackName=DeformationParamsT2
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=CreativePaintMaterialMapping -FallbackName=CreativePaintMaterialMapping
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
 #include "EAchievementProgressionState.h"
-#include "DeformationParamsT2.h"
+#include "EWandererRealityTearOpenState.h"
 #include "DeformationCompleteEventDelegate.h"
+#include "GameFramework/GameState.h"
 #include "AstroGameState.generated.h"
 
-class UItemType;
-class USoundBase;
+class URewardState;
 class UActivation;
 class APhysicalItem;
-class UActorEntityLinkComponent;
-class AActor;
+class UItemType;
 class ULevelSequencePlayer;
+class AActor;
+class UActorEntityLinkComponent;
 class ALevelSequenceActor;
+class AAstroCharacter;
 class UAstropediaAssetManager;
 class UActuatorQueue;
-class URewardState;
 class ARailNetwork;
 class URewardSystem;
 class AAstroMissionsManager;
 class UAstroSaveCustomArchiveProxy;
-class UParticleSystem;
 class AAstroPlanet;
-class AAstroCharacter;
+class USoundBase;
+class UParticleSystem;
 
-UCLASS(Blueprintable, Blueprintable)
-class AAstroGameState : public AGameState
-{
+UCLASS(Blueprintable)
+class AAstroGameState : public AGameState {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, Replicated, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     float GameSpeed;
-
-    UPROPERTY(BlueprintReadWrite, Replicated, SaveGame, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, SaveGame, meta=(AllowPrivateAccess=true))
     float SolarTimeScaleMultiplierCreative;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTutorialSignal OnObjectiveSet;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTutorialSignal OnTutorialNotify;
-
-    UPROPERTY(BlueprintAssignable, BlueprintCallable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintCallable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FStarterItemCreated OnStarterItemCreated;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnCurrentResearchPointBalanceChanged OnResearchPointBalanceChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnItemTypeListChanged OnKnownItemTypesChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnItemTypeListChanged OnUnlockedItemTypesChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnCreativeModeCatalogUnlockedChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FEnableSignal OnCreativeModeEnabledChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnAchievementProgressionDisabledChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FEnableSignal OnCreativeFreeFuelChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnOutroCinematicStarted;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOutroSequenceActorCreated OnOutroSequenceActorCreated;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnOutroCinematicCompleted;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
-    UActivation *DeformToolActivation;
-
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UActivation* DeformToolActivation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<APhysicalItem>> AvailableRecipes;
-
-    UPROPERTY(BlueprintReadWrite, Replicated, SaveGame, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, SaveGame, meta=(AllowPrivateAccess=true))
     bool TutorialInteractionMode;
-
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     bool TutorialSlowMovement;
-
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FName CurrentObjective;
-
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FName> TutorialNotifiedList;
-
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta = (AllowPrivateAccess = true))
-    TArray<APhysicalItem *> SpawnedStartingItems;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    TArray<APhysicalItem*> SpawnedStartingItems;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool MapLoadedFromSave;
-
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool SaveGamePermitted;
-
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     float WindValue;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnMissionsManagerCreated;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal UnlockedVintageProbesChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FWanderRealityTearOpenStateEvent OnWandererRealityTearOpenChanged;
-
-    UPROPERTY(SaveGame)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TMap<EAstroAchievementKeys, int32> CountAchievementProgress;
-
-    UPROPERTY(SaveGame)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TMap<EAstroAchievementKeys, float> FloatAchievementProgress;
-
-    UPROPERTY(SaveGame)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TMap<EAstroAchievementKeys, FItemCollectionAchievementProgress> CollectionAchievementProgress;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FActiveTerrainColorChanged OnActiveCreativeTerrainColorChanged;
-
+    
 protected:
-    UPROPERTY(SaveGame)
-    uint8 bIsMultiplayerEnabled : 1;
-
-    UPROPERTY(Transient, ReplicatedUsing = OnRep_IsOutroCinematicActive)
-    uint8 bIsOutroCinematicActive : 1;
-
-    UPROPERTY(SaveGame)
-    TArray<AActor *> NewPlayerSpawnLocations;
-
-    UPROPERTY(SaveGame)
-    TArray<AActor *> SpawnLocations;
-
-    UPROPERTY(BlueprintReadWrite, Export, SaveGame, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UActorEntityLinkComponent *EntityLinkComponent;
-
-    UPROPERTY(BlueprintReadWrite, Transient, ReplicatedUsing = BroadcastResearchPointBalanceChanged, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    uint8 bIsMultiplayerEnabled: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_IsOutroCinematicActive, meta=(AllowPrivateAccess=true))
+    uint8 bIsOutroCinematicActive: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    TArray<AActor*> NewPlayerSpawnLocations;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    TArray<AActor*> SpawnLocations;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, SaveGame, meta=(AllowPrivateAccess=true))
+    UActorEntityLinkComponent* EntityLinkComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=BroadcastResearchPointBalanceChanged, meta=(AllowPrivateAccess=true))
     float CurrentResearchPointBalance;
-
-    UPROPERTY(BlueprintReadWrite, Replicated, Transient, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
     float CurrentResearchPointsPerMinute;
-
-    UPROPERTY(BlueprintReadWrite, Transient, ReplicatedUsing = BroadcastKnownItemsChanged, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=BroadcastKnownItemsChanged, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<UItemType>> KnownItemTypes;
-
-    UPROPERTY(BlueprintReadWrite, Transient, ReplicatedUsing = BroadcastUnlockedItemsChanged, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=BroadcastUnlockedItemsChanged, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<UItemType>> UnlockedItemTypes;
-
-    UPROPERTY(Replicated)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     TArray<FScannableStatus> ScannableStatuses;
-
-    UPROPERTY(SaveGame, ReplicatedUsing = BroadcastUnlockedVintageProbesChanged)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=BroadcastUnlockedVintageProbesChanged, meta=(AllowPrivateAccess=true))
     TArray<FProbeUnlockState> ProbeUnlockStates;
-
+    
 private:
-    UPROPERTY(Transient)
-    ULevelSequencePlayer *OutroCinematicPlayer;
-
-    UPROPERTY(Transient)
-    ALevelSequenceActor *OutroSequenceActor;
-
-    UPROPERTY(Replicated, SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    ULevelSequencePlayer* OutroCinematicPlayer;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    ALevelSequenceActor* OutroSequenceActor;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FDebugLocation> DebugLocations;
-
-    UPROPERTY(SaveGame, ReplicatedUsing = OnRep_CreativeModeSettings)
-    uint8 bAchievementProgressionDisabled : 1;
-
-    UPROPERTY(SaveGame, ReplicatedUsing = OnRep_CreativeModeSettings)
-    uint8 bIsIndividualDedicatedServerGame : 1;
-
-    UPROPERTY(SaveGame, ReplicatedUsing = OnRep_CreativeModeSettings)
-    uint8 bCreativeModeActive : 1;
-
-    UPROPERTY(SaveGame, ReplicatedUsing = OnRep_CreativeModeSettings)
-    uint8 bCreativeAllCatalogItemsUnlocked : 1;
-
-    UPROPERTY(SaveGame)
-    uint8 bCreativeFreeOxygenOn : 1;
-
-    UPROPERTY(SaveGame, ReplicatedUsing = OnRep_CreativeModeSettings)
-    uint8 bCreativeFreeFuelOn : 1;
-
-    UPROPERTY(SaveGame)
-    uint8 bCreativeInvisibleToHazardsOn : 1;
-
-    UPROPERTY(SaveGame)
-    uint8 bCreativeInvincibleOn : 1;
-
-    UPROPERTY(SaveGame)
-    uint8 bCreativeUnlimitedBackpackPowerOn : 1;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_CreativeModeSettings, meta=(AllowPrivateAccess=true))
+    uint8 bAchievementProgressionDisabled: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_CreativeModeSettings, meta=(AllowPrivateAccess=true))
+    uint8 bIsIndividualDedicatedServerGame: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_CreativeModeSettings, meta=(AllowPrivateAccess=true))
+    uint8 bCreativeModeActive: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_CreativeModeSettings, meta=(AllowPrivateAccess=true))
+    uint8 bCreativeAllCatalogItemsUnlocked: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    uint8 bCreativeFreeOxygenOn: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_CreativeModeSettings, meta=(AllowPrivateAccess=true))
+    uint8 bCreativeFreeFuelOn: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    uint8 bCreativeInvisibleToHazardsOn: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    uint8 bCreativeInvincibleOn: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    uint8 bCreativeUnlimitedBackpackPowerOn: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     float MatCollectionGameSpeed;
-
-    UPROPERTY()
-    UAstropediaAssetManager *AstropediaAssetManager;
-
-    UPROPERTY(SaveGame)
-    UActuatorQueue *ActuatorQueue;
-
-    UPROPERTY(SaveGame, ReplicatedUsing = OnRep_RailNetwork)
-    ARailNetwork *RailNetwork;
-
-    UPROPERTY(Transient)
-    URewardSystem *RewardSystem;
-
-    UPROPERTY(Transient)
-    URewardState *RewardState;
-
-    UPROPERTY(SaveGame, ReplicatedUsing = OnRep_MissionsManager)
-    AAstroMissionsManager *MissionsManager;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAstropediaAssetManager* AstropediaAssetManager;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    UActuatorQueue* ActuatorQueue;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_RailNetwork, meta=(AllowPrivateAccess=true))
+    ARailNetwork* RailNetwork;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    URewardSystem* RewardSystem;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    URewardState* RewardState;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_MissionsManager, meta=(AllowPrivateAccess=true))
+    AAstroMissionsManager* MissionsManager;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FAstroRemotePlayerChunk> RemotePlayerHistory;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(EditAnywhere, Transient)
     TMap<uint16, FDeformationCompleteEvent> DeformationCompleteEvents;
-
+    
 public:
     AAstroGameState();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
     UFUNCTION(BlueprintCallable)
-    void UnregisterSpawnedStartingItem(APhysicalItem *Item);
-
+    void UnregisterSpawnedStartingItem(APhysicalItem* Item);
+    
     UFUNCTION(BlueprintCallable)
     void SetOxygenFreeCreative(bool OxygenFree);
-
+    
     UFUNCTION(BlueprintCallable)
     void SetNewGameDropshipSequenceActive(bool IsActive);
-
+    
     UFUNCTION(BlueprintCallable)
     void SetInvisibleToHazardsCreative(bool InvisibleToHazards);
-
+    
     UFUNCTION(BlueprintCallable)
     void SetInvincibleCreative(bool Invincible);
-
+    
     UFUNCTION(BlueprintCallable)
     void SetFuelFreeCreative(bool FreeFuelEnabled);
-
+    
     UFUNCTION(BlueprintCallable)
     void SetCurrentObjective(FName Name);
-
+    
     UFUNCTION(BlueprintCallable)
     void SetCreativeModeActive(bool CreativeMode);
-
+    
     UFUNCTION(BlueprintCallable)
     void SetCatalogUnlockedCreative(bool CatalogUnlocked);
-
+    
     UFUNCTION(BlueprintCallable)
     void SetBackpackPowerUnlimitedCreative(bool BackpackPowerUnlimited);
-
+    
     UFUNCTION(BlueprintCallable)
     void SetAchievementProgressionDisabledCreative(bool AchievementProgressionDisabled);
-
+    
 protected:
     UFUNCTION()
-    void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy *proxy);
-
+    void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy);
+    
 public:
     UFUNCTION(BlueprintCallable)
-    void RemoveNewPlayerSpawnLocation(AActor *Spawn);
-
+    void RemoveNewPlayerSpawnLocation(AActor* Spawn);
+    
     UFUNCTION(BlueprintCallable)
-    void RegisterSpawnedStartingItem(APhysicalItem *Item);
-
+    void RegisterSpawnedStartingItem(APhysicalItem* Item);
+    
 protected:
     UFUNCTION()
-    void OnRep_RailNetwork(ARailNetwork *previousValue);
-
+    void OnRep_RailNetwork(ARailNetwork* previousValue);
+    
     UFUNCTION()
-    void OnRep_MissionsManager(AAstroMissionsManager *previousValue);
-
+    void OnRep_MissionsManager(AAstroMissionsManager* previousValue);
+    
     UFUNCTION()
     void OnRep_IsOutroCinematicActive();
-
+    
     UFUNCTION()
     void OnRep_CreativeModeSettings();
-
+    
 public:
     UFUNCTION()
-    void OnAuthorityUnlockedItemsChanged(const TArray<TSubclassOf<UItemType>> &NewUnlockedItems);
-
+    void OnAuthorityUnlockedItemsChanged(const TArray<TSubclassOf<UItemType>>& NewUnlockedItems);
+    
     UFUNCTION()
     void OnAuthorityResearchPointBalanceChanged(float NewPointBalance);
-
+    
     UFUNCTION()
-    void OnAuthorityKnownItemsChanged(const TArray<TSubclassOf<UItemType>> &newKnownItems);
-
+    void OnAuthorityKnownItemsChanged(const TArray<TSubclassOf<UItemType>>& newKnownItems);
+    
     UFUNCTION(BlueprintCallable)
     bool NotifyTutorial(FName Name, bool bShowText);
-
+    
 protected:
     UFUNCTION()
     void NotifyOutroCinematicCompleted();
-
+    
 public:
     UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
-    void MultiSoundFX(const FTransform &Transform, USoundBase *Sound, UParticleSystem *Particle);
-
+    void MultiSoundFX(const FTransform& Transform, USoundBase* Sound, UParticleSystem* Particle);
+    
     UFUNCTION(NetMulticast, Reliable)
-    void MulticastNewMaterialPalette(AAstroPlanet *Planet, const TArray<FPackedVoxelMaterialInfo> &dynamicMaterials);
-
+    void MulticastNewMaterialPalette(AAstroPlanet* Planet, const TArray<FPackedVoxelMaterialInfo>& dynamicMaterials);
+    
     UFUNCTION(NetMulticast, Reliable)
-    void MulticastNewCreativeMaterialPalette(AAstroPlanet *Planet, const TArray<FPackedVoxelMaterialInfo> &dynamicMaterials, const TArray<FCreativePaintMaterialMapping> &creativePaintData);
-
+    void MulticastNewCreativeMaterialPalette(AAstroPlanet* Planet, const TArray<FPackedVoxelMaterialInfo>& dynamicMaterials, const TArray<FCreativePaintMaterialMapping>& creativePaintData);
+    
     UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
-    void MulticastExplosionEffects(const FTransform &Transform, AActor *Actor, const FName surfTypeSwitchName, const TArray<FString> &AudioEffects, const TArray<UParticleSystem *> &ParticleEffects, float Power);
-
+    void MulticastExplosionEffects(const FTransform& Transform, AActor* Actor, const FName surfTypeSwitchName, const TArray<FString>& AudioEffects, const TArray<UParticleSystem*>& ParticleEffects, float Power);
+    
     UFUNCTION(NetMulticast, Reliable)
     void MulticastDisplayResearchPointChange(int32 researchPointDelta);
-
+    
     UFUNCTION(NetMulticast, Reliable)
     void MulticastDisplayGrantDurableMessage(TSubclassOf<UItemType> itemToUnlock);
-
+    
     UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
-    void MulticastAudioEventAndVFXWithTint(const FTransform &Transform, const FString &AudioEvent, UParticleSystem *ParticleEffect, FLinearColor Color);
-
+    void MulticastAudioEventAndVFXWithTint(const FTransform& Transform, const FString& AudioEvent, UParticleSystem* ParticleEffect, FLinearColor Color);
+    
     UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
-    void MulticastAudioEventAndVFX(const FTransform &Transform, const FString &AudioEvent, UParticleSystem *ParticleEffect);
-
+    void MulticastAudioEventAndVFX(const FTransform& Transform, const FString& AudioEvent, UParticleSystem* ParticleEffect);
+    
     UFUNCTION(BlueprintPure)
-    bool IsProbeUnlocked(AAstroCharacter *Character, FName ProbeName) const;
-
+    bool IsProbeUnlocked(AAstroCharacter* Character, FName ProbeName) const;
+    
     UFUNCTION(BlueprintPure)
     bool IsOxygenFreeCreative() const;
-
+    
     UFUNCTION(BlueprintPure)
     bool IsInvisibleToHazardsCreative() const;
-
+    
     UFUNCTION(BlueprintPure)
     bool IsInvincibleCreative() const;
-
+    
     UFUNCTION(BlueprintPure)
     bool IsGravitySimulationEnabled() const;
-
+    
     UFUNCTION(BlueprintPure)
     bool IsFuelFreeCreative() const;
-
+    
     UFUNCTION(BlueprintPure)
     bool IsCreativeModeActive() const;
-
+    
     UFUNCTION(BlueprintPure)
     bool IsCatalogUnlockedCreative() const;
-
+    
     UFUNCTION(BlueprintPure)
     bool IsBackpackPowerUnlimitedCreative() const;
-
+    
     UFUNCTION(BlueprintPure)
     bool IsAchievementProgressionDisabled() const;
-
+    
     UFUNCTION(BlueprintPure)
     bool HasSaveGameCacheBeenEnumerated() const;
-
+    
     UFUNCTION(BlueprintPure)
     bool HasEverBeenIndividualDedicatedServerGame() const;
-
+    
     UFUNCTION(BlueprintPure)
     bool HasEverBeenCreativeGame() const;
-
+    
 protected:
     UFUNCTION()
     void HandleOnGameplayStartedEvent(bool StartedInExistingSavedGame);
-
+    
 public:
     UFUNCTION(BlueprintPure)
-    TArray<APhysicalItem *> GetStartingItemArrayRef();
-
+    TArray<APhysicalItem*> GetStartingItemArrayRef();
+    
     UFUNCTION(BlueprintPure)
-    URewardSystem *GetRewardSystem() const;
-
+    URewardSystem* GetRewardSystem() const;
+    
     UFUNCTION(BlueprintPure)
-    URewardState *GetRewardState() const;
-
+    URewardState* GetRewardState() const;
+    
     UFUNCTION(BlueprintPure)
-    FScannableStatus GetNearestRelevantScannable(AAstroCharacter *Player) const;
-
+    FScannableStatus GetNearestRelevantScannable(AAstroCharacter* Player) const;
+    
     UFUNCTION(BlueprintPure)
-    AAstroMissionsManager *GetMissionsManager() const;
-
+    AAstroMissionsManager* GetMissionsManager() const;
+    
     UFUNCTION(BlueprintPure)
     bool GetIsNewGameDropshipSequenceActive() const;
-
+    
     UFUNCTION(BlueprintPure)
-    UAstropediaAssetManager *GetAstropediaAssetManager() const;
-
+    UAstropediaAssetManager* GetAstropediaAssetManager() const;
+    
     UFUNCTION(BlueprintPure)
-    UActuatorQueue *GetActuatorQueue() const;
-
+    UActuatorQueue* GetActuatorQueue() const;
+    
     UFUNCTION(BlueprintPure)
     EAchievementProgressionState GetAchievementProgressionState() const;
-
+    
     UFUNCTION(BlueprintCallable)
     void DoDeformation(FDeformationParamsT2 params, bool shouldThrottle);
-
+    
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void DisplayDiscoverItemTypeMessage(TSubclassOf<UItemType> itemTypeDiscovered);
-
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void DestroyAllSpawnedStartingItems();
-
+    
 protected:
     UFUNCTION()
     void BroadcastUnlockedVintageProbesChanged();
-
+    
 public:
     UFUNCTION()
     void BroadcastUnlockedItemsChanged();
-
+    
     UFUNCTION()
     void BroadcastResearchPointBalanceChanged();
-
+    
     UFUNCTION()
     void BroadcastOnCreativeModeCatalogUnlockedChanged();
-
+    
     UFUNCTION()
     void BroadcastKnownItemsChanged();
-
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthoritySetWandererRealityTearOpenState(EWandererRealityTearOpenState State);
-
+    
     UFUNCTION(BlueprintPure)
     EWandererRealityTearOpenState AuthorityGetWandererRealityTearOpenState() const;
-
+    
     UFUNCTION(BlueprintPure)
     bool ArePlayerNamesVisible() const;
-
+    
     UFUNCTION(BlueprintPure)
     bool AreBeaconsVisible() const;
-
+    
     UFUNCTION(BlueprintCallable)
-    void AddAndPrioritizeNewPlayerSpawnLocation(AActor *Spawn);
+    void AddAndPrioritizeNewPlayerSpawnLocation(AActor* Spawn);
+    
 };
+

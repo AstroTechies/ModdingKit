@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "VirtualCursor.generated.h"
 
 class UVirtualCursorWidget;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UVirtualCursor : public UObject
-{
+UCLASS(Blueprintable)
+class ASTRO_API UVirtualCursor : public UObject {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Export)
-    UVirtualCursorWidget *CursorWidget;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UVirtualCursorWidget* CursorWidget;
+    
 public:
     UVirtualCursor();
 };
+

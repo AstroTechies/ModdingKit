@@ -1,28 +1,29 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameFramework/SaveGame.h"
 #include "AstroLevelSaveChunk.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SaveGame -FallbackName=SaveGame
+#include "GameFramework/SaveGame.h"
 #include "AstroRemotePlayerChunk.h"
 #include "CustomSerializeCallback_DEPRECATED.h"
 #include "Callback_DEPRECATED.h"
 #include "AstroSave.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UAstroSave : public USaveGame
-{
+UCLASS(Blueprintable)
+class ASTRO_API UAstroSave : public USaveGame {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FAstroLevelSaveChunk LevelChunk;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FAstroRemotePlayerChunk> RemotePlayerChunks;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FCustomSerializeCallback_DEPRECATED> CustomSerializeCallbacks;
-
-    UPROPERTY(Transient)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FCallback_DEPRECATED> BlueprintFixups;
-
+    
     UAstroSave();
 };
+

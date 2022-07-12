@@ -9,13 +9,13 @@ USTRUCT(BlueprintType)
 struct FCallback_DEPRECATED {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UObject* Object;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UFunction* Function;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint32 ObjectIndex;
     
     ASTRO_API FCallback_DEPRECATED();

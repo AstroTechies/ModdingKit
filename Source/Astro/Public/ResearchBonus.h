@@ -8,10 +8,10 @@ USTRUCT(BlueprintType)
 struct FResearchBonus {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Threshold;
     
-    UPROPERTY(EditDefaultsOnly, Instanced)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UResearchBonusBehavior* Behavior;
     
     ASTRO_API FResearchBonus();

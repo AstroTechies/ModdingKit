@@ -3,8 +3,8 @@
 #include "SurfaceLayer.h"
 #include "GlobalBiome.generated.h"
 
-class UBoundedVoxelVolumeModifier;
 class UProceduralModifier;
+class UBoundedVoxelVolumeModifier;
 class UBoundedVoxelVolumeModifierList;
 
 USTRUCT(BlueprintType)

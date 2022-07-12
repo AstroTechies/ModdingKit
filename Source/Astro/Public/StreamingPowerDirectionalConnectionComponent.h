@@ -1,27 +1,27 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "StreamingPowerPacket.h"
-#include "AstroEntityComponent.h"
 #include "AstroDatumRef.h"
+#include "AstroEntityComponent.h"
+#include "StreamingPowerPacket.h"
 #include "StreamingPowerDirectionalConnectionComponent.generated.h"
 
 USTRUCT(BlueprintType)
 struct FStreamingPowerDirectionalConnectionComponent : public FAstroEntityComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient, VisibleInstanceOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<int32, FStreamingPowerPacket> PowerPacketsOnTheLine;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FAstroDatumRef FromNode;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FAstroDatumRef ToNode;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     float OverrideSplitRatio;
     
-    UPROPERTY(SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint8 bFlowInterrupted: 1;
     
     ASTRO_API FStreamingPowerDirectionalConnectionComponent();

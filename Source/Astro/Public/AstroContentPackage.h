@@ -1,16 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=PrimaryAssetLabel -FallbackName=PrimaryAssetLabel
 #include "Engine/PrimaryAssetLabel.h"
 #include "AstroEncryptionOptions.h"
 #include "AstroContentPackage.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UAstroContentPackage : public UPrimaryAssetLabel
-{
+UCLASS(Blueprintable)
+class ASTRO_API UAstroContentPackage : public UPrimaryAssetLabel {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAstroEncryptionOptions EncryptionOptions;
-
+    
     UAstroContentPackage();
 };
+

@@ -6,6 +6,6 @@ void UAstroTakePictureTask::OnPhotoWidgetClosed() {
 void UAstroTakePictureTask::DisplayPhotoWidget() {
 }
 
-UAstroTakePictureTask::UAstroTakePictureTask(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+UAstroTakePictureTask::UAstroTakePictureTask() : UGameplayTask(FObjectInitializer()) {
 }
 

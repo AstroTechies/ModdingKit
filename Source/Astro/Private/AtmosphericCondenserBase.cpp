@@ -41,5 +41,6 @@ AAtmosphericCondenserBase::AAtmosphericCondenserBase() {
     this->CurrentHarvestedAtmosphereAmount = 0.00f;
     this->CurrentPlanet = NULL;
     this->PowerComponent = NULL;
+    this->OutputOrganizationRule = NULL;
 }
 

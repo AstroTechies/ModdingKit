@@ -1,108 +1,109 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/PrimitiveComponent.h"
-#include "ButtonShape.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=PrimitiveComponent -FallbackName=PrimitiveComponent
 #include "ComponentOnButtonClickedDelegate.h"
-#include "InputCoreTypes.h"
+#include "ButtonShape.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
 #include "ButtonComponent.generated.h"
 
-class UMaterialInstanceDynamic;
 class UStaticMesh;
 class USkeletalMesh;
-class UAnimationAsset;
-class UTextRenderComponent;
-class USceneComponent;
 class UMaterialInterface;
+class UTextRenderComponent;
+class UAnimationAsset;
+class USceneComponent;
+class UMaterialInstanceDynamic;
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UButtonComponent : public UPrimitiveComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UButtonComponent : public UPrimitiveComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
-    USkeletalMesh *IconMesh;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
-    UStaticMesh *IconMesh_Static;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
-    UAnimationAsset *IconAnimation;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    USkeletalMesh* IconMesh;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UStaticMesh* IconMesh_Static;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAnimationAsset* IconAnimation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool SpinIcon;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool UseToolTip;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString ToolTipText;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool DoServerClick;
-
-    UPROPERTY(EditAnywhere)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool ClientEnableAllowed;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentOnButtonClicked OnButtonClicked;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ButtonShape Shape;
-
+    
 private:
-    UPROPERTY(Export, Transient)
-    UPrimitiveComponent *shellComponent;
-
-    UPROPERTY(Export, Transient)
-    UPrimitiveComponent *collisionComponent;
-
-    UPROPERTY(Export, Transient)
-    UPrimitiveComponent *Icon;
-
-    UPROPERTY(Export, Transient)
-    USceneComponent *ToolTipScene;
-
-    UPROPERTY(Export, Transient)
-    UTextRenderComponent *TextRenderer;
-
-    UPROPERTY(Transient)
-    UMaterialInstanceDynamic *ShellMaterial;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPrimitiveComponent* shellComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPrimitiveComponent* collisionComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPrimitiveComponent* Icon;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    USceneComponent* ToolTipScene;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UTextRenderComponent* TextRenderer;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    UMaterialInstanceDynamic* ShellMaterial;
+    
 public:
     UButtonComponent();
     UFUNCTION(BlueprintCallable)
-    void SetShellComponent(UPrimitiveComponent *NewShellComponent);
-
+    void SetShellComponent(UPrimitiveComponent* NewShellComponent);
+    
     UFUNCTION(BlueprintCallable)
     void SetFlashing(bool Flashing);
-
+    
     UFUNCTION(BlueprintCallable)
-    void SetCollisionComponent(UPrimitiveComponent *NewCollisionComponent);
-
+    void SetCollisionComponent(UPrimitiveComponent* NewCollisionComponent);
+    
     UFUNCTION(BlueprintCallable)
-    void SetAllShellMaterials(UMaterialInterface *Material);
-
+    void SetAllShellMaterials(UMaterialInterface* Material);
+    
     UFUNCTION()
-    void OnShellReleased(UPrimitiveComponent *Component, FKey ButtonPressed);
-
+    void OnShellReleased(UPrimitiveComponent* Component, FKey ButtonPressed);
+    
     UFUNCTION()
-    void OnShellClick(UPrimitiveComponent *Component, FKey ButtonPressed);
-
+    void OnShellClick(UPrimitiveComponent* Component, FKey ButtonPressed);
+    
     UFUNCTION()
-    void OnEndHover(UPrimitiveComponent *Component);
-
+    void OnEndHover(UPrimitiveComponent* Component);
+    
     UFUNCTION()
-    void OnClick(UPrimitiveComponent *Component, FKey ButtonPressed);
-
+    void OnClick(UPrimitiveComponent* Component, FKey ButtonPressed);
+    
     UFUNCTION()
-    void OnBeginHover(UPrimitiveComponent *Component);
-
+    void OnBeginHover(UPrimitiveComponent* Component);
+    
     UFUNCTION(BlueprintPure)
     bool IsEnabled();
-
+    
     UFUNCTION(BlueprintCallable)
     void Enable(bool Enabled);
-
+    
     UFUNCTION(BlueprintCallable)
-    UMaterialInstanceDynamic *CreateShellDynamicMaterialInstance(int32 MaterialIndex, UMaterialInterface *Material);
+    UMaterialInstanceDynamic* CreateShellDynamicMaterialInstance(int32 MaterialIndex, UMaterialInterface* Material);
+    
 };
+

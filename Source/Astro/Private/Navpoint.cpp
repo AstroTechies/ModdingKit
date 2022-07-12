@@ -2,7 +2,7 @@
 
 FNavpoint::FNavpoint() {
     this->NavpointType = ENavpointType::None;
-    this->NavpointGroupFlags = 0;
+    this->NavpointGroup = ENavpointGroup::None;
     this->Radius = 0.00f;
     this->MinFadeoutDistance = 0.00f;
     this->MaxFadeoutDistance = 0.00f;

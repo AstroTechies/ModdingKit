@@ -2,12 +2,15 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class APhysicalItem;
 class UWorld;
-class UItemType;
-class AAstroPlayerController;
 class APlayerController;
+class APhysicalItem;
+class UItemType;
 class AActor;
+class AAstroPlayerController;
+
+void AAstroMissionsManager::ToggleEventsDebug(UWorld* World) {
+}
 
 void AAstroMissionsManager::TestResetAllMissions(UWorld* World) {
 }

@@ -1,20 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "AstroSaveAsset.generated.h"
 
 class UWorld;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UAstroSaveAsset : public UObject
-{
+UCLASS(Blueprintable)
+class ASTRO_API UAstroSaveAsset : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(VisibleDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<UWorld> SaveLevel;
-
-    UPROPERTY()
+    
+    UPROPERTY(EditAnywhere)
     TArray<uint8> SaveData;
-
+    
     UAstroSaveAsset();
 };
+

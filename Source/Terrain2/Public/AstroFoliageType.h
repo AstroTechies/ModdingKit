@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "UObject/Object.h"
-#include "PhysicsEngine/BodyInstance.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BodyInstance -FallbackName=BodyInstance
 #include "FoliageDestructionInfo.h"
 #include "AstroFoliageType.generated.h"
 
@@ -10,31 +10,31 @@ class UStaticMesh;
 class AActor;
 class UMaterialInterface;
 
-UCLASS(Blueprintable, BlueprintType)
-class UAstroFoliageType : public UObject
-{
+UCLASS(BlueprintType)
+class UAstroFoliageType : public UObject {
     GENERATED_BODY()
 public:
     UPROPERTY()
     FBodyInstance BodyInstance;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadOnly, EditAnywhere)
     TSoftObjectPtr<UStaticMesh> m_mesh;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadOnly, EditAnywhere)
     TSubclassOf<AActor> m_replacementClass;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
-    UClass *ItemType;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UClass* ItemType;
+    
+    UPROPERTY(BlueprintReadOnly, EditAnywhere)
     FName SoundRTPCName;
-
+    
     UPROPERTY(EditAnywhere)
     FFoliageDestructionInfo FoliageDestructionInfo;
-
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
-    TArray<UMaterialInterface *> OverrideMaterials;
-
+    
+    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    TArray<UMaterialInterface*> OverrideMaterials;
+    
     UAstroFoliageType();
 };
+

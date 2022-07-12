@@ -1,37 +1,37 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "IndicatorMeshDefinition.h"
 #include "GateObjectIndicatorDefinition.generated.h"
 
 class UObject;
 class UMaterialInterface;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UGateObjectIndicatorDefinition : public UDataAsset
-{
+UCLASS(Blueprintable)
+class ASTRO_API UGateObjectIndicatorDefinition : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText TooltipSubtitle;
-
-    UPROPERTY(EditDefaultsOnly)
-    UObject *TooltipBadge;
-
-    UPROPERTY(EditDefaultsOnly)
-    UObject *TooltipBadgeBackground;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UObject* TooltipBadge;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UObject* TooltipBadgeBackground;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FIndicatorMeshDefinition IndicatorMeshDefinition;
-
-    UPROPERTY(EditDefaultsOnly)
-    UMaterialInterface *InertIndicatorMaterial;
-
-    UPROPERTY(EditDefaultsOnly)
-    UMaterialInterface *ActiveIndicatorMaterial;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInterface* InertIndicatorMaterial;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInterface* ActiveIndicatorMaterial;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName PlayerIndicatorSocketName;
-
+    
     UGateObjectIndicatorDefinition();
 };
+

@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct FItemConversionRecipeInputStatus {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FItemConversionInputItemStatus> InputItemStatuses;
     
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool IsSatisfied;
     
     ASTRO_API FItemConversionRecipeInputStatus();

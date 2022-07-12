@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "ItemCatalogCategoryDefinition.generated.h"
 
-UCLASS(Blueprintable, BlueprintType, EditInlineNew)
-class ASTRO_API UItemCatalogCategoryDefinition : public UDataAsset
-{
+UCLASS(Blueprintable, EditInlineNew)
+class ASTRO_API UItemCatalogCategoryDefinition : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText CategoryName;
-
+    
     UItemCatalogCategoryDefinition();
 };
+

@@ -1,5 +1,5 @@
 #include "ButtonNavigationGridComponent.h"
-#include "Components/InputComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=InputComponent -FallbackName=InputComponent
 
 class UButtonComponent;
 class APlayerController;

@@ -3,10 +3,10 @@
 #include "ProceduralExpression_OutputBase.h"
 #include "ProceduralExpression_ModifierOutput.generated.h"
 
-UCLASS(Blueprintable, Blueprintable)
-class TERRAIN2_API UProceduralExpression_ModifierOutput : public UProceduralExpression_OutputBase
-{
+UCLASS()
+class TERRAIN2_API UProceduralExpression_ModifierOutput : public UProceduralExpression_OutputBase {
     GENERATED_BODY()
 public:
     UProceduralExpression_ModifierOutput();
 };
+

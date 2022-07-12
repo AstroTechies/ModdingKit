@@ -6,18 +6,15 @@ USTRUCT(BlueprintType)
 struct FInputReference {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName InputName;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint8 bIsAxis;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Scale;
     
     ASTRO_API FInputReference();
 };
 
-FORCEINLINE uint32 GetTypeHash(const FInputReference& InputReference) {
-    return 0;
-}

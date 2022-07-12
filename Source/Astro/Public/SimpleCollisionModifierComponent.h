@@ -3,13 +3,13 @@
 #include "CameraModifierComponent.h"
 #include "SimpleCollisionModifierComponent.generated.h"
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class USimpleCollisionModifierComponent : public UCameraModifierComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class USimpleCollisionModifierComponent : public UCameraModifierComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CollisionSphereRadius;
-
+    
     USimpleCollisionModifierComponent();
 };
+

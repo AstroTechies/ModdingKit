@@ -5,51 +5,52 @@
 #include "SignalDelegate.h"
 #include "AstroTakePictureAction.generated.h"
 
-class UWandererPhotoWidget;
 class APlayerController;
+class UWandererPhotoWidget;
 
-UCLASS(Blueprintable, Blueprintable)
-class ASTRO_API UAstroTakePictureAction : public UAstroAction
-{
+UCLASS(Blueprintable)
+class ASTRO_API UAstroTakePictureAction : public UAstroAction {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable)
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnTakePictureCountdownPing;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnPictureTaken;
-
+    
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UWandererPhotoWidget> PhotoWidgetType;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float PictureImageCaptureDelay;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float PhotoWidgetDisplayDelay;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bPhotoWidgetForInstigatorOnly : 1;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bPhotoWidgetForInstigatorOnly: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DisplayPhotoWidgetForPlayersWithinDistance;
-
+    
 public:
     UAstroTakePictureAction();
     UFUNCTION(BlueprintCallable)
-    void SetInstigator(APlayerController *Instigator);
-
+    void SetInstigator(APlayerController* Instigator);
+    
 protected:
     UFUNCTION()
     void OnTakePictureTaskCompleted();
-
+    
     UFUNCTION()
     void OnPictureImageCaptureDelayComplete();
-
+    
     UFUNCTION()
     void OnPhotoWidgetDisplayDelayComplete();
-
+    
     UFUNCTION()
     void BroadcastTakePictureCountdownPing();
+    
 };
+

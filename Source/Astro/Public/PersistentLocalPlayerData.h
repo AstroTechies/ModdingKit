@@ -1,44 +1,45 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
 #include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "PersistentLocalPlayerData.generated.h"
 
-UCLASS(Blueprintable, BlueprintType)
-class ASTRO_API UPersistentLocalPlayerData : public UObject
-{
+UCLASS(Blueprintable)
+class ASTRO_API UPersistentLocalPlayerData : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSignal OnDirtied;
-
+    
 protected:
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     bool bHasCompletedTutorial;
-
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     bool bHasSkippedTutorial;
-
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     bool bHasSeenIntroCutscene;
-
-    UPROPERTY(BlueprintReadWrite, SaveGame, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     bool bIsMultiplayerDisabled;
-
-    UPROPERTY(SaveGame)
+    
+    UPROPERTY(EditAnywhere, SaveGame)
     uint8 LastUpdateCutsceneVersionSeen;
-
-    UPROPERTY(SaveGame)
+    
+    UPROPERTY(EditAnywhere, SaveGame)
     TArray<uint32> EarnedItemDrivePhysicalRewardHashes;
-
+    
 public:
     UPersistentLocalPlayerData();
     UFUNCTION(BlueprintCallable)
     void NotifySkippedTutorial();
-
+    
     UFUNCTION(BlueprintCallable)
     void NotifySeenIntroCutscene(bool wasUpdateCinematic);
-
+    
     UFUNCTION(BlueprintCallable)
     void NotifyCompletedTutorial();
+    
 };
+

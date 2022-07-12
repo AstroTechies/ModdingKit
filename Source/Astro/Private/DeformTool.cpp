@@ -6,12 +6,12 @@
 
 class AAstroPlanet;
 class UAugmentComponent;
-class UItemType;
 class UClickQuery;
+class UItemType;
+class APlayController;
 class UMaterialInterface;
 class UDeformTargetComponent;
 class APhysicalItem;
-class APlayController;
 
 bool ADeformTool::UpdateTerrainSample(AAstroPlanet* Planet, const FVector& Location) {
     return false;

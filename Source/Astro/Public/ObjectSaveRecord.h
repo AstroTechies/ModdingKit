@@ -8,28 +8,28 @@ USTRUCT(BlueprintType)
 struct FObjectSaveRecord {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UObject* RuntimeObject;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UClass* Class;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FString Name;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint32 NameIndex;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint32 Flags;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint32 OuterObjectIndex;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint32 CustomDataOffset;
     
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     TArray<uint8> Data;
     
     ASTRO_API FObjectSaveRecord();

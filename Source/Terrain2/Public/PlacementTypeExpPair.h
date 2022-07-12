@@ -9,7 +9,7 @@ USTRUCT(BlueprintType)
 struct FPlacementTypeExpPair {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess=true))
+    UPROPERTY(EditAnywhere)
     FProceduralExpressionInput Density;
     
     UPROPERTY(EditAnywhere)

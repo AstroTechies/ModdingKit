@@ -1,31 +1,31 @@
 #include "AstroStatics.h"
 #include "Templates/SubclassOf.h"
 
-class UPhysicsConstraintComponent;
-class UPrimitiveComponent;
-class UObject;
-class APawn;
-class UAstroSaveAsset;
-class AAstroMissionsManager;
-class UCreativeModeData;
-class UWidget;
 class APlayerController;
-class UActorComponent;
+class UWidget;
+class UAstroGameInstance;
+class UObject;
+class AAstroGameMode;
+class UPrimitiveComponent;
+class UPhysicsConstraintComponent;
+class UCreativeModeData;
 class USkeletalMeshComponent;
 class UAudioComponent;
 class UChildActorComponent;
-class USoundBase;
-class UPanelWidget;
 class UMaterialInstanceDynamic;
-class AAstroGameMode;
 class AActor;
 class UMaterialInterface;
-class UMaterial;
-class AAstroGameState;
-class UAstroGameInstance;
+class UPanelWidget;
+class USoundBase;
 class USceneComponent;
+class UAstroSaveAsset;
+class APawn;
+class AAstroMissionsManager;
+class UActorComponent;
 class UUserWidget;
 class UPostProcessComponent;
+class AAstroGameState;
+class UMaterial;
 
 FVector2D UAstroStatics::WorldLocationToScreenLocationOffset(UObject* WorldContextObject, const FVector& WorldLocation, const FVector2D& WorldOffset) {
     return FVector2D{};
@@ -377,10 +377,6 @@ bool UAstroStatics::IsConnectedToDedicatedServer(UObject* WorldContextObject) {
 }
 
 bool UAstroStatics::IsAsyncSaveInProgress() {
-    return false;
-}
-
-bool UAstroStatics::IsAnalyticsEnabled(UObject* WorldContextObject) {
     return false;
 }
 

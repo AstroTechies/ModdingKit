@@ -1,9 +1,9 @@
 #include "BreadboardPrinterComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class UPrimitiveComponent;
 class UAstroSaveCustomArchiveProxy;
 class AActor;
+class UPrimitiveComponent;
 class APhysicalItem;
 
 void UBreadboardPrinterComponent::ValidatePackageableItemsInRange() {

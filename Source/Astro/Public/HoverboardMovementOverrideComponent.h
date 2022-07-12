@@ -3,31 +3,31 @@
 #include "AstroCharacterMovementOverrideComponent.h"
 #include "HoverboardMovementOverrideComponent.generated.h"
 
-UCLASS(Blueprintable, meta = (BlueprintSpawnableComponent))
-class ASTRO_API UHoverboardMovementOverrideComponent : public UAstroCharacterMovementOverrideComponent
-{
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+class ASTRO_API UHoverboardMovementOverrideComponent : public UAstroCharacterMovementOverrideComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxSpeedScalar;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxThrust;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DismountDelayTime;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FlatFallDamageScalar;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bFallDamageExponentialDecay : 1;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bFallDamageExponentialDecay: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinImpactSlopeAngle;
-
-    UPROPERTY(EditDefaultsOnly)
-    uint8 bImmuneToFallDamage : 1;
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bImmuneToFallDamage: 1;
+    
     UHoverboardMovementOverrideComponent();
 };
+

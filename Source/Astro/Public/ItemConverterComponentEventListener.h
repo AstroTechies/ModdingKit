@@ -5,24 +5,25 @@
 
 class APhysicalItem;
 
-UCLASS(Blueprintable, Blueprintable)
-class UItemConverterComponentEventListener : public UAstroEntityComponentSubobject
-{
+UCLASS(Blueprintable)
+class UItemConverterComponentEventListener : public UAstroEntityComponentSubobject {
     GENERATED_BODY()
 public:
     UItemConverterComponentEventListener();
     UFUNCTION()
-    void OnItemStateChangedInExternalResourceSlot(APhysicalItem *Item);
-
+    void OnItemStateChangedInExternalResourceSlot(APhysicalItem* Item);
+    
     UFUNCTION()
-    void OnItemSetInInputSlot(APhysicalItem *Item);
-
+    void OnItemSetInInputSlot(APhysicalItem* Item);
+    
     UFUNCTION()
-    void OnItemReleasedFromOutputSlot(APhysicalItem *Item);
-
+    void OnItemReleasedFromOutputSlot(APhysicalItem* Item);
+    
     UFUNCTION()
-    void OnItemReleasedFromInputSlot(APhysicalItem *Item);
-
+    void OnItemReleasedFromInputSlot(APhysicalItem* Item);
+    
     UFUNCTION()
-    void OnItemDestroyedInInputSlot(APhysicalItem *Item);
+    void OnItemDestroyedInInputSlot(APhysicalItem* Item);
+    
 };
+

@@ -1,261 +1,263 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "EnableSignalDelegate.h"
 #include "PhysicalItem.h"
-#include "UObject/NoExportTypes.h"
-#include "VehicleDrillOperationConstants.h"
-#include "OnDummyDrillRemovedDelegate.h"
-#include "VehicleDrillSedimentReplicationData.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelMaterialProperties -FallbackName=VoxelMaterialProperties
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+#include "VoxelMaterialProperties.h"
 #include "VehicleDrillReplicationData.h"
-#include "UObject/NoExportTypes.h"
+#include "VehicleDrillOperationConstants.h"
+#include "EnableSignalDelegate.h"
+#include "OnDummyDrillRemovedDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "DrillAudioEventDelegate.h"
 #include "OnSampledTerrainMaterialChangedDelegate.h"
+#include "VehicleDrillSedimentReplicationData.h"
 #include "EVehicleDrillToolMode.h"
-#include "VoxelMaterialProperties.h"
 #include "VehicleDrill.generated.h"
 
 class USceneComponent;
 class AVehicleDrill;
+class ARoverBase;
 class UCurveFloat;
 class UControlComponent;
 class UDeformEventReceiver;
 class UPowerComponent;
-class UMaterialInterface;
 class UParticleSystemComponent;
-class ARoverBase;
 class AAstroPlanet;
+class UMaterialInterface;
 class AAstroPlayerController;
 class UParticleSystem;
 
-UCLASS(Blueprintable, Blueprintable)
-class AVehicleDrill : public APhysicalItem
-{
+UCLASS(Blueprintable)
+class AVehicleDrill : public APhysicalItem {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SedimentDeformationRatio;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor NeutralTerrainColor;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NeutralDotProdBetweenCameraAndRoverUp;
-
-    UPROPERTY(ReplicatedUsing = OnRep_VehicleDrillReplicationData)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_VehicleDrillReplicationData, meta=(AllowPrivateAccess=true))
     FVehicleDrillReplicationData VehicleDrillReplicatedState;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FEnableSignal OnToolActiveChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FEnableSignal OnDrillCollectedExcessTerrainChanged;
-
-    UPROPERTY()
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnDummyDrillRemoved OnDummyDrillReleasedFromSlot;
-
+    
 protected:
-    UPROPERTY(Replicated)
-    TArray<AVehicleDrill *> DummyLinkedDrills;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
+    TArray<AVehicleDrill*> DummyLinkedDrills;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DeformationTier;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FoliageDestructionMassThreshold;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector FoliageDestructionOriginOffset;
-
-    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, meta = (AllowPrivateAccess = true))
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DestructionRadiusScaleFromDeformSize;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVehicleDrillOperationConstants TunnelBoringDeformationConstants;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVehicleDrillOperationConstants ExcavationDeformationConstants;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 ExcessTerrainCollectedThresholdForBurnoffEffect;
-
-    UPROPERTY(EditDefaultsOnly)
-    UCurveFloat *CameraPitchToDrillPitchMapping;
-
-    UPROPERTY(EditDefaultsOnly)
-    UCurveFloat *SteeringAngleToDrillRollMapping;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveFloat* CameraPitchToDrillPitchMapping;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveFloat* SteeringAngleToDrillRollMapping;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaximumRollAdjustment;
-
-    UPROPERTY(EditDefaultsOnly)
-    UCurveFloat *SteeringAngleToDrillYawMapping;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCurveFloat* SteeringAngleToDrillYawMapping;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float BirdsEyeDotVal;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WormsEyeDotVal;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxSlope;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxDrillSlope;
-
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UControlComponent *ControlComponent;
-
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UDeformEventReceiver *DeformEventReceiver;
-
-    UPROPERTY(BlueprintReadWrite, Export, VisibleAnywhere, meta = (AllowPrivateAccess = true))
-    UPowerComponent *PowerComponent;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    USceneComponent *DeformVisualizer;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    USceneComponent *FoliageDestructionVisualizer;
-
-    UPROPERTY(Export, VisibleAnywhere)
-    USceneComponent *ExcavationDeformationOriginMarker;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    USceneComponent *TunnelBoringUI_Wrapper;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    USceneComponent *PivotingUI_Wrapper;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    UParticleSystemComponent *TerrainDeformationParticles;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    USceneComponent *TiltIndicatorWrapper;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    USceneComponent *TiltUpIndicatorWrapper;
-
-    UPROPERTY(BlueprintReadWrite, Export, meta = (AllowPrivateAccess = true))
-    USceneComponent *TiltDownIndicatorWrapper;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UControlComponent* ControlComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UDeformEventReceiver* DeformEventReceiver;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPowerComponent* PowerComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USceneComponent* DeformVisualizer;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USceneComponent* FoliageDestructionVisualizer;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USceneComponent* ExcavationDeformationOriginMarker;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USceneComponent* TunnelBoringUI_Wrapper;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USceneComponent* PivotingUI_Wrapper;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UParticleSystemComponent* TerrainDeformationParticles;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USceneComponent* TiltIndicatorWrapper;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USceneComponent* TiltUpIndicatorWrapper;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    USceneComponent* TiltDownIndicatorWrapper;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FDrillAudioEvent OnDrillMotorAudioChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FDrillAudioEvent OnTerrainBeingDrilledAudioChanged;
-
-    UPROPERTY(BlueprintAssignable)
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnSampledTerrainMaterialChanged OnSampledTerrainMaterialChanged;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SlopeGaugeExtent;
-
-    UPROPERTY()
-    ARoverBase *TunnelBoringRover;
-
-    UPROPERTY(EditDefaultsOnly)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    ARoverBase* TunnelBoringRover;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<APhysicalItem> CraneSubclass;
-
-    UPROPERTY(ReplicatedUsing = OnRep_VehicleDrillSedimentReplicationData)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_VehicleDrillSedimentReplicationData, meta=(AllowPrivateAccess=true))
     FVehicleDrillSedimentReplicationData VehicleDrillReplicatedSedimentState;
-
-    UPROPERTY(SaveGame)
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     int32 ConsumedSedimentDebt;
-
+    
 public:
     AVehicleDrill();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const override;
-
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
 protected:
     UFUNCTION()
     void UpdateTerrainDeformationParticles(bool SystemEnabled, int32 HardnessDelta);
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void UpdateSlopeIndicator(float SlopeDegree);
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void UpdateSedimentGauge(float CurrentSedimentAvailalbe, float CurrentSedimentCapacity);
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void UpdatePlayerAccentIndex(int32 PlayerAccentIndex);
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void UpdateDeformationNormal(FVector DeformationNormal);
-
+    
 public:
     UFUNCTION(BlueprintCallable)
     void ToggleDrillUsageForTunnelBoring();
-
+    
     UFUNCTION(Reliable, Server, WithValidation)
     void ServerUpdateToolState(bool ToolIsActive, EVehicleDrillToolMode DrillMode);
-
+    
 protected:
     UFUNCTION(Reliable, Server, WithValidation)
-    void ServerRequestNewMaterialWithTerrainProperties(AAstroPlanet *Planet, const FVoxelMaterialProperties &TerrainProperties, UMaterialInterface *CustomMaterial, int32 creativeModePaintMaterialIndex);
-
+    void ServerRequestNewMaterialWithTerrainProperties(AAstroPlanet* Planet, const FVoxelMaterialProperties& TerrainProperties, UMaterialInterface* CustomMaterial, int32 creativeModePaintMaterialIndex);
+    
     UFUNCTION()
     void ResetExcessTerrainCollectionFlag();
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void PlayDrillStartWithInsufficientSoilEffect();
-
+    
     UFUNCTION(BlueprintImplementableEvent)
     void PlayDrillStartWithInsufficientPowerEffect();
-
+    
 public:
     UFUNCTION()
     void OnRep_VehicleDrillSedimentReplicationData();
-
+    
     UFUNCTION()
     void OnRep_VehicleDrillReplicationData();
-
+    
 protected:
     UFUNCTION(NetMulticast, Reliable)
     void MulticastPlayDrillStartWithInsufficientSoilEffect();
-
+    
     UFUNCTION(NetMulticast, Reliable)
     void MulticastPlayDrillStartWithInsufficientPowerEffect();
-
+    
 public:
     UFUNCTION(BlueprintPure)
     bool IsToolActive() const;
-
+    
 protected:
     UFUNCTION()
-    void HandleVehicleUnmanned(AAstroPlayerController *VehicleDriver);
-
+    void HandleVehicleUnmanned(AAstroPlayerController* VehicleDriver);
+    
     UFUNCTION()
-    void HandleVehicleManned(AAstroPlayerController *VehicleDriver);
-
+    void HandleVehicleManned(AAstroPlayerController* VehicleDriver);
+    
     UFUNCTION()
-    void HandleTunnelBoringDrillBecameActiveOnMyRover(AVehicleDrill *DrillThatBecameActive);
-
+    void HandleTunnelBoringDrillBecameActiveOnMyRover(AVehicleDrill* DrillThatBecameActive);
+    
     UFUNCTION()
     void HandleTerraianDeformationDensityDeltaReceived(float DensityDelta);
-
+    
     UFUNCTION()
     void HandleRemovedFromSlot(bool NewOwner);
-
+    
     UFUNCTION()
     void HandlePlacedInSlot();
-
+    
     UFUNCTION()
-    void HandleDummyDrillRemovedFromSlot(AVehicleDrill *DummyDrillRemoved);
-
+    void HandleDummyDrillRemovedFromSlot(AVehicleDrill* DummyDrillRemoved);
+    
     UFUNCTION()
-    void HandleDestroyedWhileInSlot(APhysicalItem *DestroyedActor);
-
+    void HandleDestroyedWhileInSlot(APhysicalItem* DestroyedActor);
+    
     UFUNCTION()
     void HandleDeactivatedAsExcavator();
-
+    
     UFUNCTION()
     void HandleActivatedAsExcavator();
-
+    
     UFUNCTION(BlueprintImplementableEvent)
-    UParticleSystem *GetSubtractParticleEffect(int32 HardnessDelta);
-
+    UParticleSystem* GetSubtractParticleEffect(int32 HardnessDelta);
+    
 public:
     UFUNCTION(BlueprintPure)
     bool DidCollectExcessTerrain() const;
+    
 };
+

@@ -48,6 +48,6 @@ bool UAstroActionComponent::ClientDenyStartActionRequest_Validate(const FAstroAc
     return true;
 }
 
-UAstroActionComponent::UAstroActionComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+UAstroActionComponent::UAstroActionComponent() : UGameplayTasksComponent(FObjectInitializer()) {
 }
 

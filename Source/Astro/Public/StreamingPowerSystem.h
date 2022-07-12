@@ -6,26 +6,27 @@
 class UAstroStreamingPowerTickTaskManager;
 class AActor;
 
-UCLASS(Blueprintable, BlueprintType)
-class ASTRO_API UStreamingPowerSystem : public UAstroEntitySystem
-{
+UCLASS(Blueprintable)
+class ASTRO_API UStreamingPowerSystem : public UAstroEntitySystem {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
-    UAstroStreamingPowerTickTaskManager *TaskManager;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    UAstroStreamingPowerTickTaskManager* TaskManager;
+    
 public:
     UStreamingPowerSystem();
     UFUNCTION(BlueprintCallable)
-    static void SplitMergedConnectionBetweenStreamingPowerNodesOnActors(AActor *thisActor, AActor *OtherActor);
-
+    static void SplitMergedConnectionBetweenStreamingPowerNodesOnActors(AActor* thisActor, AActor* OtherActor);
+    
     UFUNCTION(BlueprintCallable)
-    static bool RemovePoweredItemFromActorsPowerNode(AActor *gridNodeOwner, AActor *OtherActor);
-
+    static bool RemovePoweredItemFromActorsPowerNode(AActor* gridNodeOwner, AActor* OtherActor);
+    
     UFUNCTION(BlueprintCallable)
-    static void CreateMergedConnectionBetweenStreamingPowerNodesOnActors(AActor *thisActor, AActor *OtherActor);
-
+    static void CreateMergedConnectionBetweenStreamingPowerNodesOnActors(AActor* thisActor, AActor* OtherActor);
+    
     UFUNCTION(BlueprintCallable)
-    static bool AddPoweredItemToActorsPowerNode(AActor *gridNodeOwner, AActor *OtherActor);
+    static bool AddPoweredItemToActorsPowerNode(AActor* gridNodeOwner, AActor* OtherActor);
+    
 };
+

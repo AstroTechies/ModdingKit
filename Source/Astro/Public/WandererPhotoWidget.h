@@ -3,15 +3,16 @@
 #include "UserWidgetBlueprintDesignable.h"
 #include "WandererPhotoWidget.generated.h"
 
-UCLASS(Blueprintable, Abstract, EditInlineNew)
-class UWandererPhotoWidget : public UUserWidgetBlueprintDesignable
-{
+UCLASS(Abstract, Blueprintable, EditInlineNew)
+class UWandererPhotoWidget : public UUserWidgetBlueprintDesignable {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
-    uint8 bShowFilterSelection : 1;
-
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bShowFilterSelection: 1;
+    
     UWandererPhotoWidget();
     UFUNCTION(BlueprintCallable)
     void ClosePhotoWidget();
+    
 };
+

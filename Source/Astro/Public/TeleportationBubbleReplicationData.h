@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "ETeleportationBubbleState.h"
-#include "UObject/NoExportTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "TeleportationBubbleReplicationData.generated.h"
 
 class AAstroPlanet;
@@ -10,13 +10,13 @@ USTRUCT(BlueprintType)
 struct FTeleportationBubbleReplicationData {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ETeleportationBubbleState State;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector PersistentTerrainObservationLocation;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     AAstroPlanet* DestinationPlanet;
     
     ASTRO_API FTeleportationBubbleReplicationData();
