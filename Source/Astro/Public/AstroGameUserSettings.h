@@ -16,7 +16,7 @@
 class APlayerController;
 class UAstroGameUserSettings;
 
-static uint32 GetTypeHash(const FInputReference& TypeVar) {
+FORCEINLINE uint32 GetTypeHash(const FInputReference& TypeVar) {
 	return 0;
 }
 
@@ -445,4 +445,3 @@ public:
     void ApplyAudioSettings();
     
 };
-

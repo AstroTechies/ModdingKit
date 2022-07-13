@@ -15,7 +15,7 @@ class UTradeShipDockComponent;
 class UItemType;
 class APhysicalItem;
 
-static uint32 GetTypeHash(const FSlotReference& TypeVar) {
+FORCEINLINE uint32 GetTypeHash(const FSlotReference& TypeVar) {
 	return 0;
 }
 

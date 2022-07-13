@@ -6,7 +6,7 @@
 
 class ATetherManager;
 
-static uint32 GetTypeHash(const FTetherGraphEdge& TypeVar) {
+FORCEINLINE uint32 GetTypeHash(const FTetherGraphEdge& TypeVar) {
     return 0;
 }
 

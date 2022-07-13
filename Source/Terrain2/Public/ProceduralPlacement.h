@@ -7,7 +7,7 @@
 #include "EPlacementImportanceMode.h"
 #include "ProceduralPlacement.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable, BlueprintType)
 class TERRAIN2_API UProceduralPlacement : public UObject {
     GENERATED_BODY()
 public:
