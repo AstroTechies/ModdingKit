@@ -16,10 +16,6 @@
 class APlayerController;
 class UAstroGameUserSettings;
 
-FORCEINLINE uint32 GetTypeHash(const FInputReference& TypeVar) {
-	return 0;
-}
-
 UCLASS(Blueprintable)
 class ASTRO_API UAstroGameUserSettings : public UGameUserSettings {
     GENERATED_BODY()

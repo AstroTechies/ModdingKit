@@ -15,10 +15,6 @@ class UTradeShipDockComponent;
 class UItemType;
 class APhysicalItem;
 
-FORCEINLINE uint32 GetTypeHash(const FSlotReference& TypeVar) {
-	return 0;
-}
-
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UTradeShipComponent : public UActorComponent {
     GENERATED_BODY()

@@ -15,6 +15,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Scale;
     
+	friend uint32 GetTypeHash(const FInputReference& Other) {
+		return 0;
+	}
+
     ASTRO_API FInputReference();
 };
 

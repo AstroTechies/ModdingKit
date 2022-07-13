@@ -13,6 +13,10 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FName SlotName;
+
+	friend uint32 GetTypeHash(const FSlotReference& Other) {
+		return 0;
+	}
     
     ASTRO_API FSlotReference();
 };
