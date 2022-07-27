@@ -1,0 +1,2221 @@
+{
+    "Sheets_Tundra_Hazards": [
+        "ObjPl_Popper_Prox_01",
+        "ObjPl_Lobber_Explode_Group_01",
+        "ObjPl_Lobber_Explode_01"
+    ],
+    "Dunes_Arid_Props": [
+        "ObjPl_OrganicPOI_Plant030_RoundBush_01",
+        "ObjPl_Grass003_SharpShort_01",
+        "ObjPl_Harvestable_Plant018_SquareBush_01",
+        "ObjPl_Duness_Billows_01",
+        "ObjPl_Flats_Billows_01",
+        "ObjPl_PyramidRock_Sharp"
+    ],
+    "Thawed_Tundra_Puzzles": [
+        "ObjPl_Puzzle_Surface_Tundra"
+    ],
+    "Dunes_Radiated_Puzzles": [
+        "ObjPl_Puzzle_Surface_Radiated"
+    ],
+    "PTM_Snail_Shell_Vesania": [
+        "PP_Snail_Shell_Vesania"
+    ],
+    "Forests_Terran_Props": [
+        "ObjPl_RockRound_01",
+        "ObjPl_Flats_FeatherLeaf",
+        "ObjPl_Tall_046_SharpTree_01",
+        "ObjPl_OrganicPOI_Tall_046_SharpTree_01c",
+        "ObjPl_Plains_Grass_01a",
+        "ObjPl_Plains_Grass_02b",
+        "ObjPl_Harvestable_Plant057_SharpBush"
+    ],
+    "Terran_Crevasse_Resources": [
+        "ObjPl_Graphite",
+        "ObjPl_Graphite_UG"
+    ],
+    "Core_ExoticMoon_Harvestables": [
+        "ObjPl_Harvestables_ExoticMoon_Core",
+        "ObjPl_OrganicPOI_ExoticMoon_Core"
+    ],
+    "Mantle_Radiated_POIs": [
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Base_Radiated_U",
+        "ObjPl_POI_Smelter_Large_U_Radiated_01",
+        "ObjPl_POI_Research_Large_U_Radiated_01",
+        "ObjPl_POI_CoalFarm_Medium_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Crust_Terran_POIs": [
+        "ObjPl_POI_ChipHolder",
+        "ObjPl_POI_Rover_01_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Research_Large_U_Terran_01",
+        "ObjPl_POI_Smelter_Large_U_Terran_01",
+        "ObjPl_POI_CoalFarm_Small_01"
+    ],
+    "Flats_Barren_POIs": [
+        "ObjPl_POI_Base_Barren_01",
+        "ObjPl_POI_Rover_01_Small",
+        "ObjPl_POI_SolarFarm_01_Small",
+        "ObjPl_POI_WindFarm_01_Small",
+        "ObjPl_Wreck_Station01_Barren",
+        "ObjPl_Wreck_Station04a_Barren",
+        "ObjPl_Wreck_Station04b_Barren",
+        "ObjPl_POI_BoxStore_01_Medium",
+        "ObjPl_Wreck_SmShuttle_Barren",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Crust_Terran_Hazards_01": [
+        "ObjPl_Gasbags_01-1_Ground",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Popper_Ground_02",
+        "ObjPl_Popper_Ground_03"
+    ],
+    "Terran_Plains_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Clay",
+        "ObjPl_Clay_UG"
+    ],
+    "IceShard_Tundra_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG"
+    ],
+    "Forests_Terran_POIs": [
+        "ObjPl_POI_Dropship_01",
+        "ObjPl_POI_Rover_01_Small",
+        "ObjPl_POI_SolarFarm_01_Small",
+        "ObjPl_POI_WindFarm_01_Small",
+        "ObjPl_Wreck_Station05a_Terran",
+        "ObjPl_Wreck_Station05b_Terran",
+        "ObjPl_Wreck_Station06a_Terran",
+        "ObjPl_Wreck_Station06b_Terran",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Hills_Exotic_Hazards": [
+        "ObjPl_Lobber_01",
+        "ObjPl_Knocker_Flower_01",
+        "ObjPl_Bouncer_Tongue_01",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Popper_Ground_02"
+    ],
+    "Crust_Arid_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Compound_CL",
+        "ObjPl_Resin",
+        "ObjPl_Resin_CL",
+        "ObjPl_Resin_UG",
+        "ObjPl_Quartz",
+        "ObjPl_Quartz_UG",
+        "ObjPl_Quartz_CL",
+        "ObjPl_Laterite",
+        "ObjPl_Laterite_UG",
+        "ObjPl_Laterite_CL",
+        "ObjPl_Malachite",
+        "ObjPl_Malachite_UG",
+        "ObjPl_Malachite_CL"
+    ],
+    "Mantle_Terran_Hazards": [
+        "ObjPl_Gasbags_01-1_Ground",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Popper_Ground_02",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Popper_Ceiling_01",
+        "ObjPl_Popper_Ceiling_02",
+        "ObjPl_Popper_Ceiling_03",
+        "ObjPl_Popper_Walls_01",
+        "ObjPl_Popper_Walls_02",
+        "ObjPl_Popper_Walls_03",
+        "ObjPl_Gasbags_01-1_Ceiling",
+        "ObjPl_Gasbags_01-1_Walls",
+        "ObjPl_Gasbags_01-2_Ground"
+    ],
+    "Rolling_Exotic_Hazards": [
+        "ObjPl_Bouncer_Tongue_01",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Popper_Ground_02",
+        "ObjPl_Lobber_01",
+        "ObjPl_Knocker_Flower_01"
+    ],
+    "Mantle_Cavern_Arid_01": [
+        "ObjPl_Caverns_Stalactite_01a",
+        "ObjPl_Caverns_Stalactite_01b",
+        "ObjPl_Caverns_Stalactite_01c",
+        "ObjPl_Caverns_Stalactite_01d",
+        "ObjPl_Caverns_Stalactite_01e",
+        "ObjPl_Caverns_Stalactite_01f",
+        "ObjPl_Caverns_Stalagmite_01a",
+        "ObjPl_Caverns_Stalagmite_01b",
+        "ObjPl_Caverns_Stalagmite_01c",
+        "ObjPl_Caverns_Stalagmite_01d",
+        "ObjPl_Caverns_Stalagmite_01e"
+    ],
+    "Crust_Exotic_Puzzles": [
+        "ObjPl_Puzzle_Crust_Exotic"
+    ],
+    "Mantle_Exotic_Props": [
+        "ObjPl_Harvestable_Exotic_Plant031",
+        "ObjPl_Exotic_Plant031_walls",
+        "ObjPl_OrganicPOI_Exotic_Rock009",
+        "ObjPl_Exotic_Plant058",
+        "ObjPl_Exotic_Plant031_floor"
+    ],
+    "Mantle_ExoticMoon_POIs": [
+        "ObjPl_POI_Rover_02_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Base_ExoticMoon_U",
+        "ObjPl_POI_Smelter_Large_U_ExoticMoon_01",
+        "ObjPl_POI_Research_Large_U_ExoticMoon_01",
+        "ObjPl_POI_CoalFarm_Medium_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Mantle_Exotic_Puzzles": [
+        "ObjPl_Puzzle_Mantle_Exotic"
+    ],
+    "Plateaus_Arid_Puzzles": [
+        "ObjPl_Puzzle_Surface_Arid"
+    ],
+    "Mantle_Terran_POIs": [
+        "ObjPl_POI_Rover_01_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Base_Terran_U",
+        "ObjPl_POI_Research_Large_U_Terran_01",
+        "ObjPl_POI_Smelter_Large_U_Terran_01",
+        "ObjPl_POI_CoalFarm_Medium_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "IceShard_Tundra_Puzzles": [
+        "ObjPl_Puzzle_Surface_Tundra"
+    ],
+    "Plateaus_Arid_Props": [
+        "ObjPl_OrganicPOI_Arid_Rock_SquareSpires",
+        "ObjPl_Plant017_SquareWeed",
+        "ObjPl_Harvestable_Plant050_SharpTree",
+        "ObjPl_PyramidRock_Sharp",
+        "ObjPl_Plant012_SharpReed",
+        "ObjPl_AridRods",
+        "ObjPl_Cube_Arid"
+    ],
+    "Crust_Arid_Harvestables": [
+        "ObjPl_Harvestables_Arid_Crust",
+        "ObjPl_OrganicPOI_Arid_Crust"
+    ],
+    "Core_ExoticMoon_POIs": [
+        "ObjPl_POI_Rover_02_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_Base_ExoticMoon_U",
+        "ObjPl_POI_Smelter_Large_U_ExoticMoon_01",
+        "ObjPl_POI_Research_Large_U_ExoticMoon_01",
+        "ObjPl_POI_CoalFarm_Medium_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Core_Arid_Harvestables": [
+        "ObjPl_Harvestables_Arid_Core",
+        "ObjPl_OrganicPOI_Arid_Core"
+    ],
+    "Core_Terran_Puzzles": [
+        "ObjPl_Puzzle_Core_Terran"
+    ],
+    "Mantle_Cavern_ExoticMoon_01": [
+        "ObjPl_RockFlat_01a",
+        "ObjPl_RockFlat_01b",
+        "ObjPl_RockFlat_01c",
+        "ObjPl_MantleCavern_Billows_01"
+    ],
+    "IceShard_Tundra_Props": [
+        "ObjPl_Harvestable_Tundra_MoleculeBush",
+        "ObjPl_Tundra_Grass_SharpShort",
+        "ObjPl_Tundra_PyramidRock",
+        "ObjPl_OrganicPOI_Tundra_Plant011_SharpTree",
+        "ObjPl_Tundra_Billows"
+    ],
+    "Mantle_Tundra_POIs": [
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Base_Tundra_U",
+        "ObjPl_POI_Research_Large_U_Tundra_01",
+        "ObjPl_POI_Smelter_Large_U_Tundra_01",
+        "ObjPl_POI_CoalFarm_Medium_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Hills_ExoticMoon_Resources_B": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Lithium",
+        "ObjPl_Lithium_UG",
+        "ObjPl_Graphite",
+        "ObjPl_Graphite_UG"
+    ],
+    "Mantle_Cavern_Exotic_01": [
+        "ObjPl_Caverns_Stalactite_01a",
+        "ObjPl_Caverns_Stalactite_01b",
+        "ObjPl_Caverns_Stalactite_01c",
+        "ObjPl_Caverns_Stalactite_01d",
+        "ObjPl_Caverns_Stalactite_01e",
+        "ObjPl_Caverns_Stalactite_01f",
+        "ObjPl_Caverns_Stalagmite_01a",
+        "ObjPl_Caverns_Stalagmite_01b",
+        "ObjPl_Caverns_Stalagmite_01c",
+        "ObjPl_Caverns_Stalagmite_01d",
+        "ObjPl_Caverns_Stalagmite_01e"
+    ],
+    "Terran_Forest_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Ammonium",
+        "ObjPl_Ammonium_UG"
+    ],
+    "Crust_Exotic_Hazards_03": [
+        "ObjPl_Popper_Ceiling_01",
+        "ObjPl_Popper_Ceiling_02",
+        "ObjPl_Popper_Walls_01",
+        "ObjPl_Popper_Walls_02",
+        "ObjPl_Popper_Walls_03",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Gasbags_01-3_Ceiling",
+        "ObjPl_Gasbags_02-1_Walls",
+        "ObjPl_Gasbags_02-1_Ground"
+    ],
+    "Crust_Barren_Hazards_04": [
+        "ObjPl_Spikers_Ceiling_01",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Spikers_Walls_01",
+        "ObjPl_Popper_Walls_01",
+        "ObjPl_Popper_Walls_02",
+        "ObjPl_Popper_Walls_03",
+        "ObjPl_Popper_Ceiling_01",
+        "ObjPl_Popper_Ceiling_02",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Popper_Ground_02",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Gasbags_01-1_Ground",
+        "ObjPl_Gasbags_01-1_Walls"
+    ],
+    "Fissure_Arid_Puzzles": [
+        "ObjPl_Puzzle_Surface_Arid"
+    ],
+    "Crust_ExoticMoon_Hazards_04": [
+        "ObjPl_Popper_Ceiling_01",
+        "ObjPl_Popper_Ceiling_02",
+        "ObjPl_Popper_Ceiling_03",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Popper_Ground_02",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Popper_Walls_01",
+        "ObjPl_Popper_Walls_02",
+        "ObjPl_Popper_Walls_03",
+        "ObjPl_Gasbags_02-1_Ceiling",
+        "ObjPl_Gasbags_02-1_Walls",
+        "ObjPl_Gasbags_02-2_Ground"
+    ],
+    "Chess_Surface_Barren_POIs": [
+        "ObjPl_Chess_Normal_Barren"
+    ],
+    "IceShard_Tundra_Hazards": [
+        "ObjPl_Lobber_Explode_01",
+        "ObjPl_Popper_Ground_02"
+    ],
+    "Fissure_Arid_Resources": [
+        "ObjPl_Graphite",
+        "ObjPl_Graphite_UG"
+    ],
+    "Mantle_Tundra_Hazards": [
+        "ObjPl_Lobber_Explode_01",
+        "ObjPl_Popper_Ceiling_02",
+        "ObjPl_Popper_Walls_02",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Gasbags_02-2_Ceiling",
+        "ObjPl_Gasbags_02-3_Walls",
+        "ObjPl_Gasbags_02-3_Ground",
+        "ObjPl_Popper_Prox_01"
+    ],
+    "Rolling_Exotic_POIs": [
+        "ObjPl_POI_Rover_02_Small",
+        "ObjPl_POI_SolarFarm_01_Small",
+        "ObjPl_POI_WindFarm_01_Small",
+        "ObjPl_Wreck_Station01_Exotic",
+        "ObjPl_Wreck_Station05a_Exotic",
+        "ObjPl_Wreck_Station05b_Exotic",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Craters_TerranMoon_Props": [
+        "ObjPl_TerranMoon_RoundWeed",
+        "ObjPl_Harvestable_TerranMoon_RoundWeed_Lrg",
+        "ObjPl_TerranMoon_Grass",
+        "ObjPl_OrganicPOI_TerranMoon_RockShard",
+        "ObjPl_TerranMoon_BillowsSmall_01",
+        "ObjPl_TerranMoon_BillowsLarge_01",
+        "ObjPl_Harvestables_Barren_Craters_01",
+        "ObjPl_OrganicPOI_Barren_Craters_01"
+    ],
+    "Mantle_Tundra_Props": [
+        "ObjPl_Harvestable_Tundra_Plant059",
+        "ObjPl_Tundra_Rock003",
+        "ObjPl_OrganicPOI_Tundra_Rock003_Lrg",
+        "ObjPl_Tundra_Rock007"
+    ],
+    "Crust_Radiated_Hazards_02": [
+        "ObjPl_Spikers_Ceiling_01",
+        "ObjPl_Spikers_Ground_03",
+        "ObjPl_Spikers_Walls_02",
+        "ObjPl_Gasbags_02-1_Walls",
+        "ObjPl_Gasbags_02-2_Ground"
+    ],
+    "Hills_TerranMoon_Resources_B": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Graphite",
+        "ObjPl_Graphite_UG",
+        "ObjPl_Sphalerite",
+        "ObjPl_Sphalerite_UG"
+    ],
+    "Core_Exotic_Resources": [
+        "ObjPl_Astronium",
+        "ObjPl_Astronium_CL",
+        "ObjPl_Astronium_UG",
+        "ObjPl_Clay",
+        "ObjPl_Clay_UG",
+        "ObjPl_Clay_CL",
+        "ObjPl_Quartz",
+        "ObjPl_Quartz_UG",
+        "ObjPl_Quartz_CL",
+        "ObjPl_Graphite",
+        "ObjPl_Graphite_UG",
+        "ObjPl_Graphite_CL"
+    ],
+    "Core_Exotic_Hazards": [
+        "ObjPl_Popper_Ceiling_03",
+        "ObjPl_Popper_Walls_03",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Gasbags_02-3_Ground",
+        "ObjPl_Gasbags_02-1_Ceiling",
+        "ObjPl_Gasbags_02-2_Walls",
+        "ObjPl_Lobber_01"
+    ],
+    "Dunes_Radiated_Hazards": [
+        "ObjPl_Spewer_02",
+        "ObjPl_Shooter_Explode_01",
+        "ObjPl_Bouncer_Lily_Group",
+        "ObjPl_Spikers_Ground_01"
+    ],
+    "Valleys_Exotic_POIs": [
+        "ObjPl_POI_Research_Large_Exotic_01",
+        "ObjPl_POI_Rover_02_Small",
+        "ObjPl_POI_SolarFarm_01_Small",
+        "ObjPl_POI_WindFarm_01_Small",
+        "ObjPl_Wreck_Array_Exotic",
+        "ObjPl_Wreck_Station01_Exotic",
+        "ObjPl_Wreck_Station04a_Exotic",
+        "ObjPl_Wreck_Station04b_Exotic",
+        "ObjPl_Wreck_Station06a_Exotic",
+        "ObjPl_Wreck_Station06b_Exotic",
+        "ObjPl_POI_Backpack_01"
+    ],
+    "Hills_ExoticMoon_Puzzles": [
+        "ObjPl_Puzzle_Surface_ExoticMoon"
+    ],
+    "CrustClose_Exotic_POIs": [
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Smelter_Large_U_Barren_01",
+        "ObjPl_POI_Research_Large_U_Barren_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Mantle_Barren_Hazards": [
+        "ObjPl_Spikers_Ceiling_01",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Spikers_Walls_01",
+        "ObjPl_Gasbags_01-1_Ground",
+        "ObjPl_Gasbags_01-2_Ground",
+        "ObjPl_Gasbags_01-1_Walls",
+        "ObjPl_Gasbags_01-2_Walls",
+        "ObjPl_Gasbags_01-1_Ceiling"
+    ],
+    "Crust_ExoticMoon_POIs": [
+        "ObjPl_POI_Rover_02_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Smelter_Large_U_ExoticMoon_01",
+        "ObjPl_POI_Research_Large_U_ExoticMoon_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Mantle_Terran_Props_01b": [
+        "ObjPl_OrganicPOI_Terran_Mantle",
+        "ObjPl_RoundFungus_Ground_01a",
+        "ObjPl_RoundFungus_Ground_01b",
+        "ObjPl_RoundFungus_Ground_01c",
+        "ObjPl_RoundFungus_Ground_01d",
+        "ObjPl_RoundFungus_Ground_01e",
+        "ObjPl_RoundFungus_Ground_01f",
+        "ObjPl_Caverns_Stalactite_01a",
+        "ObjPl_Harvestables_Terran_Mantle"
+    ],
+    "Mantle_Exotic_Resources": [
+        "ObjPl_Laterite",
+        "ObjPl_Laterite_UG",
+        "ObjPl_Laterite_CL",
+        "ObjPl_Lithium",
+        "ObjPl_Lithium_UG",
+        "ObjPl_Lithium_CL",
+        "ObjPl_Titanite",
+        "ObjPl_Titanite_UG",
+        "ObjPl_Titanite_CL",
+        "ObjPl_Ammonium",
+        "ObjPl_Ammonium_CL",
+        "ObjPl_Ammonium_UG"
+    ],
+    "Core_Barren_Hazards": [
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Spikers_Ceiling_01",
+        "ObjPl_Spikers_Walls_01",
+        "ObjPl_Gasbags_01-2_Ceiling",
+        "ObjPl_Gasbags_01-2_Ground",
+        "ObjPl_Gasbags_01-3_Ground",
+        "ObjPl_Gasbags_01-2_Walls"
+    ],
+    "Core_Barren_Puzzles": [
+        "ObjPl_Puzzle_Core_Barren"
+    ],
+    "Crust_Barren_POIs": [
+        "ObjPl_POI_Rover_01_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Smelter_Large_U_Barren_01",
+        "ObjPl_POI_Research_Large_U_Barren_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Mantle_ExoticMoon_Resources": [
+        "ObjPl_Laterite",
+        "ObjPl_Laterite_UG",
+        "ObjPl_Laterite_CL",
+        "ObjPl_Hematite",
+        "ObjPl_Hematite_UG",
+        "ObjPl_Hematite_CL",
+        "ObjPl_Ammonium",
+        "ObjPl_Ammonium_UG",
+        "ObjPl_Ammonium_CL",
+        "ObjPl_Lithium",
+        "ObjPl_Lithium_CL",
+        "ObjPl_Lithium_UG"
+    ],
+    "Mantle_Radiated_Puzzles": [
+        "ObjPl_Puzzle_Mantle_Radiated"
+    ],
+    "CrustClose_ExoticMoon_Harvestables": [
+        "ObjPl_Harvestables_ExoticMoon_Crust",
+        "ObjPl_OrganicPOI_ExoticMoon_Crust"
+    ],
+    "Mantle_Radiated_Props": [
+        "ObjPl_Plant_OnionTube",
+        "ObjPl_Plant043_RoundFlower",
+        "ObjPl_Plant_HoneyPot",
+        "ObjPl_Radiated_Mantle_Spore"
+    ],
+    "ObjPl_Hills_ExoticMoon_01": [
+        "ObjPl_Hills_Spheres_01",
+        "ObjPl_OrganicPOI_Hills_SharpWedge_Lg_A",
+        "ObjPl_Hills_SharpWedge_Md",
+        "ObjPl_Harvestable_Hills_RoundWeed_01a",
+        "ObjPl_Hills_RoundWeed_01",
+        "ObjPl_Hills_RoundFlower_01",
+        "ObjPl_OrganicPOI_ExoticMoon_Hills_01"
+    ],
+    "Core_Terran_Hazards": [
+        "ObjPl_Gasbags_01-1_Ground",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Popper_Ground_02",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Gasbags_01-2_Ground",
+        "ObjPl_Popper_Ceiling_01",
+        "ObjPl_Popper_Ceiling_02",
+        "ObjPl_Popper_Ceiling_03",
+        "ObjPl_Popper_Walls_01",
+        "ObjPl_Popper_Walls_02",
+        "ObjPl_Popper_Walls_03",
+        "ObjPl_Gasbags_01-1_Ceiling",
+        "ObjPl_Gasbags_01-1_Walls"
+    ],
+    "Hills_Exotic_POIs": [
+        "ObjPl_Wreck_Station05a_Exotic",
+        "ObjPl_Wreck_Station05b_Exotic",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_SolarFarm_01_Small",
+        "ObjPl_POI_WindFarm_01_Small",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Crust_Radiated_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Clay_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_CL",
+        "ObjPl_Resin_UG",
+        "ObjPl_Laterite",
+        "ObjPl_Laterite_CL",
+        "ObjPl_Laterite_UG",
+        "ObjPl_Quartz",
+        "ObjPl_Quartz_CL",
+        "ObjPl_Quartz_UG"
+    ],
+    "Crust_Radiated_POIs": [
+        "ObjPl_POI_Rover_03_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Smelter_Large_U_Radiated_01",
+        "ObjPl_POI_Research_Large_U_Radiated_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Rolling_Exotic_Props": [
+        "ObjPl_Harvestables_Exotic_Encrusts_01",
+        "ObjPl_Exotic_RockRound_01",
+        "ObjPl_OrganicPOI_Exotic_Tall_RoundTree042",
+        "ObjPl_Exotic_Grass"
+    ],
+    "Crust_Arid_Hazards_01": [
+        "ObjPl_Spikers_Walls_01",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Gasbags_01-3_Ground",
+        "ObjPl_Spikers_Ceiling_01"
+    ],
+    "Mantle_ExoticMoon_Hazards": [
+        "ObjPl_Lobber_01",
+        "ObjPl_Popper_Ceiling_03",
+        "ObjPl_Popper_Walls_03",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Gasbags_02-2_Ground",
+        "ObjPl_Gasbags_02-2_Walls",
+        "ObjPl_Gasbags_02-2_Ceiling"
+    ],
+    "Core_Radiated_Resources": [
+        "ObjPl_Astronium",
+        "ObjPl_Astronium_CL",
+        "ObjPl_Astronium_UG",
+        "ObjPl_Graphite",
+        "ObjPl_Graphite_CL",
+        "ObjPl_Graphite_UG",
+        "ObjPl_Clay",
+        "ObjPl_Clay_UG",
+        "ObjPl_Clay_CL",
+        "ObjPl_Quartz",
+        "ObjPl_Quartz_CL",
+        "ObjPl_Quartz_UG"
+    ],
+    "CrustClose_Tundra_Harvestables": [
+        "ObjPl_Harvestables_Tundra_Crust",
+        "ObjPl_OrganicPOI_Tundra_Crust"
+    ],
+    "Thawed_Tundra_POIs": [
+        "ObjPl_POI_WindFarm_01_Medium",
+        "ObjPl_POI_Dropship_01",
+        "ObjPl_POI_Rover_03_Small",
+        "ObjPl_Wreck_SmShuttle_Tundra",
+        "ObjPl_POI_WindFarm_01_Small"
+    ],
+    "Mountains_Exotic_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Graphite",
+        "ObjPl_Graphite_UG",
+        "ObjPl_Titanite",
+        "ObjPl_Titanite_UG"
+    ],
+    "Crust_Radiated_Hazards_01": [
+        "ObjPl_Spikers_Walls_01",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Gasbags_02-2_Ground",
+        "ObjPl_Spikers_Ceiling_01"
+    ],
+    "Valleys_Exotic_Props": [
+        "ObjPl_Exotic_Grass",
+        "ObjPl_Harvestable_Plant009_RoundBush",
+        "ObjPl_Exotic_BannerLeaf",
+        "ObjPl_OrganicPOI_Valleys_Rock020_RoundPorous1",
+        "ObjPl_Plant055_RoundFlower"
+    ],
+    "Mantle_Barren_Props": [
+        "ObjPl_TerranMoon_RockSpire"
+    ],
+    "Crust_Cavern_ExoticMoon_01": [
+        "ObjPl_Caverns_Stalactite_01a",
+        "ObjPl_Caverns_Stalactite_01b",
+        "ObjPl_Caverns_Stalactite_01c",
+        "ObjPl_Caverns_Stalactite_01d",
+        "ObjPl_Caverns_Stalactite_01e",
+        "ObjPl_Caverns_Stalactite_01f",
+        "ObjPl_Rock024_Stalagmite_01a",
+        "ObjPl_Rock024_Stalagmite_01b",
+        "ObjPl_Hills_Spheres_01",
+        "ObjPl_Cavern_SharpWedge_Md_A",
+        "ObjPl_Cavern_SharpWedge_Md_B",
+        "ObjPl_Hills_Spheres_01b"
+    ],
+    "Flats_ExoticMoon_POIs": [
+        "ObjPl_POI_Rover_02_Small",
+        "ObjPl_POI_SolarFarm_01_Small",
+        "ObjPl_POI_WindFarm_01_Small",
+        "ObjPl_Wreck_Station01_ExoticMoon",
+        "ObjPl_Wreck_Station04a_ExoticMoon",
+        "ObjPl_Wreck_Station04b_ExoticMoon",
+        "ObjPl_POI_Research_Large_ExoticMoon_01",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Crust_Exotic_Hazards_04": [
+        "ObjPl_Popper_Ceiling_01",
+        "ObjPl_Popper_Ceiling_02",
+        "ObjPl_Popper_Ceiling_03",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Popper_Ground_02",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Popper_Walls_01",
+        "ObjPl_Popper_Walls_02",
+        "ObjPl_Popper_Walls_03",
+        "ObjPl_Gasbags_01-3_Ceiling",
+        "ObjPl_Gasbags_02-1_Walls",
+        "ObjPl_Gasbags_02-1_Ground",
+        "ObjPl_Gasbags_02-2_Ground"
+    ],
+    "Mantle_Tundra_Resources": [
+        "ObjPl_Laterite",
+        "ObjPl_Laterite_UG",
+        "ObjPl_Laterite_CL",
+        "ObjPl_Ammonium",
+        "ObjPl_Ammonium_UG",
+        "ObjPl_Ammonium_CL",
+        "ObjPl_Hematite",
+        "ObjPl_Hematite_UG",
+        "ObjPl_Hematite_CL",
+        "ObjPl_Titanite",
+        "ObjPl_Titanite_CL",
+        "ObjPl_Titanite_UG"
+    ],
+    "Canyons_Radiated_Puzzles": [
+        "ObjPl_Puzzle_Surface_Radiated"
+    ],
+    "Mountains_Exotic_Hazards": [
+        "ObjPl_Bouncer_Tongue_01",
+        "ObjPl_Knocker_Flower_01",
+        "ObjPl_Popper_Walls_01",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Popper_Ground_02",
+        "ObjPl_Lobber_01"
+    ],
+    "Mountains_Radiated_Puzzles": [
+        "ObjPl_Puzzle_Surface_Radiated"
+    ],
+    "Rolling_Exotic_Resources": [
+        "ObjPl_Graphite",
+        "ObjPl_Graphite_UG"
+    ],
+    "Flats_ExoticMoon_Hazards": [
+        "ObjPl_Lobber_01",
+        "ObjPl_Knocker_Flower_01",
+        "ObjPl_Bouncer_Tongue_01",
+        "ObjPl_Flats_Geysers_01",
+        "ObjPl_Popper_Ground_03"
+    ],
+    "Crust_Radiated_Harvestables": [
+        "ObjPl_Harvestables_Radiated_Crust",
+        "ObjPl_OrganicPOI_Radiated_Crust"
+    ],
+    "Crust_Arid_Hazards_03": [
+        "ObjPl_Spikers_Ceiling_01",
+        "ObjPl_Spikers_Walls_01",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Gasbags_01-2_Ceiling",
+        "ObjPl_Gasbags_01-3_Walls",
+        "ObjPl_Gasbags_01-3_Ground"
+    ],
+    "Crust_Tundra_Hazards_04": [
+        "ObjPl_Popper_Ceiling_02",
+        "ObjPl_Popper_Ground_02",
+        "ObjPl_Popper_Walls_02",
+        "ObjPl_Gasbags_02-1_Ceiling",
+        "ObjPl_Gasbags_02-2_Walls",
+        "ObjPl_Gasbags_02-3_Ground",
+        "ObjPl_Gasbags_02-2_Ground",
+        "ObjPl_Popper_Prox_01"
+    ],
+    "Canyons_Radiated_Props": [
+        "ObjPl_Harvestable_Rock021_RoundLiquid",
+        "ObjPl_Radiated_Spheres",
+        "ObjPl_Radiated_Billow",
+        "ObjPl_OrganicPOI_Canyons_Rock022_SquareLiquid"
+    ],
+    "Dune_Arid_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Clay",
+        "ObjPl_Clay_UG"
+    ],
+    "Hills_TerranMoon_Props": [
+        "ObjPl_TerranMoon_RockSpire",
+        "ObjPl_TerranMoon_Cubes",
+        "ObjPl_TerranMoon_Cubes_Less",
+        "ObjPl_TerranMoon_RockMedium",
+        "ObjPl_TerranMoon_BillowsSmall_01",
+        "ObjPl_OrganicPOI_Barren_Hills_01",
+        "ObjPl_Harvestables_Barren_Hills_01"
+    ],
+    "Mantle_Exotic_Harvestables": [
+        "ObjPl_Harvestables_Exotic_Mantle",
+        "ObjPl_OrganicPOI_Exotic_Mantle"
+    ],
+    "Core_Arid_Hazards": [
+        "ObjPl_Spikers_Ceiling_01",
+        "ObjPl_Spikers_Walls_01",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Gasbags_02-2_Ground",
+        "ObjPl_Gasbags_01-3_Ceiling",
+        "ObjPl_Gasbags_02-1_Walls",
+        "ObjPl_Shooter_01"
+    ],
+    "Mantle_ExoticMoon_Puzzles": [
+        "ObjPl_Puzzle_Mantle_ExoticMoon"
+    ],
+    "CrustClose_Radiated_Puzzles": [
+        "ObjPl_Puzzle_Surface_Radiated"
+    ],
+    "Canyons_Radiated_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Graphite_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG"
+    ],
+    "Core_Tundra_POIs": [
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Base_Tundra_U",
+        "ObjPl_POI_Research_Large_U_Tundra_01",
+        "ObjPl_POI_Smelter_Large_U_Tundra_01",
+        "ObjPl_POI_CoalFarm_Medium_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Mantle_Arid_Props": [
+        "ObjPl_OrganicPOI_Arid_Mantle_Rock006",
+        "ObjPl_Harvestable_Arid_Mantle_Rock004",
+        "ObjPl_Arid_Mantle_Plant028"
+    ],
+    "Glaciers_Tundra_Puzzles": [
+        "ObjPl_Puzzle_Surface_Tundra"
+    ],
+    "Crust_Arid_POIs": [
+        "ObjPl_POI_Rover_02_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Research_Large_U_Arid_01",
+        "ObjPl_POI_Smelter_Large_U_Arid_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Crust_Radiated_Puzzles": [
+        "ObjPl_Puzzle_Surface_Radiated"
+    ],
+    "Core_Terran_Resources": [
+        "ObjPl_Astronium",
+        "ObjPl_Astronium_CL",
+        "ObjPl_Astronium_UG",
+        "ObjPl_Clay",
+        "ObjPl_Clay_UG",
+        "ObjPl_Clay_CL",
+        "ObjPl_Quartz",
+        "ObjPl_Quartz_CL",
+        "ObjPl_Quartz_UG",
+        "ObjPl_Graphite",
+        "ObjPl_Graphite_UG",
+        "ObjPl_Graphite_CL"
+    ],
+    "Core_Terran_Harvestables": [
+        "ObjPl_Harvestables_Terran_Core",
+        "ObjPl_OrganicPOI_Terran_Core"
+    ],
+    "CrustUpper_Cavern_Exotic_01": [
+        "ObjPl_Caverns_Stalactite_01a",
+        "ObjPl_Caverns_Stalactite_01b",
+        "ObjPl_Caverns_Stalactite_01c",
+        "ObjPl_Caverns_Stalactite_01d",
+        "ObjPl_Caverns_Stalactite_01e",
+        "ObjPl_Caverns_Stalactite_01f",
+        "ObjPl_Caverns_Stalagmite_01a",
+        "ObjPl_Caverns_Stalagmite_01b",
+        "ObjPl_Caverns_Stalagmite_01c",
+        "ObjPl_Caverns_Stalagmite_01d",
+        "ObjPl_Caverns_Stalagmite_01e",
+        "ObjPl_Caverns_Cubes_01"
+    ],
+    "CrustClose_Tundra_Puzzle": [
+        "ObjPl_Puzzle_Surface_Tundra"
+    ],
+    "Core_Tundra_Harvestables": [
+        "ObjPl_Harvestables_Tundra_Core",
+        "ObjPl_OrganicPOI_Tundra_Core"
+    ],
+    "Mantle_Arid_POIs": [
+        "ObjPl_POI_Rover_02_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Base_Arid_U",
+        "ObjPl_POI_Research_Large_U_Arid_01",
+        "ObjPl_POI_Smelter_Large_U_Arid_01",
+        "ObjPl_POI_CoalFarm_Medium_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Mantle_Barren_Puzzles": [
+        "ObjPl_Puzzle_Mantle_Barren"
+    ],
+    "Cavern_Props_Generic_Arid": [
+        "ObjPl_Caverns_Stalactite_2",
+        "ObjPl_PyramidRock_Sharp",
+        "ObjPl_Caverns_Billows_01",
+        "ObjPl_Craters_Billows_01",
+        "ObjPl_Caverns_FallingRocks"
+    ],
+    "Mantle_Radiated_Harvestables": [
+        "ObjPl_Harvestables_Radiated_Mantle",
+        "ObjPl_OrganicPOI_Radiated_Mantle"
+    ],
+    "Crust_Terran_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Compound_CL",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Resin_CL",
+        "ObjPl_Quartz",
+        "ObjPl_Quartz_UG",
+        "ObjPl_Quartz_CL",
+        "ObjPl_Laterite",
+        "ObjPl_Laterite_UG",
+        "ObjPl_Laterite_CL",
+        "ObjPl_Sphalerite",
+        "ObjPl_Sphalerite_UG",
+        "ObjPl_Sphalerite_CL"
+    ],
+    "Core_Radiated_Hazards": [
+        "ObjPl_Spikers_Ceiling_03",
+        "ObjPl_Spikers_Walls_02",
+        "ObjPl_Spikers_Ground_03",
+        "ObjPl_Gasbags_03-1_Ground",
+        "ObjPl_Gasbags_03-1_Ceiling",
+        "ObjPl_Gasbags_03-1_Walls",
+        "ObjPl_Shooter_Explode_01",
+        "ObjPl_Spewer_01"
+    ],
+    "Glaciers_Tundra_Hazards": [
+        "ObjPl_Popper_Prox_01",
+        "ObjPl_Popper_Ground_02"
+    ],
+    "Sheets_Tundra_Puzzles": [
+        "ObjPl_Puzzle_Surface_Tundra"
+    ],
+    "Plains_Terran_POIs": [
+        "ObjPl_POI_Base_Terran_01",
+        "ObjPl_POI_Dropship_01",
+        "ObjPl_POI_Rover_01_Small",
+        "ObjPl_POI_SolarFarm_01_Small",
+        "ObjPl_POI_WindFarm_01_Small",
+        "ObjPl_Wreck_Array_Terran",
+        "ObjPl_Wreck_Station01_Terran",
+        "ObjPl_Wreck_Station04a_Terran",
+        "ObjPl_Wreck_Station04b_Terran"
+    ],
+    "Mantle_Terran_Puzzles": [
+        "ObjPl_Puzzle_Mantle_Terran"
+    ],
+    "Core_TerranMoon_Resources": [
+        "ObjPl_Astronium",
+        "ObjPl_Astronium_CL",
+        "ObjPl_Astronium_UG",
+        "ObjPl_Quartz",
+        "ObjPl_Quartz_CL",
+        "ObjPl_Quartz_UG",
+        "ObjPl_Clay",
+        "ObjPl_Clay_CL",
+        "ObjPl_Clay_UG",
+        "ObjPl_Graphite",
+        "ObjPl_Graphite_CL",
+        "ObjPl_Graphite_UG"
+    ],
+    "Crust_Terran_Puzzles": [
+        "ObjPl_Puzzle_Surface_Terran"
+    ],
+    "Craters_ExoticMoon_POIs": [
+        "ObjPl_POI_Rover_02_Small",
+        "ObjPl_POI_SolarFarm_01_Small",
+        "ObjPl_POI_WindFarm_01_Small",
+        "ObjPl_Wreck_Station05a_ExoticMoon",
+        "ObjPl_Wreck_Station05b_ExoticMoon",
+        "ObjPl_Wreck_Station06a_ExoticMoon",
+        "ObjPl_Wreck_Station06b_ExoticMoon",
+        "ObjPl_POI_Research_Large_ExoticMoon_01"
+    ],
+    "Crevasse_Terran_Props": [
+        "ObjPl_Rock_BubbleSpire_01",
+        "ObjPl_Mountains_Billows_01",
+        "ObjPl_Harvestables_Terran_Crevasses",
+        "ObjPl_OrganicPOI_Terran_Crevasses"
+    ],
+    "Core_Arid_Puzzles": [
+        "ObjPl_Puzzle_Core_Arid"
+    ],
+    "Craters_ExoticMoon_Hazards": [
+        "ObjPl_Lobber_01",
+        "ObjPl_Knocker_Flower_01",
+        "ObjPl_Bouncer_Tongue_01",
+        "ObjPl_Flats_Geysers_01",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Popper_Ground_02"
+    ],
+    "Craters_TerranMoon_Resources_B": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Clay",
+        "ObjPl_Clay_UG"
+    ],
+    "Mountains_Radiated_Resources": [
+        "ObjPl_Graphite",
+        "ObjPl_Graphite_UG"
+    ],
+    "Crust_Exotic_Hazards_02": [
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Popper_Ground_02",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Popper_Walls_01",
+        "ObjPl_Popper_Walls_02",
+        "ObjPl_Popper_Walls_03",
+        "ObjPl_Popper_Ceiling_01",
+        "ObjPl_Gasbags_01-3_Walls",
+        "ObjPl_Gasbags_02-1_Ground"
+    ],
+    "Mountains_Radiated_POIs": [
+        "ObPl_Wreck_Mountains_Radiated",
+        "ObjPl_POI_Dropship_01",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Dunes_Radiated_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Clay",
+        "ObjPl_Clay_UG"
+    ],
+    "Crust_Tundra_Hazards_02": [
+        "ObjPl_Popper_Ceiling_01",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Popper_Walls_01",
+        "ObjPl_Gasbags_02-2_Walls",
+        "ObjPl_Gasbags_02-2_Ground",
+        "ObjPl_Popper_Prox_01"
+    ],
+    "Core_Exotic_POIs": [
+        "ObjPl_POI_Rover_02_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Smelter_Large_U_Exotic_01",
+        "ObjPl_POI_Research_Large_U_Exotic_01",
+        "ObjPl_POI_CoalFarm_Medium_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "IceShard_Tundra_POIs": [
+        "ObjPl_POI_WindFarm_01_Medium",
+        "ObjPl_POI_WindFarm_01_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_Wreck_Station03a_Tundra",
+        "ObjPl_Wreck_Station03b_Tundra",
+        "ObjPl_Wreck_Station03c_Tundra",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Sheets_Tundra_Resources_B": [
+        "ObjPl_Graphite",
+        "ObjPl_Graphite_UG",
+        "ObjPl_Hematite",
+        "ObjPl_Hematite_UG"
+    ],
+    "Dunes_Arid_Puzzles": [
+        "ObjPl_Puzzle_Surface_Arid"
+    ],
+    "Fissure_Arid_POIs": [
+        "ObjPl_POI_Dropship_01",
+        "ObjPl_POI_Rover_02_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Cavern_Props_Generic_01b": [
+        "ObjPl_Caverns_Stalactite_2",
+        "ObjPl_Caverns_Stalagmite",
+        "ObjPl_Caverns_Billows_01",
+        "ObjPl_Craters_Billows_01",
+        "ObjPl_Caverns_FallingRocks"
+    ],
+    "Crust_Arid_Hazards_02": [
+        "ObjPl_Spikers_Ceiling_01",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Spikers_Walls_01",
+        "ObjPl_Gasbags_01-3_Walls",
+        "ObjPl_Gasbags_01-3_Ground"
+    ],
+    "Mantle_Barren_POIs": [
+        "ObjPl_POI_Rover_01_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Base_Barren_U",
+        "ObjPl_POI_Smelter_Large_U_Barren_01",
+        "ObjPl_POI_Research_Large_U_Barren_01",
+        "ObjPl_POI_CoalFarm_Medium_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Hills_Radiated_Hazards": [
+        "ObjPl_Shooter_Explode_01",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Spikers_Ground_02",
+        "ObjPl_Knocker_Whoop_01",
+        "ObjPl_Spikers_Walls_02"
+    ],
+    "Rolling_Exotic_Puzzles": [
+        "ObjPl_Puzzle_Surface_Exotic"
+    ],
+    "Hills_Barren_Puzzles": [
+        "ObjPl_Puzzle_Surface_Barren"
+    ],
+    "Crevasses_Terran_POIs": [
+        "ObjPl_POI_Dropship_01",
+        "ObjPl_POI_Rover_01_Small"
+    ],
+    "Crust_ExoticMoon_Hazards_02": [
+        "ObjPl_Popper_Ceiling_01",
+        "ObjPl_Popper_Walls_01",
+        "ObjPl_Popper_Walls_02",
+        "ObjPl_Popper_Walls_03",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Popper_Ground_02",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Gasbags_02-1_Ground",
+        "ObjPl_Gasbags_01-3_Ceiling",
+        "ObjPl_Gasbags_01-3_Walls"
+    ],
+    "Mantle_Radiated_Resources": [
+        "ObjPl_Ammonium",
+        "ObjPl_Ammonium_CL",
+        "ObjPl_Ammonium_UG",
+        "ObjPl_Laterite",
+        "ObjPl_Laterite_CL",
+        "ObjPl_Laterite_UG",
+        "ObjPl_Quartz",
+        "ObjPl_Quartz_CL",
+        "ObjPl_Quartz_UG",
+        "ObjPl_Graphite",
+        "ObjPl_Graphite_UG",
+        "ObjPl_Graphite_CL"
+    ],
+    "Crust_Exotic_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Compound_CL",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Resin_CL",
+        "ObjPl_Quartz",
+        "ObjPl_Quartz_CL",
+        "ObjPl_Quartz_UG",
+        "ObjPl_Laterite",
+        "ObjPl_Laterite_UG",
+        "ObjPl_Laterite_CL",
+        "ObjPl_Lithium",
+        "ObjPl_Lithium_CL",
+        "ObjPl_Lithium_UG"
+    ],
+    "Plateaus_Arid_Hazards": [
+        "ObjPl_Shooter_01",
+        "ObjPl_Bouncer_Lily_Group",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Spikers_Walls_01",
+        "ObjPl_Spikers_Ground_02",
+        "ObjPl_Spikers_Ground_03",
+        "ObjPl_Spikers_Walls_02",
+        "ObjPl_Spikers_Walls_03",
+        "ObjPl_Knocker_Whoop_01"
+    ],
+    "Crust_Tundra_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Compound_CL",
+        "ObjPl_Resin",
+        "ObjPl_Resin_CL",
+        "ObjPl_Resin_UG",
+        "ObjPl_Quartz",
+        "ObjPl_Quartz_CL",
+        "ObjPl_Quartz_UG",
+        "ObjPl_Laterite",
+        "ObjPl_Laterite_CL",
+        "ObjPl_Laterite_UG",
+        "ObjPl_Titanite",
+        "ObjPl_Titanite_CL",
+        "ObjPl_Titanite_UG"
+    ],
+    "Mantle_Arid_Resources": [
+        "ObjPl_Laterite",
+        "ObjPl_Laterite_UG",
+        "ObjPl_Laterite_CL",
+        "ObjPl_Ammonium",
+        "ObjPl_Ammonium_CL",
+        "ObjPl_Ammonium_UG",
+        "ObjPl_Malachite",
+        "ObjPl_Malachite_UG",
+        "ObjPl_Malachite_CL",
+        "ObjPl_Wolframite",
+        "ObjPl_Wolframite_UG",
+        "ObjPl_Wolframite_CL"
+    ],
+    "Dunes_Arid_Hazards": [
+        "ObjPl_Shooter_01",
+        "ObjPl_Knocker_Whoop_01",
+        "ObjPl_Bouncer_Lilies_01",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Spikers_Ground_02",
+        "ObjPl_Spikers_Ground_03",
+        "ObjPl_Bouncer_Lilies_02",
+        "ObjPl_Bouncer_Lilies_03"
+    ],
+    "Hills_Radiated_Resources": [
+        "ObjPl_Ammonium",
+        "ObjPl_Ammonium_UG"
+    ],
+    "Terran_Mountains_Resources": [
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Graphite",
+        "ObjPl_Graphite_UG",
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Malachite",
+        "ObjPl_Malachite_UG"
+    ],
+    "Crust_Tundra_Hazards_01": [
+        "ObjPl_Popper_Walls_01",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Gasbags_02-2_Ground",
+        "ObjPl_Popper_Ceiling_01",
+        "ObjPl_Popper_Prox_01"
+    ],
+    "Dunes_Radiated_POIs": [
+        "ObjPl_POI_Rover_03_Small",
+        "ObjPl_Wreck_Dunes_Radiated",
+        "ObjPl_POI_SolarFarm_01_Small",
+        "ObjPl_POI_WindFarm_01_Small"
+    ],
+    "Valley_Arid_POIs": [
+        "ObjPl_POI_SolarFarm_01_Small",
+        "ObjPl_POI_SolarFarm_01_Medium",
+        "ObjPl_POI_Rover_02_Small",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_Wreck_SmShuttle_Arid",
+        "ObjPl_Wreck_Station01_Arid",
+        "ObjPl_Wreck_Station06a_Arid",
+        "ObjPl_Wreck_Station06b_Arid"
+    ],
+    "Crust_Cavern_Exotic_01a": [
+        "ObjPl_Caverns_Stalactite_01a",
+        "ObjPl_Caverns_Stalactite_01b",
+        "ObjPl_Caverns_Stalactite_01c",
+        "ObjPl_Caverns_Stalactite_01d",
+        "ObjPl_Caverns_Stalactite_01e",
+        "ObjPl_Caverns_Stalactite_01f",
+        "ObjPl_Caverns_Stalagmite_01a",
+        "ObjPl_Caverns_Stalagmite_01b",
+        "ObjPl_Caverns_Stalagmite_01c",
+        "ObjPl_Caverns_Stalagmite_01d",
+        "ObjPl_Caverns_Stalagmite_01e"
+    ],
+    "CrustClose_Radiated_Harvestables": [
+        "ObjPl_Harvestables_Radiated_Crust",
+        "ObjPl_OrganicPOI_Radiated_Crust"
+    ],
+    "Craters_Barren_POIs": [
+        "ObjPl_POI_Rover_01_Small",
+        "ObjPl_POI_SolarFarm_01_Small",
+        "ObjPl_POI_WindFarm_01_Small",
+        "ObjPl_Wreck_Station01_Barren",
+        "ObjPl_Wreck_Station04a_Barren",
+        "ObjPl_Wreck_Station04b_Barren",
+        "ObjPl_POI_BoxStore_01_Medium",
+        "ObjPl_Wreck_SmShuttle_Barren"
+    ],
+    "Core_ExoticMoon_Puzzles": [
+        "ObjPl_Puzzle_Core_ExoticMoon"
+    ],
+    "Valley_Arid_Props": [
+        "ObjPl_Harvestable_Plant022_RoundTree_01",
+        "ObjPl_Plant018_SquareBush_01",
+        "ObjPl_Grass003_SharpShort_01",
+        "ObjPl_Grass003_SharpTall_02",
+        "ObjPl_Flats_Billows_01",
+        "ObjPl_Duness_Billows_01",
+        "ObjPl_PyramidRock_Sharp",
+        "ObjPl_Arid_SharpWedge",
+        "ObjPl_OrganicPOI_Arid_Rock010_RoundSpire"
+    ],
+    "Crust_Barren_Harvestables": [
+        "ObjPl_Harvestables_Barren_Crust",
+        "ObjPl_OrganicPOI_Barren_Crust"
+    ],
+    "Plateaus_Arid_POIs": [
+        "ObjPl_POI_Dropship_01",
+        "ObjPl_POI_SolarFarm_01_Small",
+        "ObjPl_Wreck_Array_Arid",
+        "ObjPl_Wreck_Station03a_Arid",
+        "ObjPl_Wreck_Station03b_Arid",
+        "ObjPl_Wreck_Station03c_Arid",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Mantle_Radiated_Hazards": [
+        "ObjPl_Shooter_Explode_01",
+        "ObjPl_Spikers_Ceiling_01",
+        "ObjPl_Spikers_Walls_01",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Gasbags_02-2_Ceiling",
+        "ObjPl_Gasbags_02-3_Walls",
+        "ObjPl_Gasbags_03-1_Ground",
+        "ObjPl_Spewer_01"
+    ],
+    "Sheets_Tundra_Props": [
+        "ObjPl_OrganicPOI_Tundra_RockMedium",
+        "ObjPl_Tundra_PyramidRock",
+        "ObjPl_Tundra_PyramidRock_Lite",
+        "ObjPl_Tundra_RockBud",
+        "ObjPl_Tundra_Billows",
+        "ObjPl_Harvestable_Tundra_RockSpire",
+        "ObjPl_Tundra_Plant019_SharpFlower"
+    ],
+    "Core_Tundra_Resources": [
+        "ObjPl_Astronium",
+        "ObjPl_Astronium_CL",
+        "ObjPl_Astronium_UG",
+        "ObjPl_Clay",
+        "ObjPl_Clay_CL",
+        "ObjPl_Clay_UG",
+        "ObjPl_Quartz",
+        "ObjPl_Quartz_CL",
+        "ObjPl_Quartz_UG",
+        "ObjPl_Graphite",
+        "ObjPl_Graphite_UG",
+        "ObjPl_Graphite_CL"
+    ],
+    "Mantle_Tundra_Props_NoLrg": [
+        "ObjPl_Tundra_Plant059",
+        "ObjPl_Tundra_Rock003",
+        "ObjPl_Tundra_Rock007"
+    ],
+    "Mantle_Terran_Props_01a": [
+        "ObjPl_RoundFungus_01",
+        "ObjPl_RoundFungus_Ground_01",
+        "ObjPl_Mantle_Spore",
+        "ObjPl_OrganicPOI_045_RoundFungusTree_01a1",
+        "ObjPl_045_RoundFungusTree_01b",
+        "ObjPl_Harvestables_Terran_Mantle"
+    ],
+    "CrustClose_ExoticMoon_Puzzles": [
+        "ObjPl_Puzzle_Surface_ExoticMoon"
+    ],
+    "Plains_Terran_Props": [
+        "ObjPl_Plains_RockSlab_01_Lrg",
+        "ObjPl_Plains_Billows_01",
+        "ObjPl_SharpReed_01",
+        "ObjPl_Harvestable_Plant056_RoundBush",
+        "ObjPl_OrganicPOI_Terran_Plains",
+        "ObjPl_Rods_01",
+        "ObjPl_Plains_Grass_02b",
+        "ObjPl_Plains_Grass_01b",
+        "ObjPl_NarrowFurm_01",
+        "ObjPl_Harvestables_Terran_Plains",
+        "ObjPl_Terran_GrassBasic"
+    ],
+    "Core_Arid_Resources": [
+        "ObjPl_Astronium",
+        "ObjPl_Astronium_CL",
+        "ObjPl_Astronium_UG",
+        "ObjPl_Clay",
+        "ObjPl_Clay_UG",
+        "ObjPl_Clay_CL",
+        "ObjPl_Quartz",
+        "ObjPl_Quartz_CL",
+        "ObjPl_Quartz_UG",
+        "ObjPl_Graphite",
+        "ObjPl_Graphite_CL",
+        "ObjPl_Graphite_UG"
+    ],
+    "Crust_Exotic_Harvestables": [
+        "ObjPl_Harvestables_Exotic_Crust",
+        "ObjPl_OrganicPOI_Exotic_Crust"
+    ],
+    "Thawed_Tundra_Props": [
+        "ObjPl_Harvestable_Tundra_Rock026_SharpPorous",
+        "ObjPl_Tundra_Grass_SharpTall",
+        "ObjPl_Tundra_Grass_SharpShort",
+        "ObjPl_Tundra_Plant029_SharpBush",
+        "ObjPl_RockShardRound_Wide",
+        "ObjPl_OrganicPOI_Tundra_Plant054_SharpBush"
+    ],
+    "Valleys_Exotic_Hazards": [
+        "ObjPl_Flats_Geysers_01",
+        "ObjPl_Bouncer_Tongue_01",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Lobber_01",
+        "ObjPl_Knocker_Flower_01"
+    ],
+    "Mantle_Exotic_POIs": [
+        "ObjPl_POI_Rover_02_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Base_Exotic_U",
+        "ObjPl_POI_Smelter_Large_U_Exotic_01",
+        "ObjPl_POI_Research_Large_U_Exotic_01",
+        "ObjPl_POI_CoalFarm_Medium_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Core_Cavern_ExoticMoon": [
+        "ObjPl_Caverns_Stalactite_01a",
+        "ObjPl_Caverns_Stalactite_01b",
+        "ObjPl_Caverns_Stalactite_01c",
+        "ObjPl_Caverns_Stalactite_01d",
+        "ObjPl_Caverns_Stalactite_01e",
+        "ObjPl_Caverns_Stalactite_01f",
+        "ObjPl_Rock024_Stalagmite_01a",
+        "ObjPl_Rock024_Stalagmite_01b",
+        "ObjPl_Hills_Spheres_01",
+        "ObjPl_Cavern_SharpWedge_Md_A",
+        "ObjPl_Cavern_SharpWedge_Md_B",
+        "ObjPl_Hills_Spheres_01b"
+    ],
+    "Core_Arid_POIs": [
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Research_Large_U_Arid_01",
+        "ObjPl_POI_Smelter_Large_U_Arid_01",
+        "ObjPl_POI_Base_Arid_01",
+        "ObjPl_POI_CoalFarm_Medium_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Flats_TerranMoon_Resources_C": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Ammonium",
+        "ObjPl_Ammonium_UG"
+    ],
+    "Crust_Radiated_Hazards_04": [
+        "ObjPl_Spikers_Ceiling_03",
+        "ObjPl_Spikers_Ground_02",
+        "ObjPl_Spikers_Walls_02",
+        "ObjPl_Gasbags_02-2_Ceiling",
+        "ObjPl_Gasbags_02-2_Walls",
+        "ObjPl_Gasbags_02-3_Ground"
+    ],
+    "Mantle_Exotic_Hazards": [
+        "ObjPl_Lobber_01",
+        "ObjPl_Popper_Ceiling_03",
+        "ObjPl_Popper_Walls_03",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Gasbags_02-1_Ceiling",
+        "ObjPl_Gasbags_02-1_Walls",
+        "ObjPl_Gasbags_02-2_Ground"
+    ],
+    "Valleys_Exotic_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Clay",
+        "ObjPl_Clay_UG"
+    ],
+    "Cavern_Props_Generic_02a": [
+        "ObjPl_Caverns_Stalactite_2",
+        "ObjPl_Caverns_StalagmitesWeird",
+        "ObjPl_Caverns_Cubes_01",
+        "ObjPl_RockCave",
+        "ObjPl_Caverns_Billows_01",
+        "ObjPl_Craters_Billows_01",
+        "ObjPl_Caverns_FallingRocks",
+        "ObjPl_Plant035_RoundFungus"
+    ],
+    "Core_Tundra_Puzzles": [
+        "ObjPl_Puzzle_Core_Tundra"
+    ],
+    "Valleys_Arid_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Ammonium",
+        "ObjPl_Ammonium_UG"
+    ],
+    "Flats_Barren_Puzzles": [
+        "ObjPl_Puzzle_Surface_Barren"
+    ],
+    "CrustClose_Exotic_Puzzles": [
+        "ObjPl_Puzzle_Crust_Exotic"
+    ],
+    "PTM_Snail_Shell_Novus": [
+        "PP_Snail_Shell_Novus"
+    ],
+    "Core_Exotic_Harvestables": [
+        "ObjPl_Harvestables_Exotic_Core",
+        "ObjPl_OrganicPOI_Exotic_Core"
+    ],
+    "Chess_Surface_ExoticMoon_POIs": [
+        "ObjPl_Chess_Normal_ExoticMoon"
+    ],
+    "Flats_ExoticMoon_Resources_C": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Ammonium",
+        "ObjPl_Ammonium_UG"
+    ],
+    "Mantle_Arid_Puzzles": [
+        "ObjPl_Puzzle_Mantle_Arid"
+    ],
+    "Mountains_Exotic_POIs": [
+        "ObjPl_POI_Dropship_01",
+        "ObjPl_POI_SolarFarm_01_Small",
+        "ObjPl_POI_WindFarm_01_Small",
+        "ObjPl_Wreck_Station03a_Exotic",
+        "ObjPl_Wreck_Station03b_Exotic",
+        "ObjPl_Wreck_Station03c_Exotic",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_Wreck_SmShuttle_Exotic"
+    ],
+    "Valley_Arid_Hazards": [
+        "ObjPl_Shooter_01",
+        "ObjPl_Knocker_Whoop_01",
+        "ObjPl_Bouncer_Lilies_01",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Spikers_Ground_02",
+        "ObjPl_Spikers_Ground_03",
+        "ObjPl_Bouncer_Lilies_02",
+        "ObjPl_Bouncer_Lilies_03"
+    ],
+    "Crust_ExoticMoon_Puzzles": [
+        "ObjPl_Puzzle_Surface_ExoticMoon"
+    ],
+    "Hills_Radiated_POIs": [
+        "ObjPl_POI_Dropship_01",
+        "ObjPl_POI_Rover_03_Small",
+        "ObjPl_POI_SolarFarm_01_Medium",
+        "ObjPl_POI_WindFarm_01_Medium",
+        "ObjPl_Wreck_Hills_Radiated"
+    ],
+    "Crust_Arid_Puzzles": [
+        "ObjPl_Puzzle_Crust_Arid"
+    ],
+    "Dunes_Arid_POIs": [
+        "ObjPl_POI_Rover_02_Small",
+        "ObjPl_POI_SolarFarm_01_Small",
+        "ObjPl_Wreck_Station04a_Arid",
+        "ObjPl_Wreck_Station04b_Arid",
+        "ObjPl_Wreck_Station05a_Arid",
+        "ObjPl_Wreck_Station05b_Arid",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_Wreck_Array_Arid",
+        "ObjPl_POI_SolarFarm_01_Medium",
+        "ObjPl_Wreck_SmShuttle_Arid"
+    ],
+    "Craters_ExoticMoon_Puzzles": [
+        "ObjPl_Puzzle_Surface_ExoticMoon"
+    ],
+    "Mountains_Radiated_Hazards": [
+        "ObjPl_Shooter_Explode_01",
+        "ObjPl_Knocker_Whoop_01",
+        "ObjPl_Bouncer_Lilies_01",
+        "ObjPl_Spikers_Walls_01",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Spikers_Ground_02",
+        "ObjPl_Spikers_Ground_03",
+        "ObjPl_Gasbags_02-1_Walls",
+        "ObjPl_Spikers_Ceiling_03",
+        "ObjPl_Gasbags_02-1_Ceiling"
+    ],
+    "Core_Radiated_Puzzles": [
+        "ObjPl_Puzzle_Core_Radiated"
+    ],
+    "PTM_Snail_Shell_Sylva": [
+        "PP_Snail_Shell_Sylva"
+    ],
+    "Hills_ExoticMoon_POIs": [
+        "ObjPl_POI_Dropship_01",
+        "ObjPl_Wreck_Satellites_ExoticMoon",
+        "ObjPl_Wreck_SmShuttle_Exotic"
+    ],
+    "Flats_Barren_Hazards": [
+        "ObjPl_Flats_Geysers_01",
+        "ObjPl_Spikers_Ground_01"
+    ],
+    "Hills_Barren_Hazards": [
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Flats_Geysers_01",
+        "ObjPl_Spikers_Walls_01"
+    ],
+    "Fissure_Arid_Hazards": [
+        "ObjPl_Knocker_Whoop_01",
+        "ObjPl_Spikers_Walls_01",
+        "ObjPl_Spikers_Ground_02",
+        "ObjPl_Spikers_Ground_03",
+        "ObjPl_Bouncer_Lilies_02",
+        "ObjPl_Bouncer_Lilies_03",
+        "ObjPl_Spikers_Walls_02",
+        "ObjPl_Spikers_Walls_03"
+    ],
+    "Mantle_Arid_Hazards": [
+        "ObjPl_Shooter_01",
+        "ObjPl_Spikers_Ceiling_01",
+        "ObjPl_Spikers_Walls_01",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Gasbags_01-3_Ceiling",
+        "ObjPl_Gasbags_02-1_Walls",
+        "ObjPl_Gasbags_02-1_Ground"
+    ],
+    "Mountains_Exotic_Props": [
+        "ObjPl_OrganicPOI_Plant047_RoundBerryBush",
+        "ObjPl_Plant048_RoundBerryBush",
+        "ObjPl_Harvestables_Plant049_RoundBerryReed",
+        "ObjPl_Exotic_Grass",
+        "ObjPl_Exotic_Nettle",
+        "ObjPl_Harvestables_Exotic_Mountains"
+    ],
+    "Crust_ExoticMoon_Harvestables": [
+        "ObjPl_Harvestables_ExoticMoon_Crust",
+        "ObjPl_OrganicPOI_ExoticMoon_Crust"
+    ],
+    "ObjPl_Craters_ExoticMoon_01": [
+        "ObjPl_Craters_Billows_01",
+        "ObjPl_Hills_RockSlab_01",
+        "ObjPl_Craters_RoundWeed_01",
+        "ObjPl_Rock019_Slab",
+        "ObjPl_OrganicPOI_ExoticMoon_Rock019_Slab_Md_B",
+        "ObjPl_Harvestable_ExoticMoon_RoundReed_01a",
+        "ObjPl_RoundReed_01",
+        "ObjPl_Hills_Spheres_01",
+        "ObjPl_OrganicPOI_ExoticMoon_Craters_01"
+    ],
+    "Crust_Cavern_Terran_01bb": [
+        "ObjPl_Caverns_Stalactite_01a",
+        "ObjPl_Caverns_Stalactite_01b",
+        "ObjPl_Caverns_Stalactite_01c",
+        "ObjPl_Caverns_Stalactite_01d",
+        "ObjPl_Caverns_Stalactite_01e",
+        "ObjPl_Caverns_Stalactite_01f",
+        "ObjPl_Caverns_Stalagmite_01a",
+        "ObjPl_Caverns_Stalagmite_01b",
+        "ObjPl_Caverns_Stalagmite_01c",
+        "ObjPl_Caverns_Stalagmite_01d",
+        "ObjPl_Caverns_Stalagmite_01e"
+    ],
+    "Crust_TerranMoon_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Compound_CL",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Resin_CL",
+        "ObjPl_Quartz",
+        "ObjPl_Quartz_CL",
+        "ObjPl_Quartz_UG",
+        "ObjPl_Laterite",
+        "ObjPl_Laterite_CL",
+        "ObjPl_Laterite_UG",
+        "ObjPl_Wolframite",
+        "ObjPl_Wolframite_UG",
+        "ObjPl_Wolframite_CL"
+    ],
+    "Crust_Tundra_Harvestables": [
+        "ObjPl_Harvestables_Tundra_Crust",
+        "ObjPl_OrganicPOI_Tundra_Crust"
+    ],
+    "Mantle_Tundra_Harvestables": [
+        "ObjPl_Harvestables_Tundra_Mantle",
+        "ObjPl_OrganicPOI_Tundra_Mantle"
+    ],
+    "Hills_Barren_POIs": [
+        "ObjPl_POI_Dropship_01",
+        "ObjPl_POI_SolarFarm_01_Small",
+        "ObjPl_POI_WindFarm_01_Small",
+        "ObjPl_Wreck_Array_Barren",
+        "ObjPl_Wreck_Station01_Barren",
+        "ObjPl_Wreck_Station03b_Barren",
+        "ObjPl_Wreck_Station03c_Barren",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_Wreck_SmShuttle_Barren",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Crust_Arid_Hazards_04": [
+        "ObjPl_Spikers_Ceiling_01",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Spikers_Walls_01",
+        "ObjPl_Gasbags_01-2_Ceiling",
+        "ObjPl_Gasbags_01-3_Walls",
+        "ObjPl_Gasbags_01-3_Ground",
+        "ObjPl_Gasbags_02-1_Ground"
+    ],
+    "Hills_Exotic_Puzzles": [
+        "ObjPl_Puzzle_Surface_Exotic"
+    ],
+    "Core_Barren_Harvestables": [
+        "ObjPl_Harvestables_Barren_Core",
+        "ObjPl_OrganicPOI_Barren_Core"
+    ],
+    "Core_Radiated_Harvestables": [
+        "ObjPl_Harvestables_Radiated_Core",
+        "ObjPl_OrganicPOI_Radiated_Core"
+    ],
+    "Craters_Barren_Puzzles": [
+        "ObjPl_Puzzle_Surface_Barren"
+    ],
+    "CrustClose_Radiated_POIs": [
+        "ObjPl_POI_Rover_03_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Smelter_Large_U_Radiated_01",
+        "ObjPl_POI_Research_Large_U_Radiated_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "CrustClose_Tundra_POIs": [
+        "ObjPl_POI_Rover_03_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Thawed_Tundra_Resources_B": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Clay",
+        "ObjPl_Clay_UG"
+    ],
+    "CrustClose_Arid_POIs": [
+        "ObjPl_POI_Rover_02_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Mantle_Barren_Harvestables": [
+        "ObjPl_Harvestables_Barren_Mantle",
+        "ObjPl_OrganicPOI_Barren_Mantle"
+    ],
+    "Core_Terran_POIs": [
+        "ObjPl_POI_Rover_01_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Base_Terran_U",
+        "ObjPl_POI_Research_Large_U_Terran_01",
+        "ObjPl_POI_Smelter_Large_U_Terran_01",
+        "ObjPl_POI_CoalFarm_Medium_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "PTM_Snail_Shell_Glacio": [
+        "PP_Snail_Shell_Glacio"
+    ],
+    "Glaciers_Tundra_Props": [
+        "ObjPl_Tundra_RockSlab",
+        "ObjPl_Tundra_Billows",
+        "ObjPl_Harvestable_Tundra_RockBud_02",
+        "ObjPl_Tundra_PyramidRock_Lite",
+        "ObjPl_OrganicPOI_Tundra_PyramidRock"
+    ],
+    "Crust_Tundra_Puzzles": [
+        "ObjPl_Puzzle_Surface_Tundra"
+    ],
+    "Valley_Arid_Puzzles": [
+        "ObjPl_Puzzle_Surface_Arid"
+    ],
+    "Hills_Exotic_Props": [
+        "ObjPl_ExoticHills_Spheres_01",
+        "ObjPl_Aubergine",
+        "ObjPl_Exotic_Dots",
+        "ObjPl_Plant_Post",
+        "ObjPl_Harvestables_Plant_Post_Small",
+        "ObjPl_OrganicPOI_Hills_Exotic_RockRound_01"
+    ],
+    "Chess_Crust_ExoticMoon_POIs": [
+        "ObjPl_Chess_Normal_ExoticMoon"
+    ],
+    "Crust_Terran_Harvestables": [
+        "ObjPl_Harvestables_Terran_Crust",
+        "ObjPl_OrganicPOI_Terran_Crust"
+    ],
+    "Core_ExoticMoon_Hazards": [
+        "ObjPl_Lobber_01",
+        "ObjPl_Popper_Ceiling_03",
+        "ObjPl_Popper_Walls_03",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Gasbags_02-2_Ground",
+        "ObjPl_Gasbags_02-2_Ceiling",
+        "ObjPl_Gasbags_02-2_Walls"
+    ],
+    "Mountains_Terran_Hazards": [
+        "ObjPl_Bouncer_Vines_01"
+    ],
+    "Plateaus_Arid_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Graphite",
+        "ObjPl_Graphite_UG",
+        "ObjPl_Wolframite",
+        "ObjPl_Wolframite_UG"
+    ],
+    "Glacier_Tundra_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Ammonium",
+        "ObjPl_Ammonium_UG"
+    ],
+    "Crust_Terran_Hazards_04": [
+        "ObjPl_Gasbags_01-1_Ground",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Popper_Ground_02",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Popper_Ceiling_01",
+        "ObjPl_Popper_Ceiling_02",
+        "ObjPl_Popper_Ceiling_03",
+        "ObjPl_Popper_Walls_01",
+        "ObjPl_Popper_Walls_02",
+        "ObjPl_Popper_Walls_03",
+        "ObjPl_Gasbags_01-1_Walls"
+    ],
+    "Core_Tundra_Hazards": [
+        "ObjPl_Popper_Ceiling_03",
+        "ObjPl_Popper_Walls_03",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Gasbags_02-2_Ceiling",
+        "ObjPl_Gasbags_02-3_Walls",
+        "ObjPl_Lobber_Explode_01",
+        "ObjPl_Gasbags_02-3_Ground",
+        "ObjPl_Popper_Prox_01"
+    ],
+    "ObjPl_Flats_ExoticMoon_01": [
+        "ObjPl_Flats_Billows_01",
+        "ObjPl_Flats_Grass_01",
+        "ObjPl_Encrusts_01",
+        "ObjPl_RockRound_01",
+        "ObjPl_OrganicPOI_Tall_RoundTree042_01a",
+        "ObjPl_Harvestable_Tall_RoundTree042_01b",
+        "ObjPl_Tall_RoundTree042_01c",
+        "ObjPl_OrganicPOI_ExoticMoon_Flats_01",
+        "ObjPl_Harvestables_ExoticMoon_Flats_01"
+    ],
+    "Core_ExoticMoon_Resources": [
+        "ObjPl_Astronium",
+        "ObjPl_Astronium_CL",
+        "ObjPl_Astronium_UG",
+        "ObjPl_Clay",
+        "ObjPl_Clay_CL",
+        "ObjPl_Clay_UG",
+        "ObjPl_Graphite",
+        "ObjPl_Graphite_CL",
+        "ObjPl_Graphite_UG",
+        "ObjPl_Quartz",
+        "ObjPl_Quartz_CL",
+        "ObjPl_Quartz_UG"
+    ],
+    "Craters_ExoticMoon_Resources_B": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Clay",
+        "ObjPl_Clay_UG"
+    ],
+    "Mountains_Terran_POIs": [
+        "ObjPl_POI_Dropship_01",
+        "ObjPl_POI_SolarFarm_01_Small",
+        "ObjPl_POI_WindFarm_01_Small",
+        "ObjPl_Wreck_Satellites_Terran",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_Ball_01"
+    ],
+    "Crust_Radiated_Hazards_03": [
+        "ObjPl_Spikers_Ceiling_02",
+        "ObjPl_Spikers_Walls_01",
+        "ObjPl_Spikers_Ground_03",
+        "ObjPl_Gasbags_02-1_Ceiling",
+        "ObjPl_Gasbags_02-2_Walls",
+        "ObjPl_Gasbags_02-2_Ground"
+    ],
+    "Fissure_Arid_Props": [
+        "ObjPl_OrganicPOI_RockRound_Wall",
+        "ObjPl_Harvestable_Plant025_RoundBush"
+    ],
+    "Core_Exotic_Puzzles": [
+        "ObjPl_Puzzle_Core_Exotic"
+    ],
+    "Flats_TerranMoon_Props": [
+        "ObjPl_TerranMoon_Cubes",
+        "ObjPl_TerranMoon_Cubes_Less",
+        "ObjPl_TerranMoon_RockFlat",
+        "ObjPl_TerranMoon_RockMedium",
+        "ObjPl_Harvestables_Barren_Flats_01",
+        "ObjPl_OrganicPOI_Barren_Flats_01"
+    ],
+    "Thawed_Tundra_Hazards": [
+        "ObjPl_Popper_Prox_01",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Lobber_Explode_01",
+        "ObjPl_Flats_Geysers_01"
+    ],
+    "Forests_Terran_Puzzles": [
+        "ObjPl_Puzzle_Surface_Terran"
+    ],
+    "Chess_Crust_Barren_POIs": [
+        "ObjPl_Chess_Normal_Barren"
+    ],
+    "CrustDeep_Exotic_Puzzles": [
+        "ObjPl_Puzzle_Crust_Exotic"
+    ],
+    "Crust_Exotic_POIs": [
+        "ObjPl_POI_Rover_02_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Smelter_Large_U_Exotic_01",
+        "ObjPl_POI_Research_Large_U_Exotic_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Mountains_Exotic_Puzzles": [
+        "ObjPl_Puzzle_Surface_Exotic"
+    ],
+    "Mountains_Terran_Props": [
+        "ObjPl_RockMedium_01",
+        "ObjPl_Mountains_TuftBladeTall",
+        "ObjPl_Mountains_TuftBladeGrass",
+        "ObjPl_Mountains_Billows_01",
+        "ObjPl_OrganicPOI_Terran_Mountain",
+        "ObjPl_Harvestables_Terran_Mountains"
+    ],
+    "Crust_Terran_Hazards_03": [
+        "ObjPl_Gasbags_01-1_Ground",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Popper_Ground_02",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Popper_Walls_01"
+    ],
+    "Crust_Tundra_POIs": [
+        "ObjPl_POI_Rover_03_Small",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Research_Large_U_Tundra_01",
+        "ObjPl_POI_Smelter_Large_U_Tundra_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Core_Barren_POIs": [
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_RandomDebris_01",
+        "ObjPl_POI_Base_Barren_U",
+        "ObjPl_POI_Research_Large_U_Barren_01",
+        "ObjPl_POI_Smelter_Large_U_Barren_01",
+        "ObjPl_POI_CoalFarm_Medium_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Mountains_Radiated_Props": [
+        "ObjPl_Harvestable_Rock017_SharpSlab",
+        "ObjPl_Radiated_Grass",
+        "ObjPl_Exotic_RockRound_01",
+        "ObjPl_OrganicPOI_Mountains_Rock022_SquareLiquid",
+        "ObjPl_Harvestables_Radiated_Mountains",
+        "ObjPl_OrganicPOI_Radiated_Mountains"
+    ],
+    "Crust_Barren_Hazards_02": [
+        "ObjPl_Spikers_Ceiling_01",
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Spikers_Walls_01",
+        "ObjPl_Gasbags_01-1_Ground"
+    ],
+    "PTM_Snail_Shell_Desolo": [
+        "PP_Snail_Shell_Desolo"
+    ],
+    "Glaciers_Tundra_POIs": [
+        "ObjPl_POI_Rover_03_Small",
+        "ObjPl_POI_WindFarm_01_Medium",
+        "ObjPl_POI_WindFarm_01_Small",
+        "ObjPl_Wreck_Station04a_Tundra",
+        "ObjPl_Wreck_Station04b_Tundra",
+        "ObjPl_Wreck_Station03c_Tundra",
+        "ObjPl_Wreck_Station05a_Tundra",
+        "ObjPl_Wreck_Station05b_Tundra",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Craters_Barren_Hazards": [
+        "ObjPl_Spikers_Ground_01"
+    ],
+    "Cavern_Props_Generic_01a": [
+        "ObjPl_Caverns_Stalactite_2",
+        "ObjPl_Caverns_Stalagmite",
+        "ObjPl_Caverns_Cubes_01",
+        "ObjPl_RockCave",
+        "ObjPl_Caverns_Billows_01",
+        "ObjPl_Craters_Billows_01",
+        "ObjPl_Caverns_FallingRocks",
+        "ObjPl_Plant035_RoundFungus"
+    ],
+    "Canyons_Radiated_Hazards": [
+        "ObjPl_Spikers_Ground_01",
+        "ObjPl_Spikers_Ground_02",
+        "ObjPl_Spikers_Ground_03",
+        "ObjPl_Spikers_Walls_01",
+        "ObjPl_Spikers_Walls_02",
+        "ObjPl_Spikers_Walls_03"
+    ],
+    "CrustClose_Barren_Puzzles": [
+        "ObjPl_Puzzle_Surface_Barren"
+    ],
+    "Canyons_Radiated_POIs": [
+        "ObjPl_Wreck_Canyons_Radiated",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_Ball_01",
+        "ObjPl_Wreck_SmShuttle_Radiated",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Hills_Radiated_Puzzles": [
+        "ObjPl_Puzzle_Surface_Radiated"
+    ],
+    "Mantle_TerranMoon_Resources": [
+        "ObjPl_Laterite",
+        "ObjPl_Laterite_CL",
+        "ObjPl_Laterite_UG",
+        "ObjPl_Wolframite",
+        "ObjPl_Wolframite_CL",
+        "ObjPl_Wolframite_UG",
+        "ObjPl_Ammonium",
+        "ObjPl_Ammonium_CL",
+        "ObjPl_Ammonium_UG",
+        "ObjPl_Sphalerite",
+        "ObjPl_Sphalerite_CL",
+        "ObjPl_Sphalerite_UG"
+    ],
+    "Hills_Radiated_Props": [
+        "ObjPl_Harvestable_Plant036_RoundTree",
+        "ObjPl_Grass_TuftBlade",
+        "ObjPl_Plant_Bulbs",
+        "ObjPl_Radiated_Grass",
+        "ObjPl_OrganicPOI_Radiated_Hills"
+    ],
+    "Hills_ExoticMoon_Hazards": [
+        "ObjPl_Lobber_01",
+        "ObjPl_Knocker_Flower_01",
+        "ObjPl_Bouncer_Tongue_01",
+        "ObjPl_Flats_Geysers_01",
+        "ObjPl_Popper_Ground_02",
+        "ObjPl_Popper_Ground_01"
+    ],
+    "Mantle_Tundra_Puzzles": [
+        "ObjPl_Puzzle_Mantle_Tundra"
+    ],
+    "Dunes_Radiated_Props": [
+        "ObjPl_Radiated_Grass",
+        "ObjPl_OrganicPOI_Rock011_RoundMound",
+        "ObjPl_Grass_TuftBlade",
+        "ObjPl_Radiated_Billow_Bubbles",
+        "ObjPl_Harvestable_Plant024_RoundFungus"
+    ],
+    "Crust_Terran_Hazards_02": [
+        "ObjPl_Gasbags_01-1_Ground",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Popper_Ground_02"
+    ],
+    "Sheets_Tundra_POIs": [
+        "ObjPl_POI_Dropship_01",
+        "ObjPl_POI_Rover_03_Small",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_Wreck_Station01_Tundra",
+        "ObjPl_Wreck_Station06a_Tundra",
+        "ObjPl_Wreck_Station06b_Tundra"
+    ],
+    "Flats_ExoticMoon_Puzzles": [
+        "ObjPl_Puzzle_Surface_ExoticMoon"
+    ],
+    "Core_Radiated_POIs": [
+        "ObjPl_POI_Ball_01",
+        "ObjPl_POI_Backpack_01",
+        "ObjPl_POI_Base_Radiated_U",
+        "ObjPl_POI_Smelter_Large_U_Radiated_01",
+        "ObjPl_POI_Research_Large_U_Radiated_01",
+        "ObjPl_POI_CoalFarm_Medium_01",
+        "ObjPl_POI_CoalFarm_Small_01",
+        "ObjPl_POI_ChipHolder"
+    ],
+    "Crust_ExoticMoon_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_CL",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Resin_CL",
+        "ObjPl_Quartz",
+        "ObjPl_Quartz_CL",
+        "ObjPl_Quartz_UG",
+        "ObjPl_Laterite",
+        "ObjPl_Laterite_UG",
+        "ObjPl_Laterite_CL",
+        "ObjPl_Hematite",
+        "ObjPl_Hematite_CL",
+        "ObjPl_Hematite_UG"
+    ],
+    "Mantle_Cavern_Terran_01": [
+        "ObjPl_Caverns_Stalactite_01a",
+        "ObjPl_Caverns_Stalactite_01b",
+        "ObjPl_Caverns_Stalactite_01c",
+        "ObjPl_Caverns_Stalactite_01d",
+        "ObjPl_Caverns_Stalactite_01e",
+        "ObjPl_Caverns_Stalactite_01f",
+        "ObjPl_Caverns_Stalagmite_01a",
+        "ObjPl_Caverns_Stalagmite_01b",
+        "ObjPl_Caverns_Stalagmite_01c",
+        "ObjPl_Caverns_Stalagmite_01d",
+        "ObjPl_Caverns_Stalagmite_01e"
+    ],
+    "Cavern_Props_Generic_Tundra": [
+        "ObjPl_Caverns_Stalactite_2",
+        "ObjPl_PyramidRock_Sharp",
+        "ObjPl_Caverns_Billows_01",
+        "ObjPl_Craters_Billows_01",
+        "ObjPl_Caverns_FallingRocks"
+    ],
+    "Mountains_Terran_Puzzles": [
+        "ObjPl_Puzzle_Surface_Terran"
+    ],
+    "Plains_Terran_Puzzles": [
+        "ObjPl_Puzzle_Surface_Terran"
+    ],
+    "Mantle_Terran_Resources": [
+        "ObjPl_Sphalerite",
+        "ObjPl_Sphalerite_UG",
+        "ObjPl_Sphalerite_CL",
+        "ObjPl_Laterite",
+        "ObjPl_Laterite_CL",
+        "ObjPl_Laterite_UG",
+        "ObjPl_Malachite",
+        "ObjPl_Malachite_CL",
+        "ObjPl_Malachite_UG",
+        "ObjPl_Ammonium",
+        "ObjPl_Ammonium_CL",
+        "ObjPl_Ammonium_UG"
+    ],
+    "Crust_Exotic_Hazards_01": [
+        "ObjPl_Popper_Walls_01",
+        "ObjPl_Popper_Walls_02",
+        "ObjPl_Popper_Ground_01",
+        "ObjPl_Popper_Ground_02",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Gasbags_02-1_Ground",
+        "ObjPl_Popper_Ceiling_01"
+    ],
+    "Mantle_ExoticMoon_Harvestables": [
+        "ObjPl_Harvestables_ExoticMoon_Mantle",
+        "ObjPl_OrganicPOI_ExoticMoon_Mantle"
+    ],
+    "Crust_Tundra_Hazards_03": [
+        "ObjPl_Popper_Ground_02",
+        "ObjPl_Popper_Walls_02",
+        "ObjPl_Popper_Ground_03",
+        "ObjPl_Gasbags_02-1_Ceiling",
+        "ObjPl_Gasbags_02-2_Walls",
+        "ObjPl_Gasbags_02-2_Ground",
+        "ObjPl_Popper_Prox_01"
+    ],
+    "Valleys_Exotic_Puzzles": [
+        "ObjPl_Puzzle_Surface_Exotic"
+    ],
+    "Hills_Exotic_Resources": [
+        "ObjPl_Compound",
+        "ObjPl_Compound_UG",
+        "ObjPl_Resin",
+        "ObjPl_Resin_UG",
+        "ObjPl_Ammonium",
+        "ObjPl_Ammonium_UG"
+    ],
+    "Crust_Barren_Puzzles": [
+        "ObjPl_Puzzle_Surface_Barren"
+    ],
+    "Mantle_Arid_Harvestables": [
+        "ObjPl_Harvestables_Arid_Mantle",
+        "ObjPl_OrganicPOI_Arid_Mantle"
+    ]
+}
