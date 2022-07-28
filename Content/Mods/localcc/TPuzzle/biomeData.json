@@ -1,0 +1,215 @@
+{
+  "Terran": {
+    "SurfaceBiomes": {
+      "Plains": {
+        "Layers": [
+          "None"
+        ]
+      },
+      "Crevasse": {
+        "Layers": [
+          "None"
+        ]
+      },
+      "Forests": {
+        "Layers": [
+          "None"
+        ]
+      },
+      "Mountains": {
+        "Layers": [
+          "BearCaves"
+        ]
+      }
+    },
+    "CrustBiome": {
+      "Layers": [
+        "CrustTerran1",
+        "CrustTerran2",
+        "CrustTerran3",
+        "CrustTerran4",
+        "CrustTerran5"
+      ]
+    }
+  },
+  "TerranMoon": {
+    "SurfaceBiomes": {
+      "Barren Hills": {
+        "Layers": [
+          "Colour+Tunnel"
+        ]
+      },
+      "Barren Flats": {
+        "Layers": [
+          "Flats01+Tunnel+Obj"
+        ]
+      },
+      "Craters": {
+        "Layers": [
+          "CratersLowColour"
+        ]
+      }
+    },
+    "CrustBiome": {
+      "Layers": [
+        "CrustTM1",
+        "CrustTM2"
+      ]
+    }
+  },
+  "ExoticMoon": {
+    "SurfaceBiomes": {
+      "EM Flats": {
+        "Layers": [
+          "Flats01+Tunnel+Obj"
+        ]
+      },
+      "EM Craters": {
+        "Layers": [
+          "CratersLowColour"
+        ]
+      },
+      "EM Hills": {
+        "Layers": [
+          "Colour+Tunnel"
+        ]
+      }
+    },
+    "CrustBiome": {
+      "Layers": [
+        "CrustEM1",
+        "CrustEM2"
+      ]
+    }
+  },
+  "Exotic": {
+    "SurfaceBiomes": {
+      "Hills_Exotic": {
+        "Layers": [
+          "None"
+        ]
+      },
+      "Valleys_Exotic": {
+        "Layers": [
+          "None"
+        ]
+      },
+      "Rolling_Exotic": {
+        "Layers": [
+          "None"
+        ]
+      },
+      "Mountains_Exotic": {
+        "Layers": [
+          "None"
+        ]
+      }
+    },
+    "CrustBiome": {
+      "Layers": [
+        "CrustExotic1",
+        "CrustExotic2",
+        "CrustExotic3",
+        "CrustExotic4"
+      ]
+    }
+  },
+  "Arid": {
+    "SurfaceBiomes": {
+      "Dune_Arid": {
+        "Layers": [
+          "SurfaceTunnels"
+        ]
+      },
+      "Fissure_Arid": {
+        "Layers": [
+          "None"
+        ]
+      },
+      "Plateaus_Arid": {
+        "Layers": [
+          "None"
+        ]
+      },
+      "Valley_Arid": {
+        "Layers": [
+          "ValleyDeco"
+        ]
+      }
+    },
+    "CrustBiome": {
+      "Layers": [
+        "CrustArid1",
+        "CrustArid2",
+        "CrustArid3",
+        "CrustArid4",
+        "CrustArid5"
+      ]
+    }
+  },
+  "Radiated": {
+    "SurfaceBiomes": {
+      "CanyonsRadiated": {
+        "Layers": [
+          "None"
+        ]
+      },
+      "DunesRadiated": {
+        "Layers": [
+          "None"
+        ]
+      },
+      "HillsRadiated": {
+        "Layers": [
+          "None"
+        ]
+      },
+      "MountainsRadiated": {
+        "Layers": [
+          "Holes"
+        ]
+      }
+    },
+    "CrustBiome": {
+      "Layers": [
+        "CrustRadiated1-Empty",
+        "CrustRadiated2",
+        "CrustRadiated3",
+        "CrustRadiated4"
+      ]
+    }
+  },
+  "Tundra": {
+    "SurfaceBiomes": {
+      "Glacier": {
+        "Layers": [
+          "None"
+        ]
+      },
+      "Sheets": {
+        "Layers": [
+          "None"
+        ]
+      },
+      "Thawed": {
+        "Layers": [
+          "None"
+        ]
+      },
+      "IceShard": {
+        "Layers": [
+          "None"
+        ]
+      }
+    },
+    "CrustBiome": {
+      "Layers": [
+        "CrustTundra1",
+        "CrustTundra2",
+        "CrustTundra3",
+        "CrustTundra4",
+        "CrustTundra5"
+      ]
+    }
+  }
+}
