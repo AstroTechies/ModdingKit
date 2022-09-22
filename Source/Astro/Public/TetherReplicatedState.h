@@ -1,14 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "TetherGraphEdge.h"
 #include "TetherEdgeState.h"
+#include "TetherGraphEdge.h"
 #include "TetherReplicatedState.generated.h"
 
 class ATetherManager;
-
-FORCEINLINE uint32 GetTypeHash(const FTetherGraphEdge& TypeVar) {
-    return 0;
-}
 
 USTRUCT(BlueprintType)
 struct FTetherReplicatedState {

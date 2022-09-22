@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "SymbolFireEventDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
 #include "ControlSymbolEvents.generated.h"
 
-class UActivation;
-class UControlSymbol;
 class UControlComponent;
+class UControlSymbol;
+class UActivation;
 class UPrimitiveComponent;
 class AActor;
 

@@ -5,8 +5,8 @@
 #include "SignalDelegate.h"
 #include "AstroTakePictureAction.generated.h"
 
-class APlayerController;
 class UWandererPhotoWidget;
+class APlayerController;
 
 UCLASS(Blueprintable)
 class ASTRO_API UAstroTakePictureAction : public UAstroAction {

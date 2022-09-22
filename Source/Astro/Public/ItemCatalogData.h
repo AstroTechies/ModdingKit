@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "EItemVariantType.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
+#include "EItemVariantType.h"
 #include "ItemCatalogData.generated.h"
 
+class UStaticMesh;
 class UItemCatalogCategoryDefinition;
 class UItemType;
-class UStaticMesh;
 
 UCLASS(Blueprintable, EditInlineNew)
 class ASTRO_API UItemCatalogData : public UDataAsset {

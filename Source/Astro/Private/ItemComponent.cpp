@@ -3,9 +3,9 @@
 #include "Templates/SubclassOf.h"
 
 class UItemType;
-class UItemComponent;
 class UAstroSaveCustomArchiveProxy;
 class AActor;
+class UItemComponent;
 
 int32 UItemComponent::TakeItemRateDelta(float Rate, float DeltaTime) {
     return 0;

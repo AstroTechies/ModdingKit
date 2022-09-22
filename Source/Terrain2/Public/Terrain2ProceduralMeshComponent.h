@@ -5,28 +5,28 @@
 #include "T2ProcMeshSection.h"
 #include "Terrain2ProceduralMeshComponent.generated.h"
 
-class UMaterialInterface;
-class UBodySetup;
 class UMaterialInstanceDynamic;
+class UBodySetup;
+class UMaterialInterface;
 class UMaterialRemapTable;
 
-UCLASS(ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class TERRAIN2_API UTerrain2ProceduralMeshComponent : public UMeshComponent, public IInterface_CollisionDataProvider {
     GENERATED_BODY()
 public:
-    UPROPERTY(Instanced)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UBodySetup* ProcMeshBodySetup;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<UMaterialInstanceDynamic*> Materials;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UMaterialInterface* DefaultMaterialShadows;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UMaterialRemapTable* HQMaterialRemapTable;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FT2ProcMeshSection> ProcMeshSections;
     
     UTerrain2ProceduralMeshComponent();

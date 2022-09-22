@@ -7,9 +7,9 @@
 #include "CustomCameraRigComponent.generated.h"
 
 class AActor;
-class UCustomCameraRigComponent;
 class UCameraContext;
 class ACameraRigActor;
+class UCustomCameraRigComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class UCustomCameraRigComponent : public UActorComponent {

@@ -2,12 +2,12 @@
 #include "Net/UnrealNetwork.h"
 #include "ControlComponent.h"
 
-class UPrimitiveComponent;
 class AAstroPlayerController;
 class APlayController;
-class ASeatBase;
-class UClickQuery;
+class UPrimitiveComponent;
 class APhysicalItem;
+class UClickQuery;
+class ASeatBase;
 
 void ARailCarBase::ServerHandleDriverInput_Implementation(float SteeringInput, float ThrottleInput, bool isCameraBackwards) {
 }
@@ -91,6 +91,9 @@ ASeatBase* ARailCarBase::GetFirstSlottedSeat() const {
 
 int32 ARailCarBase::GetCurrentCaravanLength() {
     return 0;
+}
+
+void ARailCarBase::ConsumeLeftTriggerToggle() {
 }
 
 bool ARailCarBase::CaravanHasDesiredPath() const {

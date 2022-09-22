@@ -1,7 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameplayTask.h"
-#include "GameplayTask.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=GameplayTasks -ObjectName=GameplayTask -FallbackName=GameplayTask
 #include "AstroTakePictureTask.generated.h"
 
 UCLASS(Blueprintable)

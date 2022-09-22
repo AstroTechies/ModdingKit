@@ -6,19 +6,19 @@ USTRUCT(BlueprintType)
 struct MESSAGEOFTHEDAY_API FAstroMessageOfTheDayLocalizedContent {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText Title;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText LinkText;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString URL;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString BackgroundImageCDNKey;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FText> Messages;
     
     FAstroMessageOfTheDayLocalizedContent();

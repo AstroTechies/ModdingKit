@@ -1,8 +1,8 @@
 #include "AstroCharacterMovementComponent.h"
 
 class UPrimitiveComponent;
-class AAstroCharacter;
 class UAstroCharacterMovementOverrideComponent;
+class AAstroCharacter;
 
 void UAstroCharacterMovementComponent::ZeroVelocity() {
 }

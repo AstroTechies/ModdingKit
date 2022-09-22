@@ -2,12 +2,12 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "SlotTransition.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "Slot.h"
+#include "SlotTransition.h"
 #include "SlotReference.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 #include "SlotIndicatorDefinition.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "ESlotType.h"
 #include "ESlotConfiguration.h"
 #include "ESlotConnectorType.h"
@@ -17,8 +17,8 @@
 class APhysicalItem;
 class ASlotConnection;
 class UItemType;
-class UAstroSaveCustomArchiveProxy;
 class AAstroPlayerController;
+class UAstroSaveCustomArchiveProxy;
 class AActor;
 class USlotsComponent;
 class UStaticMeshComponent;
@@ -125,6 +125,9 @@ public:
     void SetTracePrimitivesAsleep(bool bAreAsleep);
     
     UFUNCTION(BlueprintCallable)
+    void SetStreamingPowerConnectionsMergePowerNodes(FSlotReference Slot, bool MergeNodes);
+    
+    UFUNCTION(BlueprintCallable)
     static void SetSlotRelativeTransform(FSlotReference Slot, FTransform Transform);
     
     UFUNCTION(BlueprintCallable)
@@ -186,7 +189,13 @@ public:
     static ASlotConnection* MakeExclusiveConnection(FSlotReference A, FSlotReference B, TSubclassOf<ASlotConnection> OverrideType);
     
     UFUNCTION(BlueprintCallable)
-    static ASlotConnection* MakeConnection(FSlotReference A, FSlotReference B, TSubclassOf<ASlotConnection> OverrideType, bool Visible);
+    static ASlotConnection* MakeConnection(FSlotReference A, FSlotReference B, TSubclassOf<ASlotConnection> OverrideType, bool Visible, bool PlaySounds);
+    
+    UFUNCTION(BlueprintPure)
+    bool GetStreamingPowerConnectionsMergePowerNodes(FSlotReference Slot);
+    
+    UFUNCTION(BlueprintPure)
+    bool GetStreamingPowerConnectionsCanChangeMergePowerNodes(FSlotReference Slot);
     
     UFUNCTION(BlueprintPure)
     static ESlotType GetSlotType(FSlotReference Slot);

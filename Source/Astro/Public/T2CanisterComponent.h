@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SlotReference.h"
 #include "T2CanisterComponent.generated.h"
 
-class UItemComponent;
-class UT2CanisterOrganizationRule;
 class UItemType;
 class APhysicalItem;
+class UT2CanisterOrganizationRule;
+class UItemComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UT2CanisterComponent : public UActorComponent {

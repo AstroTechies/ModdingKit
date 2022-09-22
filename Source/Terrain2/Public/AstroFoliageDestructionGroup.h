@@ -7,17 +7,17 @@
 class AActor;
 class UStaticMesh;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TERRAIN2_API UAstroFoliageDestructionGroup : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FFoliageDestructionInfo FoliageDestructionInfo;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSoftObjectPtr<UStaticMesh>> BatchingMeshes;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSoftClassPtr<AActor>> PlacementActors;
     
     UAstroFoliageDestructionGroup();

@@ -1,8 +1,8 @@
 #include "AstroGameInstance.h"
 #include "Templates/SubclassOf.h"
 
-class UUserWidget;
 class UObject;
+class UUserWidget;
 
 void UAstroGameInstance::PlatformLogout() {
 }

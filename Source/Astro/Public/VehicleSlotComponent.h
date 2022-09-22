@@ -6,8 +6,8 @@
 #include "VehicleSlotComponent.generated.h"
 
 class AActor;
-class UVehicleSlotComponent;
 class APhysicalItem;
+class UVehicleSlotComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UVehicleSlotComponent : public UActorComponent {

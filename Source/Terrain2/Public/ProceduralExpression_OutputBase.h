@@ -3,7 +3,7 @@
 #include "ProceduralExpression.h"
 #include "ProceduralExpression_OutputBase.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TERRAIN2_API UProceduralExpression_OutputBase : public UProceduralExpression {
     GENERATED_BODY()
 public:

@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct TERRAIN2_API FSubterraneanLayer : public FBiomeLayer {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Thickness;
     
     FSubterraneanLayer();

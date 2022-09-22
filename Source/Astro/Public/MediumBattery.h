@@ -4,8 +4,8 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
 #include "MediumBattery.generated.h"
 
-class UMaterialInstanceDynamic;
 class UPowerComponent;
+class UMaterialInstanceDynamic;
 class USceneComponent;
 
 UCLASS(Blueprintable)

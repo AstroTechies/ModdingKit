@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
+#include "SignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "LaunchedSignalDelegate.h"
-#include "SignalDelegate.h"
 #include "TradeShipDockComponent.generated.h"
 
 class APhysicalItem;

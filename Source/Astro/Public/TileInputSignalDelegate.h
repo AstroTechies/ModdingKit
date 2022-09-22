@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "ETileInputIndex.h"
+#include "Blueprint/UserWidget.h"
 #include "TileInputSignalDelegate.generated.h"
 
 class UUserWidget;

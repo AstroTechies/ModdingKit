@@ -8,10 +8,10 @@ USTRUCT(BlueprintType)
 struct TERRAIN2_API FVoxelMaterialProperties {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere, SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FLinearColor TerrainColor;
     
-    UPROPERTY(EditAnywhere, SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     int32 TerrainHardness;
     
     UPROPERTY(EditAnywhere, SaveGame)

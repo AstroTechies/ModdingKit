@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "SignalDelegate.h"
-#include "OnCrackedStateChangedDelegate.h"
-#include "ECrackableActorNetworkingPolicy.h"
-#include "ECrackableActorMethod.h"
 #include "CrackedReplicationData.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "OnCrackedStateChangedDelegate.h"
+#include "ECrackableActorMethod.h"
+#include "ECrackableActorNetworkingPolicy.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 #include "CrackableActorComponent.generated.h"

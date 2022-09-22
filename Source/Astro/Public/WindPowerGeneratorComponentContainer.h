@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroEntityComponentContainer.h"
 #include "WindPowerGeneratorComponent.h"
+#include "AstroEntityComponentContainer.h"
 #include "AstroDatumRef.h"
 #include "WindPowerGeneratorComponentContainer.generated.h"
 

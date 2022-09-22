@@ -2,17 +2,17 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "BreadboardPrinterAnimationReplicationData.h"
 #include "SlotReference.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "BreadboardPrinterAnimationReplicationData.h"
 #include "SignalDelegate.h"
 #include "EnableSignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
 #include "BreadboardPrinterComponent.generated.h"
 
-class USkeletalMeshComponent;
 class USceneComponent;
 class USphereComponent;
+class USkeletalMeshComponent;
 class APhysicalItem;
 class UPrinterComponent;
 class UPowerComponent;

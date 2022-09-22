@@ -3,7 +3,7 @@
 #include "ProceduralExpression.h"
 #include "ProceduralExpression_SdfToDensity.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TERRAIN2_API UProceduralExpression_SdfToDensity : public UProceduralExpression {
     GENERATED_BODY()
 public:

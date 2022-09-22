@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "OxygenatorSignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "OxygenatorSignalDelegate.h"
 #include "OxygenatorComponent.generated.h"
 
 class APhysicalItem;

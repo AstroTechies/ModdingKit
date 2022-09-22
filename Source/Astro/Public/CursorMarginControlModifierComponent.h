@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "CameraModifierComponent.h"
-#include "ECameraDOF.h"
 #include "ECameraControlMask.h"
+#include "ECameraDOF.h"
 #include "CursorMarginControlModifierComponent.generated.h"
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

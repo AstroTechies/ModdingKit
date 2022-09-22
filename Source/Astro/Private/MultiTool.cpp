@@ -228,6 +228,9 @@ bool UMultiTool::IsHoldingItem() const {
     return false;
 }
 
+void UMultiTool::HandleBackpackOpenedOrClosed(bool IsOpen) {
+}
+
 AActor* UMultiTool::GetMissionLogActor() const {
     return NULL;
 }

@@ -2,19 +2,19 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "CustomChildActorComponent.h"
-#include "SlotReference.h"
 #include "ESlottableItemsFiltrationListBehavior.h"
 #include "ESlotConfiguration.h"
 #include "ESlotConnectorType.h"
 #include "EAuxSlotType.h"
+#include "SlotReference.h"
 #include "ChildSlotComponent.generated.h"
 
-class UItemList;
-class AItemSlot;
 class UItemType;
+class AItemSlot;
+class UItemList;
 class APhysicalItem;
-class UItemListWeighted;
 class UPhysicalItemSpawnList;
+class UItemListWeighted;
 class URewardSelectionTemplate;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

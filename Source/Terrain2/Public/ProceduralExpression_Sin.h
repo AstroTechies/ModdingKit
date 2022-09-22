@@ -3,7 +3,7 @@
 #include "ProceduralExpression.h"
 #include "ProceduralExpression_Sin.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TERRAIN2_API UProceduralExpression_Sin : public UProceduralExpression {
     GENERATED_BODY()
 public:

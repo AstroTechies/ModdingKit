@@ -3,10 +3,10 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "TetherNetwork.generated.h"
 
-class ASlotConnection;
 class UTetherAttachComponent;
-class UTetherNetwork;
 class UOxygenatorComponent;
+class UTetherNetwork;
+class ASlotConnection;
 
 UCLASS(Blueprintable)
 class ASTRO_API UTetherNetwork : public UObject {

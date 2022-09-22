@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ActuationRequest.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "ActuationRequest.h"
 #include "ActuatorQueue.generated.h"
 
 UCLASS(Blueprintable)

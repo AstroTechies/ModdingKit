@@ -6,11 +6,11 @@
 #include "AstroSettings.generated.h"
 
 class UAstroMissionDataAsset;
-class AAstroPlanet;
 class ULevelSequence;
-class AActor;
-class AGateStation;
 class ASolarBody;
+class AActor;
+class AAstroPlanet;
+class AGateStation;
 class AAstroSettings;
 
 UCLASS(Blueprintable)

@@ -9,18 +9,21 @@
 #include "DeformableInterfaceT2.h"
 #include "SolarBodyEventDelegate.h"
 #include "SlotReference.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformableInterfaceT2 -FallbackName=DeformableInterfaceT2
+#include "OxygenLevelThresholdChangedDelegate.h"
+#include "SignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "OnCreativeDroneFlightStateChangedDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Quat -FallbackName=Quat
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
 #include "LightValuesChangedDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize10 -FallbackName=Vector_NetQuantize10
 #include "OneTimeTooltipList.h"
 #include "OnLandedOnGroundDelegate.h"
-#include "OxygenLevelThresholdChangedDelegate.h"
 #include "SuffocatingStateChangedDelegate.h"
 #include "PoweredStateChangedDelegate.h"
 #include "OnlineNicknameStateChangedDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
 //CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelMaterial -FallbackName=VoxelMaterial
 #include "VoxelMaterial.h"
 #include "Components/CapsuleComponent.h"
@@ -33,8 +36,12 @@ class UChildActorComponent;
 class UStaticMesh;
 class UStaticMeshComponent;
 class AActor;
+class UStaticMesh;
+class UCapsuleComponent;
 class UMaterialInterface;
 class AReroutePlacementHelper;
+class APlayController;
+class UStaticMeshComponent;
 class UPrimitiveComponent;
 class UAstroCharacterMovementComponent;
 class USkeletalMeshComponent;
@@ -45,7 +52,9 @@ class ASolarBody;
 class ABackpack;
 class UItemType;
 class UAstroActionComponent;
+class UChildActorComponent;
 class UMaterialInstanceDynamic;
+class UItemType;
 class APhysicalItem;
 class UControlSymbol;
 class APlayController;

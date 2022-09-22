@@ -1,192 +1,192 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "GlobalBiome.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SceneComponent -FallbackName=SceneComponent
-#include "EPolygonizerType.h"
-#include "DeformableInterfaceT2.h"
-#include "DeferredObjectCreationNodeData.h"
-#include "DeformationParamsT2.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EPhysicalSurface -FallbackName=EPhysicalSurface
 #include "EPlanetOptimization.h"
+#include "DeformableInterfaceT2.h"
+#include "DeformationParamsT2.h"
+#include "EPolygonizerType.h"
+#include "GlobalBiome.h"
 #include "SurfaceBiome.h"
 #include "UndergroundBiome.h"
-#include "T2MaterialCache.h"
-#include "ChildModifierCacheEntry.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "T2MaterialCache.h"
+#include "DeferredObjectCreationNodeData.h"
+#include "ChildModifierCacheEntry.h"
 #include "VoxelVolumeComponent.generated.h"
 
+class UAstroFoliageDestructionData;
+class UMaterialInterface;
 class UVoxelVolumeMaterialPalette;
 class UMaterialRemapTable;
-class UMaterialInterface;
 class UTerrain2ProceduralMeshComponent;
-class UAstroFoliageDestructionData;
 class AActor;
 class AAstroFoliageActor;
 
-UCLASS(BlueprintType, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
+UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class TERRAIN2_API UVoxelVolumeComponent : public USceneComponent, public IDeformableInterfaceT2 {
     GENERATED_BODY()
 public:
     DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FDeformationT2CompleteEvent, const FDeformationParamsT2&, params);
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DynamicPlanetOptimization;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EPlanetOptimization PlanetOptimization;
     
 private:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 Seed;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 CinematicFixedSeed;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 CinematicFixedSeedSecondary;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool RandomizeSeedInGame;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool RandomizeSeedInPIE;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool ClientsWaitForSeed;
     
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float VolumeRadius;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HighestDetailVoxelSize;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HigestDetailRadius;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LODCascadeScale;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bCastShadow: 1;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bCastFarShadow: 1;
     
-    UPROPERTY(AdvancedDisplay, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 ManuallySetLODRanges: 1;
     
     UPROPERTY(AdvancedDisplay, EditAnywhere)
     int8 MaxOctreeDepth;
     
-    UPROPERTY(AdvancedDisplay, EditAnywhere, EditFixedSize)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, EditFixedSize, meta=(AllowPrivateAccess=true))
     TArray<float> LODRanges;
     
-    UPROPERTY(AdvancedDisplay, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MultiplayerCorrectionRange;
     
-    UPROPERTY(AdvancedDisplay, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NodeCachingFactor;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UMaterialInterface* DefaultMaterial;
     
     UPROPERTY(EditAnywhere)
     TMap<TEnumAsByte<EPhysicalSurface>, UMaterialInterface*> DefaultMaterialsBySurfaceType;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UMaterialInterface* DefaultMaterialShadows;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UMaterialInterface* DefaultMaterialShadowsHQ;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UMaterialRemapTable* HQMaterialRemapTable;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UVoxelVolumeMaterialPalette* MaterialPalette;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EPolygonizerType PolygonizerType;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ObjectDestructionTimeslice;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ObjectCreationTimeslice;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ObjectRegistrationTimeslice;
     
-    UPROPERTY(AdvancedDisplay, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SurfaceBiomeHighWeightCutoff;
     
-    UPROPERTY(AdvancedDisplay, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SurfaceBiomeLowWeightCutoff;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGlobalBiome GlobalBiome;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSurfaceBiome> SurfaceBiomes;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FUndergroundBiome CrustBiome;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FUndergroundBiome MantleBiome;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FUndergroundBiome CoreBiome;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FT2MaterialCache MaterialCache;
     
 private:
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     TArray<UTerrain2ProceduralMeshComponent*> m_LODInProgressMeshes;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UAstroFoliageDestructionData* m_destructionData;
     
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     TArray<UTerrain2ProceduralMeshComponent*> m_meshComponentPool;
     
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     TArray<UTerrain2ProceduralMeshComponent*> m_meshRecyclePool;
     
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     TArray<UTerrain2ProceduralMeshComponent*> m_meshCleanupPool;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FName, FChildModifierCacheEntry> m_childModifierCache;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<AActor*> m_spawnedActorList;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<AActor*> m_deferredDestructionActors;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<AAstroFoliageActor*> m_deferredDestructionFoliageActors;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FDeferredObjectCreationNodeData> m_deferredObjectCreationNodes;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<UMaterialInterface*> LodMaterials;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<UMaterialInterface*> RandomMaterials;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     AAstroFoliageActor* m_foliageActor;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TSubclassOf<AActor> m_locusActorClass;
     
-    UPROPERTY(Export, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     UTerrain2ProceduralMeshComponent* m_proxyMesh;
     
 public:

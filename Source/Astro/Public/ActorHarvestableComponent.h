@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "HarvestableItemSpawnerDefinition.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "HarvestableItemSpawnerDefinition.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=RuntimeFloatCurve -FallbackName=RuntimeFloatCurve
 #include "ActorHarvestableComponent.generated.h"
 

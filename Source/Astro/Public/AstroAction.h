@@ -1,12 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "OnActionEndedDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 //CROSS-MODULE INCLUDE V2: -ModuleName=GameplayTasks -ObjectName=GameplayTaskOwnerInterface -FallbackName=GameplayTaskOwnerInterface
-#include "GameplayTaskOwnerInterface.h"
-#include "EAstroActionState.h"
+#include "GameplayTask.h"
+#include "OnActionEndedDelegate.h"
 #include "AstroActionIdentifier.h"
 #include "AstroActionContext.h"
+#include "EAstroActionState.h"
+#include "GameplayTaskOwnerInterface.h"
 #include "AstroAction.generated.h"
 
 class UGameplayTask;

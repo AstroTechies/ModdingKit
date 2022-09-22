@@ -1,29 +1,29 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "TooltipInputUnhandledDelegateDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "TooltipInteractionActiveDelegateDelegate.h"
-#include "TooltipWidgetOverride.h"
-#include "ETooltipArchetype.h"
-#include "ETooltipVisibilityControl.h"
-#include "SignalDelegate.h"
-#include "TooltipWidgetDisplayData.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
+#include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "ETooltipVisibilityControl.h"
+#include "TooltipInteractionActiveDelegateDelegate.h"
+#include "TooltipInputUnhandledDelegateDelegate.h"
+#include "ETooltipArchetype.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
 #include "TooltipProximityBadgeVisibilityData.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-#include "Components/SphereComponent.h"
-#include "ETooltipState.h"
 #include "EUseContext.h"
+#include "TooltipWidgetOverride.h"
+#include "TooltipWidgetDisplayData.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+#include "ETooltipState.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
 #include "ETooltipProximityState.h"
 #include "TooltipComponent.generated.h"
 
-class USceneComponent;
-class UPrimitiveComponent;
-class UAstroTooltipWidget;
 class APawn;
+class USceneComponent;
+class UAstroTooltipWidget;
+class USphereComponent;
+class UPrimitiveComponent;
 class UItemType;
 class UObject;
 class AActor;
@@ -231,6 +231,10 @@ public:
     
     UFUNCTION()
     AActor* GetActorThisTooltipIsFor();
+    
+protected:
+    UFUNCTION()
+    void FullyPresentTooltip();
     
 };
 

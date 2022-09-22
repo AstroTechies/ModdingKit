@@ -4,11 +4,11 @@
 
 class UMaterialInterface;
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FT2ProcMeshProxySection {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UMaterialInterface* Material;
     
     TERRAIN2_API FT2ProcMeshProxySection();

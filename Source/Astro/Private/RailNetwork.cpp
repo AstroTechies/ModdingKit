@@ -3,8 +3,8 @@
 #include "ClickableComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=InstancedStaticMeshComponent -FallbackName=InstancedStaticMeshComponent
 
-class URailPostComponent;
 class UClickQuery;
+class URailPostComponent;
 
 void ARailNetwork::OnRep_RailConnections() {
 }

@@ -14,6 +14,10 @@ private:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UTetherAttachComponent* B;
+
+	friend uint32 GetTypeHash(const FTetherGraphEdge& Other) {
+		return 0;
+	}
     
 public:
     ASTRO_API FTetherGraphEdge();

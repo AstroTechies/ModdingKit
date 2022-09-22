@@ -7,41 +7,41 @@ class UProceduralModifier;
 class UBoundedVoxelVolumeModifier;
 class UBoundedVoxelVolumeModifierList;
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct TERRAIN2_API FBiomeLayer {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName Name;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UProceduralModifier* VoxelFunction;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UProceduralModifier* VoxelFunctionOptimized;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UProceduralModifier*> ObjectPlacementModifiers;
     
-    UPROPERTY(EditAnywhere, Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     TArray<UBoundedVoxelVolumeModifier*> BoundedModifiers;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UBoundedVoxelVolumeModifierList* SharedBoundedModifierList;
     
-    UPROPERTY(AdvancedDisplay, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float UpperMarginZone;
     
-    UPROPERTY(AdvancedDisplay, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LowerMarginZone;
     
-    UPROPERTY(AdvancedDisplay, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float UpperTransitionZone;
     
-    UPROPERTY(AdvancedDisplay, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LowerTransitionZone;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FBiomeAudioEvents BiomeAudio;
     
     FBiomeLayer();

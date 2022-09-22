@@ -5,11 +5,11 @@
 
 class AActor;
 
-UCLASS(EditInlineNew)
+UCLASS(Blueprintable, EditInlineNew)
 class TERRAIN2_API UActorPlacementModifier : public UBoundedVoxelVolumeModifier {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftClassPtr<AActor> actorType;
     
     UActorPlacementModifier();

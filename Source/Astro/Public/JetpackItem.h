@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EPhysicalSurface -FallbackName=EPhysicalSurface
 #include "PhysicalItem.h"
-#include "ERemainingFuelState.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "ERemainingFuelState.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EPhysicalSurface -FallbackName=EPhysicalSurface
 #include "JetpackItem.generated.h"
 
-class ABackpack;
 class UFuelConsumerComponent;
 class UJetpackMovementOverrideComponent;
 class AAstroCharacter;
+class ABackpack;
 
 UCLASS(Blueprintable)
 class ASTRO_API AJetpackItem : public APhysicalItem {

@@ -1,11 +1,11 @@
 #include "AstroGameMenuStatics.h"
 #include "Templates/SubclassOf.h"
 
-class UUserWidget;
-class UAstroGameMenuPopoutWidget;
 class UObject;
 class UAstroGameMenuFocusItemWidget;
 class UAstroGameMenuPopoutWidgetContentsBase;
+class UUserWidget;
+class UAstroGameMenuPopoutWidget;
 class UAstroGameMenuWidget;
 class UAstroGameMenuSubPaneWidget;
 

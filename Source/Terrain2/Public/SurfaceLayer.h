@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct TERRAIN2_API FSurfaceLayer : public FBiomeLayer {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LayerCeiling;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LayerFloor;
     
     FSurfaceLayer();

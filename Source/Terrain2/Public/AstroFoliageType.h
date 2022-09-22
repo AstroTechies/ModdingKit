@@ -6,33 +6,33 @@
 #include "FoliageDestructionInfo.h"
 #include "AstroFoliageType.generated.h"
 
-class UStaticMesh;
-class AActor;
 class UMaterialInterface;
+class AActor;
+class UStaticMesh;
 
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class UAstroFoliageType : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FBodyInstance BodyInstance;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<UStaticMesh> m_mesh;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<AActor> m_replacementClass;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UClass* ItemType;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName SoundRTPCName;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FFoliageDestructionInfo FoliageDestructionInfo;
     
-    UPROPERTY(BlueprintReadOnly, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UMaterialInterface*> OverrideMaterials;
     
     UAstroFoliageType();

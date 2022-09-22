@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroUICardWidget.h"
-#include "InteractionPromptEntryData.h"
-#include "ETooltipState.h"
 #include "TooltipWidgetDisplayData.h"
+#include "AstroUICardWidget.h"
 #include "ETooltipAnimation.h"
+#include "ETooltipState.h"
+#include "InteractionPromptEntryData.h"
 #include "AstroTooltipWidget.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)

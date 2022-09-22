@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "PackedParameterValue.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
+#include "PackedParameterValue.h"
 #include "BitfieldBitValue.h"
 #include "AstroMaterialStatics.generated.h"
 

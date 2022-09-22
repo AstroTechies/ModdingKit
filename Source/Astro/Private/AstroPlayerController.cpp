@@ -2,16 +2,16 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class APhysicalItem;
-class UControlSymbol;
-class UItemType;
 class AActor;
+class APhysicalItem;
+class UItemType;
 class UPrinterComponent;
+class UControlSymbol;
 class UVoxelVolumeComponent;
-class AAstroPlanet;
 class UPrimitiveComponent;
 class AAstroCharacter;
 class UObject;
+class AAstroPlanet;
 
 void AAstroPlayerController::WouldCompleteCollection_RespondToServer_Implementation(bool response, int32 RequestID) {
 }

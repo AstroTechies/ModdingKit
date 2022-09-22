@@ -1,13 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-#include "SolarBodyRelativeTransforms.h"
 #include "Components/SkyLightComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "SolarBodyRelativeTransforms.h"
 #include "DayNight.generated.h"
 
 class ASolarBody;
+class USkyLightComponent;
 class UAstroSaveCustomArchiveProxy;
 
 UCLASS(Blueprintable)

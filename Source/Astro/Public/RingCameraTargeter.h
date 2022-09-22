@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "SlotReference.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "RingCameraTargeter.generated.h"
 
 class AActor;
-class USceneComponent;
 class APlayController;
-class ASlotConnection;
+class USceneComponent;
 class URingCameraTargeter;
+class ASlotConnection;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API URingCameraTargeter : public UActorComponent {

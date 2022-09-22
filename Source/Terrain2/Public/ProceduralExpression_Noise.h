@@ -3,7 +3,7 @@
 #include "ProceduralExpression.h"
 #include "ProceduralExpression_Noise.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TERRAIN2_API UProceduralExpression_Noise : public UProceduralExpression {
     GENERATED_BODY()
 public:

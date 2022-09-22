@@ -1,26 +1,26 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "SignalDelegate.h"
-#include "OnItemConverterActiveConversionsListChangedDelegate.h"
-#include "OnItemConversionCompleteDelegate.h"
-#include "OnItemConverterStateChangedDelegate.h"
-#include "EItemConverterState.h"
 #include "EnableSignalDelegate.h"
+#include "Recipe.h"
+#include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "OnItemConversionCompleteDelegate.h"
+#include "OnItemConverterActiveConversionsListChangedDelegate.h"
+#include "ItemConversionInputItemStatus.h"
+#include "OnItemConverterStateChangedDelegate.h"
 #include "EOutputEjectionType.h"
-#include "EInputManagementType.h"
 #include "ItemConverterReplicationData.h"
+#include "EInputManagementType.h"
 #include "SlotReference.h"
 #include "ActiveItemConversion.h"
-#include "ItemConversionInputItemStatus.h"
 #include "ItemConversionRecipeInputStatus.h"
-#include "Recipe.h"
+#include "EItemConverterState.h"
 #include "ActorItemConverterComponent.generated.h"
 
-class URecipeOrganizationRule;
 class UItemConversionFormula;
 class UItemList;
+class URecipeOrganizationRule;
 class UOutputOrganizationRule;
 class APhysicalItem;
 class UItemType;

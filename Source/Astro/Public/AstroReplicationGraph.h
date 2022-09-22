@@ -4,8 +4,8 @@
 #include "ReplicationGraph.h"
 #include "AstroReplicationGraph.generated.h"
 
-class UReplicationGraphNode_ActorList;
 class UAstroReplicationGraphNode_GridSpatialization3D;
+class UReplicationGraphNode_ActorList;
 
 UCLASS(Blueprintable, NonTransient)
 class UAstroReplicationGraph : public UReplicationGraph {

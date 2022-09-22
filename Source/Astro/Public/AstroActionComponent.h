@@ -2,9 +2,9 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=GameplayTasks -ObjectName=GameplayTasksComponent -FallbackName=GameplayTasksComponent
-#include "GameplayTasksComponent.h"
-#include "EAstroActionNetworking.h"
 #include "AstroActionRequestPayload.h"
+#include "EAstroActionNetworking.h"
+#include "GameplayTasksComponent.h"
 #include "AstroActionIdentifier.h"
 #include "AstroActionComponent.generated.h"
 

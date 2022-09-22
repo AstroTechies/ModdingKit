@@ -3,8 +3,8 @@
 #include "Templates/SubclassOf.h"
 #include "UserWidgetBlueprintDesignable.h"
 #include "SelectionWheelEventDelegate.h"
-#include "EAstroSelectionWheelOptionType.h"
 #include "SelectionWheelOption.h"
+#include "EAstroSelectionWheelOptionType.h"
 #include "SelectionWheelWidget.generated.h"
 
 class USelectionWheelOptionWidget;

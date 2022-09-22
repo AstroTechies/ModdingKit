@@ -1,37 +1,37 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "ESlotType.h"
-#include "ESlotPosition.h"
+#include "ESlottableItemsFiltrationListBehavior.h"
 #include "ESlotConfiguration.h"
-#include "ESlotConnectorType.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "ESlotType.h"
 #include "SubSlotLocation.h"
+#include "ESlotConnectorType.h"
+#include "ESlotPosition.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "SlotReference.h"
 #include "ENumRotations.h"
 #include "EAuxSlotType.h"
-#include "SlotReference.h"
-#include "ESlottableItemsFiltrationListBehavior.h"
 #include "SubslotIndicatorType.h"
 #include "Slot.generated.h"
 
 class AItemSlot;
+class UPrimitiveComponent;
 class ASlotConnection;
 class UItemType;
 class APhysicalItem;
-class AResourceInfo;
-class UItemListWeighted;
+class USlotDelegates;
 class UPhysicalItemSpawnList;
+class UItemListWeighted;
 class URewardSelectionTemplate;
 class USlotBehavior;
+class AResourceInfo;
 class UItemList;
-class USlotOrganizationRule;
 class UTooltipComponent;
-class UPrimitiveComponent;
 class USceneComponent;
 class USlotsComponent;
+class USlotOrganizationRule;
 class UStaticMeshComponent;
-class USlotDelegates;
 
 USTRUCT(BlueprintType)
 struct FSlot {
@@ -167,6 +167,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bStreamingPowerConnectionsMergeNodes: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bStreamingPowerConnectionsCanChangeMergeNodes: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bWeldItems: 1;

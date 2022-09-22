@@ -8,19 +8,19 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "ResourceExtractor.generated.h"
 
-class UItemType;
-class UAstroActionComponent;
-class UPowerComponent;
-class USkeletalMeshComponent;
-class USceneComponent;
-class UPrimitiveComponent;
-class UResourceCacheComponent;
 class UStorageChassisComponent;
+class UAstroActionComponent;
+class UResourceCacheComponent;
+class UPowerComponent;
+class USceneComponent;
+class USkeletalMeshComponent;
 class UAnimSequenceBase;
 class UAnimMontage;
 class UMaterialInstanceDynamic;
+class UItemType;
 class UAstroAction;
 class UStaticMesh;
+class UPrimitiveComponent;
 
 UCLASS(Blueprintable)
 class AResourceExtractor : public APhysicalItem {

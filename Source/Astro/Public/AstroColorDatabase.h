@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EAstroColor.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
+#include "EAstroColor.h"
 #include "AstroColorDatabase.generated.h"
 
 UCLASS(Blueprintable)

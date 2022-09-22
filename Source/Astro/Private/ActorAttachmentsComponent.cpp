@@ -4,8 +4,8 @@
 class APlayerController;
 class UStorageChassisComponent;
 class AActor;
-class UAstroSaveCustomArchiveProxy;
 class UActorAttachmentsComponent;
+class UAstroSaveCustomArchiveProxy;
 class APlayController;
 class USceneComponent;
 

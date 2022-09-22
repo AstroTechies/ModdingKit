@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 #include "SignalDelegate.h"
 #include "EControlPanelNavigationDirection.h"
 #include "Components/SpotLightComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
 #include "ControlPanel.generated.h"
 
-class APlayerController;
+class USpotLightComponent;
 class USkeletalMeshComponent;
 class UStaticMeshComponent;
 class UCrackableActorComponent;
 class UClickableComponent;
 class UControlPanelCameraContext;
 class UInputComponent;
+class APlayerController;
 class UPrimitiveComponent;
 
 UCLASS(Abstract, Blueprintable)

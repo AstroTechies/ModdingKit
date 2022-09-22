@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroDatumRef.h"
 #include "AstroEntityComponentSubobject.h"
+#include "AstroDatumRef.h"
 #include "LockChangedEventMetadata.h"
 #include "UnlockBehavior.generated.h"
 

@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EClickBehavior.h"
+#include "SlotReference.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "ClickParams.h"
 #include "ClickResult.h"
-#include "SlotReference.h"
+#include "EClickBehavior.h"
 #include "ClickQuery.generated.h"
 
-class APlayController;
 class UPrimitiveComponent;
 class AActor;
 class UStorageChassisComponent;
+class APlayController;
 class UClickQuery;
 
 UCLASS(Blueprintable)

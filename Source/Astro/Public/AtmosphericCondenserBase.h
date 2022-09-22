@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "AtmosphericCondenserReplicationData.h"
 #include "PhysicalItem.h"
-#include "EnableSignalDelegate.h"
 #include "ViewDataChangedDelegate.h"
+#include "EnableSignalDelegate.h"
 #include "ItemCondensedSignalDelegate.h"
+#include "AtmosphericCondenserReplicationData.h"
 #include "EAtmosphericCondenserState.h"
 #include "SlotReference.h"
 #include "AtmosphericCondenserBase.generated.h"
 
 class UItemType;
-class AAstroPlanet;
 class UPowerComponent;
+class AAstroPlanet;
 class UDynamicWhitelistOrganizationRule;
 
 UCLASS(Abstract, Blueprintable)

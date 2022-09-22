@@ -1,19 +1,18 @@
 #include "PlayController.h"
 #include "Templates/SubclassOf.h"
 #include "BiomeSamplerComponent.h"
+#include "AstroPopupBadgeManager.h"
 #include "AstroUnlockNotificationManager.h"
-#include "AstroToastNotificationManager.h"
 #include "AstroNotificationManager.h"
 #include "TooltipManager.h"
-#include "AstroPopupBadgeManager.h"
+#include "AstroToastNotificationManager.h"
 
-class AAstroPlanet;
 class AActor;
 class APhysicalItem;
 class UItemType;
-class ACheatPlinthBase;
-class UAstroCharacterSuit;
 class UControlComponent;
+class AAstroPlanet;
+class ACheatPlinthBase;
 class ASolarBody;
 class USceneComponent;
 class UMultiTool;
@@ -329,9 +328,6 @@ void APlayController::IncrementHoldCounter() {
 }
 
 
-void APlayController::HandleStoreMenuCameraContext(bool bStoreMenuEnabled) {
-}
-
 void APlayController::HandleLeftTriggerToggle() {
 }
 
@@ -597,7 +593,6 @@ APlayController::APlayController() {
     this->DebugWind = false;
     this->BackpackCameraContext = NULL;
     this->GameMenuPopoutCameraContext = NULL;
-    this->StoreMenuCameraContext = NULL;
     this->LastSecondaryViewActor = NULL;
     this->bCreativeRemoveDecoratorsWhilePainting = true;
     this->bCreativeTerrainBrushLightActive = true;

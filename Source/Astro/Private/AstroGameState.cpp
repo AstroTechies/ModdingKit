@@ -7,15 +7,15 @@
 #include "ActuatorQueue.h"
 #include "ActorEntityLinkComponent.h"
 
-class USoundBase;
 class UItemType;
-class ARailNetwork;
 class APhysicalItem;
+class ARailNetwork;
 class UAstroSaveCustomArchiveProxy;
-class AAstroMissionsManager;
 class AActor;
-class AAstroPlanet;
+class AAstroMissionsManager;
+class USoundBase;
 class UParticleSystem;
+class AAstroPlanet;
 class AAstroCharacter;
 
 void AAstroGameState::UnregisterSpawnedStartingItem(APhysicalItem* Item) {

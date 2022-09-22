@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "ResearchSubjectReplicationData.generated.h"
 
-class UResearchSubjectDefinition;
 class UItemType;
+class UResearchSubjectDefinition;
 
 USTRUCT(BlueprintType)
 struct FResearchSubjectReplicationData {

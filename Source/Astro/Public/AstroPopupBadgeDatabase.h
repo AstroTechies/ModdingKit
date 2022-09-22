@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "AstroPopupBadgeAuthoringData.h"
 #include "AstroPopupBadgeDatabase.generated.h"
 
-class UCurveFloat;
 class UAstroPopupBadgeWidget;
+class UCurveFloat;
 
 UCLASS(Blueprintable)
 class UAstroPopupBadgeDatabase : public UDataAsset {

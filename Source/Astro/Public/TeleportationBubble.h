@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 #include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 #include "ETeleportationDestinationType.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 #include "GateObjectReference.h"
 #include "ETeleportationBubbleState.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
@@ -11,9 +11,9 @@
 #include "TeleportationBubble.generated.h"
 
 class UActorAttachmentsComponent;
-class UStaticMeshComponent;
 class UCurveFloat;
 class AAstroCharacter;
+class UStaticMeshComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API ATeleportationBubble : public AActor {

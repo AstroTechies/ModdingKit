@@ -3,8 +3,8 @@
 #include "SlotIndicatorDefinition.h"
 #include "SubslotIndicatorType.generated.h"
 
-class UPrimitiveComponent;
 class UMaterialInterface;
+class UPrimitiveComponent;
 class UTooltipComponent;
 
 USTRUCT(BlueprintType)

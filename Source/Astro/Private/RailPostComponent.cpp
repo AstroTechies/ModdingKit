@@ -3,8 +3,8 @@
 #include "ActuatorComponent.h"
 
 class UPrimitiveComponent;
-class UClickQuery;
 class APhysicalItem;
+class UClickQuery;
 
 void URailPostComponent::ServerSetIsSnappedToRail_Implementation() {
 }

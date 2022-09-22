@@ -10,12 +10,12 @@
 
 class UMaterialInterface;
 class ADroneBase;
-class UPointLightComponent;
 class UCrackableActorComponent;
+class UPointLightComponent;
 class ADeformTool;
 class UDistanceLightFaderComponent;
-class UChildActorComponent;
 class APhysicalItem;
+class UChildActorComponent;
 class AAstroCharacter;
 
 UCLASS(Blueprintable)

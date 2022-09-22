@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "PerformAuxSignalDelegate.h"
-#include "OnVehicleMannedStatusChangedDelegate.h"
 #include "PhysicalItem.h"
+#include "OnVehicleMannedStatusChangedDelegate.h"
+#include "PerformAuxSignalDelegate.h"
 #include "VehicleBaseReplicationData.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
 #include "VehicleBase.generated.h"

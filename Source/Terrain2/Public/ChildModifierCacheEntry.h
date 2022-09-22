@@ -7,10 +7,10 @@ USTRUCT(BlueprintType)
 struct FChildModifierCacheEntry {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FBoundedModifierSceneComponent> ChildComponents;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bIsPureContainerClass;
     
     TERRAIN2_API FChildModifierCacheEntry();

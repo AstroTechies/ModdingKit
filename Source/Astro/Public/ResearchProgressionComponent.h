@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "CumulativeResearchTracker.h"
 #include "AstroEntityComponent.h"
+#include "CumulativeResearchTracker.h"
 #include "OnCurrentResearchPointBalanceChangedDelegate.h"
 #include "OnItemTypeListChangedDelegate.h"
 #include "ResearchProgressionComponent.generated.h"

@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-#include "OrbitalReplicatedData.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "UpdateCanLaunchSignalDelegate.h"
 #include "ReplicatedOrbitalTimeData.h"
+#include "OrbitalReplicatedData.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "OrbitalNavigationComponent.generated.h"
 
 class UObject;
 class UStorageChassisComponent;
 class ASolarBody;
-class AAstroPlayerController;
 class AActor;
+class AAstroPlayerController;
 class UOrbitalNavigationComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

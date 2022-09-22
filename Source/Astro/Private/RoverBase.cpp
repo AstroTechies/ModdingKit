@@ -36,6 +36,9 @@ void ARoverBase::EngageRollYawModifier() {
 void ARoverBase::DisengageRollYawModifier() {
 }
 
+void ARoverBase::ConsumeLeftTriggerToggle() {
+}
+
 bool ARoverBase::Authority_GetSeatExitOverriddenWithFlip() const {
     return false;
 }

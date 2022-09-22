@@ -3,7 +3,7 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "VoxelVolumeModifier.generated.h"
 
-UCLASS(Abstract)
+UCLASS(Abstract, Blueprintable)
 class TERRAIN2_API UVoxelVolumeModifier : public UObject {
     GENERATED_BODY()
 public:

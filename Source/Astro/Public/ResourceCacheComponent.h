@@ -7,9 +7,9 @@
 #include "OnResourceStoredDelegate.h"
 #include "ResourceCacheComponent.generated.h"
 
-class UDeformEventReceiver;
 class UItemType;
 class AAstroCharacter;
+class UDeformEventReceiver;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UResourceCacheComponent : public UActorComponent {

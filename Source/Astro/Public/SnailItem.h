@@ -1,31 +1,31 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "PhysicalItem.h"
 #include "ECrackableActorNetworkingPolicy.h"
-#include "ESnailFoodType.h"
-#include "SlotReference.h"
 #include "SnailFoodData.h"
+#include "PhysicalItem.h"
+#include "ESnailFoodType.h"
 #include "OnSnailFedChangedDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "SlotReference.h"
 #include "ESnailBehaviorTriggerType.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
 #include "SnailItem.generated.h"
 
-class USlotsComponent;
-class UPrimitiveComponent;
 class UChildActorComponent;
+class UStaticMeshComponent;
+class ASnailCrackableActor;
 class UCrackableActorComponent;
 class USkeletalMeshComponent;
-class UStaticMeshComponent;
-class UItemType;
-class ASnailCrackableActor;
+class USlotsComponent;
 class UPlanetEffect;
 class UAdaptiveTickComponent;
 class USnailBehaviorTable;
 class AActor;
+class UPrimitiveComponent;
 class UItemList;
+class UItemType;
 
 UCLASS(Blueprintable)
 class ASTRO_API ASnailItem : public APhysicalItem {

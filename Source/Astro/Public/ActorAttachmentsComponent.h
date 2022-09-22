@@ -1,22 +1,22 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "PerformAuxActionSignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SetLandedDelegateDelegate.h"
-#include "AttachEnterExitSignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "AttachedActorSignalDelegate.h"
-#include "AttachmentDefinition.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "AttachmentState.h"
+#include "AttachEnterExitSignalDelegate.h"
+#include "AttachmentDefinition.h"
+#include "PerformAuxActionSignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "ActorAttachmentsComponent.generated.h"
 
+class AActor;
 class APlayerController;
 class UStorageChassisComponent;
-class AActor;
-class UActorAttachmentsComponent;
 class UAstroSaveCustomArchiveProxy;
 class APlayController;
+class UActorAttachmentsComponent;
 class USceneComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

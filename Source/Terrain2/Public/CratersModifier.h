@@ -3,17 +3,17 @@
 #include "BoundedVoxelVolumeModifier.h"
 #include "CratersModifier.generated.h"
 
-UCLASS(EditInlineNew)
+UCLASS(Blueprintable, EditInlineNew)
 class TERRAIN2_API UCratersModifier : public UBoundedVoxelVolumeModifier {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CraterRadius;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CraterRimThickness;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float RimIntensity;
     
     UCratersModifier();

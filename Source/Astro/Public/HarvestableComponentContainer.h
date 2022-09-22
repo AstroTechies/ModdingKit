@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroEntityComponentContainer.h"
 #include "HarvestableComponent.h"
+#include "AstroEntityComponentContainer.h"
 #include "AstroDatumRef.h"
 #include "HarvestableComponentContainer.generated.h"
 

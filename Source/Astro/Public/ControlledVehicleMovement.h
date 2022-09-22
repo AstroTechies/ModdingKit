@@ -4,8 +4,8 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "ControlledVehicleMovement.generated.h"
 
-class UWheeledChassisComponent;
 class UPowerComponent;
+class UWheeledChassisComponent;
 class APlayerController;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

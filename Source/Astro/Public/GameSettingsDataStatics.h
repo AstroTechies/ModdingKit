@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
-#include "GameSettingsGraphicsOptions.h"
-#include "GameSettingsControlsOptions.h"
-#include "GameSettingsDisplayOptions.h"
 #include "GameSettingsAudioOptions.h"
+#include "GameSettingsGraphicsOptions.h"
+#include "GameSettingsDisplayOptions.h"
+#include "GameSettingsControlsOptions.h"
 #include "GameSettingsDataStatics.generated.h"
 
 UCLASS(Blueprintable)

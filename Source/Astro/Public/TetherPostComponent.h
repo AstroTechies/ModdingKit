@@ -3,10 +3,10 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "TetherPostComponent.generated.h"
 
+class UDistanceLightFaderComponent;
 class UTetherAttachComponent;
 class UPowerComponent;
 class UInstancedStaticMeshComponent;
-class UDistanceLightFaderComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UTetherPostComponent : public UActorComponent {

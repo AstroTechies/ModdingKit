@@ -6,9 +6,9 @@
 #include "Repackager.generated.h"
 
 class UAstroActionComponent;
-class AActor;
 class UAstroRepackAction;
 class UAstroAction;
+class AActor;
 
 UCLASS(Abstract, Blueprintable)
 class ASTRO_API ARepackager : public APhysicalItem {

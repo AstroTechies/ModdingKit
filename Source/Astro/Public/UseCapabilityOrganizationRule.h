@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SlotOrganizationRule.h"
 #include "EUseType.h"
+#include "SlotOrganizationRule.h"
 #include "UseCapabilityOrganizationRule.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)

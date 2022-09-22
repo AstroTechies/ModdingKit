@@ -9,10 +9,10 @@ USTRUCT(BlueprintType)
 struct FPlacementTypeExpPair {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FProceduralExpressionInput Density;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UProceduralPlacement* Type;
     
     TERRAIN2_API FPlacementTypeExpPair();

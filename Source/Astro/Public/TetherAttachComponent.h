@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "LinearAttachPoint.h"
-#include "CircularAttachPoint.h"
 #include "OxygenChangeDelegateDelegate.h"
+#include "LinearAttachPoint.h"
 #include "SlotReference.h"
-#include "VampireAttachmentEntry.h"
+#include "CircularAttachPoint.h"
 #include "ExplicitOxygenConnections.h"
+#include "VampireAttachmentEntry.h"
 #include "ETetherAttachmentType.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "TetherAttachComponent.generated.h"
 
-class UTetherNetwork;
 class USceneComponent;
+class UTetherNetwork;
 class UTetherAttachComponent;
 class UOxygenatorComponent;
 class AActor;

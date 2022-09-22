@@ -5,9 +5,9 @@
 #include "SlotReference.h"
 #include "ShelterTutorialComponent.generated.h"
 
+class AResourceInfo;
 class ASlotConnection;
 class APhysicalItem;
-class AResourceInfo;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UShelterTutorialComponent : public UActorComponent {

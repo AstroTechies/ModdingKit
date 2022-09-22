@@ -3,8 +3,8 @@
 class AGateEngine;
 class AGateStation;
 class AAstroPlanet;
-class USolarSystem;
 class AGateChamber;
+class USolarSystem;
 
 AGateStation* AGatesGameMode::TryGetGateStationActor() const {
     return NULL;

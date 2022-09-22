@@ -1,16 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "EAirControlSecondaryType.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "PhysicsMovementReplicatedInput.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "ERoverID.h"
-#include "EAirControlSecondaryType.h"
+#include "PhysicsMovementReplicatedInput.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
 #include "PhysicsMovementComponent.generated.h"
 
 class USceneComponent;
 class UStorageChassisComponent;
 class APlayerController;
+class AAstroPlayerController;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UPhysicsMovementComponent : public UActorComponent {
@@ -179,6 +180,14 @@ public:
     UFUNCTION(BlueprintCallable)
     void Move(APlayerController* Controller, const FVector2D& Value, float Multiplier);
     
+private:
+    UFUNCTION()
+    void HandleVehicleUnmanned(AAstroPlayerController* OldPilot);
+    
+    UFUNCTION()
+    void HandleVehicleManned(AAstroPlayerController* NewPilot);
+    
+public:
     UFUNCTION()
     void ApplyResistanceLevel();
     

@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
+#include "SignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "SignalDelegate.h"
 #include "WandererRealityTearComponent.generated.h"
 
-class AAstroPlayerController;
-class UItemType;
 class UWandererPhotoWidget;
+class UItemType;
 class APlayerController;
+class AAstroPlayerController;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UWandererRealityTearComponent : public UActorComponent {
@@ -29,7 +29,7 @@ protected:
     float DeformRadius;
     
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<FComponentReference> DeformLocationComponents;
+    FComponentReference DeformLocationComponents;
     
     UPROPERTY(EditAnywhere, SaveGame, ReplicatedUsing=OnRep_ActivatingPlayer)
     uint64 ActivatingPlayerID;

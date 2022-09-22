@@ -1,11 +1,11 @@
 #include "SlotStatics.h"
 #include "Templates/SubclassOf.h"
 
+class UObject;
+class UClickQuery;
 class UItemType;
 class APhysicalItem;
 class UItemComponent;
-class UObject;
-class UClickQuery;
 class UPrimitiveComponent;
 class UTooltipComponent;
 class UItemList;

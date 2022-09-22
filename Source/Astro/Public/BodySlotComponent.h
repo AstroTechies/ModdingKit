@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "DropInWorldDelegateDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "DropInWorldDelegateDelegate.h"
 #include "BodySlotComponent.generated.h"
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

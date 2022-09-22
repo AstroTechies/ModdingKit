@@ -5,8 +5,8 @@
 #include "LevelingBlockComponent.generated.h"
 
 class UStaticMeshComponent;
-class USlotBehaviorTerrain;
 class UParticleSystemComponent;
+class USlotBehaviorTerrain;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API ULevelingBlockComponent : public UActorComponent {

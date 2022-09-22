@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "VehicleBase.h"
 #include "SlotReference.h"
+#include "VehicleBase.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
 #include "OnRoverMovementStateChangedDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "RoverBase.generated.h"
 
-class UParticleSystemComponent;
-class UControlledVehicleMovement;
 class UWheeledChassisComponent;
+class UControlledVehicleMovement;
+class UParticleSystemComponent;
 class UStorageChassisComponent;
 class USceneComponent;
 class AAstroPlayerController;
@@ -98,6 +98,9 @@ protected:
     
     UFUNCTION()
     void DisengageRollYawModifier();
+    
+    UFUNCTION()
+    void ConsumeLeftTriggerToggle();
     
 public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintPure)

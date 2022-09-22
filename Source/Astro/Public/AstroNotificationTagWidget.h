@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroNotificationTagWidgetDisplayData.h"
 #include "AstroUICardWidget.h"
+#include "AstroNotificationTagWidgetDisplayData.h"
 #include "AstroNotificationTagWidget.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)

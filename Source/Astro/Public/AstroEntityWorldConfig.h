@@ -4,9 +4,9 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "AstroEntityWorldConfig.generated.h"
 
-class UAstroEntityComponentContainer;
 class UAstroEntitySystem;
 class UAstroEntityWorld;
+class UAstroEntityComponentContainer;
 
 UCLASS(Blueprintable)
 class UAstroEntityWorldConfig : public UDataAsset {

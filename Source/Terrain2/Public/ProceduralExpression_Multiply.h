@@ -3,7 +3,7 @@
 #include "ProceduralExpression.h"
 #include "ProceduralExpression_Multiply.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TERRAIN2_API UProceduralExpression_Multiply : public UProceduralExpression {
     GENERATED_BODY()
 public:

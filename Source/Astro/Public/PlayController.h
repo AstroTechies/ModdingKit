@@ -1,64 +1,63 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
 #include "AstroPlayerController.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "EHandState.h"
-#include "ECameraMode.h"
 #include "ClickResult.h"
-#include "EClickBehavior.h"
+#include "SignalDelegate.h"
+#include "ECameraMode.h"
+#include "EHandState.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
-#include "SelectionWheelSignalDelegate.h"
-#include "AstroNotificationUnlockAuthoringData.h"
 #include "SelectionWheelOption.h"
-#include "KeyboardNavigationChangedDelegate.h"
-#include "MouseZoomChangedDelegate.h"
-#include "EnableSignalDelegate.h"
+#include "SelectionWheelSignalDelegate.h"
 #include "BodySelectionSignalDelegate.h"
+#include "AstroNotificationUnlockAuthoringData.h"
 #include "SolarBodyClickSignalDelegate.h"
 #include "ActorClickSignalDelegate.h"
 #include "SlotReference.h"
+#include "MouseZoomChangedDelegate.h"
 #include "BackpackToggledDelegateDelegate.h"
 #include "InputDeviceChangedDelegate.h"
+#include "KeyboardNavigationChangedDelegate.h"
 #include "UsingMouseChangedDelegate.h"
 #include "ActorOnscreenSignalDelegate.h"
+#include "EnableSignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ECollisionChannel -FallbackName=ECollisionChannel
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 #include "PendingInGameItemRewards.h"
+#include "EClickBehavior.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
 #include "PlayController.generated.h"
 
-class AActor;
-class USceneComponent;
 class ASolarBody;
-class UMultiTool;
-class UMaterialInstanceDynamic;
-class ACheatPlinthBase;
-class UAstroCharacterSuit;
+class AActor;
 class UStorageChassisComponent;
+class UItemType;
+class ASlotConnection;
+class UAstroPopupBadgeManager;
+class USceneComponent;
+class APhysicalItem;
 class UVirtualCursor;
+class UAstroToastNotificationManager;
+class UMultiTool;
+class UMaterialParameterCollection;
 class ACameraRigActor;
 class ACompassActor;
 class UStaticMesh;
-class UItemType;
-class ASlotConnection;
-class UBiomeSamplerComponent;
+class UMaterialInstanceDynamic;
+class UPrimitiveComponent;
+class ACheatPlinthBase;
 class UBackpackCameraContext;
 class UGameMenuPopoutCameraContext;
-class UStoreMenuCameraContext;
-class UPrimitiveComponent;
 class UAstroNotificationManager;
 class UTooltipManager;
 class UAstroUnlockNotificationManager;
-class UCameraComponent;
-class UAstroToastNotificationManager;
-class UAstroPopupBadgeManager;
-class APhysicalItem;
-class UMaterialParameterCollection;
-class AAstroPlanet;
+class UBiomeSamplerComponent;
+class UAstroCharacterSuit;
 class UControlComponent;
+class AAstroPlanet;
+class UCameraComponent;
 class AAstroCharacter;
 
 UCLASS(Blueprintable)
@@ -302,9 +301,6 @@ protected:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UGameMenuPopoutCameraContext* GameMenuPopoutCameraContext;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
-    UStoreMenuCameraContext* StoreMenuCameraContext;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<AActor*> SpawnPointStack;
@@ -639,9 +635,6 @@ public:
     
     UFUNCTION(BlueprintImplementableEvent)
     void HideFadeScreen();
-    
-    UFUNCTION(BlueprintCallable)
-    void HandleStoreMenuCameraContext(bool bStoreMenuEnabled);
     
     UFUNCTION()
     void HandleLeftTriggerToggle();

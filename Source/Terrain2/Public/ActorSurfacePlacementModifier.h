@@ -3,14 +3,14 @@
 #include "ActorPlacementModifier.h"
 #include "ActorSurfacePlacementModifier.generated.h"
 
-UCLASS(EditInlineNew)
+UCLASS(Blueprintable, EditInlineNew)
 class TERRAIN2_API UActorSurfacePlacementModifier : public UActorPlacementModifier {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float VerticalOffsetFromSurface;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bOrientActorToPlanetUp: 1;
     
     UActorSurfacePlacementModifier();

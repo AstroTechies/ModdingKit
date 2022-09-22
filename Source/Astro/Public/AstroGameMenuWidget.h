@@ -1,24 +1,24 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
-//CROSS-MODULE INCLUDE V2: -ModuleName=UMG -ObjectName=ESlateVisibility -FallbackName=ESlateVisibility
 #include "UserWidgetBlueprintDesignable.h"
 #include "EAstroGameMenuContext.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
 #include "SignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
 #include "EGameMenuNavigationCommand.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=UMG -ObjectName=ESlateVisibility -FallbackName=ESlateVisibility
 #include "AstroGameMenuWidget.generated.h"
 
-class UBorder;
 class UAstroGameMenuTabBarWidget;
-class UCanvasPanel;
-class UAstroGameMenuFocusItemContainerWidget;
+class UBorder;
 class USpacer;
 class UAstroGameMenuScrollBarBase;
 class UAstroGameMenuSubPaneWidget;
 class UUserWidget;
 class UAstroGameMenuPopoutWidget;
+class UAstroGameMenuFocusItemContainerWidget;
 class UImage;
+class UCanvasPanel;
 class UVerticalBox;
 class UOverlay;
 

@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SlotReference.h"
 #include "AstroEntityComponent.h"
-#include "OnActiveResearchSubjectsChangedDelegate.h"
 #include "AttachedResearchSubject.h"
+#include "OnActiveResearchSubjectsChangedDelegate.h"
 #include "OnActiveResearchSubjectExpiredDelegate.h"
+#include "SlotReference.h"
 #include "ResearchComponent.generated.h"
 
 USTRUCT(BlueprintType)

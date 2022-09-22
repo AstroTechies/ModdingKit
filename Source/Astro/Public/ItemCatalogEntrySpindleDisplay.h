@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ItemCatalogEntryDisplay.h"
-#include "ItemCatalogEntry.h"
-#include "OnItemIconMeshClickedDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "ItemCatalogEntryDisplay.h"
+#include "OnItemIconMeshClickedDelegate.h"
+#include "ItemCatalogEntry.h"
 #include "ItemCatalogEntrySpindleDisplay.generated.h"
 
-class UStaticMeshComponent;
+class UPrimitiveComponent;
 class UMaterialInterface;
 class UMeshComponent;
-class UPrimitiveComponent;
+class UStaticMeshComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API UItemCatalogEntrySpindleDisplay : public UItemCatalogEntryDisplay {

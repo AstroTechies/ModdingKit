@@ -9,8 +9,8 @@
 class UItemType;
 class APhysicalItem;
 class UAstroAction;
-class UStaticMesh;
 class UPrimitiveComponent;
+class UStaticMesh;
 
 void AResourceExtractor::OnStorageChassisSlotEventSignal(APhysicalItem* Item) {
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroEntitySceneComponent.h"
 #include "AstroEntityComponentContainer.h"
+#include "AstroEntitySceneComponent.h"
 #include "AstroDatumRef.h"
 #include "AstroEntitySceneComponentContainer.generated.h"
 

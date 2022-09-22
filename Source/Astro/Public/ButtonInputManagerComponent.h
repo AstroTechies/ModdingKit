@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EButtonInput.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "EButtonInput.h"
 #include "ButtonInputManagerComponent.generated.h"
 
 class UButtonComponent;

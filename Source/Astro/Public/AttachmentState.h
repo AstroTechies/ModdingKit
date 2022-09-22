@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EEnterExitMovementMethod.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize10 -FallbackName=Vector_NetQuantize10
+#include "EEnterExitMovementMethod.h"
 #include "ViewTargetBlendParams.h"
 #include "AttachmentState.generated.h"
 

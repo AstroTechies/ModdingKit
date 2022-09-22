@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=GameUserSettings -FallbackName=GameUserSettings
-#include "EnableSignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=InputActionKeyMapping -FallbackName=InputActionKeyMapping
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=GameUserSettings -FallbackName=GameUserSettings
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EWindowMode -FallbackName=EWindowMode
+#include "EnableSignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=InputAxisKeyMapping -FallbackName=InputAxisKeyMapping
 #include "InputReference.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EWindowMode -FallbackName=EWindowMode
 //CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
 #include "GameFramework/GameUserSettings.h"
-#include "EAstroWindowMode.h"
 #include "GameFramework/PlayerInput.h"
 #include "EAstroDiscreteInputOptionPlayerFacing.h"
+#include "EAstroWindowMode.h"
 #include "AstroGameUserSettings.generated.h"
 
 class APlayerController;
@@ -441,3 +441,4 @@ public:
     void ApplyAudioSettings();
     
 };
+

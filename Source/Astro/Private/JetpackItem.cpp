@@ -1,7 +1,7 @@
 #include "JetpackItem.h"
 #include "Net/UnrealNetwork.h"
-#include "FuelConsumerComponent.h"
 #include "JetpackMovementOverrideComponent.h"
+#include "FuelConsumerComponent.h"
 
 class APhysicalItem;
 

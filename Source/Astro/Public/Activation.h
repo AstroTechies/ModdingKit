@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
-#include "SignalActivationBinding.h"
 #include "EnableSignalDelegate.h"
+#include "SignalDelegate.h"
+#include "SignalActivationBinding.h"
 #include "Activation.generated.h"
 
 class UActivation;

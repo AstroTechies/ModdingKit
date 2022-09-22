@@ -4,17 +4,17 @@
 #include "ControlSymbol.h"
 #include "EAstroGameMenuTutoriaSlideCardKey.h"
 #include "EItemStorageBehavior.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
 #include "Recipe.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
 #include "ItemType.generated.h"
 
 class UItemType;
-class UStaticMesh;
 class AActor;
+class UTexture2D;
+class UStaticMesh;
 class UItemCatalogData;
 class UResearchSubjectDefinition;
 class UTexture;
-class UTexture2D;
 
 UCLASS(Blueprintable)
 class ASTRO_API UItemType : public UControlSymbol {

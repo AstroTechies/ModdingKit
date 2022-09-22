@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
-#include "EAstroDiscreteInputOptionPlayerFacing.h"
 #include "AstroDiscreteInputDefinition.h"
+#include "EAstroDiscreteInputOptionPlayerFacing.h"
 #include "AstroDiscreteInputDefinitionDatabase.generated.h"
 
 UCLASS(Blueprintable)

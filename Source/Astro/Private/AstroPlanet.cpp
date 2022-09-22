@@ -1,13 +1,13 @@
 #include "AstroPlanet.h"
 #include "Net/UnrealNetwork.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ChildActorComponent -FallbackName=ChildActorComponent
 //CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelVolumeComponent -FallbackName=VoxelVolumeComponent
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=StaticMeshComponent -FallbackName=StaticMeshComponent
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ChildActorComponent -FallbackName=ChildActorComponent
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SceneComponent -FallbackName=SceneComponent
 
 class ASolarBody;
-class ADayNight;
 class APlanetProxyActor;
+class ADayNight;
 
 void AAstroPlanet::UpdateHasPlayersOnPlanet(ASolarBody* SolarBody) {
 }

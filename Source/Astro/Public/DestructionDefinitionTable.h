@@ -4,8 +4,8 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "DestructionDefinitionTable.generated.h"
 
-class UDestructionBundleDefinition;
 class APhysicalItem;
+class UDestructionBundleDefinition;
 class UItemList;
 
 UCLASS(Blueprintable)

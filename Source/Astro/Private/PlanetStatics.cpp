@@ -1,11 +1,11 @@
 #include "PlanetStatics.h"
 
-class USceneComponent;
-class UObject;
 class AAstroPlanet;
-class AActor;
 class ASolarBody;
+class AActor;
 class ASun;
+class UObject;
+class USceneComponent;
 class AGateStation;
 
 FVector UPlanetStatics::ToPlanet(AAstroPlanet* Planet, AActor* Actor) {

@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "TerrainPlacementComponent.h"
 #include "ESurfaceOrientation.h"
-#include "ERaycastOrientation.h"
 #include "SurfaceCriteria.h"
+#include "ERaycastOrientation.h"
 #include "RaycastTerrainSurfaceComponent.generated.h"
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

@@ -23,7 +23,7 @@ protected:
     TSubclassOf<UItemList> TriggerItems;
     
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<FComponentReference> TriggerVolumes;
+    FComponentReference TriggerVolumes;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CooldownTime;

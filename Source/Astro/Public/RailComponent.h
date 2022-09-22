@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "SlotReference.h"
 #include "OnUpdateRailCartDelegate.h"
 #include "RailItem.h"
-#include "SlotReference.h"
 #include "RailComponent.generated.h"
 
 class AActor;

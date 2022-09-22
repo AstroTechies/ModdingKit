@@ -1,24 +1,24 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "VehicleFacingSetDelegate.h"
-#include "WheelInfo.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "RepWheeledChassisMovement.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "WheelInfo.h"
 #include "WheeledChassisComponent.generated.h"
 
 class UActivation;
+class APhysicalItem;
 class USceneComponent;
 class UStaticMeshComponent;
-class APhysicalItem;
 class UPhysicsConstraintComponent;
 class UComponentDelegateWrapper;
 class UControlledVehicleMovement;
 class UPhysicsMovementComponent;
-class UAstroSaveCustomArchiveProxy;
 class UParticleSystemComponent;
+class UAstroSaveCustomArchiveProxy;
 class AActor;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

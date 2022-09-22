@@ -1,9 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SolarBody.h"	
+#include "SolarBody.h"
 #include "Components/DirectionalLightComponent.h"
 #include "Sun.generated.h"
 
+class UDirectionalLightComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API ASun : public ASolarBody {

@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "AutoCraneState.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "AutoCraneOverlapTestRequest.h"
-#include "AutoCraneState.h"
 #include "AutoCraneManager.generated.h"
 
+class ASolarBody;
 class AActor;
 class AAstroCharacter;
 class APlayController;
 class AAutoCrane;
-class ASolarBody;
 
 UCLASS(Blueprintable)
 class UAutoCraneManager : public UObject {

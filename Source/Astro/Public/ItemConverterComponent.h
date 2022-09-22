@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "AstroEntityComponent.h"
 #include "AstroDatumRef.h"
 #include "SlotReference.h"
-#include "AstroEntityComponent.h"
 #include "PossibleItemConversion.h"
 #include "ActiveItemConversion.h"
 #include "EItemConverterState.h"

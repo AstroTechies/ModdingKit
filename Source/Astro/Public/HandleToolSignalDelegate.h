@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ClickResult.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "ClickResult.h"
 #include "HandleToolSignalDelegate.generated.h"
 
 class APlayController;

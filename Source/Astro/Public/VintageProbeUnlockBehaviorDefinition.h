@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "AstroEntityComponentSubobjectDefinition.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
 #include "AstroNotificationUnlockAuthoringData.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
 #include "VintageProbeUnlockBehaviorDefinition.generated.h"
 
 class AActor;

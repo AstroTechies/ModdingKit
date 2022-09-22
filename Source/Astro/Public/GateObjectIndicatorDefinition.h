@@ -4,8 +4,8 @@
 #include "IndicatorMeshDefinition.h"
 #include "GateObjectIndicatorDefinition.generated.h"
 
-class UObject;
 class UMaterialInterface;
+class UObject;
 
 UCLASS(Blueprintable)
 class ASTRO_API UGateObjectIndicatorDefinition : public UDataAsset {

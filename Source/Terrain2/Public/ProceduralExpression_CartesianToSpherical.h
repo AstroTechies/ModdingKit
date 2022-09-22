@@ -3,7 +3,7 @@
 #include "ProceduralExpression.h"
 #include "ProceduralExpression_CartesianToSpherical.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TERRAIN2_API UProceduralExpression_CartesianToSpherical : public UProceduralExpression {
     GENERATED_BODY()
 public:

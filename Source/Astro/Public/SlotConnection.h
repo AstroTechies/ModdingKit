@@ -2,29 +2,29 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
-#include "SlotConnectionMotionReplicationData.h"
-#include "SlotReference.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "SlotReference.h"
 #include "OnApproximateSplineMeshLengthChangedDelegate.h"
 #include "SignalDelegate.h"
 #include "PreDisconnectedDelegate.h"
 #include "SlotConnectionReplicationData.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
 #include "SlotConnectionClientMotionData.h"
-#include "Components/SplineMeshComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "SlotConnectionMotionReplicationData.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
 #include "SlotConnection.generated.h"
 
+class UStaticMesh;
+class APhysicsConstraintActor;
 class UItemType;
 class ASlotConnection;
 class UStaticMeshComponent;
 class UInstancedStaticMeshComponent;
-class UStaticMesh;
-class APhysicsConstraintActor;
+class USplineMeshComponent;
 class USceneComponent;
+class APhysicalItem;
 class UAdaptiveTickComponent;
 class UPrimitiveComponent;
-class APhysicalItem;
 class UAstroSaveCustomArchiveProxy;
 
 UCLASS(Blueprintable)
@@ -353,7 +353,7 @@ private:
     
 public:
     UFUNCTION(BlueprintCallable)
-    void MakeConnection(FSlotReference Slot);
+    void MakeConnection(FSlotReference Slot, bool PlaySounds);
     
     UFUNCTION(BlueprintCallable)
     void MakeComponentConnection(UPrimitiveComponent* Component, const FVector& Location, const FVector& Normal);
@@ -375,6 +375,9 @@ public:
     
     UFUNCTION(BlueprintPure)
     bool CanConnect(FSlotReference Slot);
+    
+    UFUNCTION(BlueprintCallable)
+    void BreakImmediately();
     
     UFUNCTION(BlueprintCallable)
     void Break();

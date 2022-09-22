@@ -4,14 +4,14 @@
 class UPrimitiveComponent;
 class AActor;
 class UChildActorComponent;
-class USceneComponent;
-class APlayerController;
-class AAstroPlanet;
 class UObject;
+class AAstroPlanet;
+class USceneComponent;
 class AAstroCharacter;
 class UItemType;
 class APhysicalItem;
 class APlayController;
+class APlayerController;
 class UControlSymbol;
 class UTexture;
 

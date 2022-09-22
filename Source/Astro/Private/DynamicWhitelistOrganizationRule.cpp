@@ -12,7 +12,10 @@ void UDynamicWhitelistOrganizationRule::SetShowIndicators(bool showIndicators) {
 void UDynamicWhitelistOrganizationRule::SetRequireNonFullItems(bool requireNonFullItems) {
 }
 
+void UDynamicWhitelistOrganizationRule::SetRequireLiteralItemType(bool requireLiteralItemType) {
+}
+
 UDynamicWhitelistOrganizationRule::UDynamicWhitelistOrganizationRule() {
-    this->bShowIndicators = true;
+    this->bRequireLiteralItemType = false;
 }
 

@@ -2,6 +2,7 @@
 #include "Net/UnrealNetwork.h"
 
 class APlayerController;
+class AAstroPlayerController;
 
 void UPhysicsMovementComponent::ServerUpdateClientMovementInput_Implementation(FPhysicsMovementReplicatedInput ClientSteeringInput) {
 }
@@ -10,6 +11,12 @@ bool UPhysicsMovementComponent::ServerUpdateClientMovementInput_Validate(FPhysic
 }
 
 void UPhysicsMovementComponent::Move(APlayerController* Controller, const FVector2D& Value, float Multiplier) {
+}
+
+void UPhysicsMovementComponent::HandleVehicleUnmanned(AAstroPlayerController* OldPilot) {
+}
+
+void UPhysicsMovementComponent::HandleVehicleManned(AAstroPlayerController* NewPilot) {
 }
 
 void UPhysicsMovementComponent::ApplyResistanceLevel() {

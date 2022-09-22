@@ -6,10 +6,10 @@
 #include "ExoRequestModuleBase.generated.h"
 
 class UTradeShipComponent;
-class UTradeShipDockComponent_ItemDrive;
+class APlayController;
 class UItemDriveComponent;
 class AActor;
-class APlayController;
+class UTradeShipDockComponent_ItemDrive;
 class UTexture;
 
 UCLASS(Abstract, Blueprintable)

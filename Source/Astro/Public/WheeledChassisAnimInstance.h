@@ -6,8 +6,8 @@
 #include "OnRoverWheelSteerAnimStateChangedDelegate.h"
 #include "WheeledChassisAnimInstance.generated.h"
 
-class UPhysicsMovementComponent;
 class UWheeledChassisComponent;
+class UPhysicsMovementComponent;
 
 UCLASS(Blueprintable, NonTransient)
 class UWheeledChassisAnimInstance : public UAnimInstance {

@@ -4,8 +4,8 @@
 #include "GateObject.generated.h"
 
 class ASolarBody;
-class UStaticMeshComponent;
 class USceneComponent;
+class UStaticMeshComponent;
 class UActorGateObjectComponent;
 class UActorEntityLinkComponent;
 class USolarSystem;

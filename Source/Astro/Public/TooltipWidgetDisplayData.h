@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
-#include "ETooltipPresentationStyleTypes.h"
 #include "InteractionPromptEntryData.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
 #include "EAstroGameMenuTutorialSlideDeckKey.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
 #include "ETooltipAnimationDirection.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
 #include "EAstroGameMenuTutoriaSlideCardKey.h"
+#include "ETooltipPresentationStyleTypes.h"
 #include "TooltipWidgetDisplayData.generated.h"
 
 class UObject;

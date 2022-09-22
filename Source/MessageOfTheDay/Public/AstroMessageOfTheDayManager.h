@@ -5,7 +5,7 @@
 
 class UMessageOfTheDay;
 
-UCLASS(BlueprintType)
+UCLASS(Blueprintable)
 class MESSAGEOFTHEDAY_API UAstroMessageOfTheDayManager : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:

@@ -29,6 +29,7 @@ AItemSlot::AItemSlot() {
     this->ConnectionTense = false;
     this->PowerIncomingOnly = false;
     this->StreamingPowerConnectionsMergePowerNodes = false;
+    this->StreamingPowerConnectionsCanChangeMergeNodes = false;
     this->CanAcceptUnslottableItems = false;
     this->IsTrailerHitch = false;
     this->SlotTier = 1;

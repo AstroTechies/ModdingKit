@@ -1,8 +1,8 @@
 #include "AstroGameMode.h"
 
 class UStorageChassisComponent;
-class USolarSystem;
 class APlayController;
+class USolarSystem;
 class AActor;
 
 void AAstroGameMode::UnregisterSpawnPointActorAttachmentsComponent(UStorageChassisComponent* spawnPoint) {

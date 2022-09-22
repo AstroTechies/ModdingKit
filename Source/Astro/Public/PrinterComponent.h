@@ -1,24 +1,24 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "SlotReference.h"
 #include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "ReplicatedPrinterState.h"
+#include "SlotReference.h"
 #include "ItemPrintedSignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 #include "PrinterComponent.generated.h"
 
-class APhysicalItem;
 class UTextRenderComponent;
-class UMaterialInstanceDynamic;
+class AControlPanel;
+class APhysicalItem;
 class UPrinterComponent;
+class UMaterialInstanceDynamic;
 class AActor;
 class URecipeOrganizationRule;
 class UItemType;
 class UAstroSaveCustomArchiveProxy;
 class UClickQuery;
-class AControlPanel;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UPrinterComponent : public UActorComponent {

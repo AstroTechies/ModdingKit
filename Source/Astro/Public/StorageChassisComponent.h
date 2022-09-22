@@ -1,22 +1,22 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "EnterExitSignalDelegate.h"
-#include "OnSlotEventSignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "SlotIndicatorLocation.h"
 #include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "OnSlotEventSignalDelegate.h"
 #include "SlotReference.h"
+#include "EnterExitSignalDelegate.h"
+#include "SlotIndicatorLocation.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 #include "StorageChassisComponent.generated.h"
 
-class AActor;
-class UActorAttachmentsComponent;
 class USlotOrganizationRule;
+class UActorAttachmentsComponent;
 class UStorageChassisComponent;
 class APlayerController;
 class APhysicalItem;
+class AActor;
 class UItemType;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

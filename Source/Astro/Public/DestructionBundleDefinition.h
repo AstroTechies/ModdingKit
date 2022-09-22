@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "DebrisItem.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
+#include "DebrisItem.h"
 #include "DestructionBundleDefinition.generated.h"
 
 UCLASS(Blueprintable)

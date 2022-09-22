@@ -1,28 +1,28 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "ActuatorConnections.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "SignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "ItemHighlightInterface.h"
-#include "ActuatorConnections.h"
-#include "SignalDelegate.h"
-#include "ActuatorCableLocalState.h"
 #include "ActuatorConnectorLocalState.h"
 #include "ActuateDelegateDelegate.h"
+#include "ActuatorCableLocalState.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
 #include "EFullnessActuatorEventType.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
 #include "SlotReference.h"
 #include "EAuxSlotType.h"
 #include "ActuatorComponent.generated.h"
 
-class UPrimitiveComponent;
-class USceneComponent;
+class AActor;
 class UInstancedStaticMeshComponent;
 class UMaterialInstanceDynamic;
 class UBoxComponent;
 class USlotsComponent;
 class UTooltipComponent;
-class AActor;
+class USceneComponent;
+class UPrimitiveComponent;
 class UClickQuery;
 class APlayController;
 class UObject;

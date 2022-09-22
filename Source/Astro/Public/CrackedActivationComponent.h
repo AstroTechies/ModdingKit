@@ -4,8 +4,8 @@
 #include "CrackedActivationComponent.generated.h"
 
 class AActor;
-class UActivation;
 class UCrackedActivationComponent;
+class UActivation;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UCrackedActivationComponent : public UActorComponent {

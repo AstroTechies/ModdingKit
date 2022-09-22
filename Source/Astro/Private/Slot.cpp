@@ -37,6 +37,7 @@ FSlot::FSlot() {
     this->bIsTrailerHitch = false;
     this->bPowerIncomingOnly = false;
     this->bStreamingPowerConnectionsMergeNodes = false;
+    this->bStreamingPowerConnectionsCanChangeMergeNodes = false;
     this->bWeldItems = false;
     this->AuxSlotType = EAuxSlotType::None;
     this->TraceRadius = 0.00f;

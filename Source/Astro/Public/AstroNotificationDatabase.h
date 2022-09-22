@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
-#include "EAstroColor.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-#include "AstroNotificationTagAuthoringData.h"
 #include "AstroNotificationUnlockAuthoringData.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+#include "EAstroColor.h"
+#include "AstroNotificationTagAuthoringData.h"
 #include "AstroNotificationDatabase.generated.h"
 
-class UAstroNotificationUnlockWidget;
-class UAstroNotificationTagWidget;
 class UTexture;
-class UAstroNotificationToastWidget;
 class UTexture2D;
+class UAstroNotificationTagWidget;
+class UAstroNotificationToastWidget;
+class UAstroNotificationUnlockWidget;
 
 UCLASS(Blueprintable)
 class UAstroNotificationDatabase : public UDataAsset {

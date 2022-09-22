@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "EnableSignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
-#include "EnableSignalDelegate.h"
 #include "Navpoint.h"
 #include "NavpointComponent.generated.h"
 
@@ -38,6 +38,9 @@ protected:
 public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthoritySetShouldRegisterNavpoint(bool bShouldRegister);
+    
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    void AuthoritySetNavpointEnabled(bool bNavpointEnabled);
     
 };
 

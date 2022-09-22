@@ -4,15 +4,15 @@
 #include "PaintModeMaterial.h"
 #include "VoxelVolumePaintModePalette.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class TERRAIN2_API UVoxelVolumePaintModePalette : public UObject {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FPaintModeMaterial> DefaultMappings;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FPaintModeMaterial> PaletteEntries;
     
 public:

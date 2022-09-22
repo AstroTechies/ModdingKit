@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "ERaycastDistributionShape.h"
+#include "ActorSpecifier.h"
 #include "TerrainPlacementComponent.h"
-#include "ETerrainPlacementMode.h"
 #include "SurfaceCriteria.h"
 #include "ESurfaceOrientation.h"
-#include "ActorSpecifier.h"
+#include "ERaycastDistributionShape.h"
+#include "ETerrainPlacementMode.h"
 #include "RaycastDistributionComponent.generated.h"
 
 class AActor;

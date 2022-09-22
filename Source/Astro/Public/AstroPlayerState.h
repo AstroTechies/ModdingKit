@@ -3,8 +3,8 @@
 #include "Templates/SubclassOf.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=PlayerState -FallbackName=PlayerState
 #include "GameFramework/PlayerState.h"
-#include "OnCurrentResearchPointBalanceChangedDelegate.h"
 #include "PersistedCameraState.h"
+#include "OnCurrentResearchPointBalanceChangedDelegate.h"
 #include "OnItemTypeListChangedDelegate.h"
 #include "EPlayerPlatform.h"
 #include "AstroPlayerState.generated.h"

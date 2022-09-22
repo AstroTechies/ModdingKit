@@ -2,8 +2,8 @@
 
 class UAstroAction;
 class APhysicalItem;
-class UCurveFloat;
 class UAstroInterpolateItemTask;
+class UCurveFloat;
 
 void UAstroInterpolateItemTask::OnTargetItemMotionStateChanged() {
 }

@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "RandomDistributionProperties.h"
-#include "ManualPlacement.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "RandomDistributionProperties.h"
 #include "EPlacementMode.h"
+#include "ManualPlacement.h"
 #include "BoundedVoxelVolumeModifier.generated.h"
 
-UCLASS(DefaultToInstanced, EditInlineNew)
+UCLASS(Blueprintable, DefaultToInstanced, EditInlineNew)
 class TERRAIN2_API UBoundedVoxelVolumeModifier : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bEnabled: 1;
     
     UPROPERTY(EditAnywhere)
@@ -25,25 +25,25 @@ public:
     UPROPERTY(EditAnywhere)
     EPlacementMode PlacementMode;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ExclusionRadius;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DefaultCullingDistance;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FManualPlacement> ManualPlacements;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float PlacementDensity;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 MinCount;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 maxCount;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRandomDistributionProperties DistributionOptions;
     
     UBoundedVoxelVolumeModifier();

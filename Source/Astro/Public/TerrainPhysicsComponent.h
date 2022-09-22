@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformableInterfaceT2 -FallbackName=DeformableInterfaceT2
-#include "PhysicsComponent.h"
-#include "SignalDelegate.h"
 #include "IsBuriedChangedEventDelegate.h"
+#include "PhysicsComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformableInterfaceT2 -FallbackName=DeformableInterfaceT2
+#include "SignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformationParamsT2 -FallbackName=DeformationParamsT2
-#include "DeformationParamsT2.h"
 #include "DeformableInterfaceT2.h"
+#include "DeformationParamsT2.h"
 #include "TerrainPhysicsComponent.generated.h"
 
 class UAstroSaveCustomArchiveProxy;

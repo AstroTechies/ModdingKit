@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SignalDelegate.h"
-#include "GameplayTask.h"
 #include "GameplayTask.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=OnSingleAnimCustomNotify__DelegateSignature -FallbackName=OnSingleAnimCustomNotifyDelegate
+//CROSS-MODULE INCLUDE V2: -ModuleName=GameplayTasks -ObjectName=GameplayTask -FallbackName=GameplayTask
+#include "SignalDelegate.h"
 #include "AstroPlayMontageTask.generated.h"
 
-class UAnimMontage;
 class UAstroPlayMontageTask;
+class UAnimMontage;
 class UAstroAction;
 
 UCLASS(Blueprintable)

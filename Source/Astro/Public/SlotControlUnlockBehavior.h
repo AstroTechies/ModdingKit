@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UnlockBehavior.h"
 #include "SlotReference.h"
+#include "UnlockBehavior.h"
 #include "SlotControlUnlockBehavior.generated.h"
 
 UCLASS(Blueprintable)

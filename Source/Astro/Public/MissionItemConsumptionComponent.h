@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "RequestMissionList.h"
-#include "SignalDelegate.h"
-#include "SlotReference.h"
 #include "EMissionItemRequestState.h"
+#include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "SlotReference.h"
+#include "RequestMissionList.h"
 #include "AstroMissionObjectiveProgress.h"
 #include "MissionItemConsumptionComponent.generated.h"
 
-class UItemType;
 class UDynamicWhitelistOrganizationRule;
+class UItemType;
 class APhysicalItem;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

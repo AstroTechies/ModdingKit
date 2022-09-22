@@ -1,24 +1,24 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=SlateColor -FallbackName=SlateColor
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
-//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=SlateBrush -FallbackName=SlateBrush
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=ESlateBrushDrawType -FallbackName=ESlateBrushDrawType
-#include "EAstroUIAudioEventKey.h"
 #include "AstroPopupBadgeAuthoringData.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=ESlateBrushDrawType -FallbackName=ESlateBrushDrawType
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=SlateBrush -FallbackName=SlateBrush
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=SlateColor -FallbackName=SlateColor
+#include "EAstroUIAudioEventKey.h"
 #include "AstroUIStatics.generated.h"
 
-class UImage;
 class UBorder;
+class UImage;
 class UWidget;
 class UAstroUIStylingDatabase;
+class UItemType;
 class UAstroPopupBadgeDatabase;
 class UWidgetAnimation;
 class AActor;
-class UItemType;
 
 UCLASS(Blueprintable)
 class UAstroUIStatics : public UObject {

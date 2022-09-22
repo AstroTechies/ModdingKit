@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EExtractorAnimStage.h"
 #include "EExtractorLegStage.h"
+#include "EExtractorAnimStage.h"
 #include "ResourceExtractorState.generated.h"
 
 USTRUCT(BlueprintType)

@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ProceduralExpressionInput.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FProceduralExpressionInput {
     GENERATED_BODY()
 public:

@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "GateObjectReference.h"
 #include "EGateObjectType.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "GateObjectControlNode.generated.h"
 
 class UStaticMeshComponent;
-class UGateObjectIndicatorDefinition;
 class UTooltipComponent;
+class UGateObjectIndicatorDefinition;
 
 USTRUCT(BlueprintType)
 struct FGateObjectControlNode {

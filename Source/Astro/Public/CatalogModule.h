@@ -3,15 +3,15 @@
 #include "Templates/SubclassOf.h"
 #include "ControlPanel.h"
 #include "OnActiveCatalogEntryChangedDelegate.h"
-#include "ESelectedItemUnlockState.h"
 #include "EItemVariantType.h"
+#include "ESelectedItemUnlockState.h"
 #include "CatalogModule.generated.h"
 
+class UItemType;
 class UItemCatalog;
+class UItemCatalogEntryDisplay;
 class UItemCatalogCategoryDefinition;
 class UTooltipComponent;
-class UItemCatalogEntryDisplay;
-class UItemType;
 
 UCLASS(Abstract, Blueprintable)
 class ASTRO_API ACatalogModule : public AControlPanel {

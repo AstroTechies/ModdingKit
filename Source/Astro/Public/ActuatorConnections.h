@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ActuatorConnector.h"
 #include "ActuatorCable.h"
+#include "ActuatorConnector.h"
 #include "ActuatorConnections.generated.h"
 
 USTRUCT(BlueprintType)

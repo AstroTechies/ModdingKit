@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "AstroEntityComponentContainer.h"
-#include "StreamingPowerMergedNodeComponent.h"
 #include "AstroDatumRef.h"
+#include "StreamingPowerMergedNodeComponent.h"
 #include "StreamingPowerMergedNodeComponentContainer.generated.h"
 
 UCLASS(Blueprintable)

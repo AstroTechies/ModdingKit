@@ -2,40 +2,39 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "PhysicalItem.h"
-#include "ClickResult.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelMaterialProperties -FallbackName=VoxelMaterialProperties
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "EnableSignalDelegate.h"
 #include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "EnableSignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 //CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelMaterial -FallbackName=VoxelMaterial
 #include "EDeformToolSedimentTankReservesState.h"
-#include "EAugmentProperty.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelMaterialProperties -FallbackName=VoxelMaterialProperties
 #include "ReplicatedBrushState.h"
-#include "ReplicatedCreativeColorPickState.h"
 #include "ReplicatedAugmentState.h"
+#include "ReplicatedCreativeColorPickState.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=EDeformType -FallbackName=EDeformType
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
-#include "EDeformType.h"
-#include "VoxelMaterialProperties.h"
+#include "EAugmentProperty.h"
 #include "VoxelMaterial.h"
+#include "VoxelMaterialProperties.h"
+#include "ClickResult.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
 #include "DeformTool.generated.h"
 
-class APlayController;
-class AActor;
-class UParticleSystemComponent;
 class ATerrainBrush;
-class USceneComponent;
+class AActor;
 class UActivation;
+class APlayController;
 class AAstroCharacter;
+class USceneComponent;
 class UDeformEventReceiver;
 class UPowerComponent;
-class UItemType;
-class UAugmentComponent;
 class UDeformToolCameraContext;
-class AAstroPlanet;
+class UAugmentComponent;
 class UClickQuery;
+class UParticleSystemComponent;
+class AAstroPlanet;
+class UItemType;
 class UMaterialInterface;
 class UDeformTargetComponent;
 

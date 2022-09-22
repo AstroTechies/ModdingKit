@@ -9,13 +9,13 @@ USTRUCT(BlueprintType)
 struct FFoliageDestructionInfo {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName DestructionAudioEvent;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UParticleSystem* DestructionParticleEffect;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EFoliageDestructionBehavior FoliageDestructionBehavior;
     
     TERRAIN2_API FFoliageDestructionInfo();

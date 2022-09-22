@@ -5,11 +5,11 @@
 
 class UBoundedVoxelVolumeModifier;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TERRAIN2_API UBoundedVoxelVolumeModifierList : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere, Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     TArray<UBoundedVoxelVolumeModifier*> Modifiers;
     
     UBoundedVoxelVolumeModifierList();

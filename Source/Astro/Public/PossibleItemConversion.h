@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ItemConversionRecipe.h"
 #include "AstroDatumRef.h"
+#include "ItemConversionRecipe.h"
 #include "PossibleItemConversion.generated.h"
 
 USTRUCT(BlueprintType)

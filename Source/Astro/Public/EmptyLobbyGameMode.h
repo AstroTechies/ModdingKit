@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameFramework/GameModeBase.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=GameModeBase -FallbackName=GameModeBase
+#include "GameFramework/GameModeBase.h"
 #include "EmptyLobbyGameMode.generated.h"
 
 UCLASS(Blueprintable, NonTransient)

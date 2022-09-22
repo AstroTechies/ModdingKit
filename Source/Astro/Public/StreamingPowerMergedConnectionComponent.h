@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroDatumRef.h"
 #include "AstroEntityComponent.h"
+#include "AstroDatumRef.h"
 #include "StreamingPowerMergedConnectionComponent.generated.h"
 
 USTRUCT(BlueprintType)

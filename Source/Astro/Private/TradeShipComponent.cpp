@@ -3,10 +3,10 @@
 #include "Templates/SubclassOf.h"
 
 class UItemComponent;
-class UTradeShipDockComponent;
+class UClickQuery;
 class APhysicalItem;
 class UItemType;
-class UClickQuery;
+class UTradeShipDockComponent;
 class APlayController;
 
 void UTradeShipComponent::UpdateIndicators() {

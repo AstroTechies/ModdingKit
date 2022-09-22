@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "LockdownEventDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "LockdownEventDelegate.h"
 #include "BreadboardPlatformComponent.generated.h"
 
 class UPrimitiveComponent;

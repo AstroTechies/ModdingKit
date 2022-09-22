@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize10 -FallbackName=Vector_NetQuantize10
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=NetworkPredictionInterface -FallbackName=NetworkPredictionInterface
-#include "AstroCharacterEncumbrance.h"
+#include "AstroCharacterActiveOverrides.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "AstroMovementMode.h"
-#include "AstroCharacterActiveOverrides.h"
+#include "AstroCharacterEncumbrance.h"
+#include "Interfaces/NetworkPredictionInterface.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize100 -FallbackName=Vector_NetQuantize100
 #include "MovementOverrideCorrection.h"
-#include "Interfaces/NetworkPredictionInterface.h"
 #include "AstroCharacterMovementComponent.generated.h"
 
 class UPrimitiveComponent;

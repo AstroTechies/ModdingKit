@@ -7,8 +7,8 @@
 #include "ExplosiveComponent.generated.h"
 
 class AActor;
-class UExplosiveEffectsConfig;
 class UDamageType;
+class UExplosiveEffectsConfig;
 class UObject;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

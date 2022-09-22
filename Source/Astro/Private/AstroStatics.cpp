@@ -1,31 +1,31 @@
 #include "AstroStatics.h"
 #include "Templates/SubclassOf.h"
 
-class APlayerController;
-class UWidget;
-class UAstroGameInstance;
 class UObject;
-class AAstroGameMode;
 class UPrimitiveComponent;
+class UMaterialInterface;
 class UPhysicsConstraintComponent;
+class UAstroSaveAsset;
 class UCreativeModeData;
+class UWidget;
+class AAstroGameMode;
+class APlayerController;
 class USkeletalMeshComponent;
 class UAudioComponent;
 class UChildActorComponent;
 class UMaterialInstanceDynamic;
 class AActor;
-class UMaterialInterface;
 class UPanelWidget;
 class USoundBase;
 class USceneComponent;
-class UAstroSaveAsset;
 class APawn;
+class UMaterial;
 class AAstroMissionsManager;
 class UActorComponent;
+class UAstroGameInstance;
 class UUserWidget;
-class UPostProcessComponent;
 class AAstroGameState;
-class UMaterial;
+class UPostProcessComponent;
 
 FVector2D UAstroStatics::WorldLocationToScreenLocationOffset(UObject* WorldContextObject, const FVector& WorldLocation, const FVector2D& WorldOffset) {
     return FVector2D{};

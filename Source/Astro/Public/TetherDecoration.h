@@ -4,8 +4,8 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 #include "TetherDecoration.generated.h"
 
-class UStaticMesh;
 class UMaterialInterface;
+class UStaticMesh;
 
 USTRUCT(BlueprintType)
 struct FTetherDecoration {

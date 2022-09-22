@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "PhysicalItem.h"
+#include "EAutoCraneTransferStage.h"
 #include "AutoCraneStateChangeDelegate.h"
 #include "SlotReference.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
-#include "EAutoCraneTransferStage.h"
 #include "AutoCrane.generated.h"
 
 class UAstroActionComponent;

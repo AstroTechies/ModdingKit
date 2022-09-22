@@ -3,18 +3,18 @@
 #include "Templates/SubclassOf.h"
 #include "AstroActionComponent.h"
 #include "AstroPlayMontageAction.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=CapsuleComponent -FallbackName=CapsuleComponent
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=StaticMeshComponent -FallbackName=StaticMeshComponent
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=CapsuleComponent -FallbackName=CapsuleComponent
 
+class UItemType;
 class UChildActorComponent;
 class UControlSymbol;
-class ABackpack;
-class UItemType;
-class ASolarBody;
 class AActor;
-class AAstroPlanet;
+class ASolarBody;
 class APlayController;
+class AAstroPlanet;
 class ADroneBase;
+class ABackpack;
 
 void AAstroCharacter::UpdatePlayerIndex() {
 }

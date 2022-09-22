@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "InputRespondingWidgetBase.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
+#include "InputRespondingWidgetBase.h"
 #include "AstroUICardWidget.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)

@@ -1,53 +1,54 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "StarterItemCreatedDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=GameState -FallbackName=GameState
-#include "EnableSignalDelegate.h"
+#include "ProbeUnlockState.h"
 #include "OnItemTypeListChangedDelegate.h"
 #include "TutorialSignalDelegate.h"
-#include "StarterItemCreatedDelegate.h"
-#include "SignalDelegate.h"
 #include "OnCurrentResearchPointBalanceChangedDelegate.h"
-#include "OutroSequenceActorCreatedDelegate.h"
-#include "ProbeUnlockState.h"
-#include "WanderRealityTearOpenStateEventDelegate.h"
 #include "EAstroAchievementKeys.h"
+#include "EnableSignalDelegate.h"
+#include "SignalDelegate.h"
+#include "OutroSequenceActorCreatedDelegate.h"
+#include "WanderRealityTearOpenStateEventDelegate.h"
 #include "ItemCollectionAchievementProgress.h"
-#include "ScannableStatus.h"
 #include "ActiveTerrainColorChangedDelegate.h"
-#include "DebugLocation.h"
-#include "AstroRemotePlayerChunk.h"
-#include "CreativePaintMaterialMapping.h"
+#include "ScannableStatus.h"
 #include "PackedVoxelMaterialInfo.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "AstroRemotePlayerChunk.h"
+#include "DebugLocation.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=PackedVoxelMaterialInfo -FallbackName=PackedVoxelMaterialInfo
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformationParamsT2 -FallbackName=DeformationParamsT2
 //CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=CreativePaintMaterialMapping -FallbackName=CreativePaintMaterialMapping
+
+#include "CreativePaintMaterialMapping.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
 #include "EAchievementProgressionState.h"
-#include "EWandererRealityTearOpenState.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformationParamsT2 -FallbackName=DeformationParamsT2
 #include "DeformationCompleteEventDelegate.h"
+#include "EWandererRealityTearOpenState.h"
 #include "GameFramework/GameState.h"
 #include "AstroGameState.generated.h"
 
-class URewardState;
-class UActivation;
-class APhysicalItem;
-class UItemType;
-class ULevelSequencePlayer;
-class AActor;
-class UActorEntityLinkComponent;
-class ALevelSequenceActor;
-class AAstroCharacter;
-class UAstropediaAssetManager;
-class UActuatorQueue;
+class AAstroMissionsManager;
 class ARailNetwork;
 class URewardSystem;
-class AAstroMissionsManager;
-class UAstroSaveCustomArchiveProxy;
+class UActivation;
+class APhysicalItem;
 class AAstroPlanet;
+class AActor;
+class UActorEntityLinkComponent;
+class UItemType;
+class ULevelSequencePlayer;
+class ALevelSequenceActor;
+class UAstropediaAssetManager;
+class UActuatorQueue;
+class URewardState;
+class UAstroSaveCustomArchiveProxy;
 class USoundBase;
 class UParticleSystem;
+class AAstroCharacter;
 
 UCLASS(Blueprintable)
 class AAstroGameState : public AGameState {

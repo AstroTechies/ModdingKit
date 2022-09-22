@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "SignalDelegate.h"
 #include "SolarSystem.generated.h"
 
-class UWorld;
-class AAstroPlanet;
-class ADayNight;
-class ASun;
 class AGateStation;
+class ASun;
 class ASolarBody;
+class ADayNight;
+class AAstroPlanet;
+class UWorld;
 
 UCLASS(Blueprintable)
 class USolarSystem : public UObject {

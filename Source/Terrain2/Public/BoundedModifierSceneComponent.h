@@ -3,20 +3,20 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 #include "BoundedModifierSceneComponent.generated.h"
 
-class AActor;
 class UBoundedVoxelVolumeModifier;
+class AActor;
 
 USTRUCT(BlueprintType)
 struct FBoundedModifierSceneComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTransform RelativeTransform;
     
-    UPROPERTY(Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     UBoundedVoxelVolumeModifier* Modifier;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftClassPtr<AActor> ParentClass;
     
     TERRAIN2_API FBoundedModifierSceneComponent();

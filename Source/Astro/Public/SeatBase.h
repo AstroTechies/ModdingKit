@@ -4,8 +4,8 @@
 #include "SeatReplicationData.h"
 #include "SeatBase.generated.h"
 
-class UActorAttachmentsComponent;
 class AVehicleBase;
+class UActorAttachmentsComponent;
 
 UCLASS(Abstract, Blueprintable)
 class ASeatBase : public APhysicalItem {

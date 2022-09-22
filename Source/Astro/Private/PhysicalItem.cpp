@@ -1,10 +1,10 @@
 #include "PhysicalItem.h"
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
-#include "TerrainPhysicsComponent.h"
 #include "ClickableComponent.h"
-#include "WorldGravity.h"
+#include "TerrainPhysicsComponent.h"
 #include "ItemComponent.h"
+#include "WorldGravity.h"
 #include "ActorEntityLinkComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=StaticMeshComponent -FallbackName=StaticMeshComponent
 #include "SlotsComponent.h"
@@ -12,11 +12,11 @@
 #include "ProceduralStateComponent.h"
 
 class UPrimitiveComponent;
-class APawn;
 class USceneComponent;
-class UChildSlotComponent;
+class APawn;
 class UItemType;
 class APhysicalItem;
+class UChildSlotComponent;
 
 void APhysicalItem::StartItemInWorld() {
 }

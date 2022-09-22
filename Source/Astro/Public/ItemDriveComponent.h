@@ -2,15 +2,15 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "ProgressPredictionData.h"
 #include "ItemDriveReward.h"
 #include "PendingInGameItemRewards.h"
-#include "ProgressPredictionData.h"
 #include "SlotReference.h"
 #include "ItemDriveComponent.generated.h"
 
-class UItemType;
 class UTexture2D;
 class UTradeShipDatabase;
+class UItemType;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UItemDriveComponent : public UActorComponent {

@@ -4,11 +4,11 @@
 
 class UProceduralPlacement;
 
-USTRUCT(Blueprintable, BlueprintType)
+USTRUCT(BlueprintType)
 struct FPlacementApply {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UProceduralPlacement* m_placementType;
     
     TERRAIN2_API FPlacementApply();

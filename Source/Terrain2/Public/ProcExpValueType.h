@@ -2,14 +2,14 @@
 #include "CoreMinimal.h"
 #include "ProcExpValueType.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FProcExpValueType {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(EditAnywhere)
     uint32 primitiveType;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bIsPointer: 1;
     
     TERRAIN2_API FProcExpValueType();

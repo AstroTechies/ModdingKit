@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "SignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "EAugmentProperty.h"
-#include "SignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
 #include "AugmentComponent.generated.h"
 

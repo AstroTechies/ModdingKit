@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=MinimalViewInfo -FallbackName=MinimalViewInfo
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "Camera/CameraComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=MinimalViewInfo -FallbackName=MinimalViewInfo
 #include "CameraRigActor.generated.h"
 
-class APlayController;
-class UCameraModifierComponent;
 class USceneComponent;
+class APlayController;
+class UCameraComponent;
+class UCameraModifierComponent;
 
 UCLASS(Blueprintable)
 class ACameraRigActor : public AActor {

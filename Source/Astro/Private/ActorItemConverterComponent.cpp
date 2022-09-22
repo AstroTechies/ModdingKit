@@ -2,9 +2,9 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
+class AAstroCharacter;
 class UItemType;
 class APhysicalItem;
-class AAstroCharacter;
 
 void UActorItemConverterComponent::OnReplicationDataChanged() {
 }

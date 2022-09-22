@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=GameplayTasks -ObjectName=GameplayTask -FallbackName=GameplayTask
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-#include "GameplayTask.h"
 #include "GameplayTask.h"
 #include "AstroInterpolateItemTask.generated.h"
 
+class UCurveFloat;
 class UAstroInterpolateItemTask;
 class UAstroAction;
 class APhysicalItem;
-class UCurveFloat;
 
 UCLASS(Blueprintable)
 class ASTRO_API UAstroInterpolateItemTask : public UGameplayTask {

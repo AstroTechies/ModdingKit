@@ -3,8 +3,8 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "TetherSystemProperties.generated.h"
 
-class UStaticMesh;
 class UMaterialInterface;
+class UStaticMesh;
 
 UCLASS(Blueprintable)
 class UTetherSystemProperties : public UDataAsset {

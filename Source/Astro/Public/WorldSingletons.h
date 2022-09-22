@@ -3,18 +3,18 @@
 #include "WorldSingletons.generated.h"
 
 class UAstroEntityWorld;
-class ATetherManager;
-class USolarSystem;
-class UCollectibleHandler;
-class UResourceExtractorManager;
 class UAutoCraneManager;
-class UAstroServerCommWorldDataMap;
-class UBeaconManager;
-class UCameraFacingManager;
-class UCreativeModeData;
+class UCollectibleHandler;
 class UObject;
-class UAstroFoliageDestructionManager;
+class ATetherManager;
 class USlotOrganizationRuleBroker;
+class UCameraFacingManager;
+class UResourceExtractorManager;
+class UBeaconManager;
+class USolarSystem;
+class UAstroServerCommWorldDataMap;
+class UCreativeModeData;
+class UAstroFoliageDestructionManager;
 class UVoxelVolumeComponent;
 
 USTRUCT(BlueprintType)

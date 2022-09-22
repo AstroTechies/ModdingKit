@@ -8,10 +8,10 @@ USTRUCT(BlueprintType)
 struct FWeightedActorSelection {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftClassPtr<AActor> Actor;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Weight;
     
     TERRAIN2_API FWeightedActorSelection();

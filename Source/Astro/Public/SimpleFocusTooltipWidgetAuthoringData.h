@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
 #include "EAstroGameMenuTutorialSlideDeckKey.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
 #include "EAstroGameMenuTutoriaSlideCardKey.h"
 #include "SimpleFocusTooltipWidgetAuthoringData.generated.h"
 

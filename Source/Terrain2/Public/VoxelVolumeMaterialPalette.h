@@ -8,24 +8,24 @@
 
 class UMaterialInterface;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TERRAIN2_API UVoxelVolumeMaterialPalette : public UObject {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FCreativePaintMaterialMapping> CreativePaintIndices;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FVoxelMaterial> PaletteEntries;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FVoxelMaterial> RuntimePalette;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UMaterialInterface* DefaultMaterial;
     
-    UPROPERTY(Transient)
+    UPROPERTY(EditAnywhere, Transient)
     TMap<TEnumAsByte<EPhysicalSurface>, UMaterialInterface*> DefaultMaterialsBySurfaceType;
     
 public:

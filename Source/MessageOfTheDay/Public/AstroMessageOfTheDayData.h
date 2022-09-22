@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EAstroMessageOfTheDayVersion.h"
 #include "AstroMessageOfTheDayLocalizedContent.h"
+#include "EAstroMessageOfTheDayVersion.h"
 #include "AstroMessageOfTheDayData.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct MESSAGEOFTHEDAY_API FAstroMessageOfTheDayData {
     GENERATED_BODY()
 public:
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAstroMessageOfTheDayVersion Version;
     
-    UPROPERTY()
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FString, FAstroMessageOfTheDayLocalizedContent> Content;
     
     FAstroMessageOfTheDayData();

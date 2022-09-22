@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FT2MaterialArray {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<UMaterialInstanceDynamic*> Materials;
     
     TERRAIN2_API FT2MaterialArray();

@@ -1,10 +1,10 @@
 #include "ItemStatics.h"
 #include "Templates/SubclassOf.h"
 
+class UItemList;
+class UObject;
 class APhysicalItem;
 class UItemType;
-class UObject;
-class UItemList;
 
 bool UItemStatics::WillCraftItem(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& ItemTypes) {
     return false;

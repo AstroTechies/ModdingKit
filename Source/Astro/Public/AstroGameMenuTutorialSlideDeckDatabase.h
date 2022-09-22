@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "EAstroGameMenuTutorialSlideDeckKey.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "EAstroGameMenuTutoriaSlideCardKey.h"
-#include "EAstroGameMenuTutorialSlideDeckKey.h"
-#include "AstroGameMenuTutorialSlide.h"
 #include "AstroGameMenuTutorialSlideDeck.h"
+#include "AstroGameMenuTutorialSlide.h"
 #include "AstroGameMenuTutorialSlideDeckDatabase.generated.h"
 
 UCLASS(Blueprintable)

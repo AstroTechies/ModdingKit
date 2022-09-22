@@ -7,11 +7,11 @@
 #include "SlotReference.h"
 #include "CableExtenderTutorialComponent.generated.h"
 
-class USphereComponent;
+class AResourceInfo;
 class APhysicalItem;
 class ASlotConnection;
 class UItemType;
-class AResourceInfo;
+class USphereComponent;
 class UPrimitiveComponent;
 class AActor;
 

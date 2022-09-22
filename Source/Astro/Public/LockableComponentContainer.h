@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "LockableComponent.h"
 #include "AstroEntityComponentContainer.h"
 #include "AstroDatumRef.h"
+#include "LockableComponent.h"
 #include "LockableComponentContainer.generated.h"
 
 UCLASS(Blueprintable)

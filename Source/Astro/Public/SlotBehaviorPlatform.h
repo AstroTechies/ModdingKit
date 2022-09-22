@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "SlotBehavior.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformationParamsT2 -FallbackName=DeformationParamsT2
 #include "DeformationParamsT2.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformationParamsT2 -FallbackName=DeformationParamsT2
 #include "SlotBehaviorPlatform.generated.h"
 
 class APhysicalItem;

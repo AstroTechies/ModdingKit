@@ -5,15 +5,15 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
 #include "GateStation.generated.h"
 
-class UStaticMeshComponent;
 class USceneComponent;
-class USphereComponent;
-class UClickableComponent;
-class UActorGateObjectComponent;
+class UStaticMeshComponent;
 class UTooltipComponent;
-class AActor;
+class UClickableComponent;
+class USphereComponent;
+class UActorGateObjectComponent;
 class UActorEntityLinkComponent;
 class UStationGateObjectIndicatorDefinitions;
+class AActor;
 
 UCLASS(Blueprintable)
 class ASTRO_API AGateStation : public ASolarBody {

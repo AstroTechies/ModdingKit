@@ -1,21 +1,21 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ClickableDelegateNewDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "UseContextChangeDelegateDelegate.h"
-#include "EUseContext.h"
-#include "UseStateChangeDelegateDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
-#include "UseSuppressionState.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "EUseContext.h"
+#include "UseContextChangeDelegateDelegate.h"
+#include "ClickableDelegateNewDelegate.h"
+#include "UseStateChangeDelegateDelegate.h"
 #include "InteractionRedirect.h"
+#include "UseSuppressionState.h"
 #include "EUseType.h"
 #include "ClickableComponent.generated.h"
 
-class USceneComponent;
 class UStaticMesh;
+class USceneComponent;
 class AActor;
-class UClickableComponent;
 class APlayerController;
+class UClickableComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UClickableComponent : public UActorComponent {

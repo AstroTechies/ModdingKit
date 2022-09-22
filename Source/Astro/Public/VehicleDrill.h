@@ -2,32 +2,34 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "PhysicalItem.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelMaterialProperties -FallbackName=VoxelMaterialProperties
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-#include "VoxelMaterialProperties.h"
-#include "VehicleDrillReplicationData.h"
-#include "VehicleDrillOperationConstants.h"
-#include "EnableSignalDelegate.h"
-#include "OnDummyDrillRemovedDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "DrillAudioEventDelegate.h"
-#include "OnSampledTerrainMaterialChangedDelegate.h"
+#include "EnableSignalDelegate.h"
+#include "VehicleDrillReplicationData.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "OnDummyDrillRemovedDelegate.h"
+#include "VehicleDrillOperationConstants.h"
 #include "VehicleDrillSedimentReplicationData.h"
+#include "OnSampledTerrainMaterialChangedDelegate.h"
 #include "EVehicleDrillToolMode.h"
+#include "VoxelMaterialProperties.h"
+#include "VoxelMaterialProperties.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelMaterialProperties -FallbackName=VoxelMaterialProperties
 #include "VehicleDrill.generated.h"
 
-class USceneComponent;
 class AVehicleDrill;
-class ARoverBase;
 class UCurveFloat;
 class UControlComponent;
 class UDeformEventReceiver;
 class UPowerComponent;
+class USceneComponent;
 class UParticleSystemComponent;
+class ARoverBase;
 class AAstroPlanet;
 class UMaterialInterface;
 class AAstroPlayerController;
 class UParticleSystem;
+class UStorageChassisComponent;
 
 UCLASS(Blueprintable)
 class AVehicleDrill : public APhysicalItem {
@@ -254,6 +256,9 @@ protected:
     
     UFUNCTION(BlueprintImplementableEvent)
     UParticleSystem* GetSubtractParticleEffect(int32 HardnessDelta);
+    
+    UFUNCTION(BlueprintPure)
+    UStorageChassisComponent* GetOutermostStorage();
     
 public:
     UFUNCTION(BlueprintPure)

@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EPowerCableConnectionDirection.h"
 #include "PhysicalItem.h"
 #include "SlotReference.h"
 #include "StreamingPowerSplitterReplicationData.h"
+#include "EPowerCableConnectionDirection.h"
 #include "StreamingPowerSplitter.generated.h"
 
 class ASlotConnection;

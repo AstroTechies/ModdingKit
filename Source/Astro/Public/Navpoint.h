@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ENavpointGroup.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "ENavpointType.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
+#include "ENavpointType.h"
+#include "ENavpointGroup.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "Navpoint.generated.h"
 
-class AActor;
 class UTexture;
+class AActor;
 
 USTRUCT(BlueprintType)
 struct FNavpoint {

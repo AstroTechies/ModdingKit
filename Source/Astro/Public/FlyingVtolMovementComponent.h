@@ -1,13 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "Camera/CameraComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
 #include "FlyingVtolMovementComponent.generated.h"
 
 class UPrimitiveComponent;
-class APhysicalItem;
 class UCameraComponent;
+class APhysicalItem;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UFlyingVtolMovementComponent : public UActorComponent {

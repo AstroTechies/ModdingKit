@@ -1,8 +1,8 @@
 #include "Backpack.h"
 #include "Net/UnrealNetwork.h"
 
-class UChildActorComponent;
 class APhysicalItem;
+class UChildActorComponent;
 class UCrackableActorComponent;
 class AActor;
 class AAstroCharacter;

@@ -1,27 +1,28 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "SolarBody.h"
-#include "EPlanetIdentifier.h"
-#include "GatewayObjectPlacementProperties.h"
-#include "AtmosphericResource.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "SolarBody.h"
+#include "AtmosphericResource.h"
+#include "EPlanetIdentifier.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformationParamsT2 -FallbackName=DeformationParamsT2
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelMaterial -FallbackName=VoxelMaterial
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "VoxelMaterial.h"
 #include "VoxelVolumeComponent.h"
 #include "DeformationParamsT2.h"
-#include "VoxelMaterial.h"
+#include "GatewayObjectPlacementProperties.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelMaterial -FallbackName=VoxelMaterial
 #include "AstroPlanet.generated.h"
 
+class UChildActorComponent;
 class UItemType;
+class UVoxelVolumeComponent;
 class UObject;
 class UMaterial;
 class UMaterialInstanceDynamic;
 class UMaterialParameterCollection;
 class UStaticMeshComponent;
-class UChildActorComponent;
 class USceneComponent;
 class UBoundedVoxelVolumeModifier;
 class AActor;

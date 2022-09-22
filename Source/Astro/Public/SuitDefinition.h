@@ -3,9 +3,9 @@
 #include "Templates/SubclassOf.h"
 #include "SuitDefinition.generated.h"
 
-class UAnimInstance;
-class USkeletalMesh;
 class UAnimMontage;
+class USkeletalMesh;
+class UAnimInstance;
 
 USTRUCT(BlueprintType)
 struct FSuitDefinition {

@@ -12,10 +12,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bPerturbGravity: 1;
     
-    UPROPERTY( EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FRawDistributionFloat PerturbAngleDegrees;
     
-    UPROPERTY( EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FRawDistributionFloat GravityScale;
     
     UParticleModuleAstroGravity();

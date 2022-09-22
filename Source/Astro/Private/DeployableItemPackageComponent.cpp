@@ -3,9 +3,9 @@
 
 class APhysicalItem;
 class UItemType;
-class UTexture;
 class AActor;
 class UPrimitiveComponent;
+class UTexture;
 
 void UDeployableItemPackageComponent::SetupPackagedItem(TSubclassOf<UItemType> ItemTypeToDeploy) {
 }

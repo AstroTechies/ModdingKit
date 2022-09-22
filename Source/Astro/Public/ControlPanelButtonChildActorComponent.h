@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "CustomChildActorComponent.h"
-#include "SignalDelegate.h"
 #include "EnableSignalDelegate.h"
+#include "SignalDelegate.h"
 #include "ControlPanelButtonChildActorComponent.generated.h"
 
 class AControlPanelButton;

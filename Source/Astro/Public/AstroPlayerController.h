@@ -1,66 +1,63 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "SignalDelegate.h"
-#include "ItemCollectionAchievement.h"
-#include "CountAchievement.h"
-#include "AchievementProgressReplicationData.h"
-#include "GameList.h"
+#include "ClientSetPropertiesResponseDelegateDelegate.h"
+#include "PlayerList.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=PlayerController -FallbackName=PlayerController
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Quat -FallbackName=Quat
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize10 -FallbackName=Vector_NetQuantize10
-#include "Engine/EngineBaseTypes.h"
-#include "Engine/NetSerialization.h"
-#include "ClientSaveGameResponseDelegateDelegate.h"
+#include "AchievementProgressReplicationData.h"
+#include "ClientDeleteGameResponseDelegateDelegate.h"
+#include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformationParamsT2 -FallbackName=DeformationParamsT2
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=NetUnstableActorReference -FallbackName=NetUnstableActorReference
 #include "ClientNewGameResponseDelegateDelegate.h"
+#include "ClientSaveGameResponseDelegateDelegate.h"
 #include "ClientLoadGameResponseDelegateDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-#include "ClientDeleteGameResponseDelegateDelegate.h"
 #include "ClientRenameGameResponseDelegateDelegate.h"
 #include "ClientListPlayersResponseDelegateDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "EAstroAchievementKeys.h"
 #include "ClientListGamesResponseDelegateDelegate.h"
-#include "AstroClientProperties.h"
-#include "ClientServerStatisticsResponseDelegateDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=TerrainNodeNetChecksum -FallbackName=TerrainNodeNetChecksum
 #include "TerrainNodeNetChecksum.h"
-#include "ClientSetPropertiesResponseDelegateDelegate.h"
+#include "ClientServerStatisticsResponseDelegateDelegate.h"
 #include "ClientCreativeModeResponseDelegateDelegate.h"
-#include "ServerStatistics.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
+#include "EAstroAchievementKeys.h"
 #include "DSTravelInitiatedDelegateDelegate.h"
+#include "ItemCollectionAchievement.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
+#include "CountAchievement.h"
 #include "EUseType.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize100 -FallbackName=Vector_NetQuantize100
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformationParamsT2 -FallbackName=DeformationParamsT2
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize10 -FallbackName=Vector_NetQuantize10
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
 #include "SlotReference.h"
-#include "EPlayerCategory.h"
 #include "FloatCountAchievement.h"
-#include "DeformationParamsT2.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "ServerStatistics.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Quat -FallbackName=Quat
+#include "AstroClientProperties.h"
+#include "EPlayerCategory.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=TerrainNodeNetChecksum -FallbackName=TerrainNodeNetChecksum
 #include "InitialClientStateParams.h"
-#include "Engine/EngineBaseTypes.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=PackedVoxelMaterialInfo -FallbackName=PackedVoxelMaterialInfo
+#include "GameList.h"
+#include "DeformationParamsT2.h"
+#include "TerrainNodeNetChecksum.h"
 #include "PackedVoxelMaterialInfo.h"
-#include "PlayerList.h"
-#include "GameFramework/PlayerController.h"
 #include "AstroNotificationTagAuthoringData.h"
 #include "AstroPlayerController.generated.h"
 
 class UUserWidget;
 class AActor;
 class UPersistentLocalPlayerData;
-class UVoxelVolumeComponent;
-class UObject;
-class AAstroPlanet;
-class APhysicalItem;
-class UItemType;
 class UControlSymbol;
+class UVoxelVolumeComponent;
+class APhysicalItem;
+class UObject;
+class UItemType;
 class UPrinterComponent;
 class UPrimitiveComponent;
 class AAstroCharacter;
+class AAstroPlanet;
 
 UCLASS(Blueprintable)
 class ASTRO_API AAstroPlayerController : public APlayerController {

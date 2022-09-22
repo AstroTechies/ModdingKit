@@ -1,30 +1,30 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "EnableSignalDelegate.h"
-#include "VehicleBase.h"
-#include "RailCarMovementStateDelegateDelegate.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
 #include "SlotReference.h"
+#include "RailCarMovementStateDelegateDelegate.h"
+#include "VehicleBase.h"
+#include "EnableSignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "SignalDelegate.h"
 #include "RailCarMovementReplicatedData.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
 #include "ERailCarMovementState.h"
 #include "RailCarBase.generated.h"
 
-class USceneComponent;
 class UItemType;
-class UPrimitiveComponent;
+class USceneComponent;
 class USplineMeshComponent;
 class UMaterialInstanceDynamic;
 class UControlComponent;
 class ARailNetwork;
-class ASeatBase;
-class UClickQuery;
 class UPowerComponent;
 class AAstroPlayerController;
-class APlayController;
+class UPrimitiveComponent;
+class UClickQuery;
 class APhysicalItem;
+class APlayController;
+class ASeatBase;
 
 UCLASS(Blueprintable)
 class ASTRO_API ARailCarBase : public AVehicleBase {
@@ -255,6 +255,9 @@ protected:
     
     UFUNCTION(BlueprintPure)
     int32 GetCurrentCaravanLength();
+    
+    UFUNCTION()
+    void ConsumeLeftTriggerToggle();
     
 public:
     UFUNCTION(BlueprintPure)

@@ -3,8 +3,8 @@
 #include "AstroDatum.h"
 #include "AstroEntityComponent.generated.h"
 
-class UActorComponent;
 class UAstroEntityComponentSubobject;
+class UActorComponent;
 
 USTRUCT(BlueprintType)
 struct FAstroEntityComponent : public FAstroDatum {

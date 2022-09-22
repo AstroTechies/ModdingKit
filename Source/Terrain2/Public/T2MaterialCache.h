@@ -7,7 +7,7 @@ USTRUCT(BlueprintType)
 struct FT2MaterialCache {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<FName, FT2MaterialArray> ByName;
     
     TERRAIN2_API FT2MaterialCache();

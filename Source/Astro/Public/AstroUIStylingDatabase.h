@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "EAstroColor.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
-//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=SlateFontInfo -FallbackName=SlateFontInfo
+#include "EAstroColor.h"
 #include "ColorPaletteGameMenuTabBarButton.h"
-#include "AstroGameMenuAuthoringDefinition.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=Margin -FallbackName=Margin
+//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=SlateFontInfo -FallbackName=SlateFontInfo
+#include "AstroGameMenuAuthoringDefinition.h"
 #include "AstroUIStylingDatabase.generated.h"
 
 class UAstroGameMenuTabBarButtonWidget;

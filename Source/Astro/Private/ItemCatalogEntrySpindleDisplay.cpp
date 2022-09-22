@@ -1,7 +1,7 @@
 #include "ItemCatalogEntrySpindleDisplay.h"
 
-class UMeshComponent;
 class UStaticMeshComponent;
+class UMeshComponent;
 class UPrimitiveComponent;
 
 void UItemCatalogEntrySpindleDisplay::SetItemIconMeshComponents(UMeshComponent* newItemIconMeshParent, const TArray<UStaticMeshComponent*>& newItemIconMeshComponents) {

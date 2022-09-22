@@ -2,26 +2,26 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
-#include "InteractionTarget.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
-#include "ClickResult.h"
 #include "SlotClickResult.h"
+#include "ClickResult.h"
 #include "SlotReference.h"
+#include "InteractionTarget.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
 #include "MultiTool.generated.h"
 
 class UPrimitiveComponent;
 class AActor;
-class APhysicalItem;
-class UControlSymbol;
-class UActivation;
-class UControlActivatorComponent;
-class UMultitoolCameraContext;
 class UInputComponent;
-class APlayController;
-class UCrackableActorComponent;
 class UTooltipComponent;
+class UMultitoolCameraContext;
+class UControlSymbol;
+class APhysicalItem;
+class UControlActivatorComponent;
+class UActivation;
+class UCrackableActorComponent;
+class APlayController;
 class ASlotConnection;
 class UActuatorComponent;
 class USceneComponent;
@@ -345,6 +345,11 @@ public:
     UFUNCTION(BlueprintPure)
     bool IsHoldingItem() const;
     
+protected:
+    UFUNCTION()
+    void HandleBackpackOpenedOrClosed(bool IsOpen);
+    
+public:
     UFUNCTION()
     AActor* GetMissionLogActor() const;
     

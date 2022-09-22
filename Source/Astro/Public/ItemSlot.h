@@ -2,15 +2,15 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "ESlotType.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "ItemSlot.generated.h"
 
-class USlotBehavior;
-class AItemSlot;
-class UClickableComponent;
 class ASlotConnection;
+class AItemSlot;
 class USubslot;
+class USlotBehavior;
+class UClickableComponent;
 class APhysicalItem;
 class UChildSlotComponent;
 
@@ -53,6 +53,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool StreamingPowerConnectionsMergePowerNodes;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool StreamingPowerConnectionsCanChangeMergeNodes;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool CanAcceptUnslottableItems;

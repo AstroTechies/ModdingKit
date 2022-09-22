@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FT2ProcMeshSection {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UMaterialInterface* MaterialToAssignOnGT;
     
     TERRAIN2_API FT2ProcMeshSection();

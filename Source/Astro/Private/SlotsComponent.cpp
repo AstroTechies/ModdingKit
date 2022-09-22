@@ -2,10 +2,10 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
+class UAstroSaveCustomArchiveProxy;
 class APhysicalItem;
 class ASlotConnection;
 class UItemType;
-class UAstroSaveCustomArchiveProxy;
 class AAstroPlayerController;
 class AActor;
 class USlotsComponent;
@@ -106,6 +106,9 @@ bool USlotsComponent::SlotAcceptsItem(FSlotReference Slot, APhysicalItem* Item) 
 void USlotsComponent::SetTracePrimitivesAsleep(bool bAreAsleep) {
 }
 
+void USlotsComponent::SetStreamingPowerConnectionsMergePowerNodes(FSlotReference Slot, bool MergeNodes) {
+}
+
 void USlotsComponent::SetSlotRelativeTransform(FSlotReference Slot, FTransform Transform) {
 }
 
@@ -165,8 +168,16 @@ ASlotConnection* USlotsComponent::MakeExclusiveConnection(FSlotReference A, FSlo
     return NULL;
 }
 
-ASlotConnection* USlotsComponent::MakeConnection(FSlotReference A, FSlotReference B, TSubclassOf<ASlotConnection> OverrideType, bool Visible) {
+ASlotConnection* USlotsComponent::MakeConnection(FSlotReference A, FSlotReference B, TSubclassOf<ASlotConnection> OverrideType, bool Visible, bool PlaySounds) {
     return NULL;
+}
+
+bool USlotsComponent::GetStreamingPowerConnectionsMergePowerNodes(FSlotReference Slot) {
+    return false;
+}
+
+bool USlotsComponent::GetStreamingPowerConnectionsCanChangeMergePowerNodes(FSlotReference Slot) {
+    return false;
 }
 
 ESlotType USlotsComponent::GetSlotType(FSlotReference Slot) {

@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SlotReference.h"
 #include "EClickSlotBehavior.h"
+#include "SlotReference.h"
 #include "SlotClickResult.generated.h"
 
 USTRUCT(BlueprintType)

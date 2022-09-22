@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroDatumRef.h"
 #include "AstroGameMode.h"
+#include "AstroDatumRef.h"
 #include "GatesGameMode.generated.h"
 
 class AGateEngine;
 class AGateStation;
 class AAstroPlanet;
-class USolarSystem;
 class AGateChamber;
+class USolarSystem;
 
 UCLASS(Blueprintable, NonTransient)
 class ASTRO_API AGatesGameMode : public AAstroGameMode {

@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "EnableSignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "AstroDatumRef.h"
 #include "LockingMechanismSignalDelegate.h"
 #include "LockChangedEventMetadata.h"
-#include "AstroDatumRef.h"
 #include "ActorLockComponent.generated.h"
 
 class ULockingMechanismView;

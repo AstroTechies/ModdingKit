@@ -2,6 +2,7 @@
 #include "Net/UnrealNetwork.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=InstancedStaticMeshComponent -FallbackName=InstancedStaticMeshComponent
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SplineMeshComponent -FallbackName=SplineMeshComponent
+#include "Components/SplineMeshComponent.h"
 #include "AdaptiveTickComponent.h"
 
 class APhysicalItem;
@@ -63,7 +64,7 @@ void ASlotConnection::OnConnected_Implementation() {
 void ASlotConnection::MulticastBeginHoverOverSlotFX_Implementation() {
 }
 
-void ASlotConnection::MakeConnection(FSlotReference Slot) {
+void ASlotConnection::MakeConnection(FSlotReference Slot, bool PlaySounds) {
 }
 
 void ASlotConnection::MakeComponentConnection(UPrimitiveComponent* Component, const FVector& Location, const FVector& Normal) {
@@ -91,6 +92,9 @@ bool ASlotConnection::GetConnectionMidpoint(FVector& outVector) {
 
 bool ASlotConnection::CanConnect(FSlotReference Slot) {
     return false;
+}
+
+void ASlotConnection::BreakImmediately() {
 }
 
 void ASlotConnection::Break() {

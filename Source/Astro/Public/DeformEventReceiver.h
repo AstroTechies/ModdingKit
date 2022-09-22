@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "OnAcceptResourceDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "OnTerrainEventDelegate.h"
+#include "OnAcceptResourceDelegate.h"
 #include "OnTerrainDeformationDensityDeltaReceivedDelegate.h"
 #include "DeformEventReceiver.generated.h"
 

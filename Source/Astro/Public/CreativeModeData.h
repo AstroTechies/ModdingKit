@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "CreativeModeTerrainData.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "CreativeModeTerrainData.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "CreativeModeData.generated.h"
 

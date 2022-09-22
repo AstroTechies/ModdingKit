@@ -11,22 +11,22 @@ USTRUCT(BlueprintType)
 struct TERRAIN2_API FVoxelMaterial {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName Name;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor Color;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(EditAnywhere)
     TEnumAsByte<EPhysicalSurface> SurfaceType;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 HardnessLevel;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UMaterialInterface* CustomMaterial;
     
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UMaterialInstanceDynamic* MaterialInstance;
     
     FVoxelMaterial();

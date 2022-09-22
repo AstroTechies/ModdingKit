@@ -3,8 +3,8 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 #include "PlanetProxyActor.generated.h"
 
-class AAstroPlanet;
 class ASolarBody;
+class AAstroPlanet;
 
 UCLASS(Blueprintable)
 class ASTRO_API APlanetProxyActor : public AActor {

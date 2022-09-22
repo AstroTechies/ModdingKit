@@ -5,11 +5,12 @@
 #include "PowerComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SceneComponent -FallbackName=SceneComponent
 
-class APhysicalItem;
-class AAstroPlanet;
 class UMaterialInterface;
-class AAstroPlayerController;
+class AAstroPlanet;
 class AVehicleDrill;
+class AAstroPlayerController;
+class UStorageChassisComponent;
+class APhysicalItem;
 
 void AVehicleDrill::UpdateTerrainDeformationParticles(bool SystemEnabled, int32 HardnessDelta) {
 }
@@ -84,6 +85,10 @@ void AVehicleDrill::HandleDeactivatedAsExcavator() {
 void AVehicleDrill::HandleActivatedAsExcavator() {
 }
 
+
+UStorageChassisComponent* AVehicleDrill::GetOutermostStorage() {
+    return NULL;
+}
 
 bool AVehicleDrill::DidCollectExcessTerrain() const {
     return false;

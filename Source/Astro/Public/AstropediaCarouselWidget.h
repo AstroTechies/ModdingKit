@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EAstroGameMenuTutorialSlideDeckKey.h"
 #include "UserWidgetBlueprintDesignable.h"
+#include "EAstroGameMenuTutorialSlideDeckKey.h"
 #include "EAstroGameMenuTutoriaSlideCardKey.h"
 #include "AstropediaCarouselWidget.generated.h"
 

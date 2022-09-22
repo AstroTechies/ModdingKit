@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FDeferredObjectCreationNodeData {
     GENERATED_BODY()
 public:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<UObject*> LoadedAssetReferences;
     
     TERRAIN2_API FDeferredObjectCreationNodeData();

@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "ENavpointGroup.h"
-#include "EAstroMissionObjectiveProgressType.h"
 #include "EAstroMissionObjectiveType.h"
 #include "EPlanetIdentifier.h"
+#include "ENavpointGroup.h"
+#include "EAstroMissionObjectiveProgressType.h"
 #include "AstroMissionObjective.generated.h"
 
 class UItemType;

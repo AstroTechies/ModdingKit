@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "EnableSignalDelegate.h"
+#include "SignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SlotReference.h"
-#include "SignalDelegate.h"
-#include "EnableSignalDelegate.h"
 #include "RailPostCarSlot.h"
 #include "CalledCarState.h"
 #include "ERailPostConnectionState.h"
@@ -11,9 +11,9 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "RailPostComponent.generated.h"
 
+class UMaterialInstanceDynamic;
 class ARailCarBase;
 class UActuatorComponent;
-class UMaterialInstanceDynamic;
 class UPrimitiveComponent;
 class UClickQuery;
 class APhysicalItem;

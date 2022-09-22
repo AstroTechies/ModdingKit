@@ -7,13 +7,13 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
 #include "TradeShipComponent.generated.h"
 
-class APlayController;
-class UClickQuery;
-class UItemComponent;
-class UOrbitalNavigationComponent;
 class UTradeShipDockComponent;
+class UOrbitalNavigationComponent;
+class APlayController;
+class UItemComponent;
 class UItemType;
 class APhysicalItem;
+class UClickQuery;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UTradeShipComponent : public UActorComponent {

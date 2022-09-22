@@ -1,9 +1,9 @@
 #include "TooltipComponent.h"
 
 class UItemType;
-class USceneComponent;
 class UObject;
 class UPrimitiveComponent;
+class USceneComponent;
 class AActor;
 class UCrackableActorComponent;
 
@@ -131,6 +131,9 @@ ETooltipState UTooltipComponent::GetDesiredState() const {
 
 AActor* UTooltipComponent::GetActorThisTooltipIsFor() {
     return NULL;
+}
+
+void UTooltipComponent::FullyPresentTooltip() {
 }
 
 UTooltipComponent::UTooltipComponent() {

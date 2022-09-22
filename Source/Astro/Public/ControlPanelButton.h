@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
-#include "SignalDelegate.h"
 #include "EnableSignalDelegate.h"
+#include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 #include "ControlPanelButton.generated.h"
 
 UCLASS(Abstract, Blueprintable)

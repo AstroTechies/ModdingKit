@@ -6,10 +6,10 @@
 #include "RewardResult.h"
 #include "RewardSystem.generated.h"
 
-class URewardState;
-class UItemType;
 class URewardTable;
+class URewardState;
 class AActor;
+class UItemType;
 
 UCLASS(Blueprintable)
 class URewardSystem : public UObject {

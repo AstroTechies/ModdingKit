@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EResearchBonusTimelineType.h"
 #include "ResearchBonus.h"
+#include "EResearchBonusTimelineType.h"
 #include "ResearchBonusTimeline.generated.h"
 
 USTRUCT(BlueprintType)

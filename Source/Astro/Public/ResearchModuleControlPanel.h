@@ -5,8 +5,8 @@
 #include "ResearchReplicationData.h"
 #include "ResearchModuleControlPanel.generated.h"
 
-class UActorResearchComponent;
 class UResearchDisplayWidgetComponent;
+class UActorResearchComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API AResearchModuleControlPanel : public AControlPanel {

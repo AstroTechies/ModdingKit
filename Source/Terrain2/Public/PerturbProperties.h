@@ -3,20 +3,20 @@
 #include "FractalProperties.h"
 #include "PerturbProperties.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FPerturbProperties {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Amplitude;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Frequency;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FFractalProperties FractalProp;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NormalizationLength;
     
     TERRAIN2_API FPerturbProperties();

@@ -6,13 +6,13 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
 #include "ButtonComponent.generated.h"
 
+class UTextRenderComponent;
 class UStaticMesh;
 class USkeletalMesh;
-class UMaterialInterface;
-class UTextRenderComponent;
 class UAnimationAsset;
 class USceneComponent;
 class UMaterialInstanceDynamic;
+class UMaterialInterface;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UButtonComponent : public UPrimitiveComponent {

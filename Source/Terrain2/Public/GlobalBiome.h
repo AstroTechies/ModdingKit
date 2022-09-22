@@ -3,30 +3,30 @@
 #include "SurfaceLayer.h"
 #include "GlobalBiome.generated.h"
 
-class UProceduralModifier;
 class UBoundedVoxelVolumeModifier;
+class UProceduralModifier;
 class UBoundedVoxelVolumeModifierList;
 
 USTRUCT(BlueprintType)
 struct TERRAIN2_API FGlobalBiome {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float BaseVolumeRadius;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float TopsoilDepth;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSurfaceLayer> MountainLayers;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UProceduralModifier*> ObjectPlacementModifiers;
     
-    UPROPERTY(EditAnywhere, Export)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     TArray<UBoundedVoxelVolumeModifier*> BoundedModifiers;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UBoundedVoxelVolumeModifierList* SharedBoundedModifierList;
     
     FGlobalBiome();

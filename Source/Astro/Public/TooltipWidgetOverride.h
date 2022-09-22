@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ETooltipVisibilityControl.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
 #include "TooltipWidgetDisplayData.h"
+#include "ETooltipVisibilityControl.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
 #include "TooltipProximityBadgeVisibilityData.h"
 #include "TooltipWidgetOverride.generated.h"
 

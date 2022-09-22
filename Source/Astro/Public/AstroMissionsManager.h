@@ -1,24 +1,24 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
+#include "AstroMissionActivatedDelegateDelegate.h"
+#include "AstroMissionReclaimableItem.h"
 #include "SignalDelegate.h"
-#include "AstroMissionObjectiveUpdatedDelegateDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 #include "AstroMissionData.h"
 #include "AstroMissionState.h"
 #include "AstroMissionCompletedDelegateDelegate.h"
-#include "AstroMissionReclaimableItem.h"
-#include "AstroMissionActivatedDelegateDelegate.h"
+#include "AstroMissionObjectiveUpdatedDelegateDelegate.h"
 #include "AstroMissionRewardClaimedDelegateDelegate.h"
 #include "AstroMissionObjectiveProgress.h"
 #include "EAstroMissionObjectiveType.h"
 #include "EPlanetIdentifier.h"
 #include "AstroMissionsManager.generated.h"
 
-class AAstroPlayerController;
-class APlayerController;
 class UWorld;
 class UItemType;
+class AAstroPlayerController;
+class APlayerController;
 class APhysicalItem;
 
 UCLASS(Blueprintable)

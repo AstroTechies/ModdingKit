@@ -1,12 +1,12 @@
 #include "ControlComponent.h"
 #include "Templates/SubclassOf.h"
 
-class UObject;
 class APlayerController;
 class UControlComponent;
-class APhysicalItem;
+class UObject;
 class UControlSymbol;
 class UStaticMesh;
+class APhysicalItem;
 class UControlSymbolEvents;
 class AActor;
 

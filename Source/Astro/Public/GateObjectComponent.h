@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroDatumRef.h"
 #include "AstroEntityComponent.h"
 #include "EGateObjectType.h"
+#include "AstroDatumRef.h"
 #include "GateObjectComponent.generated.h"
 
-class AAstroCharacter;
 class UGateObjectEventListener;
+class AAstroCharacter;
 
 USTRUCT(BlueprintType)
 struct FGateObjectComponent : public FAstroEntityComponent {

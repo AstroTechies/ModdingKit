@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "LockingMechanismSignalDelegate.h"
 #include "LockingMechanism.h"
+#include "LockingMechanismSignalDelegate.h"
 #include "PowerFlowLockingMechanism.generated.h"
 
 UCLASS(Blueprintable)

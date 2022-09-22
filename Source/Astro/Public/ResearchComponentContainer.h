@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "AstroEntityComponentContainer.h"
-#include "ResearchComponent.h"
 #include "AstroDatumRef.h"
+#include "ResearchComponent.h"
 #include "ResearchComponentContainer.generated.h"
 
 UCLASS(Blueprintable)

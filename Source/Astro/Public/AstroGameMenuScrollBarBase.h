@@ -4,8 +4,8 @@
 #include "EFocusItemFocusChangeCause.h"
 #include "AstroGameMenuScrollBarBase.generated.h"
 
-class UAstroGameMenuSubPaneWidget;
 class UWidget;
+class UAstroGameMenuSubPaneWidget;
 
 UCLASS(Abstract, Blueprintable, EditInlineNew)
 class UAstroGameMenuScrollBarBase : public UAstroGameMenuFocusItemWidget {

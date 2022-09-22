@@ -2,17 +2,17 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HUD -FallbackName=HUD
-#include "GameFramework/HUD.h"
-#include "EAstroGameMenuTutorialSlideDeckKey.h"
 #include "EAstroGameMenuTutoriaSlideCardKey.h"
+#include "EAstroGameMenuTutorialSlideDeckKey.h"
+#include "GameFramework/HUD.h"
 #include "AstroHUD.generated.h"
 
-class UTexture2DDynamic;
 class UUserWidget;
+class UTexture2DDynamic;
 class UPlayWidget;
+class UReconnectWidget;
 class UAstroStoreMenuWidget;
 class UAstropediaCarouselWidget;
-class UReconnectWidget;
 class USelectionWheelWidget;
 
 UCLASS(Blueprintable, NonTransient)

@@ -5,11 +5,11 @@
 
 class UMaterialInterface;
 
-UCLASS()
+UCLASS(Blueprintable)
 class UMaterialRemapTable : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<UMaterialInterface*, UMaterialInterface*> BasicToHQMaterials;
     
     UMaterialRemapTable();

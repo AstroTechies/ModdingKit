@@ -6,14 +6,14 @@
 
 class UAstroFoliageDestructionGroup;
 
-UCLASS()
+UCLASS(Blueprintable)
 class TERRAIN2_API UAstroFoliageDestructionData : public UDataAsset {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FFoliageDestructionInfo DefaultFoliageDestructionInfo;
     
-    UPROPERTY(EditDefaultsOnly)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UAstroFoliageDestructionGroup*> DestructionGroups;
     
     UAstroFoliageDestructionData();

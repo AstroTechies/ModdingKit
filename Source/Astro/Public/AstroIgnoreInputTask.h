@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameplayTask.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=GameplayTasks -ObjectName=GameplayTask -FallbackName=GameplayTask
 #include "GameplayTask.h"
 #include "AstroIgnoreInputTask.generated.h"
 

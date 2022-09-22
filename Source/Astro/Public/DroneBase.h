@@ -3,8 +3,8 @@
 #include "PhysicalItem.h"
 #include "SlotReference.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
-#include "EDroneFlightState.h"
 #include "SignalDelegate.h"
+#include "EDroneFlightState.h"
 #include "DroneBase.generated.h"
 
 class UFlyingDroneMovementComponent;

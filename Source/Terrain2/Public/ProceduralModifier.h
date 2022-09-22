@@ -4,11 +4,11 @@
 #include "PlacementApply.h"
 #include "ProceduralModifier.generated.h"
 
-UCLASS(Blueprintable, BlueprintType)
+UCLASS(Blueprintable)
 class TERRAIN2_API UProceduralModifier : public UVoxelVolumeModifier {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FPlacementApply> m_compiledPlacements;
     
     UProceduralModifier();

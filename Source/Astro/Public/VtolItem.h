@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "LandingInfo.h"
 #include "VehicleBase.h"
-#include "InteractionPromptEntryData.h"
 #include "EControlsPromptStatus.h"
+#include "InteractionPromptEntryData.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "OnLandedChangedDelegate.h"
-#include "LandingInfo.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 #include "VtolItem.generated.h"
 
-class UFlyingVtolMovementComponent;
 class UFuelConsumerComponent;
-class ASolarBody;
+class UFlyingVtolMovementComponent;
 class AAstroPlayerController;
+class ASolarBody;
 
 UCLASS(Blueprintable)
 class ASTRO_API AVtolItem : public AVehicleBase {

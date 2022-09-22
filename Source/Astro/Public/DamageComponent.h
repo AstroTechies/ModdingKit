@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "DamageSignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "DamageSignalDelegate.h"
 #include "DamageComponent.generated.h"
 
 class AActor;

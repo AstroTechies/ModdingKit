@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "PhysicalItem.h"
-#include "EScannerMode.h"
-#include "SignalDelegate.h"
-#include "EScannerTargetDistance.h"
 #include "MidRangeScanSettings.h"
 #include "ScannableStatus.h"
+#include "SignalDelegate.h"
+#include "EScannerMode.h"
+#include "EScannerTargetDistance.h"
 #include "Scanner.generated.h"
 
 class UCurveFloat;

@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "EFuelSource.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SlotReference.h"
+#include "EFuelSource.h"
 #include "FuelConsumerComponent.generated.h"
 
 class APhysicalItem;

@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
+#include "SignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SlotReference.h"
-#include "SignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "DeployableItemPackageComponent.generated.h"
 
-class APhysicalItem;
 class UMaterialInterface;
+class APhysicalItem;
 class USceneComponent;
 class UPrimitiveComponent;
 class UItemType;

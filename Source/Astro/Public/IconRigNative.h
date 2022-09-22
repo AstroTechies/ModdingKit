@@ -3,10 +3,10 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 #include "IconRigNative.generated.h"
 
-class UStaticMeshComponent;
 class USceneComponent;
-class UMaterialInstanceDynamic;
+class UStaticMeshComponent;
 class UDecalComponent;
+class UMaterialInstanceDynamic;
 
 UCLASS(Blueprintable)
 class ASTRO_API AIconRigNative : public AActor {

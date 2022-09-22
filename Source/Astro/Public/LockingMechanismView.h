@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "SignalDelegate.h"
 #include "LockChangedEventMetadata.h"
 #include "LockingMechanismView.generated.h"
 
-class ULockingMechanism;
 class ULockingMechanismDefinition;
+class ULockingMechanism;
 
 UCLASS(Blueprintable)
 class ASTRO_API ULockingMechanismView : public UObject {

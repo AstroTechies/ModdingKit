@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
-#include "AstroNotificationUnlockAuthoringData.h"
 #include "OnUnlockNotificationCompleteDelegate.h"
+#include "AstroNotificationUnlockAuthoringData.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
 #include "AstroUnlockNotificationManager.generated.h"
 

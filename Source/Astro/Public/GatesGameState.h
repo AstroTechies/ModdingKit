@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroGameState.h"
-#include "GateObjectActivationSignalDelegate.h"
 #include "GatesGameStateReplicationData.h"
+#include "GateObjectActivationSignalDelegate.h"
+#include "AstroGameState.h"
 #include "GatesGameState.generated.h"
 
 UCLASS(Blueprintable)

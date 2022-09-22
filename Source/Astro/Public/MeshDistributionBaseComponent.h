@@ -4,8 +4,8 @@
 #include "TerrainPlacementComponent.h"
 #include "MeshDistributionBaseComponent.generated.h"
 
-class UStaticMesh;
 class AActor;
+class UStaticMesh;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UMeshDistributionBaseComponent : public UTerrainPlacementComponent {

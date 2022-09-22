@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=EDeformType -FallbackName=EDeformType
 //CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=EDeformShape -FallbackName=EDeformShape
-#include "EDeformType.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=EDeformType -FallbackName=EDeformType
 #include "EDeformShape.h"
+#include "EDeformType.h"
 #include "VehicleDrillOperationConstants.generated.h"
 
 USTRUCT(BlueprintType)

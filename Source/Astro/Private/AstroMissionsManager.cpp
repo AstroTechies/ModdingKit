@@ -3,11 +3,11 @@
 #include "Templates/SubclassOf.h"
 
 class UWorld;
-class APlayerController;
 class APhysicalItem;
 class UItemType;
-class AActor;
 class AAstroPlayerController;
+class APlayerController;
+class AActor;
 
 void AAstroMissionsManager::ToggleEventsDebug(UWorld* World) {
 }

@@ -7,10 +7,10 @@
 #include "NavpointVisualData.h"
 #include "CompassActor.generated.h"
 
-class UMaterial;
 class UStaticMesh;
-class UCurveFloat;
+class UMaterial;
 class UStaticMeshComponent;
+class UCurveFloat;
 class UMaterialInstanceDynamic;
 
 UCLASS(Blueprintable)

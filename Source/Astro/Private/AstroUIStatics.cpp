@@ -1,15 +1,15 @@
 #include "AstroUIStatics.h"
 #include "Templates/SubclassOf.h"
 
+class UBorder;
 class UImage;
 class UObject;
-class UBorder;
 class UWidget;
 class UAstroUIStylingDatabase;
+class UItemType;
 class UAstroPopupBadgeDatabase;
 class UWidgetAnimation;
 class AActor;
-class UItemType;
 
 FSlateBrush UAstroUIStatics::SlateBrushWithNewSlateColor(FSlateBrush SlateBrush, FSlateColor SlateColor) {
     return FSlateBrush{};

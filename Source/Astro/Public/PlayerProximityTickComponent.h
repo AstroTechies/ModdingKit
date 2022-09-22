@@ -5,8 +5,8 @@
 #include "PlayerProximityTickComponent.generated.h"
 
 class UPrimitiveComponent;
-class AActor;
 class UShapeComponent;
+class AActor;
 class UPlayerProximityTickComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

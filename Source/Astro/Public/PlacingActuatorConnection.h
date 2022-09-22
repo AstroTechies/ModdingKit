@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "SlotConnection.h"
-#include "TooltipWidgetDisplayData.h"
-#include "SignalDelegate.h"
 #include "TooltipStatusDelegateDelegate.h"
+#include "SlotConnection.h"
+#include "SignalDelegate.h"
+#include "TooltipWidgetDisplayData.h"
 #include "SourceRerouteNode.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "PlacingActuatorConnection.generated.h"
 
-class UStaticMesh;
-class UMaterialInstanceDynamic;
-class UItemList;
 class AItemSlot;
+class UStaticMesh;
+class UItemList;
+class UMaterialInstanceDynamic;
 class UPrimitiveComponent;
 
 UCLASS(Blueprintable)

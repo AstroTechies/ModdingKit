@@ -10,19 +10,19 @@ USTRUCT(BlueprintType)
 struct TERRAIN2_API FPaintModeMaterial {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor Color;
     
     UPROPERTY(EditAnywhere)
     TEnumAsByte<EPhysicalSurface> SurfaceType;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 HardnessLevel;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UMaterialInterface* CustomMaterial;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UMaterialInterface* ButtonMaterial;
     
     FPaintModeMaterial();

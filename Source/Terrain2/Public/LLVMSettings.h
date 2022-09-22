@@ -4,30 +4,30 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=FilePath -FallbackName=FilePath
 #include "LLVMSettings.generated.h"
 
-UCLASS(DefaultConfig, Config=Game)
+UCLASS(Blueprintable, DefaultConfig, Config=Game)
 class TERRAIN2_API ULLVMSettings : public UDeveloperSettings {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FFilePath ClangPath;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FFilePath LLVMLibPath;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FFilePath LLVMLinkPath;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FFilePath ClangPath10;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FFilePath LLVMLibPath10;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FFilePath LLVMLinkPath10;
     
-    UPROPERTY(Config, EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FFilePath> CompiledLibraries;
     
 public:

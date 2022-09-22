@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "TestEntityColorCycleComponent.h"
 #include "AstroEntityComponentContainer.h"
+#include "TestEntityColorCycleComponent.h"
 #include "AstroDatumRef.h"
 #include "TestEntityColorCycleContainer.generated.h"
 

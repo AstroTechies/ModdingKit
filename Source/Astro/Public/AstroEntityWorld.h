@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "AstroDatumRef.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "AstroEntityWorld.generated.h"
 
-class UAstroEntitySystem;
+class UAstroSaveCustomArchiveProxy;
 class UAstroEntityTaskManager;
 class UAstroEntityContainer;
 class UAstroEntityComponentContainer;
+class UAstroEntitySystem;
 class UAstroEntityComponentSubobject;
-class UAstroSaveCustomArchiveProxy;
 
 UCLASS(Blueprintable)
 class ASTRO_API UAstroEntityWorld : public UObject {

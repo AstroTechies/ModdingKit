@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SignalDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "OnActiveResearchSubjectExpiredDelegate.h"
 #include "OnResearchSubjectListChangedDelegate.h"
 #include "OnActiveResearchSubjectsChangedDelegate.h"
+#include "ResearchReplicationData.h"
 #include "SlotReference.h"
 #include "AstroDatumRef.h"
-#include "ResearchReplicationData.h"
 #include "AttachedResearchSubject.h"
 #include "ActorResearchComponent.generated.h"
 

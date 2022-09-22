@@ -5,12 +5,12 @@
 
 class UAstroFoliageType;
 
-UCLASS(MinimalAPI, NotPlaceable)
+UCLASS(Blueprintable, MinimalAPI, NotPlaceable)
 class AAstroFoliageActor : public AActor {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<UAstroFoliageType*> FoliageTypes;
     
 public:

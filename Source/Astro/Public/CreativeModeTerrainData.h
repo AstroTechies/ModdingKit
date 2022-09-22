@@ -6,9 +6,9 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "CreativeModeTerrainData.generated.h"
 
+class UVoxelVolumePaintModePalette;
 class UWorld;
 class UMaterialInstanceDynamic;
-class UVoxelVolumePaintModePalette;
 
 USTRUCT(BlueprintType)
 struct FCreativeModeTerrainData {

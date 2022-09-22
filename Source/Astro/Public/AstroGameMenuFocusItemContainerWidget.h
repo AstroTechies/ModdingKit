@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UserWidgetBlueprintDesignable.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=UMG -ObjectName=EventReply -FallbackName=EventReply
 #include "EMouseFocusChangeSuppressionSource.h"
+#include "UserWidgetBlueprintDesignable.h"
 #include "EFocusItemFocusChangeCause.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=UMG -ObjectName=EventReply -FallbackName=EventReply
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
 #include "AstroGameMenuFocusItemContainerWidget.generated.h"
 

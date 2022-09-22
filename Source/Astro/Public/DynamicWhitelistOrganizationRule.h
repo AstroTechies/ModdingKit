@@ -15,7 +15,7 @@ protected:
     TArray<TSubclassOf<UItemType>> ItemTypeWhitelist;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    uint8 bShowIndicators: 1;
+    uint8 bRequireLiteralItemType: 1;
     
 public:
     UDynamicWhitelistOrganizationRule();
@@ -27,6 +27,9 @@ public:
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetRequireNonFullItems(bool requireNonFullItems);
+    
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    void SetRequireLiteralItemType(bool requireLiteralItemType);
     
 };
 

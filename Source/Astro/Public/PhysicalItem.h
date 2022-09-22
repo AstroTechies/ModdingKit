@@ -1,43 +1,43 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 #include "SignalDelegate.h"
-#include "OnSlotReleasedDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "ItemDropInWorldDelegateDelegate.h"
 #include "ItemDropInWorldTerrainDelegateDelegate.h"
-#include "OnMovedDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 #include "OnPickedUpDelegate.h"
+#include "OnSlotReleasedDelegate.h"
+#include "ItemDropInWorldDelegateDelegate.h"
+#include "OnMovedDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
 #include "OnReplicationDataChangedDelegate.h"
 #include "EmplacementData.h"
 #include "SlotReference.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "OnPerformAuxUseOverrideDelegate.h"
 #include "OnSelectionRotationStartOrStopDelegate.h"
 #include "PhysicalItemReplicatedState.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
 #include "EPhysicalItemMotionState.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize100 -FallbackName=Vector_NetQuantize100
 #include "PhysicalItem.generated.h"
 
-class USceneComponent;
+class UWorldGravity;
 class UItemComponent;
-class APhysicalItem;
 class UActorEntityLinkComponent;
-class UChildSlotComponent;
+class UClickableComponent;
 class UTerrainPhysicsComponent;
 class UPrimitiveComponent;
 class UStaticMeshComponent;
-class UClickableComponent;
-class UWorldGravity;
 class USlotsComponent;
 class UTooltipComponent;
 class UProceduralStateComponent;
+class USceneComponent;
 class APawn;
 class UPhysicalMaterial;
 class UItemType;
+class APhysicalItem;
+class UChildSlotComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API APhysicalItem : public AActor {

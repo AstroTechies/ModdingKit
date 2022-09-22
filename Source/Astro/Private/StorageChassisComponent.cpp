@@ -4,10 +4,10 @@
 
 class APlayerController;
 class UItemType;
+class UStorageChassisComponent;
 class APhysicalItem;
 class AActor;
 class USlotOrganizationRule;
-class UStorageChassisComponent;
 
 void UStorageChassisComponent::TertiaryUse(APlayerController* Controller) {
 }

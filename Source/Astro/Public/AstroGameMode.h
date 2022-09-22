@@ -1,27 +1,28 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "OnGameLifecycleStateChangedDelegate.h"
+#include "EGameLifecycleState.h"
+#include "CharacterSelectSignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=GameMode -FallbackName=GameMode
 #include "OnSessionsSearchCompleteNotifyDelegate.h"
+#include "OnGameLifecycleStateChangedDelegate.h"
 #include "SignalDelegate.h"
-#include "RestartPlayerSignalDelegate.h"
 #include "PlayerJoinSignalDelegate.h"
-#include "CharacterSelectSignalDelegate.h"
+#include "RestartPlayerSignalDelegate.h"
 #include "SpawnPointList.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
-#include "EGameLifecycleState.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
 #include "GameFramework/GameMode.h"
+#include "EGameLifecycleState.h"
 #include "AstroGameMode.generated.h"
 
+class APlayController;
 class UWorld;
+class ULevelSequencePlayer;
 class UItemList;
 class UStorageChassisComponent;
 class ASolarBody;
-class ULevelSequencePlayer;
 class AActor;
-class APlayController;
 class USolarSystem;
 
 UCLASS(Blueprintable, NonTransient)

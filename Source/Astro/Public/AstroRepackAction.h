@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "SlotReference.h"
 #include "AstroPackagingAction.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
+#include "SlotReference.h"
 #include "AstroRepackAction.generated.h"
 
+class UPrimitiveComponent;
 class UCurveFloat;
 class UItemType;
-class APhysicalItem;
 class ARepackager;
-class UPrimitiveComponent;
+class APhysicalItem;
 
 UCLASS(Blueprintable)
 class ASTRO_API UAstroRepackAction : public UAstroPackagingAction {

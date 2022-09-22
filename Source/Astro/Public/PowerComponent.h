@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ReplicatedPowerState.h"
+#include "SignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "PowerThresholdEvent.h"
-#include "SignalDelegate.h"
+#include "ReplicatedPowerState.h"
 #include "PowerComponent.generated.h"
 
 class USceneComponent;

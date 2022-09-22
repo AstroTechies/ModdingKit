@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=UMG -ObjectName=UserWidget -FallbackName=UserWidget
 #include "ResearchSubjectReplicationData.h"
-#include "ResearchReplicationData.h"	
+#include "ResearchReplicationData.h"
 #include "Blueprint/UserWidget.h"
 #include "ResearchDisplayWidget.generated.h"
 

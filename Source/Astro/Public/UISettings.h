@@ -5,8 +5,8 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=RuntimeFloatCurve -FallbackName=RuntimeFloatCurve
 #include "UISettings.generated.h"
 
-class UUserWidget;
 class UAstroErrorWidget;
+class UUserWidget;
 class UUISettings;
 class UVirtualCursorWidget;
 
