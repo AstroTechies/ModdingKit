@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EGameControllerType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EGameControllerType : uint8 {
     Xbox,
     PS4,

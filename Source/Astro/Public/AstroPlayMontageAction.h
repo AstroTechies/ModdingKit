@@ -33,16 +33,16 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetMontage(UAnimMontage* NewMontage);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSingleAnimCustomNotify(FName NotifyName);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnMontageTaskInterrupted();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnMontageTaskFailedToStart();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnMontageTaskCompleted();
     
 };

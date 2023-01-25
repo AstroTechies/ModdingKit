@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "ProgressPredictionData.h"
+#include "Components/ActorComponent.h"
 #include "ItemDriveReward.h"
 #include "PendingInGameItemRewards.h"
+#include "ProgressPredictionData.h"
 #include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "ItemDriveComponent.generated.h"
 
+class UItemType;
 class UTexture2D;
 class UTradeShipDatabase;
-class UItemType;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UItemDriveComponent : public UActorComponent {
@@ -55,23 +55,23 @@ public:
     void UpdateActiveItemDriveStage();
     
 protected:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerUpdateProgress(FProgressPredictionData updatedPredictedProgress, int32 updatedOfficialProgress);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_UnclaimedPhysicalItemRewards();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_PredictedProgress();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePlayerEventSent(bool success, const FString& EventName, int32 EventId);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePlayerEventResponse(bool success, const FString& EventName, int32 EventId);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetNextStageThresholdAtStage(int32 StageIndex) const;
     
     UFUNCTION(BlueprintCallable)
@@ -80,10 +80,10 @@ public:
     UFUNCTION(BlueprintCallable)
     int32 GetItemValue(TSubclassOf<UItemType> ItemType);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FText GetEventDisplayName() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FText GetEventDisplayDescription() const;
     
     UFUNCTION(BlueprintCallable, Client, Reliable)

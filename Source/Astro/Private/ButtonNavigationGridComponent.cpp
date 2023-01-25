@@ -1,8 +1,8 @@
 #include "ButtonNavigationGridComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=InputComponent -FallbackName=InputComponent
 
-class UButtonComponent;
 class APlayerController;
+class UButtonComponent;
 
 void UButtonNavigationGridComponent::SetSelectedGridCell(int32 row, int32 column) {
 }

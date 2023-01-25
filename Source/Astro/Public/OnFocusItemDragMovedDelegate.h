@@ -5,5 +5,5 @@
 
 class UAstroGameMenuFocusItemWidget;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnFocusItemDragMoved, FVector2D, MousePosition, FVector2D, MousePosDelta, UAstroGameMenuFocusItemWidget*, FocusableWidget);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnFocusItemDragMoved, FVector2D, MousePosition, FVector2D, MousePosDelta, UAstroGameMenuFocusItemWidget*, FocusableWidget);
 

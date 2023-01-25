@@ -2,10 +2,10 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class UItemType;
-class UAstroSaveCustomArchiveProxy;
 class AActor;
+class UAstroSaveCustomArchiveProxy;
 class UItemComponent;
+class UItemType;
 
 int32 UItemComponent::TakeItemRateDelta(float Rate, float DeltaTime) {
     return 0;

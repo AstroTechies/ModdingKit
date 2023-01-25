@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "TerrainPlacementComponent.h"
+#include "ERaycastOrientation.h"
 #include "ESurfaceOrientation.h"
 #include "SurfaceCriteria.h"
-#include "ERaycastOrientation.h"
+#include "TerrainPlacementComponent.h"
 #include "RaycastTerrainSurfaceComponent.generated.h"
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ENoiseType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ENoiseType : uint8 {
     Value,
     Perlin,

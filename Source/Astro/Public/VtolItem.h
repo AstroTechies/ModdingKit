@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "LandingInfo.h"
-#include "VehicleBase.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
 #include "EControlsPromptStatus.h"
 #include "InteractionPromptEntryData.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "LandingInfo.h"
 #include "OnLandedChangedDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "VehicleBase.h"
 #include "VtolItem.generated.h"
 
-class UFuelConsumerComponent;
-class UFlyingVtolMovementComponent;
 class AAstroPlayerController;
 class ASolarBody;
+class UFlyingVtolMovementComponent;
+class UFuelConsumerComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API AVtolItem : public AVehicleBase {
@@ -91,7 +91,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxSpeedForHighAltitudeWash;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UFlyingVtolMovementComponent* MovementComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
@@ -104,7 +104,7 @@ public:
     uint8 bIsNearGround: 1;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UFuelConsumerComponent* FuelConsumerComponent;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -128,102 +128,102 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdateWashEffectsState();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateWashEffects(int32 effectSide, bool effectiveActive, const FVector& effectLocation);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateLandingInRange(bool InRange, bool canLand);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void TimeoutTooltipOverride();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetRiseInputInactive();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetRiseInputActive();
     
 public:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSetNormalizedSpeeds(float Forward, float lateral);
     
 protected:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerNotifyLandedChanged(bool bLanded);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerNearGroundChanged(bool bNearGround);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerEnginesActivated(bool bActivated, FLandingInfo LandingInfo);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerConsumeFuel(float Time);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteAux2ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteAux1ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSlottedItemsChanged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_IsNearGround(bool bPreviousValue);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_FuelAmount();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_EnginesActivated(bool bPreviousValue);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnNearGroundChanged(bool nearGround);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnIgnitionTurned(bool ignite);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnIgnitionPercentChanged(float percent);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnIgnitionFailed(bool hasFuel, bool onPlanet);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnFuelRecipeAmountChanged(float Amount);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnFuelPercentChanged(float percent);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnEnginesActivated(bool Activated);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCreativeModeFreeFuelChanged(bool bFreeFuel);
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastNotifyLandedChanged(bool bLanded);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsLocallyControlled() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleVehicleUnmanned(AAstroPlayerController* OldPilot);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleVehicleManned(AAstroPlayerController* NewPilot);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void GetThrusterTransform(int32 thrusterSide, FTransform& thrusterLocation);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASolarBody* GetLocalSolarBody() const;
     
 };

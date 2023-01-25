@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
-#include "SnailBehaviorData.h"
 #include "ESnailBehaviorTriggerType.h"
+#include "SnailBehaviorData.h"
 #include "SnailBehaviorTable.generated.h"
 
 UCLASS(Blueprintable)

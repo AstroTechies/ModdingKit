@@ -5,5 +5,5 @@
 
 class ASlotConnection;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSlotConnectionDelegate, FSlotReference, Slot, ASlotConnection*, Connection);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSlotConnectionDelegate, FSlotReference, Slot, ASlotConnection*, Connection);
 

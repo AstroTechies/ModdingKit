@@ -5,5 +5,5 @@
 
 class AResourceExtractor;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FExtractorActivationStatusChanged, AResourceExtractor*, Extractor, EResourceExtractorActivationFlags, ChangedFlag, bool, IsActive);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FExtractorActivationStatusChanged, AResourceExtractor*, Extractor, EResourceExtractorActivationFlags, ChangedFlag, bool, IsActive);
 

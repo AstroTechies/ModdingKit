@@ -1,25 +1,25 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "VehicleFacingSetDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "RepWheeledChassisMovement.h"
+#include "Components/ActorComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "RepWheeledChassisMovement.h"
+#include "SignalDelegate.h"
+#include "VehicleFacingSetDelegate.h"
 #include "WheelInfo.h"
 #include "WheeledChassisComponent.generated.h"
 
-class UActivation;
+class AActor;
 class APhysicalItem;
-class USceneComponent;
-class UStaticMeshComponent;
-class UPhysicsConstraintComponent;
+class UActivation;
+class UAstroSaveCustomArchiveProxy;
 class UComponentDelegateWrapper;
 class UControlledVehicleMovement;
-class UPhysicsMovementComponent;
 class UParticleSystemComponent;
-class UAstroSaveCustomArchiveProxy;
-class AActor;
+class UPhysicsConstraintComponent;
+class UPhysicsMovementComponent;
+class USceneComponent;
+class UStaticMeshComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UWheeledChassisComponent : public UActorComponent {
@@ -85,16 +85,16 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<APhysicalItem*> WheelOwners;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UStaticMeshComponent*> WheelColliders;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<USceneComponent*> WheelAttachParents;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<USceneComponent*> WheelOrigins;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UPhysicsConstraintComponent*> WheelConstraints;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -113,10 +113,10 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     APhysicalItem* ItemOwner;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UControlledVehicleMovement* ControlledMovementCompt;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPhysicsMovementComponent* PhysicsMovementComp;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -132,54 +132,54 @@ public:
     UWheeledChassisComponent();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void WakePhysics();
     
     UFUNCTION(BlueprintCallable)
     void UpdateVehicleEffects(TArray<UParticleSystemComponent*> wheelBlows, TArray<FName> AudioSurfaceTypes);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SleepPhysics(bool sleepAllConnectedVehicles);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetThrottle(const FVector& Direction);
     
 private:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerUpdateUprightFlipComplete(bool bReceivedUprightFlipComplete);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerUpdateIsFlippingUpright(bool bReceivedIsFlippingUpright);
     
-    UFUNCTION(Server, Unreliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Server, Unreliable, WithValidation)
     void ServerUpdateClientMotionState(FRepWheeledChassisMovement Movement);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy);
     
 public:
     UFUNCTION(BlueprintCallable)
     void Reset();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnWheelHit(USceneComponent* Component, const FVector& Normal, const FHitResult& Hit);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnWakePhysics();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_UprightFlipComplete();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_Movement();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_IsFlippingUpright();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnActorHit(AActor* SelfActor, AActor* OtherActor, FVector NormalImpulse, const FHitResult& Hit);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)

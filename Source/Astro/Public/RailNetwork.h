@@ -1,8 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformationParamsT2 -FallbackName=DeformationParamsT2
+#include "GameFramework/Actor.h"
 #include "DeformationParamsT2.h"
 #include "IndicatorHoloColors.h"
 #include "RailConnection.h"
@@ -10,12 +9,12 @@
 #include "RailNetwork.generated.h"
 
 class UCapsuleComponent;
-class UMaterialInterface;
-class UStaticMesh;
+class UClickQuery;
 class UClickableComponent;
 class UInstancedStaticMeshComponent;
+class UMaterialInterface;
 class URailPostComponent;
-class UClickQuery;
+class UStaticMesh;
 
 UCLASS(Blueprintable)
 class ASTRO_API ARailNetwork : public AActor {
@@ -42,10 +41,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FDeformationParamsT2 RailDeformDefaultParams;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 MaxCaravanLength;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 NumCapsulesPerRailSpline;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -115,10 +114,10 @@ public:
     float PercentageOfMaxDistanceToShowGoodIndicator;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UClickableComponent* clickable;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UInstancedStaticMeshComponent* StopperMeshes;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
@@ -133,7 +132,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FRailConnectionLocalData> RailConnectionMeshPool;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TWeakObjectPtr<UCapsuleComponent>, int32> CapsulesToConnectionIDs;
     
 public:
@@ -141,14 +140,14 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RailConnections();
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastStartConnectionFinalization(int32 ConnectionId, URailPostComponent* nearPost, URailPostComponent* farPost);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleQueryClickable(UClickQuery* Query);
     
 };

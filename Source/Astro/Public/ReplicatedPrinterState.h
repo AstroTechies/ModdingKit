@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "ReplicatedPrinterState.generated.h"
 
-class UItemType;
 class APhysicalItem;
+class UItemType;
 
 USTRUCT(BlueprintType)
 struct FReplicatedPrinterState {
@@ -33,10 +33,22 @@ public:
     float ModifiedProductionRate;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    int32 IndexAmongUnlockedBlueprints;
+    int32 RowIndexAmongVisibleBlueprints;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    int32 TotalNumUnlockedBlueprints;
+    int32 TotalNumVisibleBlueprintRows;
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint32 SelectableRowsBitFlags;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 ColumnIndexAmongVisibleBlueprints;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 TotalNumVisibleBlueprintColumns;
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint32 SelectableColumnsBitFlags;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint8 bCanPrint: 1;

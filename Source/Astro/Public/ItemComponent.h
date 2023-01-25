@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 #include "OnItemTypeChangedDelegate.h"
+#include "SignalDelegate.h"
+#include "Templates/SubclassOf.h"
 #include "ItemComponent.generated.h"
 
 class AActor;
-class UItemType;
 class UAstroSaveCustomArchiveProxy;
 class UItemComponent;
+class UItemType;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UItemComponent : public UActorComponent {
@@ -88,63 +88,63 @@ public:
     int32 SetAmount(int32 NewAmount, bool suppressItemDrainedFillChangeEventBroadcast);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRepAmount(int32 previousAmount);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsFull() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsEmptyContainer() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsEmpty() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsContainer() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HaveItem(TSubclassOf<UItemType> Type) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<UItemType> GetStoredSubItemTypeClass() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UItemType* GetStoredSubItemTypeCDO() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetRecipeAmount() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<UItemType> GetLiteralItemTypeClass() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UItemType* GetLiteralItemTypeCDO() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetInstanceCount(int32 maxNumInstances) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<UItemType> GetFunctionalItemTypeClass() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UItemType* GetFunctionalItemTypeCDO() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetFullness() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetAmount() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UItemComponent* GetActorItemComponent(AActor* Actor);
     
     UFUNCTION(BlueprintCallable)
@@ -162,7 +162,7 @@ public:
     UFUNCTION(BlueprintCallable)
     int32 AddItem(TSubclassOf<UItemType> Type, int32 AddAmount, bool Actual);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool AcceptsChangeInAmountForItemType(TSubclassOf<UItemType> itemTypeForChange, bool changeIsPositive) const;
     
 };

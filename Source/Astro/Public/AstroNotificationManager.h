@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "NotificationSpawner.h"
+#include "Components/ActorComponent.h"
 #include "LivingAstroNotification.h"
+#include "NotificationSpawner.h"
 #include "AstroNotificationManager.generated.h"
 
 class USceneComponent;

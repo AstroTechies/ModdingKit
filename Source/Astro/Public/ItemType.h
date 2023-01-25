@@ -1,20 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
 #include "ControlSymbol.h"
 #include "EAstroGameMenuTutoriaSlideCardKey.h"
 #include "EItemStorageBehavior.h"
 #include "Recipe.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+#include "Templates/SubclassOf.h"
 #include "ItemType.generated.h"
 
-class UItemType;
 class AActor;
-class UTexture2D;
-class UStaticMesh;
 class UItemCatalogData;
+class UItemType;
 class UResearchSubjectDefinition;
+class UStaticMesh;
 class UTexture;
+class UTexture2D;
 
 UCLASS(Blueprintable)
 class ASTRO_API UItemType : public UControlSymbol {
@@ -116,7 +116,7 @@ public:
     UTexture2D* WidgetIcon;
     
     UItemType();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FRecipe GetConstructionRecipe() const;
     
 };

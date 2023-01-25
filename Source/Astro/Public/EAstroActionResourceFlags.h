@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EAstroActionResourceFlags.generated.h"
 
-UENUM()
-enum class EAstroActionResourceFlags {
+UENUM(BlueprintType)
+enum class EAstroActionResourceFlags : uint8 {
     Montage,
     Movement,
     TakePicture,

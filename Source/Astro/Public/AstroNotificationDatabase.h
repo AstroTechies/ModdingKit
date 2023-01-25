@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "AstroNotificationUnlockAuthoringData.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-#include "EAstroColor.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
 #include "AstroNotificationTagAuthoringData.h"
+#include "AstroNotificationUnlockAuthoringData.h"
+#include "EAstroColor.h"
+#include "Templates/SubclassOf.h"
 #include "AstroNotificationDatabase.generated.h"
 
-class UTexture;
-class UTexture2D;
 class UAstroNotificationTagWidget;
 class UAstroNotificationToastWidget;
 class UAstroNotificationUnlockWidget;
+class UTexture;
+class UTexture2D;
 
 UCLASS(Blueprintable)
 class UAstroNotificationDatabase : public UDataAsset {
@@ -32,6 +32,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ToastNotificationQueueDisplayFrequency;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float RetainedBiomeToastExperationDelay;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText ResearchBytesGainedPrefixText;
@@ -143,6 +146,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UAstroNotificationToastWidget> AstroNotificationToastWidgetClass;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<UAstroNotificationToastWidget> AstroNotificationBiomeToastWidgetClass;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAstroNotificationTagAuthoringData NotificationOxygenSuffocating;

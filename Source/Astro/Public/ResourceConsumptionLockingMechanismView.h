@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "LockingMechanismView.h"
-#include "LockingMechanismSignalDelegate.h"
 #include "LockChangedEventMetadata.h"
+#include "LockingMechanismSignalDelegate.h"
+#include "LockingMechanismView.h"
 #include "ResourceConsumptionLockingMechanismView.generated.h"
 
 class ULockingMechanism;
@@ -15,7 +15,7 @@ public:
     FLockingMechanismSignal BeginFinalResourceConsumption;
     
     UResourceConsumptionLockingMechanismView();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnBeginFinalResourceConsumption(ULockingMechanism* LockingMechanism, const FLockChangedEventMetadata& EventData);
     
 };

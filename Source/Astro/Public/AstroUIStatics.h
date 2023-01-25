@@ -1,34 +1,34 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "AstroPopupBadgeAuthoringData.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=ESlateBrushDrawType -FallbackName=ESlateBrushDrawType
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
-//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=SlateBrush -FallbackName=SlateBrush
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
+//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=ESlateBrushDrawType -FallbackName=ESlateBrushDrawType
+//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=SlateBrush -FallbackName=SlateBrush
 //CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=SlateColor -FallbackName=SlateColor
+#include "AstroPopupBadgeAuthoringData.h"
 #include "EAstroUIAudioEventKey.h"
+#include "Templates/SubclassOf.h"
 #include "AstroUIStatics.generated.h"
 
+class AActor;
+class UAstroPopupBadgeDatabase;
+class UAstroUIStylingDatabase;
 class UBorder;
 class UImage;
-class UWidget;
-class UAstroUIStylingDatabase;
 class UItemType;
-class UAstroPopupBadgeDatabase;
+class UWidget;
 class UWidgetAnimation;
-class AActor;
 
 UCLASS(Blueprintable)
 class UAstroUIStatics : public UObject {
     GENERATED_BODY()
 public:
     UAstroUIStatics();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FSlateBrush SlateBrushWithNewSlateColor(FSlateBrush SlateBrush, FSlateColor SlateColor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FSlateBrush SlateBrushWithNewColor(FSlateBrush SlateBrush, FLinearColor LinearColor);
     
     UFUNCTION(BlueprintCallable)
@@ -55,16 +55,16 @@ public:
     UFUNCTION(BlueprintCallable)
     static void SetAllUserFocus(UWidget* WidgetToFocus);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UAstroUIStylingDatabase* GetAstroUIStylingDatabase();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FString GetAstroUIAudioEvent(EAstroUIAudioEventKey AudioEventKey);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UAstroPopupBadgeDatabase* GetAstroPopupBadgeDatabase();
     
-    UFUNCTION(BlueprintCosmetic, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintCosmetic, BlueprintPure)
     static float GetAnimationDuration(const UWidgetAnimation* InAnimation);
     
     UFUNCTION(BlueprintCallable)

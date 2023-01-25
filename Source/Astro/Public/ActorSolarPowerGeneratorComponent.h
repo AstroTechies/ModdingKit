@@ -1,14 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "ESolarGeneratorSunTrackingBehavior.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "Engine/EngineTypes.h"
+#include "ESolarGeneratorSunTrackingBehavior.h"
+#include "Components/ActorComponent.h"
 #include "ActorSolarPowerGeneratorComponent.generated.h"
 
+class UPowerComponent;
 class UPrimitiveComponent;
 class USceneComponent;
-class UPowerComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UActorSolarPowerGeneratorComponent : public UActorComponent {
@@ -40,37 +42,37 @@ protected:
     float SolarPanelRotatorInterpolationStrength;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* CastComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* SunFacingSolarPanel;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPowerComponent* PowerComponent;
     
 public:
     UActorSolarPowerGeneratorComponent();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSpawnedInSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReleasedFromSlot(bool NewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPlacedInSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleStoppedGeneratingPower();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleStartedGeneratingPower();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePickedUpFromWorld(bool PhysicalMovement);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleDroppedInWorld(UPrimitiveComponent* Component, const FVector& Point, const FVector& Normal);
     
 };

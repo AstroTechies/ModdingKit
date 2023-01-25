@@ -1,21 +1,21 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "OxygenChangeDelegateDelegate.h"
-#include "LinearAttachPoint.h"
-#include "SlotReference.h"
-#include "CircularAttachPoint.h"
-#include "ExplicitOxygenConnections.h"
-#include "VampireAttachmentEntry.h"
-#include "ETetherAttachmentType.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "Components/ActorComponent.h"
+#include "CircularAttachPoint.h"
+#include "ETetherAttachmentType.h"
+#include "ExplicitOxygenConnections.h"
+#include "LinearAttachPoint.h"
+#include "OxygenChangeDelegateDelegate.h"
+#include "SlotReference.h"
+#include "VampireAttachmentEntry.h"
 #include "TetherAttachComponent.generated.h"
 
-class USceneComponent;
-class UTetherNetwork;
-class UTetherAttachComponent;
-class UOxygenatorComponent;
 class AActor;
+class UOxygenatorComponent;
+class USceneComponent;
+class UTetherAttachComponent;
+class UTetherNetwork;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UTetherAttachComponent : public UActorComponent {
@@ -53,7 +53,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FCircularAttachPoint> CircularAttachPoints;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<USceneComponent*> SingularAttachPoints;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -62,17 +62,17 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UTetherNetwork* Network;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, SaveGame, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, SaveGame, Transient, meta=(AllowPrivateAccess=true))
     TArray<UTetherAttachComponent*> ConnectedTetherPosts;
     
 private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FVampireAttachmentEntry> VampireAttachments;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UOxygenatorComponent*> LinkedOxygenators;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UOxygenatorComponent* BuiltInOxygenator;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
@@ -89,41 +89,41 @@ public:
     UFUNCTION(BlueprintCallable)
     void UpdateExplicitNetwork();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void TeardownLinkToOxygenator(UOxygenatorComponent* oxygenator);
     
     UFUNCTION(BlueprintCallable)
     void SetCanAttach(bool NewCanAttach, bool ForceUpdate, bool fromSave);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOwnerMotionStateChanged();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOwnerDestroy(AActor* Actor);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnBuiltInOxygenatorOxygenChanged(UOxygenatorComponent* oxygenator);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnBuiltInOxygenatorDestroyed(UOxygenatorComponent* oxygenator);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ETetherAttachmentType GetTetherAttachmentType();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetPowerFlowOnVampireConnections();
     
     UFUNCTION(BlueprintCallable)
     FVector GetAttachPoint(FSlotReference SlotRef, const FVector& InLocation, bool allowConnections);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UTetherAttachComponent* GetActorTetherAttachComponent(AActor* Actor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UTetherAttachComponent* GetActorHierarchyTetherAttachComponent(AActor* Actor);
     
 };

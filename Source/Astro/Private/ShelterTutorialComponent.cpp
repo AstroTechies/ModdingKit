@@ -1,7 +1,7 @@
 #include "ShelterTutorialComponent.h"
 
-class ASlotConnection;
 class APhysicalItem;
+class ASlotConnection;
 
 void UShelterTutorialComponent::StopCableTutorial() {
 }

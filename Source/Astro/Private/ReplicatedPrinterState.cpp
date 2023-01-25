@@ -5,8 +5,12 @@ FReplicatedPrinterState::FReplicatedPrinterState() {
     this->CurrentBlueprintItemBeingPrinted = NULL;
     this->VisualProgress = 0.00f;
     this->ModifiedProductionRate = 0.00f;
-    this->IndexAmongUnlockedBlueprints = 0;
-    this->TotalNumUnlockedBlueprints = 0;
+    this->RowIndexAmongVisibleBlueprints = 0;
+    this->TotalNumVisibleBlueprintRows = 0;
+    this->SelectableRowsBitFlags = 0;
+    this->ColumnIndexAmongVisibleBlueprints = 0;
+    this->TotalNumVisibleBlueprintColumns = 0;
+    this->SelectableColumnsBitFlags = 0;
     this->bCanPrint = false;
     this->bCanUse = false;
     this->bCharging = false;

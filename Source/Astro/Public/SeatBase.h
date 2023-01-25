@@ -16,7 +16,7 @@ protected:
     FSeatReplicationData SeatReplicationData;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UActorAttachmentsComponent* ActorAttachmentsComponent;
     
 public:
@@ -24,14 +24,14 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleSeatReleasedFromSlot(bool NewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleSeatPlacedInSlot();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AVehicleBase* GetVehicleSlottedTo() const;
     
 };

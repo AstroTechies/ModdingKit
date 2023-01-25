@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "SlotReference.h"
+#include "Components/ActorComponent.h"
 #include "OnResourceSlotFullDelegate.h"
 #include "OnResourceStoredDelegate.h"
+#include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "ResourceCacheComponent.generated.h"
 
-class UItemType;
 class AAstroCharacter;
 class UDeformEventReceiver;
+class UItemType;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UResourceCacheComponent : public UActorComponent {
@@ -24,7 +24,7 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintCallable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnResourceStored OnResourceStored;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UDeformEventReceiver* DeformEventReceiver;
     
     UResourceCacheComponent();
@@ -34,11 +34,11 @@ public:
     UFUNCTION(BlueprintCallable)
     void StoreResource(TSubclassOf<UItemType> MineralType, int32 Amount);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAcceptResource(TSubclassOf<UItemType> Type, int32 Amount);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     AAstroCharacter* GetCharacter();
     
 public:
@@ -46,10 +46,10 @@ public:
     void CacheResources();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool ApplyPower(float Amount);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool ApplyOxygen(int32 Amount);
     
 };

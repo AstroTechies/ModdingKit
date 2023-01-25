@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
+#include "Components/ActorComponent.h"
 #include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "StorageCanisterComponent.generated.h"
 
-class UItemType;
 class APhysicalItem;
-class UStorageChassisComponent;
-class UStorageCanisterOrganizationRule;
 class UItemComponent;
+class UItemType;
+class UStorageCanisterOrganizationRule;
+class UStorageChassisComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UStorageCanisterComponent : public UActorComponent {
@@ -32,16 +32,16 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> OutputSlotNames;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UStorageChassisComponent* CurrentOuterMostChassis;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ItemTransferRate;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<UStorageCanisterOrganizationRule> InputOrganizationRule;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<UStorageCanisterOrganizationRule> OutputOrganizationRule;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -53,25 +53,25 @@ protected:
 public:
     UStorageCanisterComponent();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSlottedItemsChanged(APhysicalItem* changedItem);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemTypeChanged(UItemComponent* ItemComponent, TSubclassOf<UItemType> NewItemType);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAmountChanged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleSlotEvent(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnReleasedFromSlot(bool NewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnPlacedInSlot();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanMoveItems() const;
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)

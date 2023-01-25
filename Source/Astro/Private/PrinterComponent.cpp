@@ -2,12 +2,12 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class AControlPanel;
-class UClickQuery;
-class APhysicalItem;
-class UItemType;
-class UAstroSaveCustomArchiveProxy;
 class AActor;
+class AControlPanel;
+class APhysicalItem;
+class UAstroSaveCustomArchiveProxy;
+class UClickQuery;
+class UItemType;
 class UPrinterComponent;
 
 void UPrinterComponent::UnlockedItemsChanged(const TArray<TSubclassOf<UItemType>>& NewUnlockedItems) {
@@ -78,17 +78,27 @@ void UPrinterComponent::OnPrinterDestroyed(AActor* DestroyedActor) {
 void UPrinterComponent::OnAuthorityControlPanelCrackedChanged(AControlPanel* ControlPanel) {
 }
 
+void UPrinterComponent::IncrementBlueprintRow(bool doServerIncrement) {
+}
+
 void UPrinterComponent::IncrementBlueprint(bool doServerIncrement) {
 }
 
 void UPrinterComponent::HideBlueprint() {
 }
 
-void UPrinterComponent::HandleCreativeCatalogUnlockedChanged() {
+void UPrinterComponent::HandleCreativeModeOrEventStatusChanged() {
 }
 
-int32 UPrinterComponent::GetTotalAvailableBlueprintCount() const {
+int32 UPrinterComponent::GetTotalVisibleBlueprintRowsCount() const {
     return 0;
+}
+
+int32 UPrinterComponent::GetTotalVisibleBlueprintColumnCount() const {
+    return 0;
+}
+
+void UPrinterComponent::GetRowSelectableStates(TArray<bool>& rowStates) const {
 }
 
 bool UPrinterComponent::GetRepackageModeEngaged() const {
@@ -119,12 +129,19 @@ bool UPrinterComponent::GetHasAllIngredients() const {
     return false;
 }
 
-int32 UPrinterComponent::GetCurrentUnlockedBlueprintIndex() const {
+int32 UPrinterComponent::GetCurrentVisibleRowBlueprintIndex() const {
+    return 0;
+}
+
+int32 UPrinterComponent::GetCurrentVisibleColumnBlueprintIndex() const {
     return 0;
 }
 
 TSubclassOf<APhysicalItem> UPrinterComponent::GetCurrentItem() const {
     return NULL;
+}
+
+void UPrinterComponent::GetColumnSelectableStates(TArray<bool>& columnStates) const {
 }
 
 bool UPrinterComponent::GetCharging() const {
@@ -144,6 +161,9 @@ TArray<int32> UPrinterComponent::GetAvailableIngredientCounts() const {
 }
 
 void UPrinterComponent::FinishPrinting() {
+}
+
+void UPrinterComponent::DecrementBlueprintRow(bool doServerIncrement) {
 }
 
 void UPrinterComponent::DecrementBlueprint(bool doServerIncrement) {
@@ -185,6 +205,7 @@ UPrinterComponent::UPrinterComponent() {
     this->CurrentBlueprintIndex = -1;
     this->CurrentPackageableItem = NULL;
     this->CurrentRepackageableItemIndex = 0;
+    this->DefaultBlueprintPrinterCatagory = NULL;
     this->RecipesRequireProgression = true;
     this->RequireResources = true;
     this->HideIndicatorWithoutFullRecipe = false;

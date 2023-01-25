@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EDroneControlState.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EDroneControlState : uint8 {
     NotUsingDrone,
     ControllingDrone,

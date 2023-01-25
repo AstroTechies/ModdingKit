@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 #include "ELevelingBlockVizSource.h"
 #include "LevelingBlockComponent.generated.h"
 
-class UStaticMeshComponent;
 class UParticleSystemComponent;
 class USlotBehaviorTerrain;
+class UStaticMeshComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API ULevelingBlockComponent : public UActorComponent {
@@ -16,13 +16,13 @@ public:
     float StampSize;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* PreviewMesh;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     USlotBehaviorTerrain* BehaviorTerrain;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UParticleSystemComponent* particles;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnReplicated_VisibilitySourceMask, meta=(AllowPrivateAccess=true))
@@ -36,14 +36,14 @@ public:
     void SetPreviewVisibility(bool IsVisible, ELevelingBlockVizSource sourceId);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReplicated_VisibilitySourceMask();
     
 public:
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastStartLeveling();
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastPlayOrStopFX(bool bPlayParticles, bool PlaySound, bool isSuccess, bool playRespawnSound);
     
     UFUNCTION(BlueprintCallable)

@@ -11,7 +11,7 @@ UCLASS(Blueprintable, NonTransient)
 class UAstroReplicationGraph : public UReplicationGraph {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     UAstroReplicationGraphNode_GridSpatialization3D* GridNodes[2];
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

@@ -1,11 +1,14 @@
 #include "AstroNotificationStatics.h"
 #include "Templates/SubclassOf.h"
 
-class UObject;
 class AActor;
 class UAstroNotificationDatabase;
 class UItemType;
+class UObject;
 class USceneComponent;
+
+void UAstroNotificationStatics::SetShouldRetainBiomeToastNotification(UObject* WorldContextObject, bool bShouldRetain) {
+}
 
 void UAstroNotificationStatics::PresentUnlockNotification(UObject* WorldContextObject, const FAstroNotificationUnlockAuthoringData& AuthoringData) {
 }
@@ -17,6 +20,9 @@ void UAstroNotificationStatics::PresentResearchPointGrantNotificationData(AActor
 }
 
 void UAstroNotificationStatics::PresentCatalogItemUnlockNotification(UObject* WorldContextObject, TSubclassOf<UItemType> ItemType) {
+}
+
+void UAstroNotificationStatics::PresentBiomeToastNotification(UObject* WorldContextObject, const FAstroNotificationToastAuthoringData& AuthoringData) {
 }
 
 void UAstroNotificationStatics::ImmediatelyPresentNotificationWidget(AActor* OwningActor, const FAstroNotificationTagAuthoringData& AuthoringData, USceneComponent* OverrideAnchorReference) {

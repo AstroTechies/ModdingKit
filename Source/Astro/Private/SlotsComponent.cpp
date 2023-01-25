@@ -2,16 +2,16 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class UAstroSaveCustomArchiveProxy;
+class AActor;
+class AAstroPlayerController;
 class APhysicalItem;
 class ASlotConnection;
+class UAstroSaveCustomArchiveProxy;
 class UItemType;
-class AAstroPlayerController;
-class AActor;
+class USlotBehavior;
+class USlotDelegates;
 class USlotsComponent;
 class UStaticMeshComponent;
-class USlotDelegates;
-class USlotBehavior;
 
 bool USlotsComponent::TakeSlotItemOfTypeFromOther(FSlotReference Slot, FSlotReference Other, TSubclassOf<UItemType> Type) {
     return false;

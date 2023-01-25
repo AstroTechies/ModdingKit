@@ -4,5 +4,5 @@
 
 class UItemCatalogEntrySpindleDisplay;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNewCatalogEntrySet, UItemCatalogEntrySpindleDisplay*, Display);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNewCatalogEntrySet, UItemCatalogEntrySpindleDisplay*, Display);
 

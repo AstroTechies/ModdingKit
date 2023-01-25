@@ -1,23 +1,24 @@
 #include "PlayController.h"
-#include "Templates/SubclassOf.h"
-#include "BiomeSamplerComponent.h"
-#include "AstroPopupBadgeManager.h"
-#include "AstroUnlockNotificationManager.h"
 #include "AstroNotificationManager.h"
-#include "TooltipManager.h"
+#include "AstroPopupBadgeManager.h"
 #include "AstroToastNotificationManager.h"
+#include "AstroUnlockNotificationManager.h"
+#include "BiomeSamplerComponent.h"
+#include "Templates/SubclassOf.h"
+#include "TooltipManager.h"
 
 class AActor;
-class APhysicalItem;
-class UItemType;
-class UControlComponent;
+class AAstroCharacter;
 class AAstroPlanet;
 class ACheatPlinthBase;
+class APhysicalItem;
 class ASolarBody;
-class USceneComponent;
-class UMultiTool;
+class UAstroCharacterSuit;
 class UCameraComponent;
-class AAstroCharacter;
+class UControlComponent;
+class UItemType;
+class UMultiTool;
+class USceneComponent;
 
 void APlayController::UpdateCompass() {
 }
@@ -166,6 +167,12 @@ bool APlayController::ServerNotifyActorOnscreenStatusChanged_Validate(AActor* mo
 void APlayController::ServerCreateNavpointManagerForPlanet_Implementation(AAstroPlanet* Planet) {
 }
 bool APlayController::ServerCreateNavpointManagerForPlanet_Validate(AAstroPlanet* Planet) {
+    return true;
+}
+
+void APlayController::ServerCompleteCustomMissionObjective_Implementation(const FString& objectiveID) {
+}
+bool APlayController::ServerCompleteCustomMissionObjective_Validate(const FString& objectiveID) {
     return true;
 }
 
@@ -514,6 +521,12 @@ void APlayController::CloseActionWheel() {
 void APlayController::ClientPresentUnlockNotification_Implementation(FAstroNotificationUnlockAuthoringData AuthoringData) {
 }
 bool APlayController::ClientPresentUnlockNotification_Validate(FAstroNotificationUnlockAuthoringData AuthoringData) {
+    return true;
+}
+
+void APlayController::ClientPresentPlanetTravelNotification_Implementation(FAstroNotificationToastAuthoringData AuthoringData) {
+}
+bool APlayController::ClientPresentPlanetTravelNotification_Validate(FAstroNotificationToastAuthoringData AuthoringData) {
     return true;
 }
 

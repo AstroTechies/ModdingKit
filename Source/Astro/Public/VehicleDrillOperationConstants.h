@@ -1,7 +1,5 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=EDeformShape -FallbackName=EDeformShape
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=EDeformType -FallbackName=EDeformType
 #include "EDeformShape.h"
 #include "EDeformType.h"
 #include "VehicleDrillOperationConstants.generated.h"

@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "OnActiveResearchSubjectExpiredDelegate.h"
-#include "OnResearchSubjectListChangedDelegate.h"
-#include "OnActiveResearchSubjectsChangedDelegate.h"
-#include "ResearchReplicationData.h"
-#include "SlotReference.h"
+#include "Components/ActorComponent.h"
 #include "AstroDatumRef.h"
 #include "AttachedResearchSubject.h"
+#include "OnActiveResearchSubjectExpiredDelegate.h"
+#include "OnActiveResearchSubjectsChangedDelegate.h"
+#include "OnResearchSubjectListChangedDelegate.h"
+#include "ResearchReplicationData.h"
+#include "SignalDelegate.h"
+#include "SlotReference.h"
 #include "ActorResearchComponent.generated.h"
 
-class UCurveFloat;
 class APlayController;
+class UCurveFloat;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UActorResearchComponent : public UActorComponent {
@@ -83,16 +83,16 @@ public:
     UActorResearchComponent();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ResearchData();
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     bool AuthorityStartOrInterruptResearch(APlayController* InstigatingController);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AuthorityChangedActiveResearchSubjects(FAstroDatumRef ResearchComponentRef, const TArray<FAttachedResearchSubject>& ActiveResearchSubjects);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AuthorityActiveResearchSubjectExpired(FAstroDatumRef ResearchComponentRef, FAttachedResearchSubject ExpiredAttachedResearchSubject);
     
 };

@@ -12,10 +12,10 @@ public:
     FAstroGameMenuTabBarAuthoringData AuthoringData;
     
     UAstroGameMenuTabBarWidget();
-    UFUNCTION(BlueprintImplementableEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
     float GetWidthOfTabBar() const;
     
-    UFUNCTION(BlueprintImplementableEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
     float GetHeightOfTabBar() const;
     
 };

@@ -1,20 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 #include "ButtonNavigationGridComponent.generated.h"
 
+class APlayerController;
 class UButtonComponent;
 class UInputComponent;
-class APlayerController;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class UButtonNavigationGridComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     uint32 InitialSelectedRow;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     uint32 InitialSelectedColumn;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -24,10 +24,10 @@ public:
     float AnalogThreshold;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UButtonComponent*> Buttons;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UInputComponent* InputComponent;
     
 public:
@@ -48,25 +48,25 @@ public:
     void PopInputFocus(APlayerController* Controller);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void NavigateUp();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void NavigateRight();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void NavigateLeft();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void NavigateDown();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void Confirm();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AnalogVertical(float Y);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AnalogHorizontal(float X);
     
 public:

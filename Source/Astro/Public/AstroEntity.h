@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "AstroDatum.h"
+#include "Templates/SubclassOf.h"
 #include "AstroEntity.generated.h"
 
 class AActor;
@@ -19,10 +19,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TSubclassOf<AActor> ViewActorType;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<AActor> ViewActorTemplate;
     
-    UPROPERTY(EditAnywhere, SaveGame)
+    UPROPERTY(EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<AActor> ViewActor;
     
     ASTRO_API FAstroEntity();

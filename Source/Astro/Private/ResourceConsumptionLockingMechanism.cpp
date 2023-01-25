@@ -1,7 +1,7 @@
 #include "ResourceConsumptionLockingMechanism.h"
 
-class APhysicalItem;
 class AActor;
+class APhysicalItem;
 
 void UResourceConsumptionLockingMechanism::OnItemSetInResourceConsumptionSlot(APhysicalItem* Item) {
 }

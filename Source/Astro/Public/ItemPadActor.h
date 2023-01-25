@@ -1,32 +1,32 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "GameFramework/Actor.h"
 #include "ItemPadActor.generated.h"
 
+class UItemPad;
 class UPrimitiveComponent;
 class USceneComponent;
-class UItemPad;
 
 UCLASS(Blueprintable)
 class ASTRO_API AItemPadActor : public AActor {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* BaseLocation;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, SaveGame, meta=(AllowPrivateAccess=true))
     UItemPad* OwnerComponent;
     
     AItemPadActor();
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool ShouldDestroyOnPickup();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnSpawn(bool withTool, UPrimitiveComponent* Component, const FVector& Point, const FVector& Normal);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOwnerDestroyed(AActor* deletingOwner);
     
 };

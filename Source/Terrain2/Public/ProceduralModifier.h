@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "VoxelVolumeModifier.h"
 #include "PlacementApply.h"
+#include "VoxelVolumeModifier.h"
 #include "ProceduralModifier.generated.h"
 
 UCLASS(Blueprintable)

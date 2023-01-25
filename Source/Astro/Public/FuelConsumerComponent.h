@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "SlotReference.h"
+#include "Components/ActorComponent.h"
 #include "EFuelSource.h"
+#include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "FuelConsumerComponent.generated.h"
 
+class AAstroCharacter;
 class APhysicalItem;
 class UItemType;
 class USlotsComponent;
-class AAstroCharacter;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UFuelConsumerComponent : public UActorComponent {
@@ -43,7 +43,7 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NetworkSyncFuelTimer;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USlotsComponent* SlotsComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -58,17 +58,17 @@ private:
 public:
     UFuelConsumerComponent();
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemSlotted(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemRemoved(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemAmountChanged();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<UItemType> GetFuelType();
     
 };

@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EAirControlSecondaryType.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
+#include "Components/ActorComponent.h"
+#include "EAirControlSecondaryType.h"
 #include "ERoverID.h"
 #include "PhysicsMovementReplicatedInput.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
 #include "PhysicsMovementComponent.generated.h"
 
+class AAstroPlayerController;
+class APlayerController;
 class USceneComponent;
 class UStorageChassisComponent;
-class APlayerController;
-class AAstroPlayerController;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UPhysicsMovementComponent : public UActorComponent {
@@ -68,7 +68,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector SteeredWheelsDirection;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* ForceLocation;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -146,7 +146,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ERoverID RoverTierForTelemetry;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStorageChassisComponent* StorageComponent;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -173,7 +173,7 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 private:
-    UFUNCTION(Server, Unreliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Server, Unreliable, WithValidation)
     void ServerUpdateClientMovementInput(FPhysicsMovementReplicatedInput ClientSteeringInput);
     
 public:
@@ -181,14 +181,14 @@ public:
     void Move(APlayerController* Controller, const FVector2D& Value, float Multiplier);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleVehicleUnmanned(AAstroPlayerController* OldPilot);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleVehicleManned(AAstroPlayerController* NewPilot);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ApplyResistanceLevel();
     
 };

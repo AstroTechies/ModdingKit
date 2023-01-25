@@ -1,22 +1,22 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
-#include "SlotReference.h"
-#include "BackpackOxygenTankProperties.h"
-#include "BackpackOxygenTankOverride.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "GameFramework/Actor.h"
+#include "BackpackOxygenTankOverride.h"
+#include "BackpackOxygenTankProperties.h"
+#include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "Backpack.generated.h"
 
-class UMaterialInterface;
-class ADroneBase;
-class UCrackableActorComponent;
-class UPointLightComponent;
+class AAstroCharacter;
 class ADeformTool;
-class UDistanceLightFaderComponent;
+class ADroneBase;
 class APhysicalItem;
 class UChildActorComponent;
-class AAstroCharacter;
+class UCrackableActorComponent;
+class UDistanceLightFaderComponent;
+class UMaterialInterface;
+class UPointLightComponent;
 
 UCLASS(Blueprintable)
 class ABackpack : public AActor {
@@ -34,10 +34,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSlotReference CreativeDroneSlot;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UPointLightComponent* VirtualLightComponent;
     
-    UPROPERTY(EditAnywhere, Export, Replicated)
+    UPROPERTY(EditAnywhere, Export, Replicated, meta=(AllowPrivateAccess=true))
     TArray<TWeakObjectPtr<UDistanceLightFaderComponent>> AttachedLights;
     
 protected:
@@ -45,13 +45,13 @@ protected:
     UMaterialInterface* PendingDronePaletteMaterial;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UCrackableActorComponent* CatalogCrackable;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UCrackableActorComponent* CatalogCrackableCreative;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UCrackableActorComponent* MissionLogCrackable;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -95,80 +95,80 @@ public:
     void SetCatalog(UChildActorComponent* Catalog, UChildActorComponent* catalogCreative);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRightAuxReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRightAuxPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_MissionLog();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_CreativeDrone();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_Catalog();
     
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnOxygenTankPropertiesChanged();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnLeftAuxReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnLeftAuxPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemInSlotChanged(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnDeformToolEquippedStateChanged(bool equipped);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCreativeModeEnabledChanged(bool bIsCreativeModeEnabled);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCancel();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnBackpackAttachedDisplayCrackedChanged(UCrackableActorComponent* CrackableActorComponent, bool cracked);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsLocallyControlled();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePlayerDeathBegins();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleDroneFlightStateChanged();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetUnbundleOriginFromAuxSlot(FSlotReference AuxSlot, FVector& OutUnbundleOrigin);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FBackpackOxygenTankProperties GetOxygenTankProperties() const;
     
     UFUNCTION(BlueprintCallable)
     bool GetOpen();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetInactiveChildCatalog();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetChildMissionLog();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetChildCatalog();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AAstroCharacter* GetCharacter();
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)

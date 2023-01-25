@@ -1,14 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SlotBehavior.h"
 #include "DeformationParamsT2.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformationParamsT2 -FallbackName=DeformationParamsT2
+#include "SlotBehavior.h"
 #include "SlotBehaviorPlatform.generated.h"
 
-class APhysicalItem;
-class USceneComponent;
 class AActor;
+class APhysicalItem;
 class UPrimitiveComponent;
+class USceneComponent;
 
 UCLASS(Blueprintable, EditInlineNew)
 class USlotBehaviorPlatform : public USlotBehavior {
@@ -33,17 +32,17 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     APhysicalItem* Parent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<USceneComponent*> AnchorComponents;
     
 public:
     USlotBehaviorPlatform();
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnParentDeformed(const FDeformationParamsT2& params);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnActorOverlappedDuringKinematicMovement(UPrimitiveComponent* ownerRootPrimitive, AActor* OverlappedActor, UPrimitiveComponent* OverlappedComponent);
     
 };

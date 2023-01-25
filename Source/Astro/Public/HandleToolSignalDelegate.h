@@ -6,5 +6,5 @@
 
 class APlayController;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_SevenParams(FHandleToolSignal, APlayController*, Controller, const FHitResult&, toolHit, const FClickResult&, ClickResult, bool, startedInteraction, bool, usingTool, bool, justActivated, bool, canUse);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_SevenParams(FHandleToolSignal, APlayController*, Controller, const FHitResult&, toolHit, const FClickResult&, ClickResult, bool, startedInteraction, bool, usingTool, bool, justActivated, bool, canUse);
 

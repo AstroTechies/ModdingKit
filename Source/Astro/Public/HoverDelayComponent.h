@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
+#include "SignalDelegate.h"
 #include "HoverDelayComponent.generated.h"
 
 class AActor;
@@ -30,13 +30,13 @@ public:
     bool Hovering;
     
     UHoverDelayComponent();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnTimerEnd();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnHoverEnd(AActor* Actor);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnHoverBegin(AActor* Actor);
     
 };

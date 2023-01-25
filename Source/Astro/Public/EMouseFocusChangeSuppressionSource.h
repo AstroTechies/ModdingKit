@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EMouseFocusChangeSuppressionSource.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EMouseFocusChangeSuppressionSource : uint8 {
     PopoutIsActive,
     NavigationCommandWasIssued,

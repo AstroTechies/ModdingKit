@@ -1,20 +1,20 @@
 #include "AstroCharacter.h"
-#include "Net/UnrealNetwork.h"
-#include "Templates/SubclassOf.h"
+#include "Components/CapsuleComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "AstroActionComponent.h"
 #include "AstroPlayMontageAction.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=StaticMeshComponent -FallbackName=StaticMeshComponent
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=CapsuleComponent -FallbackName=CapsuleComponent
+#include "Net/UnrealNetwork.h"
+#include "Templates/SubclassOf.h"
 
-class UItemType;
+class AActor;
+class AAstroPlanet;
+class ABackpack;
+class ADroneBase;
+class APlayController;
+class ASolarBody;
 class UChildActorComponent;
 class UControlSymbol;
-class AActor;
-class ASolarBody;
-class APlayController;
-class AAstroPlanet;
-class ADroneBase;
-class ABackpack;
+class UItemType;
 
 void AAstroCharacter::UpdatePlayerIndex() {
 }
@@ -269,6 +269,7 @@ AAstroCharacter::AAstroCharacter() {
     this->grabAnimSpeed = 1.50f;
     this->Focusing = false;
     this->FocusingRotation = false;
+    this->PingFocusing = false;
     this->bEnableHeadlook = true;
     this->HoldingTool = false;
     this->IsHeavyCarrying = false;

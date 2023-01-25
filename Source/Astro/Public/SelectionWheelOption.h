@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EAstroSelectionWheelOptionType.h"
 #include "EAstroSelectionWheelOptionGameMode.h"
+#include "EAstroSelectionWheelOptionType.h"
 #include "SelectionWheelOption.generated.h"
 
 class UObject;

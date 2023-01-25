@@ -1,31 +1,31 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "ECrackableActorNetworkingPolicy.h"
-#include "SnailFoodData.h"
-#include "PhysicalItem.h"
-#include "ESnailFoodType.h"
-#include "OnSnailFedChangedDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
 //CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
-#include "SlotReference.h"
+#include "ECrackableActorNetworkingPolicy.h"
 #include "ESnailBehaviorTriggerType.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "ESnailFoodType.h"
+#include "OnSnailFedChangedDelegate.h"
+#include "PhysicalItem.h"
+#include "SlotReference.h"
+#include "SnailFoodData.h"
+#include "Templates/SubclassOf.h"
 #include "SnailItem.generated.h"
 
-class UChildActorComponent;
-class UStaticMeshComponent;
-class ASnailCrackableActor;
-class UCrackableActorComponent;
-class USkeletalMeshComponent;
-class USlotsComponent;
-class UPlanetEffect;
-class UAdaptiveTickComponent;
-class USnailBehaviorTable;
 class AActor;
-class UPrimitiveComponent;
+class ASnailCrackableActor;
+class UAdaptiveTickComponent;
+class UChildActorComponent;
+class UCrackableActorComponent;
 class UItemList;
 class UItemType;
+class UPlanetEffect;
+class UPrimitiveComponent;
+class USkeletalMeshComponent;
+class USlotsComponent;
+class USnailBehaviorTable;
+class UStaticMeshComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API ASnailItem : public APhysicalItem {
@@ -50,22 +50,22 @@ protected:
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentReference TerrariumChildActorComponentRef;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UChildActorComponent* ChildActorComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UCrackableActorComponent* ChildCrackableComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USkeletalMeshComponent* ChildSnailSkeleton;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* ChildTerrariumMesh;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* RootTerrariumMesh;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USlotsComponent* ChildSlotComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -78,10 +78,10 @@ protected:
     FSlotReference FoodSlotRef;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPlanetEffect* PlanetEffect;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAdaptiveTickComponent* AdaptiveTickComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -104,34 +104,34 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateSnailBuffDuration(float DeltaSeconds);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void SetupChildActorRefsBP();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnSnailFedEnd();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnSnailFed(ESnailFoodType foodType);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSnailCrackedChanged(UCrackableActorComponent* CrackableActorComponent, bool cracked);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_OnSnailIsInteractableChanged();
     
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnItemPlacedInFoodSlot(APhysicalItem* Item);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnEffectRelevanceChanged(bool IsInRelevancy);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnChildActorInputActionUse();
     
 public:
@@ -139,47 +139,47 @@ public:
     void MulticastTriggerSnailBehavior(ESnailBehaviorTriggerType Trigger, bool bLooping);
     
 private:
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastSnailFedUpdate(bool bNewFedState, ESnailFoodType newFoodType);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsFed();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleRemovedFromSlot(bool NewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePlacedInSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePickedUpInWorld(bool bPhysicalMovement);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnSpawnedInSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnSetItemInFoodSlot(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleDroppedInWorld(UPrimitiveComponent* Component, const FVector& Point, const FVector& Normal);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleChildActorClicked(AActor* Actor, FKey Key);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<UItemList> GetValidFoodItemsFromFoodType(ESnailFoodType foodType);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ESnailFoodType GetFoodTypeFromItemType(const TSubclassOf<UItemType> foodItemType);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetElapsedBuffTime();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ChangeChildNetworkingPolicy(ECrackableActorNetworkingPolicy newPolicy);
     
 public:

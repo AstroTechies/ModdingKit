@@ -1,24 +1,26 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "ReplicatedPrinterState.h"
-#include "SlotReference.h"
-#include "ItemPrintedSignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "Components/ActorComponent.h"
+#include "ItemBlueprintRow.h"
+#include "ItemPrintedSignalDelegate.h"
+#include "ReplicatedPrinterState.h"
+#include "SignalDelegate.h"
+#include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "PrinterComponent.generated.h"
 
-class UTextRenderComponent;
+class AActor;
 class AControlPanel;
 class APhysicalItem;
-class UPrinterComponent;
-class UMaterialInstanceDynamic;
-class AActor;
-class URecipeOrganizationRule;
-class UItemType;
 class UAstroSaveCustomArchiveProxy;
 class UClickQuery;
+class UItemCatalogCategoryDefinition;
+class UItemType;
+class UMaterialInstanceDynamic;
+class UPrinterComponent;
+class URecipeOrganizationRule;
+class UTextRenderComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UPrinterComponent : public UActorComponent {
@@ -42,7 +44,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<APhysicalItem>> Blueprints;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UItemCatalogCategoryDefinition* DefaultBlueprintPrinterCatagory;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UTextRenderComponent*> TextComponents;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -146,10 +151,10 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UMaterialInstanceDynamic* PrintingMaterialDynamic;
     
-    UPROPERTY(EditAnywhere, SaveGame)
+    UPROPERTY(EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<uint32> TotalItemAmounts;
     
-    UPROPERTY(EditAnywhere, SaveGame)
+    UPROPERTY(EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<uint32> ConsumedItemAmounts;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
@@ -158,14 +163,17 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> PlayerStorageSlots;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<URecipeOrganizationRule> RecipeOrganizationRule;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FItemBlueprintRow> BlueprintRows;
     
 public:
     UPrinterComponent();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UnlockedItemsChanged(const TArray<TSubclassOf<UItemType>>& NewUnlockedItems);
     
     UFUNCTION(BlueprintCallable)
@@ -180,7 +188,7 @@ public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetRequiresPower(bool printerRequiresPower);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetRepackageModeEnabled(bool modeEnabled);
     
     UFUNCTION(BlueprintCallable)
@@ -195,14 +203,14 @@ public:
     UFUNCTION()
     void SetItemsAvailableToRepackage(TArray<TWeakObjectPtr<APhysicalItem>> itemsToRepackage, int32 DefaultSelectionIndex);
     
-    UFUNCTION(BlueprintAuthorityOnly)
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetCanUse(bool bCanUse);
     
     UFUNCTION(BlueprintCallable)
     void SetBlueprints(TArray<TSubclassOf<APhysicalItem>> newBlueprints);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy);
     
 public:
@@ -213,28 +221,31 @@ public:
     bool PrinterClickQuery(UClickQuery* Query);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_Progress();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_PrintState();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_PrinterStateAtomic();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_PrinterOutputSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_CurrentBlueprintItem();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPrinterDestroyed(AActor* DestroyedActor);
     
 public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void OnAuthorityControlPanelCrackedChanged(AControlPanel* ControlPanel);
+    
+    UFUNCTION(BlueprintCallable)
+    void IncrementBlueprintRow(bool doServerIncrement);
     
     UFUNCTION(BlueprintCallable)
     void IncrementBlueprint(bool doServerIncrement);
@@ -243,14 +254,20 @@ public:
     void HideBlueprint();
     
 protected:
-    UFUNCTION()
-    void HandleCreativeCatalogUnlockedChanged();
+    UFUNCTION(BlueprintCallable)
+    void HandleCreativeModeOrEventStatusChanged();
     
 public:
-    UFUNCTION(BlueprintPure)
-    int32 GetTotalAvailableBlueprintCount() const;
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    int32 GetTotalVisibleBlueprintRowsCount() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    int32 GetTotalVisibleBlueprintColumnCount() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    void GetRowSelectableStates(TArray<bool>& rowStates) const;
+    
+    UFUNCTION(BlueprintCallable)
     bool GetRepackageModeEngaged() const;
     
     UFUNCTION(BlueprintCallable)
@@ -259,40 +276,49 @@ public:
     UFUNCTION(BlueprintCallable)
     float GetPrintingHeight();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetPrinting() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetItemIndicatorVisible() const;
     
-    UFUNCTION(BlueprintAuthorityOnly, BlueprintPure)
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintPure)
     bool GetItemIndicatorHidden() const;
     
 protected:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetHasAllIngredients() const;
     
 public:
-    UFUNCTION(BlueprintPure)
-    int32 GetCurrentUnlockedBlueprintIndex() const;
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    int32 GetCurrentVisibleRowBlueprintIndex() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    int32 GetCurrentVisibleColumnBlueprintIndex() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<APhysicalItem> GetCurrentItem() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    void GetColumnSelectableStates(TArray<bool>& columnStates) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetCharging() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetCanUse() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetCanPrint() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<int32> GetAvailableIngredientCounts() const;
     
     UFUNCTION(BlueprintCallable)
     void FinishPrinting();
+    
+    UFUNCTION(BlueprintCallable)
+    void DecrementBlueprintRow(bool doServerIncrement);
     
     UFUNCTION(BlueprintCallable)
     void DecrementBlueprint(bool doServerIncrement);
@@ -306,7 +332,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void CreateIndicatorFromClass(TSubclassOf<APhysicalItem> Class);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanReserveSlotsAcceptItemForActiveRecipe(APhysicalItem* Item);
     
     UFUNCTION(BlueprintCallable)
@@ -315,7 +341,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void AddIgnoredActorForPrintAreaValidation(AActor* ignoredActor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UPrinterComponent* ActorPrinterComponent(AActor* Actor);
     
     UFUNCTION(BlueprintCallable)

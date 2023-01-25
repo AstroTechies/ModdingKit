@@ -1,65 +1,54 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "SignalDelegate.h"
-#include "OnCreativeDroneFlightStateChangedDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Pawn -FallbackName=Pawn
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformableInterfaceT2 -FallbackName=DeformableInterfaceT2
-#include "DeformableInterfaceT2.h"
-#include "SolarBodyEventDelegate.h"
-#include "SlotReference.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformableInterfaceT2 -FallbackName=DeformableInterfaceT2
-#include "OxygenLevelThresholdChangedDelegate.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "OnCreativeDroneFlightStateChangedDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Quat -FallbackName=Quat
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
-#include "LightValuesChangedDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Pawn -FallbackName=Pawn
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize10 -FallbackName=Vector_NetQuantize10
-#include "OneTimeTooltipList.h"
-#include "OnLandedOnGroundDelegate.h"
-#include "SuffocatingStateChangedDelegate.h"
-#include "PoweredStateChangedDelegate.h"
-#include "OnlineNicknameStateChangedDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelMaterial -FallbackName=VoxelMaterial
-#include "VoxelMaterial.h"
-#include "Components/CapsuleComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
 #include "EDroneControlState.h"
+#include "LightValuesChangedDelegate.h"
+#include "OnCreativeDroneFlightStateChangedDelegate.h"
+#include "OnLandedOnGroundDelegate.h"
+#include "OneTimeTooltipList.h"
+#include "DeformableInterfaceT2.h"
+#include "VoxelMaterial.h"
+#include "OnlineNicknameStateChangedDelegate.h"
+#include "OxygenLevelThresholdChangedDelegate.h"
+#include "PoweredStateChangedDelegate.h"
+#include "SignalDelegate.h"
+#include "SlotReference.h"
+#include "SolarBodyEventDelegate.h"
+#include "SuffocatingStateChangedDelegate.h"
+#include "Templates/SubclassOf.h"
 #include "AstroCharacter.generated.h"
 
-class USceneComponent;
-class AAstroPlanet;
-class UChildActorComponent;
-class UStaticMesh;
-class UStaticMeshComponent;
 class AActor;
-class UStaticMesh;
-class UCapsuleComponent;
-class UMaterialInterface;
-class AReroutePlacementHelper;
-class APlayController;
-class UStaticMeshComponent;
-class UPrimitiveComponent;
-class UAstroCharacterMovementComponent;
-class USkeletalMeshComponent;
-class UParticleSystemComponent;
-class UChildSlotComponent;
-class UAstroPlayMontageAction;
-class ASolarBody;
+class AAstroPlanet;
 class ABackpack;
-class UItemType;
-class UAstroActionComponent;
-class UChildActorComponent;
-class UMaterialInstanceDynamic;
-class UItemType;
-class APhysicalItem;
-class UControlSymbol;
-class APlayController;
 class ADeformTool;
 class ADroneBase;
+class APhysicalItem;
+class APlayController;
+class AReroutePlacementHelper;
+class ASolarBody;
+class UAstroActionComponent;
+class UAstroCharacterMovementComponent;
+class UAstroPlayMontageAction;
+class UCapsuleComponent;
+class UChildActorComponent;
+class UChildSlotComponent;
+class UControlSymbol;
+class UItemType;
+class UMaterialInstanceDynamic;
+class UMaterialInterface;
+class UParticleSystemComponent;
+class UPrimitiveComponent;
+class USceneComponent;
+class USkeletalMeshComponent;
+class UStaticMesh;
+class UStaticMeshComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API AAstroCharacter : public APawn, public IDeformableInterfaceT2 {
@@ -136,16 +125,16 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     AReroutePlacementHelper* ActuatorRerouteHelper;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* HoldingIndicatorMeshComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* HoldingIndicatorDirMeshComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=UpdateHeldItem, meta=(AllowPrivateAccess=true))
     AActor* HeldItem;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UPrimitiveComponent*> HeldItemViewPrimitives;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -159,6 +148,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool FocusingRotation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool PingFocusing;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bEnableHeadlook;
@@ -175,7 +167,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector FocusLocation;
     
-    UPROPERTY(EditAnywhere, SaveGame, ReplicatedUsing=UpdatePlayerIndex)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=UpdatePlayerIndex, meta=(AllowPrivateAccess=true))
     uint8 AccentMaterialIndex;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -184,22 +176,22 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LastGestureTime;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UAstroCharacterMovementComponent* AstroMovementComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UCapsuleComponent* CapsuleComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USkeletalMeshComponent* MeshComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UParticleSystemComponent* WindParticles;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USceneComponent* ItemSpawnPreviewLocation;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UChildSlotComponent* ItemSpawnPreviewSlot;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -217,7 +209,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     FVector_NetQuantize10 ReplicatedVelocity;
     
-    UPROPERTY(EditAnywhere, Replicated)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     uint8 ReplicatedMovementMode;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -239,13 +231,13 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_LocalSolarBody, meta=(AllowPrivateAccess=true))
     ASolarBody* LocalSolarBody;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UChildActorComponent* backpackChildActorComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     AActor* LastHeldItem;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAstroActionComponent* ActionComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -272,7 +264,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SkipSerialization, Transient, meta=(AllowPrivateAccess=true))
     UMaterialInstanceDynamic* BrushIndicatorMID;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, SkipSerialization, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, SkipSerialization, Transient, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* BrushIndicatorMeshComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -402,23 +394,23 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdatePlayerIndex();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void UpdateHeldItem();
     
 public:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void ToggleDeformTool();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void SlotIndicatorClickedView();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void SlotIndicatorClicked(const FSlotReference& Slot, TSubclassOf<UItemType> Type);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetSprinting(bool Sprint);
     
     UFUNCTION(BlueprintCallable)
@@ -427,7 +419,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetItemSpawnPreviewActive(bool bIsActive);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetHoverDown(bool hover);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
@@ -454,10 +446,10 @@ public:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerDropHeavyCarriedItems();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void QuickItemClickView(APhysicalItem* Item);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     bool QuickItemClick(APhysicalItem* Item);
     
     UFUNCTION(BlueprintCallable)
@@ -470,123 +462,123 @@ public:
     void PlaceTetherFromBackpack();
     
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnRep_OnHoverboard();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_OneTimeTooltipList();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_LocalSolarBody(ASolarBody* oldSolarBody);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_IsPowered();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnRep_IsImmuneToDamage();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_Health();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnRep_FreeOxygen();
     
 public:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnParentAttach(AActor* Parent, bool Entering);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnImmunityInitiatorDestroyed(AActor* destroyedInitiator);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnGameplayStarted();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool OneTimeItemTooltipTriggered(TSubclassOf<UItemType> Item, const FName tooltipID) const;
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnBrushColorChanged(const FVoxelMaterial& TerrainMaterial);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void NotifyPlayerDeathBegin();
     
-    UFUNCTION(NetMulticast, Unreliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
     void MulticastPointItem(TSubclassOf<UItemType> ItemType, TSubclassOf<UControlSymbol> PingSymbol, const FVector& Location, const FVector_NetQuantizeNormal& Normal);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool MissionTracked(const FName missionId) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool MissionSeen(const FName missionId) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsCreativeDroneCameraPerspectiveActive() const;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnGameplayStartedEvent(bool StartedInExistingSavedGame);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool GetSprinting();
     
     UFUNCTION(BlueprintCallable)
     FTransform GetSpawnPreviewTransform();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     APlayController* GetPlayController();
     
     UFUNCTION(BlueprintCallable)
     FString GetOnlinePlayerName();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetOnHoverboard() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASolarBody* GetLocalSolarBody() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AAstroPlanet* GetLocalPlanet() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool GetHoverDown();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     FVector GetHeadLocation();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EDroneControlState GetDroneControlState() const;
     
-    UFUNCTION(BlueprintImplementableEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
     ADeformTool* GetDeformTool() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ADroneBase* GetCreativeDrone() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ABackpack* GetBackpack() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void Focus(const FVector& Location, bool rotationOnly);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void EndFocus();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void DoJump();
     
     UFUNCTION(BlueprintCallable)
     void DetachFromSeat(bool bImmediate, bool bForce);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool DataLogEntrySeen(const FName dataEntryID) const;
     
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     bool CanSprint();
     
 public:
@@ -602,13 +594,13 @@ public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthoritySetIsImmuneToDamage(bool bNewIsImmuneToDamage, AActor* immunityInitiator);
     
-    UFUNCTION(BlueprintAuthorityOnly, BlueprintImplementableEvent)
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintImplementableEvent)
     void AuthorityForceKillAstro();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     float ApplyPowerExternal(int32 Amount);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     int32 ApplyOxygenExternal(int32 Amount);
     
     

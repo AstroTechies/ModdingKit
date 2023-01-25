@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EDistanceFunction.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EDistanceFunction : uint8 {
     Euclidean,
     Manhattan,

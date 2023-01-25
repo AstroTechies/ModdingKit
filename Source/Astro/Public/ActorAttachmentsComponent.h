@@ -1,23 +1,23 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SetLandedDelegateDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "AttachedActorSignalDelegate.h"
-#include "AttachmentState.h"
-#include "AttachEnterExitSignalDelegate.h"
-#include "AttachmentDefinition.h"
-#include "PerformAuxActionSignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "Components/ActorComponent.h"
+#include "AttachEnterExitSignalDelegate.h"
+#include "AttachedActorSignalDelegate.h"
+#include "AttachmentDefinition.h"
+#include "AttachmentState.h"
+#include "PerformAuxActionSignalDelegate.h"
+#include "SetLandedDelegateDelegate.h"
 #include "ActorAttachmentsComponent.generated.h"
 
 class AActor;
-class APlayerController;
-class UStorageChassisComponent;
-class UAstroSaveCustomArchiveProxy;
 class APlayController;
+class APlayerController;
 class UActorAttachmentsComponent;
+class UAstroSaveCustomArchiveProxy;
 class USceneComponent;
+class UStorageChassisComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UActorAttachmentsComponent : public UActorComponent {
@@ -81,7 +81,7 @@ public:
     FPerformAuxActionSignal OnPerformAux2Action;
     
 protected:
-    UPROPERTY(EditAnywhere, SaveGame)
+    UPROPERTY(EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint32 ExitSuppressionCount;
     
 public:
@@ -98,10 +98,10 @@ public:
     bool ToggleAttached(AActor* Actor, bool& Toggled, bool setViewTarget, bool bImmediate);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetupAttachedViewTargetsDelayed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy);
     
 public:
@@ -111,55 +111,55 @@ public:
     UFUNCTION(BlueprintCallable)
     void PopExitSuppression();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_Attachments();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAttachedActorDestroyed(AActor* DestroyedActor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasPlayer();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasController(APlayController* Controller);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasClickPlayer();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasActor(AActor* Actor, int32& outIndex);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetFirstAttachedActor(bool bIgnoreExiting);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FTransform GetDetachTransform(int32 I) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FTransform GetAttachTransform(int32 I) const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void FinishExiting(int32 I);
     
     UFUNCTION(BlueprintCallable)
     void DetachAll(bool bImmediate);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanExit() const;
     
     UFUNCTION(BlueprintCallable)
     static TArray<APlayController*> AttachedArrayPlayers(const TArray<UActorAttachmentsComponent*>& Attachments);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool AttachedArrayHasPlayer(const TArray<UActorAttachmentsComponent*>& Attachments);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UActorAttachmentsComponent* AttachedArrayHasActor(const TArray<UActorAttachmentsComponent*>& Attachments, AActor* Actor, int32& outIndex);
     
     UFUNCTION(BlueprintCallable)
     static USceneComponent* AttachedArrayAvailable(const TArray<UActorAttachmentsComponent*>& Attachments, const FVector& Location);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UActorAttachmentsComponent* ActorActorAttachmentsComponent(AActor* Actor);
     
 };

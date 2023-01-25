@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=WorldSettings -FallbackName=WorldSettings
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=WorldSettings -FallbackName=WorldSettings
+#include "Templates/SubclassOf.h"
 #include "AstroSettings.generated.h"
 
-class UAstroMissionDataAsset;
-class ULevelSequence;
-class ASolarBody;
 class AActor;
 class AAstroPlanet;
-class AGateStation;
 class AAstroSettings;
+class AGateStation;
+class ASolarBody;
+class UAstroMissionDataAsset;
+class ULevelSequence;
 
 UCLASS(Blueprintable)
 class AAstroSettings : public AWorldSettings {
@@ -101,7 +101,7 @@ public:
     FOnFreePowerChanged OnFreePowerChanged;
     
     AAstroSettings();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static AAstroSettings* GetAstroSettings(AActor* Actor);
     
 };

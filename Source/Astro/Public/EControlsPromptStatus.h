@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EControlsPromptStatus.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EControlsPromptStatus : uint8 {
     PromptNotShown,
     PromptShowing,

@@ -9,7 +9,7 @@ class ASTRO_API UAstroUICardWidget : public UInputRespondingWidgetBase {
     GENERATED_BODY()
 public:
     UAstroUICardWidget();
-    UFUNCTION(BlueprintImplementableEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
     FVector2D GetUICardScreenPosOffset();
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)

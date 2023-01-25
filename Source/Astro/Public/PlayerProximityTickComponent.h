@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
 #include "PlayerProximityTickComponent.generated.h"
 
-class UPrimitiveComponent;
-class UShapeComponent;
 class AActor;
 class UPlayerProximityTickComponent;
+class UPrimitiveComponent;
+class UShapeComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UPlayerProximityTickComponent : public UActorComponent {
@@ -34,16 +34,16 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<AActor*> OverlappingPlayers;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UShapeComponent* ProximityShape;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UActorComponent*> ManagedComponents;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UActorComponent*> AutoManagedComponents;
     
-    UPROPERTY(EditAnywhere, Transient)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<uint8> AutoManagedComponentFlags;
     
 public:
@@ -55,21 +55,21 @@ public:
     void SetProximityShape(UShapeComponent* inProximityShape);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnTrackedPlayerDestroyed(AActor* DestroyedActor);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<AActor*> GetOverlappingPlayers();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UPlayerProximityTickComponent* GetActorPlayerProximityTickComponent(AActor* Actor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static TArray<AActor*> GetActorOverlappingPlayers(AActor* Actor);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void EndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
     
 public:
@@ -77,7 +77,7 @@ public:
     void CheckAndDisableTick();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void BeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& OverlapInfo);
     
 public:

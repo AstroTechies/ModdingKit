@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 #include "TransformCompletedDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE(FTransformCompleted);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE(FTransformCompleted);
 

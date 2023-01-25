@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 #include "OxygenatorSignalDelegate.h"
 #include "OxygenatorComponent.generated.h"
 
@@ -37,25 +37,25 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_IsSupplyingOxygen();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOwnerNotFullyPowered();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOwnerItemRemovedFromSlot(bool bNewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOwnerItemPlacedInSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOwnerFullyPowered();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemPadSpawned();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemPadDestroyed();
     
 public:

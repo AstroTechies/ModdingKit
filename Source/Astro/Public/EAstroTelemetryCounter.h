@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EAstroTelemetryCounter.generated.h"
 
-UENUM()
-enum class EAstroTelemetryCounter {
+UENUM(BlueprintType)
+enum class EAstroTelemetryCounter : uint8 {
     KeyboardUsageTime,
     GamepadUsageTime,
     UndergroundTime,

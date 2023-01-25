@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
+//CROSS-MODULE INCLUDE V2: -ModuleName=UMG -ObjectName=EventReply -FallbackName=EventReply
+#include "EFocusItemFocusChangeCause.h"
 #include "EMouseFocusChangeSuppressionSource.h"
 #include "UserWidgetBlueprintDesignable.h"
-#include "EFocusItemFocusChangeCause.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=UMG -ObjectName=EventReply -FallbackName=EventReply
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
 #include "AstroGameMenuFocusItemContainerWidget.generated.h"
 
 class UAstroGameMenuFocusItemWidget;
@@ -14,20 +14,20 @@ class UAstroGameMenuFocusItemContainerWidget : public UUserWidgetBlueprintDesign
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UAstroGameMenuFocusItemWidget*> FocusableWidgetsList;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UAstroGameMenuFocusItemWidget*> AllMenuItemWidgets;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UAstroGameMenuFocusItemWidget* CurrentlyFocusedItem;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<EMouseFocusChangeSuppressionSource> ActiveMouseFocusChangeSuppressions;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UAstroGameMenuFocusItemWidget* LastUsedItem;
     
 public:
@@ -36,42 +36,42 @@ public:
     void RemoveMouseFocusSuppression(EMouseFocusChangeSuppressionSource MouseSuppression);
     
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnFocusIndexChanged(int32 NewFocusIndex);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsMouseFocusSuppressed() const;
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleLastUsedItemChanged(bool IsLastUsedItem, UAstroGameMenuFocusItemWidget* LastUsedWidget);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleFocusedItemChanged(bool IsFocused, UAstroGameMenuFocusItemWidget* FocusedWidget, EFocusItemFocusChangeCause FocusChangeCause);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UAstroGameMenuFocusItemWidget* GetCurrentFocusItem() const;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     FEventReply AttemptToUseFocusedItemViaMouse();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     FEventReply AttemptToToggleEditFocusedItem();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     FEventReply AttemptToStartDragEditFocusedItem(const FVector2D& MousePos);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     FEventReply AttemptToIncrementCurrentlyEditedItem();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     FEventReply AttemptToDecrementCurrentlyEditedItem();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     FEventReply AttemptToCancelDragOrEditFocusItem();
     
     UFUNCTION(BlueprintCallable)

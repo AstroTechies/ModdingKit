@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SlotReference.h"
 #include "AstroDatumRef.h"
+#include "SlotReference.h"
 #include "AttachedResearchSubject.generated.h"
 
 USTRUCT(BlueprintType)

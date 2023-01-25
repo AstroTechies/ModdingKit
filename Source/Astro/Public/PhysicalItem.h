@@ -1,43 +1,43 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "SignalDelegate.h"
-#include "ItemDropInWorldTerrainDelegateDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
-#include "OnPickedUpDelegate.h"
-#include "OnSlotReleasedDelegate.h"
-#include "ItemDropInWorldDelegateDelegate.h"
-#include "OnMovedDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
-#include "OnReplicationDataChangedDelegate.h"
-#include "EmplacementData.h"
-#include "SlotReference.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "OnPerformAuxUseOverrideDelegate.h"
-#include "OnSelectionRotationStartOrStopDelegate.h"
-#include "PhysicalItemReplicatedState.h"
-#include "EPhysicalItemMotionState.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
+#include "GameFramework/Actor.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize100 -FallbackName=Vector_NetQuantize100
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
+#include "EPhysicalItemMotionState.h"
+#include "EmplacementData.h"
+#include "ItemDropInWorldDelegateDelegate.h"
+#include "ItemDropInWorldTerrainDelegateDelegate.h"
+#include "OnMovedDelegate.h"
+#include "OnPerformAuxUseOverrideDelegate.h"
+#include "OnPickedUpDelegate.h"
+#include "OnReplicationDataChangedDelegate.h"
+#include "OnSelectionRotationStartOrStopDelegate.h"
+#include "OnSlotReleasedDelegate.h"
+#include "PhysicalItemReplicatedState.h"
+#include "SignalDelegate.h"
+#include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "PhysicalItem.generated.h"
 
-class UWorldGravity;
-class UItemComponent;
+class APawn;
+class APhysicalItem;
 class UActorEntityLinkComponent;
+class UChildSlotComponent;
 class UClickableComponent;
-class UTerrainPhysicsComponent;
+class UItemComponent;
+class UItemType;
+class UPhysicalMaterial;
 class UPrimitiveComponent;
-class UStaticMeshComponent;
-class USlotsComponent;
-class UTooltipComponent;
 class UProceduralStateComponent;
 class USceneComponent;
-class APawn;
-class UPhysicalMaterial;
-class UItemType;
-class APhysicalItem;
-class UChildSlotComponent;
+class USlotsComponent;
+class UStaticMeshComponent;
+class UTerrainPhysicsComponent;
+class UTooltipComponent;
+class UWorldGravity;
 
 UCLASS(Blueprintable)
 class ASTRO_API APhysicalItem : public AActor {
@@ -100,34 +100,34 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnIsAttachedToTerrainChanged;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UItemComponent* ItemComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, SaveGame, meta=(AllowPrivateAccess=true))
     UActorEntityLinkComponent* EntityLinkComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UTerrainPhysicsComponent* terrainComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPrimitiveComponent* PlaceholderPrimitive;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* StaticMeshComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UWorldGravity* GravityComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UClickableComponent* ClickableComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USlotsComponent* SlotsComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UTooltipComponent* TooltipComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UProceduralStateComponent* ProceduralState;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_EmplacementData, meta=(AllowPrivateAccess=true))
@@ -235,10 +235,10 @@ public:
     UFUNCTION(BlueprintCallable)
     void StartItemInWorld();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void StartInWorld();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool ShouldPickUp(UPrimitiveComponent* PrimComponent);
     
     UFUNCTION(BlueprintCallable)
@@ -259,7 +259,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetAttachPhysics(USceneComponent* Component, const FName& SocketName, bool DeWeld);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerTakePossession(APawn* controllingPawn, bool PhysicalMovement, bool PartOfSwap);
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
@@ -269,14 +269,14 @@ public:
     void ServerSlotReleaseItem(bool NewOwner, bool FromTool, float RandomForce, bool PartOfSwap);
     
 private:
-    UFUNCTION(Server, Unreliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Server, Unreliable, WithValidation)
     void ServerSlotEmplaceItem(FSlotReference Slot, int32 SubslotIndex, bool SnapTo, bool weld);
     
-    UFUNCTION(Server, Unreliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Server, Unreliable, WithValidation)
     void ServerSetSlotCardinalDirection(uint8 Direction);
     
 public:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerReleasePossession(UPrimitiveComponent* HitComponent, bool NewTerrainComponent, FVector HitLocation, FVector_NetQuantizeNormal HitNormal);
     
 private:
@@ -284,113 +284,113 @@ private:
     void ServerMove(FVector_NetQuantize100 clientLoc, float Scale, uint32 clientRot, uint8 clientRoll);
     
 public:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void ReleasedFromSlot(bool FromTool, bool NewOwner);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     FTransform PlacementTransform(const FHitResult& Hit);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void PlacedInSlot(FSlotReference Slot, bool FromTool, bool SlottedDuringInitialization);
     
     UFUNCTION(BlueprintCallable)
     void PickUpFromWorld(bool PhysicalMovement);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void PickedUpFromWorld();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ItemState();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_EmplacementData();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPostDrained();
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastSetFullyEmplaced(FSlotReference Slot, int32 SubslotIndex);
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastReleasedFromSlot(bool FromTool, bool NewOwner);
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastPickedUpFromWorld(bool PhysicalMovement);
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastDroppedInWorld(UPrimitiveComponent* Component, bool NewTerrainComponent, const FVector& Point, const FVector& Normal);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool Movable(int32 ToolTier);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool IsLarge();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleIsBuriedChanged(UTerrainPhysicsComponent* terrainComp);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetSubSlotIndex() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<UItemType> GetStoredSubItemTypeClass() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UItemType* GetStoredSubItemTypeCDO() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetPrinterHeight() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetPickupToolTier();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     APhysicalItem* GetPickupItemDefault();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EPhysicalItemMotionState GetMotionState() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<UItemType> GetLiteralItemTypeClass() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UItemType* GetLiteralItemTypeCDO() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetItemTypeDefaultScale(TSubclassOf<APhysicalItem> Type);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FText GetItemName() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     UWorldGravity* GetGravity();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<UItemType> GetFunctionalItemTypeClass() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UItemType* GetFunctionalItemTypeCDO() const;
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     UChildSlotComponent* GetBodySlotLegacy() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FSlotReference GetBodySlot() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FTransform GetBaseLocation();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void DroppedInWorld(UPrimitiveComponent* Component, bool NewTerrainComponent, const FVector& Point, const FVector& Normal);
     
     UFUNCTION(BlueprintCallable)
     void DropInWorld(UPrimitiveComponent* Component, bool NewTerrainComponent, const FVector& Point, const FVector& Normal);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanNeverBeSlotted() const;
     
 };

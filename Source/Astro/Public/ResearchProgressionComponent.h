@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "AstroEntityComponent.h"
 #include "CumulativeResearchTracker.h"
 #include "OnCurrentResearchPointBalanceChangedDelegate.h"
 #include "OnItemTypeListChangedDelegate.h"
+#include "Templates/SubclassOf.h"
 #include "ResearchProgressionComponent.generated.h"
 
 class UItemType;
@@ -26,7 +26,7 @@ public:
     FCumulativeResearchTracker TotalResearch;
     
 private:
-    UPROPERTY(EditAnywhere, SaveGame)
+    UPROPERTY(EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     double CurrentPointBalance;
     
 public:

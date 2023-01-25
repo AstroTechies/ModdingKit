@@ -1,58 +1,59 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
 #include "SimpleFocusTooltipWidgetAuthoringData.h"
+#include "Templates/SubclassOf.h"
 #include "AstroGameSingleton.generated.h"
 
-class AResourceInfo;
-class UItemList;
+class AActor;
+class APhysicalItem;
+class APlacingActuatorConnection;
 class APlanetProxyActor;
-class UGameplayGlobals;
+class ARailNetwork;
+class AResourceInfo;
+class AResourceInfoNeeded;
+class UAchievementDefinitionTable;
+class UAstroColorDatabase;
+class UAstroDiscreteInputDefinitionDatabase;
+class UAstroEntityWorldConfig;
+class UAstroFoliageDestructionData;
 class UAstroGameMenuPopoutWidget;
-class UUserWidget;
-class UAstroGameMenuWidget;
-class UResearchProgressionTable;
 class UAstroGameMenuTutorialSlideDeckDatabase;
-class UVoxelVolumePaintModePalette;
+class UAstroGameMenuWidget;
+class UAstroGameSingleton;
+class UAstroNotificationDatabase;
+class UAstroPlanetDisplayNameDatabase;
+class UAstroPopupBadgeDatabase;
+class UAstroTooltipWidget;
+class UAstroUIAudioDatabase;
+class UAstroUIStylingDatabase;
+class UControlSymbol;
+class UCraftingDependencyMapList;
+class UDeployableItemPackageCatalog;
+class UDestructionDefinitionTable;
+class UFont;
+class UGameplayGlobals;
+class UInputKeyToIconMapping;
+class UItemList;
+class UItemTradeValueTable;
+class UItemType;
+class ULocalizationCultureOptions;
+class UMaterialInstance;
+class UMaterialInterface;
+class UMessageOfTheDay;
+class UResearchProgressionTable;
+class URewardTable;
+class UScrapConversionTable;
+class USoilConversionTable;
+class UStaticMesh;
+class UStringTable;
 class USuitTable;
 class UTetherSystemProperties;
-class UItemType;
-class UDeployableItemPackageCatalog;
-class UAstroUIStylingDatabase;
-class ARailNetwork;
-class UAstroFoliageDestructionData;
-class UScrapConversionTable;
-class UDestructionDefinitionTable;
-class APhysicalItem;
-class USoilConversionTable;
-class APlacingActuatorConnection;
-class URewardTable;
-class UItemTradeValueTable;
-class UCraftingDependencyMapList;
-class ULocalizationCultureOptions;
-class UInputKeyToIconMapping;
-class UAstroDiscreteInputDefinitionDatabase;
-class UAstroGameSingleton;
-class AActor;
-class AResourceInfoNeeded;
-class UControlSymbol;
-class UAstroEntityWorldConfig;
-class UAstroColorDatabase;
-class UMaterialInterface;
-class UFont;
-class UStringTable;
-class UMaterialInstance;
-class UAstroUIAudioDatabase;
 class UTexture2D;
-class UStaticMesh;
-class UAstroTooltipWidget;
-class UAstroNotificationDatabase;
-class UAstroPopupBadgeDatabase;
-class UMessageOfTheDay;
-class UAchievementDefinitionTable;
+class UUserWidget;
+class UVoxelVolumePaintModePalette;
 
 UCLASS(Abstract, Blueprintable)
 class ASTRO_API UAstroGameSingleton : public UObject {
@@ -78,6 +79,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UUserWidget> DebugMenu;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<UUserWidget> CinematicMenu;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UGameplayGlobals* GameplayGlobals;
@@ -293,6 +297,9 @@ public:
     FLinearColor DefaultTooltipBadgeColor;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FSimpleFocusTooltipWidgetAuthoringData SmallSalvageDefaultTooltipData;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSimpleFocusTooltipWidgetAuthoringData SalvageDefaultTooltipData;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -309,6 +316,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UStringTable* AstroErrorStringTable;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAstroPlanetDisplayNameDatabase* PlanetBiomeDisplayNames;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UUserWidget> InteractionIndicatorPip;
@@ -331,7 +341,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UVoxelVolumePaintModePalette* CreativeModePaintPalette;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     uint32 CreativeModePaintSpecialPaletteIndex;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -347,7 +357,7 @@ public:
     TSubclassOf<AActor> CurrentLTERocket;
     
     UAstroGameSingleton();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UAstroGameSingleton* GetAstroGameSingleton();
     
 };

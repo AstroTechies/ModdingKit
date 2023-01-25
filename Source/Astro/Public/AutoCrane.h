@@ -1,37 +1,37 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "PhysicalItem.h"
-#include "EAutoCraneTransferStage.h"
-#include "AutoCraneStateChangeDelegate.h"
-#include "SlotReference.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "AutoCraneStateChangeDelegate.h"
+#include "EAutoCraneTransferStage.h"
+#include "PhysicalItem.h"
+#include "SlotReference.h"
 #include "AutoCrane.generated.h"
 
+class AActor;
+class UAnimMontage;
+class UAnimationAsset;
 class UAstroActionComponent;
 class UCapsuleComponent;
-class USkeletalMeshComponent;
 class UPowerComponent;
-class UAnimationAsset;
-class UAnimMontage;
-class AActor;
+class USkeletalMeshComponent;
 
 UCLASS(Abstract, Blueprintable)
 class AAutoCrane : public APhysicalItem {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UCapsuleComponent* PickupCollider;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UCapsuleComponent* DropoffCollider;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USkeletalMeshComponent* Skeleton;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     APhysicalItem* TransferItem;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAstroActionComponent* ActionComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -76,7 +76,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FSlotReference TransferSlotRef;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPowerComponent* PowerComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -171,48 +171,48 @@ public:
     AAutoCrane();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_TransferProgress();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_CraneState();
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastPlayOneOffAnimation(UAnimationAsset* Anim);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleSelfOnReleasedFromSlot(bool NewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleSelfOnPlacedInSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnSetItem(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnReleaseItem(APhysicalItem* Item);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnReleasedFromSlot(bool NewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnItemDestroyed(AActor* DestroyedActor);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnHasPowerAvailableChanged(bool HasAvailablePower);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnFullyEmplaced();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnFilterSlotChanged(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleChassisSlotEvent(APhysicalItem* Item);
     
 };

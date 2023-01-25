@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
 #include "EnableSignalDelegate.h"
 #include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 #include "ControlPanelButton.generated.h"
 
 UCLASS(Abstract, Blueprintable)
@@ -48,10 +48,10 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetButtonArmed(bool Armed);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetButtonEnabled();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetButtonArmed();
     
     UFUNCTION(BlueprintCallable)

@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "SignalDelegate.h"
+#include "Components/ActorComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "SignalDelegate.h"
+#include "Templates/SubclassOf.h"
 #include "WandererRealityTearComponent.generated.h"
 
-class UWandererPhotoWidget;
-class UItemType;
-class APlayerController;
 class AAstroPlayerController;
+class APlayerController;
+class UItemType;
+class UWandererPhotoWidget;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UWandererRealityTearComponent : public UActorComponent {
@@ -29,9 +29,9 @@ protected:
     float DeformRadius;
     
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
-    FComponentReference DeformLocationComponents;
+    TArray<FComponentReference> DeformLocationComponents;
     
-    UPROPERTY(EditAnywhere, SaveGame, ReplicatedUsing=OnRep_ActivatingPlayer)
+    UPROPERTY(EditAnywhere, SaveGame, ReplicatedUsing=OnRep_ActivatingPlayer, meta=(AllowPrivateAccess=true))
     uint64 ActivatingPlayerID;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
@@ -47,20 +47,20 @@ public:
     UWandererRealityTearComponent();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool WasActivatedByPlayer(const APlayerController* Player);
     
 protected:
     UFUNCTION(BlueprintCallable)
     void TakePhoto(APlayerController* inputPlayer);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ActivatingPlayer();
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void MarkActivated_AuthorityOnly();
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void DisplayPhotoWidget_Multicast(AAstroPlayerController* inputPlayer);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)

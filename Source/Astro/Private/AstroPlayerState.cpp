@@ -1,7 +1,7 @@
 #include "AstroPlayerState.h"
+#include "ActorEntityLinkComponent.h"
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
-#include "ActorEntityLinkComponent.h"
 
 class UItemType;
 

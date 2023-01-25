@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "EnableSignalDelegate.h"
-#include "SignalDelegate.h"
 #include "SignalActivationBinding.h"
+#include "SignalDelegate.h"
 #include "Activation.generated.h"
 
 class UActivation;
@@ -39,7 +39,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void Toggle();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsActive();
     
     UFUNCTION(BlueprintCallable)

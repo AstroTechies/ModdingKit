@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "PhysicalItem.h"
+#include "Templates/SubclassOf.h"
 #include "UseToDiscoverItem.generated.h"
 
-class USingleUseConsumableComponent;
 class UItemType;
+class USingleUseConsumableComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API AUseToDiscoverItem : public APhysicalItem {
@@ -15,13 +15,13 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemType> ItemTypeDiscoveredOnUse;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USingleUseConsumableComponent* ConsumableComponent;
     
 public:
     AUseToDiscoverItem();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnUsed();
     
 };

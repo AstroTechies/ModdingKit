@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "ConnectionDelegateDelegate.generated.h"
 
-class UChildSlotComponent;
 class ASlotConnection;
+class UChildSlotComponent;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FConnectionDelegate, UChildSlotComponent*, Slot, ASlotConnection*, Connection);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FConnectionDelegate, UChildSlotComponent*, Slot, ASlotConnection*, Connection);
 

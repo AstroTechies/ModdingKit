@@ -13,6 +13,7 @@ FAstroMissionObjectiveProgress::FAstroMissionObjectiveProgress() {
     this->bIsOptional = false;
     this->bIsPlanetExclude = false;
     this->bIsHiddenObjective = false;
+    this->bShowProgressUI = false;
     this->ProgressType = EAstroMissionObjectiveProgressType::Increment;
 }
 

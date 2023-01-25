@@ -14,6 +14,7 @@ UAstroGameSingleton::UAstroGameSingleton() {
     this->HelpMenu = NULL;
     this->HelpMenuGamepad = NULL;
     this->DebugMenu = NULL;
+    this->CinematicMenu = NULL;
     this->GameplayGlobals = NULL;
     this->MasterItemList = NULL;
     this->ForcedPackageIncludes = NULL;
@@ -77,6 +78,7 @@ UAstroGameSingleton::UAstroGameSingleton() {
     this->AstroNotificationDatabase = NULL;
     this->AstroPopupBadgeDatabase = NULL;
     this->AstroErrorStringTable = NULL;
+    this->PlanetBiomeDisplayNames = NULL;
     this->InteractionIndicatorPip = NULL;
     this->DefaultMessageOfTheDay = NULL;
     this->RequireNintendoLinkAccountMessageOfTheDay = NULL;

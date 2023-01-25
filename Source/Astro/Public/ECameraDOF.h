@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ECameraDOF.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ECameraDOF : uint8 {
     Pitch,
     Yaw,

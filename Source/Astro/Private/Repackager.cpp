@@ -1,6 +1,6 @@
 #include "Repackager.h"
-#include "Net/UnrealNetwork.h"
 #include "AstroActionComponent.h"
+#include "Net/UnrealNetwork.h"
 
 class AActor;
 

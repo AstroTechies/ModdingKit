@@ -1,15 +1,15 @@
 #include "SlotStatics.h"
 #include "Templates/SubclassOf.h"
 
-class UObject;
-class UClickQuery;
-class UItemType;
+class AActor;
 class APhysicalItem;
+class UClickQuery;
 class UItemComponent;
+class UItemList;
+class UItemType;
+class UObject;
 class UPrimitiveComponent;
 class UTooltipComponent;
-class UItemList;
-class AActor;
 
 bool USlotStatics::WillTakePhysicalItemToSlotArray(const TArray<FSlotReference>& Slots, APhysicalItem* Item) {
     return false;

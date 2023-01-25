@@ -1,29 +1,29 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "Slot.h"
-#include "SlotTransition.h"
-#include "SlotReference.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-#include "SlotIndicatorDefinition.h"
-#include "ESlotType.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
 #include "ESlotConfiguration.h"
 #include "ESlotConnectorType.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
+#include "ESlotType.h"
+#include "Slot.h"
+#include "SlotIndicatorDefinition.h"
+#include "SlotReference.h"
+#include "SlotTransition.h"
+#include "Templates/SubclassOf.h"
 #include "SlotsComponent.generated.h"
 
+class AActor;
+class AAstroPlayerController;
 class APhysicalItem;
 class ASlotConnection;
-class UItemType;
-class AAstroPlayerController;
 class UAstroSaveCustomArchiveProxy;
-class AActor;
+class UItemType;
+class USlotBehavior;
+class USlotDelegates;
 class USlotsComponent;
 class UStaticMeshComponent;
-class USlotDelegates;
-class USlotBehavior;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class USlotsComponent : public UActorComponent {
@@ -39,13 +39,13 @@ public:
     TArray<FSlotTransition> SlotTransitions;
     
 private:
-    UPROPERTY(EditAnywhere, Transient, ReplicatedUsing=OnRep_SlotClickability)
+    UPROPERTY(EditAnywhere, Transient, ReplicatedUsing=OnRep_SlotClickability, meta=(AllowPrivateAccess=true))
     TArray<uint32> ReplicatedSlotClickability;
     
-    UPROPERTY(EditAnywhere, Transient, ReplicatedUsing=OnRep_SlotsAcceptItems)
+    UPROPERTY(EditAnywhere, Transient, ReplicatedUsing=OnRep_SlotsAcceptItems, meta=(AllowPrivateAccess=true))
     TArray<uint32> ReplicatedSlotsAcceptItems;
     
-    UPROPERTY(EditAnywhere, Transient, ReplicatedUsing=OnRep_SlotRuleStatus)
+    UPROPERTY(EditAnywhere, Transient, ReplicatedUsing=OnRep_SlotRuleStatus, meta=(AllowPrivateAccess=true))
     TArray<uint32> ReplicatedSlotRuleStatus;
     
 public:
@@ -67,28 +67,28 @@ public:
     UFUNCTION(BlueprintCallable)
     static APhysicalItem* SpawnActorInSlot(FSlotReference Slot, TSubclassOf<APhysicalItem> Class);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool SlotValidSlow(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool SlotValid(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool SlotsEqual(FSlotReference A, FSlotReference B);
     
     UFUNCTION(BlueprintCallable)
     static int32 SlotPushIndicatorItemTypes(FSlotReference Slot, int32 Count, TArray<int32>& OutSubslotIndices, const FSlotIndicatorDefinition& IndicatorDefinition);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool SlotPowerIncomingOnly(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool SlotIsTrailerHitch(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 SlotGetTier(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 SlotGetNumIndicators(FSlotReference Slot);
     
     UFUNCTION(BlueprintCallable)
@@ -118,7 +118,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static bool SlotAcceptsItemTypeWithChangeInAmount(FSlotReference Slot, TSubclassOf<UItemType> ItemType, bool isChangePositive);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool SlotAcceptsItem(FSlotReference Slot, APhysicalItem* Item);
     
     UFUNCTION(BlueprintCallable)
@@ -146,7 +146,7 @@ public:
     static void SetSlotAcceptsItems(FSlotReference A, bool bAcceptsItems);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy);
     
 public:
@@ -159,30 +159,30 @@ public:
     UFUNCTION(BlueprintCallable)
     static void ReleaseItem(FSlotReference Slot, APhysicalItem* Item, bool NewOwner, bool FromTool, float RandomForce);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSlotItemDestroyed(AActor* Actor);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSlotIndicatorClicked(FSlotReference Slot, TSubclassOf<UItemType> Type);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_SlotTransitions();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_SlotsAcceptItems();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_SlotRuleStatus();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_SlotClickability();
     
 public:
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastCancelSlotBehaviorTerrainInterpolation();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FSlotReference MakeReference(FName SlotName) const;
     
     UFUNCTION(BlueprintCallable)
@@ -191,52 +191,52 @@ public:
     UFUNCTION(BlueprintCallable)
     static ASlotConnection* MakeConnection(FSlotReference A, FSlotReference B, TSubclassOf<ASlotConnection> OverrideType, bool Visible, bool PlaySounds);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetStreamingPowerConnectionsMergePowerNodes(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetStreamingPowerConnectionsCanChangeMergePowerNodes(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static ESlotType GetSlotType(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FTransform GetSlotTransform(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FTransform GetSlotRelativeTransform(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static APhysicalItem* GetSlotPrimaryItem(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static USlotsComponent* GetSlotOwner(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static ESlotConfiguration GetSlotOrientationConfiguration(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static TArray<UStaticMeshComponent*> GetSlotLegacyMeshes(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static TArray<APhysicalItem*> GetSlotItems(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static APhysicalItem* GetSlotItem(FSlotReference Slot, int32 SubslotIndex);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static TArray<ASlotConnection*> GetSlotExternalConnections(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static USlotDelegates* GetSlotDelegates(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static ESlotConnectorType GetSlotConnectorType(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FSlotReference GetSlotConnectedSlot(FSlotReference Slot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static TArray<USlotBehavior*> GetSlotBehaviors(FSlotReference Slot);
     
     UFUNCTION(BlueprintCallable)

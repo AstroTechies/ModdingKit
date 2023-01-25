@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "SlotOrganizationRule.h"
 #include "Recipe.h"
+#include "SlotOrganizationRule.h"
+#include "Templates/SubclassOf.h"
 #include "RecipeOrganizationRule.generated.h"
 
-class UItemType;
 class APhysicalItem;
+class UItemType;
 
 UCLASS(Blueprintable, EditInlineNew)
 class URecipeOrganizationRule : public USlotOrganizationRule {
@@ -17,7 +17,7 @@ public:
     void SetRecipe(FRecipe Recipe);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void GetCurrentRecipeStatus(TArray<APhysicalItem*>& outUnwantedHaveItems, TArray<TSubclassOf<UItemType>>& outMissingItems) const;
     
 };

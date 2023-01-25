@@ -4,5 +4,5 @@
 
 class UStorageChassisComponent;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAttachStorageChanged, UStorageChassisComponent*, attachStorage);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAttachStorageChanged, UStorageChassisComponent*, attachStorage);
 

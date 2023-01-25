@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EStationStopState.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EStationStopState : uint8 {
     EInert,
     EStopUncalled,

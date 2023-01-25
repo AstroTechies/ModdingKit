@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 #include "OnGravityWakeDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnGravityWake);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnGravityWake);
 

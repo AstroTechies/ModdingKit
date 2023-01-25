@@ -4,5 +4,5 @@
 
 class ASolarBody;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FBodySelectionSignal, ASolarBody*, Body);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FBodySelectionSignal, ASolarBody*, Body);
 

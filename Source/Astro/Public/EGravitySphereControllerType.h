@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EGravitySphereControllerType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EGravitySphereControllerType : uint8 {
     Player,
     AI,

@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "AstroGameMenuTabBarAuthoringData.h"
+#include "Templates/SubclassOf.h"
 #include "AstroGameMenuNavigationCoordinates.generated.h"
 
 class UAstroGameMenuSubPaneWidget;

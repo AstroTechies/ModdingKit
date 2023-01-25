@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 #include "CrackedActivationComponent.generated.h"
 
 class AActor;
-class UCrackedActivationComponent;
 class UActivation;
+class UCrackedActivationComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UCrackedActivationComponent : public UActorComponent {
@@ -19,14 +19,14 @@ public:
     
     UCrackedActivationComponent();
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCracked();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnClosed();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UCrackedActivationComponent* ActorCrackedActivationComponent(AActor* Actor);
     
 };

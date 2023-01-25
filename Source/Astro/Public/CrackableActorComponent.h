@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "CrackedReplicationData.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "Components/ActorComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "OnCrackedStateChangedDelegate.h"
+#include "CrackedReplicationData.h"
 #include "ECrackableActorMethod.h"
 #include "ECrackableActorNetworkingPolicy.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "OnCrackedStateChangedDelegate.h"
+#include "SignalDelegate.h"
 #include "CrackableActorComponent.generated.h"
 
 class UCrackableActorComponent;
@@ -109,38 +109,38 @@ public:
     void SetClosedRelativeTransform(const FTransform& ClosedRelativeTransform);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_StartingRelativeTransform();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_Cracked();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnParentCrackedChanged(UCrackableActorComponent* parentCrackableActorComponent, bool bParentCracked);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnClickUnhandled();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsExaminable() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetFullyOpen() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetFullyClosed() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetCracked() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FTransform GetClosedRelativeTransform() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CracksOnlyOnExamine() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanClickToClose() const;
     
 };

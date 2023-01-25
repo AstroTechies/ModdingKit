@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UserWidgetBlueprintDesignable.h"
 #include "AstroNotificationUnlockDisplayData.h"
 #include "SignalDelegate.h"
+#include "UserWidgetBlueprintDesignable.h"
 #include "AstroNotificationUnlockWidget.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)

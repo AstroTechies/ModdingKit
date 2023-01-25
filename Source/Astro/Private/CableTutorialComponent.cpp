@@ -1,7 +1,7 @@
 #include "CableTutorialComponent.h"
 
-class ASlotConnection;
 class APhysicalItem;
+class ASlotConnection;
 class UPrimitiveComponent;
 
 void UCableTutorialComponent::StopCableTutorial() {

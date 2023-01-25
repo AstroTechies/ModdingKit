@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroGameMenuFocusItemContainerWidget.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
+#include "AstroGameMenuFocusItemContainerWidget.h"
 #include "AstroGameMenuSpatialWindow.generated.h"
 
 class UAstroGameMenuFocusItemWidget;
@@ -11,16 +11,16 @@ class UAstroGameMenuSpatialWindow : public UAstroGameMenuFocusItemContainerWidge
     GENERATED_BODY()
 public:
     UAstroGameMenuSpatialWindow();
-    UFUNCTION(BlueprintNativeEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, BlueprintPure)
     FVector2D GetUnboundedDimensionOfSubPane();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetTotalHeightOfSubPaneFocusItemWidgets() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetMaxWidthOfSubPaneFocusItemWidgets() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector2D GetLocalPositionOfFocusItemWidget(UAstroGameMenuFocusItemWidget* FocusItemWidget) const;
     
 };

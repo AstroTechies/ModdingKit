@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "Components/ActorComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SingleUseConsumableComponent.generated.h"
 
 class UParticleSystem;
@@ -40,7 +40,7 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_HasBeenConsumed(bool bWasConsumed);
     
 };

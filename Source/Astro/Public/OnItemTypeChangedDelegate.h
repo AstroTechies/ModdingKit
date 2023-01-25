@@ -6,5 +6,5 @@
 class UItemComponent;
 class UItemType;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnItemTypeChanged, UItemComponent*, ItemComponent, TSubclassOf<UItemType>, NewItemType);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnItemTypeChanged, UItemComponent*, ItemComponent, TSubclassOf<UItemType>, NewItemType);
 

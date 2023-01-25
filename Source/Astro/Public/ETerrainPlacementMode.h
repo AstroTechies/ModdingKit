@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETerrainPlacementMode.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETerrainPlacementMode : uint8 {
     Stick,
     Bury,

@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EResearchBonusTimelineType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EResearchBonusTimelineType : uint8 {
     CumulativeResearchTime,
     CumulativeResearchPoints,

@@ -1,31 +1,31 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "EMultitoolMode.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "SlotReference.h"
-#include "OnMoveDelegate.h"
-#include "SymbolEventDelegate.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "Components/ActorComponent.h"
 #include "ClickQueryDelegateDelegate.h"
 #include "ControlSwitchDelegate.h"
-#include "ReceiveToolLocationDelegate.h"
+#include "EMultitoolMode.h"
 #include "HandleToolSignalDelegate.h"
 #include "MultitoolTargetSignalDelegate.h"
+#include "OnMoveDelegate.h"
+#include "ReceiveToolLocationDelegate.h"
+#include "SlotReference.h"
+#include "SymbolEventDelegate.h"
+#include "Templates/SubclassOf.h"
 #include "ToolDoClickSignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 #include "ControlComponent.generated.h"
 
-class UStaticMesh;
-class UActivation;
-class USceneComponent;
 class AActor;
-class UControlSymbol;
-class UControlComponent;
-class UObject;
-class UControlSymbolEvents;
-class APlayerController;
 class APhysicalItem;
+class APlayerController;
+class UActivation;
+class UControlComponent;
+class UControlSymbol;
+class UControlSymbolEvents;
+class UObject;
+class USceneComponent;
+class UStaticMesh;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UControlComponent : public UActorComponent {
@@ -64,7 +64,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool AttachPing;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* WidgetComponent;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -104,13 +104,13 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<UObject*, UControlSymbolEvents*> ControlSymbolEvents;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TMap<UObject*, UControlComponent*> CollectedControls;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<AActor*> PingingActors;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UControlComponent* controlOwner;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -127,42 +127,42 @@ public:
     UFUNCTION(BlueprintCallable)
     void PingSymbol(TSubclassOf<UControlSymbol> Symbol);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void PingObjectSymbolAtLocation(UObject* WorldContextObject, UControlSymbol* Symbol, const FTransform& symbolTransform, UStaticMesh* MeshUsedAsIcon);
     
     UFUNCTION(BlueprintCallable)
     void PingObjectSymbol(UControlSymbol* Symbol);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnChildToolSlotRelease(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnChildToolSlotAdd(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnActivateChange(bool Enable);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPlayerActivated();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsActivated();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UControlSymbolEvents* GetObjectControlSymbolEvents(UControlSymbol* Symbol);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UControlComponent* GetMovementTarget();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UControlSymbolEvents* GetControlSymbolEvents(TSubclassOf<UControlSymbol> Symbol);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UControlComponent* GetActorControlComponent(AActor* Actor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UControlComponent* GetActiveControl();
     
     UFUNCTION(BlueprintCallable)

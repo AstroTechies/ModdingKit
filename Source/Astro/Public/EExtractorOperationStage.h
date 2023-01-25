@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EExtractorOperationStage.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EExtractorOperationStage : uint8 {
     Paused,
     Processing,

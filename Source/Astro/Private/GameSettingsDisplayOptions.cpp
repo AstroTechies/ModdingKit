@@ -5,5 +5,6 @@ FGameSettingsDisplayOptions::FGameSettingsDisplayOptions() {
     this->VSyncOpt = false;
     this->CurrentResolutionIndex = 0;
     this->BrightnessOpt = 0;
+    this->FrameLimit = 0;
 }
 

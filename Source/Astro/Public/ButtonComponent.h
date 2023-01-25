@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=PrimitiveComponent -FallbackName=PrimitiveComponent
-#include "ComponentOnButtonClickedDelegate.h"
-#include "ButtonShape.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "ButtonShape.h"
+#include "ComponentOnButtonClickedDelegate.h"
 #include "ButtonComponent.generated.h"
 
-class UTextRenderComponent;
-class UStaticMesh;
-class USkeletalMesh;
 class UAnimationAsset;
-class USceneComponent;
 class UMaterialInstanceDynamic;
 class UMaterialInterface;
+class USceneComponent;
+class USkeletalMesh;
+class UStaticMesh;
+class UTextRenderComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UButtonComponent : public UPrimitiveComponent {
@@ -49,19 +49,19 @@ public:
     ButtonShape Shape;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UPrimitiveComponent* shellComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UPrimitiveComponent* collisionComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UPrimitiveComponent* Icon;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USceneComponent* ToolTipScene;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UTextRenderComponent* TextRenderer;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -81,22 +81,22 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetAllShellMaterials(UMaterialInterface* Material);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnShellReleased(UPrimitiveComponent* Component, FKey ButtonPressed);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnShellClick(UPrimitiveComponent* Component, FKey ButtonPressed);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnEndHover(UPrimitiveComponent* Component);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnClick(UPrimitiveComponent* Component, FKey ButtonPressed);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnBeginHover(UPrimitiveComponent* Component);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsEnabled();
     
     UFUNCTION(BlueprintCallable)

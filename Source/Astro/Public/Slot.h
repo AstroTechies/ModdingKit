@@ -1,37 +1,37 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "ESlottableItemsFiltrationListBehavior.h"
-#include "ESlotConfiguration.h"
-#include "ESlotType.h"
-#include "SubSlotLocation.h"
-#include "ESlotConnectorType.h"
-#include "ESlotPosition.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "SlotReference.h"
-#include "ENumRotations.h"
 #include "EAuxSlotType.h"
+#include "ENumRotations.h"
+#include "ESlotConfiguration.h"
+#include "ESlotConnectorType.h"
+#include "ESlotPosition.h"
+#include "ESlotType.h"
+#include "ESlottableItemsFiltrationListBehavior.h"
+#include "SlotReference.h"
+#include "SubSlotLocation.h"
 #include "SubslotIndicatorType.h"
+#include "Templates/SubclassOf.h"
 #include "Slot.generated.h"
 
 class AItemSlot;
-class UPrimitiveComponent;
-class ASlotConnection;
-class UItemType;
 class APhysicalItem;
-class USlotDelegates;
-class UPhysicalItemSpawnList;
-class UItemListWeighted;
-class URewardSelectionTemplate;
-class USlotBehavior;
 class AResourceInfo;
+class ASlotConnection;
 class UItemList;
-class UTooltipComponent;
+class UItemListWeighted;
+class UItemType;
+class UPhysicalItemSpawnList;
+class UPrimitiveComponent;
+class URewardSelectionTemplate;
 class USceneComponent;
-class USlotsComponent;
+class USlotBehavior;
+class USlotDelegates;
 class USlotOrganizationRule;
+class USlotsComponent;
 class UStaticMeshComponent;
+class UTooltipComponent;
 
 USTRUCT(BlueprintType)
 struct FSlot {
@@ -198,7 +198,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ESlottableItemsFiltrationListBehavior SlottableItemsFiltrationListBehavior;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UTooltipComponent* SlotTooltipComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -210,13 +210,13 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     AResourceInfo* SlotResourceInfo;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UPrimitiveComponent* TracePrimitive;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USceneComponent* PositionComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USlotsComponent* Owner;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -234,13 +234,13 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     ASlotConnection* BuildingConnection;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UStaticMeshComponent*> LegacyMeshes;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FTransform> LegacyMeshRelativeTransforms;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UStaticMeshComponent*> ConnectorMeshes;
     
 private:

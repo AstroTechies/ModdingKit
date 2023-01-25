@@ -1,9 +1,9 @@
 #include "AstroGameMode.h"
 
-class UStorageChassisComponent;
+class AActor;
 class APlayController;
 class USolarSystem;
-class AActor;
+class UStorageChassisComponent;
 
 void AAstroGameMode::UnregisterSpawnPointActorAttachmentsComponent(UStorageChassisComponent* spawnPoint) {
 }
@@ -69,6 +69,9 @@ bool AAstroGameMode::IsMultiplayerEnabled() const {
 }
 
 void AAstroGameMode::InitializeForSolarSystem(USolarSystem* SolarSystem) {
+}
+
+void AAstroGameMode::HandleIntroCinematicSkip() {
 }
 
 void AAstroGameMode::HandleControllingLocalPlayerLoggedOut() {

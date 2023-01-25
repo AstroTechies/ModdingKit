@@ -34,6 +34,7 @@ enum class EAstroMissionObjectiveType : uint8 {
     ItemPickedUp,
     ItemDoesntExist,
     RailPostConnection,
+    BeginLTE,
     None,
 };
 

@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BodyInstance -FallbackName=BodyInstance
 #include "FoliageDestructionInfo.h"
+#include "Templates/SubclassOf.h"
 #include "AstroFoliageType.generated.h"
 
-class UMaterialInterface;
 class AActor;
+class UMaterialInterface;
 class UStaticMesh;
 
 UCLASS(Blueprintable)

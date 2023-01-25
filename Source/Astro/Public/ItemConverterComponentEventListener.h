@@ -10,19 +10,19 @@ class UItemConverterComponentEventListener : public UAstroEntityComponentSubobje
     GENERATED_BODY()
 public:
     UItemConverterComponentEventListener();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemStateChangedInExternalResourceSlot(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemSetInInputSlot(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemReleasedFromOutputSlot(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemReleasedFromInputSlot(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemDestroyedInInputSlot(APhysicalItem* Item);
     
 };

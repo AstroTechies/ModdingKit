@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "ControlPanel.h"
-#include "OnActiveCatalogEntryChangedDelegate.h"
 #include "EItemVariantType.h"
 #include "ESelectedItemUnlockState.h"
+#include "OnActiveCatalogEntryChangedDelegate.h"
+#include "Templates/SubclassOf.h"
 #include "CatalogModule.generated.h"
 
-class UItemType;
 class UItemCatalog;
-class UItemCatalogEntryDisplay;
 class UItemCatalogCategoryDefinition;
+class UItemCatalogEntryDisplay;
+class UItemType;
 class UTooltipComponent;
 
 UCLASS(Abstract, Blueprintable)
@@ -57,7 +57,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UItemCatalogCategoryDefinition*> CategoryScrollOrder;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UTooltipComponent* TooltipComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -68,7 +68,7 @@ protected:
     
 public:
     ACatalogModule();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UnlockedItemsChanged(const TArray<TSubclassOf<UItemType>>& NewUnlockedItems);
     
     UFUNCTION(BlueprintCallable)
@@ -89,44 +89,44 @@ public:
     UFUNCTION(BlueprintCallable)
     void ScrollEntries(int32 NumEntriesToScroll);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ResearchPointBalanceChanged(float NewResearchPointBalance);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnUnlockedItemsChanged(const TArray<TSubclassOf<UItemType>>& NewUnlockedItems);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnTooltipOverrideChanged();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnSelectedItemTypeChanged(const UItemType* selectedItemType, bool bImmediate);
     
 public:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnResearchPointBalanceChanged(float NewResearchPointBalance);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCreativeModeCatalogUnlockedChanged();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCategoryRight();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCategoryLeft();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void KnownItemsChanged(const TArray<TSubclassOf<UItemType>>& newKnownItems);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ESelectedItemUnlockState GetSelectedItemUnlockState() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UItemType* GetSelectedItemType() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UClass* GetSelectedItemPickupClass();
     
     UFUNCTION(BlueprintCallable)

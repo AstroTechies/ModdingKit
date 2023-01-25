@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "SignalDelegate.h"
+#include "SlotConnection.h"
+#include "SourceRerouteNode.h"
 #include "Templates/SubclassOf.h"
 #include "TooltipStatusDelegateDelegate.h"
-#include "SlotConnection.h"
-#include "SignalDelegate.h"
 #include "TooltipWidgetDisplayData.h"
-#include "SourceRerouteNode.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "PlacingActuatorConnection.generated.h"
 
 class AItemSlot;
-class UStaticMesh;
 class UItemList;
 class UMaterialInstanceDynamic;
 class UPrimitiveComponent;
+class UStaticMesh;
 
 UCLASS(Blueprintable)
 class ASTRO_API APlacingActuatorConnection : public ASlotConnection {
@@ -64,22 +64,22 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerPlaceRerouteNode(UPrimitiveComponent* Component, const FVector Location, const FVector Normal);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RefreshTooltipStatus();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnUsePressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_SourceRerouteNode();
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastPlayBreakAudio();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InitializeSourceSlot();
     
 };

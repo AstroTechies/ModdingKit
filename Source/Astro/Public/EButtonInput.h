@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EButtonInput.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum EButtonInput {
     Confirm,
     Cancel,

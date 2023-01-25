@@ -1,7 +1,7 @@
 #include "AstroInterpolateItemTask.h"
 
-class UAstroAction;
 class APhysicalItem;
+class UAstroAction;
 class UAstroInterpolateItemTask;
 class UCurveFloat;
 

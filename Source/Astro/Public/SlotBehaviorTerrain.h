@@ -1,8 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SlotBehavior.h"
 #include "DeformationParamsT2.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformationParamsT2 -FallbackName=DeformationParamsT2
+#include "SlotBehavior.h"
 #include "SlotBehaviorTerrain.generated.h"
 
 class APhysicalItem;
@@ -33,7 +32,7 @@ private:
 public:
     USlotBehaviorTerrain();
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnParentDeformed(const FDeformationParamsT2& params);
     
 };

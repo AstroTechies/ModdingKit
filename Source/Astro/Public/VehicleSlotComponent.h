@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 #include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "VehicleSlotComponent.generated.h"
 
 class AActor;
@@ -35,10 +35,10 @@ public:
     FSlotReference PowerSlot;
     
     UVehicleSlotComponent();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<UVehicleSlotComponent*> GetConnectedVehicles();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UVehicleSlotComponent* ActorVehicleSlotComponent(AActor* Actor);
     
 };

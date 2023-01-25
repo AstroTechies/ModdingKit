@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 #include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "CrystalRefineryModuleComponent.generated.h"
 
 class UItemType;
@@ -27,7 +27,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void UpdateIndicators();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanPerformConversion();
     
 };

@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "EAstroEntityComponentSubobjectTickGroup.h"
+#include "Templates/SubclassOf.h"
 #include "AstroEntityComponentSubobjectDefinition.generated.h"
 
 class UAstroEntityComponentSubobject;

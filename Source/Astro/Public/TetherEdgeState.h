@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "TetherGraphEdge.h"
 #include "EdgeVisualComponent.h"
+#include "TetherGraphEdge.h"
 #include "TetherEdgeState.generated.h"
 
 USTRUCT(BlueprintType)

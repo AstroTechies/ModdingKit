@@ -1,6 +1,6 @@
 #include "FullnessActuator.h"
-#include "Net/UnrealNetwork.h"
 #include "ActuatorComponent.h"
+#include "Net/UnrealNetwork.h"
 
 void AFullnessActuator::OnRep_TargetItem() {
 }

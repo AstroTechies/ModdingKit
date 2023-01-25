@@ -6,10 +6,10 @@ USTRUCT(BlueprintType)
 struct FTerrainNodeNetChecksum {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     uint64 NodeID;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     uint32 Checksum;
     
     TERRAIN2_API FTerrainNodeNetChecksum();

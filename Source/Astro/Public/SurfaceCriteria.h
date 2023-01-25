@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ESurfaceCriteriaSkyMode.h"
 #include "ESurfaceCriteriaNormalMode.h"
+#include "ESurfaceCriteriaSkyMode.h"
 #include "SurfaceCriteria.generated.h"
 
 USTRUCT(BlueprintType)

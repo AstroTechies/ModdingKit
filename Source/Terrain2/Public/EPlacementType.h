@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EPlacementType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EPlacementType : uint8 {
     Ground,
     Ceiling,

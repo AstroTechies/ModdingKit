@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EScalabilityLevel.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum EScalabilityLevel {
     Low,
     Medium,

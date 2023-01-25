@@ -1,7 +1,6 @@
 #include "FlyingVtolMovementComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class UCameraComponent;
 
 void UFlyingVtolMovementComponent::SetFlightSpeedScalarNormalized(float normalizedFlightSpeedScalar) {
 }

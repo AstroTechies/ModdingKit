@@ -9,17 +9,17 @@ UCLASS(Blueprintable)
 class ASTRO_API AReroutePlacementHelper : public APhysicalItem {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UActuatorComponent* ActuatorComponent;
     
     AReroutePlacementHelper();
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerTryDeleteNode();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnUsePressed();
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastStateChange(bool pickedUp);
     
 };

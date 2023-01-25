@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "Components/ActorComponent.h"
 #include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "ChargeUseComponent.generated.h"
 
 class UPowerComponent;
@@ -31,7 +31,7 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnStateUpdate;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPowerComponent* PowerComponent;
     
     UChargeUseComponent();
@@ -40,13 +40,13 @@ public:
     UFUNCTION(BlueprintCallable)
     void UseCharge();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdateCanUse();
     
     UFUNCTION(BlueprintCallable)
     void SetUsable(bool newUsable);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_State();
     
 };

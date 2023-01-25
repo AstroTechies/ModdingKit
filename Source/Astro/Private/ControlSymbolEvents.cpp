@@ -1,7 +1,7 @@
 #include "ControlSymbolEvents.h"
 
-class UPrimitiveComponent;
 class UControlSymbol;
+class UPrimitiveComponent;
 
 void UControlSymbolEvents::DoFiredFromClick(UPrimitiveComponent* Component, FKey Key) {
 }

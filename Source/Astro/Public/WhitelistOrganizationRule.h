@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "SlotOrganizationRule.h"
+#include "Templates/SubclassOf.h"
 #include "WhitelistOrganizationRule.generated.h"
 
 class UItemList;

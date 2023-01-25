@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "PlayerProximityEventCallbackDelegate.h"
-#include "GateObjectReplicationData.h"
+#include "Components/ActorComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "GateObjectReplicationData.h"
+#include "PlayerProximityEventCallbackDelegate.h"
+#include "SignalDelegate.h"
 #include "ActorGateObjectComponent.generated.h"
 
 class AActor;
@@ -47,10 +47,10 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FGateObjectReplicationData PrevReplicationData;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USphereComponent* ProximitySphereComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<USkeletalMeshComponent*> SkeletalMeshes;
     
 public:
@@ -58,21 +58,21 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ReplicationData();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPlayerProximitySphereEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPlayerProximitySphereBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOutroCinematicStarted();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOutroCinematicCompleted();
     
 };

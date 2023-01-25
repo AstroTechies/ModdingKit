@@ -14,19 +14,19 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void SetView();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void PostDrained();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnDrained();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsFull();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsEmpty();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetFullness();
     
 };

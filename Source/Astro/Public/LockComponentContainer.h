@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "AstroDatumRef.h"
 #include "AstroEntityComponentContainer.h"
 #include "LockComponent.h"
-#include "AstroDatumRef.h"
 #include "LockComponentContainer.generated.h"
 
 UCLASS(Blueprintable)
@@ -10,10 +10,10 @@ class ASTRO_API ULockComponentContainer : public UAstroEntityComponentContainer 
     GENERATED_BODY()
 public:
     ULockComponentContainer();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FLockComponent GetLockComponent(FAstroDatumRef lockComponentRef, bool& bOutSuccess);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FLockComponent FindLockComponent(FAstroDatumRef EntityRef, bool& bOutSuccess);
     
 };

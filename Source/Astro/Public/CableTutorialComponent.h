@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "ECableTutorialStep.h"
-#include "TooltipWidgetDisplayData.h"
-#include "TooltipProximityBadgeVisibilityData.h"
-#include "SlotReference.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "Components/ActorComponent.h"
+#include "ECableTutorialStep.h"
+#include "SignalDelegate.h"
+#include "SlotReference.h"
+#include "TooltipProximityBadgeVisibilityData.h"
+#include "TooltipWidgetDisplayData.h"
 #include "CableTutorialComponent.generated.h"
 
-class UTooltipComponent;
 class APhysicalItem;
-class USlotsComponent;
-class UPrimitiveComponent;
 class ASlotConnection;
+class UPrimitiveComponent;
+class USlotsComponent;
+class UTooltipComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UCableTutorialComponent : public UActorComponent {
@@ -57,16 +57,16 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     APhysicalItem* providerItem;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USlotsComponent* ReceiverSlotComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USlotsComponent* ProviderSlotComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UTooltipComponent* CurrentGrabTooltipComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UTooltipComponent* CurrentAttachTooltipComponent;
     
 public:
@@ -78,38 +78,38 @@ public:
     void SetupCableTutorial(APhysicalItem* NewReceiverItem, APhysicalItem* NewProviderItem, bool completeIfReceiverAlreadyPowered);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReceiverItemSlotted();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReceiverItemPickedUp(bool physicalMovementOrNewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReceiverItemPadSpawned();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReceiverItemDropped(UPrimitiveComponent* Component, const FVector& Point, const FVector& Normal);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnProviderItemSlotted();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnProviderItemPickedUp(bool physicalMovementOrNewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnProviderItemPadSpawned();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnProviderItemDropped(UPrimitiveComponent* Component, const FVector& Point, const FVector& Normal);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCablePulled(FSlotReference cableSlot, ASlotConnection* cable);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCableDestroyed(FSlotReference cableSlot, ASlotConnection* cable);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCableConnected(FSlotReference cableSlot, ASlotConnection* cable);
     
 };

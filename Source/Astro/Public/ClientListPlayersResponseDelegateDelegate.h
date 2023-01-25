@@ -3,5 +3,5 @@
 #include "PlayerList.h"
 #include "ClientListPlayersResponseDelegateDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FClientListPlayersResponseDelegate, const FPlayerList&, PlayerList);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FClientListPlayersResponseDelegate, const FPlayerList&, PlayerList);
 

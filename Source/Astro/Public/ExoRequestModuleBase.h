@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "PhysicalItem.h"
 #include "EExoRequestStatus.h"
 #include "ExoRequestReward.h"
+#include "PhysicalItem.h"
 #include "ExoRequestModuleBase.generated.h"
 
-class UTradeShipComponent;
+class AActor;
 class APlayController;
 class UItemDriveComponent;
-class AActor;
-class UTradeShipDockComponent_ItemDrive;
 class UTexture;
+class UTradeShipComponent;
+class UTradeShipDockComponent_ItemDrive;
 
 UCLASS(Abstract, Blueprintable)
 class AExoRequestModuleBase : public APhysicalItem {
@@ -44,19 +44,19 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FExoRequestReward> Rewards;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UItemDriveComponent* ActiveItemDrive;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UItemDriveComponent* LocalItemDrive;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     AActor* ShipActor;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, ReplicatedUsing=OnRep_ExoRequestModuleData, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, ReplicatedUsing=OnRep_ExoRequestModuleData, meta=(AllowPrivateAccess=true))
     UTradeShipComponent* TradeShipComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UTradeShipDockComponent_ItemDrive* TradeShipDockComponentItemDrive;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -88,21 +88,21 @@ public:
     void UpdateActiveEvent();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ExoRequestModuleData();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool ItemDriveAcceptsItem(APhysicalItem* Item) const;
     
 protected:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsEventActive() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasUnclaimedPhysicalItemRewards(APlayController* PlayController) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UTexture* GetEventInputIcon() const;
     
 public:

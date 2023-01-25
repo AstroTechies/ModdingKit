@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ECellType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ECellType : uint8 {
     CellValue,
     NoiseLookUp,

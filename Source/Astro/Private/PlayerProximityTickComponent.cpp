@@ -1,10 +1,10 @@
 #include "PlayerProximityTickComponent.h"
 
-class UActorComponent;
-class UPrimitiveComponent;
 class AActor;
-class UShapeComponent;
+class UActorComponent;
 class UPlayerProximityTickComponent;
+class UPrimitiveComponent;
+class UShapeComponent;
 
 void UPlayerProximityTickComponent::SetProximitySphere(float Radius) {
 }

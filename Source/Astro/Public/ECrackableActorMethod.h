@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ECrackableActorMethod.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ECrackableActorMethod : uint8 {
     Hover,
     HoverFaceCamera,

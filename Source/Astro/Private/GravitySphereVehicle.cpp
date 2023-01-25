@@ -1,14 +1,14 @@
 #include "GravitySphereVehicle.h"
-#include "ControlComponent.h"
-#include "PlanetEffect.h"
 #include "AdaptiveTickComponent.h"
 #include "BallPhysicsMovementComponent.h"
+#include "ControlComponent.h"
+#include "PlanetEffect.h"
 
+class AActor;
+class AAstroPlayerController;
+class APhysicalItem;
 class UActorAttachmentsComponent;
 class USceneComponent;
-class AActor;
-class APhysicalItem;
-class AAstroPlayerController;
 
 void AGravitySphereVehicle::SetupComponentReferences(UActorAttachmentsComponent* attachmentComponent, USceneComponent* seatRoot, USceneComponent* cameraTargetNode) {
 }
@@ -48,6 +48,7 @@ void AGravitySphereVehicle::AuthorityHandlePickedUp(bool PhysicalMovement) {
 AGravitySphereVehicle::AGravitySphereVehicle() {
     this->TurningInputBias = 5.00f;
     this->SeatFacingInputDirectionBias = 0.75f;
+    this->EVA_ItemType = NULL;
     this->MaxSpeedThresholdForTopSpeedObjective = 0.90f;
     this->ControlComponent = CreateDefaultSubobject<UControlComponent>(TEXT("ControlComponent"));
     this->PlanetEffect = CreateDefaultSubobject<UPlanetEffect>(TEXT("Planet Effect"));

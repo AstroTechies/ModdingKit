@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EPhysicalItemMotionState.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EPhysicalItemMotionState : uint8 {
     Simulating,
     PickedUp,

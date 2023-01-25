@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "StreamingPowerCableVisualizationData.h"
+#include "Components/ActorComponent.h"
 #include "SlotReference.h"
+#include "StreamingPowerCableVisualizationData.h"
 #include "ActorStreamingPowerCableComponent.generated.h"
 
 class AActor;
@@ -27,11 +27,11 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetDirectionalConnectionSplitRatio(float ratio);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSelfDestroyed(AActor* Actor);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_VisualizationData();
     
 public:

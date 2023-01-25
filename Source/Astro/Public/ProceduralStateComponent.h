@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 #include "ProceduralActorRepState.h"
 #include "ProceduralStateComponent.generated.h"
 
@@ -10,7 +10,7 @@ UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class UProceduralStateComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere, SaveGame)
+    UPROPERTY(EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint64 ProceduralPlacementSaveID;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=ApplyStateToOwner, meta=(AllowPrivateAccess=true))
@@ -25,13 +25,13 @@ public:
     UProceduralStateComponent();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnTerrainPhysicsBuriedChanged(UTerrainPhysicsComponent* TerrainPhysics);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOwnerSpawnedInSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ApplyStateToOwner();
     
 };

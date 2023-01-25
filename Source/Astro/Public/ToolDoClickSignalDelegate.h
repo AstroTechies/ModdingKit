@@ -3,5 +3,5 @@
 #include "ClickResult.h"
 #include "ToolDoClickSignalDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FToolDoClickSignal, const FClickResult&, Click);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FToolDoClickSignal, const FClickResult&, Click);
 

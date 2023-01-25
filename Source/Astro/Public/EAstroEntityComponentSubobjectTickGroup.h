@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EAstroEntityComponentSubobjectTickGroup.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EAstroEntityComponentSubobjectTickGroup : uint8 {
     PrePhysics,
     PostPhysics,

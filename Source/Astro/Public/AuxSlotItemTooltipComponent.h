@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 #include "AuxSlotItemTooltipComponent.generated.h"
 
 class AAstroPlayerController;
@@ -14,24 +14,24 @@ public:
     
     UAuxSlotItemTooltipComponent();
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void TooltipTimeout();
     
 public:
-    UFUNCTION(NetMulticast, Reliable, WithValidation)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable, WithValidation)
     void MulticastOnOwnerItemAuxUsed(AAstroPlayerController* controllingPlayer);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleVehicleUnmanned(AAstroPlayerController* OldPilot);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleVehicleManned(AAstroPlayerController* NewPilot);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleReleasedFromSlot(bool NewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePlacedInSlot();
     
 };

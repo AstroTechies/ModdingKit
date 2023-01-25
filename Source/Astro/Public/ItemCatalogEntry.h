@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "EItemVariantType.h"
 #include "ItemVariantList.h"
+#include "Templates/SubclassOf.h"
 #include "ItemCatalogEntry.generated.h"
 
 class UItemType;

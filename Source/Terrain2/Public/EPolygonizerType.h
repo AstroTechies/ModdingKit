@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EPolygonizerType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EPolygonizerType : uint8 {
     MarchingCubes,
 };

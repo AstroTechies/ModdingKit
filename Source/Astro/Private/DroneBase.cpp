@@ -1,9 +1,9 @@
 #include "DroneBase.h"
-#include "Net/UnrealNetwork.h"
 #include "FlyingDroneMovementComponent.h"
+#include "Net/UnrealNetwork.h"
 
-class ASolarBody;
 class APlayController;
+class ASolarBody;
 
 void ADroneBase::ZoomOut() {
 }

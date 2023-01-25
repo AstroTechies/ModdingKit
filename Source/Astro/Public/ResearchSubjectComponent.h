@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroEntityComponent.h"
 #include "AstroDatumRef.h"
+#include "AstroEntityComponent.h"
 #include "ResearchSubjectComponent.generated.h"
 
 class UResearchSubjectDefinition;
@@ -10,7 +10,7 @@ USTRUCT(BlueprintType)
 struct FResearchSubjectComponent : public FAstroEntityComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere, SaveGame)
+    UPROPERTY(EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<UResearchSubjectDefinition> ResearchSubjectDefinition;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))

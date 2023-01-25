@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "IndicatorCollection.h"
+#include "Components/ActorComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "IndicatorCollection.h"
 #include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "CableExtenderTutorialComponent.generated.h"
 
-class AResourceInfo;
+class AActor;
 class APhysicalItem;
+class AResourceInfo;
 class ASlotConnection;
 class UItemType;
-class USphereComponent;
 class UPrimitiveComponent;
-class AActor;
+class USphereComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UCableExtenderTutorialComponent : public UActorComponent {
@@ -46,10 +46,10 @@ protected:
     FCableExtenderTutorialCompleteEvent OnCableExtenderTutorialComplete;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USphereComponent* CollisionSphere;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TWeakObjectPtr<APhysicalItem>, FIndicatorCollection> CurrentIndicators;
     
 public:
@@ -64,22 +64,22 @@ public:
     void SetExtenderTutorialKey(FName tutorialKey);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCableTargetReleased(FSlotReference cableSlot, ASlotConnection* cable);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCablePulled(FSlotReference cableSlot, ASlotConnection* cable);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCableDestroyed(FSlotReference cableSlot, ASlotConnection* cable);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCableConnected(FSlotReference cableSlot, ASlotConnection* cable);
     
 };

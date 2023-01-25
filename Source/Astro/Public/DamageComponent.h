@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 #include "DamageSignalDelegate.h"
+#include "SignalDelegate.h"
 #include "DamageComponent.generated.h"
 
 class AActor;
@@ -31,7 +31,7 @@ public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthoritySetIndestructible(bool bIndestructible);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UDamageComponent* ActorDamageComponent(AActor* Actor);
     
 };

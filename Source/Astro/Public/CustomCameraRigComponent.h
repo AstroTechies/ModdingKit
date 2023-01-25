@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "CameraMode.h"
+#include "Components/ActorComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ViewTargetTransitionParams -FallbackName=ViewTargetTransitionParams
+#include "CameraMode.h"
+#include "Templates/SubclassOf.h"
 #include "CustomCameraRigComponent.generated.h"
 
 class AActor;
-class UCameraContext;
 class ACameraRigActor;
+class UCameraContext;
 class UCustomCameraRigComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
@@ -25,7 +25,7 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ACameraRigActor* ActiveRig;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UCameraContext* ContextInstance;
     
 public:
@@ -33,13 +33,13 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetMode(FName Mode, const FViewTargetTransitionParams& params);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FName GetModeName() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ACameraRigActor* GetCameraRigForMode(const FName Mode) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UCustomCameraRigComponent* ActorCustomCameraRig(AActor* Actor);
     
 };

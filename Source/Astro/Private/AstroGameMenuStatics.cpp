@@ -1,13 +1,13 @@
 #include "AstroGameMenuStatics.h"
 #include "Templates/SubclassOf.h"
 
-class UObject;
 class UAstroGameMenuFocusItemWidget;
-class UAstroGameMenuPopoutWidgetContentsBase;
-class UUserWidget;
 class UAstroGameMenuPopoutWidget;
-class UAstroGameMenuWidget;
+class UAstroGameMenuPopoutWidgetContentsBase;
 class UAstroGameMenuSubPaneWidget;
+class UAstroGameMenuWidget;
+class UObject;
+class UUserWidget;
 
 bool UAstroGameMenuStatics::TryGetCurrentGameMenuContext(UObject* WorldContextObject, EAstroGameMenuContext& OutCurrentMenuContext) {
     return false;

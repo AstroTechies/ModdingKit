@@ -1,10 +1,10 @@
 #include "RingCameraTargeter.h"
 
-class USceneComponent;
-class APlayController;
-class URingCameraTargeter;
-class ASlotConnection;
 class AActor;
+class APlayController;
+class ASlotConnection;
+class URingCameraTargeter;
+class USceneComponent;
 
 void URingCameraTargeter::SnapToTargetLocation(const FVector& TargetLocation) {
 }

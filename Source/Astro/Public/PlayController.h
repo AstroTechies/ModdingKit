@@ -1,64 +1,66 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "AstroPlayerController.h"
-#include "ClickResult.h"
-#include "SignalDelegate.h"
-#include "ECameraMode.h"
-#include "EHandState.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
-#include "SelectionWheelOption.h"
-#include "SelectionWheelSignalDelegate.h"
-#include "BodySelectionSignalDelegate.h"
-#include "AstroNotificationUnlockAuthoringData.h"
-#include "SolarBodyClickSignalDelegate.h"
-#include "ActorClickSignalDelegate.h"
-#include "SlotReference.h"
-#include "MouseZoomChangedDelegate.h"
-#include "BackpackToggledDelegateDelegate.h"
-#include "InputDeviceChangedDelegate.h"
-#include "KeyboardNavigationChangedDelegate.h"
-#include "UsingMouseChangedDelegate.h"
-#include "ActorOnscreenSignalDelegate.h"
-#include "EnableSignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ECollisionChannel -FallbackName=ECollisionChannel
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-#include "PendingInGameItemRewards.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "ActorClickSignalDelegate.h"
+#include "ActorOnscreenSignalDelegate.h"
+#include "AstroNotificationToastAuthoringData.h"
+#include "AstroNotificationUnlockAuthoringData.h"
+#include "AstroPlayerController.h"
+#include "BackpackToggledDelegateDelegate.h"
+#include "BodySelectionSignalDelegate.h"
+#include "ClickResult.h"
+#include "ECameraMode.h"
 #include "EClickBehavior.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
+#include "EHandState.h"
+#include "EnableSignalDelegate.h"
+#include "InputDeviceChangedDelegate.h"
+#include "KeyboardNavigationChangedDelegate.h"
+#include "MouseZoomChangedDelegate.h"
+#include "PendingInGameItemRewards.h"
+#include "SelectionWheelOption.h"
+#include "SelectionWheelSignalDelegate.h"
+#include "SignalDelegate.h"
+#include "SlotReference.h"
+#include "SolarBodyClickSignalDelegate.h"
+#include "Templates/SubclassOf.h"
+#include "UsingMouseChangedDelegate.h"
 #include "PlayController.generated.h"
 
-class ASolarBody;
 class AActor;
-class UStorageChassisComponent;
-class UItemType;
-class ASlotConnection;
-class UAstroPopupBadgeManager;
-class USceneComponent;
-class APhysicalItem;
-class UVirtualCursor;
-class UAstroToastNotificationManager;
-class UMultiTool;
-class UMaterialParameterCollection;
-class ACameraRigActor;
-class ACompassActor;
-class UStaticMesh;
-class UMaterialInstanceDynamic;
-class UPrimitiveComponent;
-class ACheatPlinthBase;
-class UBackpackCameraContext;
-class UGameMenuPopoutCameraContext;
-class UAstroNotificationManager;
-class UTooltipManager;
-class UAstroUnlockNotificationManager;
-class UBiomeSamplerComponent;
-class UAstroCharacterSuit;
-class UControlComponent;
-class AAstroPlanet;
-class UCameraComponent;
 class AAstroCharacter;
+class AAstroPlanet;
+class ACameraRigActor;
+class ACheatPlinthBase;
+class ACompassActor;
+class APhysicalItem;
+class ASlotConnection;
+class ASolarBody;
+class UAstroCharacterSuit;
+class UAstroNotificationManager;
+class UAstroPopupBadgeManager;
+class UAstroToastNotificationManager;
+class UAstroUnlockNotificationManager;
+class UBackpackCameraContext;
+class UBiomeSamplerComponent;
+class UCameraComponent;
+class UControlComponent;
+class UGameMenuPopoutCameraContext;
+class UItemType;
+class UMaterialInstanceDynamic;
+class UMaterialParameterCollection;
+class UMultiTool;
+class UPrimitiveComponent;
+class USceneComponent;
+class UStaticMesh;
+class UStorageChassisComponent;
+class UStoreMenuCameraContext;
+class UTooltipManager;
+class UVirtualCursor;
 
 UCLASS(Blueprintable)
 class ASTRO_API APlayController : public AAstroPlayerController {
@@ -103,7 +105,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     AActor* InteractingActor;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStorageChassisComponent* CurrentTertiary;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
@@ -154,7 +156,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector CachedMoveDirection;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<USceneComponent*> HoveredFacingComponents;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -296,10 +298,10 @@ public:
     FActorOnscreenSignal AuthorityOnActorCameOnscreenCallback;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UBackpackCameraContext* BackpackCameraContext;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UGameMenuPopoutCameraContext* GameMenuPopoutCameraContext;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
@@ -309,7 +311,7 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector2D m_lastMouseLocation;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UPrimitiveComponent*> LastPrimaryViewPrimitives;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -333,10 +335,10 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     int32 HoldLabelCounter;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UAstroNotificationManager* AstroNotificationManager;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UTooltipManager* TooltipManager;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -345,10 +347,10 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UAstroToastNotificationManager* AstroToastNotificationManger;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UAstroPopupBadgeManager* AstroPopupBadgeManager;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UBiomeSamplerComponent* biomeSampler;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -369,7 +371,7 @@ public:
     void UpdateClickableIndicators();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdateBiomeAmbienceLocal(UBiomeSamplerComponent* NewBiomeSampler);
     
 public:
@@ -393,22 +395,22 @@ public:
     UFUNCTION(BlueprintCallable)
     void TeleportToCursor();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool TargetHasAttachParent();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool TargetAllowFreeCam();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void StopJump();
     
     UFUNCTION(BlueprintCallable)
     APhysicalItem* SpawnActorAndAttemptPackage(UClass* ObjClass, FTransform SpawnTransform, TSubclassOf<UItemType> ItemType, bool CreativeMode, bool autoGrab);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void ShowFadeScreen();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool ShouldShowCreativeDroneUI() const;
     
     UFUNCTION(BlueprintCallable)
@@ -424,7 +426,7 @@ public:
     void SetTerrainBrushLightActive(bool TerrainBrushLightActive);
     
 public:
-    
+
     UFUNCTION(BlueprintCallable)
     void SetShowCreativeDoneUI(bool shouldShowDroneUI);
     
@@ -434,7 +436,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetMousePosition(float X, float Y);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void SetGamepadLock(bool gamepadModeLocked);
     
     UFUNCTION(BlueprintCallable, Exec)
@@ -453,7 +455,7 @@ public:
     void SetCreativeCollectResourcesWhileDeformingDisabled(bool DisableCollectResourcesWhileDeforming);
     
 protected:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void SetCharacterVisorServerInternal();
     
 public:
@@ -481,35 +483,38 @@ public:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerPlayerCharacterSelectionLaunch();
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerNotifyOnActionWheelOpenedOrClosed(bool bWheelOpened);
     
 private:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerNotifyActorOnscreenStatusChanged(AActor* monitoredActor, bool bIsOnscreen);
     
 public:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerCreateNavpointManagerForPlanet(AAstroPlanet* Planet);
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
+    void ServerCompleteCustomMissionObjective(const FString& objectiveID);
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerClaimNonPhysicalMissionRewards(const FName missionId);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerBranchConnectionFromActuatorRerouteNode(FSlotReference SourceSlot, int32 rerouteNodeId);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerAddUnclaimedItemDrivePhysicalItemReward(const FPendingInGameItemRewards& PendingReward);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerAddToCheatPlinthSelectionIndex(ACheatPlinthBase* CheatPlinth, int32 increment);
     
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void SaveGameFixup();
     
 public:
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     FString RunScript(const FString& Script);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
@@ -527,104 +532,104 @@ public:
     UFUNCTION(BlueprintCallable)
     void ResetCameraToSpawnPoint();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void Ping();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReceiveUsePressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReceiveToggleDeformMenuPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReceivePlaceTetherRepeat();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReceivePlaceTetherPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReceiveDeployCreativeDronePressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReceiveChangeDeformBrushStrengthModifierReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReceiveChangeDeformBrushStrengthModifierPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReceiveChangeDeformBrushSizeModifierReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReceiveChangeDeformBrushSizeModifierPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReceiveBackpackToggleInput();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnLoadScreenComplete();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnIncrementCreativeBrushSizeControllerRepeat();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnIncrementCreativeBrushIntensityControllerRepeat();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnDrivingStatusChangedInStore();
     
     UFUNCTION(BlueprintCallable)
     void OnDepartedPlanet();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnDecrementCreativeBrushIntensityControllerRepeat();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCharacterLocalSolarBodyChanged(ASolarBody* newLocalSolarBody);
     
     UFUNCTION(BlueprintCallable)
     void OnArrivedPlanet();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void MouseWheelUp();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void MouseWheelDown();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void MouseWheel(float Value);
     
 private:
-    UFUNCTION(Client, Reliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Client, Reliable, WithValidation)
     void LocalControllerReportWhenActorComesOnscreen(AActor* actorToMonitor);
     
-    UFUNCTION(Client, Reliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Client, Reliable, WithValidation)
     void LocalControllerCancelReportWhenActorComesOnscreen(AActor* actorToMonitor);
     
 public:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void KillAstroForEmergencyRespawn();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void Jump();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsUsingActiveGrabGamepad();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsTerrainBrushLightActive() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsCreativeShowLODAnchorRangeVisualizationEnabled() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsCreativeRemoveDecoratorsWhilePaintingEnabled() const;
     
-    UFUNCTION(BlueprintImplementableEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
     bool IsCreativeModeDeformMenuActive();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsCreativeCollectResourcesWhileDeformingDisabled() const;
     
     UFUNCTION(BlueprintCallable)
@@ -633,114 +638,114 @@ public:
     UFUNCTION(BlueprintCallable)
     void IncrementHoldCounter();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void HideFadeScreen();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleLeftTriggerToggle();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleKeyboardMouseKeyJustPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleGamepadKeyJustPressed();
     
 public:
     UFUNCTION(BlueprintCallable)
     void HandleGameMenuPopoutCameraContext(bool GameMenuPopoutEnabled);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleCreativeModeEnabledChanged(bool CreativeModeEnabled);
     
     UFUNCTION(BlueprintCallable)
     void HandleBackpackCameraContext(bool BackpackEnabled);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleActionWheelSelection(const FSelectionWheelOption& Selection);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleActionWheelReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleActionWheelPressed();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetWindIntensity() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetWindDirection() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UAstroUnlockNotificationManager* GetUnlockNotificationManager() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetTracedActor();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetTertiaryActor();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     USceneComponent* GetSpawnLocation();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetSecondaryViewActor();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EClickBehavior GetSecondaryBehavior();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetSecondaryActor();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetPrimaryViewIndicatorScale();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     USceneComponent* GetPrimaryViewComponent();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetPrimaryViewActor();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EClickBehavior GetPrimaryBehavior();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetPrimaryActor();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UMultiTool* GetMultitool();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASolarBody* GetLocalSolarBody() const;
     
     UFUNCTION(BlueprintCallable)
     int32 GetHoldCounter();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetCursorVector(FVector& WorldLocation, FVector& WorldDirection);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<int32> GetConnectedControllers() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FRotator GetCameraRotation();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetCameraLocation() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector2D GetCameraInput() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UCameraComponent* GetCamera();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AAstroCharacter* GetAstroCharacter() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void EngageUseModifier();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void EngageQuickSelectModifier();
     
     UFUNCTION(BlueprintCallable)
@@ -755,13 +760,13 @@ public:
     UFUNCTION(BlueprintCallable)
     void DropHeldItem();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void DoSelectionWheelSelection(const FSelectionWheelOption& Selection);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void DisengageUseModifier();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void DisengageQuickSelectModifier();
     
     UFUNCTION(BlueprintCallable)
@@ -779,16 +784,16 @@ public:
     UFUNCTION(BlueprintCallable, Exec)
     void CycleCameraMode();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ContextRightReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ContextRightPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ContextLeftReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ContextLeftPressed();
     
     UFUNCTION(BlueprintCallable)
@@ -797,19 +802,22 @@ public:
     UFUNCTION(BlueprintCallable)
     void CloseActionWheel();
     
-    UFUNCTION(Client, Reliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Client, Reliable, WithValidation)
     void ClientPresentUnlockNotification(FAstroNotificationUnlockAuthoringData AuthoringData);
     
-    UFUNCTION(Client, Reliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Client, Reliable, WithValidation)
+    void ClientPresentPlanetTravelNotification(FAstroNotificationToastAuthoringData AuthoringData);
+    
+    UFUNCTION(BlueprintCallable, Client, Reliable, WithValidation)
     void ClientNotifyPlayerRespawned();
     
-    UFUNCTION(Client, Reliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Client, Reliable, WithValidation)
     void ClientNotifyPlayerDeathBegin();
     
     UFUNCTION(BlueprintCallable)
     void ClearSaveFailedErrorData();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void CameraModeModifierPressed();
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)

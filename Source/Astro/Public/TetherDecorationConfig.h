@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "TetherDecoration.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
+#include "TetherDecoration.h"
 #include "TetherDecorationConfig.generated.h"
 
 UCLASS(Blueprintable)
@@ -12,7 +12,7 @@ public:
     TArray<FTetherDecoration> DecorationOptions;
     
     UTetherDecorationConfig();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetNextTetherDecorationIndex();
     
 };

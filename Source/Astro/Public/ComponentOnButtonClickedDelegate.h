@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 #include "ComponentOnButtonClickedDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE(FComponentOnButtonClicked);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE(FComponentOnButtonClicked);
 

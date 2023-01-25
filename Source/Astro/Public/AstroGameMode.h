@@ -1,29 +1,28 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "EGameLifecycleState.h"
-#include "CharacterSelectSignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=GameMode -FallbackName=GameMode
-#include "OnSessionsSearchCompleteNotifyDelegate.h"
-#include "OnGameLifecycleStateChangedDelegate.h"
-#include "SignalDelegate.h"
-#include "PlayerJoinSignalDelegate.h"
-#include "RestartPlayerSignalDelegate.h"
-#include "SpawnPointList.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=GameMode -FallbackName=GameMode
+#include "CharacterSelectSignalDelegate.h"
 #include "GameFramework/GameMode.h"
 #include "EGameLifecycleState.h"
+#include "OnGameLifecycleStateChangedDelegate.h"
+#include "OnSessionsSearchCompleteNotifyDelegate.h"
+#include "PlayerJoinSignalDelegate.h"
+#include "RestartPlayerSignalDelegate.h"
+#include "SignalDelegate.h"
+#include "SpawnPointList.h"
+#include "Templates/SubclassOf.h"
 #include "AstroGameMode.generated.h"
 
-class APlayController;
-class UWorld;
-class ULevelSequencePlayer;
-class UItemList;
-class UStorageChassisComponent;
-class ASolarBody;
 class AActor;
+class APlayController;
+class ASolarBody;
+class UItemList;
+class ULevelSequencePlayer;
 class USolarSystem;
+class UStorageChassisComponent;
+class UWorld;
 
 UCLASS(Blueprintable, NonTransient)
 class ASTRO_API AAstroGameMode : public AGameMode {
@@ -88,10 +87,10 @@ protected:
     bool EnableSavedGamesAutomatically;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStorageChassisComponent* DefaultSpawnPoint;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UStorageChassisComponent*> UnmappedSpawnPoints;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -105,7 +104,7 @@ private:
     
 public:
     AAstroGameMode();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UnregisterSpawnPointActorAttachmentsComponent(UStorageChassisComponent* spawnPoint);
     
     UFUNCTION(BlueprintCallable)
@@ -120,65 +119,68 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetMultiplayerEnabled(bool bIsEnabled);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ServerSaveGameName(const FString& Name);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ServerSaveGameAndQuit();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ServerSaveGame();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void ServerNewGame();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     bool ServerLoadGameName(const FString& Name);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void RespawnPlayer(APlayController* Player, FVector locationOnDeath);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RegisterSpawnPointActorAttachmentsComponent(UStorageChassisComponent* spawnPoint);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOutroCinematicComplete();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnNewGameInitiated();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnIntroCinematicFinished();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnIntroCinematicComplete();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnFullLicenseDetected();
     
     UFUNCTION(BlueprintCallable)
     void MovePlayersToSpawnPositions();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsPackagedBuild();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsMultiplayerEnabled() const;
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InitializeForSolarSystem(USolarSystem* SolarSystem);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
+    void HandleIntroCinematicSkip();
+    
+    UFUNCTION(BlueprintCallable)
     void HandleControllingLocalPlayerLoggedOut();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UStorageChassisComponent* GetDefaultSpawnPoint() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EGameLifecycleState GetCurrentLifecycleState();
     
     UFUNCTION(BlueprintCallable)
@@ -187,13 +189,13 @@ public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthoritySetDefaultSpawnLocation(FVector spawnLocation);
     
-    UFUNCTION(BlueprintAuthorityOnly, BlueprintPure)
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintPure)
     bool AuthoritySelectStartingPointFromCandiates(FVector& outStartingLocation, FRotator& outStartingRotation);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityAddStartingPointCandiateActor(const AActor* candidateActor);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void AddTerrainResolutionPoint(float X, float Y, float Z, float Radius);
     
 };

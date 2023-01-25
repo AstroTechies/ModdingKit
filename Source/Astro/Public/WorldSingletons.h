@@ -2,19 +2,19 @@
 #include "CoreMinimal.h"
 #include "WorldSingletons.generated.h"
 
-class UAstroEntityWorld;
-class UAutoCraneManager;
-class UCollectibleHandler;
-class UObject;
 class ATetherManager;
-class USlotOrganizationRuleBroker;
-class UCameraFacingManager;
-class UResourceExtractorManager;
-class UBeaconManager;
-class USolarSystem;
-class UAstroServerCommWorldDataMap;
-class UCreativeModeData;
+class UAstroEntityWorld;
 class UAstroFoliageDestructionManager;
+class UAstroServerCommWorldDataMap;
+class UAutoCraneManager;
+class UBeaconManager;
+class UCameraFacingManager;
+class UCollectibleHandler;
+class UCreativeModeData;
+class UObject;
+class UResourceExtractorManager;
+class USlotOrganizationRuleBroker;
+class USolarSystem;
 class UVoxelVolumeComponent;
 
 USTRUCT(BlueprintType)
@@ -60,7 +60,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     USlotOrganizationRuleBroker* SlotOrganizationRuleBroker;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UVoxelVolumeComponent*> ActiveVoxelVolumes;
     
     ASTRO_API FWorldSingletons();

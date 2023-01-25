@@ -1,8 +1,8 @@
 #include "ButtonComponent.h"
 
+class UMaterialInstanceDynamic;
 class UMaterialInterface;
 class UPrimitiveComponent;
-class UMaterialInstanceDynamic;
 
 void UButtonComponent::SetShellComponent(UPrimitiveComponent* NewShellComponent) {
 }

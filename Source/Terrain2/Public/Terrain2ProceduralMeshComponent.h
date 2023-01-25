@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=MeshComponent -FallbackName=MeshComponent
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Interface_CollisionDataProvider -FallbackName=Interface_CollisionDataProvider
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=MeshComponent -FallbackName=MeshComponent
 #include "T2ProcMeshSection.h"
 #include "Terrain2ProceduralMeshComponent.generated.h"
 
-class UMaterialInstanceDynamic;
 class UBodySetup;
+class UMaterialInstanceDynamic;
 class UMaterialInterface;
 class UMaterialRemapTable;
 

@@ -1,23 +1,23 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "PhysicalItem.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
+#include "PhysicalItem.h"
 #include "HoverboardItem.generated.h"
 
-class UPowerComponent;
-class UHoverboardMovementOverrideComponent;
 class AAstroCharacter;
+class UHoverboardMovementOverrideComponent;
+class UPowerComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API AHoverboardItem : public APhysicalItem {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPowerComponent* PowerComponent;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UHoverboardMovementOverrideComponent* HoverboardMovementOverride;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -36,50 +36,50 @@ public:
     AHoverboardItem();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnUpdateHoverboardOrientation();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_HoverboardActive();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnMovementOverrideTick(float DeltaTime);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnJumpStarted();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnHoverboardActivated(bool Activated);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnHasPowerAvailableChanged(bool HasAvailablePower);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnEndOperation();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnClientActionPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAuthorityOverrideRemoved();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAuthorityOverrideAdded();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleRemovedFromSlot(bool NewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePlacedInSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnSpawnedInSlot();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetHoverboardActive();
     
     UFUNCTION(BlueprintCallable)

@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
-#include "SignalDelegate.h"
 #include "LockChangedEventMetadata.h"
+#include "SignalDelegate.h"
 #include "LockingMechanismView.generated.h"
 
-class ULockingMechanismDefinition;
 class ULockingMechanism;
+class ULockingMechanismDefinition;
 
 UCLASS(Blueprintable)
 class ASTRO_API ULockingMechanismView : public UObject {
@@ -27,10 +27,10 @@ public:
     ULockingMechanismView();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_IsOpen();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOpenStateChanged(ULockingMechanism* LockingMechanism, const FLockChangedEventMetadata& EventData);
     
 };

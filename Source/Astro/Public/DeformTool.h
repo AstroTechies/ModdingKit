@@ -1,42 +1,40 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "PhysicalItem.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
-#include "EnableSignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelMaterial -FallbackName=VoxelMaterial
-#include "EDeformToolSedimentTankReservesState.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelMaterialProperties -FallbackName=VoxelMaterialProperties
-#include "ReplicatedBrushState.h"
-#include "ReplicatedAugmentState.h"
-#include "ReplicatedCreativeColorPickState.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=EDeformType -FallbackName=EDeformType
-#include "EAugmentProperty.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "EDeformType.h"
 #include "VoxelMaterial.h"
 #include "VoxelMaterialProperties.h"
 #include "ClickResult.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "EAugmentProperty.h"
+#include "EDeformToolSedimentTankReservesState.h"
+#include "EnableSignalDelegate.h"
+#include "PhysicalItem.h"
+#include "ReplicatedAugmentState.h"
+#include "ReplicatedBrushState.h"
+#include "ReplicatedCreativeColorPickState.h"
+#include "SignalDelegate.h"
+#include "Templates/SubclassOf.h"
 #include "DeformTool.generated.h"
 
-class ATerrainBrush;
 class AActor;
-class UActivation;
-class APlayController;
 class AAstroCharacter;
-class USceneComponent;
-class UDeformEventReceiver;
-class UPowerComponent;
-class UDeformToolCameraContext;
+class AAstroPlanet;
+class APlayController;
+class ATerrainBrush;
+class UActivation;
 class UAugmentComponent;
 class UClickQuery;
-class UParticleSystemComponent;
-class AAstroPlanet;
+class UDeformEventReceiver;
+class UDeformTargetComponent;
+class UDeformToolCameraContext;
 class UItemType;
 class UMaterialInterface;
-class UDeformTargetComponent;
+class UParticleSystemComponent;
+class UPowerComponent;
+class USceneComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API ADeformTool : public APhysicalItem {
@@ -99,13 +97,13 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ATerrainBrush* TerrainBrush;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* FXSpawnComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UDeformEventReceiver* EventReceiver;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPowerComponent* PowerComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -208,22 +206,22 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnReplicated_TerrainSample, meta=(AllowPrivateAccess=true))
     FVoxelMaterialProperties RepTerrainSample;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UAugmentComponent*> AttachedAugments;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UAugmentComponent*> EquippedAugments;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UParticleSystemComponent* DeformEffectComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UParticleSystemComponent* BurnoffEffectComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UDeformToolCameraContext* CameraContext;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     uint32 BrushMaterialIndex;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
@@ -272,16 +270,16 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool UpdateTerrainSample(AAstroPlanet* Planet, const FVector& Location);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdateAugmentModifiedProperties();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void TryEquipAugment(UAugmentComponent* augment, EAugmentProperty augmentProperty);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ToolClickQuery(UClickQuery* ClickQuery);
     
 public:
@@ -304,67 +302,67 @@ private:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSetIsIgnoringTerrainHardnessCreative(bool IgnoreTerrainHardness);
     
-    UFUNCTION(Server, Unreliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Server, Unreliable, WithValidation)
     void ServerSendSampledTerrainUpdate(const FVector& Location);
     
-    UFUNCTION(Server, Unreliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Server, Unreliable, WithValidation)
     void ServerSendBrushUpdates(const FReplicatedBrushState& repState);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerRequestNewMaterialWithTerrainProperties(AAstroPlanet* Planet, const FVoxelMaterialProperties& TerrainProperties, UMaterialInterface* CustomMaterial, int32 creativeModePaintMaterialIndex);
     
-    UFUNCTION(Server, Unreliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Server, Unreliable, WithValidation)
     void ServerEndDeforming();
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerDoDeformTarget(UDeformTargetComponent* deformTarget);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerCreativeModeColorPick(const FVector& Location);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerCreativeModeColorChange(const FVoxelMaterialProperties& Properties, const FVector& Location, UMaterialInterface* CustomMaterial, int32 creativeModePaintMaterialIndex);
     
-    UFUNCTION(Server, Unreliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Server, Unreliable, WithValidation)
     void ServerBeginDeforming();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void PhysicalItemUnslotted(APhysicalItem* ItemOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void PhysicalItemSlotted(APhysicalItem* ItemOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnUseLegacyAddModeChanged(bool UseLegacyAddMode);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReplicated_TerrainSample();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReplicated_ColorPickState();
     
 public:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnInteraction(const FClickResult& Click);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnDeformBegin();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCreativeModeActiveStateChanged(bool IsEnabled);
     
 public:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnBrushSpawn();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnAttemptedToPickColor();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsToolDeployed();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     bool InteractActorTick(AActor* interactActor);
     
     UFUNCTION(BlueprintCallable)
@@ -374,128 +372,128 @@ public:
     void IncrementCreativeBaseBrushDeformationScale(float Delta);
     
 private:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasTankReservesNecessaryToAdditivelyDeform();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasSpaceLeftInTanks();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleTerrainTool(APlayController* Controller, const FHitResult& toolHit, const FClickResult& ClickResult, bool startedInteraction, bool isUsingTool, bool justActivated, bool canUse);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetSedimentFlowRate();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetSedimentDeformationDelta();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetSedimentAvailable();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool GetPowerLevelInhibitedFromAugment();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetOwnerBackpackRasied();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     FVoxelMaterial GetMaterialFromAugment();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetIsIgnoringTerrainHardnessCreative();
     
 public:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool GetIsDeforming();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     bool GetIsActive();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool GetFixedAlignmentFromAugment();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetEffectiveIndicatorScale();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetEffectiveDeformationIntensity();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetEffectiveBrushScale();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetDeformTier() const;
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     FVector GetDeformLocation();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetDeformationIsActive();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetDeformationIntensityModifierFromAugment();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetCreativeToolRange();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetCreativeDeformationIntensityNormalized();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetCreativeBaseDeformationIntensity();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetCreativeBaseBrushDeformationScale();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float GetBrushSizeModifierFromAugment();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetAugmentedTerrainHardness();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void DetermineSedimentTankAmount();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void Deactivated();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void CycleModeRight();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void CycleModeLeft();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void CheckForOrphanedTool();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void CheckAugmentsHavePower();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ChangeInAttachedAugments();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     float AuthorityGetEffectiveHardnessTier();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AdjustSedimentTankAmountFromDeformationDelta(float deformationDelta);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void Activated();
     
 };

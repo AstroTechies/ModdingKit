@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
-#include "EAstroMissionObjectiveType.h"
-#include "EPlanetIdentifier.h"
-#include "ENavpointGroup.h"
 #include "EAstroMissionObjectiveProgressType.h"
+#include "EAstroMissionObjectiveType.h"
+#include "ENavpointGroup.h"
+#include "EPlanetIdentifier.h"
+#include "Templates/SubclassOf.h"
 #include "AstroMissionObjectiveProgress.generated.h"
 
 class UItemType;
@@ -64,6 +64,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint8 bIsHiddenObjective: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bShowProgressUI: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     EAstroMissionObjectiveProgressType ProgressType;

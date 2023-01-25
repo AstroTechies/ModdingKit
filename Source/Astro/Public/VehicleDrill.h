@@ -1,34 +1,32 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "PhysicalItem.h"
-#include "DrillAudioEventDelegate.h"
-#include "EnableSignalDelegate.h"
-#include "VehicleDrillReplicationData.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "OnDummyDrillRemovedDelegate.h"
-#include "VehicleDrillOperationConstants.h"
-#include "VehicleDrillSedimentReplicationData.h"
-#include "OnSampledTerrainMaterialChangedDelegate.h"
+#include "VoxelMaterialProperties.h"
+#include "DrillAudioEventDelegate.h"
 #include "EVehicleDrillToolMode.h"
-#include "VoxelMaterialProperties.h"
-#include "VoxelMaterialProperties.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelMaterialProperties -FallbackName=VoxelMaterialProperties
+#include "EnableSignalDelegate.h"
+#include "OnDummyDrillRemovedDelegate.h"
+#include "OnSampledTerrainMaterialChangedDelegate.h"
+#include "PhysicalItem.h"
+#include "Templates/SubclassOf.h"
+#include "VehicleDrillOperationConstants.h"
+#include "VehicleDrillReplicationData.h"
+#include "VehicleDrillSedimentReplicationData.h"
 #include "VehicleDrill.generated.h"
 
+class AAstroPlanet;
+class AAstroPlayerController;
+class ARoverBase;
 class AVehicleDrill;
-class UCurveFloat;
 class UControlComponent;
+class UCurveFloat;
 class UDeformEventReceiver;
+class UMaterialInterface;
+class UParticleSystem;
+class UParticleSystemComponent;
 class UPowerComponent;
 class USceneComponent;
-class UParticleSystemComponent;
-class ARoverBase;
-class AAstroPlanet;
-class UMaterialInterface;
-class AAstroPlayerController;
-class UParticleSystem;
 class UStorageChassisComponent;
 
 UCLASS(Blueprintable)
@@ -105,40 +103,40 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxDrillSlope;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UControlComponent* ControlComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UDeformEventReceiver* DeformEventReceiver;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPowerComponent* PowerComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* DeformVisualizer;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* FoliageDestructionVisualizer;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* ExcavationDeformationOriginMarker;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* TunnelBoringUI_Wrapper;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* PivotingUI_Wrapper;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UParticleSystemComponent* TerrainDeformationParticles;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* TiltIndicatorWrapper;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* TiltUpIndicatorWrapper;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* TiltDownIndicatorWrapper;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -170,98 +168,98 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdateTerrainDeformationParticles(bool SystemEnabled, int32 HardnessDelta);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateSlopeIndicator(float SlopeDegree);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateSedimentGauge(float CurrentSedimentAvailalbe, float CurrentSedimentCapacity);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdatePlayerAccentIndex(int32 PlayerAccentIndex);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateDeformationNormal(FVector DeformationNormal);
     
 public:
     UFUNCTION(BlueprintCallable)
     void ToggleDrillUsageForTunnelBoring();
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerUpdateToolState(bool ToolIsActive, EVehicleDrillToolMode DrillMode);
     
 protected:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerRequestNewMaterialWithTerrainProperties(AAstroPlanet* Planet, const FVoxelMaterialProperties& TerrainProperties, UMaterialInterface* CustomMaterial, int32 creativeModePaintMaterialIndex);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ResetExcessTerrainCollectionFlag();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void PlayDrillStartWithInsufficientSoilEffect();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void PlayDrillStartWithInsufficientPowerEffect();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_VehicleDrillSedimentReplicationData();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_VehicleDrillReplicationData();
     
 protected:
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastPlayDrillStartWithInsufficientSoilEffect();
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastPlayDrillStartWithInsufficientPowerEffect();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsToolActive() const;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleVehicleUnmanned(AAstroPlayerController* VehicleDriver);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleVehicleManned(AAstroPlayerController* VehicleDriver);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleTunnelBoringDrillBecameActiveOnMyRover(AVehicleDrill* DrillThatBecameActive);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleTerraianDeformationDensityDeltaReceived(float DensityDelta);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleRemovedFromSlot(bool NewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePlacedInSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleDummyDrillRemovedFromSlot(AVehicleDrill* DummyDrillRemoved);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleDestroyedWhileInSlot(APhysicalItem* DestroyedActor);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleDeactivatedAsExcavator();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleActivatedAsExcavator();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     UParticleSystem* GetSubtractParticleEffect(int32 HardnessDelta);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UStorageChassisComponent* GetOutermostStorage();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool DidCollectExcessTerrain() const;
     
 };

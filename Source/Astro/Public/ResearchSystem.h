@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "AstroEntitySystem.h"
 #include "AstroDatumRef.h"
+#include "AstroEntitySystem.h"
 #include "ResearchSubjectComponent.h"
+#include "Templates/SubclassOf.h"
 #include "ResearchSystem.generated.h"
 
-class APlayerController;
-class UItemType;
-class APhysicalItem;
-class UItemComponent;
 class AAstroGameState;
+class APhysicalItem;
+class APlayerController;
+class UItemComponent;
+class UItemType;
 class UObject;
 
 UCLASS(Blueprintable)
@@ -21,40 +21,43 @@ public:
     UFUNCTION(BlueprintCallable)
     static void StartOrInterruptResearch(FAstroDatumRef ResearchEntityRef, FAstroDatumRef InstigatorEntityRef, bool& bOutSuccess);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnResearchSubjectSet(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnResearchSubjectReleased(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnResearchSubjectItemTypeChanged(UItemComponent* researchSubjectItemComponent, TSubclassOf<UItemType> NewItemType);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnResearchSubjectDestroyedInSlot(APhysicalItem* Item);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsItemTypeUnlockedForGame(const AAstroGameState* GameState, TSubclassOf<UItemType> ItemType);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsItemTypeUnlocked(const APlayerController* PlayerController, TSubclassOf<UItemType> ItemType);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static bool IsItemTypeKnownForGame(const AAstroGameState* GameState, TSubclassOf<UItemType> ItemType);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetResearchTimeProgressRatio(const FResearchSubjectComponent& ResearchSubject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static void GetResearchSubjectTotals(const FResearchSubjectComponent& ResearchSubject, float& OutTotalPointsFromSubject, float& OutSubjectTotalResearchTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetResearchPointProgressRatio(const FResearchSubjectComponent& ResearchSubject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetCurrentResearchPointsPerMinute(const APlayerController* PlayerController);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetCurrentResearchPointBalance(const APlayerController* PlayerController);
     
-    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void AuthorityGrantResearchPoints(const UObject* WorldContextObject, int32 PointsToGrant);
     
 };

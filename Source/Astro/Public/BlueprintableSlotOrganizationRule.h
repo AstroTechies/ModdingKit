@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "SlotOrganizationRule.h"
+#include "Templates/SubclassOf.h"
 #include "BlueprintableSlotOrganizationRule.generated.h"
 
-class UItemType;
 class APhysicalItem;
+class UItemType;
 
 UCLASS(Blueprintable, EditInlineNew)
 class UBlueprintableSlotOrganizationRule : public USlotOrganizationRule {
@@ -13,13 +13,13 @@ class UBlueprintableSlotOrganizationRule : public USlotOrganizationRule {
 public:
     UBlueprintableSlotOrganizationRule();
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     TArray<APhysicalItem*> AuthorityGetWantedItems_Blueprint(const TArray<APhysicalItem*>& availableItems) const;
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     TArray<APhysicalItem*> AuthorityGetUnwantedItemsInManagedSlots_Blueprint() const;
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     TArray<TSubclassOf<UItemType>> AuthorityGetDesiredIndicators_Blueprint() const;
     
 };

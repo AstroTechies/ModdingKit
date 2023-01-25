@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroFoliageDestructionRequest.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "AstroFoliageDestructionRequest.h"
 #include "AstroFoliageDestructionManager.generated.h"
 
-class UCollectibleHandler;
-class UWorld;
 class UAstroGameInstance;
+class UCollectibleHandler;
 class UResourceExtractorManager;
+class UWorld;
 
 UCLASS(Blueprintable)
 class ASTRO_API UAstroFoliageDestructionManager : public UObject {

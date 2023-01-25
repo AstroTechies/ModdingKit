@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EPlacementImportanceMode.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EPlacementImportanceMode : uint8 {
     Lowest,
     Low,

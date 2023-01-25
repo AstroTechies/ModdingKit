@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "AstroDatumRef.h"
+#include "Templates/SubclassOf.h"
 #include "ActiveItemConversionItemOutput.generated.h"
 
 class UItemType;

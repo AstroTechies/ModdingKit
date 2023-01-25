@@ -4,5 +4,5 @@
 
 class AAutoCrane;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAutoCraneStateChange, AAutoCrane*, Crane);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAutoCraneStateChange, AAutoCrane*, Crane);
 

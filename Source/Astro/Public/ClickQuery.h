@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SlotReference.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "ClickParams.h"
 #include "ClickResult.h"
 #include "EClickBehavior.h"
+#include "SlotReference.h"
 #include "ClickQuery.generated.h"
 
-class UPrimitiveComponent;
 class AActor;
-class UStorageChassisComponent;
 class APlayController;
 class UClickQuery;
+class UPrimitiveComponent;
+class UStorageChassisComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API UClickQuery : public UObject {
@@ -57,40 +57,40 @@ public:
     UFUNCTION(BlueprintCallable)
     void ResetClickResult();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FSlotReference QueryCameraFacingSlotFromArray(AActor* Actor, const TArray<FSlotReference> Slots);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HavePrimaryResult() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetSecondaryActor() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FSlotReference GetPrimarySlot() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UPrimitiveComponent* GetPrimaryComponent() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetPrimaryActor() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetInteractingActor() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UPrimitiveComponent* GetHitComponent() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetHitActor() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     APlayController* GetController() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetClickActor() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UClickQuery* ClickQuery();
     
 };

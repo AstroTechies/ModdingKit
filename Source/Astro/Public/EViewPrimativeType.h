@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EViewPrimativeType.generated.h"
 
-UENUM()
-enum class EViewPrimativeType {
+UENUM(BlueprintType)
+enum class EViewPrimativeType : uint8 {
     PrimaryViewActor,
     SecondaryViewActor,
     TertiaryViewActor,

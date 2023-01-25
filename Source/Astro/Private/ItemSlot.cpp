@@ -1,9 +1,9 @@
 #include "ItemSlot.h"
 #include "ClickableComponent.h"
 
-class UChildSlotComponent;
 class APhysicalItem;
 class ASlotConnection;
+class UChildSlotComponent;
 
 
 

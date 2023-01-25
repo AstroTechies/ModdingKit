@@ -4,5 +4,5 @@
 
 class UTooltipComponent;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnTooltipWantsFocusChanged, UTooltipComponent*, TooltipComponent, bool, WantsFocus);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnTooltipWantsFocusChanged, UTooltipComponent*, TooltipComponent, bool, WantsFocus);
 

@@ -3,9 +3,9 @@
 #include "LockingMechanism.h"
 #include "ResourceConsumptionLockingMechanism.generated.h"
 
-class APhysicalItem;
-class APawn;
 class AActor;
+class APawn;
+class APhysicalItem;
 
 UCLASS(Blueprintable)
 class ASTRO_API UResourceConsumptionLockingMechanism : public ULockingMechanism {
@@ -18,18 +18,18 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     APhysicalItem* ItemBeingConsumed;
     
-    UPROPERTY(EditAnywhere, SaveGame)
+    UPROPERTY(EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<APawn> ItemConsumptionInstigator;
     
 public:
     UResourceConsumptionLockingMechanism();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemSetInResourceConsumptionSlot(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemBeingConsumedDrained();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemBeingConsumedDestroyed(AActor* DestroyedActor);
     
 };

@@ -1,22 +1,22 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EnableSignalDelegate.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "SlotReference.h"
-#include "RailPostCarSlot.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "Components/ActorComponent.h"
 #include "CalledCarState.h"
 #include "ERailPostConnectionState.h"
+#include "EnableSignalDelegate.h"
+#include "RailPostCarSlot.h"
+#include "SignalDelegate.h"
+#include "SlotReference.h"
 #include "StreamingPowerNodeVisualizationData.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "RailPostComponent.generated.h"
 
-class UMaterialInstanceDynamic;
+class APhysicalItem;
 class ARailCarBase;
 class UActuatorComponent;
-class UPrimitiveComponent;
 class UClickQuery;
-class APhysicalItem;
+class UMaterialInstanceDynamic;
+class UPrimitiveComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API URailPostComponent : public UActorComponent {
@@ -65,13 +65,13 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString RecallCompleteSound;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UActuatorComponent* ActuatorComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UMaterialInstanceDynamic* GaugeMaterial;
     
-    UPROPERTY(EditAnywhere, Replicated)
+    UPROPERTY(EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     TArray<TWeakObjectPtr<ARailCarBase>> TraversingCars;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
@@ -94,64 +94,64 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION(Reliable, Server)
+    UFUNCTION(BlueprintCallable, Reliable, Server)
     void ServerSetIsSnappedToRail();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ShouldStopOnArrival();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_IsMovable();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_CalledCarState(FCalledCarState PreviousState);
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastSetConnectionState(ERailPostConnectionState ConnectionState);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsCarRecallInProgress() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasTraversingCars() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleRailNetworkCreated();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePowerChanged(const FStreamingPowerNodeVisualizationData& powerData);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePickedUp(bool isPhysicalMovement);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleIsAttachedToTerrainChanged();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleDroppedDelayed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleDropped(UPrimitiveComponent* Component, const FVector& Point, const FVector& Normal);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleDeformCompleted(float DensityDelta);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleClickQuery(UClickQuery* Query);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityTriggerUseOnStoppedCar();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AuthorityHandleOxygenChanged(bool hasOxygen);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AuthorityHandleItemPlacedInCaravanSlot(APhysicalItem* Item);
     
 public:

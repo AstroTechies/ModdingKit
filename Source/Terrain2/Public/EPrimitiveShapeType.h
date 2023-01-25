@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EPrimitiveShapeType.generated.h"
 
-UENUM()
-enum class EPrimitiveShapeType {
+UENUM(BlueprintType)
+enum class EPrimitiveShapeType : uint8 {
     Sphere,
     Box,
     RoundedBox,

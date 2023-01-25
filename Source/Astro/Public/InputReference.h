@@ -9,16 +9,13 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName InputName;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bIsAxis;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Scale;
     
-	friend uint32 GetTypeHash(const FInputReference& Other) {
-		return 0;
-	}
-
     ASTRO_API FInputReference();
 };
+FORCEINLINE uint32 GetTypeHash(const FInputReference) { return 0; }
 

@@ -5,5 +5,5 @@
 
 class UAstroGameMenuFocusItemWidget;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnFocusItemFocusStateChanged, bool, NewIsFocused, UAstroGameMenuFocusItemWidget*, FocusableWidget, EFocusItemFocusChangeCause, FocusChangeCause);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnFocusItemFocusStateChanged, bool, NewIsFocused, UAstroGameMenuFocusItemWidget*, FocusableWidget, EFocusItemFocusChangeCause, FocusChangeCause);
 

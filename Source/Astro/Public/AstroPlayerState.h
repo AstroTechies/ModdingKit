@@ -1,16 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=PlayerState -FallbackName=PlayerState
 #include "GameFramework/PlayerState.h"
-#include "PersistedCameraState.h"
+#include "EPlayerPlatform.h"
 #include "OnCurrentResearchPointBalanceChangedDelegate.h"
 #include "OnItemTypeListChangedDelegate.h"
-#include "EPlayerPlatform.h"
+#include "PersistedCameraState.h"
+#include "Templates/SubclassOf.h"
 #include "AstroPlayerState.generated.h"
 
-class UItemType;
 class UActorEntityLinkComponent;
+class UItemType;
 
 UCLASS(Blueprintable)
 class ASTRO_API AAstroPlayerState : public APlayerState {
@@ -44,7 +43,7 @@ private:
     FPersistedCameraState PersistedCameraState;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, SaveGame, meta=(AllowPrivateAccess=true))
     UActorEntityLinkComponent* EntityLinkComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=BroadcastResearchPointBalanceChanged, meta=(AllowPrivateAccess=true))
@@ -75,31 +74,31 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetHelpMenuState(bool HelpMenuOpen);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAuthorityUnlockedItemsChanged(const TArray<TSubclassOf<UItemType>>& NewUnlockedItemTypes);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAuthorityResearchPointBalanceChanged(float NewPointBalance);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAuthorityKnownItemsChanged(const TArray<TSubclassOf<UItemType>>& newKnownItemTypes);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPlayerOffworld() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EPlayerPlatform GetPlayerPlatform() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetHelpMenuWasViewed() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void BroadcastUnlockedItemTypesChanged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void BroadcastResearchPointBalanceChanged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void BroadcastKnownItemTypesChanged();
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)

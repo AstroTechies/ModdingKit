@@ -1,11 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=GameplayTasks -ObjectName=GameplayTasksComponent -FallbackName=GameplayTasksComponent
-#include "AstroActionRequestPayload.h"
-#include "EAstroActionNetworking.h"
 #include "GameplayTasksComponent.h"
 #include "AstroActionIdentifier.h"
+#include "AstroActionRequestPayload.h"
+#include "EAstroActionNetworking.h"
+#include "Templates/SubclassOf.h"
 #include "AstroActionComponent.generated.h"
 
 class UAstroAction;
@@ -27,21 +26,21 @@ public:
     bool StartAction(TSubclassOf<UAstroAction> ActionType);
     
 protected:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerRequestStartAction(const FAstroActionRequestPayload& payload);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerRequestInterruptAction(const FAstroActionIdentifier& actionToInterruptIdentifier);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnActionEnded(UAstroAction* EndedAction);
     
 protected:
-    UFUNCTION(NetMulticast, Reliable, WithValidation)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable, WithValidation)
     void MulticastStartAction(const FAstroActionRequestPayload& payload);
     
-    UFUNCTION(NetMulticast, Reliable, WithValidation)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable, WithValidation)
     void MulticastInterruptAction(const FAstroActionIdentifier& interruptedActionIdentifier);
     
 public:
@@ -49,7 +48,7 @@ public:
     UAstroAction* CreateAction(TSubclassOf<UAstroAction> ActionType);
     
 protected:
-    UFUNCTION(Client, Reliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Client, Reliable, WithValidation)
     void ClientDenyStartActionRequest(const FAstroActionIdentifier& deniedActionIdentifier);
     
 };

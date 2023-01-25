@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "ProgressionAchievementDefinition.h"
+#include "Templates/SubclassOf.h"
 #include "ItemCollectionAchievement.generated.h"
 
 class UItemList;

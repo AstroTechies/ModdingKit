@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EWorldOrientation.generated.h"
 
-UENUM()
-enum class EWorldOrientation {
+UENUM(BlueprintType)
+enum class EWorldOrientation : uint8 {
     PlanetUp,
     PlanetDown,
     Random,

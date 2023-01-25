@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 #include "LaunchedSignalDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FLaunchedSignal, float, LaunchLength);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FLaunchedSignal, float, LaunchLength);
 

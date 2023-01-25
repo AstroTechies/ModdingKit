@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "PhysicalItem.h"
 #include "CurrentlySelectedItemChangedDelegate.h"
+#include "PhysicalItem.h"
+#include "Templates/SubclassOf.h"
 #include "CheatPlinthBase.generated.h"
 
-class UItemType;
 class UItemList;
+class UItemType;
 
 UCLASS(Abstract, Blueprintable)
 class ASTRO_API ACheatPlinthBase : public APhysicalItem {
@@ -30,13 +30,13 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_SelectionIndex();
     
     UFUNCTION(BlueprintCallable)
     void IncrementSelectionIndex();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<UItemType> GetCurrentlySelectedItemType();
     
     UFUNCTION(BlueprintCallable)

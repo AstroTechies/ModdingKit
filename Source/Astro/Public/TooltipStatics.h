@@ -13,7 +13,7 @@ class ASTRO_API UTooltipStatics : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     UTooltipStatics();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UTooltipComponent* GetDefaultTooltipComponentForActor(AActor* TooltipOwner);
     
     UFUNCTION(BlueprintCallable)

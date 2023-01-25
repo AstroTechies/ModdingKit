@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "EIndicatorTooltipType.h"
+#include "Templates/SubclassOf.h"
 #include "SlotIndicatorDefinition.generated.h"
 
 class APhysicalItem;

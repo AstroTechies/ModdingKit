@@ -1,10 +1,10 @@
 #include "ControlPanel.h"
-#include "Net/UnrealNetwork.h"
-#include "CrackableActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SpotLightComponent -FallbackName=SpotLightComponent
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SkeletalMeshComponent -FallbackName=SkeletalMeshComponent
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=StaticMeshComponent -FallbackName=StaticMeshComponent
+#include "Components/SkeletalMeshComponent.h"
+#include "Components/SpotLightComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "ClickableComponent.h"
+#include "CrackableActorComponent.h"
+#include "Net/UnrealNetwork.h"
 
 class UPrimitiveComponent;
 

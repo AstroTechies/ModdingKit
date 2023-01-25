@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroDatumRef.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "AstroDatumRef.h"
 #include "AstroEntityWorld.generated.h"
 
-class UAstroSaveCustomArchiveProxy;
-class UAstroEntityTaskManager;
-class UAstroEntityContainer;
 class UAstroEntityComponentContainer;
-class UAstroEntitySystem;
 class UAstroEntityComponentSubobject;
+class UAstroEntityContainer;
+class UAstroEntitySystem;
+class UAstroEntityTaskManager;
+class UAstroSaveCustomArchiveProxy;
 
 UCLASS(Blueprintable)
 class ASTRO_API UAstroEntityWorld : public UObject {
@@ -40,20 +40,20 @@ private:
 public:
     UAstroEntityWorld();
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FAstroDatumRef GetOwnerEntity(FAstroDatumRef EntityComponentRef, bool& bOutSuccess);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FAstroDatumRef GetEntityRootComponentRef(FAstroDatumRef EntityRef, bool& bOutSuccess);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FAstroDatumRef GetEntityComponentRefByName(FAstroDatumRef EntityRef, FName ComponentName, bool& bOutSuccess);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static TArray<FAstroDatumRef> GetEntityComponentDatumRefs(FAstroDatumRef EntityRef, bool& bOutSuccess);
     
 };

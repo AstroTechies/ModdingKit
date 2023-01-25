@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ESolarGeneratorSunTrackingBehavior.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESolarGeneratorSunTrackingBehavior : uint8 {
     Pivot,
     LocalRollAxis,

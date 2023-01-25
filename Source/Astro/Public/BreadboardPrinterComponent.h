@@ -1,25 +1,25 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "SlotReference.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-#include "BreadboardPrinterAnimationReplicationData.h"
-#include "SignalDelegate.h"
-#include "EnableSignalDelegate.h"
+#include "Components/ActorComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "BreadboardPrinterAnimationReplicationData.h"
+#include "EnableSignalDelegate.h"
+#include "SignalDelegate.h"
+#include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "BreadboardPrinterComponent.generated.h"
 
-class USceneComponent;
-class USphereComponent;
-class USkeletalMeshComponent;
-class APhysicalItem;
-class UPrinterComponent;
-class UPowerComponent;
-class UClickableComponent;
-class UAstroSaveCustomArchiveProxy;
-class UPrimitiveComponent;
 class AActor;
+class APhysicalItem;
+class UAstroSaveCustomArchiveProxy;
+class UClickableComponent;
+class UPowerComponent;
+class UPrimitiveComponent;
+class UPrinterComponent;
+class USceneComponent;
+class USkeletalMeshComponent;
+class USphereComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UBreadboardPrinterComponent : public UActorComponent {
@@ -73,16 +73,16 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName PrintheadActualSocketName;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* PrintAreaRoot;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* GroundOutputSlot;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USkeletalMeshComponent* PrinterMesh;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USphereComponent* PrintAreaCollider;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -107,13 +107,13 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     APhysicalItem* OwnerPhysicalItem;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UPrinterComponent* PrinterComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UPowerComponent* PowerComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UClickableComponent* ClickableComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
@@ -153,7 +153,7 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ValidatePackageableItemsInRange();
     
 public:
@@ -164,58 +164,58 @@ protected:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetRepackageModeEnabled(bool modeEnabled);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_OutputSlotTransform();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_IsInProductionMode();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_AutoTerminateProductionMode();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_AnimationStateChange();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPrintAreaOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPrintAreaOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePrintStarted();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePrintFinished(APhysicalItem* PrintedItem);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePrintCanceled();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     FSlotReference GetSlotForItemTier(const TArray<FSlotReference>& Slots, const APhysicalItem* itemCDO, bool neededSlotTierCanBeOccupied) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetSelectionEnabled();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetPrintheadHeight();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetPrintheadExtension();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetPrinterAvailable();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetPreviewEnabled();
     
-    UFUNCTION(BlueprintAuthorityOnly, BlueprintPure)
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintPure)
     bool CheckPrinterDeployed() const;
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)

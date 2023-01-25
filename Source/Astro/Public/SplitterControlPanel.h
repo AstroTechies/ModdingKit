@@ -11,14 +11,14 @@ class ASTRO_API ASplitterControlPanel : public AControlPanel {
 public:
     ASplitterControlPanel();
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void ProcessSplitterControlPanelInput();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleFullyCrackedOrClosed(UCrackableActorComponent* InCrackableActorComponent, bool bIsCracked);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleCrackedChanged(UCrackableActorComponent* InCrackableActorComponent, bool bIsCracked);
     
 };

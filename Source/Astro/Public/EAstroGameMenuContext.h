@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EAstroGameMenuContext.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EAstroGameMenuContext : uint8 {
     InGame,
     TitleMenu,

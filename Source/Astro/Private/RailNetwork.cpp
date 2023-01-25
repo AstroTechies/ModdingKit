@@ -1,7 +1,7 @@
 #include "RailNetwork.h"
-#include "Net/UnrealNetwork.h"
-#include "ClickableComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=InstancedStaticMeshComponent -FallbackName=InstancedStaticMeshComponent
+#include "ClickableComponent.h"
+#include "Net/UnrealNetwork.h"
 
 class UClickQuery;
 class URailPostComponent;

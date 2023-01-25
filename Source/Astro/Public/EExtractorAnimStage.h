@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EExtractorAnimStage.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EExtractorAnimStage : uint8 {
     Holding,
     Falling,

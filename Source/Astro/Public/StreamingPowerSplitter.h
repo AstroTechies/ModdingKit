@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "EPowerCableConnectionDirection.h"
 #include "PhysicalItem.h"
 #include "SlotReference.h"
 #include "StreamingPowerSplitterReplicationData.h"
-#include "EPowerCableConnectionDirection.h"
 #include "StreamingPowerSplitter.generated.h"
 
 class ASlotConnection;
@@ -33,19 +33,19 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_SplitterData();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleCableConnectionMade(FSlotReference SlotRef, ASlotConnection* Connection);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleCableConnectionInterrupted(UActorStreamingPowerCableComponent* powerCable, bool bInterrupted);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleCableConnectionBroken(FSlotReference SlotRef, ASlotConnection* Connection);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     EPowerCableConnectionDirection GetDirectionOfCableForSlot(const FSlotReference& ConnectedSlot);
     
 public:

@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "ECraftingOrgin.h"
 #include "CraftingSourceCraftableList.h"
+#include "ECraftingOrgin.h"
+#include "Templates/SubclassOf.h"
 #include "CraftingOriginDependencyMap.generated.h"
 
 class UItemList;

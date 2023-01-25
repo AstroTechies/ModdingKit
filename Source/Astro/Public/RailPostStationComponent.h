@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "RailPostComponent.h"
-#include "SignalDelegate.h"
 #include "EStationLoadingState.h"
 #include "EStationStopState.h"
+#include "RailPostComponent.h"
+#include "SignalDelegate.h"
 #include "RailPostStationComponent.generated.h"
 
 class ARailCarBase;
@@ -39,14 +39,14 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_StationSettings();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EStationStopState GetCurrentStopMode();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EStationLoadingState GetCurrentLoadMode();
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)

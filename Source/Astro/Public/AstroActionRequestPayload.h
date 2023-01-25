@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "AstroActionIdentifier.h"
+#include "Templates/SubclassOf.h"
 #include "AstroActionRequestPayload.generated.h"
 
 class UAstroAction;
@@ -16,7 +16,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAstroActionIdentifier ActionIdentifier;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<uint8> PayloadData;
     
     ASTRO_API FAstroActionRequestPayload();

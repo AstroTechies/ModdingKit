@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
 #include "AstroEntityComponentSubobjectDefinition.h"
 #include "AstroNotificationUnlockAuthoringData.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "Templates/SubclassOf.h"
 #include "VintageProbeUnlockBehaviorDefinition.generated.h"
 
 class AActor;

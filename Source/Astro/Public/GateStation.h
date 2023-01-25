@@ -1,44 +1,44 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SolarBody.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
 //CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "SolarBody.h"
 #include "GateStation.generated.h"
 
-class USceneComponent;
-class UStaticMeshComponent;
-class UTooltipComponent;
-class UClickableComponent;
-class USphereComponent;
-class UActorGateObjectComponent;
-class UActorEntityLinkComponent;
-class UStationGateObjectIndicatorDefinitions;
 class AActor;
+class UActorEntityLinkComponent;
+class UActorGateObjectComponent;
+class UClickableComponent;
+class USceneComponent;
+class USphereComponent;
+class UStaticMeshComponent;
+class UStationGateObjectIndicatorDefinitions;
+class UTooltipComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API AGateStation : public ASolarBody {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* StationMesh;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* TeleporterPositioningComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UClickableComponent* ClickableComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UTooltipComponent* TooltipComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USphereComponent* ClickCollisionSphere;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* ProxyMesh;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* ProxyRoot;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -47,10 +47,10 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRotator OrbitalRotationOffset;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UActorGateObjectComponent* GateObjectComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UActorEntityLinkComponent* EntityLinkComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -58,17 +58,20 @@ protected:
     
 public:
     AGateStation();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOutroCinematicStarted();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOutroCinematicCompleted();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnClickedInSolarView(AActor* TouchedActor, FKey ButtonPressed);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void InitializeLandingZones();
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void HandleActualVisibilityChanged(bool bIsVisible);
     
 };
 

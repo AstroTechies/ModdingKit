@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EUseContext.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EUseContext : uint8 {
     UC_Use,
     UC_Toggle,

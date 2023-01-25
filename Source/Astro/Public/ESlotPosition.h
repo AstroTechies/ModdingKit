@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ESlotPosition.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESlotPosition : uint8 {
     RelativeTransform,
     Socket,

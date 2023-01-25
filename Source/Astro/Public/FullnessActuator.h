@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "PhysicalItem.h"
-#include "SignalDelegate.h"
 #include "EFullnessActuatorEventType.h"
 #include "EFullnessActuatorResponseMode.h"
 #include "FullnessActuatorResponseModeStrings.h"
+#include "PhysicalItem.h"
+#include "SignalDelegate.h"
 #include "FullnessActuator.generated.h"
 
 class UActuatorComponent;
@@ -17,10 +17,10 @@ public:
     FSignal OnFullnessResponseModeChanged;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UActuatorComponent* ActuatorComponent;
     
-    UPROPERTY(EditAnywhere, Transient, ReplicatedUsing=OnRep_TargetItem)
+    UPROPERTY(EditAnywhere, Transient, ReplicatedUsing=OnRep_TargetItem, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<APhysicalItem> TargetItem;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_MostRecentEvent, meta=(AllowPrivateAccess=true))
@@ -32,7 +32,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint8 bWasFull: 1;
     
-    UPROPERTY(EditAnywhere, SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint8 EventTypeFlags;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_FullnessResponseMode, meta=(AllowPrivateAccess=true))
@@ -64,22 +64,22 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_TargetItem();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_MostRecentEvent();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_FullnessResponseMode();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleReleasedFromSlot(bool NewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePlacedInSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AuthorityRespondToMotionStateChange();
     
 protected:

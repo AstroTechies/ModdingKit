@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "Callback_DEPRECATED.generated.h"
 
-class UObject;
 class UFunction;
+class UObject;
 
 USTRUCT(BlueprintType)
 struct FCallback_DEPRECATED {
@@ -15,7 +15,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UFunction* Function;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     uint32 ObjectIndex;
     
     ASTRO_API FCallback_DEPRECATED();

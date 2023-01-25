@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "OnTerrainEventDelegate.h"
+#include "Components/ActorComponent.h"
 #include "OnAcceptResourceDelegate.h"
 #include "OnTerrainDeformationDensityDeltaReceivedDelegate.h"
+#include "OnTerrainEventDelegate.h"
 #include "DeformEventReceiver.generated.h"
 
 class AActor;
@@ -23,7 +23,7 @@ public:
     FOnTerrainDeformationDensityDeltaReceived OnTerrainDeformationDensityDeltaReceived;
     
     UDeformEventReceiver();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UDeformEventReceiver* ActorDeformEventReceiver(AActor* Actor);
     
 };

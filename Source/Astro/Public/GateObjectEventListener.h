@@ -10,7 +10,7 @@ class UGateObjectEventListener : public UAstroEntityComponentSubobject {
     GENERATED_BODY()
 public:
     UGateObjectEventListener();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPlayerCharacterInProximityDestroyed(AActor* playerCharacter);
     
 };

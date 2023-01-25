@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EWandererRealityTearOpenState.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EWandererRealityTearOpenState : uint8 {
     Closed,
     WillOpen,

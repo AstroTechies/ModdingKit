@@ -1,30 +1,29 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "VoxelMaterial.h"
 #include "ENavpointGroup.h"
 #include "Navpoint.h"
-#include "VoxelMaterial.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelMaterial -FallbackName=VoxelMaterial
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+#include "Templates/SubclassOf.h"
 #include "AstroPlayStatics.generated.h"
 
-class UPrimitiveComponent;
 class AActor;
-class UChildActorComponent;
-class UObject;
-class AAstroPlanet;
-class USceneComponent;
 class AAstroCharacter;
-class UItemType;
+class AAstroPlanet;
 class APhysicalItem;
 class APlayController;
 class APlayerController;
+class UChildActorComponent;
 class UControlSymbol;
+class UItemType;
+class UObject;
+class UPrimitiveComponent;
+class USceneComponent;
 class UTexture;
 
 UCLASS(Blueprintable)
@@ -44,7 +43,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static void ServerClick(UPrimitiveComponent* Primitive);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void RestoreInputModeToGameFromUI(UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
@@ -59,70 +58,70 @@ public:
     UFUNCTION(BlueprintCallable)
     static void LocalClick(UPrimitiveComponent* Primitive);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsCharacterInFlyingShuttle(AAstroCharacter* AstroCharacter);
     
     UFUNCTION(BlueprintCallable)
     static int32 GetTradeOutputAmount(TSubclassOf<UItemType> InputItemType, TSubclassOf<UItemType> OutputItemType, const TArray<APhysicalItem*>& InputItems);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static AActor* GetTopmostParentActor(AActor* Component);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UPrimitiveComponent* GetSimulatingParent(USceneComponent* Component);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UPrimitiveComponent* GetSimulatingAttachParent(USceneComponent* Component);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector GetRopeInterpNormal(const FVector& Start, const FVector& StartNormal, const FVector& End, const FVector& EndNormal, float NormalScale, float Alpha);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector GetRopeInterpLocation(const FVector& Start, const FVector& StartNormal, const FVector& End, const FVector& EndNormal, float NormalScale, float Alpha);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static TArray<TSubclassOf<UItemType>> GetPossibleOutputTypes(TSubclassOf<UItemType> InputItemType);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static TArray<TSubclassOf<UItemType>> GetPossibleInputTypes();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static APlayController* GetPlayController(const UObject* WorldContextObject, int32 Index);
     
     UFUNCTION(BlueprintCallable)
     static bool GetNavpoint(FGuid NavpointID, FNavpoint& outNavpoint);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector GetMoveDirection3D(APlayerController* Controller, AActor* Actor, const FVector ControlDirection);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector GetMoveDirection(APlayerController* Controller, AActor* Actor, const FVector2D ControlDirection);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool GetMinimumDiscreteTradeRatioBetweenItems(TSubclassOf<UItemType> InputItemType, TSubclassOf<UItemType> OutputItemType, int32& OutDiscreteInputRatioTerm, int32& OutDiscreteOutputRatioTerm);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static APlayController* GetLocalPlayController(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static AAstroCharacter* GetLocalAstroCharacter(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UItemType* GetItemTypeDefault(TSubclassOf<UItemType> Type);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static APlayerController* GetCurrentInputController();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UControlSymbol* GetControlSymbolDefault(TSubclassOf<UControlSymbol> Type);
     
     UFUNCTION(BlueprintCallable)
     static TArray<APhysicalItem*> GetConsumedInputItemsForTradeOutput(TSubclassOf<UItemType> InputItemType, TSubclassOf<UItemType> OutputItemType, int32 TargetOutputAmount, const TArray<APhysicalItem*>& InputItems);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static TArray<APlayController*> GetAllPlayControllers(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static FVoxelMaterial DowncastTerrainMaterial(UObject* WorldContextObject, const FVector& Location);
     
     UFUNCTION(BlueprintCallable)

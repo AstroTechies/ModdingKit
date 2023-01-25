@@ -3,8 +3,8 @@
 #include "Templates/SubclassOf.h"
 #include "ActorTemplateCache.generated.h"
 
-class UWorld;
 class AActor;
+class UWorld;
 
 USTRUCT(BlueprintType)
 struct FActorTemplateCache {

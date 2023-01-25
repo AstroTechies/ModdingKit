@@ -1,10 +1,10 @@
 #include "RailPostComponent.h"
-#include "Net/UnrealNetwork.h"
 #include "ActuatorComponent.h"
+#include "Net/UnrealNetwork.h"
 
-class UPrimitiveComponent;
 class APhysicalItem;
 class UClickQuery;
+class UPrimitiveComponent;
 
 void URailPostComponent::ServerSetIsSnappedToRail_Implementation() {
 }

@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "TooltipWidgetDisplayData.h"
 #include "AstroUICardWidget.h"
 #include "ETooltipAnimation.h"
 #include "ETooltipState.h"
 #include "InteractionPromptEntryData.h"
+#include "TooltipWidgetDisplayData.h"
 #include "AstroTooltipWidget.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)
@@ -42,29 +42,29 @@ protected:
 public:
     UAstroTooltipWidget();
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateUseInteractionVisiblityOverride();
     
 public:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateTooltipDataForInteractionPromptsWithoutChangingLayout(FTooltipWidgetDisplayData NewTooltipWidgetDisplayData);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateTooltipAnimation();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnTextContentChanged();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnStateChanged();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnAnimationChanged();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool HasValidInteractionPromptInArray(const TArray<FInteractionPromptEntryData>& InteractionPromptData);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasBadge() const;
     
 };

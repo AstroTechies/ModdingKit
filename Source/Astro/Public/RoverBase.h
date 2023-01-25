@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
+#include "OnRoverMovementStateChangedDelegate.h"
 #include "SlotReference.h"
 #include "VehicleBase.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
-#include "OnRoverMovementStateChangedDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "RoverBase.generated.h"
 
-class UWheeledChassisComponent;
+class AAstroPlayerController;
 class UControlledVehicleMovement;
 class UParticleSystemComponent;
-class UStorageChassisComponent;
 class USceneComponent;
-class AAstroPlayerController;
+class UStorageChassisComponent;
+class UWheeledChassisComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API ARoverBase : public AVehicleBase {
@@ -35,16 +35,16 @@ public:
     float MinimumSeatedHideFlipPromptVelocity;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UControlledVehicleMovement* ControlledVehicleMovement;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UWheeledChassisComponent* WheeledChassisComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStorageChassisComponent* StorageChassisComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UParticleSystemComponent*> WheelBlowFX;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -62,7 +62,7 @@ protected:
 public:
     ARoverBase();
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void UpdateUseSuppression(bool ShouldBeSuppressed);
     
     UFUNCTION(BlueprintCallable)
@@ -73,37 +73,37 @@ public:
     USceneComponent* UpdateAndGetTunnelBoringOrigin(FSlotReference slotDrillIsIn);
     
 protected:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerReceiveSeatExitOverriddenWithFlip(bool ExitOverridden);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteAux2ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteAux1ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleVehicleUnmanned(AAstroPlayerController* OldPilot);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleVehicleManned(AAstroPlayerController* NewPilot);
     
 public:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     bool GetUnbundleOriginFromAuxSlot(FSlotReference AuxSlot, int32 SubslotIndex, FVector& OutLocation, FVector& OutForward);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void EngageRollYawModifier();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void DisengageRollYawModifier();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ConsumeLeftTriggerToggle();
     
 public:
-    UFUNCTION(BlueprintAuthorityOnly, BlueprintPure)
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintPure)
     bool Authority_GetSeatExitOverriddenWithFlip() const;
     
 };

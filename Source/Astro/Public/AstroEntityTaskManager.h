@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "Templates/SubclassOf.h"
 #include "AstroEntityTaskManager.generated.h"
 
-class UAstroEntityWorld;
 class UAstroDatumContainer;
+class UAstroEntityWorld;
 
 UCLASS(Blueprintable)
 class ASTRO_API UAstroEntityTaskManager : public UObject {

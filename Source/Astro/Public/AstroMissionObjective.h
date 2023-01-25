@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "EAstroMissionObjectiveType.h"
-#include "EPlanetIdentifier.h"
-#include "ENavpointGroup.h"
 #include "EAstroMissionObjectiveProgressType.h"
+#include "EAstroMissionObjectiveType.h"
+#include "ENavpointGroup.h"
+#include "EPlanetIdentifier.h"
+#include "Templates/SubclassOf.h"
 #include "AstroMissionObjective.generated.h"
 
-class UItemType;
 class UItemList;
+class UItemType;
 
 USTRUCT(BlueprintType)
 struct FAstroMissionObjective {
@@ -61,6 +61,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bIsPlanetExclude: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bShowProgressUI: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     EAstroMissionObjectiveProgressType ProgressType;

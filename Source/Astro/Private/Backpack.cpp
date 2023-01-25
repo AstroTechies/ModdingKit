@@ -1,11 +1,11 @@
 #include "Backpack.h"
 #include "Net/UnrealNetwork.h"
 
+class AActor;
+class AAstroCharacter;
 class APhysicalItem;
 class UChildActorComponent;
 class UCrackableActorComponent;
-class AActor;
-class AAstroCharacter;
 
 void ABackpack::ToggleOpen() {
 }

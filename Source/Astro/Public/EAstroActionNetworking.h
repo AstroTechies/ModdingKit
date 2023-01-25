@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EAstroActionNetworking.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EAstroActionNetworking : uint8 {
     Networked,
     LocalOwnerOnly,

@@ -4,5 +4,5 @@
 
 class UControlSymbol;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSymbolFireEvent, UControlSymbol*, Symbol);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSymbolFireEvent, UControlSymbol*, Symbol);
 

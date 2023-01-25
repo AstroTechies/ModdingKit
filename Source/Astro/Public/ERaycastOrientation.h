@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ERaycastOrientation.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ERaycastOrientation : uint8 {
     ComponentUp,
     PlanetUp,

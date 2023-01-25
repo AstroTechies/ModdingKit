@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "ESunlightDetectorState.generated.h"
 
-UENUM()
-enum class ESunlightDetectorState {
+UENUM(BlueprintType)
+enum class ESunlightDetectorState : uint8 {
     Unknown,
     AboveThreshold,
     BelowThreshold,

@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
-#include "EGravityType.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
+#include "GameFramework/Actor.h"
+#include "EGravityType.h"
 #include "SolarBody.generated.h"
 
 class ASolarBody;
+class UAstroSaveCustomArchiveProxy;
+class UObject;
+class USceneComponent;
 class UStaticMesh;
 class UTexture2D;
-class UObject;
-class UAstroSaveCustomArchiveProxy;
-class USceneComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API ASolarBody : public AActor {
@@ -142,55 +142,55 @@ public:
     void SetBodyTransform(const FTransform& Transform);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_OrbitAxis();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnLocalPlayerPlanetSelectionEnd();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnLocalPlayerPlanetSelectionBegin(ASolarBody* homeSolarBody);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnLocalPlayerLocalSolarBodyChanged(ASolarBody* newLocalSolarBody);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCreativeModeEnabledChanged(bool CreativeModeEnabled);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     USceneComponent* GetProxyComponent();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetProxyCenter() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetOrbitAxis();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetNormalizedDayTime() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetLastOrbitAxisRotation() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FRotator GetDayRotationOffset() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     USceneComponent* GetCenterComponent();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetCenter() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FTransform GetBodyTransform() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanBeVisitedByPlayer() const;
     
 };

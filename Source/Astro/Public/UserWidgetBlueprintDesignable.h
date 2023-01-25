@@ -1,6 +1,5 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=UMG -ObjectName=UserWidget -FallbackName=UserWidget	
 #include "Blueprint/UserWidget.h"
 #include "UserWidgetBlueprintDesignable.generated.h"
 
@@ -13,10 +12,10 @@ protected:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void SetupStylingData();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void PostLayoutWidget();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnSynchronizeProperties();
     
 public:
@@ -24,7 +23,7 @@ public:
     bool LayoutWidget();
     
 protected:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetStylingDataSetupComplete();
     
 };

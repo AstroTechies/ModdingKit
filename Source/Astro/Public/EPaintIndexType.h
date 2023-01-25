@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EPaintIndexType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EPaintIndexType : uint8 {
     SpencerPalette,
     PlanetPalette,

@@ -1,7 +1,7 @@
 #include "CustomCameraRigComponent.h"
 
-class ACameraRigActor;
 class AActor;
+class ACameraRigActor;
 class UCustomCameraRigComponent;
 
 void UCustomCameraRigComponent::SetMode(FName Mode, const FViewTargetTransitionParams& params) {

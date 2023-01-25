@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "ETileInteractionState.generated.h"
 
-UENUM()
-enum class ETileInteractionState {
+UENUM(BlueprintType)
+enum class ETileInteractionState : uint8 {
     Inactive,
     Hovered,
     Active,

@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "Components/ActorComponent.h"
 #include "PhysicsState.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "PhysicsComponent.generated.h"
 
 class AActor;
@@ -29,11 +29,11 @@ public:
     void SetCollisionEnabled(bool Enabled);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_PhysicsState();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UPhysicsComponent* GetActorPhysicsComponent(AActor* Actor);
     
 };

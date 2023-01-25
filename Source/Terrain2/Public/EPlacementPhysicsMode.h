@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EPlacementPhysicsMode.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EPlacementPhysicsMode : uint8 {
     Bury,
     Free,

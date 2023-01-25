@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UserWidgetBlueprintDesignable.h"
 #include "AstroGameMenuEntryWidgetDisplayData.h"
+#include "UserWidgetBlueprintDesignable.h"
 #include "AstroGameMenuPopoutWidgetContentsBase.generated.h"
 
 class UAstroGameMenuFocusItemWidget;
@@ -11,7 +11,7 @@ UCLASS(Abstract, Blueprintable, EditInlineNew)
 class UAstroGameMenuPopoutWidgetContentsBase : public UUserWidgetBlueprintDesignable {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAstroGameMenuFocusItemWidget* OwningFocusItem;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -24,7 +24,7 @@ public:
     int32 InitialFocusCoordinates;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAstroGameMenuPopoutWidget* ParentPopoutWidget;
     
 public:
@@ -32,7 +32,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void HandleWrapperFocusIndexChanged(int32 NewFocusIndex);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void HandleNavigationBackRequest();
     
 };

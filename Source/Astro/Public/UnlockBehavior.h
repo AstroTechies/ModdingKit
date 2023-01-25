@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroEntityComponentSubobject.h"
 #include "AstroDatumRef.h"
+#include "AstroEntityComponentSubobject.h"
 #include "LockChangedEventMetadata.h"
 #include "UnlockBehavior.generated.h"
 
@@ -10,7 +10,7 @@ class ASTRO_API UUnlockBehavior : public UAstroEntityComponentSubobject {
     GENERATED_BODY()
 public:
     UUnlockBehavior();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RespondToLockedStateChanged(FAstroDatumRef changedLockableComponent, const FLockChangedEventMetadata& EventData);
     
 };

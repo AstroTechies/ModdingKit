@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroEntityDefinition.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 #include "AstroDatumRef.h"
+#include "AstroEntityDefinition.h"
 #include "ActorEntityLinkComponent.generated.h"
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
@@ -18,10 +18,10 @@ protected:
     
 public:
     UActorEntityLinkComponent();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsSpawnedFromEntity() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FAstroDatumRef GetEntityDatumRef(bool& bOutSuccess) const;
     
 };

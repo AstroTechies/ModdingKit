@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ItemRecipeIngredient.h"
 #include "ItemQuantityPair.h"
+#include "ItemRecipeIngredient.h"
 #include "ItemConversionRecipe.generated.h"
 
 USTRUCT(BlueprintType)

@@ -2,9 +2,9 @@
 #include "Net/UnrealNetwork.h"
 
 class AActor;
-class UPrimitiveComponent;
 class UAstroSaveCustomArchiveProxy;
 class UItemPad;
+class UPrimitiveComponent;
 
 void UItemPad::StartInWorld() {
 }
@@ -51,6 +51,7 @@ void UItemPad::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetime
 
 UItemPad::UItemPad() {
     this->AutoSpawn = true;
+    this->HandleItemPadDugUp = true;
     this->ManuallyReplicatePadTransform = true;
     this->PadClass = NULL;
     this->Pad = NULL;

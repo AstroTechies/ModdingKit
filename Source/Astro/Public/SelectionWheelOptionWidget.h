@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UserWidgetBlueprintDesignable.h"
 #include "SelectionWheelOption.h"
+#include "UserWidgetBlueprintDesignable.h"
 #include "SelectionWheelOptionWidget.generated.h"
 
 UCLASS(Abstract, Blueprintable, EditInlineNew)
@@ -15,7 +15,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void PlayClickedFX();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void InitializeSelectionWheelOption(FSelectionWheelOption Option);
     
 };

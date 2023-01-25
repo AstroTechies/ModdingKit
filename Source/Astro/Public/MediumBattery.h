@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "PhysicalItem.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "PhysicalItem.h"
 #include "MediumBattery.generated.h"
 
-class UPowerComponent;
 class UMaterialInstanceDynamic;
+class UPowerComponent;
 class USceneComponent;
 
 UCLASS(Blueprintable)
@@ -16,10 +16,10 @@ public:
     UMaterialInstanceDynamic* RingMaterial;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UPowerComponent* PowerComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USceneComponent* RingMeshComponent;
     
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -33,10 +33,10 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnChargeLevelChangedEvent(float NewCharge, float ChargeDelta);
     
 };

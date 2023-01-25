@@ -1,20 +1,21 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize10 -FallbackName=Vector_NetQuantize10
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=NetworkPredictionInterface -FallbackName=NetworkPredictionInterface
-#include "AstroCharacterActiveOverrides.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "AstroMovementMode.h"
-#include "AstroCharacterEncumbrance.h"
-#include "Interfaces/NetworkPredictionInterface.h"
+#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=NetworkPredictionInterface -FallbackName=NetworkPredictionInterface
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize10 -FallbackName=Vector_NetQuantize10
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize100 -FallbackName=Vector_NetQuantize100
+#include "Interfaces/NetworkPredictionInterface.h"
+#include "AstroCharacterActiveOverrides.h"
+#include "AstroCharacterEncumbrance.h"
+#include "AstroMovementMode.h"
 #include "MovementOverrideCorrection.h"
+#include "SignalDelegate.h"
 #include "AstroCharacterMovementComponent.generated.h"
 
-class UPrimitiveComponent;
 class AAstroCharacter;
 class UAstroCharacterMovementOverrideComponent;
+class UPrimitiveComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class UAstroCharacterMovementComponent : public UActorComponent, public INetworkPredictionInterface {
@@ -24,7 +25,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     AAstroCharacter* CharacterOwner;
     
-    UPROPERTY(BlueprintReadWrite, DuplicateTransient, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, DuplicateTransient, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPrimitiveComponent* UpdatedComponent;
     
 public:
@@ -51,6 +52,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bIsCreativeModeDrone;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FSignal OnMovementStateChanged;
     
 protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -205,10 +209,10 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetCreativeModeFlightSpeedScalarNormalized(float NormalizedCreativeModeFlightSpeedScalar);
     
-    UFUNCTION(Server, Unreliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Server, Unreliable, WithValidation)
     void ServerMoveOld(float OldTimeStamp, FVector_NetQuantize10 OldInputAccel, uint8 OldMoveFlags, const FAstroCharacterEncumbrance& Encumbrance, const FAstroCharacterActiveOverrides& Overrides);
     
-    UFUNCTION(Server, Unreliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Server, Unreliable, WithValidation)
     void ServerMoveFocus(float Timestamp, FVector_NetQuantize10 InAccel, FVector_NetQuantize100 clientLoc, FVector_NetQuantize100 FocusLoc, uint8 CompressedMoveFlags, uint8 ClientMovementMode, const FAstroCharacterEncumbrance& Encumbrance, const FAstroCharacterActiveOverrides& Overrides);
     
     UFUNCTION(Server, Unreliable, WithValidation)
@@ -217,34 +221,34 @@ public:
     UFUNCTION(Server, Unreliable, WithValidation)
     void ServerMove(float Timestamp, FVector_NetQuantize10 InAccel, FVector_NetQuantize100 clientLoc, uint8 CompressedMoveFlags, uint16 clientRoll, uint32 View, uint8 ClientMovementMode, const FAstroCharacterEncumbrance& Encumbrance, const FAstroCharacterActiveOverrides& Overrides);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetCreativeModeFlightSpeedScalarNormalized();
     
 protected:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AAstroCharacter* GetCharacterOwner() const;
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool ContainsMovementOverride(UAstroCharacterMovementOverrideComponent* movementOverride);
     
     UFUNCTION(BlueprintCallable)
     FVector ConsumeInputVector();
     
-    UFUNCTION(Client, Unreliable)
+    UFUNCTION(BlueprintCallable, Client, Unreliable)
     void ClientVeryShortAdjustPosition(float Timestamp, FVector NewLoc, uint8 ServerMovementMode, const TArray<FMovementOverrideCorrection>& OverrideCorrections);
     
     UFUNCTION(BlueprintCallable, Client, Unreliable)
     void ClientBumpVelocity(const FVector& velocityBump);
     
-    UFUNCTION(Client, Unreliable)
+    UFUNCTION(BlueprintCallable, Client, Unreliable)
     void ClientAdjustPosition(float Timestamp, FVector NewLoc, FVector NewVel, uint8 ServerMovementMode, const TArray<FMovementOverrideCorrection>& OverrideCorrections);
     
-    UFUNCTION(Client, Unreliable)
+    UFUNCTION(BlueprintCallable, Client, Unreliable)
     void ClientAckGoodMove(float Timestamp);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void CleanupMovementOverridesOnDriving();
     
 public:

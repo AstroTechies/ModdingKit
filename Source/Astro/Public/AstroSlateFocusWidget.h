@@ -11,7 +11,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void GrantFocus();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void DisableChildWidgetFocusHighlight();
     
 };

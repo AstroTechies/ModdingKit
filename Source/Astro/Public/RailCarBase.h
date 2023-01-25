@@ -1,30 +1,30 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "SlotReference.h"
-#include "RailCarMovementStateDelegateDelegate.h"
-#include "VehicleBase.h"
-#include "EnableSignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
-#include "SignalDelegate.h"
-#include "RailCarMovementReplicatedData.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
 #include "ERailCarMovementState.h"
+#include "EnableSignalDelegate.h"
+#include "RailCarMovementReplicatedData.h"
+#include "RailCarMovementStateDelegateDelegate.h"
+#include "SignalDelegate.h"
+#include "SlotReference.h"
+#include "Templates/SubclassOf.h"
+#include "VehicleBase.h"
 #include "RailCarBase.generated.h"
 
-class UItemType;
-class USceneComponent;
-class USplineMeshComponent;
-class UMaterialInstanceDynamic;
-class UControlComponent;
-class ARailNetwork;
-class UPowerComponent;
 class AAstroPlayerController;
-class UPrimitiveComponent;
-class UClickQuery;
 class APhysicalItem;
 class APlayController;
+class ARailNetwork;
 class ASeatBase;
+class UClickQuery;
+class UControlComponent;
+class UItemType;
+class UMaterialInstanceDynamic;
+class UPowerComponent;
+class UPrimitiveComponent;
+class USceneComponent;
+class USplineMeshComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API ARailCarBase : public AVehicleBase {
@@ -112,10 +112,10 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSlotReference BackwardCaravanConnectionSlot;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USceneComponent* CaravanSlotPositionComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USplineMeshComponent* CaravanConnectionSpline;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -124,7 +124,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UMaterialInstanceDynamic* WheelMaterial;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UControlComponent* ControlComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -136,7 +136,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_MovementData, meta=(AllowPrivateAccess=true))
     FRailCarMovementReplicatedData ReplicatedMovementData;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UPowerComponent*> PowerComponents;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -168,99 +168,99 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION(Reliable, Server)
+    UFUNCTION(BlueprintCallable, Reliable, Server)
     void ServerHandleDriverInput(float SteeringInput, float ThrottleInput, bool isCameraBackwards);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteAux2ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteAux1ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_MovementData(FRailCarMovementReplicatedData Previous);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCarLostCursorFocus(UPrimitiveComponent* TouchedComponent);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCarGainedCursorFocus(UPrimitiveComponent* TouchedComponent);
     
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnCaravanLengthChanged();
     
 public:
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastOnPostConnectionsChanged();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsRotationInverted() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasDesiredPath() const;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleVehicleUnmanned(AAstroPlayerController* oldDriver);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleVehicleManned(AAstroPlayerController* newDriver);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void HandleUse();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleReleasedFromSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleRailNetworkCreated();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePlacedInSlot();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleClickQuery(UClickQuery* Query);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleCarReleasedFromCaravanSlot(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleCarPlacedInCaravanSlot(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleActuateUse(TEnumAsByte<EInputEvent> InputEvent);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetTotalCaravanPowerDraw() const;
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ERailCarMovementState GetMovementState() const;
     
 protected:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetMaxCaravanLength();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetForwardThrottleDirectionForDriver(APlayController* Driver, bool& isCameraBackwards) const;
     
 protected:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASeatBase* GetFirstSlottedSeat() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetCurrentCaravanLength();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ConsumeLeftTriggerToggle();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CaravanHasDesiredPath() const;
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)

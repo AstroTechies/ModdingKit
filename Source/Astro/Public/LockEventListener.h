@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroEntityComponentSubobject.h"
 #include "AstroDatumRef.h"
+#include "AstroEntityComponentSubobject.h"
 #include "LockChangedEventMetadata.h"
 #include "LockEventListener.generated.h"
 
@@ -10,7 +10,7 @@ class ULockEventListener : public UAstroEntityComponentSubobject {
     GENERATED_BODY()
 public:
     ULockEventListener();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnLockLockedStateChanged(FAstroDatumRef lockRef, const FLockChangedEventMetadata& EventData);
     
 };

@@ -4,5 +4,5 @@
 
 class UCameraContext;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FCameraContextSignal, UCameraContext*, CameraContext);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FCameraContextSignal, UCameraContext*, CameraContext);
 

@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HUD -FallbackName=HUD
+#include "GameFramework/HUD.h"
 #include "EAstroGameMenuTutoriaSlideCardKey.h"
 #include "EAstroGameMenuTutorialSlideDeckKey.h"
-#include "GameFramework/HUD.h"
+#include "Templates/SubclassOf.h"
 #include "AstroHUD.generated.h"
 
-class UUserWidget;
-class UTexture2DDynamic;
-class UPlayWidget;
-class UReconnectWidget;
 class UAstroStoreMenuWidget;
 class UAstropediaCarouselWidget;
+class UPlayWidget;
+class UReconnectWidget;
 class USelectionWheelWidget;
+class UTexture2DDynamic;
+class UUserWidget;
 
 UCLASS(Blueprintable, NonTransient)
 class ASTRO_API AAstroHUD : public AHUD {
@@ -36,13 +36,13 @@ protected:
     TSubclassOf<USelectionWheelWidget> ActionWheelWidgetClass;
     
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPlayWidget* PlayWidgetInstance;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UUserWidget* CreativeDroneOverlayInstance;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UReconnectWidget* ReconnectWidgetInstance;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -56,10 +56,10 @@ public:
     bool IsStoreActive();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePlayerDeathBegins();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnCreativeShowCreativeDroneUIChanged(bool ShowUI);
     
 public:

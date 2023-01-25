@@ -1,6 +1,5 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelMaterialProperties -FallbackName=VoxelMaterialProperties
 #include "VoxelMaterialProperties.h"
 #include "ReplicatedCreativeColorPickState.generated.h"
 

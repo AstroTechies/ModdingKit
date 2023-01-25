@@ -12,8 +12,11 @@ class ASTRO_API UAstroToastNotificationManager : public UObject {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UAstroNotificationToastWidget*> LivingToastNotifications;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UAstroNotificationToastWidget* LivingBiomeToastNotification;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FAstroNotificationToastAuthoringData> QueueOfToastNotifsToSpawn;
@@ -21,11 +24,17 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTimerHandle SpawnTimerHandle;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FTimerHandle RetainedBiomeToastTimerHandle;
+    
 public:
     UAstroToastNotificationManager();
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleNotificationSpawnTimerTick();
+    
+    UFUNCTION(BlueprintCallable)
+    void ExpireRetainedBiomeNotification();
     
 };
 

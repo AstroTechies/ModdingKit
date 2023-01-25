@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ComponentRecord.h"
-#include "ChildActorRecord.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "ChildActorRecord.h"
+#include "ComponentRecord.h"
 #include "ActorRecord.generated.h"
 
 class AActor;
@@ -20,7 +20,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FComponentRecord> OwnedComponentRecords;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     uint32 ObjectIndex;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

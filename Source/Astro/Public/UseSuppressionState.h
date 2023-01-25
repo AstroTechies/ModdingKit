@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "FPerPlayerUseSuppressionMode.h"
 #include "EUseType.h"
+#include "FPerPlayerUseSuppressionMode.h"
 #include "UseSuppressionState.generated.h"
 
 USTRUCT(BlueprintType)
@@ -11,10 +11,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EUseType SuppressedUseTypeFlags;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FPerPlayerUseSuppressionMode PerPlayerMode;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<uint64> PlayerGuidWhitelist;
     
     ASTRO_API FUseSuppressionState();

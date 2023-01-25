@@ -2,12 +2,12 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class UItemComponent;
-class UClickQuery;
 class APhysicalItem;
+class APlayController;
+class UClickQuery;
+class UItemComponent;
 class UItemType;
 class UTradeShipDockComponent;
-class APlayController;
 
 void UTradeShipComponent::UpdateIndicators() {
 }

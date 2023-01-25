@@ -5,5 +5,5 @@
 
 class APlayController;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FActuatorEventDelegate, FSlotReference, Slot, APlayController*, Instigator);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FActuatorEventDelegate, FSlotReference, Slot, APlayController*, Instigator);
 

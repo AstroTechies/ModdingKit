@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "NamedEntityComponentDefinition.h"
+#include "Templates/SubclassOf.h"
 #include "AstroEntityDefinition.generated.h"
 
 class UAstroEntitySystem;

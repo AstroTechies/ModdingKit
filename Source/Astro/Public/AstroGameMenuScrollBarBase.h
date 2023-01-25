@@ -4,21 +4,21 @@
 #include "EFocusItemFocusChangeCause.h"
 #include "AstroGameMenuScrollBarBase.generated.h"
 
-class UWidget;
 class UAstroGameMenuSubPaneWidget;
+class UWidget;
 
 UCLASS(Abstract, Blueprintable, EditInlineNew)
 class UAstroGameMenuScrollBarBase : public UAstroGameMenuFocusItemWidget {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UAstroGameMenuSubPaneWidget* ScrollBarTarget;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UWidget* ScrollBarHandleWidget;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UWidget* ScrollBarBGWidget;
     
 public:
@@ -29,21 +29,21 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetScrollBarHandlePosition(float Position);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsScrollBarActive() const;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleTargetFocusItemChanged(UAstroGameMenuFocusItemWidget* FocusItem, EFocusItemFocusChangeCause FocusChangeCause);
     
 public:
-    UFUNCTION(BlueprintImplementableEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
     float GetScrollBarWidth();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetScrollBarHandlePositionNormalized() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetScrollBarHandlePosition() const;
     
     UFUNCTION(BlueprintCallable)

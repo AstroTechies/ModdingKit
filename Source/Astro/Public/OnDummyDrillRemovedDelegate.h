@@ -4,5 +4,5 @@
 
 class AVehicleDrill;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDummyDrillRemoved, AVehicleDrill*, DummyDrill);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDummyDrillRemoved, AVehicleDrill*, DummyDrill);
 

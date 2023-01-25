@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Camera/CameraComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "Components/ActorComponent.h"
+#include "Camera/CameraComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
 #include "FlyingVtolMovementComponent.generated.h"
 
-class UPrimitiveComponent;
-class UCameraComponent;
 class APhysicalItem;
+class UCameraComponent;
+class UPrimitiveComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UFlyingVtolMovementComponent : public UActorComponent {
@@ -48,7 +48,7 @@ public:
     FVector_NetQuantizeNormal ClientMovementInputVector;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, DuplicateTransient, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, DuplicateTransient, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPrimitiveComponent* UpdatedComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -76,7 +76,7 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FVector ControlInputVector;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UCameraComponent* PlayerCamera;
     
 public:
@@ -90,14 +90,14 @@ public:
     void SetControllingCamera(UCameraComponent* controllingCamera);
     
 private:
-    UFUNCTION(Server, Unreliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Server, Unreliable, WithValidation)
     void ServerUpdateClientMovementInputVector(FVector_NetQuantizeNormal ClientMovementInput);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetFlightSpeedScalarNormalized();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void DelayedGravitySourceRemoval();
     
 };

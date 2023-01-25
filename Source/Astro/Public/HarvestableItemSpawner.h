@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "AstroDatumRef.h"
-#include "SlotReference.h"
 #include "EHarvestableItemSpawnerType.h"
+#include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "HarvestableItemSpawner.generated.h"
 
 class UItemType;

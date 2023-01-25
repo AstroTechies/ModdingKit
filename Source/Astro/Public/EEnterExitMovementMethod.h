@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EEnterExitMovementMethod.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EEnterExitMovementMethod : uint8 {
     SnapToPosition,
     LerpToPosition,

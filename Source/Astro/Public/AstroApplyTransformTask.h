@@ -1,16 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameplayTask.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=GameplayTasks -ObjectName=GameplayTask -FallbackName=GameplayTask
-#include "TransformCompletedDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "GameplayTask.h"
+#include "TransformCompletedDelegate.h"
 #include "AstroApplyTransformTask.generated.h"
 
-class UCurveVector;
-class UAstroApplyTransformTask;
-class USceneComponent;
-class UCurveFloat;
 class UAstroAction;
+class UAstroApplyTransformTask;
+class UCurveFloat;
+class UCurveVector;
+class USceneComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API UAstroApplyTransformTask : public UGameplayTask {

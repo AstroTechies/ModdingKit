@@ -1,13 +1,13 @@
 #include "RailCarBase.h"
-#include "Net/UnrealNetwork.h"
 #include "ControlComponent.h"
+#include "Net/UnrealNetwork.h"
 
 class AAstroPlayerController;
-class APlayController;
-class UPrimitiveComponent;
 class APhysicalItem;
-class UClickQuery;
+class APlayController;
 class ASeatBase;
+class UClickQuery;
+class UPrimitiveComponent;
 
 void ARailCarBase::ServerHandleDriverInput_Implementation(float SteeringInput, float ThrottleInput, bool isCameraBackwards) {
 }

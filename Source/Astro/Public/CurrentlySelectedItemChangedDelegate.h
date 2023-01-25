@@ -5,5 +5,5 @@
 
 class UItemType;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FCurrentlySelectedItemChanged, TSubclassOf<UItemType>, SelectedItem);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FCurrentlySelectedItemChanged, TSubclassOf<UItemType>, SelectedItem);
 

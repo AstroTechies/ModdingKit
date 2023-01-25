@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "PhysicalItem.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
 #include "OnVehicleMannedStatusChangedDelegate.h"
 #include "PerformAuxSignalDelegate.h"
+#include "PhysicalItem.h"
 #include "VehicleBaseReplicationData.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
 #include "VehicleBase.generated.h"
 
-class UStorageChassisComponent;
 class AAstroPlayerController;
 class ASeatBase;
+class UStorageChassisComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API AVehicleBase : public APhysicalItem {
@@ -34,17 +34,17 @@ protected:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FPerformAuxSignal OnVehicleAux2ActionPerformed;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStorageChassisComponent* storage;
     
 public:
     AVehicleBase();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void VehicleLostPilotInSeat(AAstroPlayerController* Driver, ASeatBase* Seat);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void VehicleGainedPilotInSeat(AAstroPlayerController* Driver, ASeatBase* Seat);
     
     UFUNCTION(BlueprintCallable)
@@ -54,14 +54,14 @@ public:
     void PerformVehicleAux1Action(AAstroPlayerController* OriginatingController, TEnumAsByte<EInputEvent> eventType);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_VehicleBaseReplicationData();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASeatBase* GetDrivingControllerSeat();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AAstroPlayerController* GetDrivingController();
     
 };

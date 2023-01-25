@@ -1,9 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=UMG -ObjectName=UserWidget -FallbackName=UserWidget
-#include "UserWidgetSignalDelegate.h"
-#include "TileInputSignalDelegate.h"
 #include "Blueprint/UserWidget.h"
+#include "TileInputSignalDelegate.h"
+#include "UserWidgetSignalDelegate.h"
 #include "AstroInteractableTileWidget.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)

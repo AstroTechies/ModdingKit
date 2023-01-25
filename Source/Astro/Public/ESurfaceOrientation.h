@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ESurfaceOrientation.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESurfaceOrientation : uint8 {
     TerrainNormal,
     TerrainNormalUphill,

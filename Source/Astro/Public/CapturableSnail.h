@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
+#include "GameFramework/Actor.h"
 #include "CapturableSnail.generated.h"
 
-class UPlanetEffect;
+class AAstroCharacter;
 class APhysicalItem;
 class APlayController;
-class AAstroCharacter;
+class UPlanetEffect;
 
 UCLASS(Blueprintable)
 class ASTRO_API ACapturableSnail : public AActor {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPlanetEffect* PlanetEffect;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -20,6 +20,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FaceTargetSpeed;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bPerformOnscreenChecks: 1;
     
 protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -36,23 +39,23 @@ public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetOwningCaptureTerrarium(APhysicalItem* captureTerrarium);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnPlayerExitedRelevance(AAstroCharacter* Player);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnPlayerEnteredRelevance(AAstroCharacter* Player);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnLeftAnyPlayerRelevance();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnEffectRelevanceChanged(bool IsInRelevancy);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnCameOnscreen();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnActorOnscreenChanged(AActor* Actor, bool bIsOnscreen, APlayController* Player);
     
 public:

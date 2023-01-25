@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EControlPanelNavigationDirection.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EControlPanelNavigationDirection : uint8 {
     Left,
     Right,

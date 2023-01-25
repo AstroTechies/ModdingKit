@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EFoliageDestructionBehavior.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EFoliageDestructionBehavior : uint8 {
     ThresholdCheck,
     AlwaysDestroy,

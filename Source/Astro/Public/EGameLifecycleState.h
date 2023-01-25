@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EGameLifecycleState.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EGameLifecycleState : uint8 {
     Initializing,
     TerrainLoading,
@@ -15,6 +15,7 @@ enum class EGameLifecycleState : uint8 {
     TitleMenu,
     GameStarted,
     OutroCinematic,
+    SkipIntroCinematic,
     COUNT,
 };
 

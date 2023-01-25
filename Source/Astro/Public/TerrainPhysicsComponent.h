@@ -1,12 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "IsBuriedChangedEventDelegate.h"
-#include "PhysicsComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformableInterfaceT2 -FallbackName=DeformableInterfaceT2
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformationParamsT2 -FallbackName=DeformationParamsT2
 #include "DeformableInterfaceT2.h"
 #include "DeformationParamsT2.h"
+#include "IsBuriedChangedEventDelegate.h"
+#include "PhysicsComponent.h"
+#include "SignalDelegate.h"
 #include "TerrainPhysicsComponent.generated.h"
 
 class UAstroSaveCustomArchiveProxy;
@@ -55,20 +53,20 @@ public:
     void SetBuryPhysics();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_Buried(bool previousIsBuried);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnDeformationComplete(const FDeformationParamsT2& deformationParams);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsTerrainBuried();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetIsBuried() const;
     
     

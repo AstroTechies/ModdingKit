@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETeleportationDestinationType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETeleportationDestinationType : uint8 {
     ExactLocation,
     GateObject,

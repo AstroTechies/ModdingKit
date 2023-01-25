@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroDatumRef.h"
 #include "ActiveItemConversionItemInput.h"
 #include "ActiveItemConversionItemOutput.h"
+#include "AstroDatumRef.h"
 #include "ActiveItemConversion.generated.h"
 
 USTRUCT(BlueprintType)

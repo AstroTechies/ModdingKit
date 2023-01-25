@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SceneComponent -FallbackName=SceneComponent
-#include "SignalDelegate.h"
-#include "ECrackableMethod.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "Components/SceneComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "ECrackableMethod.h"
+#include "SignalDelegate.h"
 #include "Crackable.generated.h"
 
-class UPrimitiveComponent;
 class UChildActorComponent;
 class UCrackable;
+class UPrimitiveComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UCrackable : public USceneComponent {
@@ -79,16 +79,16 @@ public:
     uint8 bShowCollisionDebug: 1;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* Origin;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UPrimitiveComponent*> Primitives;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UCrackable*> Children;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UChildActorComponent*> ChildActors;
     
 public:
@@ -100,13 +100,13 @@ public:
     void SetCracked(bool NewCracked);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnMoved(bool FromTool);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnComponentClicked(UPrimitiveComponent* Component, FKey Key);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnClickUnhandled();
     
 public:

@@ -1,8 +1,8 @@
 #include "Crackable.h"
 
-class UPrimitiveComponent;
-class UCrackable;
 class UChildActorComponent;
+class UCrackable;
+class UPrimitiveComponent;
 
 void UCrackable::ToggleCracked() {
 }

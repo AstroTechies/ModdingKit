@@ -3,8 +3,8 @@
 #include "Templates/SubclassOf.h"
 #include "CraftingSourceCraftableList.generated.h"
 
-class UItemType;
 class UItemList;
+class UItemType;
 
 USTRUCT(BlueprintType)
 struct FCraftingSourceCraftableList {

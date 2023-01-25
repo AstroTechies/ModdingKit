@@ -1,5 +1,8 @@
 #include "CompassActor.h"
 
+void ACompassActor::SetShown(bool isShown) {
+}
+
 void ACompassActor::HandleUserSettingsChanged() {
 }
 

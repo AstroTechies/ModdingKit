@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EAstroDiscreteInputOptionPlayerFacing.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EAstroDiscreteInputOptionPlayerFacing : uint8 {
     Invalid,
     Forward,

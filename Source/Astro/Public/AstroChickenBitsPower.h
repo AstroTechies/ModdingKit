@@ -8,13 +8,13 @@ class UAstroChickenBitsPower : public UObject {
     GENERATED_BODY()
 public:
     UAstroChickenBitsPower();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetCvar_Power_VisualizeWindPowerGenerators();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetCvar_Power_UseStreamingPowerDebugVisualization();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetCvar_Power_UseStreamingPower();
     
 };

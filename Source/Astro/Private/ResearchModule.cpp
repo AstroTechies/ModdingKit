@@ -1,7 +1,7 @@
 #include "ResearchModule.h"
-#include "PowerComponent.h"
 #include "ActorResearchComponent.h"
 #include "AdaptiveTickComponent.h"
+#include "PowerComponent.h"
 
 AResearchModule::AResearchModule() {
     this->ActorResearchComponent = CreateDefaultSubobject<UActorResearchComponent>(TEXT("Research"));

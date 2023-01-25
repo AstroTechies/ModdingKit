@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "ENoiseFractal.generated.h"
 
-UENUM()
-enum class ENoiseFractal {
+UENUM(BlueprintType)
+enum class ENoiseFractal : uint8 {
     None,
     FBM,
     Billow,

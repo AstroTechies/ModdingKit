@@ -1,33 +1,33 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "ETooltipVisibilityControl.h"
-#include "TooltipInteractionActiveDelegateDelegate.h"
-#include "TooltipInputUnhandledDelegateDelegate.h"
-#include "ETooltipArchetype.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
-#include "TooltipProximityBadgeVisibilityData.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
-#include "EUseContext.h"
-#include "TooltipWidgetOverride.h"
-#include "TooltipWidgetDisplayData.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-#include "ETooltipState.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
+#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "ETooltipArchetype.h"
 #include "ETooltipProximityState.h"
+#include "ETooltipState.h"
+#include "ETooltipVisibilityControl.h"
+#include "EUseContext.h"
+#include "SignalDelegate.h"
+#include "TooltipInputUnhandledDelegateDelegate.h"
+#include "TooltipInteractionActiveDelegateDelegate.h"
+#include "TooltipProximityBadgeVisibilityData.h"
+#include "TooltipWidgetDisplayData.h"
+#include "TooltipWidgetOverride.h"
 #include "TooltipComponent.generated.h"
 
+class AActor;
 class APawn;
-class USceneComponent;
 class UAstroTooltipWidget;
-class USphereComponent;
-class UPrimitiveComponent;
+class UCrackableActorComponent;
 class UItemType;
 class UObject;
-class AActor;
-class UCrackableActorComponent;
+class UPrimitiveComponent;
+class USceneComponent;
+class USphereComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UTooltipComponent : public UActorComponent {
@@ -76,7 +76,7 @@ protected:
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentReference InputRespondingColliderComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* AnchorReferenceComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -88,19 +88,19 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bCanDisplayWhenCracked;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UAstroTooltipWidget* ToolTipWidget;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USphereComponent* PrimaryProximitySphereBadge;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USphereComponent* SecondaryProximitySphereBadge;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USphereComponent* ProximitySphereDetails;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPrimitiveComponent* InputRespondingCollider;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -114,23 +114,23 @@ public:
     UFUNCTION(BlueprintCallable)
     void UpdateWidgetOverrideDescriptionText(FName overrideName, FText newDescription);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdateCorrectedPivotLocation();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdateActiveHoldInput();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void StopCurrentHoldAction(bool InputActionSucceeded);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetupTooltipReferenceAnchor();
     
     UFUNCTION(BlueprintCallable)
     void SetupTooltipForItemType(const UItemType* ItemType);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetupTooltipForCurrentDisplaySettings();
     
 public:
@@ -152,7 +152,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetDesiredTooltipState(ETooltipState NewState);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetCustomTooltipReferenceAnchor(USceneComponent* CustomReferenceAnchor);
     
     UFUNCTION(BlueprintCallable)
@@ -162,78 +162,78 @@ public:
     void PopTooltipWidgetOverride(FName overrideName);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnUseContextChanged(EUseContext UseContext);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnTooltipWidgetStateChanged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSecondaryProximitySphereEndOverlapBadge(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSecondaryProximitySphereBeginOverlapBadge(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnProximitySphereEndOverlapDetails(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnProximitySphereBeginOverlapDetails(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPrimaryProximitySphereEndOverlapBadge(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPrimaryProximitySphereBeginOverlapBadge(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOwningSlotCrackedStateChanged(UCrackableActorComponent* CrackableActorComponent, bool IsCracked);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOwningItemReleasedFromSlot(bool NewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOwningItemPlacedInSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOwnerUseAvailabilityChanged(bool bIsUsable);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOwnerItemTypeChanged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnInteractionActivated(FName ActionName);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnInputUnhandled(TEnumAsByte<EInputEvent> InputType, FName ActionName);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnActionInputReleased(FName ActionName);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnActionInputPressed(FName ActionName);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasTooltipOverride(FName overrideName);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ETooltipVisibilityControl GetVisibilityControl() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ETooltipProximityState GetProximityState() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetHasFocus() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ETooltipState GetDesiredState() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     AActor* GetActorThisTooltipIsFor();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void FullyPresentTooltip();
     
 };

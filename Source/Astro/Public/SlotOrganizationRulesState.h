@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FSlotOrganizationRulesState {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere, Transient)
+    UPROPERTY(EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<TWeakObjectPtr<USlotOrganizationRule>> OrganizationRules;
     
     ASTRO_API FSlotOrganizationRulesState();

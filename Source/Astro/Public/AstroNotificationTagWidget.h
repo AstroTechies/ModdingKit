@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroUICardWidget.h"
 #include "AstroNotificationTagWidgetDisplayData.h"
+#include "AstroUICardWidget.h"
 #include "AstroNotificationTagWidget.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)
@@ -27,7 +27,7 @@ protected:
 public:
     UAstroNotificationTagWidget();
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateAnimationVisuals(float DeltaTime);
     
 };

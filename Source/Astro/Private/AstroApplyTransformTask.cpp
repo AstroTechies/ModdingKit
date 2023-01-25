@@ -1,10 +1,10 @@
 #include "AstroApplyTransformTask.h"
 
+class UAstroAction;
 class UAstroApplyTransformTask;
+class UCurveFloat;
 class UCurveVector;
 class USceneComponent;
-class UCurveFloat;
-class UAstroAction;
 
 void UAstroApplyTransformTask::SetTargetRelativeTransform(const FTransform& TargetRelativeTransform, UCurveFloat* relativeTransformProgressCurve) {
 }

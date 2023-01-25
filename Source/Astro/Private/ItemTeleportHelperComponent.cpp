@@ -2,7 +2,15 @@
 
 class AActor;
 
+bool UItemTeleportHelperComponent::FindValidSpawnLocationNearSelf(const FVector& targetLoc, const TArray<AActor*>& ActorsToIgnore, ELineOfSightBehavior faceTarget, FVector& outLoc, FRotator& outRot) {
+    return false;
+}
+
 bool UItemTeleportHelperComponent::FindValidSpawnLocationAroundTarget(AActor* Target, const TArray<AActor*>& ActorsToIgnore, ELineOfSightBehavior faceTarget, FVector& outLoc, FRotator& outRot) {
+    return false;
+}
+
+bool UItemTeleportHelperComponent::FindValidSpawnLocation(const FVector& targetLoc, const FVector& currLoc, const TArray<AActor*>& ActorsToIgnore, ELineOfSightBehavior faceTarget, FVector& outLoc, FRotator& outRot) {
     return false;
 }
 
@@ -11,6 +19,7 @@ UItemTeleportHelperComponent::UItemTeleportHelperComponent() {
     this->MaxLocationDistance = 5500.00f;
     this->MaxTeleportHeight = 2000.00f;
     this->MinTeleportHeight = -4000.00f;
+    this->bSkipBiomeCheck = false;
     this->SightDistance = 1000.00f;
     this->LOSHeightOffset = 300.00f;
     this->AngleStride = 2.00f;

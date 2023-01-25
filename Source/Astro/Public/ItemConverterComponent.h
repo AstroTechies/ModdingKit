@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroEntityComponent.h"
-#include "AstroDatumRef.h"
-#include "SlotReference.h"
-#include "PossibleItemConversion.h"
 #include "ActiveItemConversion.h"
+#include "AstroDatumRef.h"
+#include "AstroEntityComponent.h"
 #include "EItemConverterState.h"
+#include "PossibleItemConversion.h"
+#include "SlotReference.h"
 #include "ItemConverterComponent.generated.h"
 
 USTRUCT(BlueprintType)

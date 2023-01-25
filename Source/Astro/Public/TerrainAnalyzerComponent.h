@@ -1,8 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelMaterialProperties -FallbackName=VoxelMaterialProperties
+#include "Components/ActorComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EPhysicalSurface -FallbackName=EPhysicalSurface
 #include "VoxelMaterialProperties.h"
 #include "TerrainAnalyzerComponent.generated.h"
@@ -35,7 +34,7 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void TryGetTerrainFromColor(bool completeIfSuccessful);
     
 public:
@@ -43,36 +42,36 @@ public:
     void SetAnalysisInProgress(bool InProgress);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SampledTerrainChanged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReplicated_AnalyzedTerrainMaterialSample();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReplicated_AnalysisIsComplete();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAugmentUnequipped();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAugmentEquipped();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TEnumAsByte<EPhysicalSurface> GetAnalyzedMaterialSurfaceType() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FLinearColor GetAnalyzedMaterialColor() const;
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void EndDeform();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void BeginDeform();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AttemptAnalysis(float DeltaTime);
     
 };

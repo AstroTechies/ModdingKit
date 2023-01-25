@@ -1,8 +1,8 @@
 #include "SolarBody.h"
 #include "Net/UnrealNetwork.h"
 
-class UAstroSaveCustomArchiveProxy;
 class ASolarBody;
+class UAstroSaveCustomArchiveProxy;
 class USceneComponent;
 
 void ASolarBody::SetOrbitAxisRotation(float rads) {

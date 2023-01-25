@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "AstroDatumRef.h"
 #include "AstroEntityComponentContainer.h"
 #include "StreamingPowerVampireConnectionComponent.h"
-#include "AstroDatumRef.h"
 #include "StreamingPowerVampireConnectionComponentContainer.generated.h"
 
 UCLASS(Blueprintable)
@@ -10,10 +10,10 @@ class ASTRO_API UStreamingPowerVampireConnectionComponentContainer : public UAst
     GENERATED_BODY()
 public:
     UStreamingPowerVampireConnectionComponentContainer();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FStreamingPowerVampireConnectionComponent GetStreamingPowerVampireConnectionComponent(FAstroDatumRef StreamingPowerVampireConnectionComponentRef, bool& bOutSuccess);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FStreamingPowerVampireConnectionComponent FindStreamingPowerVampireConnectionComponent(FAstroDatumRef EntityRef, bool& bOutSuccess);
     
 };

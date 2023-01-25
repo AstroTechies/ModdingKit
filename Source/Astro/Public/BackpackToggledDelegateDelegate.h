@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 #include "BackpackToggledDelegateDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FBackpackToggledDelegate, bool, BackpackEnabled);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FBackpackToggledDelegate, bool, BackpackEnabled);
 

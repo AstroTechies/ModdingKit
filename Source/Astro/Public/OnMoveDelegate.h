@@ -5,5 +5,5 @@
 
 class APlayerController;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnMove, APlayerController*, Controller, const FVector&, Direction);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnMove, APlayerController*, Controller, const FVector&, Direction);
 

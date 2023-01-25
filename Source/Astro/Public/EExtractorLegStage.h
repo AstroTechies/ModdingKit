@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EExtractorLegStage.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EExtractorLegStage : uint8 {
     Extended,
     WaitForRetraction,

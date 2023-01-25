@@ -1,11 +1,11 @@
 #include "GateObject.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SceneComponent -FallbackName=SceneComponent
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=StaticMeshComponent -FallbackName=StaticMeshComponent
-#include "ActorGateObjectComponent.h"
+#include "Components/SceneComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "ActorEntityLinkComponent.h"
+#include "ActorGateObjectComponent.h"
 
-class USolarSystem;
 class ASolarBody;
+class USolarSystem;
 
 void AGateObject::OnSolarSystemInitialized(USolarSystem* SolarSystem) {
 }

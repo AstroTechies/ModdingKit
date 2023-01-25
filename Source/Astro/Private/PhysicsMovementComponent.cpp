@@ -1,8 +1,8 @@
 #include "PhysicsMovementComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class APlayerController;
 class AAstroPlayerController;
+class APlayerController;
 
 void UPhysicsMovementComponent::ServerUpdateClientMovementInput_Implementation(FPhysicsMovementReplicatedInput ClientSteeringInput) {
 }

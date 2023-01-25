@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EnableSignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 #include "AstroDatumRef.h"
-#include "LockingMechanismSignalDelegate.h"
+#include "EnableSignalDelegate.h"
 #include "LockChangedEventMetadata.h"
+#include "LockingMechanismSignalDelegate.h"
 #include "ActorLockComponent.generated.h"
 
-class ULockingMechanismView;
 class ULockingMechanism;
+class ULockingMechanismView;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class UActorLockComponent : public UActorComponent {
@@ -26,10 +26,10 @@ protected:
     
 public:
     UActorLockComponent();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAuthorityLockingMechanismStateChanged(ULockingMechanism* changedLockingMechanism, const FLockChangedEventMetadata& EventData);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAuthorityLockedStateChanged(FAstroDatumRef lockComponentRef, const FLockChangedEventMetadata& EventData);
     
 };

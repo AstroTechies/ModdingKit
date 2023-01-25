@@ -4,5 +4,5 @@
 
 class APlayController;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FCharacterSelectSignal, APlayController*, Controller);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FCharacterSelectSignal, APlayController*, Controller);
 

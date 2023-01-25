@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EAstroUIAudioEventKey.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EAstroUIAudioEventKey : uint8 {
     Invalid,
     NoSound,

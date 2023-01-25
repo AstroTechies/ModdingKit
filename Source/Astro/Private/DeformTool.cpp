@@ -1,17 +1,17 @@
 #include "DeformTool.h"
+#include "DeformEventReceiver.h"
+#include "DeformToolCameraContext.h"
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
-#include "DeformToolCameraContext.h"
-#include "DeformEventReceiver.h"
 
 class AAstroPlanet;
-class UAugmentComponent;
-class UItemType;
-class UClickQuery;
-class UMaterialInterface;
-class UDeformTargetComponent;
 class APhysicalItem;
 class APlayController;
+class UAugmentComponent;
+class UClickQuery;
+class UDeformTargetComponent;
+class UItemType;
+class UMaterialInterface;
 
 bool ADeformTool::UpdateTerrainSample(AAstroPlanet* Planet, const FVector& Location) {
     return false;

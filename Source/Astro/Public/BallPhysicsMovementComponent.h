@@ -1,11 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "EBallAI_DirectionType.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "Components/ActorComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=RepMovement -FallbackName=RepMovement
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "Components/ActorComponent.h"
+#include "EBallAI_DirectionType.h"
+#include "SignalDelegate.h"
 #include "BallPhysicsMovementComponent.generated.h"
 
 class UPrimitiveComponent;
@@ -122,6 +123,15 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString AI_TurnAroundAudioEvent;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FString EVA_BecameStuckAudioEvent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FString EVA_JumpPreemptivelyAudioEvent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FString EVA_TurnAroundAudioEvent;
+    
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnBallMovementEnabledChanged;
     
@@ -129,7 +139,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_BallMovementEnabled, meta=(AllowPrivateAccess=true))
     uint8 bMovementEnabled: 1;
     
-    UPROPERTY(EditAnywhere, ReplicatedUsing=UpdateLocalReceivedMovement, meta=(AllowPrivateAccess=true))
+    UPROPERTY(EditAnywhere, Transient, ReplicatedUsing=UpdateLocalReceivedMovement, meta=(AllowPrivateAccess=true))
     FRepMovement ReplicatedBallMovement;
     
 public:
@@ -137,32 +147,32 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdateLocalReceivedMovement();
     
     UFUNCTION(Server, Unreliable, WithValidation)
     void ServerUpdateClientMotionState(FRepMovement Movement);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_BallMovementEnabled();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnJumpRequestExpired();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCollisionReset();
     
 public:
     UFUNCTION(BlueprintCallable)
     void OnBallImpactOccurred(UPrimitiveComponent* Component, const FVector& NormalImpulse, const FHitResult& Hit);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetEffectiveHitNormal() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetCollisionActive() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetBallMovementEnabled() const;
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
@@ -172,10 +182,10 @@ public:
     void DisableBallMovement();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void CollectReplicatedMovement();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ApplyCorrectionToSimulation();
     
 };

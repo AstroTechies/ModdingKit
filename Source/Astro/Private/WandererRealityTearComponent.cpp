@@ -1,8 +1,8 @@
 #include "WandererRealityTearComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class APlayerController;
 class AAstroPlayerController;
+class APlayerController;
 
 bool UWandererRealityTearComponent::WasActivatedByPlayer(const APlayerController* Player) {
     return false;

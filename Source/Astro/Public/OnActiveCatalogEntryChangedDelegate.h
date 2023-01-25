@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 #include "OnActiveCatalogEntryChangedDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnActiveCatalogEntryChanged, bool, bImmediate);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnActiveCatalogEntryChanged, bool, bImmediate);
 

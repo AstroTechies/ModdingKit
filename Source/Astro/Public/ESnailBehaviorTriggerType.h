@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ESnailBehaviorTriggerType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESnailBehaviorTriggerType : uint8 {
     Idle,
     IdleHappy,

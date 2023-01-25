@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EAugmentProperty.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EAugmentProperty : uint8 {
     AP_BrushSize,
     AP_DeformationIntensity,

@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "CustomChildActorComponent.h"
 #include "EPhysicalItemTerrainMode.h"
+#include "Templates/SubclassOf.h"
 #include "ChildPhysicalItemComponent.generated.h"
 
 class APhysicalItem;
@@ -18,7 +18,7 @@ public:
     EPhysicalItemTerrainMode TerrainMode;
     
     UChildPhysicalItemComponent();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     APhysicalItem* GetChildPhysicalItem();
     
 };

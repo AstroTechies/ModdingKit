@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "EMissionItemRequestState.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "SlotReference.h"
-#include "RequestMissionList.h"
+#include "Components/ActorComponent.h"
 #include "AstroMissionObjectiveProgress.h"
+#include "EMissionItemRequestState.h"
+#include "RequestMissionList.h"
+#include "SignalDelegate.h"
+#include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "MissionItemConsumptionComponent.generated.h"
 
+class APhysicalItem;
 class UDynamicWhitelistOrganizationRule;
 class UItemType;
-class APhysicalItem;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UMissionItemConsumptionComponent : public UActorComponent {
@@ -56,35 +56,35 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RequestsState(EMissionItemRequestState prevState);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ConsumptionProgress(float prevProgress);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InitializeMissionRequests_Internal();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleRequestObjectiveUpdated(FName missionId, const FAstroMissionObjectiveProgress& objectiveProgress, int32 objectiveIndex);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleRequestMissionCompleted(FName missionId);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleRequestMissionActivated(FName missionId);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnSetItem(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnReleaseItem(APhysicalItem* Item);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EMissionItemRequestState GetRequestState();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetCurrentConsumptionProgress();
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)

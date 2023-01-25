@@ -1,28 +1,28 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SceneComponent -FallbackName=SceneComponent
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EPhysicalSurface -FallbackName=EPhysicalSurface
-#include "EPlanetOptimization.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SceneComponent -FallbackName=SceneComponent
+#include "ChildModifierCacheEntry.h"
+#include "DeferredObjectCreationNodeData.h"
 #include "DeformableInterfaceT2.h"
 #include "DeformationParamsT2.h"
+#include "EPlanetOptimization.h"
 #include "EPolygonizerType.h"
 #include "GlobalBiome.h"
 #include "SurfaceBiome.h"
-#include "UndergroundBiome.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 #include "T2MaterialCache.h"
-#include "DeferredObjectCreationNodeData.h"
-#include "ChildModifierCacheEntry.h"
+#include "Templates/SubclassOf.h"
+#include "UndergroundBiome.h"
 #include "VoxelVolumeComponent.generated.h"
 
-class UAstroFoliageDestructionData;
-class UMaterialInterface;
-class UVoxelVolumeMaterialPalette;
-class UMaterialRemapTable;
-class UTerrain2ProceduralMeshComponent;
 class AActor;
 class AAstroFoliageActor;
+class UAstroFoliageDestructionData;
+class UMaterialInterface;
+class UMaterialRemapTable;
+class UTerrain2ProceduralMeshComponent;
+class UVoxelVolumeMaterialPalette;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class TERRAIN2_API UVoxelVolumeComponent : public USceneComponent, public IDeformableInterfaceT2 {
@@ -77,7 +77,7 @@ public:
     UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 ManuallySetLODRanges: 1;
     
-    UPROPERTY(AdvancedDisplay, EditAnywhere)
+    UPROPERTY(AdvancedDisplay, EditAnywhere, meta=(AllowPrivateAccess=true))
     int8 MaxOctreeDepth;
     
     UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, EditFixedSize, meta=(AllowPrivateAccess=true))
@@ -92,7 +92,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UMaterialInterface* DefaultMaterial;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TEnumAsByte<EPhysicalSurface>, UMaterialInterface*> DefaultMaterialsBySurfaceType;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -144,19 +144,19 @@ public:
     FT2MaterialCache MaterialCache;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UTerrain2ProceduralMeshComponent*> m_LODInProgressMeshes;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UAstroFoliageDestructionData* m_destructionData;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UTerrain2ProceduralMeshComponent*> m_meshComponentPool;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UTerrain2ProceduralMeshComponent*> m_meshRecyclePool;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UTerrain2ProceduralMeshComponent*> m_meshCleanupPool;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -186,12 +186,12 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TSubclassOf<AActor> m_locusActorClass;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UTerrain2ProceduralMeshComponent* m_proxyMesh;
     
 public:
     UVoxelVolumeComponent();
-    UFUNCTION(BlueprintAuthorityOnly, BlueprintPure)
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintPure)
     float GetSurfaceHeightAtLocation(FVector Location) const;
     
     

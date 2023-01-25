@@ -2,17 +2,17 @@
 #include "CoreMinimal.h"
 #include "NavpointVisualData.generated.h"
 
-class UStaticMeshComponent;
 class UMaterialInstanceDynamic;
+class UStaticMeshComponent;
 
 USTRUCT(BlueprintType)
 struct FNavpointVisualData {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* IconMesh;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* ElevationLineMesh;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

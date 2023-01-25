@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/SkyLightComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "Components/SkyLightComponent.h"
+#include "GameFramework/Actor.h"
 #include "SolarBodyRelativeTransforms.h"
 #include "DayNight.generated.h"
 
 class ASolarBody;
-class USkyLightComponent;
 class UAstroSaveCustomArchiveProxy;
+class USkyLightComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API ADayNight : public AActor {
@@ -43,11 +43,11 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<ASolarBody*, FSolarBodyRelativeTransforms> SolarBodyReleativeTransforms;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USkyLightComponent* SkyLight;
     
 private:
-    UPROPERTY(EditAnywhere, Replicated, SaveGame, Transient)
+    UPROPERTY(EditAnywhere, Replicated, SaveGame, Transient, meta=(AllowPrivateAccess=true))
     double ServerTimeStamp;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, Transient, meta=(AllowPrivateAccess=true))
@@ -61,7 +61,7 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy);
     
 };

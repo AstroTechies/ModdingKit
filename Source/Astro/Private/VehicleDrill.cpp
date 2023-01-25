@@ -1,16 +1,16 @@
 #include "VehicleDrill.h"
-#include "Net/UnrealNetwork.h"
+#include "Components/SceneComponent.h"
 #include "ControlComponent.h"
 #include "DeformEventReceiver.h"
+#include "Net/UnrealNetwork.h"
 #include "PowerComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SceneComponent -FallbackName=SceneComponent
 
-class UMaterialInterface;
 class AAstroPlanet;
-class AVehicleDrill;
 class AAstroPlayerController;
-class UStorageChassisComponent;
 class APhysicalItem;
+class AVehicleDrill;
+class UMaterialInterface;
+class UStorageChassisComponent;
 
 void AVehicleDrill::UpdateTerrainDeformationParticles(bool SystemEnabled, int32 HardnessDelta) {
 }

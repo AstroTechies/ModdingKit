@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ERailPostConnectionState.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ERailPostConnectionState : uint8 {
     Asleep_Valid,
     Awake,

@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ESelectedItemUnlockState.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESelectedItemUnlockState : uint8 {
     Unlocked,
     Unlockable,

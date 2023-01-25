@@ -4,5 +4,5 @@
 
 class UCrackableActorComponent;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnCrackedStateChanged, UCrackableActorComponent*, CrackableActorComponent, bool, bIsCracked);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnCrackedStateChanged, UCrackableActorComponent*, CrackableActorComponent, bool, bIsCracked);
 

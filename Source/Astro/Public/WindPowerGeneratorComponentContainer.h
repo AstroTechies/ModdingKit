@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "WindPowerGeneratorComponent.h"
-#include "AstroEntityComponentContainer.h"
 #include "AstroDatumRef.h"
+#include "AstroEntityComponentContainer.h"
+#include "WindPowerGeneratorComponent.h"
 #include "WindPowerGeneratorComponentContainer.generated.h"
 
 UCLASS(Blueprintable)
@@ -10,10 +10,10 @@ class ASTRO_API UWindPowerGeneratorComponentContainer : public UAstroEntityCompo
     GENERATED_BODY()
 public:
     UWindPowerGeneratorComponentContainer();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FWindPowerGeneratorComponent GetWindPowerGeneratorComponent(FAstroDatumRef WindPowerGeneratorComponentRef, bool& bOutSuccess);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FWindPowerGeneratorComponent FindWindPowerGeneratorComponent(FAstroDatumRef EntityRef, bool& bOutSuccess);
     
 };

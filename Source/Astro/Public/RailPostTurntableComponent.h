@@ -19,10 +19,10 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_CurrentConnection();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleUse();
     
 public:

@@ -4,5 +4,5 @@
 
 class AAstroCharacter;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FPlayerProximityEventCallback, AAstroCharacter*, CharacterInProximity);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FPlayerProximityEventCallback, AAstroCharacter*, CharacterInProximity);
 

@@ -3,15 +3,15 @@
 #include "Templates/SubclassOf.h"
 
 class AActor;
-class APhysicalItem;
-class UItemType;
-class UPrinterComponent;
-class UControlSymbol;
-class UVoxelVolumeComponent;
-class UPrimitiveComponent;
 class AAstroCharacter;
-class UObject;
 class AAstroPlanet;
+class APhysicalItem;
+class UControlSymbol;
+class UItemType;
+class UObject;
+class UPrimitiveComponent;
+class UPrinterComponent;
+class UVoxelVolumeComponent;
 
 void AAstroPlayerController::WouldCompleteCollection_RespondToServer_Implementation(bool response, int32 RequestID) {
 }
@@ -184,9 +184,15 @@ bool AAstroPlayerController::ServerNakDataChunk_Validate(uint32 transmissionID, 
     return true;
 }
 
-void AAstroPlayerController::ServerIncrementBlueprint_Implementation(UPrinterComponent* Component, int32 increment) {
+void AAstroPlayerController::ServerIncrementPrinterBlueprintRow_Implementation(UPrinterComponent* Component, int32 increment) {
 }
-bool AAstroPlayerController::ServerIncrementBlueprint_Validate(UPrinterComponent* Component, int32 increment) {
+bool AAstroPlayerController::ServerIncrementPrinterBlueprintRow_Validate(UPrinterComponent* Component, int32 increment) {
+    return true;
+}
+
+void AAstroPlayerController::ServerIncrementPrinterBlueprint_Implementation(UPrinterComponent* Component, int32 increment) {
+}
+bool AAstroPlayerController::ServerIncrementPrinterBlueprint_Validate(UPrinterComponent* Component, int32 increment) {
     return true;
 }
 

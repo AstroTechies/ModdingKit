@@ -1,7 +1,7 @@
 #include "TetherAttachComponent.h"
 
-class UOxygenatorComponent;
 class AActor;
+class UOxygenatorComponent;
 class UTetherAttachComponent;
 
 void UTetherAttachComponent::UpdateExplicitNetwork() {

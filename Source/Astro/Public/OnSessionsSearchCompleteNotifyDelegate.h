@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 #include "OnSessionsSearchCompleteNotifyDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnSessionsSearchCompleteNotify);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnSessionsSearchCompleteNotify);
 

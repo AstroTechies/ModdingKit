@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
 #include "OnEditingItemUnhandledKeyPressDelegate.h"
-#include "UserWidgetBlueprintDesignable.h"
+#include "OnFocusItemDragMovedDelegate.h"
+#include "OnFocusItemFocusStateChangedDelegate.h"
 #include "OnFocusItemGenericInteractionDelegate.h"
 #include "OnFocusItemIsLastUsedStateChangedDelegate.h"
-#include "OnFocusItemFocusStateChangedDelegate.h"
 #include "OnFocusItemMousePosInteractionDelegate.h"
-#include "OnFocusItemDragMovedDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
+#include "UserWidgetBlueprintDesignable.h"
 #include "AstroGameMenuFocusItemWidget.generated.h"
 
-class UOverlaySlot;
 class UImage;
+class UOverlaySlot;
 
 UCLASS(Abstract, Blueprintable, EditInlineNew)
 class UAstroGameMenuFocusItemWidget : public UUserWidgetBlueprintDesignable {
@@ -59,10 +59,10 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnFocusItemDragMoved OnFocusItemDragMovedDelegate;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UOverlaySlot* FocusBGImageOverlaySlot;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UImage* FocusBGImage;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -95,16 +95,16 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void SetInteractionBlocked(bool NewIsInteractionBlocked);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsInteractionBlocked();
     
-    UFUNCTION(BlueprintNativeEvent, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, BlueprintPure)
     FVector2D GetMenuFocusWidgetSize();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetIsBeingDragged() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetIsBeingDiscretelyEdited() const;
     
     UFUNCTION(BlueprintCallable)

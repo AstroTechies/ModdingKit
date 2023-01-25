@@ -4,5 +4,5 @@
 #include "AttachedResearchSubject.h"
 #include "OnActiveResearchSubjectsChangedDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnActiveResearchSubjectsChanged, FAstroDatumRef, ResearchComponentRef, const TArray<FAttachedResearchSubject>&, ActiveResearchSubjects);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnActiveResearchSubjectsChanged, FAstroDatumRef, ResearchComponentRef, const TArray<FAttachedResearchSubject>&, ActiveResearchSubjects);
 

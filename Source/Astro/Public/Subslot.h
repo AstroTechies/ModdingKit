@@ -10,14 +10,14 @@ UCLASS(Blueprintable)
 class ASTRO_API USubslot : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<USceneComponent*> Slots;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<USubslot*> SubSlots;
     
     USubslot();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static USubslot* MakeSubslot(UObject* WorldContextObject, const TArray<USceneComponent*> SlotComponents, const TArray<USubslot*>& SubSubSlots);
     
 };

@@ -12,13 +12,13 @@ class ASTRO_API UPowerStatics : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     UPowerStatics();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void SetFreePower(bool Enable, UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static TArray<UPowerComponent*> GetSlotActorPowerComponents(FSlotReference PowerSlot);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool GetFreePower(const UObject* WorldContextObject);
     
 };

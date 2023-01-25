@@ -1,20 +1,22 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SlotReference.h"
-#include "VehicleBase.h"
-#include "SignalDelegate.h"
 #include "EGravitySphereControllerType.h"
+#include "SignalDelegate.h"
+#include "SlotReference.h"
+#include "Templates/SubclassOf.h"
+#include "VehicleBase.h"
 #include "GravitySphereVehicle.generated.h"
 
+class AActor;
+class AAstroPlayerController;
+class APhysicalItem;
 class UActorAttachmentsComponent;
 class UAdaptiveTickComponent;
-class UControlComponent;
 class UBallPhysicsMovementComponent;
+class UControlComponent;
+class UItemType;
 class UPlanetEffect;
 class USceneComponent;
-class AActor;
-class APhysicalItem;
-class AAstroPlayerController;
 
 UCLASS(Blueprintable)
 class ASTRO_API AGravitySphereVehicle : public AVehicleBase {
@@ -30,10 +32,19 @@ public:
     FName AI_ItemControllerSlotName;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<UItemType> EVA_ItemType;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString AI_EnterAudioEvent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString AI_ExitAudioEvent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FString EVA_EnterAudioEvent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FString EVA_ExitAudioEvent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString HatchOpenAudioEvent;
@@ -57,16 +68,16 @@ public:
     FSignal OnLostController;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UControlComponent* ControlComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPlanetEffect* PlanetEffect;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAdaptiveTickComponent* AdaptiveTickComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UBallPhysicsMovementComponent* MovementComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -81,34 +92,34 @@ protected:
     UFUNCTION(BlueprintCallable)
     void SetupComponentReferences(UActorAttachmentsComponent* attachmentComponent, USceneComponent* seatRoot, USceneComponent* cameraTargetNode);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPilotExitComplete(AActor* pilot);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnEffectRelevanceChanged(bool IsInRelevancy);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAI_ControllerReleased(APhysicalItem* controllerItem);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAI_ControllerAttached(APhysicalItem* controllerItem);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsLocallyControlled() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleVehicleUnmanned(AAstroPlayerController* OldPilot);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleVehicleManned(AAstroPlayerController* NewPilot);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleJumpInput();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EGravitySphereControllerType GetAttachedControllerType();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AuthorityHandlePickedUp(bool PhysicalMovement);
     
 };

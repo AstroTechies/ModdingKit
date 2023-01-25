@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "EAugmentProperty.h"
+#include "Components/ActorComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
+#include "EAugmentProperty.h"
+#include "SignalDelegate.h"
 #include "AugmentComponent.generated.h"
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
@@ -55,11 +55,11 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UnblockReactivation();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetPowerDrawEnabled(bool drawEnabled);
     
     UFUNCTION(BlueprintCallable)
@@ -72,17 +72,17 @@ public:
     void SetAugmentActive(bool Active);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void PhysicalItemUnslotted(bool NewOwner);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReplicated_AugmentEquipped();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReplicated_AugmentEnabled();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReplicated_AugmentActive();
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)

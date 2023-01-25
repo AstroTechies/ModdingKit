@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ERoverID.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ERoverID : uint8 {
     SmallRover,
     MediumRover,

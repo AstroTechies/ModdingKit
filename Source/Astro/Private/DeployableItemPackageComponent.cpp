@@ -1,9 +1,9 @@
 #include "DeployableItemPackageComponent.h"
 #include "Templates/SubclassOf.h"
 
+class AActor;
 class APhysicalItem;
 class UItemType;
-class AActor;
 class UPrimitiveComponent;
 class UTexture;
 

@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ObjectSaveRecord.h"
 #include "ActorRecord.h"
+#include "ObjectSaveRecord.h"
 #include "AstroSaveChunk.generated.h"
 
-class ULevel;
 class UAstroSaveCustomArchiveProxy;
+class ULevel;
 
 USTRUCT(BlueprintType)
 struct FAstroSaveChunk {

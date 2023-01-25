@@ -2,8 +2,8 @@
 #include "Templates/SubclassOf.h"
 #include "TooltipComponent.h"
 
-class UItemType;
 class UItemCatalogCategoryDefinition;
+class UItemType;
 
 void ACatalogModule::UnlockedItemsChanged(const TArray<TSubclassOf<UItemType>>& NewUnlockedItems) {
 }

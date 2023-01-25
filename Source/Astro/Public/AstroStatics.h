@@ -1,96 +1,96 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "EGameControllerType.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=DateTime -FallbackName=DateTime
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=IntPoint -FallbackName=IntPoint
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EWindowMode -FallbackName=EWindowMode
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EPhysicalSurface -FallbackName=EPhysicalSurface
-#include "ESaveGameErrorType.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "EPaintIndexType.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=UMG -ObjectName=ESlateVisibility -FallbackName=ESlateVisibility
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EWindowMode -FallbackName=EWindowMode
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
-#include "AstroDiscreteInputDefinition.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=PostProcessSettings -FallbackName=PostProcessSettings
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=DateTime -FallbackName=DateTime
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-#include "OnAstroSaveCompletedDynamicDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
-#include "OnAstroRenameSaveCompletedDynamicDelegate.h"
-#include "EAstroColor.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize100 -FallbackName=Vector_NetQuantize100
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-#include "EGamePlatform.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=SlateFontInfo -FallbackName=SlateFontInfo
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=IntPoint -FallbackName=IntPoint
-#include "PlayerNicknameAndPlatform.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
 //CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
-#include "AstroSaveFileInformation.h"
-#include "InteractionPromptEntryData.h"
-#include "EAstroInputBindingNameMappings.h"
-#include "EAstroDiscreteInputOptionPlayerFacing.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=SlateColor -FallbackName=SlateColor
+//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=SlateFontInfo -FallbackName=SlateFontInfo
+//CROSS-MODULE INCLUDE V2: -ModuleName=UMG -ObjectName=ESlateVisibility -FallbackName=ESlateVisibility
+#include "AstroDiscreteInputDefinition.h"
+#include "AstroSaveFileInformation.h"
+#include "EAstroColor.h"
+#include "EAstroDiscreteInputOptionPlayerFacing.h"
+#include "EAstroInputBindingNameMappings.h"
+#include "EGameControllerType.h"
+#include "EGamePlatform.h"
+#include "EPaintIndexType.h"
+#include "ESaveGameErrorType.h"
+#include "InteractionPromptEntryData.h"
+#include "OnAstroRenameSaveCompletedDynamicDelegate.h"
+#include "OnAstroSaveCompletedDynamicDelegate.h"
+#include "PlayerNicknameAndPlatform.h"
+#include "Templates/SubclassOf.h"
 #include "AstroStatics.generated.h"
 
-class UPrimitiveComponent;
-class UMaterialInterface;
 class AActor;
-class UObject;
-class UPhysicsConstraintComponent;
-class UAstroSaveAsset;
-class UCreativeModeData;
-class UWidget;
 class AAstroGameMode;
-class APlayerController;
-class USkeletalMeshComponent;
-class UAudioComponent;
-class UChildActorComponent;
-class UMaterialInstanceDynamic;
-class UPanelWidget;
-class USoundBase;
-class USceneComponent;
-class APawn;
-class UMaterial;
+class AAstroGameState;
 class AAstroMissionsManager;
+class APawn;
+class APlayerController;
 class UActorComponent;
 class UAstroGameInstance;
-class UUserWidget;
-class AAstroGameState;
+class UAstroSaveAsset;
+class UAudioComponent;
+class UChildActorComponent;
+class UCreativeModeData;
+class UMaterial;
+class UMaterialInstanceDynamic;
+class UMaterialInterface;
+class UObject;
+class UPanelWidget;
+class UPhysicsConstraintComponent;
 class UPostProcessComponent;
+class UPrimitiveComponent;
+class USceneComponent;
+class USkeletalMeshComponent;
+class USoundBase;
+class UUserWidget;
+class UWidget;
 
 UCLASS(Blueprintable)
 class ASTRO_API UAstroStatics : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     UAstroStatics();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static FVector2D WorldLocationToScreenLocationOffset(UObject* WorldContextObject, const FVector& WorldLocation, const FVector2D& WorldOffset);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static FVector2D WorldLocationToScreenLocation(UObject* WorldContextObject, const FVector& WorldLocation);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static ESaveGameErrorType WasThereAnErrorTryingToSaveTheGame(UObject* WorldContextObject, FString& outSaveName, int32& outSaveSize);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector VInterpCombo(const FVector& Current, const FVector& Target, float ConstantSpeed, float MultiplicativeSpeed, float DeltaTime);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector VelocityAtWorldLocation(UPrimitiveComponent* Component, FVector Location);
     
     UFUNCTION(BlueprintCallable)
     static void UpdatePhysicsConstraintFrames(UPhysicsConstraintComponent* Component);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static UCreativeModeData* TryGetCreativeModeData(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
     static void ToggleUMGHidden(UWidget* Widget, ESlateVisibility VisibleState);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void ToggleCreativeModeLodAnchorPreview(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
@@ -105,16 +105,16 @@ public:
     UFUNCTION(BlueprintCallable)
     static int32 StringChecksum(const FString& String, int32 Hash);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static float Sinusoid(float Speed, UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static bool ShowSelectNetworkUI(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void ShowLoggingUI(const UObject* WorldContextObject, const APlayerController* Controller);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void ShowLodAnchorBeacons(bool doShow, UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
@@ -132,7 +132,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static FTimerHandle SetTimerFromFunctionWithDelay(UObject* Object, const FString& FunctionName, float Time, bool bLooping, float InitialDelay);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void SetStateFirstAvailableSaveSlot(UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
@@ -147,13 +147,13 @@ public:
     UFUNCTION(BlueprintCallable)
     static void SetNearClippingPlane(float Distance);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void SetMultiplayerMode(const UObject* WorldContextObject, const bool online);
     
     UFUNCTION(BlueprintCallable)
     static void SetCuePlaying(UAudioComponent* Sound, bool Play, float Fade);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void SetCreativeModeTerrainColorIndex(int32 colorIndex, EPaintIndexType Type, const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
@@ -162,7 +162,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static void SetChildActorPhysics(UChildActorComponent* ChildActor, bool Physics, bool Collision);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 SetBitValue(int32 BitMask, int32 BitIndex, bool BitValue);
     
     UFUNCTION(BlueprintCallable)
@@ -195,37 +195,37 @@ public:
     UFUNCTION(BlueprintCallable)
     static void SetActorCollisionEnabled(AActor* Actor, bool Enabled);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void SaveGameNoCloudSave(UObject* WorldContextObject, const FString& Name, FOnAstroSaveCompletedDynamic OnCompletedDelegate);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void SaveGameAuto(UObject* WorldContextObject, FOnAstroSaveCompletedDynamic OnCompletedDelegate);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void SaveGame(UObject* WorldContextObject, const FString& Name, FOnAstroSaveCompletedDynamic OnCompletedDelegate);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FString SanitizeSaveFileDescriptiveName(const FString& SaveFileDescriptiveName);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 RollIntegerIncrement(int32 Value, int32 Max);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 RollIntegerDecrement(int32 Value, int32 Max);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static bool ReturnToTitleScreen(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static bool RenameSaveFile(UObject* WorldContextObject, const FString& CurrSaveName, const FString& newDescriptiveSaveName, FOnAstroRenameSaveCompletedDynamic OnCompletedDelegate);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float ReinterpretIntToFloat(int32 Int);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 ReinterpretFloatToInt(float Float);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool PredictIfActiveSaveFileIsTooLargeToSave(UObject* WorldContextObject, FString& outSaveName, int32& outSaveSize);
     
     UFUNCTION(BlueprintCallable)
@@ -240,7 +240,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static void PopulateLoadablePresets(UPanelWidget* Widget);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void PlaySound(USoundBase* Sound, UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
@@ -252,352 +252,352 @@ public:
     UFUNCTION(BlueprintCallable)
     static void MarkPrimitiveRenderStateDirty(UPrimitiveComponent* Primitive);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector_NetQuantizeNormal MakeVectorQuantizeNormal(const FVector& Vector);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector_NetQuantize100 MakeVectorQuantize100(const FVector& Vector);
     
     UFUNCTION(BlueprintCallable)
     static void MakeInert(AActor* Actor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 LogInt(int32 Val, int32 Base);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static bool LoadMapSeamless(FName MapName, const FString& Options, bool bAbsolute, UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContext"))
     static bool LoadGameFromAsset(UObject* WorldContext, const TSoftObjectPtr<UAstroSaveAsset>& saveAssetPtr);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static bool LoadGame(const FString& Name, UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float LerpToRange(float Min, float Max, float CurrentValue, float TargetLerp, float Alpha);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void JoinToURL(const FString& Name, const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void JoinLocalGame(const UObject* WorldContextObject, const FString& GameID);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsWorldTearingDown(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsWorldGameWorld(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsValidAstroLinearColor(const FLinearColor& ColorToTest);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsTrailerBuild(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsStoreUIEnabled();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsShippingBuild();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsServer(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsSaveRestoreInProgress();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsSavePermittedOverrideEnabled();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsSaveFileDescriptiveNameTheActiveSaveFile(UObject* WorldContextObject, const FString& DescriptiveName);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsReleaseBuild(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsPlatformUWPOrXbox();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsPlatformSwitchOrSwitchPreview();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsPlatformSwitch();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsPlatformPS4();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsPlatformMKBEnabled();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsPlatformGameConsole();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsNetworkAvailable(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsLocalProfile(const UObject* WorldContextObject, const APlayerController* Controller);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsLocalControlledPawn(APawn* Pawn);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsLocalCommunications(const UObject* WorldContextObject, const APlayerController* Controller);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsLanMatch(const UObject* WorldContextObject, const APlayerController* Controller);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsDedicatedServerUIEnabled();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsDedicatedServer(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsCreativeMode(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsConnectedToDedicatedServer(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsAsyncSaveInProgress();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float InterpToRange(float Min, float Max, float CurrentValue, float TargetLerp, float DeltaTime, float Speed);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FTransform IdentityTransform();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector HitLocation(const FHitResult& Hit);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector HitImpactPoint(const FHitResult& Hit);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector HitImpactNormal(const FHitResult& Hit);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UPrimitiveComponent* HitImpactComponent(const FHitResult& Hit);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static AActor* HitImpactActor(const FHitResult& Hit);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool HasOnlineFeatures(const UObject* WorldContextObject, const APlayerController* Controller);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool HasEventualParentActorOfType(const AActor* Actor, TSubclassOf<AActor> actorType);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool HasComponentOfType(TSubclassOf<AActor> actorType, TSubclassOf<UActorComponent> ComponentType);
     
     UFUNCTION(BlueprintCallable)
     static FVector2D GetWidgetOuterCanvasPosition(UWidget* Widget);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool GetUseSplitscreen(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static int32 GetTotalSizeOfAllCachedSaveFiles(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector2D GetTextBoundsForFont(FText Text, FSlateFontInfo FontInfo);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetSkeletalMeshPlaybackRatio(const USkeletalMeshComponent* Mesh);
     
     UFUNCTION(BlueprintCallable)
     static FIntPoint GetScreenResolution();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetPostProcessVignetting(const FPostProcessSettings& Settings);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetPostProcessLensFlare(const FPostProcessSettings& Settings);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetPlatformSaveStorageLimit();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetPlatformLowFreeStorageSpaceThreshold();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static APlayerController* GetOwnerPlayerControllerForActor(const AActor* Actor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static APlayerController* GetOwnerPlayerController(UActorComponent* Component);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static APawn* GetOwnerPawnForActor(const AActor* Actor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static APawn* GetOwnerPawn(UActorComponent* Component);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static AActor* GetOutermostActor(AActor* Actor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool GetNumberOfPlayersInMultiplayerSession(int32& outNumPlayersInSession);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static TArray<FPlayerNicknameAndPlatform> GetNicknamesAndPlatformsOfPlayersInMultiplayerSession(bool bExcludeLocalControllingPlayer);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static TArray<FAstroSaveFileInformation> GetNewestSaves(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static FAstroSaveFileInformation GetNewestSave(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool GetMultiplayerSessionLeaderName(FString& OutSessionLeaderName);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static APawn* GetLocalPawn(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static TArray<FString> GetLocalGames(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UObject* GetKeyImageForKey(FKey Key);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static UObject* GetKeyImageForInteractionPrompt(UObject* WorldContextObject, FInteractionPromptEntryData PromptData, bool ForceKeyboardImage);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static UObject* GetKeyImageForGamepadInput(UObject* WorldContextObject, FKey Key);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FName GetInputNameFromInputMapping(EAstroInputBindingNameMappings ActionMapping);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static AAstroGameState* GetGameState(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static EGamePlatform GetGamePlatform();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static AAstroGameMode* GetGameMode(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static UAstroGameInstance* GetGameInstance(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
     static TEnumAsByte<EWindowMode::Type> GetFullscreenMode();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FAstroDiscreteInputDefinition GetDiscreteAstroInputDefinition(EAstroDiscreteInputOptionPlayerFacing DiscretePlayerFacingInputOption);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static FString GetDedicatedServerUrl(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static FString GetDedicatedServerSearchName(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool GetCVar_Integer(const FString& cvarName, int32& outInteger);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetCvar_EnableBackpackTrickleCharge();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetCvar_DeformTool_UseTerrainResource();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetCvar_DeformTool_UsePowerDraw();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static EGameControllerType GetCurrentControllerType();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static void GetCreativeModeTerrainColors(const UObject* WorldContextObject, TArray<UMaterialInterface*>& OutMaterials, TArray<FLinearColor>& OutTerrainColors);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static FLinearColor GetCreativeModeTerrainColorAtIndex(int32 colorIndex, EPaintIndexType Type, const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static FLinearColor GetCreativeModeTerrainColor(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static UMaterialInterface* GetCreativeModeTerrainButtonColor(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static void GetCreativeModeSpecialColors(TArray<FLinearColor>& OutPlanetColors, TArray<UMaterialInterface*>& OutMaterials, const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static void GetCreativeModePlanetColors(const AActor* forActor, TArray<FLinearColor>& OutPlanetColors, TArray<UMaterialInterface*>& OutMaterials);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static UCreativeModeData* GetCreativeModeData(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FString GetControllingPlayerNickname();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static void GetComponentsInChildren(AActor* Actor, TSubclassOf<UActorComponent> Class, TArray<UActorComponent*>& OutComponents);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static TArray<USceneComponent*> GetComponentParentHierarchy(USceneComponent* Component, bool Inclusive);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static void GetChildrenRecursive(AActor* Actor, TArray<AActor*>& OutActors, bool Inclusive);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FString GetBuildVersionWithFlavor();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FString GetBuildVersion();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool GetBitValue(int32 BitMask, int32 BitIndex);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static AActor* GetAttachParentActor(AActor* Actor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static AAstroMissionsManager* GetAstroMissionsManager(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FSlateColor GetAstroColorAsSlateColor(EAstroColor AstroColor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FLinearColor GetAstroColor(EAstroColor AstroColor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static TArray<AActor*> GetActorParentHierarchy(AActor* Actor, bool Inclusive);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FRotator FromToRotation(const FVector& From, const FVector& To);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void ForceDestroySession(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void ForceCreateSession(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float FInterpCombo(float Current, float Target, float ConstantSpeed, float MultiplicativeSpeed, float DeltaTime);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void FindLocalGames(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UActorComponent* FindComponentByName(AActor* Actor, FName ComponentName);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FRotator FindBetween(FVector A, FVector B);
     
     UFUNCTION(BlueprintCallable)
     static void EnqueueSkeletalMeshPlayRate(USkeletalMeshComponent* Mesh, float Rate);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static bool DuplicateSaveFile(UObject* WorldContextObject, const FString& CurrSaveName, const FString& newDescriptiveSaveName, FOnAstroSaveCompletedDynamic OnCompletedDelegate);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool DoesSaveFileDescriptiveNameCollideWithExistingSaves(UObject* WorldContextObject, const FString& newDescriptiveSaveName);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool DoesKeyMatchInputBinding(EAstroInputBindingNameMappings InputBinding, float AxisScale, FKey Key);
     
     UFUNCTION(BlueprintCallable, BlueprintCosmetic)
@@ -609,13 +609,13 @@ public:
     UFUNCTION(BlueprintCallable)
     static void DestroyActorHierarchy(AActor* Actor, bool includeSelf);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static bool DeleteSaveGame(UObject* WorldContextObject, const FAstroSaveFileInformation& SaveDisplayInfo);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void DeleteAllSaves(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FString DateTimeToString(const FDateTime& DateTime);
     
     UFUNCTION(BlueprintCallable)
@@ -630,31 +630,31 @@ public:
     UFUNCTION(BlueprintCallable)
     static UMaterialInstanceDynamic* CreateAllComponentDynamicMaterialInstance(UPrimitiveComponent* Component, UMaterialInterface* Material);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FTransform ConvertToRelativeTransform(const FTransform& ParentTransform, const FTransform& Transform);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static TArray<FText> ConvertIntegerToArrayOfText(int32 InInteger);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector ClosestPointOnLine(const FVector& LineStart, const FVector& LineEnd, const FVector& Point, float& T);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void ChangeMultiplayerMode(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 CastPhysicalSurfaceToInteger(TEnumAsByte<EPhysicalSurface> surface);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool CanGetSavedGames(UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
     static void AddPostProcessBlendableMaterial(const FPostProcessSettings& InSettings, FPostProcessSettings& OutSettings, UMaterial* Material);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool ActorSimulatingPhysics(AActor* Actor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool ActorOnClickedBound(AActor* Actor);
     
     UFUNCTION(BlueprintCallable)

@@ -3,8 +3,8 @@
 #include "InteractionTarget.generated.h"
 
 class AActor;
-class USceneComponent;
 class UClickableComponent;
+class USceneComponent;
 
 USTRUCT(BlueprintType)
 struct FInteractionTarget {
@@ -13,10 +13,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     AActor* Actor;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* AttachParent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UClickableComponent* ClickableComponent;
     
     ASTRO_API FInteractionTarget();

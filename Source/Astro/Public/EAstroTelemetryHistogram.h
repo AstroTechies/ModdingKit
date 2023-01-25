@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EAstroTelemetryHistogram.generated.h"
 
-UENUM()
-enum class EAstroTelemetryHistogram {
+UENUM(BlueprintType)
+enum class EAstroTelemetryHistogram : uint8 {
     TerrianBatchLatency,
     COUNT,
 };

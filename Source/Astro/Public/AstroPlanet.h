@@ -1,34 +1,31 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-#include "SolarBody.h"
-#include "AtmosphericResource.h"
-#include "EPlanetIdentifier.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformationParamsT2 -FallbackName=DeformationParamsT2
-#include "VoxelMaterial.h"
-#include "VoxelVolumeComponent.h"
-#include "DeformationParamsT2.h"
-#include "GatewayObjectPlacementProperties.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=VoxelMaterial -FallbackName=VoxelMaterial
+#include "DeformationParamsT2.h"
+#include "VoxelMaterial.h"
+#include "AtmosphericResource.h"
+#include "EPlanetIdentifier.h"
+#include "GatewayObjectPlacementProperties.h"
+#include "SolarBody.h"
+#include "Templates/SubclassOf.h"
 #include "AstroPlanet.generated.h"
 
-class UChildActorComponent;
-class UItemType;
-class UVoxelVolumeComponent;
-class UObject;
-class UMaterial;
-class UMaterialInstanceDynamic;
-class UMaterialParameterCollection;
-class UStaticMeshComponent;
-class USceneComponent;
-class UBoundedVoxelVolumeModifier;
 class AActor;
 class ADayNight;
 class ANavpointManagerActor;
 class APlanetProxyActor;
+class UBoundedVoxelVolumeModifier;
+class UChildActorComponent;
+class UItemType;
+class UMaterial;
+class UMaterialInstanceDynamic;
+class UMaterialParameterCollection;
+class UObject;
+class USceneComponent;
+class UStaticMeshComponent;
+class UVoxelVolumeComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API AAstroPlanet : public ASolarBody {
@@ -40,10 +37,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemType> PlanetItemType;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UVoxelVolumeComponent* PlanetaryVoxelVolume;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UVoxelVolumeComponent* DefaultVoxelVolume;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -194,16 +191,16 @@ public:
     bool IsLocallyVisible;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* FogMesh;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UChildActorComponent* ProxyComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* ProxyMeshComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UBoundedVoxelVolumeModifier*> GatewayObjectPlacementVoxelVolumeModifiers;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -230,49 +227,52 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdateHasPlayersOnPlanet(ASolarBody* SolarBody);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FLinearColor SampleFog(const FVector& Origin, const FVector& Ray);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnDeformationComplete(const FDeformationParamsT2& params);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool LocationInAtmosphere(const FVector& Location);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetWindDirectionAt(const FVector& Location, float& Intensity);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetTerrainNormal(const FVector& Location);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVoxelMaterial GetTerrainMaterial(const FVector& Location);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetTerrainDensity(const FVector& Location);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetRadius() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     APlanetProxyActor* GetProxy();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FTransform GetPlanetTransform();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FTransform GetPlanetToProxyTransform();
     
     UFUNCTION(BlueprintCallable)
     FVector GetNorthVector();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetHasPrimaryBiomeAtLocation(const FString& BiomeName, const FVector& Location, float MinBiomeWeight);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ADayNight* GetDayNightActor() const;
     
 };

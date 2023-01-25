@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "AstroEntityComponent.h"
+#include "Templates/SubclassOf.h"
 #include "AstroEntitySlotBackupComponent.generated.h"
 
 class APhysicalItem;

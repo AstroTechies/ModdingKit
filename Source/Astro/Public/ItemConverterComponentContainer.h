@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "AstroDatumRef.h"
 #include "AstroEntityComponentContainer.h"
 #include "ItemConverterComponent.h"
-#include "AstroDatumRef.h"
 #include "ItemConverterComponentContainer.generated.h"
 
 UCLASS(Blueprintable)
@@ -10,10 +10,10 @@ class ASTRO_API UItemConverterComponentContainer : public UAstroEntityComponentC
     GENERATED_BODY()
 public:
     UItemConverterComponentContainer();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FItemConverterComponent GetItemConverterComponent(FAstroDatumRef ItemConverterComponentRef, bool& bOutSuccess);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FItemConverterComponent FindItemConverterComponent(FAstroDatumRef EntityRef, bool& bOutSuccess);
     
 };

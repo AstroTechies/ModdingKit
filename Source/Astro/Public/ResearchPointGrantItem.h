@@ -10,13 +10,13 @@ class ASTRO_API AResearchPointGrantItem : public APhysicalItem {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UActorResearchPointGrantComponent* ResearchPointGrantComponent;
     
 public:
     AResearchPointGrantItem();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnUsed();
     
 };

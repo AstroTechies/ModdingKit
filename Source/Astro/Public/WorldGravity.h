@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 #include "WorldGravity.generated.h"
 
 class UPrimitiveComponent;
@@ -9,7 +9,7 @@ UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UWorldGravity : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UPrimitiveComponent*> PrimitiveComponents;
     
 protected:
@@ -25,15 +25,15 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bIsSleeping: 1;
     
-    UPROPERTY(EditAnywhere, SaveGame)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint8 TerrainLODAtLastSleep;
     
 public:
     UWorldGravity();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnComponentSleep(UPrimitiveComponent* SleepingComponent, FName BoneName);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnComponentAwake(UPrimitiveComponent* WakingComponent, FName BoneName);
     
 };

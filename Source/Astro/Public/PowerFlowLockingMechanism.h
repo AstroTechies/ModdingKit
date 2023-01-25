@@ -17,10 +17,10 @@ protected:
     
 public:
     UPowerFlowLockingMechanism();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnFullyPowered();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnEndFullyPowered();
     
 };

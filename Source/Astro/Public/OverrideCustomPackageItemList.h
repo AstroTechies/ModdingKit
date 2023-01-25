@@ -3,8 +3,8 @@
 #include "Templates/SubclassOf.h"
 #include "OverrideCustomPackageItemList.generated.h"
 
-class UItemList;
 class APhysicalItem;
+class UItemList;
 
 USTRUCT(BlueprintType)
 struct FOverrideCustomPackageItemList {

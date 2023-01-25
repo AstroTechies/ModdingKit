@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
-#include "NavpointTypeConfig.h"
-#include "ENavpointType.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
+#include "GameFramework/Actor.h"
+#include "ENavpointType.h"
+#include "NavpointTypeConfig.h"
 #include "NavpointVisualData.h"
 #include "CompassActor.generated.h"
 
-class UStaticMesh;
-class UMaterial;
-class UStaticMeshComponent;
 class UCurveFloat;
+class UMaterial;
 class UMaterialInstanceDynamic;
+class UStaticMesh;
+class UStaticMeshComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API ACompassActor : public AActor {
@@ -75,7 +75,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinOpacityCutoutThreshold;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 NavpointCap;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -87,7 +87,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UMaterialInstanceDynamic* RingsMaterial;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* Rings;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -98,20 +98,23 @@ protected:
     
 public:
     ACompassActor();
+    UFUNCTION(BlueprintCallable)
+    void SetShown(bool isShown);
+    
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleUserSettingsChanged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOrbitalNavLaunch();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleNavpointRemoved(const FGuid& NavpointID);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleNavpointAdded(const FGuid& NavpointID);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleDrivingStatusChanged();
     
 };

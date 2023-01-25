@@ -4,5 +4,5 @@
 
 class UOxygenatorComponent;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOxygenatorSignal, UOxygenatorComponent*, oxygenator);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOxygenatorSignal, UOxygenatorComponent*, oxygenator);
 

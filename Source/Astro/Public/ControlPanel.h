@@ -1,20 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SignalDelegate.h"
-#include "EControlPanelNavigationDirection.h"
-#include "Components/SpotLightComponent.h"
+#include "GameFramework/Actor.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "EControlPanelNavigationDirection.h"
+#include "SignalDelegate.h"
 #include "ControlPanel.generated.h"
 
-class USpotLightComponent;
-class USkeletalMeshComponent;
-class UStaticMeshComponent;
-class UCrackableActorComponent;
+class APlayerController;
 class UClickableComponent;
 class UControlPanelCameraContext;
+class UCrackableActorComponent;
 class UInputComponent;
-class APlayerController;
 class UPrimitiveComponent;
+class USkeletalMeshComponent;
+class USpotLightComponent;
+class UStaticMeshComponent;
 
 UCLASS(Abstract, Blueprintable)
 class ASTRO_API AControlPanel : public AActor {
@@ -27,28 +27,28 @@ public:
     uint8 RedirectOwnerInteractions: 1;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USkeletalMeshComponent* SkeletalMesh;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* StaticMesh;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USpotLightComponent* ControlPanelLight;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UCrackableActorComponent* CrackableActorComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UClickableComponent* ClickableComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_ControlledActor, meta=(AllowPrivateAccess=true))
     AActor* ControlledActor;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UControlPanelCameraContext* CameraContext;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UInputComponent* FallbackInputComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -71,94 +71,94 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     bool OnSecondaryButtonPressedBP(APlayerController* Controller);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSecondaryButtonPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ControlledActor();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOwnerItemPickedUpOrUnslotted(bool bUnused);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnNavigationComponentClicked(UPrimitiveComponent* navigationComponent, FKey ButtonPressed);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnNavigateUpRepeat();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnNavigateUpDown(float AxisValue);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnNavigateUpBP(APlayerController* Controller);
     
     UFUNCTION(BlueprintCallable)
     void OnNavigateUp();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnNavigateRightRepeat();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnNavigateRightBP(APlayerController* Controller);
     
     UFUNCTION(BlueprintCallable)
     void OnNavigateRight();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnNavigateLeftRight(float AxisValue);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnNavigateLeftRepeat();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnNavigateLeftBP(APlayerController* Controller);
     
     UFUNCTION(BlueprintCallable)
     void OnNavigateLeft();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnNavigateDownRepeat();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnNavigateDownBP(APlayerController* Controller);
     
     UFUNCTION(BlueprintCallable)
     void OnNavigateDown();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCrackableActorComponentExaminableChanged();
     
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnControlledActorSet();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     bool OnConfirmBP(APlayerController* Controller);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnConfirm();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     bool OnCancelBP(APlayerController* Controller);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCancel();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsLocallyControlled() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetCracked() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void FullyCrackedOrClosed(UCrackableActorComponent* NewCrackableActorComponent, bool bIsCracked);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void CrackedChanged(UCrackableActorComponent* NewCrackableActorComponent, bool bIsCracked);
     
 };

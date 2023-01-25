@@ -16,10 +16,10 @@ protected:
     
 public:
     USlottedItemLockingMechanism();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemSetInRelevantSlot(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemReleasedFromRelevantSlot(APhysicalItem* Item);
     
 };

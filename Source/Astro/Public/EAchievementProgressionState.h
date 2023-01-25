@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EAchievementProgressionState.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EAchievementProgressionState : uint8 {
     Unknown,
     Enabled,

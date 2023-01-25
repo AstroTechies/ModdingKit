@@ -8,7 +8,7 @@ UCLASS(Blueprintable)
 class ASTRO_API UAstroServerCommWorldDataMap : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere, Transient)
+    UPROPERTY(EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<uint64, FAstroServerCommWorldData> Map;
     
     UAstroServerCommWorldDataMap();

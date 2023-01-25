@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ENumRotations.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ENumRotations : uint8 {
     One,
     Two,

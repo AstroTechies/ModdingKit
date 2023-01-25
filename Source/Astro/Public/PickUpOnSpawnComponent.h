@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 #include "PickUpOnSpawnComponent.generated.h"
 
 class APlayController;
@@ -11,13 +11,13 @@ class ASTRO_API UPickUpOnSpawnComponent : public UActorComponent {
 public:
     UPickUpOnSpawnComponent();
 protected:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerOnHandledLocalPickUp();
     
-    UFUNCTION(NetMulticast, Reliable, WithValidation)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable, WithValidation)
     void MulticastSetOwningPlayer(APlayController* Player);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOwnerChanged();
     
 };

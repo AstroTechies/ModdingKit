@@ -3,10 +3,10 @@
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "BeaconManager.generated.h"
 
-class ABeaconBase;
 class AAstroCharacter;
-class APlayController;
 class AAstroGameState;
+class ABeaconBase;
+class APlayController;
 class ASolarBody;
 
 UCLASS(Blueprintable)
@@ -35,7 +35,7 @@ private:
 public:
     UBeaconManager();
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnLocalSolarBodyChanged(ASolarBody* newBody);
     
 };

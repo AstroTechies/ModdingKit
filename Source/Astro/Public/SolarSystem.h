@@ -4,11 +4,12 @@
 #include "SignalDelegate.h"
 #include "SolarSystem.generated.h"
 
-class AGateStation;
-class ASun;
-class ASolarBody;
-class ADayNight;
 class AAstroPlanet;
+class ADayNight;
+class AGateStation;
+class ASolarBody;
+class ASolarControlRoom;
+class ASun;
 class UWorld;
 
 UCLASS(Blueprintable)
@@ -27,6 +28,9 @@ private:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     AGateStation* GateStation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    ASolarControlRoom* SolarControlRoom;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<AAstroPlanet*> Planets;

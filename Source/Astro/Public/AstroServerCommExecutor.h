@@ -8,31 +8,31 @@ class ASTRO_API UAstroServerCommExecutor : public UObject {
     GENERATED_BODY()
 public:
     UAstroServerCommExecutor();
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void TestProxyTimeoutIndex(int32 timeoutIndex);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void TestProxyFailureIndex(int32 failIndex);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void TestDumpProxyState();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSTravelURL(const FString& ServerURL, const FString& Password, const FString& Index);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSTravelPass(const FString& ServerName, const FString& Password, const FString& Index);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSTravelName(const FString& ServerName, const FString& Index, const FString& Password);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSTravelFriend(const FString& friendName, const FString& Password, const FString& Index);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSTravel(int32 serverIndex, const FString& Password);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSSetSaveGameInterval(const FString& Seconds);
     
     UFUNCTION(Exec)
@@ -41,103 +41,103 @@ public:
     UFUNCTION(Exec)
     void DSSetPlayerCategoryGuid(uint64 PlayerGuid, const FString& Category);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSSetPlayerCategoryForPlayerName(const FString& PlayerName, const FString& Category);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSSetPlayerCategory(const FString& PlayerName, const FString& Category, const FString& Index);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSSetPassword(const FString& Password);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSSetOxygenFreeCreative(bool Enable);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSSetInvisibleToHazardsCreative(bool Enable);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSSetInvincibleCreative(bool Enable);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSSetFuelFreeCreative(bool Enable);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSSetDenyUnlisted(const FString& Enable);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSSetBackupSaveGamesInterval(const FString& Seconds);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSSetBackpackPowerUnlimitedCreative(bool Enable);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSSetActivityTimeout(const FString& Seconds);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSServerStatistics();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSServerShutdown();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSSaveGame(const FString& Name);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSRenameGame(const FString& fromName, const FString& toName);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSRemoveFavorite(const FString& ServerName);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSRemote(const FString& consoleCommand);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSNewGame(const FString& Name);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSLoadGame(const FString& Name);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSListPlayers();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSListGames();
     
     UFUNCTION(Exec)
     void DSKickPlayerGuid(uint64 PlayerGuid);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSKickPlayer(int32 playerIndex);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSGetServerList();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSGetRecentsList();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSGetProperties();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSGetFavoritesList();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSDeleteGame(const FString& Name);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSCreativeMode(bool Enable);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSClearRecentsList();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSClearFavoritesList();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSBackupSaveGames();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DSAddFavorite(const FString& ServerName, const FString& NickName);
     
 };

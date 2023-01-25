@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
+#include "GameFramework/Actor.h"
 #include "PlanetProxyActor.generated.h"
 
-class ASolarBody;
 class AAstroPlanet;
+class ASolarBody;
 
 UCLASS(Blueprintable)
 class ASTRO_API APlanetProxyActor : public AActor {
@@ -14,13 +14,13 @@ public:
     AAstroPlanet* Planet;
     
     APlanetProxyActor();
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnSpawn();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnLocalPlayerPlanetSelectionEnd();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnLocalPlayerPlanetSelectionBegin(ASolarBody* playerHomeBody);
     
 };

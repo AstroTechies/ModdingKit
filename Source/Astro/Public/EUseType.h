@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EUseType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EUseType : uint8 {
     None,
     Tooltip,

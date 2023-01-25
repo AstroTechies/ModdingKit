@@ -1,9 +1,9 @@
 #include "GatesGameMode.h"
 
-class AGateEngine;
-class AGateStation;
 class AAstroPlanet;
 class AGateChamber;
+class AGateEngine;
+class AGateStation;
 class USolarSystem;
 
 AGateStation* AGatesGameMode::TryGetGateStationActor() const {

@@ -1,31 +1,31 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "SlotClickResult.h"
-#include "ClickResult.h"
-#include "SlotReference.h"
-#include "InteractionTarget.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
+#include "Components/ActorComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
+#include "ClickResult.h"
+#include "InteractionTarget.h"
+#include "SlotClickResult.h"
+#include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "MultiTool.generated.h"
 
-class UPrimitiveComponent;
 class AActor;
-class UInputComponent;
-class UTooltipComponent;
-class UMultitoolCameraContext;
-class UControlSymbol;
 class APhysicalItem;
-class UControlActivatorComponent;
-class UActivation;
-class UCrackableActorComponent;
 class APlayController;
 class ASlotConnection;
+class UActivation;
 class UActuatorComponent;
-class USceneComponent;
 class UClickableComponent;
+class UControlActivatorComponent;
+class UControlSymbol;
+class UCrackableActorComponent;
+class UInputComponent;
+class UMultitoolCameraContext;
+class UPrimitiveComponent;
+class USceneComponent;
+class UTooltipComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UMultiTool : public UActorComponent {
@@ -97,29 +97,29 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     AActor* CursorOverCursorNotifySecondaryActor;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPrimitiveComponent* CursorOverCursorNotifyComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool ShowCursor;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UMultitoolCameraContext* CameraContext;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UInputComponent* ObjectSelectedInputComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UInputComponent* InteractionWidgetInputComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UInputComponent* PlayerDrivingInputComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UInputComponent* FocusedTooltipInputComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UControlActivatorComponent* CharacterControlActivator;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_CurrentSelection, meta=(AllowPrivateAccess=true))
@@ -137,22 +137,22 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UActivation* ToolActive;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPrimitiveComponent* CurrentSelectionComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     AActor* CurrentDrivingActor;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UCrackableActorComponent*> CurrentCrackedComponents;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FInteractionTarget> InteractionOverrideStack;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UTooltipComponent* CurrentFocusedTooltip;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UTooltipComponent* DrivingTooltip;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -167,7 +167,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSlotReference LastHoverSlot;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 ClickablesSuppressionCount;
     
 public:
@@ -187,113 +187,116 @@ public:
     void StowDeformTool();
     
 protected:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerUpdateCurrSelectionHasTerrainTraceHit(bool bNewHasTerrainTraceHit);
     
 public:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerTraceForSlotConnection(APlayController* Controller, ASlotConnection* SlotConnection, FVector TraceStart, FVector traceDirection);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSwapItem(APhysicalItem* ItemInSlot, APhysicalItem* CurrentlyHeldItem, bool bIsTerrainComponent, UPrimitiveComponent* HitComponent, FVector HitLocation, FVector_NetQuantizeNormal HitNormal);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSlotItem(APhysicalItem* Actor, FSlotReference Slot, int32 SubslotIndex);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSelectItem(APhysicalItem* Item, bool bPartOfSwap);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSelectionDuplicate(APhysicalItem* Item);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSelectionDelete(APhysicalItem* Item);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerQuickClickMissionEvent(APhysicalItem* Item);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerQuickClick(APhysicalItem* Item);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerMakeSlotConnection(ASlotConnection* Actor, UPrimitiveComponent* hitPrimitive, FVector HitLocation, FVector_NetQuantizeNormal HitNormal, FSlotReference Slot);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerInsertIntoRailConnection(APhysicalItem* Item, UPrimitiveComponent* HitComponent, bool terrainComponent, FVector HitLocation, FVector_NetQuantizeNormal HitNormal, int32 railConnectionID);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerEmplaceInSlot(APhysicalItem* Item, const FSlotReference& Slot, int32 SubslotIndex, bool PhysicalMovement);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerDropItem(APhysicalItem* Item, UPrimitiveComponent* HitComponent, bool terrainComponent, FVector HitLocation, FVector_NetQuantizeNormal HitNormal);
     
 protected:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerCrackCrackableActorComponent(UCrackableActorComponent* crackedCrackableActorComponent);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerCloseCrackableActorComponent(UCrackableActorComponent* closedCrackableActorComponent, bool bIsClickInteraction);
     
 public:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerClickActuatorRerouteNode(UActuatorComponent* Actuator, APhysicalItem* Item, const FVector StartPos, int32 ConnectionId);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerClickActuatorCable(UActuatorComponent* Actuator, int32 ConnectionId);
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerClearSlotEmplacement(APhysicalItem* Item);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteWidgetUseUnhandled(TEnumAsByte<EInputEvent> InputType);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteInteractionWidgetUseRepeat();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteInteractionWidgetUseRelease();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteInteractionWidgetUsePress();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteInteractionDrivingUseRelease();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteInteractionDrivingUsePress();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteInteractionDrivingAux2Release();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteInteractionDrivingAux2Press();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteInteractionDrivingAux1Release();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteInteractionDrivingAux1Press();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteInteractionCatalogActivated();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteFocusedTooltipInteractionActivated(FName ActionName);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteFocusedTooltipInputUnhandled(TEnumAsByte<EInputEvent> InputType, FName ActionName);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteDrivingUseInteraction();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteDrivingTooltipInteractionActivated(FName ActionName);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteDrivingTooltipInputUnhandled(TEnumAsByte<EInputEvent> InputType, FName ActionName);
     
 public:
+    UFUNCTION(BlueprintCallable)
+    void ResetSuppressClickables();
+    
     UFUNCTION(BlueprintCallable)
     void PushInteractionOverride(AActor* Actor, USceneComponent* PivotComponent, UClickableComponent* clickable);
     
@@ -301,10 +304,10 @@ public:
     void PopInteractionOverride(AActor* Actor);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnTooltipWantsFocusChange(UTooltipComponent* TooltipComponent, bool WantsFocus);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSelectionQuickUseHeld();
     
     UFUNCTION(BlueprintCallable)
@@ -316,75 +319,75 @@ protected:
     UFUNCTION(BlueprintCallable)
     void OnSelectionDelete();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_CurrentSelection();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPlayerDeathBegin();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemReplicationDataChanged(APhysicalItem* Item);
     
 public:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnInitializeComponent();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnFocusedTooltipActorDestroyed(AActor* DestroyedActor);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCrackedCrackableActorComponentCrackedChanged(UCrackableActorComponent* CrackableActorComponent, bool bIsCracked);
     
     UFUNCTION(BlueprintCallable)
     void MouseDownPickupItem(APhysicalItem* Item, UPrimitiveComponent* Component, bool snapToCursor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsHoldingItem() const;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleBackpackOpenedOrClosed(bool IsOpen);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     AActor* GetMissionLogActor() const;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     AActor* GetCatalogActor() const;
     
     UFUNCTION(BlueprintCallable)
     void DropItem();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void DoSecondaryInteraction();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool DidInteractionEndThisFrame();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CursorControlActive() const;
     
     UFUNCTION(BlueprintCallable)
     void CloseAllOpenCrackables();
     
-    UFUNCTION(Client, Reliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Client, Reliable, WithValidation)
     void ClientSwapHeldItemDropped();
     
-    UFUNCTION(Client, Reliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Client, Reliable, WithValidation)
     void ClientSwapFinished();
     
 protected:
-    UFUNCTION(Client, Reliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Client, Reliable, WithValidation)
     void ClientDenyCrackCrackableActorComponent(UCrackableActorComponent* crackedCrackableActorComponent);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool AreClickablesSuppressed();
     
 };

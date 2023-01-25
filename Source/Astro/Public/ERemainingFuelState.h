@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ERemainingFuelState.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ERemainingFuelState : uint8 {
     Plenty,
     LastTank,

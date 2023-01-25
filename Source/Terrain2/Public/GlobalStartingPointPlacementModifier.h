@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GlobalSurfaceActorPlacementModifier.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "GlobalSurfaceActorPlacementModifier.h"
 #include "GlobalStartingPointPlacementModifier.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)

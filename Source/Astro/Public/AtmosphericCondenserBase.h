@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "PhysicalItem.h"
-#include "ViewDataChangedDelegate.h"
-#include "EnableSignalDelegate.h"
-#include "ItemCondensedSignalDelegate.h"
 #include "AtmosphericCondenserReplicationData.h"
 #include "EAtmosphericCondenserState.h"
+#include "EnableSignalDelegate.h"
+#include "ItemCondensedSignalDelegate.h"
+#include "PhysicalItem.h"
 #include "SlotReference.h"
+#include "Templates/SubclassOf.h"
+#include "ViewDataChangedDelegate.h"
 #include "AtmosphericCondenserBase.generated.h"
 
-class UItemType;
-class UPowerComponent;
 class AAstroPlanet;
 class UDynamicWhitelistOrganizationRule;
+class UItemType;
+class UPowerComponent;
 
 UCLASS(Abstract, Blueprintable)
 class AAtmosphericCondenserBase : public APhysicalItem {
@@ -63,7 +63,7 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> OutputSlotArray;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPowerComponent* PowerComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -74,14 +74,14 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReplicationDataChanged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_LoopProduction();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetEffectiveProductionDuration() const;
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)

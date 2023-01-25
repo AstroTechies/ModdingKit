@@ -1,8 +1,8 @@
 #include "CapturableSnail.h"
 #include "PlanetEffect.h"
 
-class APhysicalItem;
 class AActor;
+class APhysicalItem;
 class APlayController;
 
 void ACapturableSnail::SetOwningCaptureTerrarium(APhysicalItem* captureTerrarium) {
@@ -28,6 +28,7 @@ ACapturableSnail::ACapturableSnail() {
     this->PlanetEffect = CreateDefaultSubobject<UPlanetEffect>(TEXT("Planet Effect"));
     this->SightDist = 2500.00f;
     this->FaceTargetSpeed = 360.00f;
+    this->bPerformOnscreenChecks = true;
     this->OwningCaptureTerrarium = NULL;
     this->CurrSightTarget = NULL;
 }

@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "AstroDatumRef.h"
 #include "AstroEntityComponentContainer.h"
 #include "TestEntityColorCycleComponent.h"
-#include "AstroDatumRef.h"
 #include "TestEntityColorCycleContainer.generated.h"
 
 UCLASS(Blueprintable)
@@ -10,7 +10,7 @@ class ASTRO_API UTestEntityColorCycleContainer : public UAstroEntityComponentCon
     GENERATED_BODY()
 public:
     UTestEntityColorCycleContainer();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FTestEntityColorCycleComponent GetTestEntityColorCycleComponent(FAstroDatumRef ColorCycleComponentRef, bool& bOutSuccess);
     
 };

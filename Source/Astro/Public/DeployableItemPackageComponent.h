@@ -1,20 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "SlotReference.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
+#include "SignalDelegate.h"
+#include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "DeployableItemPackageComponent.generated.h"
 
-class UMaterialInterface;
-class APhysicalItem;
-class USceneComponent;
-class UPrimitiveComponent;
-class UItemType;
-class UTexture;
 class AActor;
+class APhysicalItem;
+class UItemType;
+class UMaterialInterface;
+class UPrimitiveComponent;
+class USceneComponent;
+class UTexture;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UDeployableItemPackageComponent : public UActorComponent {
@@ -41,10 +41,10 @@ protected:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FPackageIndicatorEvent OnIndicatorVisibleChanged;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* PackagePreviewIndicatorSlotWrapper;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* PackageVisualsWrapper;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -57,7 +57,7 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     APhysicalItem* OwningItem;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UPrimitiveComponent* UnpackIndicatorRoot;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -75,10 +75,10 @@ public:
     void SetupPackagedItem(TSubclassOf<UItemType> ItemTypeToDeploy);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetupHideIndicatorTimer();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetCrateMaterialInstance(UTexture* OverlayTexture);
     
 public:
@@ -86,41 +86,41 @@ public:
     UPrimitiveComponent* PreDeployPackagedItem();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void PackageUnemplacedFromSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void PackageSetCardinalDirection();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void PackageReleasedFromSlot(bool NewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void PackagePlacedInSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void PackageEmplacedInSlot();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemComponentChanged();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void Moved(bool FromTool);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HideIndicator();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void GeneralSlotEvent(APhysicalItem* Item);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void EndCursorOver(AActor* Actor);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void DropInWorld(UPrimitiveComponent* Component, const FVector& Point, const FVector& Normal);
     
 public:
@@ -128,10 +128,10 @@ public:
     void DeployPackagedItem();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ClearHideIndicatorTimer();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void BeginCursorOver(AActor* Actor);
     
 };

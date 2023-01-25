@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EFocusItemFocusChangeCause.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EFocusItemFocusChangeCause : uint8 {
     AutoNavigation,
     MouseHover,

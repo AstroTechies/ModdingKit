@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETetherAttachmentType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETetherAttachmentType : uint8 {
     Chassis,
     Post,

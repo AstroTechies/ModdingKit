@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EPlanetOptimization.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EPlanetOptimization : uint8 {
     None,
     Low,

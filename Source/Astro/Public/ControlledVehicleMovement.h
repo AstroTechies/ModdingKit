@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "Components/ActorComponent.h"
 #include "ControlledVehicleMovement.generated.h"
 
+class APlayerController;
 class UPowerComponent;
 class UWheeledChassisComponent;
-class APlayerController;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UControlledVehicleMovement : public UActorComponent {
@@ -34,28 +34,28 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bPhysicsEnabledCached;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UWheeledChassisComponent* WheeledChassis;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UPowerComponent*> PowerComponents;
     
 public:
     UControlledVehicleMovement();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetControlled(bool IsControlled);
     
 private:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void SetAuthorityControlled(bool IsControlled);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnUnmanned();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnMove(APlayerController* Controller, const FVector& Direction);
     
 };

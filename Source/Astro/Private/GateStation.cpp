@@ -1,12 +1,13 @@
 #include "GateStation.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SceneComponent -FallbackName=SceneComponent
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=StaticMeshComponent -FallbackName=StaticMeshComponent
-#include "TooltipComponent.h"
-#include "ClickableComponent.h"
+#include "Components/SceneComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SphereComponent -FallbackName=SphereComponent
+#include "Components/StaticMeshComponent.h"
 #include "Components/SphereComponent.h"
-#include "ActorGateObjectComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "ActorEntityLinkComponent.h"
+#include "ActorGateObjectComponent.h"
+#include "ClickableComponent.h"
+#include "TooltipComponent.h"
 
 class AActor;
 
@@ -18,6 +19,7 @@ void AGateStation::OnOutroCinematicCompleted() {
 
 void AGateStation::OnClickedInSolarView(AActor* TouchedActor, FKey ButtonPressed) {
 }
+
 
 
 AGateStation::AGateStation() {

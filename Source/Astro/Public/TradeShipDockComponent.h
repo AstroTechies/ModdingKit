@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 #include "LaunchedSignalDelegate.h"
+#include "SignalDelegate.h"
+#include "Templates/SubclassOf.h"
 #include "TradeShipDockComponent.generated.h"
 
 class APhysicalItem;
@@ -41,17 +41,17 @@ protected:
 public:
     UTradeShipDockComponent();
 protected:
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastShipLaunchedToOrbit(float LaunchLength);
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastShipLaunchedToDock(float LaunchLength);
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastShipArrivedAtDock();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool AcceptsItem(APhysicalItem* Item) const;
     
 };

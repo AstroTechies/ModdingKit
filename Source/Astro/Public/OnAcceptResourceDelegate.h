@@ -5,5 +5,5 @@
 
 class UItemType;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnAcceptResource, TSubclassOf<UItemType>, Type, int32, Amount);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnAcceptResource, TSubclassOf<UItemType>, Type, int32, Amount);
 

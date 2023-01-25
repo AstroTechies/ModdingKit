@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=GameplayTasks -ObjectName=GameplayTask -FallbackName=GameplayTask
+#include "GameplayTask.h"
 #include "AstroTakePictureTask.generated.h"
 
 UCLASS(Blueprintable)
@@ -9,10 +9,10 @@ class ASTRO_API UAstroTakePictureTask : public UGameplayTask {
 public:
     UAstroTakePictureTask();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPhotoWidgetClosed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void DisplayPhotoWidget();
     
 };

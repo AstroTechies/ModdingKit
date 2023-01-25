@@ -9,7 +9,7 @@ UCLASS(Blueprintable)
 class ASTRO_API AResourceInfoNeeded : public AResourceInfo {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPrimitiveComponent* PlaceholderMesh;
     
     AResourceInfoNeeded();

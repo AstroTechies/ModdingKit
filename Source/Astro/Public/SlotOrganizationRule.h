@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SlotReference.h"
-#include "EIndicatorTooltipType.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "EIndicatorTooltipType.h"
+#include "SlotReference.h"
 #include "SlotOrganizationRule.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)

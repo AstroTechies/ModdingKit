@@ -1,14 +1,14 @@
 #include "ResourceExtractor.h"
-#include "Net/UnrealNetwork.h"
-#include "Templates/SubclassOf.h"
 #include "AstroActionComponent.h"
+#include "Net/UnrealNetwork.h"
 #include "PowerComponent.h"
 #include "ResourceCacheComponent.h"
 #include "StorageChassisComponent.h"
+#include "Templates/SubclassOf.h"
 
-class UItemType;
 class APhysicalItem;
 class UAstroAction;
+class UItemType;
 class UPrimitiveComponent;
 class UStaticMesh;
 

@@ -1,11 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=GameplayTasks -ObjectName=GameplayTask -FallbackName=GameplayTask
 #include "GameplayTask.h"
 #include "AstroIgnoreInputTask.generated.h"
 
-class UAstroIgnoreInputTask;
 class UAstroAction;
+class UAstroIgnoreInputTask;
 
 UCLASS(Blueprintable)
 class ASTRO_API UAstroIgnoreInputTask : public UGameplayTask {

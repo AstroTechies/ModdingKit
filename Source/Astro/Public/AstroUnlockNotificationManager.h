@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
-#include "OnUnlockNotificationCompleteDelegate.h"
-#include "AstroNotificationUnlockAuthoringData.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
+#include "AstroNotificationUnlockAuthoringData.h"
+#include "OnUnlockNotificationCompleteDelegate.h"
 #include "AstroUnlockNotificationManager.generated.h"
 
 class UAstroNotificationUnlockWidget;
@@ -16,7 +16,7 @@ public:
     FOnUnlockNotificationComplete UnlockNotificationComplete;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UAstroNotificationUnlockWidget*> LivingUnlockNotifications;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -28,7 +28,7 @@ private:
 public:
     UAstroUnlockNotificationManager();
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleNotificationSpawnTimerTick();
     
 };

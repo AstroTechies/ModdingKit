@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EProximityLightState.generated.h"
 
-UENUM()
-enum class EProximityLightState {
+UENUM(BlueprintType)
+enum class EProximityLightState : uint8 {
     Off,
     On,
     Blinking,

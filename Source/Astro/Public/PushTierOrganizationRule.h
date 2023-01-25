@@ -8,7 +8,7 @@ class UPushTierOrganizationRule : public USlotOrganizationRule {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 RequestedItemTier;
     
 public:

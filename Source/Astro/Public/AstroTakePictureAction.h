@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "AstroAction.h"
 #include "SignalDelegate.h"
+#include "Templates/SubclassOf.h"
 #include "AstroTakePictureAction.generated.h"
 
-class UWandererPhotoWidget;
 class APlayerController;
+class UWandererPhotoWidget;
 
 UCLASS(Blueprintable)
 class ASTRO_API UAstroTakePictureAction : public UAstroAction {
@@ -40,16 +40,16 @@ public:
     void SetInstigator(APlayerController* Instigator);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnTakePictureTaskCompleted();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPictureImageCaptureDelayComplete();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPhotoWidgetDisplayDelayComplete();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void BroadcastTakePictureCountdownPing();
     
 };

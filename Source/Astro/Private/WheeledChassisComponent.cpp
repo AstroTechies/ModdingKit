@@ -1,11 +1,11 @@
 #include "WheeledChassisComponent.h"
 #include "Net/UnrealNetwork.h"
 
+class AActor;
 class APhysicalItem;
+class UAstroSaveCustomArchiveProxy;
 class UParticleSystemComponent;
 class USceneComponent;
-class UAstroSaveCustomArchiveProxy;
-class AActor;
 class UStaticMeshComponent;
 
 void UWheeledChassisComponent::WakePhysics() {

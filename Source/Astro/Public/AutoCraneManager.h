@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AutoCraneState.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
 #include "AutoCraneOverlapTestRequest.h"
+#include "AutoCraneState.h"
 #include "AutoCraneManager.generated.h"
 
-class ASolarBody;
 class AActor;
 class AAstroCharacter;
-class APlayController;
 class AAutoCrane;
+class APlayController;
+class ASolarBody;
 
 UCLASS(Blueprintable)
 class UAutoCraneManager : public UObject {
@@ -34,37 +34,37 @@ private:
 public:
     UAutoCraneManager();
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnTransferItemSet(AAutoCrane* Crane);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnTransferItemReleased(AAutoCrane* Crane);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnTransferItemFullyEmplaced(AAutoCrane* Crane);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnTransferItemDestroyed(AAutoCrane* Crane);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnLocalSolarBodyChanged(ASolarBody* newBody);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCraneReleasedFromSlot(AAutoCrane* Crane);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCranePowerChanged(AAutoCrane* Crane);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCranePlacedInSlot(AAutoCrane* Crane);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCraneInputUse(AAutoCrane* Crane);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnClientTransferProgressChanged(AAutoCrane* Crane);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnClientCraneStateChanged(AAutoCrane* Crane);
     
 };

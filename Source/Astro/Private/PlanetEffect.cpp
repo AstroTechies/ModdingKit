@@ -1,7 +1,7 @@
 #include "PlanetEffect.h"
 
-class UActorComponent;
 class AActor;
+class UActorComponent;
 
 void UPlanetEffect::TriggerUpdate() {
 }

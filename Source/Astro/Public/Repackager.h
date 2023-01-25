@@ -1,24 +1,24 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "PhysicalItem.h"
 #include "ERepackagingTargetState.h"
+#include "PhysicalItem.h"
+#include "Templates/SubclassOf.h"
 #include "Repackager.generated.h"
 
+class AActor;
+class UAstroAction;
 class UAstroActionComponent;
 class UAstroRepackAction;
-class UAstroAction;
-class AActor;
 
 UCLASS(Abstract, Blueprintable)
 class ASTRO_API ARepackager : public APhysicalItem {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAstroActionComponent* ActionComponent;
     
-    UPROPERTY(EditAnywhere, Transient)
+    UPROPERTY(EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<APhysicalItem> RepackagingTarget;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRepackagingTargetStateChanged, meta=(AllowPrivateAccess=true))
@@ -32,19 +32,19 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdateRepackagingTarget();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnRepackagingTargetStateChanged();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnRepackageActionFinishedAuthority(UAstroAction* repackageAction);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void InitiateRepackaging();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleRepackagingTargetEndPlay(AActor* Actor);
     
 };

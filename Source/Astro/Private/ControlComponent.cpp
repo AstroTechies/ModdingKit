@@ -1,14 +1,14 @@
 #include "ControlComponent.h"
 #include "Templates/SubclassOf.h"
 
+class AActor;
+class APhysicalItem;
 class APlayerController;
 class UControlComponent;
-class UObject;
 class UControlSymbol;
-class UStaticMesh;
-class APhysicalItem;
 class UControlSymbolEvents;
-class AActor;
+class UObject;
+class UStaticMesh;
 
 void UControlComponent::SetMoveInputs(APlayerController* Controller, const FVector& Direction) {
 }

@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETileInputIndex.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum ETileInputIndex {
     Primary,
     Secondary,

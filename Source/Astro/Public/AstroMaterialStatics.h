@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
-#include "PackedParameterValue.h"
 #include "BitfieldBitValue.h"
+#include "PackedParameterValue.h"
 #include "AstroMaterialStatics.generated.h"
 
 class UMaterialInstanceDynamic;
@@ -30,7 +30,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static void SetBitfieldParameterBit(UMaterialInstanceDynamic* Mid, FName ParameterName, int32 BitIndex, bool BitValue);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool GetBitfieldParameterBit(UMaterialInstanceDynamic* Mid, FName ParameterName, int32 BitIndex);
     
 };

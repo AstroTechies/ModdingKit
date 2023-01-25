@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EAtmosphericCondenserState.h"
 #include "AtmosphericResource.h"
+#include "EAtmosphericCondenserState.h"
 #include "AtmosphericCondenserReplicationData.generated.h"
 
 class AAstroPlanet;

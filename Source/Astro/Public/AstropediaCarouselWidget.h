@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UserWidgetBlueprintDesignable.h"
-#include "EAstroGameMenuTutorialSlideDeckKey.h"
 #include "EAstroGameMenuTutoriaSlideCardKey.h"
+#include "EAstroGameMenuTutorialSlideDeckKey.h"
+#include "UserWidgetBlueprintDesignable.h"
 #include "AstropediaCarouselWidget.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)
@@ -10,7 +10,7 @@ class ASTRO_API UAstropediaCarouselWidget : public UUserWidgetBlueprintDesignabl
     GENERATED_BODY()
 public:
     UAstropediaCarouselWidget();
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void InitializeAstropedia(EAstroGameMenuTutorialSlideDeckKey deck, EAstroGameMenuTutoriaSlideCardKey card);
     
 };

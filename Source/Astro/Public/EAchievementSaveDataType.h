@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EAchievementSaveDataType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EAchievementSaveDataType : uint8 {
     PlayerSaveData,
     GameSaveData,

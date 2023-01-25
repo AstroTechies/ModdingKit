@@ -1,30 +1,30 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
+#include "GameFramework/Actor.h"
 #include "GateObject.generated.h"
 
 class ASolarBody;
-class USceneComponent;
-class UStaticMeshComponent;
-class UActorGateObjectComponent;
 class UActorEntityLinkComponent;
+class UActorGateObjectComponent;
+class USceneComponent;
 class USolarSystem;
+class UStaticMeshComponent;
 
 UCLASS(Abstract, Blueprintable)
 class ASTRO_API AGateObject : public AActor {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* StaticMesh;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* TeleporterPositioningComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UActorGateObjectComponent* GateObjectComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UActorEntityLinkComponent* EntityLinkComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -33,10 +33,10 @@ protected:
 public:
     AGateObject();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSolarSystemInitialized(USolarSystem* SolarSystem);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnLocalPlayerChangedLocalSolarBody(ASolarBody* playerLocalSolarBody);
     
 };

@@ -1,54 +1,53 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-#include "StarterItemCreatedDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=GameState -FallbackName=GameState
-#include "ProbeUnlockState.h"
-#include "OnItemTypeListChangedDelegate.h"
-#include "TutorialSignalDelegate.h"
-#include "OnCurrentResearchPointBalanceChangedDelegate.h"
-#include "EAstroAchievementKeys.h"
-#include "EnableSignalDelegate.h"
-#include "SignalDelegate.h"
-#include "OutroSequenceActorCreatedDelegate.h"
-#include "WanderRealityTearOpenStateEventDelegate.h"
-#include "ItemCollectionAchievementProgress.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=CreativePaintMaterialMapping -FallbackName=CreativePaintMaterialMapping
+#include "DeformationParamsT2.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=PackedVoxelMaterialInfo -FallbackName=PackedVoxelMaterialInfo
 #include "ActiveTerrainColorChangedDelegate.h"
-#include "ScannableStatus.h"
-#include "PackedVoxelMaterialInfo.h"
+#include "CreativePaintMaterialMapping.h"
+#include "GameFramework/GameState.h"
 #include "AstroRemotePlayerChunk.h"
 #include "DebugLocation.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=PackedVoxelMaterialInfo -FallbackName=PackedVoxelMaterialInfo
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=CreativePaintMaterialMapping -FallbackName=CreativePaintMaterialMapping
-
-#include "CreativePaintMaterialMapping.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
 #include "EAchievementProgressionState.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformationParamsT2 -FallbackName=DeformationParamsT2
+#include "EAstroAchievementKeys.h"
 #include "DeformationCompleteEventDelegate.h"
 #include "EWandererRealityTearOpenState.h"
-#include "GameFramework/GameState.h"
+#include "EnableSignalDelegate.h"
+#include "ItemCollectionAchievementProgress.h"
+#include "OnCurrentResearchPointBalanceChangedDelegate.h"
+#include "OnItemTypeListChangedDelegate.h"
+#include "OutroSequenceActorCreatedDelegate.h"
+#include "ProbeUnlockState.h"
+#include "ScannableStatus.h"
+#include "SignalDelegate.h"
+#include "StarterItemCreatedDelegate.h"
+#include "Templates/SubclassOf.h"
+#include "PackedVoxelMaterialInfo.h"
+#include "TutorialSignalDelegate.h"
+#include "WanderRealityTearOpenStateEventDelegate.h"
 #include "AstroGameState.generated.h"
 
-class AAstroMissionsManager;
-class ARailNetwork;
-class URewardSystem;
-class UActivation;
-class APhysicalItem;
-class AAstroPlanet;
 class AActor;
+class AAstroCharacter;
+class AAstroMissionsManager;
+class AAstroPlanet;
+class ALevelSequenceActor;
+class APhysicalItem;
+class ARailNetwork;
+class UActivation;
 class UActorEntityLinkComponent;
+class UActuatorQueue;
+class UAstroSaveCustomArchiveProxy;
+class UAstropediaAssetManager;
 class UItemType;
 class ULevelSequencePlayer;
-class ALevelSequenceActor;
-class UAstropediaAssetManager;
-class UActuatorQueue;
-class URewardState;
-class UAstroSaveCustomArchiveProxy;
-class USoundBase;
 class UParticleSystem;
-class AAstroCharacter;
+class URewardState;
+class URewardSystem;
+class USoundBase;
 
 UCLASS(Blueprintable)
 class AAstroGameState : public AGameState {
@@ -121,6 +120,9 @@ public:
     TArray<APhysicalItem*> SpawnedStartingItems;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FName> ActiveThemes;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool MapLoadedFromSave;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -163,7 +165,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<AActor*> SpawnLocations;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, SaveGame, meta=(AllowPrivateAccess=true))
     UActorEntityLinkComponent* EntityLinkComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=BroadcastResearchPointBalanceChanged, meta=(AllowPrivateAccess=true))
@@ -245,7 +247,7 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FAstroRemotePlayerChunk> RemotePlayerHistory;
     
-    UPROPERTY(EditAnywhere, Transient)
+    UPROPERTY(EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<uint16, FDeformationCompleteEvent> DeformationCompleteEvents;
     
 public:
@@ -286,7 +288,7 @@ public:
     void SetAchievementProgressionDisabledCreative(bool AchievementProgressionDisabled);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy);
     
 public:
@@ -294,55 +296,61 @@ public:
     void RemoveNewPlayerSpawnLocation(AActor* Spawn);
     
     UFUNCTION(BlueprintCallable)
+    void RemoveActivePlacementThemes(const TArray<FName>& themeNames);
+    
+    UFUNCTION(BlueprintCallable)
+    void RemoveActivePlacementTheme(const FName ThemeName);
+    
+    UFUNCTION(BlueprintCallable)
     void RegisterSpawnedStartingItem(APhysicalItem* Item);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RailNetwork(ARailNetwork* previousValue);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_MissionsManager(AAstroMissionsManager* previousValue);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_IsOutroCinematicActive();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_CreativeModeSettings();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAuthorityUnlockedItemsChanged(const TArray<TSubclassOf<UItemType>>& NewUnlockedItems);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAuthorityResearchPointBalanceChanged(float NewPointBalance);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAuthorityKnownItemsChanged(const TArray<TSubclassOf<UItemType>>& newKnownItems);
     
     UFUNCTION(BlueprintCallable)
     bool NotifyTutorial(FName Name, bool bShowText);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void NotifyOutroCinematicCompleted();
     
 public:
     UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
     void MultiSoundFX(const FTransform& Transform, USoundBase* Sound, UParticleSystem* Particle);
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastNewMaterialPalette(AAstroPlanet* Planet, const TArray<FPackedVoxelMaterialInfo>& dynamicMaterials);
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastNewCreativeMaterialPalette(AAstroPlanet* Planet, const TArray<FPackedVoxelMaterialInfo>& dynamicMaterials, const TArray<FCreativePaintMaterialMapping>& creativePaintData);
     
     UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
     void MulticastExplosionEffects(const FTransform& Transform, AActor* Actor, const FName surfTypeSwitchName, const TArray<FString>& AudioEffects, const TArray<UParticleSystem*>& ParticleEffects, float Power);
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastDisplayResearchPointChange(int32 researchPointDelta);
     
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastDisplayGrantDurableMessage(TSubclassOf<UItemType> itemToUnlock);
     
     UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
@@ -351,75 +359,78 @@ public:
     UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
     void MulticastAudioEventAndVFX(const FTransform& Transform, const FString& AudioEvent, UParticleSystem* ParticleEffect);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsProbeUnlocked(AAstroCharacter* Character, FName ProbeName) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsOxygenFreeCreative() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsInvisibleToHazardsCreative() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsInvincibleCreative() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsGravitySimulationEnabled() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsFuelFreeCreative() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsCreativeModeActive() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsCatalogUnlockedCreative() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsBackpackPowerUnlimitedCreative() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsAchievementProgressionDisabled() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasSaveGameCacheBeenEnumerated() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasEverBeenIndividualDedicatedServerGame() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasEverBeenCreativeGame() const;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnGameplayStartedEvent(bool StartedInExistingSavedGame);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable)
+    bool GetThemeIsActive(const FName ThemeName);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<APhysicalItem*> GetStartingItemArrayRef();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     URewardSystem* GetRewardSystem() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     URewardState* GetRewardState() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FScannableStatus GetNearestRelevantScannable(AAstroCharacter* Player) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AAstroMissionsManager* GetMissionsManager() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetIsNewGameDropshipSequenceActive() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UAstropediaAssetManager* GetAstropediaAssetManager() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UActuatorQueue* GetActuatorQueue() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EAchievementProgressionState GetAchievementProgressionState() const;
     
     UFUNCTION(BlueprintCallable)
@@ -432,36 +443,42 @@ public:
     void DestroyAllSpawnedStartingItems();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void BroadcastUnlockedVintageProbesChanged();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void BroadcastUnlockedItemsChanged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void BroadcastResearchPointBalanceChanged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void BroadcastOnCreativeModeCatalogUnlockedChanged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void BroadcastKnownItemsChanged();
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthoritySetWandererRealityTearOpenState(EWandererRealityTearOpenState State);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EWandererRealityTearOpenState AuthorityGetWandererRealityTearOpenState() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool ArePlayerNamesVisible() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool AreBeaconsVisible() const;
     
     UFUNCTION(BlueprintCallable)
     void AddAndPrioritizeNewPlayerSpawnLocation(AActor* Spawn);
+    
+    UFUNCTION(BlueprintCallable)
+    void AddActivePlacementThemes(const TArray<FName>& themeNames);
+    
+    UFUNCTION(BlueprintCallable)
+    void AddActivePlacementTheme(const FName ThemeName);
     
 };
 

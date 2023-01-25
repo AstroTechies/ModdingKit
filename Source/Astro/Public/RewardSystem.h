@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
-#include "RewardSelectionParameters.h"
 #include "RewardResult.h"
+#include "RewardSelectionParameters.h"
+#include "Templates/SubclassOf.h"
 #include "RewardSystem.generated.h"
 
-class URewardTable;
-class URewardState;
 class AActor;
 class UItemType;
+class URewardState;
+class URewardTable;
 
 UCLASS(Blueprintable)
 class URewardSystem : public UObject {
@@ -30,7 +30,7 @@ public:
     UFUNCTION(BlueprintCallable)
     bool MarkActorTypeAsResearched(TSubclassOf<AActor> actorType);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasActorTypeBeenResearched(TSubclassOf<AActor> actorType) const;
     
     UFUNCTION(BlueprintCallable)

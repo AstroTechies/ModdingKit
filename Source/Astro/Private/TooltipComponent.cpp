@@ -1,11 +1,11 @@
 #include "TooltipComponent.h"
 
+class AActor;
+class UCrackableActorComponent;
 class UItemType;
 class UObject;
 class UPrimitiveComponent;
 class USceneComponent;
-class AActor;
-class UCrackableActorComponent;
 
 void UTooltipComponent::UpdateWidgetOverrideDisplayData(FName overrideName, const FTooltipWidgetDisplayData& DisplayData) {
 }

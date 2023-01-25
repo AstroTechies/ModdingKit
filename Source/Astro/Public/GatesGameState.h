@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GatesGameStateReplicationData.h"
-#include "GateObjectActivationSignalDelegate.h"
 #include "AstroGameState.h"
+#include "GateObjectActivationSignalDelegate.h"
+#include "GatesGameStateReplicationData.h"
 #include "GatesGameState.generated.h"
 
 UCLASS(Blueprintable)
@@ -27,7 +27,7 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReplicationDataReceived();
     
 };

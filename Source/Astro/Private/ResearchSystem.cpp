@@ -1,12 +1,12 @@
 #include "ResearchSystem.h"
 #include "Templates/SubclassOf.h"
 
-class UObject;
-class UItemType;
-class APhysicalItem;
-class UItemComponent;
 class AAstroGameState;
+class APhysicalItem;
 class APlayerController;
+class UItemComponent;
+class UItemType;
+class UObject;
 
 void UResearchSystem::StartOrInterruptResearch(FAstroDatumRef ResearchEntityRef, FAstroDatumRef InstigatorEntityRef, bool& bOutSuccess) {
 }
@@ -28,6 +28,10 @@ bool UResearchSystem::IsItemTypeUnlockedForGame(const AAstroGameState* GameState
 }
 
 bool UResearchSystem::IsItemTypeUnlocked(const APlayerController* PlayerController, TSubclassOf<UItemType> ItemType) {
+    return false;
+}
+
+bool UResearchSystem::IsItemTypeKnownForGame(const AAstroGameState* GameState, TSubclassOf<UItemType> ItemType) {
     return false;
 }
 

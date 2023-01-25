@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "CustomChildActorComponent.h"
 #include "EnableSignalDelegate.h"
 #include "SignalDelegate.h"
+#include "Templates/SubclassOf.h"
 #include "ControlPanelButtonChildActorComponent.generated.h"
 
 class AControlPanelButton;
@@ -34,17 +34,17 @@ public:
     void SetEnabled(bool Enabled);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RerouteOnPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RerouteOnArmedChanged(bool IsArmed);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetEnabled();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetArmed();
     
 };

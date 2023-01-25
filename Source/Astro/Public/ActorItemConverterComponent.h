@@ -1,30 +1,30 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
+#include "Components/ActorComponent.h"
+#include "ActiveItemConversion.h"
+#include "EInputManagementType.h"
+#include "EItemConverterState.h"
+#include "EOutputEjectionType.h"
 #include "EnableSignalDelegate.h"
-#include "Recipe.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "ItemConversionInputItemStatus.h"
+#include "ItemConversionRecipeInputStatus.h"
+#include "ItemConverterReplicationData.h"
 #include "OnItemConversionCompleteDelegate.h"
 #include "OnItemConverterActiveConversionsListChangedDelegate.h"
-#include "ItemConversionInputItemStatus.h"
 #include "OnItemConverterStateChangedDelegate.h"
-#include "EOutputEjectionType.h"
-#include "ItemConverterReplicationData.h"
-#include "EInputManagementType.h"
+#include "Recipe.h"
+#include "SignalDelegate.h"
 #include "SlotReference.h"
-#include "ActiveItemConversion.h"
-#include "ItemConversionRecipeInputStatus.h"
-#include "EItemConverterState.h"
+#include "Templates/SubclassOf.h"
 #include "ActorItemConverterComponent.generated.h"
 
+class AAstroCharacter;
+class APhysicalItem;
 class UItemConversionFormula;
 class UItemList;
-class URecipeOrganizationRule;
-class UOutputOrganizationRule;
-class APhysicalItem;
 class UItemType;
-class AAstroCharacter;
+class UOutputOrganizationRule;
+class URecipeOrganizationRule;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UActorItemConverterComponent : public UActorComponent {
@@ -123,6 +123,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bIgnoresPower: 1;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bPushUnwantedInputItems: 1;
+    
 protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnReplicationDataChanged, meta=(AllowPrivateAccess=true))
     FItemConverterReplicationData ReplicationData;
@@ -136,46 +139,46 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> OutputSlotRefs;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<URecipeOrganizationRule> RecipeOrganizationRule;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<UOutputOrganizationRule> OutputOrganizationRule;
     
 public:
     UActorItemConverterComponent();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnReplicationDataChanged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAuthorityRemovedActiveItemConversion(const FActiveItemConversion& activeConversion);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAuthorityAddedActiveItemConversion(const FActiveItemConversion& activeConversion);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsItemConversionRecipeInputStatusValid(const FItemConversionRecipeInputStatus& ItemConversionRecipeInputStatus);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsItemConversionInputItemStatusValid(const FItemConversionInputItemStatus& ItemConversionIngredientStatus);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleItemChangedInResourceSlot(APhysicalItem* changedItem);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetShouldLoopProduction();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FRecipe GetSelectedOutputRecipe() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TSubclassOf<UItemType> GetSelectedOutputItemType() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FItemConversionRecipeInputStatus GetConversionRecipeInputStatus(const FRecipe& Recipe) const;
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
@@ -199,11 +202,11 @@ public:
     void AuthorityIncrementSelectedOutputItemTypeIndex(bool AllowIndexWrapping);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AuthorityHandleItemComponentChanged();
     
 public:
-    UFUNCTION(BlueprintAuthorityOnly, BlueprintPure)
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintPure)
     EItemConverterState AuthorityGetItemConverterState() const;
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)

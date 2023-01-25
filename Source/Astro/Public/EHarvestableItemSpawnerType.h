@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EHarvestableItemSpawnerType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EHarvestableItemSpawnerType : uint8 {
     Primary,
     Secondary,

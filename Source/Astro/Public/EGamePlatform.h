@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EGamePlatform.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EGamePlatform : uint8 {
     PC,
     UniversalWindows,

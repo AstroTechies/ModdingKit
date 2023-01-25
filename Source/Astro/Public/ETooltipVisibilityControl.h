@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETooltipVisibilityControl.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETooltipVisibilityControl : uint8 {
     ShowOnFocus,
     BadgeAlwaysDetailsOnFocus,

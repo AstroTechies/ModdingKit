@@ -1,18 +1,18 @@
 #include "AstroPlayStatics.h"
 #include "Templates/SubclassOf.h"
 
-class UPrimitiveComponent;
 class AActor;
-class UChildActorComponent;
-class UObject;
-class AAstroPlanet;
-class USceneComponent;
 class AAstroCharacter;
-class UItemType;
+class AAstroPlanet;
 class APhysicalItem;
 class APlayController;
 class APlayerController;
+class UChildActorComponent;
 class UControlSymbol;
+class UItemType;
+class UObject;
+class UPrimitiveComponent;
+class USceneComponent;
 class UTexture;
 
 void UAstroPlayStatics::WeldToPreserveContraints(AActor* Actor, UPrimitiveComponent* Parent) {

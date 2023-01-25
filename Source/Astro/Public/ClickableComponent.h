@@ -1,27 +1,27 @@
 #pragma once
 #include "CoreMinimal.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "EUseContext.h"
-#include "UseContextChangeDelegateDelegate.h"
+#include "Components/ActorComponent.h"
 #include "ClickableDelegateNewDelegate.h"
-#include "UseStateChangeDelegateDelegate.h"
-#include "InteractionRedirect.h"
-#include "UseSuppressionState.h"
+#include "EUseContext.h"
 #include "EUseType.h"
+#include "InteractionRedirect.h"
+#include "UseContextChangeDelegateDelegate.h"
+#include "UseStateChangeDelegateDelegate.h"
+#include "UseSuppressionState.h"
 #include "ClickableComponent.generated.h"
 
-class UStaticMesh;
-class USceneComponent;
 class AActor;
 class APlayerController;
 class UClickableComponent;
+class USceneComponent;
+class UStaticMesh;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UClickableComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* PositioningComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -154,32 +154,32 @@ public:
     void PopUseSuppression_AuthorityOnly(const FName SuppressionId);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_UseSuppressionState();
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasInteractionRedirect();
     
     UFUNCTION(BlueprintCallable)
     bool GetUseCapability(EUseType useType);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetUseAvailability(const APlayerController* Instigator, EUseType useType);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     USceneComponent* GetPositionComponent() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static USceneComponent* GetActorClickableOrRoot(AActor* Actor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UClickableComponent* GetActorClickableOrDefault(AActor* Actor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EUseContext GetActiveUseContext() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UClickableComponent* ActorClickable(AActor* Actor);
     
 };

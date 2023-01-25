@@ -1,20 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-#include "UpdateCanLaunchSignalDelegate.h"
-#include "ReplicatedOrbitalTimeData.h"
-#include "OrbitalReplicatedData.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "Components/ActorComponent.h"
+#include "OrbitalReplicatedData.h"
+#include "ReplicatedOrbitalTimeData.h"
+#include "SignalDelegate.h"
+#include "UpdateCanLaunchSignalDelegate.h"
 #include "OrbitalNavigationComponent.generated.h"
 
-class UObject;
-class UStorageChassisComponent;
-class ASolarBody;
 class AActor;
 class AAstroPlayerController;
+class ASolarBody;
+class UObject;
 class UOrbitalNavigationComponent;
+class UStorageChassisComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UOrbitalNavigationComponent : public UActorComponent {
@@ -101,7 +101,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CurrentTime;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStorageChassisComponent* storage;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -167,87 +167,87 @@ public:
     void SetActiveLaunchLength(float newLaunchLength);
     
 protected:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSetOrbitSpeedScalarDegree(float speedScalarDegree);
     
 public:
     UFUNCTION(BlueprintCallable)
     void PerformLaunch(UObject* Target);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnStorageAttachmentsChanged(bool Entered);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSolarBodyClick(ASolarBody* SolarBody);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_TargetOrbitSpeedScalarDegree();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ReplicatedTimeData();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ReplicatedData();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOrbitSpeedInputUpOrDown(float AxisValue);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOrbitSpeedInputUp();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOrbitSpeedInputEnd();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOrbitSpeedInputDown();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnLandEndHover();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnLandClick(AActor* Actor);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnLandBeginHover();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool LocalPlayerOnBoard();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleVehicleUnmanned(AAstroPlayerController* VehicleDriver);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleVehicleManned(AAstroPlayerController* VehicleDriver);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ASolarBody* GetTargetOrbitingBody();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetOrbitSpeedPercent();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetLaunchTime();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetLaunched();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetLanding();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetLanded();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetIsInOrbit();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetCanLaunch();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetCameraUpVector();
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
@@ -256,7 +256,7 @@ public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthoritySetInterplanetaryTravelRangeMultiplier(float rangeMultiplier);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UOrbitalNavigationComponent* ActorOrbitalNavigationComponent(AActor* Actor);
     
 };

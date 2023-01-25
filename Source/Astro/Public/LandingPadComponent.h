@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SceneComponent -FallbackName=SceneComponent
+#include "Components/SceneComponent.h"
 #include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "LandingPadComponent.generated.h"
 
 class AActor;
@@ -49,23 +49,23 @@ protected:
 public:
     ULandingPadComponent();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOwnerItemMotionStateChanged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemSetInLandingPadSlot(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemRemovedFromLandingPadSlot(APhysicalItem* Item);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsOccupied() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanDeploy() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanCheckObstruction() const;
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)

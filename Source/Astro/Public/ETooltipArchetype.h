@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ETooltipArchetype.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ETooltipArchetype : uint8 {
     Custom,
     PhysicalItem,
@@ -12,5 +12,6 @@ enum class ETooltipArchetype : uint8 {
     PlanetProxy,
     CustomNonInputResponding,
     Salvage_Bundleable,
+    Salvage_Small,
 };
 

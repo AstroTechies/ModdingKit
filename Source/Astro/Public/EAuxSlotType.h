@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EAuxSlotType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EAuxSlotType : uint8 {
     None,
     Left,

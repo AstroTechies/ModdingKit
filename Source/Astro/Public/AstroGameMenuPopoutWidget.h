@@ -3,15 +3,15 @@
 #include "AstroGameMenuSpatialWindow.h"
 #include "AstroGameMenuPopoutWidget.generated.h"
 
-class UPanelWidget;
 class UAstroGameMenuPopoutWidgetContentsBase;
+class UPanelWidget;
 
 UCLASS(Abstract, Blueprintable, EditInlineNew)
 class UAstroGameMenuPopoutWidget : public UAstroGameMenuSpatialWindow {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAstroGameMenuPopoutWidgetContentsBase* PopoutContents;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -19,13 +19,13 @@ protected:
     
 public:
     UAstroGameMenuPopoutWidget();
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     UPanelWidget* GetPopoutPanelWrapper() const;
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     UPanelWidget* GetPopoutOutermostContainer() const;
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     UPanelWidget* GetPopoutContentsWrapper() const;
     
 };

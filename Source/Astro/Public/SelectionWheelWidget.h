@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "UserWidgetBlueprintDesignable.h"
+#include "EAstroSelectionWheelOptionType.h"
 #include "SelectionWheelEventDelegate.h"
 #include "SelectionWheelOption.h"
-#include "EAstroSelectionWheelOptionType.h"
+#include "Templates/SubclassOf.h"
+#include "UserWidgetBlueprintDesignable.h"
 #include "SelectionWheelWidget.generated.h"
 
-class USelectionWheelOptionWidget;
 class APlayController;
+class USelectionWheelOptionWidget;
 
 UCLASS(Abstract, Blueprintable, EditInlineNew)
 class USelectionWheelWidget : public UUserWidgetBlueprintDesignable {
@@ -27,7 +27,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSelectionWheelOption> Options;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<USelectionWheelOptionWidget*> OptionWidgets;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -36,18 +36,18 @@ protected:
 public:
     USelectionWheelWidget();
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void SetOptionWidgets(const TArray<USelectionWheelOptionWidget*>& widgets);
     
     UFUNCTION(BlueprintCallable)
     void SetCurrentSelection(int32 Selection);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool SelectionOptionTypeIsValid(APlayController* Controller, EAstroSelectionWheelOptionType OptionType);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InitializeOptionWidget(int32 OptionIndex);
     
     UFUNCTION(BlueprintCallable)

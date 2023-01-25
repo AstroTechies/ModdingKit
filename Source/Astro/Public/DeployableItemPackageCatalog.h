@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "OverrideCustomPackageItemList.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
+#include "OverrideCustomPackageItemList.h"
+#include "Templates/SubclassOf.h"
 #include "DeployableItemPackageCatalog.generated.h"
 
-class UItemType;
 class APhysicalItem;
+class UItemType;
 
 UCLASS(Blueprintable)
 class UDeployableItemPackageCatalog : public UDataAsset {

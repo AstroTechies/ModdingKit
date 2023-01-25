@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 #include "SlotItemHighlightInterface.h"
 #include "SlotReference.h"
 #include "LightboardComponent.generated.h"
@@ -18,7 +18,7 @@ protected:
 public:
     ULightboardComponent();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleSlotActuateEvent(FSlotReference pinSlot, APlayController* Instigator);
     
     

@@ -3,9 +3,9 @@
 #include "BiomeAudioEvents.h"
 #include "BiomeLayer.generated.h"
 
-class UProceduralModifier;
 class UBoundedVoxelVolumeModifier;
 class UBoundedVoxelVolumeModifierList;
+class UProceduralModifier;
 
 USTRUCT(BlueprintType)
 struct TERRAIN2_API FBiomeLayer {
@@ -23,7 +23,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UProceduralModifier*> ObjectPlacementModifiers;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UBoundedVoxelVolumeModifier*> BoundedModifiers;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

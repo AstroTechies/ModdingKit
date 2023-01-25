@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "SlotReference.h"
-#include "IndicatorsForTradeShipSlot.h"
+#include "Components/ActorComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
+#include "IndicatorsForTradeShipSlot.h"
+#include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "TradeShipComponent.generated.h"
 
-class UTradeShipDockComponent;
-class UOrbitalNavigationComponent;
+class APhysicalItem;
 class APlayController;
+class UClickQuery;
 class UItemComponent;
 class UItemType;
-class APhysicalItem;
-class UClickQuery;
+class UOrbitalNavigationComponent;
+class UTradeShipDockComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UTradeShipComponent : public UActorComponent {
@@ -35,10 +35,10 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<FSlotReference, FIndicatorsForTradeShipSlot> IndicatorsForResourceSlots;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UOrbitalNavigationComponent* OrbitalNav;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, ReplicatedUsing=OnRep_ParentDockComponent, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, ReplicatedUsing=OnRep_ParentDockComponent, meta=(AllowPrivateAccess=true))
     UTradeShipDockComponent* ParentDockComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -52,39 +52,39 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void UpdateIndicators();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SlottedItemsContentChanged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SlottedItemContainedTypeChanged(UItemComponent* ItemComponent, TSubclassOf<UItemType> NewItemType);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ShipLaunchEnded();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ShipLaunched();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetupIndicatorList();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ParentDockComponent();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ItemSetOnResourceSlot(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ItemReleasedFromResourceSlot(APhysicalItem* Item);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsDocked() const;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleQueryClickable(UClickQuery* Query);
     
 public:
@@ -95,7 +95,7 @@ public:
     void AuthoritySetParentDock(UTradeShipDockComponent* dock);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AuthorityReturnLaunchedShip();
     
 public:

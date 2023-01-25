@@ -1,8 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ParticleModuleAstroBase.h"
 #include "Distributions/DistributionFloat.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=RawDistributionFloat -FallbackName=RawDistributionFloat
+#include "ParticleModuleAstroBase.h"
 #include "ParticleModuleAstroGravity.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)

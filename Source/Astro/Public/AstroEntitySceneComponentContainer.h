@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "AstroDatumRef.h"
 #include "AstroEntityComponentContainer.h"
 #include "AstroEntitySceneComponent.h"
-#include "AstroDatumRef.h"
 #include "AstroEntitySceneComponentContainer.generated.h"
 
 UCLASS(Blueprintable)
@@ -10,7 +10,7 @@ class ASTRO_API UAstroEntitySceneComponentContainer : public UAstroEntityCompone
     GENERATED_BODY()
 public:
     UAstroEntitySceneComponentContainer();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FAstroEntitySceneComponent GetEntitySceneComponent(FAstroDatumRef SceneComponentRef, bool& bOutSuccess);
     
 };

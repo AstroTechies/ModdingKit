@@ -1,7 +1,7 @@
 #include "HangingSlotComponent.h"
 
-class ASlotConnection;
 class APlayController;
+class ASlotConnection;
 
 void UHangingSlotComponent::PositionConnection(ASlotConnection* Connection, APlayController* Controller, FVector& outNormal, FVector& OutLocation) {
 }

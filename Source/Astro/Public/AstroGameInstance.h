@@ -1,33 +1,33 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "WorldSingletons.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=GameInstance -FallbackName=GameInstance
-#include "OnLoadingScreenCompletedDelegate.h"
-#include "OnGameplayStartedDelegate.h"
-#include "OnTrialLicenseActivatedDelegate.h"
-#include "OnAsyncMapLoadStartedDelegate.h"
-#include "OnLicenseLostDelegate.h"
-#include "OnFullLicenseActivatedDelegate.h"
-#include "MaterialInstanceCache.h"
-#include "OnTrialExpiringSoonDelegate.h"
-#include "SignalDelegate.h"
 #include "AccountLinkCompleteDelegate.h"
-#include "OnMultiplayerModeChangedDelegate.h"
-#include "OnlineManagerErrorDelegate.h"
-#include "JoinFriendSessionCompleteDelegate.h"
-#include "OnJoinedAsClientDelegate.h"
-#include "PlatformLogoutCompleteDelegate.h"
-#include "PlatformLoginCompleteDelegate.h"
 #include "ActorTemplateCache.h"
 #include "CheckUserPrivilegeCompleteDelegate.h"
+#include "JoinFriendSessionCompleteDelegate.h"
+#include "MaterialInstanceCache.h"
+#include "OnAsyncMapLoadStartedDelegate.h"
+#include "OnFullLicenseActivatedDelegate.h"
+#include "OnGameplayStartedDelegate.h"
+#include "OnJoinedAsClientDelegate.h"
+#include "OnLicenseLostDelegate.h"
+#include "OnLoadingScreenCompletedDelegate.h"
+#include "OnMultiplayerModeChangedDelegate.h"
+#include "OnTrialExpiringSoonDelegate.h"
+#include "OnTrialLicenseActivatedDelegate.h"
+#include "OnlineManagerErrorDelegate.h"
+#include "PlatformLoginCompleteDelegate.h"
+#include "PlatformLogoutCompleteDelegate.h"
+#include "SignalDelegate.h"
+#include "Templates/SubclassOf.h"
+#include "WorldSingletons.h"
 #include "AstroGameInstance.generated.h"
 
-class UMessageOfTheDay;
 class UAstroServerCommExecutor;
-class UWorld;
-class UUserWidget;
+class UMessageOfTheDay;
 class UObject;
+class UUserWidget;
+class UWorld;
 
 UCLASS(Blueprintable, NonTransient)
 class ASTRO_API UAstroGameInstance : public UGameInstance {
@@ -129,16 +129,16 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<UWorld*, FWorldSingletons> WorldSingletons;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UUserWidget* ActiveLoadingScreen;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UUserWidget* ActiveWaitForInputScreen;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UUserWidget* ActiveConfirmChangeUsersPopup;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UUserWidget* ActiveReconnectControllerPopup;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -200,10 +200,10 @@ public:
     UFUNCTION(BlueprintCallable)
     void NotifyActorBeginPlay();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPlayTogetherSessionPending() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsLoadingScreenActive();
     
     UFUNCTION(BlueprintCallable)
@@ -212,26 +212,26 @@ public:
     UFUNCTION(BlueprintCallable)
     bool IsGameInTrialMode();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasIntroCinematicCompleted();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasGameSessionStarted() const;
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleServerListCacheUpdated();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleFriendsListCacheUpdated();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleCultureChanged();
     
 private:
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     float GetEstimatedLoadPercentage(const UObject* WorldContextObject, const float dt, const bool lastCall);
     
     UFUNCTION(BlueprintCallable)
@@ -240,16 +240,16 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintCosmetic)
     void DisplayConfirmChangeUsersPopup();
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DebugLicenseOverride(int32 Type);
     
-    UFUNCTION(Exec)
+    UFUNCTION(BlueprintCallable, Exec)
     void DebugExpirationOverride();
     
     UFUNCTION(BlueprintCallable)
     void CheckUserPrivilege(FCheckUserPrivilegeComplete OnComplete);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool AllowLoadingScreenDismiss();
     
 };

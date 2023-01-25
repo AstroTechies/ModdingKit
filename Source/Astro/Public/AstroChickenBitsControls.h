@@ -8,28 +8,28 @@ class UAstroChickenBitsControls : public UObject {
     GENERATED_BODY()
 public:
     UAstroChickenBitsControls();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetCvar_Vehicles_ShowDrillDebugVis();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetCvar_Vehicles_ApplyDrillDeformations();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetCvar_Vehicles_AllowConstraintConnections();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetCvar_Menu_AlwaysPlayIntroCutscene();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetCvar_Menu_AllowSaveFileRenaming();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetCvar_Menu_AllowSaveFileDuplication();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetCvar_Controls_UseItemMoveTierRestrictions();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetCvar_Controls_UseActiveGrab();
     
 };

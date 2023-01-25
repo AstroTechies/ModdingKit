@@ -1,17 +1,17 @@
 #include "MultiTool.h"
-#include "Net/UnrealNetwork.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=InputComponent -FallbackName=InputComponent
 #include "Activation.h"
+#include "Net/UnrealNetwork.h"
 
-class UPrimitiveComponent;
 class AActor;
-class APlayController;
 class APhysicalItem;
+class APlayController;
 class ASlotConnection;
-class UCrackableActorComponent;
 class UActuatorComponent;
-class USceneComponent;
 class UClickableComponent;
+class UCrackableActorComponent;
+class UPrimitiveComponent;
+class USceneComponent;
 class UTooltipComponent;
 
 void UMultiTool::UnSuppressClickables() {
@@ -181,6 +181,9 @@ void UMultiTool::RouteDrivingTooltipInteractionActivated(FName ActionName) {
 }
 
 void UMultiTool::RouteDrivingTooltipInputUnhandled(TEnumAsByte<EInputEvent> InputType, FName ActionName) {
+}
+
+void UMultiTool::ResetSuppressClickables() {
 }
 
 void UMultiTool::PushInteractionOverride(AActor* Actor, USceneComponent* PivotComponent, UClickableComponent* clickable) {

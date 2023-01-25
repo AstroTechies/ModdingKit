@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "ItemCatalogEntry.h"
 #include "ItemCatalogEntryDisplay.h"
 #include "OnItemIconMeshClickedDelegate.h"
-#include "ItemCatalogEntry.h"
 #include "ItemCatalogEntrySpindleDisplay.generated.h"
 
-class UPrimitiveComponent;
 class UMaterialInterface;
 class UMeshComponent;
+class UPrimitiveComponent;
 class UStaticMeshComponent;
 
 UCLASS(Blueprintable)
@@ -31,10 +31,10 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UMaterialInterface* UnlockedItemIconMaterial;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UStaticMeshComponent*> ItemIconMeshComponents;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UMeshComponent* ItemIconMeshParent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -51,11 +51,11 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetItemIconMeshComponents(UMeshComponent* newItemIconMeshParent, const TArray<UStaticMeshComponent*>& newItemIconMeshComponents);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ItemIconMeshClicked(UPrimitiveComponent* clickedComponent, FKey ButtonPressed);
     
 protected:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 ContinuousIndexToItemIconMeshIndex(const int32 continuousIndex) const;
     
 };

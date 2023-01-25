@@ -4,5 +4,5 @@
 
 class ASolarBody;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSolarBodyClickSignal, ASolarBody*, SolarBody);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSolarBodyClickSignal, ASolarBody*, SolarBody);
 

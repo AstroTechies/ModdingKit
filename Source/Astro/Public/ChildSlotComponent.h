@@ -1,20 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "CustomChildActorComponent.h"
-#include "ESlottableItemsFiltrationListBehavior.h"
+#include "EAuxSlotType.h"
 #include "ESlotConfiguration.h"
 #include "ESlotConnectorType.h"
-#include "EAuxSlotType.h"
+#include "ESlottableItemsFiltrationListBehavior.h"
 #include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "ChildSlotComponent.generated.h"
 
-class UItemType;
 class AItemSlot;
-class UItemList;
 class APhysicalItem;
-class UPhysicalItemSpawnList;
+class UItemList;
 class UItemListWeighted;
+class UItemType;
+class UPhysicalItemSpawnList;
 class URewardSelectionTemplate;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
@@ -85,7 +85,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetChildSlotClass(TSubclassOf<AItemSlot> InClass);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FSlotReference MakeReference();
     
 };

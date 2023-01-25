@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EResourceExtractorActivationFlags.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EResourceExtractorActivationFlags : uint8 {
     None,
     HasPower,

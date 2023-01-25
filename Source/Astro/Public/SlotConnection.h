@@ -1,31 +1,31 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "GameFramework/Actor.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
 //CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
-#include "SlotReference.h"
 #include "OnApproximateSplineMeshLengthChangedDelegate.h"
-#include "SignalDelegate.h"
 #include "PreDisconnectedDelegate.h"
-#include "SlotConnectionReplicationData.h"
+#include "SignalDelegate.h"
 #include "SlotConnectionClientMotionData.h"
 #include "SlotConnectionMotionReplicationData.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
+#include "SlotConnectionReplicationData.h"
+#include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "SlotConnection.generated.h"
 
-class UStaticMesh;
-class APhysicsConstraintActor;
-class UItemType;
-class ASlotConnection;
-class UStaticMeshComponent;
-class UInstancedStaticMeshComponent;
-class USplineMeshComponent;
-class USceneComponent;
 class APhysicalItem;
+class APhysicsConstraintActor;
+class ASlotConnection;
 class UAdaptiveTickComponent;
-class UPrimitiveComponent;
 class UAstroSaveCustomArchiveProxy;
+class UInstancedStaticMeshComponent;
+class UItemType;
+class UPrimitiveComponent;
+class USceneComponent;
+class USplineMeshComponent;
+class UStaticMesh;
+class UStaticMeshComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API ASlotConnection : public AActor {
@@ -208,16 +208,16 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> ConnectionPreventionTags;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* Connector;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     AActor* HangingActor;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UInstancedStaticMeshComponent* SegmentComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USplineMeshComponent* SplineMeshComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -266,19 +266,19 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     FSlotConnectionMotionReplicationData m_replicationMotionData;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAdaptiveTickComponent* AdaptiveTickComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USceneComponent* SourcePoint;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USceneComponent* TargetPoint;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FTimerHandle DestroyTimer;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UPrimitiveComponent* ConnectedComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -289,66 +289,66 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 private:
-    UFUNCTION(Server, Unreliable, WithValidation)
+    UFUNCTION(BlueprintCallable, Server, Unreliable, WithValidation)
     void ServerUpdateClientMotion(FSlotConnectionClientMotionData motionData);
     
 public:
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerReleaseCable();
     
-    UFUNCTION(Reliable, Server, WithValidation)
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerDoTimedDestruction();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy);
     
 public:
     UFUNCTION(BlueprintCallable)
     void PlaceExtenderForHeldCable(APhysicalItem* ExtenderBundle);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnTetherAttachComponentHasOxygenChanged(bool bHasOxygen);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSelfDestroyed(AActor* Actor);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSelfClicked(AActor* Actor, FKey Key);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnSegmentSpawn();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnSegmentDestroy();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_SlotData();
     
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnIsCarryingOxygenChanged(bool bIsCarryingOxygen);
     
 public:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnHoverOtherSlot(FSlotReference Slot);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnFullyRetracted();
     
 public:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnDisconnected();
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnConnected();
     
 private:
-    UFUNCTION(NetMulticast, Unreliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
     void MulticastBeginHoverOverSlotFX();
     
 public:
@@ -358,22 +358,22 @@ public:
     UFUNCTION(BlueprintCallable)
     void MakeComponentConnection(UPrimitiveComponent* Component, const FVector& Location, const FVector& Normal);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FSlotReference GetOtherSlot(FSlotReference Slot) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetEndpointLocation(bool allowConnections);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetCurveNormal(float Alpha, float Tensile) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetCurveLocation(float Alpha, float Tensile) const;
     
     UFUNCTION(BlueprintCallable)
     bool GetConnectionMidpoint(FVector& outVector);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanConnect(FSlotReference Slot);
     
     UFUNCTION(BlueprintCallable)

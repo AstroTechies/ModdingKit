@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "SlotOrganizationRule.h"
+#include "Templates/SubclassOf.h"
 #include "StorageCanisterOrganizationRule.generated.h"
 
 class UItemType;
@@ -14,7 +14,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetStoredItemTypeWhitelist(TArray<TSubclassOf<UItemType>> ItemTypes);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SetIsInputRule(bool isInput);
     
     UFUNCTION(BlueprintCallable)

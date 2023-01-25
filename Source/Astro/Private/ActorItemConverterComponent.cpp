@@ -3,8 +3,8 @@
 #include "Templates/SubclassOf.h"
 
 class AAstroCharacter;
-class UItemType;
 class APhysicalItem;
+class UItemType;
 
 void UActorItemConverterComponent::OnReplicationDataChanged() {
 }
@@ -99,5 +99,6 @@ UActorItemConverterComponent::UActorItemConverterComponent() {
     this->bKeepPartialOutputBetweenSaves = false;
     this->bRefundInputResourcesOnCancel = false;
     this->bIgnoresPower = false;
+    this->bPushUnwantedInputItems = true;
 }
 

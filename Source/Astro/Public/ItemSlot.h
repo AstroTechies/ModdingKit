@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
-#include "ESlotType.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "GameFramework/Actor.h"
+#include "ESlotType.h"
+#include "Templates/SubclassOf.h"
 #include "ItemSlot.generated.h"
 
-class ASlotConnection;
 class AItemSlot;
-class USubslot;
-class USlotBehavior;
-class UClickableComponent;
 class APhysicalItem;
+class ASlotConnection;
 class UChildSlotComponent;
+class UClickableComponent;
+class USlotBehavior;
+class USubslot;
 
 UCLASS(Blueprintable)
 class ASTRO_API AItemSlot : public AActor {
@@ -72,7 +72,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool CanHoldItem;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UClickableComponent* ClickableComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -88,22 +88,22 @@ public:
     FString DetachSoundEvent;
     
     AItemSlot();
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnItemSet(APhysicalItem* LastItem, APhysicalItem* NewItem);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnItemReleased(APhysicalItem* LastItem);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnConnectionDestroyed(UChildSlotComponent* Other, bool IsSource);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnConnectionBuilt(ASlotConnection* Connection, bool IsSource);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnBuildingConnection(ASlotConnection* Connection);
     
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool AcceptsItem(APhysicalItem* Item);
     
 };

@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "ECrackableActorNetworkingPolicy.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ECrackableActorNetworkingPolicy : uint8 {
     LocalOnlyNoNetworking,
     OwnerOnlyWithNetworking,

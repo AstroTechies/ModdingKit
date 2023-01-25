@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "Components/ActorComponent.h"
 #include "EnableSignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SlotReference.h"
 #include "InterruptPowerConnectionComponent.generated.h"
 
@@ -27,10 +27,10 @@ public:
     void ToggleInterrupt(bool bInterrupt);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ConnectionInterrupted();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnConnectionPostComplete(FSlotReference Slot, ASlotConnection* Connection);
     
 };

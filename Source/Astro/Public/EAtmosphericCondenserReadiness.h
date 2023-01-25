@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EAtmosphericCondenserReadiness.generated.h"
 
-UENUM()
-enum class EAtmosphericCondenserReadiness {
+UENUM(BlueprintType)
+enum class EAtmosphericCondenserReadiness : uint8 {
     ReadyToCondense,
     OuputSlotFull,
     Invalid,

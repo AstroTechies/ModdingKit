@@ -1,7 +1,7 @@
 #include "RailComponent.h"
 
-class APhysicalItem;
 class AActor;
+class APhysicalItem;
 
 bool URailComponent::SendItem(APhysicalItem* Item, AActor* Source) {
     return false;

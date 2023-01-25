@@ -2,12 +2,12 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
+class AActor;
+class APhysicalItem;
 class APlayerController;
 class UItemType;
-class UStorageChassisComponent;
-class APhysicalItem;
-class AActor;
 class USlotOrganizationRule;
+class UStorageChassisComponent;
 
 void UStorageChassisComponent::TertiaryUse(APlayerController* Controller) {
 }

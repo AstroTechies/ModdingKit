@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "ETetherNetworkType.generated.h"
 
-UENUM()
-enum class ETetherNetworkType {
+UENUM(BlueprintType)
+enum class ETetherNetworkType : uint8 {
     NullNetwork,
     TetherPostNetwork,
     TetherableOxygenProviderNetwork,

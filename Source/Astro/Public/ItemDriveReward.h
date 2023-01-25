@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "ItemDriveRewardInGameChoice.h"
+#include "Templates/SubclassOf.h"
 #include "ItemDriveReward.generated.h"
 
 class UItemType;

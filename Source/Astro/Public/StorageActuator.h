@@ -11,16 +11,16 @@ class ASTRO_API AStorageActuator : public AFullnessActuator {
 public:
     AStorageActuator();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AuthorityHandleLeadRailCarReleasedFromSlot(bool NewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AuthorityHandleLeadRailCarPlacedInSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AuthorityHandleAttachStorageSlotEvent(APhysicalItem* movedItem);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AuthorityHandleAttachStorageItemAmountEvent();
     
 };

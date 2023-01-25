@@ -5,5 +5,5 @@
 
 class ULockingMechanism;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FLockingMechanismSignal, ULockingMechanism*, SignallingLockingMechanism, const FLockChangedEventMetadata&, EventData);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FLockingMechanismSignal, ULockingMechanism*, SignallingLockingMechanism, const FLockChangedEventMetadata&, EventData);
 

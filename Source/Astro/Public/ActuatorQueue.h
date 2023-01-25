@@ -14,10 +14,10 @@ private:
     
 public:
     UActuatorQueue();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetActuatorTickFrequency();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetActuatorDelayTickInterval();
     
 };

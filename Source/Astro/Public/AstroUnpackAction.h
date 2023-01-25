@@ -10,7 +10,7 @@ class ASTRO_API UAstroUnpackAction : public UAstroPackagingAction {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UDeployableItemPackageComponent* DeployableItemComponent;
     
 public:

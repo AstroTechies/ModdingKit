@@ -1,8 +1,8 @@
 #include "ResourceCacheComponent.h"
 #include "Templates/SubclassOf.h"
 
-class UItemType;
 class AAstroCharacter;
+class UItemType;
 
 void UResourceCacheComponent::SwapResources(TSubclassOf<UItemType> MineralType) {
 }

@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroFloatAchievementProgress.h"
-#include "AstroCountAchievementProgress.h"
 #include "AstroCollectionAchievementProgress.h"
+#include "AstroCountAchievementProgress.h"
+#include "AstroFloatAchievementProgress.h"
 #include "AstroPlayerAchievementProgress.generated.h"
 
 USTRUCT(BlueprintType)

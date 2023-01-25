@@ -1,6 +1,5 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=ReplicationGraph -ObjectName=ReplicationGraphNode -FallbackName=ReplicationGraphNode
 #include "ReplicationGraph.h"
 #include "AstroReplicationGraphNode_PlayerStateFrequencyLimiter.generated.h"
 

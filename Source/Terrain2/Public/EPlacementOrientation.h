@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EPlacementOrientation.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EPlacementOrientation : uint8 {
     AlignToSurfaceNormal,
     AlignToSurfaceNormalInverted,

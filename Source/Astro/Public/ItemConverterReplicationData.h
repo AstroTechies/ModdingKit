@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EItemConverterState.h"
 #include "ActiveItemConversionProgress.h"
+#include "EItemConverterState.h"
 #include "SlotReference.h"
 #include "ItemConverterReplicationData.generated.h"
 

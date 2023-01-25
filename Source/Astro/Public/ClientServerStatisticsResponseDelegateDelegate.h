@@ -3,5 +3,5 @@
 #include "ServerStatistics.h"
 #include "ClientServerStatisticsResponseDelegateDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FClientServerStatisticsResponseDelegate, const FServerStatistics&, ServerStatistics);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FClientServerStatisticsResponseDelegate, const FServerStatistics&, ServerStatistics);
 

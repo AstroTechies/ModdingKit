@@ -1,31 +1,31 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ActuatorConnections.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "Components/ActorComponent.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "ItemHighlightInterface.h"
-#include "ActuatorConnectorLocalState.h"
 #include "ActuateDelegateDelegate.h"
 #include "ActuatorCableLocalState.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "EFullnessActuatorEventType.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
-#include "SlotReference.h"
+#include "ActuatorConnections.h"
+#include "ActuatorConnectorLocalState.h"
 #include "EAuxSlotType.h"
+#include "EFullnessActuatorEventType.h"
+#include "ItemHighlightInterface.h"
+#include "SignalDelegate.h"
+#include "SlotReference.h"
 #include "ActuatorComponent.generated.h"
 
 class AActor;
+class APlayController;
+class UBoxComponent;
+class UClickQuery;
 class UInstancedStaticMeshComponent;
 class UMaterialInstanceDynamic;
-class UBoxComponent;
+class UObject;
+class UPrimitiveComponent;
+class USceneComponent;
 class USlotsComponent;
 class UTooltipComponent;
-class USceneComponent;
-class UPrimitiveComponent;
-class UClickQuery;
-class APlayController;
-class UObject;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UActuatorComponent : public UActorComponent, public IItemHighlightInterface {
@@ -60,34 +60,34 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<int32, FActuatorConnectorLocalState> RerouteNodeLocalState;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UInstancedStaticMeshComponent* CableMeshes;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UMaterialInstanceDynamic* CableMaterial;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UInstancedStaticMeshComponent* ConnectorMeshes;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UMaterialInstanceDynamic* ConnectorMaterial;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UInstancedStaticMeshComponent* RerouteNodeMeshes;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UMaterialInstanceDynamic* RerouteNodeMaterial;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UBoxComponent* Bounds;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USlotsComponent* SlotsComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UTooltipComponent* RerouteNodeTooltip;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USceneComponent* RerouteNodeTooltipAnchor;
     
 public:
@@ -95,44 +95,44 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRerouteNodeEndCursorOver(UPrimitiveComponent* TouchedComponent);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_Connections();
     
 public:
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastPlayConnectionAudio(const FString& AudioEvent, FVector Location, FRotator Rotation);
     
 protected:
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastOnActuate(EFullnessActuatorEventType eventType);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void LocalUseRerouteNode();
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleTracePrimitiveDestroyed(FSlotReference Slot);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleTracePrimitiveCreated(FSlotReference Slot);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleRemovedFromSlot();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleQueryClickable(UClickQuery* Query);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePlacedInSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleDestroyed(AActor* DestroyedActor);
     
 public:
@@ -140,7 +140,7 @@ public:
     void AuthorityScheduleActuation(APlayController* Instigator, int32 tickDelay, EFullnessActuatorEventType FullnessActuatorEventType, const UObject* UniqueReference, bool makeUnique, EAuxSlotType slotTypeToTrigger);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AuthorityHandleSlotClick(FSlotReference clickedSlot);
     
     

@@ -1,15 +1,15 @@
 #include "SnailItem.h"
-#include "Net/UnrealNetwork.h"
-#include "Templates/SubclassOf.h"
-#include "PlanetEffect.h"
 #include "AdaptiveTickComponent.h"
+#include "Net/UnrealNetwork.h"
+#include "PlanetEffect.h"
+#include "Templates/SubclassOf.h"
 
-class UCrackableActorComponent;
-class APhysicalItem;
 class AActor;
-class UPrimitiveComponent;
+class APhysicalItem;
+class UCrackableActorComponent;
 class UItemList;
 class UItemType;
+class UPrimitiveComponent;
 
 
 

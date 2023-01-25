@@ -1,22 +1,22 @@
 #include "AstroGameState.h"
-#include "Net/UnrealNetwork.h"
-#include "Templates/SubclassOf.h"
-#include "RewardSystem.h"
-#include "RewardState.h"
-#include "AstropediaAssetManager.h"
-#include "ActuatorQueue.h"
 #include "ActorEntityLinkComponent.h"
+#include "ActuatorQueue.h"
+#include "AstropediaAssetManager.h"
+#include "Net/UnrealNetwork.h"
+#include "RewardState.h"
+#include "RewardSystem.h"
+#include "Templates/SubclassOf.h"
 
-class UItemType;
+class AActor;
+class AAstroCharacter;
+class AAstroMissionsManager;
+class AAstroPlanet;
 class APhysicalItem;
 class ARailNetwork;
 class UAstroSaveCustomArchiveProxy;
-class AActor;
-class AAstroMissionsManager;
-class USoundBase;
+class UItemType;
 class UParticleSystem;
-class AAstroPlanet;
-class AAstroCharacter;
+class USoundBase;
 
 void AAstroGameState::UnregisterSpawnedStartingItem(APhysicalItem* Item) {
 }
@@ -55,6 +55,12 @@ void AAstroGameState::SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* prox
 }
 
 void AAstroGameState::RemoveNewPlayerSpawnLocation(AActor* Spawn) {
+}
+
+void AAstroGameState::RemoveActivePlacementThemes(const TArray<FName>& themeNames) {
+}
+
+void AAstroGameState::RemoveActivePlacementTheme(const FName ThemeName) {
 }
 
 void AAstroGameState::RegisterSpawnedStartingItem(APhysicalItem* Item) {
@@ -167,6 +173,10 @@ bool AAstroGameState::HasEverBeenCreativeGame() const {
 void AAstroGameState::HandleOnGameplayStartedEvent(bool StartedInExistingSavedGame) {
 }
 
+bool AAstroGameState::GetThemeIsActive(const FName ThemeName) {
+    return false;
+}
+
 TArray<APhysicalItem*> AAstroGameState::GetStartingItemArrayRef() {
     return TArray<APhysicalItem*>();
 }
@@ -243,6 +253,12 @@ bool AAstroGameState::AreBeaconsVisible() const {
 }
 
 void AAstroGameState::AddAndPrioritizeNewPlayerSpawnLocation(AActor* Spawn) {
+}
+
+void AAstroGameState::AddActivePlacementThemes(const TArray<FName>& themeNames) {
+}
+
+void AAstroGameState::AddActivePlacementTheme(const FName ThemeName) {
 }
 
 void AAstroGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {

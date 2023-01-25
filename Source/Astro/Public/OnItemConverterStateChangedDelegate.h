@@ -3,5 +3,5 @@
 #include "EItemConverterState.h"
 #include "OnItemConverterStateChangedDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnItemConverterStateChanged, EItemConverterState, NewState, EItemConverterState, prevState);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnItemConverterStateChanged, EItemConverterState, NewState, EItemConverterState, prevState);
 

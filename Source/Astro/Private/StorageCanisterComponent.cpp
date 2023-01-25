@@ -1,9 +1,9 @@
 #include "StorageCanisterComponent.h"
 #include "Templates/SubclassOf.h"
 
-class UItemType;
 class APhysicalItem;
 class UItemComponent;
+class UItemType;
 
 void UStorageCanisterComponent::OnSlottedItemsChanged(APhysicalItem* changedItem) {
 }

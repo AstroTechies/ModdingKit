@@ -11,22 +11,22 @@ class ASTRO_API ABatteryActuator : public AFullnessActuator {
 public:
     ABatteryActuator();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAuthorityFullyCharged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAuthorityEndFullyCharged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAuthorityEndEmptyCharge();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAuthorityEmptyCharge();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AuthorityHandleTargetStorageSlotsReset();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AuthorityHandleAttachedStorageSlotEvent(APhysicalItem* movedItem);
     
 };

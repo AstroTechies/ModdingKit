@@ -2,10 +2,10 @@
 #include "Net/UnrealNetwork.h"
 
 class AActor;
-class UPrimitiveComponent;
 class APlayController;
 class UClickQuery;
 class UObject;
+class UPrimitiveComponent;
 
 void UActuatorComponent::OnRerouteNodeEndCursorOver(UPrimitiveComponent* TouchedComponent) {
 }

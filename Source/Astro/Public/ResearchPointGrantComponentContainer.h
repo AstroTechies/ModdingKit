@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroEntityComponentContainer.h"
 #include "AstroDatumRef.h"
+#include "AstroEntityComponentContainer.h"
 #include "ResearchPointGrantComponent.h"
 #include "ResearchPointGrantComponentContainer.generated.h"
 
@@ -10,10 +10,10 @@ class ASTRO_API UResearchPointGrantComponentContainer : public UAstroEntityCompo
     GENERATED_BODY()
 public:
     UResearchPointGrantComponentContainer();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FResearchPointGrantComponent GetResearchPointGrantComponent(FAstroDatumRef ResearchPointGrantComponentRef, bool& bOutSuccess);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FResearchPointGrantComponent FindResearchPointGrantComponent(FAstroDatumRef EntityRef, bool& bOutSuccess);
     
 };

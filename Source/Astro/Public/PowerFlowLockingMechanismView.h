@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "LockChangedEventMetadata.h"
 #include "LockingMechanismView.h"
 #include "SignalDelegate.h"
-#include "LockChangedEventMetadata.h"
 #include "PowerFlowLockingMechanismView.generated.h"
 
 class ULockingMechanism;
@@ -20,10 +20,10 @@ public:
     UPowerFlowLockingMechanismView();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_CompletionRatio();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAccumulatedFullyPoweredTimeChanged(ULockingMechanism* LockingMechanism, const FLockChangedEventMetadata& EventData);
     
 };

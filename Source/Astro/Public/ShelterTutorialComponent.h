@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
+#include "Components/ActorComponent.h"
 #include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "ShelterTutorialComponent.generated.h"
 
+class APhysicalItem;
 class AResourceInfo;
 class ASlotConnection;
-class APhysicalItem;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UShelterTutorialComponent : public UActorComponent {
@@ -47,13 +47,13 @@ public:
     void SetCableTutorialKey(FName tutorialKey);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCablePulled(FSlotReference cableSlot, ASlotConnection* cable);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCableDestroyed(FSlotReference cableSlot, ASlotConnection* cable);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCableConnected(FSlotReference cableSlot, ASlotConnection* cable);
     
 };

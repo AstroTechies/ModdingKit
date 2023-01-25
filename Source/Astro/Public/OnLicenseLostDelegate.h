@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 #include "OnLicenseLostDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnLicenseLost);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnLicenseLost);
 

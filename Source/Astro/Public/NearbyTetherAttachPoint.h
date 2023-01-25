@@ -8,7 +8,7 @@ USTRUCT(BlueprintType)
 struct FNearbyTetherAttachPoint {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UTetherAttachComponent* NearbyTetherAttachComponent;
     
     ASTRO_API FNearbyTetherAttachPoint();

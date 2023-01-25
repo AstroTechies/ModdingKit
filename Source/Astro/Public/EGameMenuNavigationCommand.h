@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EGameMenuNavigationCommand.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EGameMenuNavigationCommand : uint8 {
     None,
     Left,

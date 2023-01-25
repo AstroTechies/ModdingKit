@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ActuatorEventDelegateDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "ActuatorEventDelegateDelegate.h"
 #include "ItemDelegateDelegate.h"
 #include "SignalDelegate.h"
-#include "SlotDelegateDelegate.h"
 #include "SlotConnectionDelegateDelegate.h"
+#include "SlotDelegateDelegate.h"
 #include "SlotDelegates.generated.h"
 
 UCLASS(Blueprintable)

@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "StreamingPowerPacket.h"
-#include "AstroEntityComponent.h"
 #include "AstroDatumRef.h"
+#include "AstroEntityComponent.h"
+#include "StreamingPowerPacket.h"
 #include "StreamingPowerDirectionalConnectionComponent.generated.h"
 
 USTRUCT(BlueprintType)

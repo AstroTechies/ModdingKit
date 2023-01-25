@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "LockingMechanismDefinition.h"
+#include "Templates/SubclassOf.h"
 #include "ResourceConsumptionLockingMechanismDefinition.generated.h"
 
 class UItemType;

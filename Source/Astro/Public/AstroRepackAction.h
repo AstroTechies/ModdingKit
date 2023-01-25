@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "AstroPackagingAction.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
+#include "AstroPackagingAction.h"
 #include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "AstroRepackAction.generated.h"
 
-class UPrimitiveComponent;
+class APhysicalItem;
+class ARepackager;
 class UCurveFloat;
 class UItemType;
-class ARepackager;
-class APhysicalItem;
+class UPrimitiveComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API UAstroRepackAction : public UAstroPackagingAction {
@@ -47,7 +47,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 ReclaimableRewardOwnerPlayerIDHash;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPrimitiveComponent* IndicatorComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -62,7 +62,7 @@ protected:
 public:
     UAstroRepackAction();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnInterpolationToTopOfTargetFinished();
     
 };

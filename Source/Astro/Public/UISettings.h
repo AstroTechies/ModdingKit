@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DeveloperSettings -FallbackName=DeveloperSettings
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=RuntimeFloatCurve -FallbackName=RuntimeFloatCurve
+#include "Templates/SubclassOf.h"
 #include "UISettings.generated.h"
 
 class UAstroErrorWidget;
-class UUserWidget;
 class UUISettings;
+class UUserWidget;
 class UVirtualCursorWidget;
 
-UCLASS(Blueprintable, DefaultConfig, Config=Game)
+UCLASS(Blueprintable, Config=Engine, DefaultConfig, Config=Game)
 class ASTRO_API UUISettings : public UDeveloperSettings {
     GENERATED_BODY()
 public:
@@ -83,7 +83,7 @@ private:
     
 public:
     UUISettings();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UUISettings* GetAstroUISettings();
     
 };

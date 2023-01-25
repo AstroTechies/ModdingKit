@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SlotReference.h"
 #include "SlotIndicatorDefinition.h"
+#include "SlotReference.h"
 #include "SlotIndicatorLocation.generated.h"
 
 USTRUCT(BlueprintType)

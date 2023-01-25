@@ -14,7 +14,7 @@ public:
     uint8 bApplyOwnerScale: 1;
     
 protected:
-    UPROPERTY(EditAnywhere, Transient)
+    UPROPERTY(EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<ASolarBody> CurrentSolarBody;
     
 public:

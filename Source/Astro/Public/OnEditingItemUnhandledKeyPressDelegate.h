@@ -5,5 +5,5 @@
 
 class UAstroGameMenuFocusItemWidget;
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnEditingItemUnhandledKeyPress, FKey, KeyPressed, UAstroGameMenuFocusItemWidget*, FocusableWidget);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnEditingItemUnhandledKeyPress, FKey, KeyPressed, UAstroGameMenuFocusItemWidget*, FocusableWidget);
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SlottedItemRequirement.h"
 #include "LockingMechanismDefinition.h"
+#include "SlottedItemRequirement.h"
 #include "SlottedItemLockingMechanismDefinition.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)

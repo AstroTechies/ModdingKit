@@ -1,9 +1,9 @@
 #include "T2CanisterComponent.h"
 #include "Templates/SubclassOf.h"
 
-class UItemType;
 class APhysicalItem;
 class UItemComponent;
+class UItemType;
 
 void UT2CanisterComponent::OnSlottedItemsChanged(APhysicalItem* changedItem) {
 }

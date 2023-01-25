@@ -1,26 +1,26 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
+#include "GameFramework/Actor.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
 #include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "TextDelegateDelegate.h"
 #include "ResourceInfo.generated.h"
 
-class UPrimitiveComponent;
-class UAdaptiveTickComponent;
-class UStaticMeshComponent;
 class APhysicalItem;
+class UAdaptiveTickComponent;
 class UItemType;
+class UPrimitiveComponent;
+class UStaticMeshComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API AResourceInfo : public AActor {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAdaptiveTickComponent* AdaptiveTick;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* StaticMesh;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -54,16 +54,16 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetPrimaryItemTypeAndStoredSubType(TSubclassOf<UItemType> primaryItemType, TSubclassOf<UItemType> storedSubType);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnSpawn();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void MeshCursorEnd(UPrimitiveComponent* Component);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void MeshCursorBegin(UPrimitiveComponent* Component);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void MeshClicked(UPrimitiveComponent* Component, FKey Key);
     
 };

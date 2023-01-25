@@ -1,6 +1,6 @@
 #include "VtolItem.h"
-#include "Net/UnrealNetwork.h"
 #include "FuelConsumerComponent.h"
+#include "Net/UnrealNetwork.h"
 
 class AAstroPlayerController;
 class ASolarBody;

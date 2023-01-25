@@ -11,10 +11,10 @@ public:
     bool bFullScreen;
     
     UAstroGameMenuSubPaneWidget();
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void NavigatedAwayFrom(bool isNavigateBack);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void MenuBeingClosed();
     
 };

@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 #include "OnUnlockNotificationCompleteDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnUnlockNotificationComplete);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnUnlockNotificationComplete);
 

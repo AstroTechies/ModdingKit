@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EClassRepNodeMapping.generated.h"
 
-UENUM()
-enum class EClassRepNodeMapping {
+UENUM(BlueprintType)
+enum class EClassRepNodeMapping : uint8 {
     NotRouted,
     RelevantAllConnections,
     Spatialize_Static,

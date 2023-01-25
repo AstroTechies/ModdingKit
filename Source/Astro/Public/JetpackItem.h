@@ -1,26 +1,26 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "PhysicalItem.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-#include "ERemainingFuelState.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EPhysicalSurface -FallbackName=EPhysicalSurface
+#include "ERemainingFuelState.h"
+#include "PhysicalItem.h"
 #include "JetpackItem.generated.h"
 
-class UFuelConsumerComponent;
-class UJetpackMovementOverrideComponent;
 class AAstroCharacter;
 class ABackpack;
+class UFuelConsumerComponent;
+class UJetpackMovementOverrideComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API AJetpackItem : public APhysicalItem {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UFuelConsumerComponent* FuelConsumerComponent;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UJetpackMovementOverrideComponent* JetpackMovementOverride;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -52,119 +52,119 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SendStateTelemetry();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SendPostRateLimitTelemetry();
     
 public:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnUpdateNozzleDirection(FVector NewNozzleDirection);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSlottedItemsChanged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_RemainingFuelState();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_NozzleDirection();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_JetpackActive();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_FuelPortionAmount();
     
 public:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnPortionDepleted();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnPortionChanged(float portionUsed);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnMovementOverrideTick(float DeltaTime);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnLanded(TEnumAsByte<EPhysicalSurface> GroundSurface);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnJumpStopped();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnJumpStarted();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnJumpingTick(float DeltaTime);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnJetpackStowed();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnJetpackDeployed(FVector NeutralPosition, bool bMirrored);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnJetpackActived(bool Activated);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemSelectionChanged(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemDrained();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnFuelRecipeAmountChanged(float Amount);
     
 public:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnFuelIsLow(bool bIsLow);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnEndOperation();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnCreativeFreeFuelChanged(bool State);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnClientActionReleased();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnClientActionPressed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnBackpackCracked();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAuthorityOverrideRemoved();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAuthorityOverrideAdded();
     
 public:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnAttemptedActivationNoFuel();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnAllFuelDepleted();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleRemovedFromSlot(bool NewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePlacedInSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnSpawnedInSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleFullyEmplaced();
     
 };

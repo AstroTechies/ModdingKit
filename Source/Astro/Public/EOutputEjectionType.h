@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EOutputEjectionType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EOutputEjectionType : uint8 {
     None,
     StorageThenEject,

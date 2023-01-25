@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EDistributionShape.generated.h"
 
-UENUM()
-enum class EDistributionShape {
+UENUM(BlueprintType)
+enum class EDistributionShape : uint8 {
     Cone,
     Cylinder,
     Disc,

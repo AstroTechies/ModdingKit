@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
+#include "Components/ActorComponent.h"
 #include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "T2CanisterComponent.generated.h"
 
-class UItemType;
 class APhysicalItem;
-class UT2CanisterOrganizationRule;
 class UItemComponent;
+class UItemType;
+class UT2CanisterOrganizationRule;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UT2CanisterComponent : public UActorComponent {
@@ -31,7 +31,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ItemTransferRate;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<UT2CanisterOrganizationRule> OrganizationRule;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -40,16 +40,16 @@ protected:
 public:
     UT2CanisterComponent();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSlottedItemsChanged(APhysicalItem* changedItem);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnItemTypeChanged(UItemComponent* ItemComponent, TSubclassOf<UItemType> NewItemType);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAmountChanged();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanMoveItems() const;
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)

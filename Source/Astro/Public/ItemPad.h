@@ -1,20 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SceneComponent -FallbackName=SceneComponent
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformableInterfaceT2 -FallbackName=DeformableInterfaceT2
-#include "SignalDelegate.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=Terrain2 -ObjectName=DeformationParamsT2 -FallbackName=DeformationParamsT2
+#include "Components/SceneComponent.h"
+#include "DeformableInterfaceT2.h"
+#include "DeformationParamsT2.h"
+#include "SignalDelegate.h"
+#include "Templates/SubclassOf.h"
 #include "DeformableInterfaceT2.h"
 #include "DeformationParamsT2.h"
 #include "ItemPad.generated.h"
 
-class UAstroSaveCustomArchiveProxy;
-class AItemPadActor;
-class UPrimitiveComponent;
-class UItemPad;
 class AActor;
+class AItemPadActor;
+class UAstroSaveCustomArchiveProxy;
+class UItemPad;
+class UPrimitiveComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UItemPad : public USceneComponent, public IDeformableInterfaceT2 {
@@ -22,6 +22,9 @@ class ASTRO_API UItemPad : public USceneComponent, public IDeformableInterfaceT2
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool AutoSpawn;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool HandleItemPadDugUp;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool ManuallyReplicatePadTransform;
@@ -42,7 +45,7 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void StartInWorld();
     
 public:
@@ -50,37 +53,37 @@ public:
     void SpawnPad(bool withTool, UPrimitiveComponent* Component, const FVector& Point, const FVector& Normal);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ReleaseFromSlot(bool NewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void PlaceInSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void PickUpFromWorld(bool PhysicalMovement);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_Pad();
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnDeformationComplete(const FDeformationParamsT2& deformationParams);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void MotionStateChanged();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void EmplaceInSlot();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void DropInWorld(UPrimitiveComponent* Component, const FVector& Point, const FVector& Normal);
     
 public:
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UItemPad* ActorItemPad(AActor* Actor);
     
     

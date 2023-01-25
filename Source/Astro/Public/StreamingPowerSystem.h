@@ -3,8 +3,8 @@
 #include "AstroEntitySystem.h"
 #include "StreamingPowerSystem.generated.h"
 
-class UAstroStreamingPowerTickTaskManager;
 class AActor;
+class UAstroStreamingPowerTickTaskManager;
 
 UCLASS(Blueprintable)
 class ASTRO_API UStreamingPowerSystem : public UAstroEntitySystem {

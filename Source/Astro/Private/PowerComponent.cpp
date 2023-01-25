@@ -1,9 +1,9 @@
 #include "PowerComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class USceneComponent;
 class AActor;
 class UPowerComponent;
+class USceneComponent;
 
 void UPowerComponent::SetSuppliedVisibility(USceneComponent* Component) {
 }

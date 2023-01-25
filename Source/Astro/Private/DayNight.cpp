@@ -1,6 +1,6 @@
 #include "DayNight.h"
-#include "Net/UnrealNetwork.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SkyLightComponent -FallbackName=SkyLightComponent
+#include "Net/UnrealNetwork.h"
 
 class UAstroSaveCustomArchiveProxy;
 

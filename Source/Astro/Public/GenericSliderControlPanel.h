@@ -11,7 +11,7 @@ class ASTRO_API AGenericSliderControlPanel : public AControlPanel {
 public:
     AGenericSliderControlPanel();
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void ProcessSliderInput();
     
     UFUNCTION(BlueprintCallable)
@@ -21,7 +21,7 @@ protected:
     void OnSliderClicked();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleCrackedChanged(UCrackableActorComponent* InCrackableActorComponent, bool bIsCracked);
     
 };

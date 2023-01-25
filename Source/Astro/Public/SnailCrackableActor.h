@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
 #include "SnailCrackableActor.generated.h"
 
 UCLASS(Blueprintable)

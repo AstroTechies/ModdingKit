@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EProceduralExpressionComparison.generated.h"
 
-UENUM()
-enum class EProceduralExpressionComparison {
+UENUM(BlueprintType)
+enum class EProceduralExpressionComparison : uint8 {
     NotEqual,
     Equal,
     LessThan,

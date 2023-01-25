@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
-#include "ResourceExtractorState.h"
-#include "ExtractorGroupResourceCache.h"
 #include "EResourceExtractorActivationFlags.h"
+#include "ExtractorGroupResourceCache.h"
+#include "ResourceExtractorState.h"
 #include "ResourceExtractorManager.generated.h"
 
 class AResourceExtractor;
@@ -28,25 +28,25 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<int32> RemoveFromOperationQueue;
     
-    UPROPERTY(EditAnywhere, SaveGame)
+    UPROPERTY(EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint32 GroupIDCounter;
     
 public:
     UResourceExtractorManager();
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnHammerDroppped(AResourceExtractor* Extractor);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnClientVisualStateChanged(AResourceExtractor* Extractor);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnClientAnimProgressChanged(AResourceExtractor* Extractor);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnBillowsBegin(AResourceExtractor* Extractor);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnActivationStatusChanged(AResourceExtractor* Extractor, EResourceExtractorActivationFlags ChangedFlag, bool IsActive);
     
 };

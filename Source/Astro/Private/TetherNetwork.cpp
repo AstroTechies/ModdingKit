@@ -1,7 +1,7 @@
 #include "TetherNetwork.h"
 
-class UOxygenatorComponent;
 class ASlotConnection;
+class UOxygenatorComponent;
 
 void UTetherNetwork::RemoveOxygenator(UOxygenatorComponent* oxygenator) {
 }

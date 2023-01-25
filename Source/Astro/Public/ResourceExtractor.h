@@ -1,32 +1,32 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "PhysicalItem.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
 #include "EExtractorAnimStage.h"
 #include "EExtractorOperationStage.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "PhysicalItem.h"
+#include "Templates/SubclassOf.h"
 #include "ResourceExtractor.generated.h"
 
-class UStorageChassisComponent;
+class UAnimMontage;
+class UAnimSequenceBase;
+class UAstroAction;
 class UAstroActionComponent;
-class UResourceCacheComponent;
+class UItemType;
+class UMaterialInstanceDynamic;
 class UPowerComponent;
+class UPrimitiveComponent;
+class UResourceCacheComponent;
 class USceneComponent;
 class USkeletalMeshComponent;
-class UAnimSequenceBase;
-class UAnimMontage;
-class UMaterialInstanceDynamic;
-class UItemType;
-class UAstroAction;
 class UStaticMesh;
-class UPrimitiveComponent;
+class UStorageChassisComponent;
 
 UCLASS(Blueprintable)
 class AResourceExtractor : public APhysicalItem {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere, SaveGame)
+    UPROPERTY(EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint32 ManagerIndex;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -54,19 +54,19 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NuggetsPerNode;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     uint32 ThumpsPerNugget;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     uint32 FullMeterThreshold;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPowerComponent* PowerComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAstroActionComponent* ActionComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USceneComponent* VacuumLocationComponent;
     
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -79,13 +79,13 @@ private:
     int32 NodesInArea;
     
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UResourceCacheComponent* ResourceCache;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USkeletalMeshComponent* SkeletalMesh;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStorageChassisComponent* StorageChassis;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -122,47 +122,47 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnStorageChassisSlotEventSignal(APhysicalItem* Item);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnSingleAnimCustomNotifyEvent(FName NotifyName);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnResourceSlotFull(TSubclassOf<UItemType> Type);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnResourceItemReleased(APhysicalItem* Item);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_Stages();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_NodesInArea();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_AnimProgress();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ActivationState();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnMontageEnded(UAstroAction* Action);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnHasPowerAvailableChanged(bool HasAvailablePower);
     
 public:
-    UFUNCTION(NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastGenerateFlecks(UStaticMesh* StaticMesh, const FVector Location, const float Recipe);
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnPickedUpFromWorld(bool PhysicalMovement);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleOnDroppedInWorld(UPrimitiveComponent* Component, const FVector& Point, const FVector& Normal, bool bIsTerrainComponent);
     
 };

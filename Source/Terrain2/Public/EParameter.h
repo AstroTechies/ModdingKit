@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EParameter.generated.h"
 
-UENUM()
-enum class EParameter {
+UENUM(BlueprintType)
+enum class EParameter : uint8 {
     VoxelX,
     VoxelY,
     VoxelZ,

@@ -6,10 +6,10 @@ USTRUCT(BlueprintType)
 struct FComponentRecord {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     uint32 NameIndex;
     
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     uint32 ObjectIndex;
     
     ASTRO_API FComponentRecord();

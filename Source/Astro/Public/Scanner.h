@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "PhysicalItem.h"
-#include "MidRangeScanSettings.h"
-#include "ScannableStatus.h"
-#include "SignalDelegate.h"
 #include "EScannerMode.h"
 #include "EScannerTargetDistance.h"
+#include "MidRangeScanSettings.h"
+#include "PhysicalItem.h"
+#include "ScannableStatus.h"
+#include "SignalDelegate.h"
 #include "Scanner.generated.h"
 
-class UCurveFloat;
 class AAstroCharacter;
 class AAstroPlayerController;
+class UCurveFloat;
 
 UCLASS(Blueprintable)
 class ASTRO_API AScanner : public APhysicalItem {
@@ -95,7 +95,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     FScannableStatus CurrentTarget;
     
-    UPROPERTY(EditAnywhere, ReplicatedUsing=OnRep_UsingCharacter)
+    UPROPERTY(EditAnywhere, ReplicatedUsing=OnRep_UsingCharacter, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<AAstroCharacter> UsingCharacter;
     
 public:
@@ -103,40 +103,40 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_UsingCharacter();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_TargetDistance();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ScannerMode();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_MidRangeDistancePercentage();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPowerAvailableChanged(bool hasPower);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnMidRangeScanIntroAnimationCompleted();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleVehicleUnmanned(AAstroPlayerController* oldUsingPlayer);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleVehicleManned(AAstroPlayerController* newUsingPlayer);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandleReleasedFromSlot(bool NewOwner);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void HandlePlacedInSlot();
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityTryScan();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void AuthorityOnScanCompleted();
     
 };

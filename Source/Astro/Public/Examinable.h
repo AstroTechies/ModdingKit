@@ -11,7 +11,7 @@ public:
     float AutoDismissRange;
     
     UExaminable();
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     bool ValidateWithinExamineRange();
     
 };

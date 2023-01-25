@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroEntityComponentContainer.h"
 #include "AstroDatumRef.h"
+#include "AstroEntityComponentContainer.h"
 #include "StreamingPowerMergedNodeComponent.h"
 #include "StreamingPowerMergedNodeComponentContainer.generated.h"
 
@@ -10,10 +10,10 @@ class ASTRO_API UStreamingPowerMergedNodeComponentContainer : public UAstroEntit
     GENERATED_BODY()
 public:
     UStreamingPowerMergedNodeComponentContainer();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FStreamingPowerMergedNodeComponent GetStreamingPowerMergedNodeComponent(FAstroDatumRef StreamingPowerMergedNodeComponentRef, bool& bOutSuccess);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FStreamingPowerMergedNodeComponent FindStreamingPowerMergedNodeComponent(FAstroDatumRef EntityRef, bool& bOutSuccess);
     
 };

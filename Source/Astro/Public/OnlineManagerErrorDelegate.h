@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 #include "OnlineManagerErrorDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnlineManagerError);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnlineManagerError);
 

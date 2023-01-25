@@ -1,7 +1,7 @@
 #include "ExplosiveComponent.h"
 
-class UObject;
 class AActor;
+class UObject;
 
 void UExplosiveComponent::SetDetonationTimerPaused(bool bIsPaused) {
 }

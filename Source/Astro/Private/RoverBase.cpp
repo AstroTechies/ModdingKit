@@ -1,8 +1,8 @@
 #include "RoverBase.h"
 #include "ControlledVehicleMovement.h"
 
-class USceneComponent;
 class AAstroPlayerController;
+class USceneComponent;
 
 void ARoverBase::UpdateUseSuppression_Implementation(bool ShouldBeSuppressed) {
 }

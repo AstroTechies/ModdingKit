@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "AstroEntityComponent.h"
 #include "AttachedResearchSubject.h"
-#include "OnActiveResearchSubjectsChangedDelegate.h"
 #include "OnActiveResearchSubjectExpiredDelegate.h"
+#include "OnActiveResearchSubjectsChangedDelegate.h"
 #include "SlotReference.h"
 #include "ResearchComponent.generated.h"
 

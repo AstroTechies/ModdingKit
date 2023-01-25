@@ -1,23 +1,23 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
-#include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
-#include "OnSlotEventSignalDelegate.h"
-#include "SlotReference.h"
-#include "EnterExitSignalDelegate.h"
-#include "SlotIndicatorLocation.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
 //CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "Components/ActorComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "EnterExitSignalDelegate.h"
+#include "OnSlotEventSignalDelegate.h"
+#include "SignalDelegate.h"
+#include "SlotIndicatorLocation.h"
+#include "SlotReference.h"
+#include "Templates/SubclassOf.h"
 #include "StorageChassisComponent.generated.h"
 
-class USlotOrganizationRule;
-class UActorAttachmentsComponent;
-class UStorageChassisComponent;
-class APlayerController;
-class APhysicalItem;
 class AActor;
+class APhysicalItem;
+class APlayerController;
+class UActorAttachmentsComponent;
 class UItemType;
+class USlotOrganizationRule;
+class UStorageChassisComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UStorageChassisComponent : public UActorComponent {
@@ -35,7 +35,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> ExcludeSlots;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, ReplicatedUsing=OnRep_ActorAttachments, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, ReplicatedUsing=OnRep_ActorAttachments, meta=(AllowPrivateAccess=true))
     TArray<UActorAttachmentsComponent*> ActorAttachments;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
@@ -69,16 +69,16 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> Slots;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UStorageChassisComponent*> ChildStorageChassis;
     
-    UPROPERTY(EditAnywhere, Export, SaveGame)
+    UPROPERTY(EditAnywhere, Export, SaveGame, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<UStorageChassisComponent> OverrideParentStorage;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UStorageChassisComponent*> OverrideChildStorageChassis;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<USlotOrganizationRule*> OrganizationRules;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_SlotIndicatorLocations, meta=(AllowPrivateAccess=true))
@@ -112,7 +112,7 @@ private:
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentReference RespawnCameraReference;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UActorAttachmentsComponent*> PrevActorAttachments;
     
 public:
@@ -122,40 +122,40 @@ public:
     UFUNCTION(BlueprintCallable)
     void TertiaryUse(APlayerController* Controller);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void SlotEvent(APhysicalItem* Item);
     
     UFUNCTION(BlueprintCallable)
     bool QueryTertiary(APlayerController* Controller, FTransform& OutTransform);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_SlotIndicatorLocations();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_ActorAttachments();
     
 private:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnPlayerEnterExitAttachment(bool Entered);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnOwnerDestroyed(AActor* Owner);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void ItemAmountChangeEvent();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<FSlotReference> GetUnmanagedSlots(bool bCheckingFullness) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UStorageChassisComponent* GetOutermostStorage(AActor* Actor, bool Inclusive);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UStorageChassisComponent* GetActorStorageChassisComponent(AActor* Actor);
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     USlotOrganizationRule* FindRuleByName(FName RuleName);
     
     UFUNCTION(BlueprintCallable)

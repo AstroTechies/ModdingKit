@@ -1,34 +1,34 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ResearchSubjectReplicationData.h"
 #include "ControlPanel.h"
 #include "ResearchReplicationData.h"
+#include "ResearchSubjectReplicationData.h"
 #include "ResearchModuleControlPanel.generated.h"
 
-class UResearchDisplayWidgetComponent;
 class UActorResearchComponent;
+class UResearchDisplayWidgetComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API AResearchModuleControlPanel : public AControlPanel {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UResearchDisplayWidgetComponent*> ResearchDisplayComponents;
     
 public:
     AResearchModuleControlPanel();
 protected:
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateForNewResearchReplicationData(const FResearchReplicationData& ReplicationData);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnResearchSubjectListChanged(const TArray<FResearchSubjectReplicationData>& CurrentResearchSubjects, const TArray<FResearchSubjectReplicationData>& PrevResearchSubjects);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnResearchReplicationDataChanged();
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     UActorResearchComponent* GetControlledResearchComponent() const;
     
 };

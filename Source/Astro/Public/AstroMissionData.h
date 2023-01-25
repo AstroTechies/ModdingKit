@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Templates/SubclassOf.h"
 #include "AstroMissionObjective.h"
+#include "EAstroAchievementKeys.h"
 #include "EAstroColor.h"
 #include "EAstroMissionRewardDeliveryType.h"
-#include "EAstroAchievementKeys.h"
+#include "Templates/SubclassOf.h"
 #include "AstroMissionData.generated.h"
 
-class UObject;
 class UItemType;
+class UObject;
 
 USTRUCT(BlueprintType)
 struct FAstroMissionData {
@@ -28,6 +28,12 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText Decription;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    FString Event;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    FName ThemeName;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAstroColor NotificationColor;

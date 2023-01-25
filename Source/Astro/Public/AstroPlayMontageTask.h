@@ -1,14 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameplayTask.h"
 //CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=OnSingleAnimCustomNotify__DelegateSignature -FallbackName=OnSingleAnimCustomNotifyDelegate
-//CROSS-MODULE INCLUDE V2: -ModuleName=GameplayTasks -ObjectName=GameplayTask -FallbackName=GameplayTask
+#include "GameplayTask.h"
 #include "SignalDelegate.h"
 #include "AstroPlayMontageTask.generated.h"
 
-class UAstroPlayMontageTask;
 class UAnimMontage;
 class UAstroAction;
+class UAstroPlayMontageTask;
 
 UCLASS(Blueprintable)
 class ASTRO_API UAstroPlayMontageTask : public UGameplayTask {
@@ -25,15 +24,15 @@ public:
     
     UAstroPlayMontageTask();
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void RouteSingleAnimCustomNotify(FName NotifyName);
     
 public:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnMontageEnded(UAnimMontage* Montage, bool bInterrupted);
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnAnimInitialized();
     
 public:

@@ -4,8 +4,8 @@
 #include "GlobalBiome.generated.h"
 
 class UBoundedVoxelVolumeModifier;
-class UProceduralModifier;
 class UBoundedVoxelVolumeModifierList;
+class UProceduralModifier;
 
 USTRUCT(BlueprintType)
 struct TERRAIN2_API FGlobalBiome {
@@ -23,7 +23,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UProceduralModifier*> ObjectPlacementModifiers;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UBoundedVoxelVolumeModifier*> BoundedModifiers;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

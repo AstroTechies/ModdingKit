@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EPowerCableConnectionDirection.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EPowerCableConnectionDirection : uint8 {
     InputConnection,
     OutputConnection,

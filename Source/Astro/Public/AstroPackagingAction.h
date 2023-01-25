@@ -3,8 +3,8 @@
 #include "AstroPlayMontageAction.h"
 #include "AstroPackagingAction.generated.h"
 
-class UCurveVector;
 class UCurveFloat;
+class UCurveVector;
 
 UCLASS(Abstract, Blueprintable)
 class ASTRO_API UAstroPackagingAction : public UAstroPlayMontageAction {

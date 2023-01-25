@@ -1,10 +1,10 @@
 #include "TeleportationBubble.h"
-#include "Net/UnrealNetwork.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=StaticMeshComponent -FallbackName=StaticMeshComponent
+#include "Components/StaticMeshComponent.h"
 #include "ActorAttachmentsComponent.h"
+#include "Net/UnrealNetwork.h"
 
-class AAstroCharacter;
 class AActor;
+class AAstroCharacter;
 
 bool ATeleportationBubble::TickPostArrivalEffects_Implementation() {
     return false;

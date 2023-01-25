@@ -4,6 +4,7 @@ UAstroNotificationDatabase::UAstroNotificationDatabase() {
     this->TagNotificationQueueDisplayFrequency = 0.00f;
     this->UnlockNotificationQueueDisplayFrequency = 0.00f;
     this->ToastNotificationQueueDisplayFrequency = 0.00f;
+    this->RetainedBiomeToastExperationDelay = 0.00f;
     this->SuitUnlockNotifIconColor = EAstroColor::None;
     this->SuitUnlockNotifIcon = NULL;
     this->VisorUnlockNotifIconColor = EAstroColor::None;
@@ -23,5 +24,6 @@ UAstroNotificationDatabase::UAstroNotificationDatabase() {
     this->AstroNotificationTagWidgetClass = NULL;
     this->AstroNotificationUnlockWidgetClass = NULL;
     this->AstroNotificationToastWidgetClass = NULL;
+    this->AstroNotificationBiomeToastWidgetClass = NULL;
 }
 

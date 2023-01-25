@@ -1,10 +1,10 @@
 #include "GateObjectControlPanel.h"
+#include "Components/SceneComponent.h"
 #include "Net/UnrealNetwork.h"
 #include "TooltipComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SceneComponent -FallbackName=SceneComponent
 
-class USolarSystem;
 class UPrimitiveComponent;
+class USolarSystem;
 
 void AGateObjectControlPanel::SetContext(EGateObjectControlPanelContext newContext) {
 }

@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "Components/ActorComponent.h"
 #include "SignalDelegate.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ActorComponent -FallbackName=ActorComponent
 #include "DeployRetractComponent.generated.h"
 
-class UStaticMesh;
 class UAnimMontage;
 class UAstroAction;
+class UStaticMesh;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UDeployRetractComponent : public UActorComponent {
@@ -42,13 +42,13 @@ public:
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
 protected:
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_PendingDeployed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnRep_IsDeployed();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnDeployRetractMontageActionEnded(UAstroAction* montageAction);
     
 public:

@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AstroGameMode.h"
 #include "AstroDatumRef.h"
+#include "AstroGameMode.h"
 #include "GatesGameMode.generated.h"
 
-class AGateEngine;
-class AGateStation;
 class AAstroPlanet;
 class AGateChamber;
+class AGateEngine;
+class AGateStation;
 class USolarSystem;
 
 UCLASS(Blueprintable, NonTransient)
@@ -15,40 +15,40 @@ class ASTRO_API AGatesGameMode : public AAstroGameMode {
     GENERATED_BODY()
 public:
     AGatesGameMode();
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AGateStation* TryGetGateStationActor() const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AGateEngine* TryGetGateEngineActor(AAstroPlanet* enginePlanet) const;
     
-    UFUNCTION(BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AGateChamber* TryGetGateChamberActor(AAstroPlanet* chamberPlanet, int32 ChamberCoordinateIndex) const;
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void StationSpawned();
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void StationActivated();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnStationSpawned();
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnStationActivated(FAstroDatumRef stationEntityRef);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnEngineActivated(FAstroDatumRef engineEntityRef);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void OnChamberActivated(FAstroDatumRef chamberEntityRef);
     
-    UFUNCTION()
+    UFUNCTION(BlueprintCallable)
     void InitializeGatesForSolarSystem(USolarSystem* SolarSystem);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void EngineActivated(AAstroPlanet* enginePlanet);
     
-    UFUNCTION(BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void ChamberActivated(AAstroPlanet* chamberPlanet);
     
 };

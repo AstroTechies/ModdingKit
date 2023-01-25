@@ -2,5 +2,5 @@
 #include "CoreMinimal.h"
 #include "CheckUserPrivilegeCompleteDelegate.generated.h"
 
-UDELEGATE() DECLARE_DYNAMIC_DELEGATE_OneParam(FCheckUserPrivilegeComplete, bool, succes);
+UDELEGATE(BlueprintCallable) DECLARE_DYNAMIC_DELEGATE_OneParam(FCheckUserPrivilegeComplete, bool, succes);
 

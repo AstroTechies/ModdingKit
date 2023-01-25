@@ -1,7 +1,7 @@
 #include "VehicleSlotComponent.h"
 
-class UVehicleSlotComponent;
 class AActor;
+class UVehicleSlotComponent;
 
 TArray<UVehicleSlotComponent*> UVehicleSlotComponent::GetConnectedVehicles() {
     return TArray<UVehicleSlotComponent*>();

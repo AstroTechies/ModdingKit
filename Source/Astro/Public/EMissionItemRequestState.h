@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "EMissionItemRequestState.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EMissionItemRequestState : uint8 {
     RequestsUninitalized,
     HasNoActiveRequests,
