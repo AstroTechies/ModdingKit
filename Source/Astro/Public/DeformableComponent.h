@@ -12,8 +12,9 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnDeformed OnDeformed;
     
-    UDeformableComponent();
-    
+    UDeformableComponent(const FObjectInitializer& ObjectInitializer);
+
+
     // Fix for true pure virtual functions not being implemented
 };
 

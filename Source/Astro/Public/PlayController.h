@@ -1,13 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ECollisionChannel -FallbackName=ECollisionChannel
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "Engine/EngineTypes.h"
+#include "Engine/EngineTypes.h"
 #include "ActorClickSignalDelegate.h"
 #include "ActorOnscreenSignalDelegate.h"
+#include "AstroCharacterCustomization.h"
 #include "AstroNotificationToastAuthoringData.h"
 #include "AstroNotificationUnlockAuthoringData.h"
 #include "AstroPlayerController.h"
@@ -15,13 +16,16 @@
 #include "BodySelectionSignalDelegate.h"
 #include "ClickResult.h"
 #include "ECameraMode.h"
+#include "ECharacterHatCategory.h"
 #include "EClickBehavior.h"
+#include "EEmoteType.h"
 #include "EHandState.h"
 #include "EnableSignalDelegate.h"
 #include "InputDeviceChangedDelegate.h"
 #include "KeyboardNavigationChangedDelegate.h"
 #include "MouseZoomChangedDelegate.h"
 #include "PendingInGameItemRewards.h"
+#include "PlayerEmoteSignalDelegate.h"
 #include "SelectionWheelOption.h"
 #include "SelectionWheelSignalDelegate.h"
 #include "SignalDelegate.h"
@@ -40,11 +44,15 @@ class ACompassActor;
 class APhysicalItem;
 class ASlotConnection;
 class ASolarBody;
+class UAstroCharacterHat;
+class UAstroCharacterPalette;
 class UAstroCharacterSuit;
+class UAstroEmoteDefinition;
 class UAstroNotificationManager;
 class UAstroPopupBadgeManager;
 class UAstroToastNotificationManager;
 class UAstroUnlockNotificationManager;
+class UAstroVisorMaterial;
 class UBackpackCameraContext;
 class UBiomeSamplerComponent;
 class UCameraComponent;
@@ -169,6 +177,9 @@ public:
     FSignal OnVirtualCursorEnabledChanged;
     
     UPROPERTY(BlueprintAssignable, BlueprintAuthorityOnly, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FSelectionWheelSignal AuthorityOnEmoteWheelOpenedOrClosed;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintAuthorityOnly, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSelectionWheelSignal AuthorityOnActionWheelOpenedOrClosed;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -243,6 +254,11 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     uint8 bVirtualCursorToggleOn: 1;
     
+protected:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float EmoteWheelCameraMovementCooldown;
+    
+public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FBackpackToggledDelegate OnBackpackToggled;
     
@@ -283,6 +299,9 @@ public:
     float WheelOpenHoldThreshold;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<UAstroEmoteDefinition*> EmoteSet;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WindGustDeltaMinIntensity;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -294,6 +313,12 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnPlaceTetherFromBackpack;
     
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FSignal OnEmoteSelectionChanged;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FPlayerEmoteSignal AuthorityOnEmotePlayed;
+    
     UPROPERTY(BlueprintAssignable, BlueprintAuthorityOnly, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FActorOnscreenSignal AuthorityOnActorCameOnscreenCallback;
     
@@ -303,6 +328,9 @@ protected:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UGameMenuPopoutCameraContext* GameMenuPopoutCameraContext;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UStoreMenuCameraContext* StoreMenuCameraContext;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<AActor*> SpawnPointStack;
@@ -363,7 +391,11 @@ private:
     UMaterialParameterCollection* GlobalParameterCollection;
     
 public:
-    APlayController();
+    APlayController(const FObjectInitializer& ObjectInitializer);
+
+    UFUNCTION(BlueprintCallable)
+    void UpdateEmoteSelection(int32 Index, UAstroEmoteDefinition* Emote);
+    
     UFUNCTION(BlueprintCallable)
     void UpdateCompass();
     
@@ -417,6 +449,9 @@ public:
     void SetVirtualCursorToggle(bool toggleValue);
     
     UFUNCTION(BlueprintCallable)
+    void SetUsingMouse(bool bIsUsingMouse);
+    
+    UFUNCTION(BlueprintCallable)
     void SetUsingKeyboardNavigation(bool bIsUsingKeyboardNavigation);
     
     UFUNCTION(BlueprintCallable)
@@ -425,8 +460,14 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetTerrainBrushLightActive(bool TerrainBrushLightActive);
     
+protected:
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
+    void SetSuitServerInternal(UAstroCharacterSuit* NewSuit);
+    
 public:
-
+    UFUNCTION(BlueprintCallable)
+    void SetSuitServer(UAstroCharacterSuit* NewSuit);
+    
     UFUNCTION(BlueprintCallable)
     void SetShowCreativeDoneUI(bool shouldShowDroneUI);
     
@@ -456,11 +497,35 @@ public:
     
 protected:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
-    void SetCharacterVisorServerInternal();
+    void SetCharacterVisorServerInternal(UAstroVisorMaterial* NewVisorMaterial);
     
 public:
     UFUNCTION(BlueprintCallable)
-    void SetCharacterVisorServer();
+    void SetCharacterVisorServer(UAstroVisorMaterial* NewVisorMaterial);
+    
+protected:
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
+    void SetCharacterPaletteServerInternal(UAstroCharacterPalette* NewPalette);
+    
+public:
+    UFUNCTION(BlueprintCallable)
+    void SetCharacterPaletteServer(UAstroCharacterPalette* NewPalette);
+    
+protected:
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
+    void SetCharacterHatServerInternal(UAstroCharacterHat* NewHat, ECharacterHatCategory Category);
+    
+public:
+    UFUNCTION(BlueprintCallable)
+    void SetCharacterHatServer(UAstroCharacterHat* NewHat, ECharacterHatCategory Category);
+    
+protected:
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
+    void SetCharacterCustomizationServerInternal(const FAstroCharacterCustomization& NewCustomization);
+    
+public:
+    UFUNCTION(BlueprintCallable)
+    void SetCharacterCustomizationServer(const FAstroCharacterCustomization& NewCustomization);
     
     UFUNCTION(BlueprintCallable)
     void SetCameraZoom(float zoom);
@@ -482,6 +547,12 @@ public:
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerPlayerCharacterSelectionLaunch();
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
+    void ServerNotifyOnEmoteWheelOpenedOrClosed(bool bWheelOpened);
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
+    void ServerNotifyOnEmotePlayed(EEmoteType EmoteType);
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerNotifyOnActionWheelOpenedOrClosed(bool bWheelOpened);
@@ -532,8 +603,17 @@ public:
     UFUNCTION(BlueprintCallable)
     void ResetCameraToSpawnPoint();
     
+    UFUNCTION(BlueprintCallable)
+    void ReapplySavedCharacterCustomization();
+    
+    UFUNCTION(BlueprintCallable)
+    void PreviewCharacterCustomization(const FAstroCharacterCustomization& customizationToPreview);
+    
     UFUNCTION(BlueprintCallable, Exec)
     void Ping();
+    
+    UFUNCTION(BlueprintCallable)
+    void OpenEmoteWheel();
     
     UFUNCTION(BlueprintCallable)
     void OnReceiveUsePressed();
@@ -642,6 +722,9 @@ public:
     void HideFadeScreen();
     
     UFUNCTION(BlueprintCallable)
+    void HandleStoreMenuCameraContext(bool bStoreMenuEnabled);
+    
+    UFUNCTION(BlueprintCallable)
     void HandleLeftTriggerToggle();
     
 protected:
@@ -654,6 +737,15 @@ protected:
 public:
     UFUNCTION(BlueprintCallable)
     void HandleGameMenuPopoutCameraContext(bool GameMenuPopoutEnabled);
+    
+    UFUNCTION(BlueprintCallable)
+    void HandleEmoteWheelSelection(const FSelectionWheelOption& Selection);
+    
+    UFUNCTION(BlueprintCallable)
+    void HandleEmoteWheelReleased();
+    
+    UFUNCTION(BlueprintCallable)
+    void HandleEmoteWheelPressed();
     
     UFUNCTION(BlueprintCallable)
     void HandleCreativeModeEnabledChanged(bool CreativeModeEnabled);
@@ -758,10 +850,25 @@ public:
     void EnableLandSelection(bool Enable, ASolarBody* Body);
     
     UFUNCTION(BlueprintCallable)
+    void EmoteTwo();
+    
+    UFUNCTION(BlueprintCallable)
+    void EmoteThree();
+    
+    UFUNCTION(BlueprintCallable)
+    void EmoteOne();
+    
+    UFUNCTION(BlueprintCallable)
+    void EmoteFour();
+    
+    UFUNCTION(BlueprintCallable)
     void DropHeldItem();
     
     UFUNCTION(BlueprintCallable)
     void DoSelectionWheelSelection(const FSelectionWheelOption& Selection);
+    
+    UFUNCTION(BlueprintCallable)
+    void DoPlayFabCatalogUnlocks();
     
     UFUNCTION(BlueprintCallable)
     void DisengageUseModifier();
@@ -795,6 +902,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void ContextLeftPressed();
+    
+    UFUNCTION(BlueprintCallable)
+    void CloseEmoteWheel();
     
     UFUNCTION(BlueprintCallable)
     void CloseAllSelectionWheels();

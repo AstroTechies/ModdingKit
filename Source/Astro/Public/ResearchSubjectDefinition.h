@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
+#include "Engine/DataAsset.h"
 #include "ResearchPhase.h"
 #include "ResearchSubjectDefinition.generated.h"
 
@@ -21,5 +21,6 @@ public:
     float TotalResearchSecondsPerInstance;
     
     UResearchSubjectDefinition();
+
 };
 

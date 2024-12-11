@@ -36,9 +36,10 @@ private:
     APhysicalItem* OwningItem;
     
 public:
-    UBreadboardPlatformComponent();
+    UBreadboardPlatformComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void OnRep_LockdownEnabledChanged();
     

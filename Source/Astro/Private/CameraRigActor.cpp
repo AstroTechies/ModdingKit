@@ -1,31 +1,7 @@
 #include "CameraRigActor.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=CameraComponent -FallbackName=CameraComponent
+#include "Camera/CameraComponent.h"
 
-class AActor;
-
-
-
-FVector ACameraRigActor::GetViewTargetUp_Implementation(const AActor* Target) {
-    return FVector{};
-}
-
-FVector ACameraRigActor::GetViewTargetLocation_Implementation(const AActor* Target) {
-    return FVector{};
-}
-
-FMinimalViewInfo ACameraRigActor::GetViewInfo() {
-    return FMinimalViewInfo{};
-}
-
-AActor* ACameraRigActor::GetTarget() {
-    return NULL;
-}
-
-UCameraComponent* ACameraRigActor::GetControlledCamera() {
-    return NULL;
-}
-
-ACameraRigActor::ACameraRigActor() {
+ACameraRigActor::ACameraRigActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->DefaultFieldOfView = 90.00f;
     this->DefaultAspectRatio = 1.33f;
     this->CollisionRadius = 10.00f;
@@ -55,4 +31,27 @@ ACameraRigActor::ACameraRigActor() {
     this->ControlledCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("RigCamera"));
     this->LastNearestSolarBody = NULL;
 }
+
+
+
+FVector ACameraRigActor::GetViewTargetUp_Implementation(const AActor* Target) {
+    return FVector{};
+}
+
+FVector ACameraRigActor::GetViewTargetLocation_Implementation(const AActor* Target) {
+    return FVector{};
+}
+
+FMinimalViewInfo ACameraRigActor::GetViewInfo() {
+    return FMinimalViewInfo{};
+}
+
+AActor* ACameraRigActor::GetTarget() {
+    return NULL;
+}
+
+UCameraComponent* ACameraRigActor::GetControlledCamera() {
+    return NULL;
+}
+
 

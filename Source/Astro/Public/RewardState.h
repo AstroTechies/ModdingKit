@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "RewardSublist.h"
 #include "Templates/SubclassOf.h"
 #include "RewardState.generated.h"
@@ -22,6 +22,7 @@ public:
     TMap<uint64, FRewardSublist> RewardSublists;
     
     URewardState();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsUnlocked(TSubclassOf<UItemType> ItemType) const;
     

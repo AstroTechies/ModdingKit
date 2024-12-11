@@ -23,7 +23,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemType> OutputItemType;
     
-    UCrystalRefineryModuleComponent();
+    UCrystalRefineryModuleComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void UpdateIndicators();
     

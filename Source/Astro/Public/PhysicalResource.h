@@ -10,7 +10,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool DestroyOnDrain;
     
-    APhysicalResource();
+    APhysicalResource(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void SetView();
     

@@ -1,9 +1,10 @@
 #include "T2CanisterOrganizationRule.h"
 #include "Templates/SubclassOf.h"
 
-class UItemType;
+UT2CanisterOrganizationRule::UT2CanisterOrganizationRule() {
+}
 
-void UT2CanisterOrganizationRule::SetStoredItemTypeWhitelist(TArray<TSubclassOf<UItemType>> ItemTypes) {
+void UT2CanisterOrganizationRule::SetStoredItemTypeWhitelist(TArray<TSubclassOf<UItemType>> itemTypes) {
 }
 
 void UT2CanisterOrganizationRule::SetMode(bool isDispensing) {
@@ -15,6 +16,4 @@ void UT2CanisterOrganizationRule::SetCurrentStoredItemType(TSubclassOf<UItemType
 void UT2CanisterOrganizationRule::OnSlottedItemDrainedOrFilled() {
 }
 
-UT2CanisterOrganizationRule::UT2CanisterOrganizationRule() {
-}
 

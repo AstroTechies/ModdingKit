@@ -11,6 +11,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSlotReference BodySlot;
     
-    UExternalBodySlot();
+    UExternalBodySlot(const FObjectInitializer& ObjectInitializer);
+
 };
 

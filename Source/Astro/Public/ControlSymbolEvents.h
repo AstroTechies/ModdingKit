@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
-//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "UObject/Object.h"
+#include "InputCoreTypes.h"
 #include "SymbolFireEventDelegate.h"
 #include "ControlSymbolEvents.generated.h"
 
@@ -31,6 +31,7 @@ public:
     AActor* Widget;
     
     UControlSymbolEvents();
+
     UFUNCTION(BlueprintCallable)
     void DoFiredFromClick(UPrimitiveComponent* Component, FKey Key);
     

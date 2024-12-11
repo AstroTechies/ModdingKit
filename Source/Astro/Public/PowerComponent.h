@@ -28,6 +28,7 @@ public:
     FSignal OnChargeDepleted;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // Should this machine generate power?
     uint8 bIsGenerator: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -37,26 +38,33 @@ public:
     uint8 ShouldReplicate: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // Unsure, only rovers seem to use this field
     uint8 SelfDischargeOnly: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // Is this battery built into the chassis of a machine?
     uint8 IsIntegratedBattery: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    // Does this machine need power to work?
     uint8 QueryPower: 1;
     
 protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    // Take a guess
     uint8 Enabled: 1;
     
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // The amount of energy that this battery can hold in units
     float StorageCapacity;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // The number of U/s that this battery can discharge
     float DischargeRate;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // The number of U/s that this battery can charge
     float ChargeRate;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -72,6 +80,7 @@ public:
     float CurrentMaximumLoad;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // Unsure, needs testing
     float DiscreteDelta;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
@@ -145,15 +154,17 @@ public:
     
 protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // If this number is positive, it is the U/s that this machine will output. If this number is negative, it is the U/s that this machine will draw.
     float NetPowerOutput;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     float CurrentCharge;
     
 public:
-    UPowerComponent();
+    UPowerComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void SetSuppliedVisibility(USceneComponent* Component);
     

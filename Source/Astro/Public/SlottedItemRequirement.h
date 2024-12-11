@@ -15,6 +15,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<UItemType>> SatisfactoryItemTypes;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<uint8> ValidRotations;
+    
     ASTRO_API FSlottedItemRequirement();
 };
 

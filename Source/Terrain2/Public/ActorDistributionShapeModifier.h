@@ -19,5 +19,6 @@ public:
     TArray<FWeightedActorSelection> Actors;
     
     UActorDistributionShapeModifier();
+
 };
 

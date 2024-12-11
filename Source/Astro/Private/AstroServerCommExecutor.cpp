@@ -1,5 +1,8 @@
 #include "AstroServerCommExecutor.h"
 
+UAstroServerCommExecutor::UAstroServerCommExecutor() {
+}
+
 void UAstroServerCommExecutor::TestProxyTimeoutIndex(int32 timeoutIndex) {
 }
 
@@ -132,6 +135,4 @@ void UAstroServerCommExecutor::DSBackupSaveGames() {
 void UAstroServerCommExecutor::DSAddFavorite(const FString& ServerName, const FString& NickName) {
 }
 
-UAstroServerCommExecutor::UAstroServerCommExecutor() {
-}
 

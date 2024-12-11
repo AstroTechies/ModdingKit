@@ -87,9 +87,10 @@ protected:
     FSignal OnControllerAttachedChanged;
     
 public:
-    AGravitySphereVehicle();
+    AGravitySphereVehicle(const FObjectInitializer& ObjectInitializer);
+
 protected:
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION()
     void SetupComponentReferences(UActorAttachmentsComponent* attachmentComponent, USceneComponent* seatRoot, USceneComponent* cameraTargetNode);
     
     UFUNCTION(BlueprintCallable)

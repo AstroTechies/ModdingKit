@@ -1,5 +1,8 @@
 #include "ResearchComponentContainer.h"
 
+UResearchComponentContainer::UResearchComponentContainer() {
+}
+
 FResearchComponent UResearchComponentContainer::GetResearchComponent(FAstroDatumRef ResearchComponentRef, bool& bOutSuccess) {
     return FResearchComponent{};
 }
@@ -8,6 +11,4 @@ FResearchComponent UResearchComponentContainer::FindResearchComponent(FAstroDatu
     return FResearchComponent{};
 }
 
-UResearchComponentContainer::UResearchComponentContainer() {
-}
 

@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "Engine/EngineTypes.h"
 #include "ActuateDelegateDelegate.h"
 #include "ActuatorCableLocalState.h"
 #include "ActuatorConnections.h"
@@ -91,9 +91,10 @@ private:
     USceneComponent* RerouteNodeTooltipAnchor;
     
 public:
-    UActuatorComponent();
+    UActuatorComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 private:
     UFUNCTION(BlueprintCallable)
     void OnRerouteNodeEndCursorOver(UPrimitiveComponent* TouchedComponent);
@@ -143,7 +144,7 @@ private:
     UFUNCTION(BlueprintCallable)
     void AuthorityHandleSlotClick(FSlotReference clickedSlot);
     
-    
+
     // Fix for true pure virtual functions not being implemented
 };
 

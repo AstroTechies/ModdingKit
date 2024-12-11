@@ -34,9 +34,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPowerComponent* PowerComponent;
     
-    UChargeUseComponent();
+    UChargeUseComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void UseCharge();
     

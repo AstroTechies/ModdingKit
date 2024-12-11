@@ -8,5 +8,6 @@ class TERRAIN2_API UProceduralExpression_SubModifier : public UProceduralExpress
     GENERATED_BODY()
 public:
     UProceduralExpression_SubModifier();
+
 };
 

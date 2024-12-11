@@ -5,6 +5,7 @@
 #include "ItemDriveReward.generated.h"
 
 class UItemType;
+class UObject;
 
 USTRUCT(BlueprintType)
 struct FItemDriveReward {
@@ -12,6 +13,9 @@ struct FItemDriveReward {
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString EventName;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UObject* PlayFabRewardObject;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemType> CatalogUnlockRewardItemType;

@@ -1,8 +1,9 @@
 #include "PhysicsComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class AActor;
-class UPhysicsComponent;
+UPhysicsComponent::UPhysicsComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+}
 
 void UPhysicsComponent::SetTraceEnabled(bool Enabled) {
 }
@@ -26,6 +27,4 @@ void UPhysicsComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
     DOREPLIFETIME(UPhysicsComponent, PhysicsState);
 }
 
-UPhysicsComponent::UPhysicsComponent() {
-}
 

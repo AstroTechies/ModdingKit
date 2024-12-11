@@ -2,8 +2,36 @@
 #include "FuelConsumerComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class AAstroPlayerController;
-class ASolarBody;
+AVtolItem::AVtolItem(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->CollisionMeshBottomOffset = 52.00f;
+    this->CeilingCheckInterval = 0.15f;
+    this->CeilingCheckHeight = 200.00f;
+    this->AutoHoverHeight = 500.00f;
+    this->LandingHeight = 500.00f;
+    this->MaxLandingSlope = 25.00f;
+    this->bMaintainHover = true;
+    this->VerticalSpeedScalar = 0.50f;
+    this->IgnitionDuration = 1.50f;
+    this->TakeOffRotationInterpolationSpeed = 180.00f;
+    this->ControlsInterpRate = 4.00f;
+    this->MinLandingSpeedScalar = 0.15f;
+    this->LandingSpeedInterpolationPercent = 0.15f;
+    this->DoubleTapInputWindow = 0.75f;
+    this->DoubleTapHoldThreshold = 0.15f;
+    this->ControlsPromptDisplayDuration = 3.00f;
+    this->ControlsPromptOpenDelay = 1.00f;
+    this->ThrusterWashUpdateInterval = 0.25f;
+    this->MaxSpeedForHighAltitudeWash = 0.20f;
+    this->MovementComponent = NULL;
+    this->CurrentForwardSpeedNormalized = 0.00f;
+    this->CurrentLateralSpeedNormalized = 0.00f;
+    this->bIsNearGround = true;
+    this->FuelConsumerComponent = CreateDefaultSubobject<UFuelConsumerComponent>(TEXT("Fuel Consumer Component"));
+    this->bEnginesActive = false;
+    this->FuelAmount = 0.00f;
+    this->bHasIgnition = false;
+    this->MovementControlsPromptStatus = EControlsPromptStatus::PromptNotShown;
+}
 
 void AVtolItem::UpdateWashEffectsState() {
 }
@@ -107,34 +135,4 @@ void AVtolItem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetim
     DOREPLIFETIME(AVtolItem, FuelAmount);
 }
 
-AVtolItem::AVtolItem() {
-    this->CollisionMeshBottomOffset = 52.00f;
-    this->CeilingCheckInterval = 0.15f;
-    this->CeilingCheckHeight = 200.00f;
-    this->AutoHoverHeight = 500.00f;
-    this->LandingHeight = 500.00f;
-    this->MaxLandingSlope = 25.00f;
-    this->bMaintainHover = true;
-    this->VerticalSpeedScalar = 0.50f;
-    this->IgnitionDuration = 1.50f;
-    this->TakeOffRotationInterpolationSpeed = 180.00f;
-    this->ControlsInterpRate = 4.00f;
-    this->MinLandingSpeedScalar = 0.15f;
-    this->LandingSpeedInterpolationPercent = 0.15f;
-    this->DoubleTapInputWindow = 0.75f;
-    this->DoubleTapHoldThreshold = 0.15f;
-    this->ControlsPromptDisplayDuration = 3.00f;
-    this->ControlsPromptOpenDelay = 1.00f;
-    this->ThrusterWashUpdateInterval = 0.25f;
-    this->MaxSpeedForHighAltitudeWash = 0.20f;
-    this->MovementComponent = NULL;
-    this->CurrentForwardSpeedNormalized = 0.00f;
-    this->CurrentLateralSpeedNormalized = 0.00f;
-    this->bIsNearGround = true;
-    this->FuelConsumerComponent = CreateDefaultSubobject<UFuelConsumerComponent>(TEXT("Fuel Consumer Component"));
-    this->bEnginesActive = false;
-    this->FuelAmount = 0.00f;
-    this->bHasIgnition = false;
-    this->MovementControlsPromptStatus = EControlsPromptStatus::PromptNotShown;
-}
 

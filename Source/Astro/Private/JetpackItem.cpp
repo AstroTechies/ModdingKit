@@ -1,9 +1,20 @@
 #include "JetpackItem.h"
+#include "Components/InputComponent.h"
 #include "FuelConsumerComponent.h"
 #include "JetpackMovementOverrideComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class APhysicalItem;
+AJetpackItem::AJetpackItem(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->InputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("Jetpack Input Component"));
+    this->FuelConsumerComponent = CreateDefaultSubobject<UFuelConsumerComponent>(TEXT("Fuel Consumer Component"));
+    this->JetpackMovementOverride = CreateDefaultSubobject<UJetpackMovementOverrideComponent>(TEXT("Jetpack Movement Override Component"));
+    this->AstroCharacter = NULL;
+    this->Backpack = NULL;
+    this->FuelPortionAmount = 0.00f;
+    this->JumpActivationTime = 0.00f;
+    this->RemainingFuelStateReplicated = ERemainingFuelState::Plenty;
+    this->bJetpackActive = false;
+}
 
 void AJetpackItem::SendStateTelemetry() {
 }
@@ -102,14 +113,4 @@ void AJetpackItem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLife
     DOREPLIFETIME(AJetpackItem, bJetpackActive);
 }
 
-AJetpackItem::AJetpackItem() {
-    this->FuelConsumerComponent = CreateDefaultSubobject<UFuelConsumerComponent>(TEXT("Fuel Consumer Component"));
-    this->JetpackMovementOverride = CreateDefaultSubobject<UJetpackMovementOverrideComponent>(TEXT("Jetpack Movement Override Component"));
-    this->AstroCharacter = NULL;
-    this->Backpack = NULL;
-    this->FuelPortionAmount = 0.00f;
-    this->JumpActivationTime = 0.00f;
-    this->RemainingFuelStateReplicated = ERemainingFuelState::Plenty;
-    this->bJetpackActive = false;
-}
 

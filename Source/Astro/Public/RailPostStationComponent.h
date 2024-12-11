@@ -35,9 +35,10 @@ protected:
     ARailCarBase* lastStoppedCar;
     
 public:
-    URailPostStationComponent();
+    URailPostStationComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnRep_StationSettings();

@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "CacheResourceGroup.h"
 #include "Templates/SubclassOf.h"
 #include "ExtractorGroupResourceCache.generated.h"
@@ -12,7 +12,7 @@ USTRUCT(BlueprintType)
 struct FExtractorGroupResourceCache {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<AAstroPlanet> Planet;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))

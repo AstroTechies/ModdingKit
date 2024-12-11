@@ -20,6 +20,7 @@ private:
     UPowerComponent* PowerComponent;
     
 public:
-    USolarPowerComponent();
+    USolarPowerComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

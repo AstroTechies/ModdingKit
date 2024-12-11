@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
 #include "SlotReference.h"
 #include "HangingSlotComponent.generated.h"
@@ -28,7 +28,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     URingCameraTargeter* RingTargeter;
     
-    UHangingSlotComponent();
+    UHangingSlotComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void PositionConnection(ASlotConnection* Connection, APlayController* Controller, FVector& outNormal, FVector& OutLocation);
     

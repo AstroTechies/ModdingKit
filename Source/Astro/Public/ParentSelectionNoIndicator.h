@@ -7,6 +7,7 @@ UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UParentSelectionNoIndicator : public UActorComponent {
     GENERATED_BODY()
 public:
-    UParentSelectionNoIndicator();
+    UParentSelectionNoIndicator(const FObjectInitializer& ObjectInitializer);
+
 };
 

@@ -16,9 +16,10 @@ protected:
     FPhysicsState PhysicsState;
     
 public:
-    UPhysicsComponent();
+    UPhysicsComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void SetTraceEnabled(bool Enabled);
     

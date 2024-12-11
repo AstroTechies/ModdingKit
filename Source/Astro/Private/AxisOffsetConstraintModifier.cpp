@@ -1,6 +1,6 @@
 #include "AxisOffsetConstraintModifier.h"
 
-UAxisOffsetConstraintModifier::UAxisOffsetConstraintModifier() {
+UAxisOffsetConstraintModifier::UAxisOffsetConstraintModifier(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->bConstrainForward = false;
     this->bConstrainUp = false;
     this->bConstrainRight = false;
@@ -14,4 +14,5 @@ UAxisOffsetConstraintModifier::UAxisOffsetConstraintModifier() {
     this->RightMin = 0.00f;
     this->RightCorrectionSpeed = 0.00f;
 }
+
 

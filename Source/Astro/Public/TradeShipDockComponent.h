@@ -39,7 +39,8 @@ protected:
     FSignal OnInventoryChanged;
     
 public:
-    UTradeShipDockComponent();
+    UTradeShipDockComponent(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastShipLaunchedToOrbit(float LaunchLength);

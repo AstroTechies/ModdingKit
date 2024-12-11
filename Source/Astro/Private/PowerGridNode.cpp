@@ -1,5 +1,6 @@
 #include "PowerGridNode.h"
 
-UPowerGridNode::UPowerGridNode() {
+UPowerGridNode::UPowerGridNode(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

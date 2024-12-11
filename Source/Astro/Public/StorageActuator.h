@@ -9,7 +9,8 @@ UCLASS(Blueprintable)
 class ASTRO_API AStorageActuator : public AFullnessActuator {
     GENERATED_BODY()
 public:
-    AStorageActuator();
+    AStorageActuator(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable)
     void AuthorityHandleLeadRailCarReleasedFromSlot(bool NewOwner);

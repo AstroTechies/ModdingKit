@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
 #include "ItemBlueprintRow.h"
 #include "ItemPrintedSignalDelegate.h"
@@ -163,16 +163,17 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> PlayerStorageSlots;
     
-    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<URecipeOrganizationRule> RecipeOrganizationRule;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FItemBlueprintRow> BlueprintRows;
     
 public:
-    UPrinterComponent();
+    UPrinterComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void UnlockedItemsChanged(const TArray<TSubclassOf<UItemType>>& NewUnlockedItems);
     

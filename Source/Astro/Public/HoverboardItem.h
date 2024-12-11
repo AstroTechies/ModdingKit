@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "PhysicalItem.h"
 #include "HoverboardItem.generated.h"
 
@@ -33,9 +33,10 @@ private:
     uint8 bHoverboardActive: 1;
     
 public:
-    AHoverboardItem();
+    AHoverboardItem(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnUpdateHoverboardOrientation();
     

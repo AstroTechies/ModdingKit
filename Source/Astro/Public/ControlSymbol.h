@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "ControlSymbol.generated.h"
 
 class AActor;
@@ -25,6 +25,7 @@ public:
     FString SoundEvent;
     
     UControlSymbol();
+
     UFUNCTION(BlueprintCallable)
     void ApplyToIconActor(AActor* Actor);
     

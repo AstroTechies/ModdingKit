@@ -50,6 +50,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool TerrainOverlap;
     
-    UMeshDistributionBaseComponent();
+    UMeshDistributionBaseComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

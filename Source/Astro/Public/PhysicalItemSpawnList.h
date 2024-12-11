@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "PhysicalItemSpecifier.h"
 #include "Templates/SubclassOf.h"
 #include "PhysicalItemSpawnList.generated.h"
@@ -16,6 +16,7 @@ public:
     TArray<FPhysicalItemSpecifier> ActorTypes;
     
     UPhysicalItemSpawnList();
+
     UFUNCTION(BlueprintCallable)
     TSubclassOf<APhysicalItem> PickActor();
     

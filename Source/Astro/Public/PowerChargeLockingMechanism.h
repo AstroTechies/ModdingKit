@@ -8,6 +8,7 @@ class ASTRO_API UPowerChargeLockingMechanism : public ULockingMechanism {
     GENERATED_BODY()
 public:
     UPowerChargeLockingMechanism();
+
     UFUNCTION(BlueprintCallable)
     void OnNotFullyCharged();
     

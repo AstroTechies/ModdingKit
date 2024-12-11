@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "AstroDatum.h"
 #include "AstroDatumRef.h"
 #include "AstroDatumContainer.generated.h"
@@ -10,6 +10,7 @@ class ASTRO_API UAstroDatumContainer : public UObject {
     GENERATED_BODY()
 public:
     UAstroDatumContainer();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FAstroDatumRef MakeDatumRef_DO_NOT_USE_FROM_CPP(const FAstroDatum& Datum);
     

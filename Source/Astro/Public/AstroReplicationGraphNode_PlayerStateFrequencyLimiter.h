@@ -8,5 +8,6 @@ class UAstroReplicationGraphNode_PlayerStateFrequencyLimiter : public UReplicati
     GENERATED_BODY()
 public:
     UAstroReplicationGraphNode_PlayerStateFrequencyLimiter();
+
 };
 

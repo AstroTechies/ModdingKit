@@ -10,6 +10,7 @@ class ULockEventListener : public UAstroEntityComponentSubobject {
     GENERATED_BODY()
 public:
     ULockEventListener();
+
     UFUNCTION(BlueprintCallable)
     void OnLockLockedStateChanged(FAstroDatumRef lockRef, const FLockChangedEventMetadata& EventData);
     

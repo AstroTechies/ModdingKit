@@ -30,6 +30,7 @@ protected:
     
 public:
     UAstroPlayMontageAction();
+
     UFUNCTION(BlueprintCallable)
     void SetMontage(UAnimMontage* NewMontage);
     

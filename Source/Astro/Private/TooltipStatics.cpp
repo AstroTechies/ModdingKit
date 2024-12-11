@@ -1,7 +1,7 @@
 #include "TooltipStatics.h"
 
-class AActor;
-class UTooltipComponent;
+UTooltipStatics::UTooltipStatics() {
+}
 
 UTooltipComponent* UTooltipStatics::GetDefaultTooltipComponentForActor(AActor* TooltipOwner) {
     return NULL;
@@ -11,6 +11,4 @@ FTooltipWidgetDisplayData UTooltipStatics::DuplicateTooltipDisplayDataAndAppendI
     return FTooltipWidgetDisplayData{};
 }
 
-UTooltipStatics::UTooltipStatics() {
-}
 

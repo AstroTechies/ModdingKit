@@ -8,5 +8,6 @@ class TERRAIN2_API UProceduralExpression_SdfIntersect : public UProceduralExpres
     GENERATED_BODY()
 public:
     UProceduralExpression_SdfIntersect();
+
 };
 

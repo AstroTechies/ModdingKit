@@ -8,6 +8,7 @@ public class Terrain2 : ModuleRules {
             "Core",
             "CoreUObject",
             "Engine",
+            "GameplayTags",
         });
     }
 }

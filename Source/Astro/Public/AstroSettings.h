@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=WorldSettings -FallbackName=WorldSettings
+#include "UObject/NoExportTypes.h"
+#include "GameFramework/WorldSettings.h"
 #include "Templates/SubclassOf.h"
 #include "AstroSettings.generated.h"
 
@@ -18,6 +18,9 @@ class AAstroSettings : public AWorldSettings {
     GENERATED_BODY()
 public:
     DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnFreePowerChanged, bool, FreePowerEnabled);
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bDisallowedForDedicatedServer: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bIsFlatland: 1;
@@ -45,6 +48,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bBalancePalettes: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bAnalyticsEnabled: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UAstroMissionDataAsset*> MissionData;
@@ -100,7 +106,8 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnFreePowerChanged OnFreePowerChanged;
     
-    AAstroSettings();
+    AAstroSettings(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static AAstroSettings* GetAstroSettings(AActor* Actor);
     

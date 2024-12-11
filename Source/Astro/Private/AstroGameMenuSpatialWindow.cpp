@@ -1,6 +1,7 @@
 #include "AstroGameMenuSpatialWindow.h"
 
-class UAstroGameMenuFocusItemWidget;
+UAstroGameMenuSpatialWindow::UAstroGameMenuSpatialWindow() {
+}
 
 FVector2D UAstroGameMenuSpatialWindow::GetUnboundedDimensionOfSubPane_Implementation() {
     return FVector2D{};
@@ -18,6 +19,4 @@ FVector2D UAstroGameMenuSpatialWindow::GetLocalPositionOfFocusItemWidget(UAstroG
     return FVector2D{};
 }
 
-UAstroGameMenuSpatialWindow::UAstroGameMenuSpatialWindow() {
-}
 

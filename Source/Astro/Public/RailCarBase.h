@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
+#include "Engine/EngineTypes.h"
+#include "Engine/EngineBaseTypes.h"
 #include "ERailCarMovementState.h"
 #include "EnableSignalDelegate.h"
 #include "RailCarMovementReplicatedData.h"
@@ -164,9 +164,10 @@ protected:
     FString StopTrainBlockedAudioEvent;
     
 public:
-    ARailCarBase();
+    ARailCarBase(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable, Reliable, Server)
     void ServerHandleDriverInput(float SteeringInput, float ThrottleInput, bool isCameraBackwards);

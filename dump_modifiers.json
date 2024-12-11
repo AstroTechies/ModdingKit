@@ -1,0 +1,132 @@
+{
+    "STATICS": {
+        "MODULES_TO_INCLUDE": ["Astro", "MessageOfTheDay", "Terrain2"],
+        "BANNED_MODULES": ["AstroOnline", "AstroPlayFab", "AstroPlayFabBPL", "AnalyticsBlueprintLibrary"],
+        "FORCE_BAN_NAMES_WHEN_IMPORTED": [],
+        "FORCE_BAN_NAMES": ["StoreWidgetClass", "StoreWidgetInstance", "SpecificCustomizationContent", "MicroTxnStoreGlobals", "AnalyticsEventAttr", "RawDistributionFloat", "PlanetEffectRelevancyChanged", "OnConfigPlayfabCacheUpdateFailedMulticastDelegate", "OnConfigMetaDataCachePlayfabUpdateFailedMulticastDelegate", "OnConfigCacheUpdatedDelegate", "OnCGMConfigPublishedDelegate", "OnConfigImportFailedMulticastDelegate", "OnConfigImportSucceededMulticastDelegate", "OnConfigLocalCacheUpdateFailedMulticastDelegate", "OnRespawnTokenCountUpdated", "OnIsCustomGameChanged", "OnCustomGameSettingsChanged", "OnCustomGameSettingModified"],
+        "DELETE_ALL_FILES_CONTAINING_IN_TITLE": ["AstroStore", "AstroVirtualCurrency", "AstroMicroTxn", "AstroPlatformSpecificCustomizationContent", "AstroAnalytics", "DlcManager", "PlayFabTxnManager", "SegmentedInt", "SegmentedString"],
+        "REMOVE_BP_ACCESS": ["ComponentReference", "RepMovement"] 
+    },
+    "GLOBAL_MODIFIER": {
+        "FTransform2": {
+            "SUBSTITUTE": "FTransform"
+        },
+        "FNetUnstableActorReference": {
+            "SUBSTITUTE": "AActor*"
+        },
+        "ESaveGameOperationResult": {
+            "SUBSTITUTE": "uint8"
+        },
+        "ReplicationGraphNode.h": {
+            "SUBSTITUTE": "ReplicationGraph.h"
+        },
+        "this->bSaveGameRelevant =": {
+            "DELETE": [0, 0]
+        },
+        "this->bReplicateHidden =": {
+            "DELETE": [0, 0]
+        },
+        "this->bNetNeverThrottleReplication =": {
+            "DELETE": [0, 0]
+        },
+        "const FProperty* p_RemoteRole": {
+            "DELETE": [0, 1]
+        }
+    },
+    "AstroApplyTransformTask": {
+        "UAstroApplyTransformTask::UAstroApplyTransformTask()": {
+            "SUBSTITUTE": "UAstroApplyTransformTask::UAstroApplyTransformTask() : UGameplayTask(FObjectInitializer())"
+        }
+    },
+    "AstroIgnoreInputTask": {
+        "UAstroIgnoreInputTask::UAstroIgnoreInputTask()": {
+            "SUBSTITUTE": "UAstroIgnoreInputTask::UAstroIgnoreInputTask() : UGameplayTask(FObjectInitializer())"
+        }
+    },
+    "AstroInterpolateItemTask": {
+        "UAstroInterpolateItemTask::UAstroInterpolateItemTask()": {
+            "SUBSTITUTE": "UAstroInterpolateItemTask::UAstroInterpolateItemTask() : UGameplayTask(FObjectInitializer())"
+        }
+    },
+    "AstroPlayMontageTask": {
+        "UAstroPlayMontageTask::UAstroPlayMontageTask()": {
+            "SUBSTITUTE": "UAstroPlayMontageTask::UAstroPlayMontageTask() : UGameplayTask(FObjectInitializer())"
+        },
+        "OnSingleAnimCustomNotify": {
+            "DELETE": true
+        }
+    },
+    "AstroTakePictureTask": {
+        "UAstroTakePictureTask::UAstroTakePictureTask()": {
+            "SUBSTITUTE": "UAstroTakePictureTask::UAstroTakePictureTask() : UGameplayTask(FObjectInitializer())"
+        }
+    },
+    "AstroPlayerController": {
+        "TEnumAsByte<EInputEvent>": {
+            "SUBSTITUTE": "EInputEvent"
+        }
+    },
+    "ItemCatalogData": {
+        "uint8 bIsCreativeModeOnly": "Does this item only show up in the catalog in creative mode?",
+        "uint8 bCreativeSpawnPackaged": "Does this item spawn as a package when spawned in from the catalog in creative mode?",
+        "int32 UnlockCost": "How many bytes are needed to unlock this entry in the catalog?",
+        "uint8 bIsBaseItem": "Is this item the base of its catalog row?",
+        "UItemCatalogCategoryDefinition* Category": "If this item is the base of the catalog row, this is the tab of the catalog that the entry is in; otherwise, this is None",
+        "int32 CategorySequenceNumber": "Y value (0 = first row of the tab, 1 = second row of the tab, etc.)",
+        "TSubclassOf<UItemType> BaseItemType": "A reference to the item that is the base of the catalog row (If this is the base item, leave this as None)",
+        "EItemVariantType VariantType": "Is this entry to the left or the right of the base item in the catalog row? (If this is the base item, leave this as Left)",
+        "int32 VariationSequenceNumber": "|X| (0 = the base entry, 1 = directly before or after the base entry, etc.)",
+        "UStaticMesh* CatalogMesh": "The model that shows in the catalog to represent this item"
+    },
+    "EItemVariantType": {
+        "Pioneer": {
+            "UMETA": "DisplayName = \"Left\""
+        },
+        "Engineer": {
+            "UMETA": "DisplayName = \"Right\""
+        }
+    },
+    "ItemComponent": {
+        "Capacity": "If this is a canister, how much can it hold?"
+    },
+    "PhysicalItem": {
+        "HoverHeight": "no idea",
+        "IgnoreBodySlotForHover": "no idea",
+        "PrinterHeight": "The height of the printer, overrides the default determined height value if defined",
+        "ToolMoveTier": "The tier of the object. 1 = T1, 2 = T2, etc. Controls fallback slot size, default package size, as well as walking speed",
+        "IsMovable": "Can this item be picked up and moved around with the cursor?",
+        "IsUnslottable": "Can this item be slotted?",
+        "SlotQueryAllowBodyPlacement": "Can this item be directly attached to the body of an object (like packagers and dynamite do)?"
+    },
+    "ItemType": {
+		"uint8 Indestructible": "Is this indestructible?",
+		"uint8 IsVolatile": "Whether or not the item contributes to an explosion, like Hydrazine does",
+		"uint8 IsPower": "Is this a power resource?",
+		"uint8 IsOxygen": "Is this an oxygen resource?",
+		"uint8 bCanBeScrapped": "Can this be put into a shredder?",
+		"uint8 bIsUnrepackageable": "Can this item not be packaged with a packager?",
+		"TArray<TSubclassOf<UItemType>> ContainerSubtypeWhitelist": "What items can go into this container?",
+		"FLinearColor MaterialColor": "Not needed",
+		"TSubclassOf<AActor> PickupActor": "The Actor (PhysicalItem) that this ItemType represents",
+		"TSubclassOf<UItemType> UnbundleType": "Bundle --> Individual",
+		"TSubclassOf<UItemType> BundleType": "Individual --> Bundle"
+    },
+    "AstroPlanet": {
+        "FVector GetNorthVector()": "Returns a vector that points North"
+    },
+    "PowerComponent": {
+        "uint8 Enabled": "Take a guess",
+		"uint8 bIsGenerator": "Should this machine generate power?",
+		"float NetPowerOutput": "If this number is positive, it is the U/s that this machine will output. If this number is negative, it is the U/s that this machine will draw.",
+		"uint8 SelfDischargeOnly": "Unsure, only rovers seem to use this field",
+		"uint8 IsIntegratedBattery": "Is this battery built into the chassis of a machine?",
+		"uint8 QueryPower": "Does this machine need power to work?",
+		"float StorageCapacity": "The amount of energy that this battery can hold in units",
+		"float DischargeRate": "The number of U/s that this battery can discharge",
+		"float ChargeRate": "The number of U/s that this battery can charge",
+		"float DiscreteDelta": "Unsure, needs testing"
+    },
+    "AstroPlayerState": {
+        "FString BackendPlayerId": "The PlayFab ID of a player. Seemingly only accessible on dedicated servers."
+    }
+}

@@ -7,5 +7,6 @@ enum class ESelectedItemUnlockState : uint8 {
     Unlocked,
     Unlockable,
     Locked,
+    Hacked,
 };
 

@@ -3,7 +3,13 @@
 #include "NavpointComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class AActor;
+ARiftTrackerBase::ARiftTrackerBase(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->SpawnedTarget = NULL;
+    this->NavpointComp = CreateDefaultSubobject<UNavpointComponent>(TEXT("Navpoint Component"));
+    this->TeleportComp = CreateDefaultSubobject<UItemTeleportHelperComponent>(TEXT("Teleport Helper Component"));
+    this->TrackerState = ERiftTrackerState::Standby;
+    this->TrackerGameType = ERiftTrackerGameType::Eva;
+}
 
 void ARiftTrackerBase::OnRep_TrackerGameType() {
 }
@@ -34,11 +40,4 @@ void ARiftTrackerBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
     DOREPLIFETIME(ARiftTrackerBase, TrackerGameType);
 }
 
-ARiftTrackerBase::ARiftTrackerBase() {
-    this->SpawnedTarget = NULL;
-    this->NavpointComp = CreateDefaultSubobject<UNavpointComponent>(TEXT("Navpoint Component"));
-    this->TeleportComp = CreateDefaultSubobject<UItemTeleportHelperComponent>(TEXT("Teleport Helper Component"));
-    this->TrackerState = ERiftTrackerState::Standby;
-    this->TrackerGameType = ERiftTrackerGameType::Eva;
-}
 

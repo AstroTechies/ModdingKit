@@ -1,6 +1,6 @@
 #include "PitchControlModifierComponent.h"
 
-UPitchControlModifierComponent::UPitchControlModifierComponent() {
+UPitchControlModifierComponent::UPitchControlModifierComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->Speed = 360.00f;
     this->GamepadMultiplier = 0.30f;
     this->MouseSmoothingFactor = 0.00f;
@@ -11,4 +11,5 @@ UPitchControlModifierComponent::UPitchControlModifierComponent() {
     this->SpongeRange = 0.00f;
     this->ControlMask = ECameraControlMask::All;
 }
+
 

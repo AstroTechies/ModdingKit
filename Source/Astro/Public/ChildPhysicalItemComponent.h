@@ -17,7 +17,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EPhysicalItemTerrainMode TerrainMode;
     
-    UChildPhysicalItemComponent();
+    UChildPhysicalItemComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     APhysicalItem* GetChildPhysicalItem();
     

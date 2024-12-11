@@ -26,7 +26,8 @@ protected:
     AControlPanelButton* ButtonActor;
     
 public:
-    UControlPanelButtonChildActorComponent();
+    UControlPanelButtonChildActorComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void SpoofButtonPress();
     

@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/NoExportTypes.h"
+#include "UObject/Object.h"
 #include "PlayerProperties.h"
 #include "AstroServerSettings.generated.h"
 
-UCLASS(Blueprintable, Config=Engine, DefaultConfig, Config=AstroServerSettings)
+UCLASS(Blueprintable, DefaultConfig, Config=AstroServerSettings)
 class UAstroServerSettings : public UObject {
     GENERATED_BODY()
 public:
@@ -81,11 +81,15 @@ public:
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString ActiveSaveFileDescriptiveName;
     
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FString ShareCode;
+    
 private:
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString ServerAdvertisedName;
     
 public:
     UAstroServerSettings();
+
 };
 

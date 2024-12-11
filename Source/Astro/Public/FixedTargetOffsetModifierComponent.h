@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "CameraModifierComponent.h"
 #include "FixedTargetOffsetModifierComponent.generated.h"
 
@@ -15,6 +15,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRotator RelativeRotation;
     
-    UFixedTargetOffsetModifierComponent();
+    UFixedTargetOffsetModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

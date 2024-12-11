@@ -31,7 +31,8 @@ private:
     ASlotConnection* OwnerConnection;
     
 public:
-    URailComponent();
+    URailComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     bool SendItem(APhysicalItem* Item, AActor* Source);
     

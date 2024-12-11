@@ -1,6 +1,7 @@
 #include "AstroPopupBadgeManager.h"
 
-UAstroPopupBadgeManager::UAstroPopupBadgeManager() {
+UAstroPopupBadgeManager::UAstroPopupBadgeManager(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->PopupBadgesDisabled = false;
 }
+
 

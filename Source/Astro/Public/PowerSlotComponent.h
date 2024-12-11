@@ -7,6 +7,7 @@ UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UPowerSlotComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPowerSlotComponent();
+    UPowerSlotComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

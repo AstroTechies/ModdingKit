@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
+#include "Kismet/BlueprintFunctionLibrary.h"
 #include "AstroMessageOfTheDayManager.generated.h"
 
 class UMessageOfTheDay;
@@ -10,11 +10,27 @@ class MESSAGEOFTHEDAY_API UAstroMessageOfTheDayManager : public UBlueprintFuncti
     GENERATED_BODY()
 public:
     UAstroMessageOfTheDayManager();
+
+    UFUNCTION(BlueprintCallable)
+    static void SuppressMotD(const bool shouldSupress);
+    
     UFUNCTION(BlueprintCallable)
     static void SetDefaultMessage(UMessageOfTheDay* Message);
     
     UFUNCTION(BlueprintCallable)
+    static void ResetFullscreenMotDViewData(bool resetLatestTitleNewsData);
+    
+    UFUNCTION(BlueprintCallable)
+    static void MarkLatestFullscreenMotDSeen();
+    
+    UFUNCTION(BlueprintCallable)
+    static void HideFullscreenMotD();
+    
+    UFUNCTION(BlueprintCallable)
     static UMessageOfTheDay* GetForCurrentCulture();
+    
+    UFUNCTION(BlueprintCallable)
+    static void DisplayFullscreenMotD(const bool bypassPreviousViewData);
     
 };
 

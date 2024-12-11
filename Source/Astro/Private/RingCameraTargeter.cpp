@@ -1,10 +1,13 @@
 #include "RingCameraTargeter.h"
 
-class AActor;
-class APlayController;
-class ASlotConnection;
-class URingCameraTargeter;
-class USceneComponent;
+URingCameraTargeter::URingCameraTargeter(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->AvoidRadians = 1.00f;
+    this->Target = NULL;
+    this->Center = NULL;
+    this->CenterDistance = 250.00f;
+    this->LerpSpeed = 4.00f;
+    this->PlayerCameraTargetLerp = 0.50f;
+}
 
 void URingCameraTargeter::SnapToTargetLocation(const FVector& TargetLocation) {
 }
@@ -25,12 +28,4 @@ URingCameraTargeter* URingCameraTargeter::ActorRingCameraTargeter(AActor* Actor)
     return NULL;
 }
 
-URingCameraTargeter::URingCameraTargeter() {
-    this->AvoidRadians = 1.00f;
-    this->Target = NULL;
-    this->Center = NULL;
-    this->CenterDistance = 250.00f;
-    this->LerpSpeed = 4.00f;
-    this->PlayerCameraTargetLerp = 0.50f;
-}
 

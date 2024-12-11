@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EPhysicalSurface -FallbackName=EPhysicalSurface
+#include "UObject/NoExportTypes.h"
+#include "Engine/EngineTypes.h"
 #include "VoxelMaterial.generated.h"
 
 class UMaterialInstanceDynamic;

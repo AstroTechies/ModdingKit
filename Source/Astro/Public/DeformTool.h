@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "Engine/EngineTypes.h"
+#include "Engine/EngineTypes.h"
 #include "EDeformType.h"
 #include "VoxelMaterial.h"
 #include "VoxelMaterialProperties.h"
@@ -266,9 +266,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 MinedMineral: 1;
     
-    ADeformTool();
+    ADeformTool(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 private:
     UFUNCTION(BlueprintCallable)
     bool UpdateTerrainSample(AAstroPlanet* Planet, const FVector& Location);
@@ -379,9 +380,12 @@ private:
     bool HasSpaceLeftInTanks();
     
     UFUNCTION(BlueprintCallable)
-    void HandleTerrainTool(APlayController* Controller, const FHitResult& toolHit, const FClickResult& ClickResult, bool startedInteraction, bool isUsingTool, bool justActivated, bool canUse);
+    void HandleTerrainTool(APlayController* Controller, const FHitResult& toolHit, const FClickResult& ClickResult, bool startedInteraction, bool endedInteraction, bool isUsingTool, bool justActivated, bool canUse);
     
 public:
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    FVector GetToolNozzleLocation();
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetSedimentFlowRate();
     
@@ -458,6 +462,9 @@ private:
     float GetBrushSizeModifierFromAugment();
     
 public:
+    UFUNCTION(BlueprintCallable)
+    bool GetAugmentStateRevertModifications();
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetAugmentedTerrainHardness();
     

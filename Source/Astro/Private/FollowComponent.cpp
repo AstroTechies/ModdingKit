@@ -1,17 +1,6 @@
 #include "FollowComponent.h"
 
-class AActor;
-class UFollowComponent;
-class USceneComponent;
-
-void UFollowComponent::SetFollowComponent(USceneComponent* Component) {
-}
-
-UFollowComponent* UFollowComponent::AddActorFollowComponent(AActor* Actor) {
-    return NULL;
-}
-
-UFollowComponent::UFollowComponent() {
+UFollowComponent::UFollowComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->FollowComponent = NULL;
     this->TrackFollowVelocity = true;
     this->ScaleComponent = NULL;
@@ -22,4 +11,12 @@ UFollowComponent::UFollowComponent() {
     this->MinLife = 1.20f;
     this->MaxLife = 1.80f;
 }
+
+void UFollowComponent::SetFollowComponent(USceneComponent* Component) {
+}
+
+UFollowComponent* UFollowComponent::AddActorFollowComponent(AActor* Actor) {
+    return NULL;
+}
+
 

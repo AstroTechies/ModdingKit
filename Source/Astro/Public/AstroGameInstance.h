@@ -1,12 +1,21 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=GameInstance -FallbackName=GameInstance
+//#include "EAstroFriendJoinRequestFailure.h"
+//#include "FriendJoinRequestSucceededPayload.h"
+//#include "AstroPlayFabMicroTxnStoreData.h"
+//#include "AstroPlayFabTitleData.h"
+//#include "AstroServerInfo.h"
+#include "Engine/GameInstance.h"
 #include "AccountLinkCompleteDelegate.h"
 #include "ActorTemplateCache.h"
+#include "AstroCharacterCustomization.h"
 #include "CheckUserPrivilegeCompleteDelegate.h"
 #include "JoinFriendSessionCompleteDelegate.h"
 #include "MaterialInstanceCache.h"
+#include "NetworkStatusMightHaveChangedDelegate.h"
 #include "OnAsyncMapLoadStartedDelegate.h"
+#include "OnCharacterCustomizationPreviewRequestedDelegate.h"
+#include "OnEmotePreviewRequestedDelegate.h"
 #include "OnFullLicenseActivatedDelegate.h"
 #include "OnGameplayStartedDelegate.h"
 #include "OnJoinedAsClientDelegate.h"
@@ -20,9 +29,13 @@
 #include "PlatformLogoutCompleteDelegate.h"
 #include "SignalDelegate.h"
 #include "Templates/SubclassOf.h"
+#include "TooltipWidgetDisplayData.h"
 #include "WorldSingletons.h"
 #include "AstroGameInstance.generated.h"
 
+//class UAstroDlcManager;
+class UAstroEmoteDefinition;
+//class UAstroPlayFabTxnManager;
 class UAstroServerCommExecutor;
 class UMessageOfTheDay;
 class UObject;
@@ -34,6 +47,11 @@ class ASTRO_API UAstroGameInstance : public UGameInstance {
     GENERATED_BODY()
 public:
     DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FMessageOfTheDayUpdated, UMessageOfTheDay*, InMessageOfTheDay);
+    DECLARE_DYNAMIC_MULTICAST_DELEGATE(FHideFullscreenMessageOfTheDay);
+    DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDisplayFullscreenMessageOfTheDay);
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FNetworkStatusMightHaveChanged OnNetworkStatusMightHaveChanged;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnTrialLicenseActivated OnTrialLicenseDetected;
@@ -102,17 +120,56 @@ public:
     FSignal OnUnclaimedPhysicalItemRewardsChanged;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FSignal OnPlayFabTitleDataRefreshed;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FSignal OnPlayFabMicroTxnStoreDataRefreshed;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    FSignal OnTitleScreenCharacterCustomizationStarted;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    FSignal OnTitleScreenCharacterCustomizationCanceled;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    FSignal OnTitleScreenCharacterCustomizationCommitted;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    FSignal OnTitleScreenCharacterCustomizationUnlockTooltipInvalidated;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    FSignal OnTitleScreenCharacterCustomizationFinalizationStarted;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    FSignal OnTitleScreenCharacterCustomizationFinalizationCanceled;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    FOnCharacterCustomizationPreviewRequested OnCharacterCustomizationPreviewRequested;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    FOnEmotePreviewRequested OnEmotePreviewRequested;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnJoinedAsClient OnJoinedNetGame;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FMessageOfTheDayUpdated OnMessageOfTheDayUpdated;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FDisplayFullscreenMessageOfTheDay OnDisplayFullscreenMessageOfTheDay;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FHideFullscreenMessageOfTheDay OnHideFullscreenMessageOfTheDay;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnPlayTogetherEventReceived;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAstroServerCommExecutor* AstroServerCommSingleton;
-
+    
+//    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+//    FAstroServerInfo InviteServerInfo;
+    
 private:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FPlatformLoginComplete OnPlatformLoginCompleted;
@@ -126,8 +183,25 @@ private:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal SessionDestroed;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    bool SanitizeNonPersistentPlacements;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    bool SanitizeInactiveLTEPlacements;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    bool SanitizeCompletedMissionPlacements;
+    
+public:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool LoadingMenuAfterKickedFromSession;
+    
+private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<UWorld*, FWorldSingletons> WorldSingletons;
+    
+//    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+//    UAstroPlayFabTxnManager* PlayFabTxnManager;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UUserWidget* ActiveLoadingScreen;
@@ -150,8 +224,27 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FString LobbyId;
     
+//    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+//    UAstroDlcManager* DlcManager;
+    
 public:
     UAstroGameInstance();
+
+    UFUNCTION(BlueprintCallable)
+    void SetSanitizeNonPersistentPlacements(bool Sanitize);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetSanitizeInactiveLTEPlacements(bool Sanitize);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetSanitizeCompletedMissionPlacements(bool Sanitize);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetIsTransitioningToExpansionViaPortal(bool viaPortal);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetActiveSaveFileDescriptiveName(const FString& newName);
+    
     UFUNCTION(BlueprintCallable)
     void PlatformLogout();
     
@@ -183,7 +276,31 @@ public:
     void NotifyPlayerCancelledChangeUsers();
     
     UFUNCTION(BlueprintCallable)
+    void NotifyOnTitleScreenCharacterCustomizationUnlockTooltipInvalidated();
+    
+    UFUNCTION(BlueprintCallable)
+    void NotifyOnTitleScreenCharacterCustomizationStarted();
+    
+    UFUNCTION(BlueprintCallable)
+    void NotifyOnTitleScreenCharacterCustomizationFinalizationStarted();
+    
+    UFUNCTION(BlueprintCallable)
+    void NotifyOnTitleScreenCharacterCustomizationFinalizationCanceled();
+    
+    UFUNCTION(BlueprintCallable)
+    void NotifyOnTitleScreenCharacterCustomizationCommitted();
+    
+    UFUNCTION(BlueprintCallable)
+    void NotifyOnTitleScreenCharacterCustomizationCanceled();
+    
+    UFUNCTION(BlueprintCallable)
     void NotifyOnMultiplayerModeChanged();
+    
+    UFUNCTION(BlueprintCallable)
+    void NotifyOnEmotePreviewRequested(UAstroEmoteDefinition* emoteDefinition, bool IsLocked, FTooltipWidgetDisplayData lockedTooltipDisplayData);
+    
+    UFUNCTION(BlueprintCallable)
+    void NotifyOnCharacterCustomizationPreviewRequested(const FAstroCharacterCustomization& customizationToPreview, bool IsLocked, FTooltipWidgetDisplayData lockedTooltipDisplayData);
     
     UFUNCTION(BlueprintCallable)
     void NotifyNewGameSetupComplete();
@@ -213,6 +330,9 @@ public:
     bool IsGameInTrialMode();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool HasMicroTxnStoreDataUpdated();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasIntroCinematicCompleted();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -225,14 +345,52 @@ private:
     UFUNCTION(BlueprintCallable)
     void HandleFriendsListCacheUpdated();
     
+//    UFUNCTION(BlueprintCallable)
+//    void HandleFriendJoinRequestSucceeded(const FFriendJoinRequestSucceededPayload& joinRequestSucceededPayload);
+    
+//    UFUNCTION(BlueprintCallable)
+//    void HandleFriendJoinRequestFailed(EAstroFriendJoinRequestFailure JoinFailureReason);
+    
 public:
     UFUNCTION(BlueprintCallable)
     void HandleCultureChanged();
     
 private:
+//    UFUNCTION(BlueprintCallable, BlueprintPure)
+//    FAstroPlayFabTitleData GetTitleData();
+    
 public:
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetSanitizeNonPersistentPlacements() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetSanitizeInactiveLTEPlacements() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetSanitizeCompletedMissionPlacements() const;
+    
+//    UFUNCTION(BlueprintCallable, BlueprintPure)
+//    UAstroPlayFabTxnManager* GetPlayFabTxnManager();
+    
+private:
+//    UFUNCTION(BlueprintCallable, BlueprintPure)
+//    FAstroPlayFabMicroTxnStoreData GetMicroTxnStoreData();
+    
+public:
+    UFUNCTION(BlueprintCallable)
+    bool GetIsTransitioningToExpansionViaPortal();
+    
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     float GetEstimatedLoadPercentage(const UObject* WorldContextObject, const float dt, const bool lastCall);
+    
+//    UFUNCTION(BlueprintCallable, BlueprintPure)
+//    UAstroDlcManager* GetDlcManager();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    FString GetActiveSaveFileDescriptiveName() const;
+    
+    UFUNCTION(BlueprintCallable)
+    void ForceRefreshMicroTxnStoreData();
     
     UFUNCTION(BlueprintCallable)
     void DisplayLoadScreenWidget(TSubclassOf<UUserWidget> overrideWidget);

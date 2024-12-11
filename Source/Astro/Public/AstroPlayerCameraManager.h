@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=PlayerCameraManager -FallbackName=PlayerCameraManager
+#include "Camera/PlayerCameraManager.h"
 #include "AstroPlayerCameraManager.generated.h"
 
 class UCameraContext;
@@ -14,7 +14,8 @@ protected:
     TArray<UCameraContext*> ContextStack;
     
 public:
-    AAstroPlayerCameraManager();
+    AAstroPlayerCameraManager(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void PopAllCameraContexts(UCameraContext* Context);
     

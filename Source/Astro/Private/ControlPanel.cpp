@@ -6,7 +6,27 @@
 #include "CrackableActorComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class UPrimitiveComponent;
+AControlPanel::AControlPanel(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+//    const FProperty* p_RemoteRole = GetClass()->FindPropertyByName("RemoteRole");
+//    (*p_RemoteRole->ContainerPtrToValuePtr<TEnumAsByte<ENetRole>>(this)) = ROLE_SimulatedProxy;
+    this->RootComponent = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SkeletalMesh"));
+    this->RedirectOwnerInteractions = true;
+    this->SkeletalMesh = (USkeletalMeshComponent*)RootComponent;
+    this->StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
+    this->ControlPanelLight = CreateDefaultSubobject<USpotLightComponent>(TEXT("ControlPanelLight"));
+    this->CrackableActorComponent = CreateDefaultSubobject<UCrackableActorComponent>(TEXT("CrackableActor"));
+    this->ClickableComponent = CreateDefaultSubobject<UClickableComponent>(TEXT("clickable"));
+    this->ControlledActor = NULL;
+    this->CameraContext = NULL;
+    this->FallbackInputComponent = NULL;
+    this->FirstNavigationRepeatDelay = 0.50f;
+    this->NavigationRepetitionInterval = 0.15f;
+    this->AnalogStickNavigationThreshold = 0.50f;
+    this->bAutoOptimizeHierarchy = false;
+    this->ControlPanelLight->SetupAttachment(RootComponent);
+    this->StaticMesh->SetupAttachment(RootComponent);
+}
 
 
 void AControlPanel::OnSecondaryButtonPressed() {
@@ -87,19 +107,4 @@ void AControlPanel::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLif
     DOREPLIFETIME(AControlPanel, ControlledActor);
 }
 
-AControlPanel::AControlPanel() {
-    this->RedirectOwnerInteractions = true;
-    this->SkeletalMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SkeletalMesh"));
-    this->StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
-    this->ControlPanelLight = CreateDefaultSubobject<USpotLightComponent>(TEXT("ControlPanelLight"));
-    this->CrackableActorComponent = CreateDefaultSubobject<UCrackableActorComponent>(TEXT("CrackableActor"));
-    this->ClickableComponent = CreateDefaultSubobject<UClickableComponent>(TEXT("clickable"));
-    this->ControlledActor = NULL;
-    this->CameraContext = NULL;
-    this->FallbackInputComponent = NULL;
-    this->FirstNavigationRepeatDelay = 0.50f;
-    this->NavigationRepetitionInterval = 0.15f;
-    this->AnalogStickNavigationThreshold = 0.50f;
-    this->bAutoOptimizeHierarchy = false;
-}
 

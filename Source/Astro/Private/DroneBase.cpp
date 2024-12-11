@@ -2,8 +2,26 @@
 #include "FlyingDroneMovementComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class APlayController;
-class ASolarBody;
+ADroneBase::ADroneBase(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->MovementComponent = CreateDefaultSubobject<UFlyingDroneMovementComponent>(TEXT("FlyingDroneMovement"));
+    this->PrevAstroViewTarget = NULL;
+    this->flightState = EDroneFlightState::Docked;
+    this->OldOwner = NULL;
+    this->ZoomedInCameraFOV = 10.00f;
+    this->ZoomedOutCameraFOV = 90.00f;
+    this->DiscreteCameraZoomIncrement = 0.10f;
+    this->DiscreteFlightSpeedIncrement = 0.10f;
+    this->ZoomSFXReplayDelay = 1.00f;
+    this->DockingRotationInterpolationStrength = 4.00f;
+    this->UndockingRotationInterpolationStrength = 4.00f;
+    this->DockingLocationInterpolationStrength = 0.40f;
+    this->UndockingLocationInterpolationStrength = 0.40f;
+    this->DockingScaleInterpolationStrength = 4.00f;
+    this->UndockingScaleInterpolationStrength = 4.00f;
+    this->AudioListener = NULL;
+    this->fixedFOVModifier = NULL;
+    this->LerpStrengthScaleFactor = 1.00f;
+}
 
 void ADroneBase::ZoomOut() {
 }
@@ -73,24 +91,4 @@ void ADroneBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifeti
     DOREPLIFETIME(ADroneBase, flightState);
 }
 
-ADroneBase::ADroneBase() {
-    this->MovementComponent = CreateDefaultSubobject<UFlyingDroneMovementComponent>(TEXT("FlyingDroneMovement"));
-    this->PrevAstroViewTarget = NULL;
-    this->flightState = EDroneFlightState::Docked;
-    this->OldOwner = NULL;
-    this->ZoomedInCameraFOV = 10.00f;
-    this->ZoomedOutCameraFOV = 90.00f;
-    this->DiscreteCameraZoomIncrement = 0.10f;
-    this->DiscreteFlightSpeedIncrement = 0.10f;
-    this->ZoomSFXReplayDelay = 1.00f;
-    this->DockingRotationInterpolationStrength = 4.00f;
-    this->UndockingRotationInterpolationStrength = 4.00f;
-    this->DockingLocationInterpolationStrength = 0.40f;
-    this->UndockingLocationInterpolationStrength = 0.40f;
-    this->DockingScaleInterpolationStrength = 4.00f;
-    this->UndockingScaleInterpolationStrength = 4.00f;
-    this->AudioListener = NULL;
-    this->fixedFOVModifier = NULL;
-    this->LerpStrengthScaleFactor = 1.00f;
-}
 

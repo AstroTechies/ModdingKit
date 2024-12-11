@@ -15,6 +15,7 @@ protected:
     bool bApplyGravityOutward;
     
 public:
-    USphericalGravityVolumeComponent();
+    USphericalGravityVolumeComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

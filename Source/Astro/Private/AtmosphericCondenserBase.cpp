@@ -1,6 +1,17 @@
 #include "AtmosphericCondenserBase.h"
 #include "Net/UnrealNetwork.h"
 
+AAtmosphericCondenserBase::AAtmosphericCondenserBase(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->BaseProductionRate = 0.00f;
+    this->bLoopProduction = false;
+    this->CondenserState = EAtmosphericCondenserState::Invalid;
+    this->CurrentAtmosphericResourceType = NULL;
+    this->CurrentHarvestedAtmosphereAmount = 0.00f;
+    this->CurrentPlanet = NULL;
+    this->PowerComponent = NULL;
+    this->OutputOrganizationRule = NULL;
+}
+
 void AAtmosphericCondenserBase::OnReplicationDataChanged() {
 }
 
@@ -33,14 +44,4 @@ void AAtmosphericCondenserBase::GetLifetimeReplicatedProps(TArray<FLifetimePrope
     DOREPLIFETIME(AAtmosphericCondenserBase, bLoopProduction);
 }
 
-AAtmosphericCondenserBase::AAtmosphericCondenserBase() {
-    this->BaseProductionRate = 0.00f;
-    this->bLoopProduction = false;
-    this->CondenserState = EAtmosphericCondenserState::Invalid;
-    this->CurrentAtmosphericResourceType = NULL;
-    this->CurrentHarvestedAtmosphereAmount = 0.00f;
-    this->CurrentPlanet = NULL;
-    this->PowerComponent = NULL;
-    this->OutputOrganizationRule = NULL;
-}
 

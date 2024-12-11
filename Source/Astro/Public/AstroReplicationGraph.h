@@ -1,6 +1,5 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=ReplicationGraph -ObjectName=ReplicationGraph -FallbackName=ReplicationGraph
 #include "ReplicationGraph.h"
 #include "AstroReplicationGraph.generated.h"
 
@@ -18,5 +17,6 @@ public:
     UReplicationGraphNode_ActorList* AlwaysRelevantNode;
     
     UAstroReplicationGraph();
+
 };
 

@@ -13,7 +13,7 @@ public:
     AActor* Owner;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    AActor* Avatar;
+    AActor* avatar;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAstroActionComponent* ActionComponent;

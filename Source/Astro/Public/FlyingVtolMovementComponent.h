@@ -1,9 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
-#include "Camera/CameraComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
+#include "Engine/NetSerialization.h"
 #include "FlyingVtolMovementComponent.generated.h"
 
 class APhysicalItem;
@@ -80,9 +79,10 @@ private:
     UCameraComponent* PlayerCamera;
     
 public:
-    UFlyingVtolMovementComponent();
+    UFlyingVtolMovementComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void SetFlightSpeedScalarNormalized(float normalizedFlightSpeedScalar);
     

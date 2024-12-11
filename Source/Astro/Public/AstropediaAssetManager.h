@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "CardLoadedDelegate.h"
 #include "EAstroGameMenuTutoriaSlideCardKey.h"
 #include "LoadedCard.h"
@@ -14,6 +14,7 @@ public:
     FCardLoaded OnCardLoaded;
     
     UAstropediaAssetManager();
+
     UFUNCTION(BlueprintCallable)
     bool SetCardShownAndLoadAsync(EAstroGameMenuTutoriaSlideCardKey cardKey);
     

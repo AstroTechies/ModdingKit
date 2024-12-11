@@ -16,6 +16,7 @@ protected:
     
 public:
     UStreamingPowerSystem();
+
     UFUNCTION(BlueprintCallable)
     static void SplitMergedConnectionBetweenStreamingPowerNodesOnActors(AActor* thisActor, AActor* OtherActor);
     

@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize10 -FallbackName=Vector_NetQuantize10
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize100 -FallbackName=Vector_NetQuantize100
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
+#include "Engine/NetSerialization.h"
+#include "Engine/NetSerialization.h"
+#include "Engine/NetSerialization.h"
 #include "SlotConnectionClientMotionData.generated.h"
 
 USTRUCT(BlueprintType)

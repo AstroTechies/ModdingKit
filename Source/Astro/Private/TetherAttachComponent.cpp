@@ -1,8 +1,18 @@
 #include "TetherAttachComponent.h"
 
-class AActor;
-class UOxygenatorComponent;
-class UTetherAttachComponent;
+UTetherAttachComponent::UTetherAttachComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->CanAttach = true;
+    this->AttachToConnections = false;
+    this->HaveConnectedOxygen = false;
+    this->HaveDirectOrConnectedOxygen = false;
+    this->TetherAttachDistance = 2500.00f;
+    this->TetherAttachedExtraDistance = 0.00f;
+    this->Network = NULL;
+    this->BuiltInOxygenator = NULL;
+    this->TetherAttachmentType = ETetherAttachmentType::Chassis;
+    this->bConnectToCharactersOnlyWithoutExternalOxygenator = false;
+}
 
 void UTetherAttachComponent::UpdateExplicitNetwork() {
 }
@@ -45,15 +55,4 @@ UTetherAttachComponent* UTetherAttachComponent::GetActorHierarchyTetherAttachCom
     return NULL;
 }
 
-UTetherAttachComponent::UTetherAttachComponent() {
-    this->CanAttach = true;
-    this->AttachToConnections = false;
-    this->HaveConnectedOxygen = false;
-    this->HaveDirectOrConnectedOxygen = false;
-    this->TetherAttachDistance = 2500.00f;
-    this->Network = NULL;
-    this->BuiltInOxygenator = NULL;
-    this->TetherAttachmentType = ETetherAttachmentType::Chassis;
-    this->bConnectToCharactersOnlyWithoutExternalOxygenator = false;
-}
 

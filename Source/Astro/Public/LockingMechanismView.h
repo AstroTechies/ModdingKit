@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "LockChangedEventMetadata.h"
 #include "SignalDelegate.h"
 #include "LockingMechanismView.generated.h"
@@ -25,8 +25,9 @@ public:
     ULockingMechanismDefinition* Definition;
     
     ULockingMechanismView();
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void OnRep_IsOpen();
     

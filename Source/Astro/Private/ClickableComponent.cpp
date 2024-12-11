@@ -1,10 +1,40 @@
 #include "ClickableComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class AActor;
-class APlayerController;
-class UClickableComponent;
-class USceneComponent;
+UClickableComponent::UClickableComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->PositioningComponent = NULL;
+    this->PrimaryIndicatorMesh = NULL;
+    this->SecondaryIndicatorMesh = NULL;
+    this->PrimaryIndicatorScale = 0.33f;
+    this->PrimaryHoverHeight = 70.00f;
+    this->SecondaryIndicatorScale = 0.33f;
+    this->BackpackInteraction = false;
+    this->ShowPrimaryIndicator = true;
+    this->ShowPrimaryIcon = true;
+    this->CaptureDeformTool = false;
+    this->EncapsulateChildren = false;
+    this->DisablePrimitiveClicks = false;
+    this->ReplaceChildren = false;
+    this->AllowNonOwnerClicks = false;
+    this->LocalPrimitiveClicksOnly = false;
+    this->CaptureViewActor = true;
+    this->UnencapsulateChildren = false;
+    this->Unclickable = false;
+    this->NoGamepadAutoselect = false;
+    this->Unmovable = false;
+    this->bSlowVirtualCursorOnHover = true;
+    this->bExcludeNonInteractPrimitivesFromGamepadAutoFocus = false;
+    this->HasUseInteractionByDefault = false;
+    this->HasAuxSlotUseByDefault = false;
+    this->HasActuatorUseByDefault = false;
+    this->HasUseWhilePlayerDriving = false;
+    this->HasInfoOnlyTooltipWhilePlayerDriving = false;
+    this->UseActionRequriesHold = true;
+    this->bUseOverridePivotOffset = false;
+    this->SecondaryInteractionTime = 0.33f;
+    this->DefaultUseContext = EUseContext::UC_Use;
+}
 
 void UClickableComponent::SetInteractionRedirectActor(AActor* Actor, USceneComponent* PivotComponent) {
 }
@@ -63,37 +93,4 @@ void UClickableComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& 
     DOREPLIFETIME(UClickableComponent, UseSuppressionState);
 }
 
-UClickableComponent::UClickableComponent() {
-    this->PositioningComponent = NULL;
-    this->PrimaryIndicatorMesh = NULL;
-    this->SecondaryIndicatorMesh = NULL;
-    this->PrimaryIndicatorScale = 0.33f;
-    this->PrimaryHoverHeight = 70.00f;
-    this->SecondaryIndicatorScale = 0.33f;
-    this->BackpackInteraction = false;
-    this->ShowPrimaryIndicator = true;
-    this->ShowPrimaryIcon = true;
-    this->CaptureDeformTool = false;
-    this->EncapsulateChildren = false;
-    this->DisablePrimitiveClicks = false;
-    this->ReplaceChildren = false;
-    this->AllowNonOwnerClicks = false;
-    this->LocalPrimitiveClicksOnly = false;
-    this->CaptureViewActor = true;
-    this->UnencapsulateChildren = false;
-    this->Unclickable = false;
-    this->NoGamepadAutoselect = false;
-    this->Unmovable = false;
-    this->bSlowVirtualCursorOnHover = true;
-    this->bExcludeNonInteractPrimitivesFromGamepadAutoFocus = false;
-    this->HasUseInteractionByDefault = false;
-    this->HasAuxSlotUseByDefault = false;
-    this->HasActuatorUseByDefault = false;
-    this->HasUseWhilePlayerDriving = false;
-    this->HasInfoOnlyTooltipWhilePlayerDriving = false;
-    this->UseActionRequriesHold = true;
-    this->bUseOverridePivotOffset = false;
-    this->SecondaryInteractionTime = 0.33f;
-    this->DefaultUseContext = EUseContext::UC_Use;
-}
 

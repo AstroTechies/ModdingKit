@@ -1,11 +1,5 @@
 #include "UISettings.h"
 
-class UUISettings;
-
-UUISettings* UUISettings::GetAstroUISettings() {
-    return NULL;
-}
-
 UUISettings::UUISettings() {
     this->DisplayEarlyAccessWatermark = false;
     this->DisplayExperimentalWatermark = false;
@@ -19,4 +13,9 @@ UUISettings::UUISettings() {
     this->DragCoefficient = 8.00f;
     this->DragCoefficientWhenHovered = 14.00f;
 }
+
+UUISettings* UUISettings::GetAstroUISettings() {
+    return NULL;
+}
+
 

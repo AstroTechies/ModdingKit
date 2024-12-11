@@ -1,7 +1,7 @@
 #include "PowerStatics.h"
 
-class UObject;
-class UPowerComponent;
+UPowerStatics::UPowerStatics() {
+}
 
 void UPowerStatics::SetFreePower(bool Enable, UObject* WorldContextObject) {
 }
@@ -14,6 +14,4 @@ bool UPowerStatics::GetFreePower(const UObject* WorldContextObject) {
     return false;
 }
 
-UPowerStatics::UPowerStatics() {
-}
 

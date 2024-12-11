@@ -14,6 +14,7 @@ protected:
     URaycastTerrainSurfaceComponent* RaycastTerrainSurfaceComponent;
     
 public:
-    AGateChamber();
+    AGateChamber(const FObjectInitializer& ObjectInitializer);
+
 };
 

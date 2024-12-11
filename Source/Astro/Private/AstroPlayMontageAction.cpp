@@ -1,6 +1,13 @@
 #include "AstroPlayMontageAction.h"
 
-class UAnimMontage;
+UAstroPlayMontageAction::UAstroPlayMontageAction() {
+    this->RequiredResources = 1;
+    this->Montage = NULL;
+    this->PlayRate = 1.00f;
+    this->bShouldSuppressLookInput = false;
+    this->bShouldSuppressMoveInput = false;
+    this->bChooseStartSectionAtRandom = false;
+}
 
 void UAstroPlayMontageAction::SetMontage(UAnimMontage* NewMontage) {
 }
@@ -17,11 +24,4 @@ void UAstroPlayMontageAction::OnMontageTaskFailedToStart() {
 void UAstroPlayMontageAction::OnMontageTaskCompleted() {
 }
 
-UAstroPlayMontageAction::UAstroPlayMontageAction() {
-    this->Montage = NULL;
-    this->PlayRate = 1.00f;
-    this->bShouldSuppressLookInput = false;
-    this->bShouldSuppressMoveInput = false;
-    this->bChooseStartSectionAtRandom = false;
-}
 

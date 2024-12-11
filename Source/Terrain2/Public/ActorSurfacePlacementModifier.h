@@ -10,9 +10,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float VerticalOffsetFromSurface;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    uint8 bOrientActorToPlanetUp: 1;
-    
     UActorSurfacePlacementModifier();
+
 };
 

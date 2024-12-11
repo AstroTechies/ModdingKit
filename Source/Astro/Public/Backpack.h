@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "GameFramework/Actor.h"
 #include "BackpackOxygenTankOverride.h"
 #include "BackpackOxygenTankProperties.h"
@@ -79,9 +79,10 @@ private:
     FBackpackOxygenTankOverride OxygenTankPropertiesOverride;
     
 public:
-    ABackpack();
+    ABackpack(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void ToggleOpen();
     

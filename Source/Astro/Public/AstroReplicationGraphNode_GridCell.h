@@ -8,5 +8,6 @@ class UAstroReplicationGraphNode_GridCell : public UAstroReplicationGraphNode_Ac
     GENERATED_BODY()
 public:
     UAstroReplicationGraphNode_GridCell();
+
 };
 

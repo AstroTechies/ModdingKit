@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
+#include "Kismet/BlueprintFunctionLibrary.h"
 #include "EAstroAchievementKeys.h"
 #include "Templates/SubclassOf.h"
 #include "AstroAchievements.generated.h"
@@ -14,6 +14,7 @@ class ASTRO_API UAstroAchievements : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     UAstroAchievements();
+
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void IncrementAchievementProgressForAllPlayers(EAstroAchievementKeys Achievement, int32 AddedProgress, UObject* WorldContextObject);
     

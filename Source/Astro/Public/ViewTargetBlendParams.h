@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EViewTargetBlendFunction -FallbackName=EViewTargetBlendFunction
+#include "Camera/PlayerCameraManager.h"
 #include "ViewTargetBlendParams.generated.h"
 
 USTRUCT(BlueprintType)

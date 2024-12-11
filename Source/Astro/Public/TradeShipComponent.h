@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
+#include "Engine/EngineTypes.h"
 #include "IndicatorsForTradeShipSlot.h"
 #include "SlotReference.h"
 #include "Templates/SubclassOf.h"
@@ -48,9 +48,10 @@ protected:
     uint8 bManageIndicators: 1;
     
 public:
-    UTradeShipComponent();
+    UTradeShipComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void UpdateIndicators();

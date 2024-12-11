@@ -1,10 +1,9 @@
 #include "LockingMechanismEventListener.h"
 
-class ULockingMechanism;
+ULockingMechanismEventListener::ULockingMechanismEventListener() {
+}
 
 void ULockingMechanismEventListener::OnLockingMechanismOpenStateChanged(ULockingMechanism* changedLockingMechanism, const FLockChangedEventMetadata& EventData) {
 }
 
-ULockingMechanismEventListener::ULockingMechanismEventListener() {
-}
 

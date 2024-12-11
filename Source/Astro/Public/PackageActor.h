@@ -12,7 +12,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAstroActionComponent* ActionComponent;
     
-    APackageActor();
+    APackageActor(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintImplementableEvent)
     void Authority_Unpack();
     

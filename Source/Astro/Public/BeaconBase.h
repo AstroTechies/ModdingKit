@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "Engine/EngineTypes.h"
 #include "BeaconBase.generated.h"
 
 class USceneComponent;
@@ -57,6 +57,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bBeaconVisible: 1;
     
-    ABeaconBase();
+    ABeaconBase(const FObjectInitializer& ObjectInitializer);
+
 };
 

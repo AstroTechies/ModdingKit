@@ -19,6 +19,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float GroundCheckTraceDistance;
     
-    USurfaceSlopePitchModifierComponent();
+    USurfaceSlopePitchModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

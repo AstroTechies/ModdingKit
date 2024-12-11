@@ -14,13 +14,13 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     int32 DelayTicks;
     
-    UPROPERTY(EditAnywhere, Export, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, SaveGame, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<UActuatorComponent> Actuator;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     EFullnessActuatorEventType FullnessActuatorEventType;
     
-    UPROPERTY(EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<UObject> UniqueReference;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))

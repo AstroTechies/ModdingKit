@@ -8,5 +8,6 @@ class ASTRO_API UAstroEntitySlotBackupComponentContainer : public UAstroEntityCo
     GENERATED_BODY()
 public:
     UAstroEntitySlotBackupComponentContainer();
+
 };
 

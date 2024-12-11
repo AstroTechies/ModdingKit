@@ -42,6 +42,8 @@ enum class EAstroTelemetryCounter : uint8 {
     TimeOfDay,
     SunOrbit,
     SolorTimeMultiplier,
+    CustomGameNoShelterPlayTime,
+    SessionPlayTime,
     COUNT,
 };
 

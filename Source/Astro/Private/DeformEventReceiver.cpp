@@ -1,12 +1,10 @@
 #include "DeformEventReceiver.h"
 
-class AActor;
-class UDeformEventReceiver;
+UDeformEventReceiver::UDeformEventReceiver(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+}
 
 UDeformEventReceiver* UDeformEventReceiver::ActorDeformEventReceiver(AActor* Actor) {
     return NULL;
 }
 
-UDeformEventReceiver::UDeformEventReceiver() {
-}
 

@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
+#include "Engine/DataAsset.h"
+#include "GameplayTagContainer.h"
 #include "EPlanetIdentifier.h"
 #include "PlanetBiomeDisplayNames.h"
 #include "AstroPlanetDisplayNameDatabase.generated.h"
@@ -13,11 +14,18 @@ public:
     TMap<EPlanetIdentifier, FPlanetBiomeDisplayNames> PlanetToBiomeNameMap;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TMap<EPlanetIdentifier, FText> PlanetToPlanetNameMap;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TMap<EPlanetIdentifier, FGameplayTag> PlanetToPlanetTagMap;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText RegionTransitionText;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText PlanetTransitionText;
     
     UAstroPlanetDisplayNameDatabase();
+
 };
 

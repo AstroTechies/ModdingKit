@@ -6,3 +6,4 @@ UAstroEntityComponentSubobjectDefinition::UAstroEntityComponentSubobjectDefiniti
     this->TickGroup = EAstroEntityComponentSubobjectTickGroup::PrePhysics;
 }
 
+

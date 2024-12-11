@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
+#include "Kismet/BlueprintFunctionLibrary.h"
 #include "SlotReference.h"
 #include "PowerStatics.generated.h"
 
@@ -12,6 +12,7 @@ class ASTRO_API UPowerStatics : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     UPowerStatics();
+
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void SetFreePower(bool Enable, UObject* WorldContextObject);
     

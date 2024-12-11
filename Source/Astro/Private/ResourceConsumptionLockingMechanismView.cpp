@@ -1,10 +1,9 @@
 #include "ResourceConsumptionLockingMechanismView.h"
 
-class ULockingMechanism;
+UResourceConsumptionLockingMechanismView::UResourceConsumptionLockingMechanismView() {
+}
 
 void UResourceConsumptionLockingMechanismView::OnBeginFinalResourceConsumption(ULockingMechanism* LockingMechanism, const FLockChangedEventMetadata& EventData) {
 }
 
-UResourceConsumptionLockingMechanismView::UResourceConsumptionLockingMechanismView() {
-}
 

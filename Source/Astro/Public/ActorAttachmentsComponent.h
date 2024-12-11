@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
 #include "AttachEnterExitSignalDelegate.h"
 #include "AttachedActorSignalDelegate.h"
@@ -12,6 +12,7 @@
 #include "ActorAttachmentsComponent.generated.h"
 
 class AActor;
+class AAstroPlayerController;
 class APlayController;
 class APlayerController;
 class UActorAttachmentsComponent;
@@ -23,7 +24,7 @@ UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UActorAttachmentsComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 MaxAttachedPlayerCount;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -85,8 +86,12 @@ protected:
     uint32 ExitSuppressionCount;
     
 public:
-    UActorAttachmentsComponent();
+    UActorAttachmentsComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
+    UFUNCTION(BlueprintCallable)
+    AAstroPlayerController* TryGetFirstAttachedPlayer(bool bIgnoreExiting);
     
     UFUNCTION(BlueprintCallable)
     static bool TogglePlayerAttachedStorage(APlayerController* Controller, UStorageChassisComponent* storage, bool& Toggled, bool bImmediate, bool bForce);

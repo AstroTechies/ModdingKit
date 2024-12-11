@@ -1,7 +1,6 @@
 #include "IconRigNative.h"
 
-
-AIconRigNative::AIconRigNative() {
+AIconRigNative::AIconRigNative(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->PrimaryMesh = NULL;
     this->SecondaryMesh = NULL;
     this->TertiaryMesh = NULL;
@@ -14,4 +13,6 @@ AIconRigNative::AIconRigNative() {
     this->AstroIcon = NULL;
     this->BackpackIcon = NULL;
 }
+
+
 

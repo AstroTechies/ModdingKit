@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BodyInstance -FallbackName=BodyInstance
+#include "UObject/Object.h"
+#include "PhysicsEngine/BodyInstance.h"
 #include "FoliageDestructionInfo.h"
 #include "Templates/SubclassOf.h"
 #include "AstroFoliageType.generated.h"
@@ -36,5 +36,6 @@ public:
     TArray<UMaterialInterface*> OverrideMaterials;
     
     UAstroFoliageType();
+
 };
 

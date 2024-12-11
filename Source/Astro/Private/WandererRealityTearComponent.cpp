@@ -1,8 +1,14 @@
 #include "WandererRealityTearComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class AAstroPlayerController;
-class APlayerController;
+UWandererRealityTearComponent::UWandererRealityTearComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->DestroyTimeoutSeconds = 0.00f;
+    this->PhotoWidgetClass = NULL;
+    this->DeformRadius = 1200.00f;
+    this->ActivatingPlayerID = 0;
+    this->ProbeItemType = NULL;
+}
 
 bool UWandererRealityTearComponent::WasActivatedByPlayer(const APlayerController* Player) {
     return false;
@@ -29,11 +35,4 @@ void UWandererRealityTearComponent::GetLifetimeReplicatedProps(TArray<FLifetimeP
     DOREPLIFETIME(UWandererRealityTearComponent, ActivatingPlayerID);
 }
 
-UWandererRealityTearComponent::UWandererRealityTearComponent() {
-    this->DestroyTimeoutSeconds = 0.00f;
-    this->PhotoWidgetClass = NULL;
-    this->DeformRadius = 1200.00f;
-    this->ActivatingPlayerID = 0;
-    this->ProbeItemType = NULL;
-}
 

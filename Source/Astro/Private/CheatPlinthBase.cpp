@@ -2,7 +2,11 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class UItemType;
+ACheatPlinthBase::ACheatPlinthBase(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->SpawnableItems = NULL;
+    this->SelectionIndex = 0;
+    this->CurrentlySelectedItemType = NULL;
+}
 
 void ACheatPlinthBase::OnRep_SelectionIndex() {
 }
@@ -23,9 +27,4 @@ void ACheatPlinthBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
     DOREPLIFETIME(ACheatPlinthBase, SelectionIndex);
 }
 
-ACheatPlinthBase::ACheatPlinthBase() {
-    this->SpawnableItems = NULL;
-    this->SelectionIndex = 0;
-    this->CurrentlySelectedItemType = NULL;
-}
 

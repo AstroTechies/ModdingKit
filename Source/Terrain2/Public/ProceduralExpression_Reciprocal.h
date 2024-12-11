@@ -8,5 +8,6 @@ class TERRAIN2_API UProceduralExpression_Reciprocal : public UProceduralExpressi
     GENERATED_BODY()
 public:
     UProceduralExpression_Reciprocal();
+
 };
 

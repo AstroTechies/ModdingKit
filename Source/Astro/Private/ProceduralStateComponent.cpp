@@ -1,7 +1,12 @@
 #include "ProceduralStateComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class UTerrainPhysicsComponent;
+UProceduralStateComponent::UProceduralStateComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->ProceduralPlacementSaveID = 4294967295;
+    this->bRuntimeGenerated = true;
+    this->bApplyTintFromAttachParent = false;
+}
 
 void UProceduralStateComponent::OnTerrainPhysicsBuriedChanged(UTerrainPhysicsComponent* TerrainPhysics) {
 }
@@ -18,9 +23,4 @@ void UProceduralStateComponent::GetLifetimeReplicatedProps(TArray<FLifetimePrope
     DOREPLIFETIME(UProceduralStateComponent, repState);
 }
 
-UProceduralStateComponent::UProceduralStateComponent() {
-    this->ProceduralPlacementSaveID = 4294967295;
-    this->bRuntimeGenerated = true;
-    this->bApplyTintFromAttachParent = false;
-}
 

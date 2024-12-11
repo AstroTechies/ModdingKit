@@ -11,6 +11,7 @@ class ULockingMechanismEventListener : public UAstroEntityComponentSubobject {
     GENERATED_BODY()
 public:
     ULockingMechanismEventListener();
+
     UFUNCTION(BlueprintCallable)
     void OnLockingMechanismOpenStateChanged(ULockingMechanism* changedLockingMechanism, const FLockChangedEventMetadata& EventData);
     

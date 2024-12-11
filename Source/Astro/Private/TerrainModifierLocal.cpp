@@ -1,5 +1,6 @@
 #include "TerrainModifierLocal.h"
 
-UTerrainModifierLocal::UTerrainModifierLocal() {
+UTerrainModifierLocal::UTerrainModifierLocal(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

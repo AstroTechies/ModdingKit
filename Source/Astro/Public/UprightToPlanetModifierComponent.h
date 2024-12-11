@@ -10,6 +10,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bUseTargetLocation: 1;
     
-    UUprightToPlanetModifierComponent();
+    UUprightToPlanetModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

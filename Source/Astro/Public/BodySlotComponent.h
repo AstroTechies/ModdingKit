@@ -27,7 +27,8 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnPickUpFromWorld;
     
-    UBodySlotComponent();
+    UBodySlotComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void StartInWorld();
     

@@ -21,7 +21,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bAllowMultipleUnlocks: 1;
     
-    URewardComponent();
+    URewardComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     FRewardResult SelectReward();
     

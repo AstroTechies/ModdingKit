@@ -1,11 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
 #include "Engine/EngineTypes.h"
 #include "ESolarGeneratorSunTrackingBehavior.h"
-#include "Components/ActorComponent.h"
 #include "ActorSolarPowerGeneratorComponent.generated.h"
 
 class UPowerComponent;
@@ -52,7 +50,8 @@ private:
     UPowerComponent* PowerComponent;
     
 public:
-    UActorSolarPowerGeneratorComponent();
+    UActorSolarPowerGeneratorComponent(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnSpawnedInSlot();

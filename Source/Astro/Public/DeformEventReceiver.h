@@ -22,7 +22,8 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnTerrainDeformationDensityDeltaReceived OnTerrainDeformationDensityDeltaReceived;
     
-    UDeformEventReceiver();
+    UDeformEventReceiver(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static UDeformEventReceiver* ActorDeformEventReceiver(AActor* Actor);
     

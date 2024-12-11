@@ -8,5 +8,6 @@ class ASTRO_API UHarvestableSystem : public UAstroEntitySystem {
     GENERATED_BODY()
 public:
     UHarvestableSystem();
+
 };
 

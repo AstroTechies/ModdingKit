@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
+#include "Engine/EngineBaseTypes.h"
 #include "PerformAuxActionSignalDelegate.generated.h"
 
 class AAstroPlayerController;

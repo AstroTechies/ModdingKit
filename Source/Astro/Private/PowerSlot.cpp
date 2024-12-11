@@ -1,6 +1,9 @@
 #include "PowerSlot.h"
+#include "ESlotType.h"
 
-class APhysicalItem;
+APowerSlot::APowerSlot(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->slotType = ESlotType::Power;
+}
 
 void APowerSlot::SetPoweredTrue() {
 }
@@ -16,6 +19,4 @@ void APowerSlot::PowerSetItem(APhysicalItem* Item) {
 void APowerSlot::PowerReleaseItem(APhysicalItem* Item) {
 }
 
-APowerSlot::APowerSlot() {
-}
 

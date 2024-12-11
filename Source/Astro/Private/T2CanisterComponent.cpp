@@ -1,9 +1,9 @@
 #include "T2CanisterComponent.h"
 #include "Templates/SubclassOf.h"
 
-class APhysicalItem;
-class UItemComponent;
-class UItemType;
+UT2CanisterComponent::UT2CanisterComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->ItemTransferRate = 1.00f;
+}
 
 void UT2CanisterComponent::OnSlottedItemsChanged(APhysicalItem* changedItem) {
 }
@@ -21,7 +21,4 @@ bool UT2CanisterComponent::CanMoveItems() const {
 void UT2CanisterComponent::AuthoritySetIsDispensing(bool isDispensing) {
 }
 
-UT2CanisterComponent::UT2CanisterComponent() {
-    this->ItemTransferRate = 1.00f;
-}
 

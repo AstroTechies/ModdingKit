@@ -1,6 +1,9 @@
 #include "ItemPadActor.h"
 
-class AActor;
+AItemPadActor::AItemPadActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->BaseLocation = NULL;
+    this->OwnerComponent = NULL;
+}
 
 bool AItemPadActor::ShouldDestroyOnPickup_Implementation() {
     return false;
@@ -10,8 +13,4 @@ bool AItemPadActor::ShouldDestroyOnPickup_Implementation() {
 void AItemPadActor::OnOwnerDestroyed(AActor* deletingOwner) {
 }
 
-AItemPadActor::AItemPadActor() {
-    this->BaseLocation = NULL;
-    this->OwnerComponent = NULL;
-}
 

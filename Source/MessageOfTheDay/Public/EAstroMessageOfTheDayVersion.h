@@ -4,9 +4,10 @@
 
 UENUM(BlueprintType)
 enum class EAstroMessageOfTheDayVersion : uint8 {
-    Invalid = 0x1,
+    Invalid = 1,
     WebCDNHosted,
     FirstPlayFabVersion,
-    Latest = 0x3,
+    SegmentedMOTD,
+    Latest = SegmentedMOTD,
 };
 

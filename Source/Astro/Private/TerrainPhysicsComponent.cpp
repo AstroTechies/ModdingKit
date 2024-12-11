@@ -1,7 +1,11 @@
 #include "TerrainPhysicsComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class UAstroSaveCustomArchiveProxy;
+UTerrainPhysicsComponent::UTerrainPhysicsComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->AutoBlockCamera = false;
+    this->CanUnbury = true;
+    this->Buried = false;
+}
 
 void UTerrainPhysicsComponent::SetWorldPhysics() {
 }
@@ -38,9 +42,4 @@ void UTerrainPhysicsComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProper
     DOREPLIFETIME(UTerrainPhysicsComponent, Buried);
 }
 
-UTerrainPhysicsComponent::UTerrainPhysicsComponent() {
-    this->AutoBlockCamera = false;
-    this->CanUnbury = true;
-    this->Buried = false;
-}
 

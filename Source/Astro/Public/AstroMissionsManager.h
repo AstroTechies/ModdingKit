@@ -9,6 +9,8 @@
 #include "AstroMissionReclaimableItem.h"
 #include "AstroMissionRewardClaimedDelegateDelegate.h"
 #include "AstroMissionState.h"
+#include "AstroMissionUpdatedDelegateDelegate.h"
+#include "EAstroDlcName.h"
 #include "EAstroMissionObjectiveType.h"
 #include "EPlanetIdentifier.h"
 #include "SignalDelegate.h"
@@ -63,9 +65,13 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAstroMissionRewardClaimedDelegate OnMissionRewardClaimed;
     
-    AAstroMissionsManager();
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FAstroMissionUpdatedDelegate OnMissionUpdated;
     
+    AAstroMissionsManager(const FObjectInitializer& ObjectInitializer);
+
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
     UFUNCTION(BlueprintCallable, Exec)
     void ToggleEventsDebug(UWorld* World);
     
@@ -111,6 +117,12 @@ private:
     
     UFUNCTION(BlueprintCallable)
     void OnRep_ActiveMissions();
+    
+    UFUNCTION(BlueprintCallable)
+    void OnDLCLicenseUpdated();
+    
+    UFUNCTION(BlueprintCallable)
+    void OnDLCLicenseAdded(EAstroDlcName Name);
     
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastNotifyRewardClamed(const FName missionId);
@@ -174,7 +186,7 @@ private:
     
 public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
-    void AuthoritySetRewardClaimedMission(const FName missionId);
+    bool AuthoritySetRewardClaimedMission(const FName missionId);
     
     UFUNCTION(BlueprintCallable)
     void AuthoritySetReclaimableRewardUnclaimed(AAstroPlayerController* Controller, APhysicalItem* Item);
@@ -192,6 +204,9 @@ public:
     void AuthorityGrantResearchItemRewardMission(const FAstroMissionData& MissionData);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    void AuthorityGrantPlayFabReward(const FAstroMissionData& MissionData);
+    
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityGrantByteRewardMission(const FAstroMissionData& MissionData);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintPure)
@@ -201,7 +216,7 @@ public:
     void AuthorityCompleteMission(const FName missionId);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
-    void AuthorityActivateMission(const FName missionId, const FString& EventName);
+    void AuthorityActivateMission(const FName missionId, const FString& EventName, bool ignorePrerequisites);
     
 };
 

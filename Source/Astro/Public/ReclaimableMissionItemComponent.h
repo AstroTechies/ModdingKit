@@ -10,6 +10,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FString OwnerPlayerID;
     
-    UReclaimableMissionItemComponent();
+    UReclaimableMissionItemComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

@@ -33,9 +33,10 @@ protected:
     APhysicalItem* OwnerItem;
     
 public:
-    UOxygenatorComponent();
+    UOxygenatorComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnRep_IsSupplyingOxygen();

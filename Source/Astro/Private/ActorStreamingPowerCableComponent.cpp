@@ -1,7 +1,9 @@
 #include "ActorStreamingPowerCableComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class AActor;
+UActorStreamingPowerCableComponent::UActorStreamingPowerCableComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+}
 
 void UActorStreamingPowerCableComponent::SetDirectionalConnectionSplitRatio(float ratio) {
 }
@@ -24,6 +26,4 @@ void UActorStreamingPowerCableComponent::GetLifetimeReplicatedProps(TArray<FLife
     DOREPLIFETIME(UActorStreamingPowerCableComponent, StreamingPowerCableVisualizationData);
 }
 
-UActorStreamingPowerCableComponent::UActorStreamingPowerCableComponent() {
-}
 

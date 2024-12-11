@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "Engine/EngineTypes.h"
 #include "AstroEntityComponentSubobjectDefinition.h"
 #include "AstroNotificationUnlockAuthoringData.h"
 #include "Templates/SubclassOf.h"
@@ -31,5 +31,6 @@ public:
     TArray<FString> UnlockItems;
     
     UVintageProbeUnlockBehaviorDefinition();
+
 };
 

@@ -7,18 +7,74 @@
 #include "Templates/SubclassOf.h"
 #include "TooltipManager.h"
 
-class AActor;
-class AAstroCharacter;
-class AAstroPlanet;
-class ACheatPlinthBase;
-class APhysicalItem;
-class ASolarBody;
-class UAstroCharacterSuit;
-class UCameraComponent;
-class UControlComponent;
-class UItemType;
-class UMultiTool;
-class USceneComponent;
+APlayController::APlayController(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bAutoManageActiveCameraTarget = false;
+    this->ClickEventKeys.AddDefaulted(1);
+    this->RightHandState = EHandState::HS_Empty;
+    this->GrabThreshold = 0.00f;
+    this->SelectionOffset = 0.00f;
+    this->LastRightHandAxis = 0.00f;
+    this->QuickSelectionMade = false;
+    this->MouseZoomTickSize = 0.00f;
+    this->MouseZoomSpeed = 0.90f;
+    this->bGeometricZoom = false;
+    this->ToolActiveItem = NULL;
+    this->CameraMode = ECameraMode::Follow;
+    this->InteractingActor = NULL;
+    this->CurrentTertiary = NULL;
+    this->HomeBody = NULL;
+    this->PlanetarySelectionDistance = 0.00f;
+    this->UsingGamepad = false;
+    this->UsingKeyboardNavigation = false;
+    this->UsingMouse = false;
+    this->CurrentClickPrimary = true;
+    this->planetSelection = false;
+    this->LandSelection = false;
+    this->IsVirtualCursorActive = false;
+    this->bApplyQuickSelectModifier = false;
+    this->bApplyUseModifier = false;
+    this->VirtualCursor = NULL;
+    this->FreeCamClass = NULL;
+    this->FreeCamRig = NULL;
+    this->CompassClass = NULL;
+    this->Compass = NULL;
+    this->ItemSelectorMesh = NULL;
+    this->GrabbedCable = NULL;
+    this->ItemSelectorMat = NULL;
+    this->SlottedItemSelectorMesh = NULL;
+    this->SlottedItemSelectorMat = NULL;
+    this->DefaultSecondarySelectorMesh = NULL;
+    this->EnableClickableIndicatorsDisplay = false;
+    this->CurrentMouseZoom = 0.50f;
+    this->bVirtualCursorToggleOn = false;
+    this->EmoteWheelCameraMovementCooldown = 0.70f;
+    this->WheelOpenHoldThreshold = 0.00f;
+    this->WindGustDeltaMinIntensity = 0.20f;
+    this->WindGustScalar = 1.00f;
+    this->DebugWind = false;
+    this->BackpackCameraContext = NULL;
+    this->GameMenuPopoutCameraContext = NULL;
+    this->StoreMenuCameraContext = NULL;
+    this->LastSecondaryViewActor = NULL;
+    this->bCreativeRemoveDecoratorsWhilePainting = true;
+    this->bCreativeTerrainBrushLightActive = true;
+    this->bCreativeShowLODAnchorRangeVisualization = false;
+    this->bCreativeDisableCollectResourcesWhileDeforming = false;
+    this->bShowCreativeDroneUI = true;
+    this->HoldLabelCounter = 0;
+    this->AstroNotificationManager = CreateDefaultSubobject<UAstroNotificationManager>(TEXT("AstroNotificationManager"));
+    this->TooltipManager = CreateDefaultSubobject<UTooltipManager>(TEXT("TooltipManager"));
+    this->AstroUnlockNotificationManger = CreateDefaultSubobject<UAstroUnlockNotificationManager>(TEXT("AstroUnlockNotificationManager"));
+    this->AstroToastNotificationManger = CreateDefaultSubobject<UAstroToastNotificationManager>(TEXT("AstroToastNotificationManager"));
+    this->AstroPopupBadgeManager = CreateDefaultSubobject<UAstroPopupBadgeManager>(TEXT("PopupBadgeManager"));
+    this->biomeSampler = CreateDefaultSubobject<UBiomeSamplerComponent>(TEXT("biomeSampler"));
+    this->BiomeEntryWeightThreshold = 0.20f;
+    this->BiomeExitWeightThreshold = 0.10f;
+    this->GlobalParameterCollection = NULL;
+}
+
+void APlayController::UpdateEmoteSelection(int32 Index, UAstroEmoteDefinition* Emote) {
+}
 
 void APlayController::UpdateCompass() {
 }
@@ -68,6 +124,9 @@ bool APlayController::ShouldShowCreativeDroneUI() const {
 void APlayController::SetVirtualCursorToggle(bool toggleValue) {
 }
 
+void APlayController::SetUsingMouse(bool bIsUsingMouse) {
+}
+
 void APlayController::SetUsingKeyboardNavigation(bool bIsUsingKeyboardNavigation) {
 }
 
@@ -75,6 +134,15 @@ void APlayController::SetUsingGamepad(bool IsUsingGamepad) {
 }
 
 void APlayController::SetTerrainBrushLightActive(bool TerrainBrushLightActive) {
+}
+
+void APlayController::SetSuitServerInternal_Implementation(UAstroCharacterSuit* NewSuit) {
+}
+bool APlayController::SetSuitServerInternal_Validate(UAstroCharacterSuit* NewSuit) {
+    return true;
+}
+
+void APlayController::SetSuitServer(UAstroCharacterSuit* NewSuit) {
 }
 
 void APlayController::SetShowCreativeDoneUI(bool shouldShowDroneUI) {
@@ -104,13 +172,40 @@ void APlayController::SetCreativeRemoveDecoratorsWhilePaintingEnabled(bool Remov
 void APlayController::SetCreativeCollectResourcesWhileDeformingDisabled(bool DisableCollectResourcesWhileDeforming) {
 }
 
-void APlayController::SetCharacterVisorServerInternal_Implementation() {
+void APlayController::SetCharacterVisorServerInternal_Implementation(UAstroVisorMaterial* NewVisorMaterial) {
 }
-bool APlayController::SetCharacterVisorServerInternal_Validate() {
+bool APlayController::SetCharacterVisorServerInternal_Validate(UAstroVisorMaterial* NewVisorMaterial) {
     return true;
 }
 
-void APlayController::SetCharacterVisorServer() {
+void APlayController::SetCharacterVisorServer(UAstroVisorMaterial* NewVisorMaterial) {
+}
+
+void APlayController::SetCharacterPaletteServerInternal_Implementation(UAstroCharacterPalette* NewPalette) {
+}
+bool APlayController::SetCharacterPaletteServerInternal_Validate(UAstroCharacterPalette* NewPalette) {
+    return true;
+}
+
+void APlayController::SetCharacterPaletteServer(UAstroCharacterPalette* NewPalette) {
+}
+
+void APlayController::SetCharacterHatServerInternal_Implementation(UAstroCharacterHat* NewHat, ECharacterHatCategory Category) {
+}
+bool APlayController::SetCharacterHatServerInternal_Validate(UAstroCharacterHat* NewHat, ECharacterHatCategory Category) {
+    return true;
+}
+
+void APlayController::SetCharacterHatServer(UAstroCharacterHat* NewHat, ECharacterHatCategory Category) {
+}
+
+void APlayController::SetCharacterCustomizationServerInternal_Implementation(const FAstroCharacterCustomization& NewCustomization) {
+}
+bool APlayController::SetCharacterCustomizationServerInternal_Validate(const FAstroCharacterCustomization& NewCustomization) {
+    return true;
+}
+
+void APlayController::SetCharacterCustomizationServer(const FAstroCharacterCustomization& NewCustomization) {
 }
 
 void APlayController::SetCameraZoom(float zoom) {
@@ -149,6 +244,18 @@ bool APlayController::ServerSetToolLocation_Validate(UControlComponent* ControlC
 void APlayController::ServerPlayerCharacterSelectionLaunch_Implementation() {
 }
 bool APlayController::ServerPlayerCharacterSelectionLaunch_Validate() {
+    return true;
+}
+
+void APlayController::ServerNotifyOnEmoteWheelOpenedOrClosed_Implementation(bool bWheelOpened) {
+}
+bool APlayController::ServerNotifyOnEmoteWheelOpenedOrClosed_Validate(bool bWheelOpened) {
+    return true;
+}
+
+void APlayController::ServerNotifyOnEmotePlayed_Implementation(EEmoteType EmoteType) {
+}
+bool APlayController::ServerNotifyOnEmotePlayed_Validate(EEmoteType EmoteType) {
     return true;
 }
 
@@ -220,7 +327,16 @@ void APlayController::ResetInputMode() {
 void APlayController::ResetCameraToSpawnPoint() {
 }
 
+void APlayController::ReapplySavedCharacterCustomization() {
+}
+
+void APlayController::PreviewCharacterCustomization(const FAstroCharacterCustomization& customizationToPreview) {
+}
+
 void APlayController::Ping() {
+}
+
+void APlayController::OpenEmoteWheel() {
 }
 
 void APlayController::OnReceiveUsePressed() {
@@ -335,6 +451,9 @@ void APlayController::IncrementHoldCounter() {
 }
 
 
+void APlayController::HandleStoreMenuCameraContext(bool bStoreMenuEnabled) {
+}
+
 void APlayController::HandleLeftTriggerToggle() {
 }
 
@@ -345,6 +464,15 @@ void APlayController::HandleGamepadKeyJustPressed() {
 }
 
 void APlayController::HandleGameMenuPopoutCameraContext(bool GameMenuPopoutEnabled) {
+}
+
+void APlayController::HandleEmoteWheelSelection(const FSelectionWheelOption& Selection) {
+}
+
+void APlayController::HandleEmoteWheelReleased() {
+}
+
+void APlayController::HandleEmoteWheelPressed() {
 }
 
 void APlayController::HandleCreativeModeEnabledChanged(bool CreativeModeEnabled) {
@@ -473,10 +601,25 @@ void APlayController::EnablePlanetSelection(bool Enable, ASolarBody* NewHomeBody
 void APlayController::EnableLandSelection(bool Enable, ASolarBody* Body) {
 }
 
+void APlayController::EmoteTwo() {
+}
+
+void APlayController::EmoteThree() {
+}
+
+void APlayController::EmoteOne() {
+}
+
+void APlayController::EmoteFour() {
+}
+
 void APlayController::DropHeldItem() {
 }
 
 void APlayController::DoSelectionWheelSelection(const FSelectionWheelOption& Selection) {
+}
+
+void APlayController::DoPlayFabCatalogUnlocks() {
 }
 
 void APlayController::DisengageUseModifier() {
@@ -510,6 +653,9 @@ void APlayController::ContextLeftReleased() {
 }
 
 void APlayController::ContextLeftPressed() {
+}
+
+void APlayController::CloseEmoteWheel() {
 }
 
 void APlayController::CloseAllSelectionWheels() {
@@ -562,65 +708,4 @@ bool APlayController::AttemptToDecrementCreativeBrushSizeController() {
     return false;
 }
 
-APlayController::APlayController() {
-    this->RightHandState = EHandState::HS_Empty;
-    this->GrabThreshold = 0.00f;
-    this->SelectionOffset = 0.00f;
-    this->LastRightHandAxis = 0.00f;
-    this->QuickSelectionMade = false;
-    this->MouseZoomTickSize = 0.00f;
-    this->MouseZoomSpeed = 0.90f;
-    this->bGeometricZoom = false;
-    this->ToolActiveItem = NULL;
-    this->CameraMode = ECameraMode::Follow;
-    this->InteractingActor = NULL;
-    this->CurrentTertiary = NULL;
-    this->HomeBody = NULL;
-    this->PlanetarySelectionDistance = 0.00f;
-    this->UsingGamepad = false;
-    this->UsingKeyboardNavigation = false;
-    this->UsingMouse = false;
-    this->CurrentClickPrimary = true;
-    this->planetSelection = false;
-    this->LandSelection = false;
-    this->IsVirtualCursorActive = false;
-    this->bApplyQuickSelectModifier = false;
-    this->bApplyUseModifier = false;
-    this->VirtualCursor = NULL;
-    this->FreeCamClass = NULL;
-    this->FreeCamRig = NULL;
-    this->CompassClass = NULL;
-    this->Compass = NULL;
-    this->ItemSelectorMesh = NULL;
-    this->GrabbedCable = NULL;
-    this->ItemSelectorMat = NULL;
-    this->SlottedItemSelectorMesh = NULL;
-    this->SlottedItemSelectorMat = NULL;
-    this->DefaultSecondarySelectorMesh = NULL;
-    this->EnableClickableIndicatorsDisplay = false;
-    this->CurrentMouseZoom = 0.50f;
-    this->bVirtualCursorToggleOn = false;
-    this->WheelOpenHoldThreshold = 0.00f;
-    this->WindGustDeltaMinIntensity = 0.20f;
-    this->WindGustScalar = 1.00f;
-    this->DebugWind = false;
-    this->BackpackCameraContext = NULL;
-    this->GameMenuPopoutCameraContext = NULL;
-    this->LastSecondaryViewActor = NULL;
-    this->bCreativeRemoveDecoratorsWhilePainting = true;
-    this->bCreativeTerrainBrushLightActive = true;
-    this->bCreativeShowLODAnchorRangeVisualization = false;
-    this->bCreativeDisableCollectResourcesWhileDeforming = false;
-    this->bShowCreativeDroneUI = true;
-    this->HoldLabelCounter = 0;
-    this->AstroNotificationManager = CreateDefaultSubobject<UAstroNotificationManager>(TEXT("AstroNotificationManager"));
-    this->TooltipManager = CreateDefaultSubobject<UTooltipManager>(TEXT("TooltipManager"));
-    this->AstroUnlockNotificationManger = CreateDefaultSubobject<UAstroUnlockNotificationManager>(TEXT("AstroUnlockNotificationManager"));
-    this->AstroToastNotificationManger = CreateDefaultSubobject<UAstroToastNotificationManager>(TEXT("AstroToastNotificationManager"));
-    this->AstroPopupBadgeManager = CreateDefaultSubobject<UAstroPopupBadgeManager>(TEXT("PopupBadgeManager"));
-    this->biomeSampler = CreateDefaultSubobject<UBiomeSamplerComponent>(TEXT("biomeSampler"));
-    this->BiomeEntryWeightThreshold = 0.20f;
-    this->BiomeExitWeightThreshold = 0.10f;
-    this->GlobalParameterCollection = NULL;
-}
 

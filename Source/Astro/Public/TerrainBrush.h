@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "GameFramework/Actor.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "Engine/EngineTypes.h"
 #include "EDeformType.h"
 #include "VoxelMaterial.h"
 #include "Templates/SubclassOf.h"
@@ -143,7 +143,8 @@ private:
     USceneComponent* ColorPaintBrushComponent;
     
 public:
-    ATerrainBrush();
+    ATerrainBrush(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void ShowBrushElements(EDeformType deformType, bool showElement);
     

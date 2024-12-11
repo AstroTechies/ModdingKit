@@ -1,5 +1,8 @@
 #include "StreamingPowerNodeComponentContainer.h"
 
+UStreamingPowerNodeComponentContainer::UStreamingPowerNodeComponentContainer() {
+}
+
 FStreamingPowerNodeComponent UStreamingPowerNodeComponentContainer::GetStreamingPowerNodeComponent(FAstroDatumRef StreamingPowerNodeComponentRef, bool& bOutSuccess) {
     return FStreamingPowerNodeComponent{};
 }
@@ -8,6 +11,4 @@ FStreamingPowerNodeComponent UStreamingPowerNodeComponentContainer::FindStreamin
     return FStreamingPowerNodeComponent{};
 }
 
-UStreamingPowerNodeComponentContainer::UStreamingPowerNodeComponentContainer() {
-}
 

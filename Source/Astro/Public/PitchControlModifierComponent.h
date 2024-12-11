@@ -35,6 +35,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ECameraControlMask ControlMask;
     
-    UPitchControlModifierComponent();
+    UPitchControlModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

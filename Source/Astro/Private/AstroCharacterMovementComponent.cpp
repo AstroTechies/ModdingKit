@@ -1,8 +1,55 @@
 #include "AstroCharacterMovementComponent.h"
 
-class AAstroCharacter;
-class UAstroCharacterMovementOverrideComponent;
-class UPrimitiveComponent;
+UAstroCharacterMovementComponent::UAstroCharacterMovementComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->CharacterOwner = NULL;
+    this->UpdatedComponent = NULL;
+    this->Gravity = 9.81f;
+    this->bNetworkUpdateReceived = false;
+    this->bNetworkMovementModeChanged = false;
+    this->NetworkSimulatedSmoothLocationTime = 0.10f;
+    this->NetworkSimulatedSmoothRotationTime = 0.03f;
+    this->MinTimeBetweenTimeStampResets = 240.00f;
+    this->bIsCreativeModeDrone = false;
+    this->bMovementInProgress = false;
+    this->GravitySourceInterpolationTime = 0.50f;
+    this->Mass = 7000.00f;
+    this->RotationSpeed = 0.10f;
+    this->SprintMultiplier = 1.60f;
+    this->MaxAcceleration = 10000.00f;
+    this->InitialPushForceFactor = 500.00f;
+    this->PushForceFactor = 750000.00f;
+    this->MaxSpeed = 800.00f;
+    this->BrakingDecelerationWalking = 5.00f;
+    this->GroundFriction = 1.00f;
+    this->UpslopeSlowdownStartThreshold = 1.00f;
+    this->MaxSpeedSliding = 2400.00f;
+    this->SlideStartSpeedThreshold = 700.00f;
+    this->SlideExitSpeedThreshold = 500.00f;
+    this->BrakingDecelerationSliding = 1.50f;
+    this->GroundFrictionSliding = 0.30f;
+    this->SlideMaxHangTime = 1.00f;
+    this->SlideBlockedDistanceThreshold = 1.00f;
+    this->SlideBlockedBrakingDeceleration = 400.00f;
+    this->SlideBlockedGroundFriction = 2.00f;
+    this->BrakingDecelerationFalling = 1.00f;
+    this->AirFriction = 0.10f;
+    this->FlyingSurfaceFriction = 5.00f;
+    this->FlyingSurfaceBrakingDeceleration = 1000.00f;
+    this->FlyingAirFriction = 0.00f;
+    this->FlyingAirBrakingDeceleration = 0.00f;
+    this->FlyingSlideOnSurfaceDotProductThreshold = 0.10f;
+    this->DownhillBias = 0.10f;
+    this->JumpVerticalImpulse = 1000.00f;
+    this->JumpBoostImpulse = 200.00f;
+    this->CurrentMovementMode = AstroMovementMode::Walking;
+    this->AirControlDampening = 0.20f;
+    this->bHasAirControl = true;
+    this->MinFallingDamageVelocity = 1650.00f;
+    this->MaxFallingDamageVelocity = 2950.00f;
+    this->MinCreativeModeFlightSpeedScalar = 1.00f;
+    this->MaxCreativeModeFlightSpeedScalar = 5.00f;
+    this->CreativeModeFlightSpeedScalar = 0.00f;
+}
 
 void UAstroCharacterMovementComponent::ZeroVelocity() {
 }
@@ -83,54 +130,4 @@ void UAstroCharacterMovementComponent::AddForce(FVector force) {
 void UAstroCharacterMovementComponent::AddAcceleration(FVector NewAcceleration) {
 }
 
-UAstroCharacterMovementComponent::UAstroCharacterMovementComponent() {
-    this->CharacterOwner = NULL;
-    this->UpdatedComponent = NULL;
-    this->Gravity = 9.81f;
-    this->bNetworkUpdateReceived = false;
-    this->bNetworkMovementModeChanged = false;
-    this->NetworkSimulatedSmoothLocationTime = 0.10f;
-    this->NetworkSimulatedSmoothRotationTime = 0.03f;
-    this->MinTimeBetweenTimeStampResets = 240.00f;
-    this->bIsCreativeModeDrone = false;
-    this->bMovementInProgress = false;
-    this->GravitySourceInterpolationTime = 0.50f;
-    this->Mass = 7000.00f;
-    this->RotationSpeed = 0.10f;
-    this->SprintMultiplier = 1.60f;
-    this->MaxAcceleration = 10000.00f;
-    this->InitialPushForceFactor = 500.00f;
-    this->PushForceFactor = 750000.00f;
-    this->MaxSpeed = 800.00f;
-    this->BrakingDecelerationWalking = 5.00f;
-    this->GroundFriction = 1.00f;
-    this->UpslopeSlowdownStartThreshold = 1.00f;
-    this->MaxSpeedSliding = 2400.00f;
-    this->SlideStartSpeedThreshold = 700.00f;
-    this->SlideExitSpeedThreshold = 500.00f;
-    this->BrakingDecelerationSliding = 1.50f;
-    this->GroundFrictionSliding = 0.30f;
-    this->SlideMaxHangTime = 1.00f;
-    this->SlideBlockedDistanceThreshold = 1.00f;
-    this->SlideBlockedBrakingDeceleration = 400.00f;
-    this->SlideBlockedGroundFriction = 2.00f;
-    this->BrakingDecelerationFalling = 1.00f;
-    this->AirFriction = 0.10f;
-    this->FlyingSurfaceFriction = 5.00f;
-    this->FlyingSurfaceBrakingDeceleration = 1000.00f;
-    this->FlyingAirFriction = 0.00f;
-    this->FlyingAirBrakingDeceleration = 0.00f;
-    this->FlyingSlideOnSurfaceDotProductThreshold = 0.10f;
-    this->DownhillBias = 0.10f;
-    this->JumpVerticalImpulse = 1000.00f;
-    this->JumpBoostImpulse = 200.00f;
-    this->CurrentMovementMode = AstroMovementMode::Walking;
-    this->AirControlDampening = 0.20f;
-    this->bHasAirControl = true;
-    this->MinFallingDamageVelocity = 1650.00f;
-    this->MaxFallingDamageVelocity = 2950.00f;
-    this->MinCreativeModeFlightSpeedScalar = 1.00f;
-    this->MaxCreativeModeFlightSpeedScalar = 5.00f;
-    this->CreativeModeFlightSpeedScalar = 0.00f;
-}
 

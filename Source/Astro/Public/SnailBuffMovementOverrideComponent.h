@@ -22,6 +22,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bIgnoreCarryEncumbrance: 1;
     
-    USnailBuffMovementOverrideComponent();
+    USnailBuffMovementOverrideComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

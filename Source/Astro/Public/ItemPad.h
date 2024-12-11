@@ -1,13 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "Components/SceneComponent.h"
 #include "DeformableInterfaceT2.h"
 #include "DeformationParamsT2.h"
 #include "SignalDelegate.h"
 #include "Templates/SubclassOf.h"
-#include "DeformableInterfaceT2.h"
-#include "DeformationParamsT2.h"
 #include "ItemPad.generated.h"
 
 class AActor;
@@ -41,9 +39,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_Pad, meta=(AllowPrivateAccess=true))
     AItemPadActor* Pad;
     
-    UItemPad();
+    UItemPad(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 private:
     UFUNCTION(BlueprintCallable)
     void StartInWorld();
@@ -86,7 +85,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static UItemPad* ActorItemPad(AActor* Actor);
     
-    
+
     // Fix for true pure virtual functions not being implemented
 };
 

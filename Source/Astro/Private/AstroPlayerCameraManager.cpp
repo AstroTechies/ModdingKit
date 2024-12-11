@@ -1,10 +1,11 @@
 #include "AstroPlayerCameraManager.h"
 
-class UCameraContext;
+AAstroPlayerCameraManager::AAstroPlayerCameraManager(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->DefaultModifiers.AddDefaulted(1);
+    this->bClientSimulatingViewTarget = true;
+}
 
 void AAstroPlayerCameraManager::PopAllCameraContexts(UCameraContext* Context) {
 }
 
-AAstroPlayerCameraManager::AAstroPlayerCameraManager() {
-}
 

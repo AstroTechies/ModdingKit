@@ -1,10 +1,7 @@
 #include "ClickQuery.h"
 
-class AActor;
-class APlayController;
-class UClickQuery;
-class UPrimitiveComponent;
-class UStorageChassisComponent;
+UClickQuery::UClickQuery() {
+}
 
 void UClickQuery::SetResultTertiary(AActor* Actor, AActor* ViewActor, EClickBehavior Behavior) {
 }
@@ -70,6 +67,10 @@ AActor* UClickQuery::GetInteractingActor() const {
     return NULL;
 }
 
+FVector UClickQuery::GetHitLocation() const {
+    return FVector{};
+}
+
 UPrimitiveComponent* UClickQuery::GetHitComponent() const {
     return NULL;
 }
@@ -90,6 +91,4 @@ UClickQuery* UClickQuery::ClickQuery() {
     return NULL;
 }
 
-UClickQuery::UClickQuery() {
-}
 

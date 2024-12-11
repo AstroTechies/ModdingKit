@@ -10,6 +10,7 @@ class ASTRO_API UResearchDisplayWidget : public UUserWidget {
     GENERATED_BODY()
 public:
     UResearchDisplayWidget();
+
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateForResearchSubjects(const TArray<FResearchSubjectReplicationData>& ResearchSubjects);
     

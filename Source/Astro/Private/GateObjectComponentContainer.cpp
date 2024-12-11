@@ -1,5 +1,8 @@
 #include "GateObjectComponentContainer.h"
 
+UGateObjectComponentContainer::UGateObjectComponentContainer() {
+}
+
 FGateObjectComponent UGateObjectComponentContainer::GetGateObjectComponent(FAstroDatumRef GateObjectComponentRef, bool& bOutSuccess) {
     return FGateObjectComponent{};
 }
@@ -8,6 +11,4 @@ FGateObjectComponent UGateObjectComponentContainer::FindGateObjectComponent(FAst
     return FGateObjectComponent{};
 }
 
-UGateObjectComponentContainer::UGateObjectComponentContainer() {
-}
 

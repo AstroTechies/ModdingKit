@@ -7,3 +7,4 @@ UGateObjectIndicatorDefinition::UGateObjectIndicatorDefinition() {
     this->ActiveIndicatorMaterial = NULL;
 }
 
+

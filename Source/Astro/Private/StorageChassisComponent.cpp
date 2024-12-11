@@ -2,12 +2,22 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
-class APhysicalItem;
-class APlayerController;
-class UItemType;
-class USlotOrganizationRule;
-class UStorageChassisComponent;
+UStorageChassisComponent::UStorageChassisComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->CanExit = true;
+    this->IndicateExit = true;
+    this->OwnerFacingBack = false;
+    this->TertiaryUsable = false;
+    this->SaveOnEnter = false;
+    this->CanTransferItemsAcrossConnections = false;
+    this->bPrioritizeNestedStorage = true;
+    this->bPassActuateEventsToSlottedItems = true;
+    this->bCanNest = true;
+    this->IsSpawnPoint = false;
+    this->IsNewPlayerSpawnPoint = false;
+    this->IsDefaultSpawnPoint = false;
+    this->SpawnPointPriority = 0;
+}
 
 void UStorageChassisComponent::TertiaryUse(APlayerController* Controller) {
 }
@@ -80,19 +90,4 @@ void UStorageChassisComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProper
     DOREPLIFETIME(UStorageChassisComponent, SlotIndicatorLocations);
 }
 
-UStorageChassisComponent::UStorageChassisComponent() {
-    this->CanExit = true;
-    this->IndicateExit = true;
-    this->OwnerFacingBack = false;
-    this->TertiaryUsable = false;
-    this->SaveOnEnter = false;
-    this->CanTransferItemsAcrossConnections = false;
-    this->bPrioritizeNestedStorage = true;
-    this->bPassActuateEventsToSlottedItems = true;
-    this->bCanNest = true;
-    this->IsSpawnPoint = false;
-    this->IsNewPlayerSpawnPoint = false;
-    this->IsDefaultSpawnPoint = false;
-    this->SpawnPointPriority = 0;
-}
 

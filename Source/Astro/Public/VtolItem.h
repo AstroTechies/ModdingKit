@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "Engine/EngineBaseTypes.h"
 #include "EControlsPromptStatus.h"
 #include "InteractionPromptEntryData.h"
 #include "LandingInfo.h"
@@ -124,9 +124,10 @@ private:
     EControlsPromptStatus MovementControlsPromptStatus;
     
 public:
-    AVtolItem();
+    AVtolItem(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void UpdateWashEffectsState();

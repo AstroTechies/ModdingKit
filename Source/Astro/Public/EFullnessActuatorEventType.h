@@ -7,8 +7,8 @@ enum class EFullnessActuatorEventType : uint8 {
     None,
     Full,
     WasFull,
-    Empty = 0x4,
-    WasEmpty = 0x8,
-    All = 0xF,
+    Empty = 4,
+    WasEmpty = 8,
+    All = 15,
 };
 

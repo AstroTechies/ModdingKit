@@ -11,6 +11,7 @@ public:
     uint8 bShowFilterSelection: 1;
     
     UWandererPhotoWidget();
+
     UFUNCTION(BlueprintCallable)
     void ClosePhotoWidget();
     

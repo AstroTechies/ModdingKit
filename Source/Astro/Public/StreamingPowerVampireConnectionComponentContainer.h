@@ -10,6 +10,7 @@ class ASTRO_API UStreamingPowerVampireConnectionComponentContainer : public UAst
     GENERATED_BODY()
 public:
     UStreamingPowerVampireConnectionComponentContainer();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FStreamingPowerVampireConnectionComponent GetStreamingPowerVampireConnectionComponent(FAstroDatumRef StreamingPowerVampireConnectionComponentRef, bool& bOutSuccess);
     

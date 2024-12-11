@@ -26,9 +26,10 @@ protected:
     FCurrentlySelectedItemChanged OnCurrentlySelectedItemChanged;
     
 public:
-    ACheatPlinthBase();
+    ACheatPlinthBase(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnRep_SelectionIndex();

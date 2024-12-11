@@ -9,10 +9,10 @@ USTRUCT(BlueprintType)
 struct FResearchSubjectReplicationData {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<UResearchSubjectDefinition> Definition;
     
-    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<UItemType> ItemType;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

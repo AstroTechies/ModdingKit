@@ -41,7 +41,8 @@ protected:
     bool bButtonArmed;
     
 public:
-    AControlPanelButton();
+    AControlPanelButton(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void SetButtonEnabled(bool Enabled);
     

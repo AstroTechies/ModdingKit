@@ -1,6 +1,16 @@
 #include "ActorSolarPowerGeneratorComponent.h"
 
-class UPrimitiveComponent;
+UActorSolarPowerGeneratorComponent::UActorSolarPowerGeneratorComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->MinPowerOutput = 0.50f;
+    this->MaxPowerOutput = 0.50f;
+    this->SolarPanelShouldTrackSun = false;
+    this->SunTrackingBehavior = ESolarGeneratorSunTrackingBehavior::Pivot;
+    this->SunFacingRotationLimit = 90.00f;
+    this->SolarPanelRotatorInterpolationStrength = 4.00f;
+    this->CastComponent = NULL;
+    this->SunFacingSolarPanel = NULL;
+    this->PowerComponent = NULL;
+}
 
 void UActorSolarPowerGeneratorComponent::OnSpawnedInSlot() {
 }
@@ -23,15 +33,4 @@ void UActorSolarPowerGeneratorComponent::HandlePickedUpFromWorld(bool PhysicalMo
 void UActorSolarPowerGeneratorComponent::HandleDroppedInWorld(UPrimitiveComponent* Component, const FVector& Point, const FVector& Normal) {
 }
 
-UActorSolarPowerGeneratorComponent::UActorSolarPowerGeneratorComponent() {
-    this->MinPowerOutput = 0.50f;
-    this->MaxPowerOutput = 0.50f;
-    this->SolarPanelShouldTrackSun = false;
-    this->SunTrackingBehavior = ESolarGeneratorSunTrackingBehavior::Pivot;
-    this->SunFacingRotationLimit = 90.00f;
-    this->SolarPanelRotatorInterpolationStrength = 4.00f;
-    this->CastComponent = NULL;
-    this->SunFacingSolarPanel = NULL;
-    this->PowerComponent = NULL;
-}
 

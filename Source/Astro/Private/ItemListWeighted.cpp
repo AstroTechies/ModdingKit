@@ -1,8 +1,8 @@
 #include "ItemListWeighted.h"
 #include "Templates/SubclassOf.h"
 
-class UItemListWeighted;
-class UItemType;
+UItemListWeighted::UItemListWeighted() {
+}
 
 TSubclassOf<UItemType> UItemListWeighted::PickItem() {
     return NULL;
@@ -12,6 +12,4 @@ UItemListWeighted* UItemListWeighted::ItemSpawnListDefault(TSubclassOf<UItemList
     return NULL;
 }
 
-UItemListWeighted::UItemListWeighted() {
-}
 

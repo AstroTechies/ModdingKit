@@ -8,5 +8,6 @@ class ASTRO_API UTestEntityColorCycleSystem : public UAstroEntitySystem {
     GENERATED_BODY()
 public:
     UTestEntityColorCycleSystem();
+
 };
 

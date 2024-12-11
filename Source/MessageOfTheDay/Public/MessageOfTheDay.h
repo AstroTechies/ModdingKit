@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "EAstroMessageOfTheDayVersion.h"
 #include "MessageOfTheDay.generated.h"
 
@@ -9,7 +9,7 @@ class MESSAGEOFTHEDAY_API UMessageOfTheDay : public UObject {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    EAstroMessageOfTheDayVersion Version;
+    EAstroMessageOfTheDayVersion version;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText Title;
@@ -26,6 +26,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FText> Messages;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FString> FullscreenSegments;
+    
     UMessageOfTheDay();
+
 };
 

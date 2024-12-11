@@ -1,5 +1,8 @@
 #include "StreamingPowerDirectionalConnectionComponentContainer.h"
 
+UStreamingPowerDirectionalConnectionComponentContainer::UStreamingPowerDirectionalConnectionComponentContainer() {
+}
+
 FStreamingPowerDirectionalConnectionComponent UStreamingPowerDirectionalConnectionComponentContainer::GetStreamingPowerConnectionComponent(FAstroDatumRef StreamingPowerConnectionComponentRef, bool& bOutSuccess) {
     return FStreamingPowerDirectionalConnectionComponent{};
 }
@@ -8,6 +11,4 @@ FStreamingPowerDirectionalConnectionComponent UStreamingPowerDirectionalConnecti
     return FStreamingPowerDirectionalConnectionComponent{};
 }
 
-UStreamingPowerDirectionalConnectionComponentContainer::UStreamingPowerDirectionalConnectionComponentContainer() {
-}
 

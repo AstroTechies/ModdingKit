@@ -29,7 +29,8 @@ private:
     TArray<UComponentDelegateWrapper*> ClickDelegates;
     
 public:
-    UControlSwitchComponent();
+    UControlSwitchComponent(const FObjectInitializer& ObjectInitializer);
+
 private:
     UFUNCTION(BlueprintCallable)
     void SetControlledSlot(int32 Index);

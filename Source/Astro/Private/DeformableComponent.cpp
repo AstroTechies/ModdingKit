@@ -1,5 +1,6 @@
 #include "DeformableComponent.h"
 
-UDeformableComponent::UDeformableComponent() {
+UDeformableComponent::UDeformableComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

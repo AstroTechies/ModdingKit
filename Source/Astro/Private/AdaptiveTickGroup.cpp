@@ -1,5 +1,7 @@
 #include "AdaptiveTickGroup.h"
 
-AAdaptiveTickGroup::AAdaptiveTickGroup() {
+AAdaptiveTickGroup::AAdaptiveTickGroup(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bHidden = true;
 }
+
 

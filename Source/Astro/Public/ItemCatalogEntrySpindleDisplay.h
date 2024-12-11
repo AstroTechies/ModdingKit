@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "InputCoreTypes.h"
 #include "ItemCatalogEntry.h"
 #include "ItemCatalogEntryDisplay.h"
 #include "OnItemIconMeshClickedDelegate.h"
@@ -31,6 +31,9 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UMaterialInterface* UnlockedItemIconMaterial;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInterface* HackedItemIconMaterial;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UStaticMeshComponent*> ItemIconMeshComponents;
     
@@ -48,6 +51,7 @@ protected:
     
 public:
     UItemCatalogEntrySpindleDisplay();
+
     UFUNCTION(BlueprintCallable)
     void SetItemIconMeshComponents(UMeshComponent* newItemIconMeshParent, const TArray<UStaticMeshComponent*>& newItemIconMeshComponents);
     

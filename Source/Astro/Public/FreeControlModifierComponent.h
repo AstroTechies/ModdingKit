@@ -22,6 +22,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float GamepadRotateMultiplier;
     
-    UFreeControlModifierComponent();
+    UFreeControlModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

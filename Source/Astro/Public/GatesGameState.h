@@ -23,9 +23,10 @@ protected:
     int32 TotalActivatedEngines;
     
 public:
-    AGatesGameState();
+    AGatesGameState(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnReplicationDataReceived();

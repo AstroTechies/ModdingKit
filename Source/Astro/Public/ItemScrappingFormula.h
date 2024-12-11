@@ -8,5 +8,6 @@ class ASTRO_API UItemScrappingFormula : public UItemConversionFormula {
     GENERATED_BODY()
 public:
     UItemScrappingFormula();
+
 };
 

@@ -25,6 +25,7 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal SunlightFellBelowMinExposure;
     
-    USunlightDetectorComponent();
+    USunlightDetectorComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

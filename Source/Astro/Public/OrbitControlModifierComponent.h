@@ -31,6 +31,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LookatHeightOffset;
     
-    UOrbitControlModifierComponent();
+    UOrbitControlModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

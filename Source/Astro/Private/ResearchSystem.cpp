@@ -1,12 +1,8 @@
 #include "ResearchSystem.h"
 #include "Templates/SubclassOf.h"
 
-class AAstroGameState;
-class APhysicalItem;
-class APlayerController;
-class UItemComponent;
-class UItemType;
-class UObject;
+UResearchSystem::UResearchSystem() {
+}
 
 void UResearchSystem::StartOrInterruptResearch(FAstroDatumRef ResearchEntityRef, FAstroDatumRef InstigatorEntityRef, bool& bOutSuccess) {
 }
@@ -35,6 +31,10 @@ bool UResearchSystem::IsItemTypeKnownForGame(const AAstroGameState* GameState, T
     return false;
 }
 
+bool UResearchSystem::IsItemTypeHackedForGame(const AAstroGameState* GameState, TSubclassOf<UItemType> ItemType) {
+    return false;
+}
+
 float UResearchSystem::GetResearchTimeProgressRatio(const FResearchSubjectComponent& ResearchSubject) {
     return 0.0f;
 }
@@ -57,6 +57,4 @@ float UResearchSystem::GetCurrentResearchPointBalance(const APlayerController* P
 void UResearchSystem::AuthorityGrantResearchPoints(const UObject* WorldContextObject, int32 PointsToGrant) {
 }
 
-UResearchSystem::UResearchSystem() {
-}
 

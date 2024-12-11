@@ -1,12 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EWindowMode -FallbackName=EWindowMode
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=GameUserSettings -FallbackName=GameUserSettings
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=InputActionKeyMapping -FallbackName=InputActionKeyMapping
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=InputAxisKeyMapping -FallbackName=InputAxisKeyMapping
-//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
-#include "GameFramework/PlayerInput.h"
 #include "GameFramework/GameUserSettings.h"
+#include "GameFramework/GameUserSettings.h"
+#include "GameFramework/PlayerInput.h"
+#include "GameFramework/PlayerInput.h"
+#include "InputCoreTypes.h"
 #include "EAstroDiscreteInputOptionPlayerFacing.h"
 #include "EAstroWindowMode.h"
 #include "EnableSignalDelegate.h"
@@ -16,7 +14,7 @@
 class APlayerController;
 class UAstroGameUserSettings;
 
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, Config=Engine)
 class ASTRO_API UAstroGameUserSettings : public UGameUserSettings {
     GENERATED_BODY()
 public:
@@ -149,6 +147,7 @@ protected:
     
 public:
     UAstroGameUserSettings();
+
     UFUNCTION(BlueprintCallable)
     void UpdateHQTerrainMaterials();
     

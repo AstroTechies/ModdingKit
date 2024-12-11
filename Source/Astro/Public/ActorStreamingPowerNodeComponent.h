@@ -22,9 +22,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bSkipPacketLoopProtectionCheck: 1;
     
-    UActorStreamingPowerNodeComponent();
+    UActorStreamingPowerNodeComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void OnRep_VisualizationData();
     

@@ -10,6 +10,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Distance;
     
-    UFixedDistanceModifierComponent();
+    UFixedDistanceModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

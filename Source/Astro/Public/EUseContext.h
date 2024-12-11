@@ -67,6 +67,7 @@ enum class EUseContext : uint8 {
     UC_Harvest,
     UC_NextRecipe,
     UC_Befriend,
-    UC_MAX UMETA(Hidden),
+    UC_EnableGathering,
+    UC_EnterPortal,
 };
 

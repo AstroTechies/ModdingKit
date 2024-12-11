@@ -1,6 +1,7 @@
 #include "ResourceInfoNeeded.h"
 
-AResourceInfoNeeded::AResourceInfoNeeded() {
+AResourceInfoNeeded::AResourceInfoNeeded(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->PlaceholderMesh = NULL;
 }
+
 

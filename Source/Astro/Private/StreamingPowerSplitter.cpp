@@ -1,8 +1,8 @@
 #include "StreamingPowerSplitter.h"
 #include "Net/UnrealNetwork.h"
 
-class ASlotConnection;
-class UActorStreamingPowerCableComponent;
+AStreamingPowerSplitter::AStreamingPowerSplitter(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+}
 
 void AStreamingPowerSplitter::OnRep_SplitterData() {
 }
@@ -29,6 +29,4 @@ void AStreamingPowerSplitter::GetLifetimeReplicatedProps(TArray<FLifetimePropert
     DOREPLIFETIME(AStreamingPowerSplitter, SplitterRepData);
 }
 
-AStreamingPowerSplitter::AStreamingPowerSplitter() {
-}
 

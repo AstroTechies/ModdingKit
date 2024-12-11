@@ -4,3 +4,4 @@ UParticleModuleAstroBase::UParticleModuleAstroBase() {
     this->bApplyOwnerScale = false;
 }
 
+

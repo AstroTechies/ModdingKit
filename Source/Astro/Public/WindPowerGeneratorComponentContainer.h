@@ -10,6 +10,7 @@ class ASTRO_API UWindPowerGeneratorComponentContainer : public UAstroEntityCompo
     GENERATED_BODY()
 public:
     UWindPowerGeneratorComponentContainer();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FWindPowerGeneratorComponent GetWindPowerGeneratorComponent(FAstroDatumRef WindPowerGeneratorComponentRef, bool& bOutSuccess);
     

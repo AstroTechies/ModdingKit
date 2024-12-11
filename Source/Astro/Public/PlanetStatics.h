@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "UObject/NoExportTypes.h"
+#include "Engine/EngineTypes.h"
 #include "AstroStatics.h"
 #include "AtmosphericResource.h"
 #include "EPlanetIdentifier.h"
@@ -20,6 +20,7 @@ class ASTRO_API UPlanetStatics : public UAstroStatics {
     GENERATED_BODY()
 public:
     UPlanetStatics();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector ToPlanet(AAstroPlanet* Planet, AActor* Actor);
     
@@ -74,6 +75,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static AAstroPlanet* GetPlanetByLocation(const UObject* WorldContextObject, FVector Position, bool boundsCheck, bool locationIsSolar);
     
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
+    static AAstroPlanet* GetPlanetByID(UObject* WorldContextObject, EPlanetIdentifier ID);
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static AAstroPlanet* GetPlanet(AActor* Actor, bool bBoundsCheck);
     
@@ -81,7 +85,7 @@ public:
     static AGateStation* GetGateStation(UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    static AAstroPlanet* GetClosestPlanet(AActor* Actor);
+    static AAstroPlanet* GetClosestPlanet(const AActor* Actor);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector GetBodyGravityAtLocation(ASolarBody* Body, FVector Location);

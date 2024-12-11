@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "VoxelMaterialProperties.h"
 #include "DrillAudioEventDelegate.h"
 #include "EVehicleDrillToolMode.h"
@@ -164,9 +164,10 @@ protected:
     int32 ConsumedSedimentDebt;
     
 public:
-    AVehicleDrill();
+    AVehicleDrill(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void UpdateTerrainDeformationParticles(bool SystemEnabled, int32 HardnessDelta);

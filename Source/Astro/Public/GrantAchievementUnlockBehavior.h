@@ -8,5 +8,6 @@ class ASTRO_API UGrantAchievementUnlockBehavior : public UUnlockBehavior {
     GENERATED_BODY()
 public:
     UGrantAchievementUnlockBehavior();
+
 };
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "AutoCraneOverlapTestRequest.h"
 #include "AutoCraneState.h"
 #include "AutoCraneManager.generated.h"
@@ -33,6 +33,7 @@ private:
     
 public:
     UAutoCraneManager();
+
 private:
     UFUNCTION(BlueprintCallable)
     void OnTransferItemSet(AAutoCrane* Crane);

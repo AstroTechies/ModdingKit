@@ -18,6 +18,7 @@ class ASTRO_API UResearchSystem : public UAstroEntitySystem {
     GENERATED_BODY()
 public:
     UResearchSystem();
+
     UFUNCTION(BlueprintCallable)
     static void StartOrInterruptResearch(FAstroDatumRef ResearchEntityRef, FAstroDatumRef InstigatorEntityRef, bool& bOutSuccess);
     
@@ -41,6 +42,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsItemTypeKnownForGame(const AAstroGameState* GameState, TSubclassOf<UItemType> ItemType);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static bool IsItemTypeHackedForGame(const AAstroGameState* GameState, TSubclassOf<UItemType> ItemType);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetResearchTimeProgressRatio(const FResearchSubjectComponent& ResearchSubject);

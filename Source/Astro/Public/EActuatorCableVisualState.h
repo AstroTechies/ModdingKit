@@ -7,6 +7,6 @@ enum class EActuatorCableVisualState : uint8 {
     Off,
     Invalid,
     Highlighted,
-    HighlightedDownstream = 0x4,
+    HighlightedDownstream = 4,
 };
 

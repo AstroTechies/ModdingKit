@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DeveloperSettings -FallbackName=DeveloperSettings
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=RuntimeFloatCurve -FallbackName=RuntimeFloatCurve
+#include "Engine/DeveloperSettings.h"
+#include "Curves/CurveFloat.h"
 #include "Templates/SubclassOf.h"
 #include "UISettings.generated.h"
 
@@ -10,7 +10,7 @@ class UUISettings;
 class UUserWidget;
 class UVirtualCursorWidget;
 
-UCLASS(Blueprintable, Config=Engine, DefaultConfig, Config=Game)
+UCLASS(Blueprintable, DefaultConfig, Config=Game)
 class ASTRO_API UUISettings : public UDeveloperSettings {
     GENERATED_BODY()
 public:
@@ -83,6 +83,7 @@ private:
     
 public:
     UUISettings();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static UUISettings* GetAstroUISettings();
     

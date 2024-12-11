@@ -8,5 +8,6 @@ class ASTRO_API UReconnectWidget : public UUserWidgetBlueprintDesignable {
     GENERATED_BODY()
 public:
     UReconnectWidget();
+
 };
 

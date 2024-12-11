@@ -10,7 +10,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AutoDismissRange;
     
-    UExaminable();
+    UExaminable(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     bool ValidateWithinExamineRange();
     

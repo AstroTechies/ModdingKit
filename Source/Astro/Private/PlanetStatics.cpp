@@ -1,12 +1,7 @@
 #include "PlanetStatics.h"
 
-class AActor;
-class AAstroPlanet;
-class AGateStation;
-class ASolarBody;
-class ASun;
-class UObject;
-class USceneComponent;
+UPlanetStatics::UPlanetStatics() {
+}
 
 FVector UPlanetStatics::ToPlanet(AAstroPlanet* Planet, AActor* Actor) {
     return FVector{};
@@ -77,6 +72,10 @@ AAstroPlanet* UPlanetStatics::GetPlanetByLocation(const UObject* WorldContextObj
     return NULL;
 }
 
+AAstroPlanet* UPlanetStatics::GetPlanetByID(UObject* WorldContextObject, EPlanetIdentifier ID) {
+    return NULL;
+}
+
 AAstroPlanet* UPlanetStatics::GetPlanet(AActor* Actor, bool bBoundsCheck) {
     return NULL;
 }
@@ -85,7 +84,7 @@ AGateStation* UPlanetStatics::GetGateStation(UObject* WorldContextObject) {
     return NULL;
 }
 
-AAstroPlanet* UPlanetStatics::GetClosestPlanet(AActor* Actor) {
+AAstroPlanet* UPlanetStatics::GetClosestPlanet(const AActor* Actor) {
     return NULL;
 }
 
@@ -116,6 +115,4 @@ bool UPlanetStatics::AreAtmosphericResourcesEqual(const FAtmosphericResource& re
     return false;
 }
 
-UPlanetStatics::UPlanetStatics() {
-}
 

@@ -1,7 +1,17 @@
 #include "ExplosiveComponent.h"
 
-class AActor;
-class UObject;
+UExplosiveComponent::UExplosiveComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->Power = 0.00f;
+    this->AutoResourceGenerationPercentage = 0.00f;
+    this->CombineExplosionsRadiusRatio = 0.50f;
+    this->ExplosionRadiusCraterScale = 0.50f;
+    this->PowerToRadiusScale = 1600.00f;
+    this->DamageTypeClass = NULL;
+    this->IsEnabled = true;
+    this->EffectsConfig = NULL;
+    this->CombinedPower = 0.00f;
+    this->CombinedRadius = 0.00f;
+}
 
 void UExplosiveComponent::SetDetonationTimerPaused(bool bIsPaused) {
 }
@@ -31,16 +41,4 @@ void UExplosiveComponent::DamageActor(AActor* Actor, const FVector Direction, fl
 void UExplosiveComponent::CancelDetonationTimer() {
 }
 
-UExplosiveComponent::UExplosiveComponent() {
-    this->Power = 0.00f;
-    this->AutoResourceGenerationPercentage = 0.00f;
-    this->CombineExplosionsRadiusRatio = 0.50f;
-    this->ExplosionRadiusCraterScale = 0.50f;
-    this->PowerToRadiusScale = 1600.00f;
-    this->DamageTypeClass = NULL;
-    this->IsEnabled = true;
-    this->EffectsConfig = NULL;
-    this->CombinedPower = 0.00f;
-    this->CombinedRadius = 0.00f;
-}
 

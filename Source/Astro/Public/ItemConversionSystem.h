@@ -8,5 +8,6 @@ class ASTRO_API UItemConversionSystem : public UAstroEntitySystem {
     GENERATED_BODY()
 public:
     UItemConversionSystem();
+
 };
 

@@ -1,5 +1,6 @@
 #include "ParentSelectionNoIndicator.h"
 
-UParentSelectionNoIndicator::UParentSelectionNoIndicator() {
+UParentSelectionNoIndicator::UParentSelectionNoIndicator(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

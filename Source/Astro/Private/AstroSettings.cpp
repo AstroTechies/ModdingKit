@@ -1,13 +1,7 @@
 #include "AstroSettings.h"
 
-class AActor;
-class AAstroSettings;
-
-AAstroSettings* AAstroSettings::GetAstroSettings(AActor* Actor) {
-    return NULL;
-}
-
-AAstroSettings::AAstroSettings() {
+AAstroSettings::AAstroSettings(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bDisallowedForDedicatedServer = false;
     this->bIsFlatland = false;
     this->bFreePower = false;
     this->bInteractionLogging = false;
@@ -17,6 +11,7 @@ AAstroSettings::AAstroSettings() {
     this->bTrailer = false;
     this->bRelease = false;
     this->bBalancePalettes = false;
+    this->bAnalyticsEnabled = true;
     this->IntroCinematicSequence = NULL;
     this->LatestUpdateCinematicSequence = NULL;
     this->OutroCinematicSequence = NULL;
@@ -25,4 +20,9 @@ AAstroSettings::AAstroSettings() {
     this->GateStationOrbitingBody = NULL;
     this->GateStationOrbitDistance = 100000.00f;
 }
+
+AAstroSettings* AAstroSettings::GetAstroSettings(AActor* Actor) {
+    return NULL;
+}
+
 

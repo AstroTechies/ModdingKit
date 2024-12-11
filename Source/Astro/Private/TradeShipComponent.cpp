@@ -2,12 +2,14 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class APhysicalItem;
-class APlayController;
-class UClickQuery;
-class UItemComponent;
-class UItemType;
-class UTradeShipDockComponent;
+UTradeShipComponent::UTradeShipComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->LaunchingPlayController = NULL;
+    this->RejectedItemForce = 0.00f;
+    this->OrbitalNav = NULL;
+    this->ParentDockComponent = NULL;
+    this->bManageIndicators = true;
+}
 
 void UTradeShipComponent::UpdateIndicators() {
 }
@@ -61,11 +63,4 @@ void UTradeShipComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& 
     DOREPLIFETIME(UTradeShipComponent, ParentDockComponent);
 }
 
-UTradeShipComponent::UTradeShipComponent() {
-    this->LaunchingPlayController = NULL;
-    this->RejectedItemForce = 0.00f;
-    this->OrbitalNav = NULL;
-    this->ParentDockComponent = NULL;
-    this->bManageIndicators = true;
-}
 

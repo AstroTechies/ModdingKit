@@ -1,6 +1,16 @@
 #include "LandingPadComponent.h"
 
-class APhysicalItem;
+ULandingPadComponent::ULandingPadComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->PlanetMarkerType = NULL;
+    this->MaximumOperationalTilt = 15.00f;
+    this->SkyObstructionTestRadius = 300.00f;
+    this->PlanetMarker = NULL;
+    this->OwnerItem = NULL;
+    this->bDeployed = false;
+    this->bSkipOrientationValidation = false;
+    this->bAutomaticDeployment = false;
+    this->bSkyObstructed = false;
+}
 
 void ULandingPadComponent::OnOwnerItemMotionStateChanged() {
 }
@@ -30,15 +40,4 @@ bool ULandingPadComponent::AuthorityDeployLandingPad() {
     return false;
 }
 
-ULandingPadComponent::ULandingPadComponent() {
-    this->PlanetMarkerType = NULL;
-    this->MaximumOperationalTilt = 15.00f;
-    this->SkyObstructionTestRadius = 300.00f;
-    this->PlanetMarker = NULL;
-    this->OwnerItem = NULL;
-    this->bDeployed = false;
-    this->bSkipOrientationValidation = false;
-    this->bAutomaticDeployment = false;
-    this->bSkyObstructed = false;
-}
 

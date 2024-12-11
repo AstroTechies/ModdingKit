@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "Subslot.generated.h"
 
 class USceneComponent;
@@ -17,6 +17,7 @@ public:
     TArray<USubslot*> SubSlots;
     
     USubslot();
+
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static USubslot* MakeSubslot(UObject* WorldContextObject, const TArray<USceneComponent*> SlotComponents, const TArray<USubslot*>& SubSubSlots);
     

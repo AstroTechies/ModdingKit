@@ -1,5 +1,6 @@
 #include "ReclaimableMissionItemComponent.h"
 
-UReclaimableMissionItemComponent::UReclaimableMissionItemComponent() {
+UReclaimableMissionItemComponent::UReclaimableMissionItemComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

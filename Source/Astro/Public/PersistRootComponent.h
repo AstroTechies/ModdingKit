@@ -7,6 +7,7 @@ UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UPersistRootComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPersistRootComponent();
+    UPersistRootComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

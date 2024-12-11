@@ -1,6 +1,6 @@
 #include "CameraModifierComponent.h"
 
-UCameraModifierComponent::UCameraModifierComponent() {
+UCameraModifierComponent::UCameraModifierComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->bEnabled = true;
     this->Priority = 0;
     this->ShutoffLatency = 0.00f;
@@ -19,4 +19,5 @@ UCameraModifierComponent::UCameraModifierComponent() {
     this->LerpSpeed = 0.00f;
     this->PostActivationEasePeriod = 0.00f;
 }
+
 

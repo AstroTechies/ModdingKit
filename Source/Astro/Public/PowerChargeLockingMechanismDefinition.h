@@ -8,5 +8,6 @@ class ASTRO_API UPowerChargeLockingMechanismDefinition : public ULockingMechanis
     GENERATED_BODY()
 public:
     UPowerChargeLockingMechanismDefinition();
+
 };
 

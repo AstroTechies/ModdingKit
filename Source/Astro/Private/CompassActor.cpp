@@ -1,24 +1,6 @@
 #include "CompassActor.h"
 
-void ACompassActor::SetShown(bool isShown) {
-}
-
-void ACompassActor::HandleUserSettingsChanged() {
-}
-
-void ACompassActor::HandleOrbitalNavLaunch() {
-}
-
-void ACompassActor::HandleNavpointRemoved(const FGuid& NavpointID) {
-}
-
-void ACompassActor::HandleNavpointAdded(const FGuid& NavpointID) {
-}
-
-void ACompassActor::HandleDrivingStatusChanged() {
-}
-
-ACompassActor::ACompassActor() {
+ACompassActor::ACompassActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->RingsMeshAsset = NULL;
     this->RingsMaterialAsset = NULL;
     this->ElevationLineMesh = NULL;
@@ -42,4 +24,23 @@ ACompassActor::ACompassActor() {
     this->RingsMaterial = NULL;
     this->Rings = NULL;
 }
+
+void ACompassActor::SetShown(bool isShown) {
+}
+
+void ACompassActor::HandleUserSettingsChanged() {
+}
+
+void ACompassActor::HandleOrbitalNavLaunch() {
+}
+
+void ACompassActor::HandleNavpointRemoved(const FGuid& NavpointID) {
+}
+
+void ACompassActor::HandleNavpointAdded(const FGuid& NavpointID) {
+}
+
+void ACompassActor::HandleDrivingStatusChanged() {
+}
+
 

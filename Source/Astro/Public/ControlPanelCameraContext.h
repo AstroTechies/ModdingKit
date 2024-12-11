@@ -8,5 +8,6 @@ class UControlPanelCameraContext : public UCameraContext {
     GENERATED_BODY()
 public:
     UControlPanelCameraContext();
+
 };
 

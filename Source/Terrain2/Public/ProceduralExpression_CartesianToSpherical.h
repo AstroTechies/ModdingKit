@@ -8,5 +8,6 @@ class TERRAIN2_API UProceduralExpression_CartesianToSpherical : public UProcedur
     GENERATED_BODY()
 public:
     UProceduralExpression_CartesianToSpherical();
+
 };
 

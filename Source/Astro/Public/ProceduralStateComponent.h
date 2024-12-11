@@ -22,9 +22,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bApplyTintFromAttachParent: 1;
     
-    UProceduralStateComponent();
+    UProceduralStateComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void OnTerrainPhysicsBuriedChanged(UTerrainPhysicsComponent* TerrainPhysics);
     

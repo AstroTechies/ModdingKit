@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "ActuationRequest.h"
 #include "ActuatorQueue.generated.h"
 
@@ -14,6 +14,7 @@ private:
     
 public:
     UActuatorQueue();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetActuatorTickFrequency();
     

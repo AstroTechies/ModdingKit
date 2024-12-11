@@ -1,6 +1,8 @@
 #include "AstroEntityWorld.h"
 
-class UAstroSaveCustomArchiveProxy;
+UAstroEntityWorld::UAstroEntityWorld() {
+    this->EntityContainer = NULL;
+}
 
 void UAstroEntityWorld::SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy) {
 }
@@ -21,7 +23,4 @@ TArray<FAstroDatumRef> UAstroEntityWorld::GetEntityComponentDatumRefs(FAstroDatu
     return TArray<FAstroDatumRef>();
 }
 
-UAstroEntityWorld::UAstroEntityWorld() {
-    this->EntityContainer = NULL;
-}
 

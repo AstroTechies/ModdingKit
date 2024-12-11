@@ -8,5 +8,6 @@ class TERRAIN2_API UProceduralExpression_Height : public UProceduralExpression_O
     GENERATED_BODY()
 public:
     UProceduralExpression_Height();
+
 };
 

@@ -1,8 +1,14 @@
 #include "CableTutorialComponent.h"
 
-class APhysicalItem;
-class ASlotConnection;
-class UPrimitiveComponent;
+UCableTutorialComponent::UCableTutorialComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->CableTutorialIsComplete = false;
+    this->receiverItem = NULL;
+    this->providerItem = NULL;
+    this->ReceiverSlotComponent = NULL;
+    this->ProviderSlotComponent = NULL;
+    this->CurrentGrabTooltipComponent = NULL;
+    this->CurrentAttachTooltipComponent = NULL;
+}
 
 void UCableTutorialComponent::StopCableTutorial() {
 }
@@ -43,13 +49,4 @@ void UCableTutorialComponent::OnCableDestroyed(FSlotReference cableSlot, ASlotCo
 void UCableTutorialComponent::OnCableConnected(FSlotReference cableSlot, ASlotConnection* cable) {
 }
 
-UCableTutorialComponent::UCableTutorialComponent() {
-    this->CableTutorialIsComplete = false;
-    this->receiverItem = NULL;
-    this->providerItem = NULL;
-    this->ReceiverSlotComponent = NULL;
-    this->ProviderSlotComponent = NULL;
-    this->CurrentGrabTooltipComponent = NULL;
-    this->CurrentAttachTooltipComponent = NULL;
-}
 

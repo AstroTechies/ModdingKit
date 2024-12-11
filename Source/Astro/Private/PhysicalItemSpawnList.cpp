@@ -1,8 +1,8 @@
 #include "PhysicalItemSpawnList.h"
 #include "Templates/SubclassOf.h"
 
-class APhysicalItem;
-class UPhysicalItemSpawnList;
+UPhysicalItemSpawnList::UPhysicalItemSpawnList() {
+}
 
 TSubclassOf<APhysicalItem> UPhysicalItemSpawnList::PickActor() {
     return NULL;
@@ -12,6 +12,4 @@ UPhysicalItemSpawnList* UPhysicalItemSpawnList::PhysicalItemSpawnListDefault(TSu
     return NULL;
 }
 
-UPhysicalItemSpawnList::UPhysicalItemSpawnList() {
-}
 

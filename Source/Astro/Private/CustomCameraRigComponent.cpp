@@ -1,8 +1,10 @@
 #include "CustomCameraRigComponent.h"
 
-class AActor;
-class ACameraRigActor;
-class UCustomCameraRigComponent;
+UCustomCameraRigComponent::UCustomCameraRigComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->BehaviorContextClass = NULL;
+    this->ActiveRig = NULL;
+    this->ContextInstance = NULL;
+}
 
 void UCustomCameraRigComponent::SetMode(FName Mode, const FViewTargetTransitionParams& params) {
 }
@@ -19,9 +21,4 @@ UCustomCameraRigComponent* UCustomCameraRigComponent::ActorCustomCameraRig(AActo
     return NULL;
 }
 
-UCustomCameraRigComponent::UCustomCameraRigComponent() {
-    this->BehaviorContextClass = NULL;
-    this->ActiveRig = NULL;
-    this->ContextInstance = NULL;
-}
 

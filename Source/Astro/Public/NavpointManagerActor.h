@@ -14,6 +14,7 @@ protected:
     UNavpointManager* NavpointManager;
     
 public:
-    ANavpointManagerActor();
+    ANavpointManagerActor(const FObjectInitializer& ObjectInitializer);
+
 };
 

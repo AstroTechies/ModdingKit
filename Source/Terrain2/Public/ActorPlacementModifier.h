@@ -12,6 +12,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftClassPtr<AActor> actorType;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bOrientActorToPlanetUp: 1;
+    
     UActorPlacementModifier();
+
 };
 

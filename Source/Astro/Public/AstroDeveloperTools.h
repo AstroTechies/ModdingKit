@@ -8,5 +8,6 @@ class ASTRO_API UAstroDeveloperTools : public UBaseEditorTool {
     GENERATED_BODY()
 public:
     UAstroDeveloperTools();
+
 };
 

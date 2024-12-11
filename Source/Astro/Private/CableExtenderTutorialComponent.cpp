@@ -1,8 +1,12 @@
 #include "CableExtenderTutorialComponent.h"
 
-class AActor;
-class ASlotConnection;
-class UPrimitiveComponent;
+UCableExtenderTutorialComponent::UCableExtenderTutorialComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->CableSocketSearchRadius = 1000.00f;
+    this->SocketIndicatorType = NULL;
+    this->ExtenderIndicatorType = NULL;
+    this->ExtenderItemType = NULL;
+    this->CollisionSphere = NULL;
+}
 
 void UCableExtenderTutorialComponent::StopTutorial() {
 }
@@ -31,11 +35,4 @@ void UCableExtenderTutorialComponent::OnCableDestroyed(FSlotReference cableSlot,
 void UCableExtenderTutorialComponent::OnCableConnected(FSlotReference cableSlot, ASlotConnection* cable) {
 }
 
-UCableExtenderTutorialComponent::UCableExtenderTutorialComponent() {
-    this->CableSocketSearchRadius = 1000.00f;
-    this->SocketIndicatorType = NULL;
-    this->ExtenderIndicatorType = NULL;
-    this->ExtenderItemType = NULL;
-    this->CollisionSphere = NULL;
-}
 

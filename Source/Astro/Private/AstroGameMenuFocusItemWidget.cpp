@@ -1,5 +1,19 @@
 #include "AstroGameMenuFocusItemWidget.h"
 
+UAstroGameMenuFocusItemWidget::UAstroGameMenuFocusItemWidget() {
+    this->FocusBGImageOverlaySlot = NULL;
+    this->FocusBGImage = NULL;
+    this->DragEditStartDeadzone = 5.00f;
+    this->bBlockFocusAudio = false;
+    this->bBlockUseAudio = false;
+    this->bDiscreteEditCannotBeCommittedWithButtonInput = false;
+    this->OverrideMenuPopoutHeight = false;
+    this->bIsFocused = false;
+    this->bIsLastUsed = false;
+    this->bEditTimeForceNotInteractive = false;
+    this->bCanBeCancelled = true;
+}
+
 void UAstroGameMenuFocusItemWidget::SetInteractionBlocked_Implementation(bool NewIsInteractionBlocked) {
 }
 
@@ -26,16 +40,4 @@ bool UAstroGameMenuFocusItemWidget::AttemptToCommitDiscreteEdit() {
     return false;
 }
 
-UAstroGameMenuFocusItemWidget::UAstroGameMenuFocusItemWidget() {
-    this->FocusBGImageOverlaySlot = NULL;
-    this->FocusBGImage = NULL;
-    this->DragEditStartDeadzone = 5.00f;
-    this->bBlockFocusAudio = false;
-    this->bBlockUseAudio = false;
-    this->bDiscreteEditCannotBeCommittedWithButtonInput = false;
-    this->bIsFocused = false;
-    this->bIsLastUsed = false;
-    this->bEditTimeForceNotInteractive = false;
-    this->bCanBeCancelled = true;
-}
 

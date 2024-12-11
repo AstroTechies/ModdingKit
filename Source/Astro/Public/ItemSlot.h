@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "GameFramework/Actor.h"
 #include "ESlotType.h"
 #include "Templates/SubclassOf.h"
@@ -87,7 +87,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString DetachSoundEvent;
     
-    AItemSlot();
+    AItemSlot(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnItemSet(APhysicalItem* LastItem, APhysicalItem* NewItem);
     

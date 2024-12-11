@@ -1,9 +1,20 @@
 #include "ExoRequestModuleBase.h"
 #include "Net/UnrealNetwork.h"
 
-class APhysicalItem;
-class APlayController;
-class UTexture;
+AExoRequestModuleBase::AExoRequestModuleBase(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->CurrentScore = 0;
+    this->LaunchByteCost = 0;
+    this->ItemDriveProgress = 0;
+    this->EventProgressBarMax = 0;
+    this->EventProgressBarMin = 0;
+    this->RequestStatus = EExoRequestStatus::NoMission;
+    this->ActiveItemDrive = NULL;
+    this->LocalItemDrive = NULL;
+    this->ShipActor = NULL;
+    this->TradeShipComponent = NULL;
+    this->TradeShipDockComponentItemDrive = NULL;
+    this->bCanClaimPendingRewardForFree = false;
+}
 
 void AExoRequestModuleBase::UpdateScore() {
 }
@@ -35,6 +46,10 @@ bool AExoRequestModuleBase::HasUnclaimedPhysicalItemRewards(APlayController* Pla
     return false;
 }
 
+bool AExoRequestModuleBase::HasShip() const {
+    return false;
+}
+
 UTexture* AExoRequestModuleBase::GetEventInputIcon() const {
     return NULL;
 }
@@ -55,18 +70,4 @@ void AExoRequestModuleBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>
     DOREPLIFETIME(AExoRequestModuleBase, TradeShipComponent);
 }
 
-AExoRequestModuleBase::AExoRequestModuleBase() {
-    this->CurrentScore = 0;
-    this->LaunchByteCost = 0;
-    this->ItemDriveProgress = 0;
-    this->EventProgressBarMax = 0;
-    this->EventProgressBarMin = 0;
-    this->RequestStatus = EExoRequestStatus::NoMission;
-    this->ActiveItemDrive = NULL;
-    this->LocalItemDrive = NULL;
-    this->ShipActor = NULL;
-    this->TradeShipComponent = NULL;
-    this->TradeShipDockComponentItemDrive = NULL;
-    this->bCanClaimPendingRewardForFree = false;
-}
 

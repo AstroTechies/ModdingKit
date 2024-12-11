@@ -28,6 +28,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bImmuneToFallDamage: 1;
     
-    UHoverboardMovementOverrideComponent();
+    UHoverboardMovementOverrideComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

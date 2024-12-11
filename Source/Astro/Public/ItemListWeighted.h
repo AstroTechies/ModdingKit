@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "ItemSpecifier.h"
 #include "Templates/SubclassOf.h"
 #include "ItemListWeighted.generated.h"
@@ -13,9 +13,10 @@ class ASTRO_API UItemListWeighted : public UObject {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<FItemSpecifier> ItemTypes;
+    TArray<FItemSpecifier> itemTypes;
     
     UItemListWeighted();
+
     UFUNCTION(BlueprintCallable)
     TSubclassOf<UItemType> PickItem();
     

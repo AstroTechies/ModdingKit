@@ -1,5 +1,6 @@
 #include "TestColorCycleComponent.h"
 
-UTestColorCycleComponent::UTestColorCycleComponent() {
+UTestColorCycleComponent::UTestColorCycleComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

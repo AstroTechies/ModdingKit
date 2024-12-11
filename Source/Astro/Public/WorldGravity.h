@@ -29,7 +29,8 @@ protected:
     uint8 TerrainLODAtLastSleep;
     
 public:
-    UWorldGravity();
+    UWorldGravity(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void OnComponentSleep(UPrimitiveComponent* SleepingComponent, FName BoneName);
     

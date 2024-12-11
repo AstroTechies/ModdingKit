@@ -1,9 +1,10 @@
 #include "StorageCanisterOrganizationRule.h"
 #include "Templates/SubclassOf.h"
 
-class UItemType;
+UStorageCanisterOrganizationRule::UStorageCanisterOrganizationRule() {
+}
 
-void UStorageCanisterOrganizationRule::SetStoredItemTypeWhitelist(TArray<TSubclassOf<UItemType>> ItemTypes) {
+void UStorageCanisterOrganizationRule::SetStoredItemTypeWhitelist(TArray<TSubclassOf<UItemType>> itemTypes) {
 }
 
 void UStorageCanisterOrganizationRule::SetIsInputRule(bool isInput) {
@@ -18,6 +19,4 @@ void UStorageCanisterOrganizationRule::SetCurrentStoredItemType(TSubclassOf<UIte
 void UStorageCanisterOrganizationRule::OnSlottedItemDrainedOrFilled() {
 }
 
-UStorageCanisterOrganizationRule::UStorageCanisterOrganizationRule() {
-}
 

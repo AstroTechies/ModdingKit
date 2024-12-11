@@ -5,3 +5,4 @@ UPlayWidget::UPlayWidget() : UUserWidget(FObjectInitializer::Get()) {
     this->ImmunityImageOpacity = 0.00f;
 }
 
+

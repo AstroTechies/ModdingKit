@@ -1,7 +1,9 @@
 #include "TetherNetwork.h"
 
-class ASlotConnection;
-class UOxygenatorComponent;
+UTetherNetwork::UTetherNetwork() {
+    this->hasOxygen = false;
+    this->HaveConnectedOxygen = false;
+}
 
 void UTetherNetwork::RemoveOxygenator(UOxygenatorComponent* oxygenator) {
 }
@@ -16,8 +18,4 @@ bool UTetherNetwork::IsSupplyingOxygenToConsumers() {
     return false;
 }
 
-UTetherNetwork::UTetherNetwork() {
-    this->hasOxygen = false;
-    this->HaveConnectedOxygen = false;
-}
 

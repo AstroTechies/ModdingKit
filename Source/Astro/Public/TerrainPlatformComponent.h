@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "Components/SceneComponent.h"
 #include "DeformationParamsT2.h"
 #include "VoxelMaterial.h"
@@ -49,7 +49,8 @@ private:
     TArray<FDeformationParamsT2> BufferedT2Deforms;
     
 public:
-    UTerrainPlatformComponent();
+    UTerrainPlatformComponent(const FObjectInitializer& ObjectInitializer);
+
 private:
     UFUNCTION(BlueprintCallable)
     void OwnerDestroyed(AActor* DestroyedActor);

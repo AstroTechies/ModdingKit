@@ -1,7 +1,10 @@
 #include "ShelterTutorialComponent.h"
 
-class APhysicalItem;
-class ASlotConnection;
+UShelterTutorialComponent::UShelterTutorialComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->GrabSlotIndicator = NULL;
+    this->AttachSlotIndicator = NULL;
+    this->CableTutorialIsComplete = false;
+}
 
 void UShelterTutorialComponent::StopCableTutorial() {
 }
@@ -21,9 +24,4 @@ void UShelterTutorialComponent::OnCableDestroyed(FSlotReference cableSlot, ASlot
 void UShelterTutorialComponent::OnCableConnected(FSlotReference cableSlot, ASlotConnection* cable) {
 }
 
-UShelterTutorialComponent::UShelterTutorialComponent() {
-    this->GrabSlotIndicator = NULL;
-    this->AttachSlotIndicator = NULL;
-    this->CableTutorialIsComplete = false;
-}
 

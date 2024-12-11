@@ -1,7 +1,9 @@
 #include "SeatBase.h"
 #include "Net/UnrealNetwork.h"
 
-class AVehicleBase;
+ASeatBase::ASeatBase(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->ActorAttachmentsComponent = NULL;
+}
 
 void ASeatBase::HandleSeatReleasedFromSlot(bool NewOwner) {
 }
@@ -19,7 +21,4 @@ void ASeatBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetim
     DOREPLIFETIME(ASeatBase, SeatReplicationData);
 }
 
-ASeatBase::ASeatBase() {
-    this->ActorAttachmentsComponent = NULL;
-}
 

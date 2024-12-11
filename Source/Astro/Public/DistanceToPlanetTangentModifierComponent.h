@@ -13,6 +13,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LimitDistance;
     
-    UDistanceToPlanetTangentModifierComponent();
+    UDistanceToPlanetTangentModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

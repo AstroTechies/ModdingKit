@@ -18,7 +18,8 @@ protected:
     TArray<UAstroAction*> ActiveActions;
     
 public:
-    UAstroActionComponent();
+    UAstroActionComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     bool StartActionInstance(UAstroAction* Action, EAstroActionNetworking Networking);
     

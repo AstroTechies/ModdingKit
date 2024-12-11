@@ -1,5 +1,6 @@
 #include "ActorHarvestableComponent.h"
 
-UActorHarvestableComponent::UActorHarvestableComponent() {
+UActorHarvestableComponent::UActorHarvestableComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

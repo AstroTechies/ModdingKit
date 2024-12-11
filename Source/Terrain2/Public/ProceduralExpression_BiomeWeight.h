@@ -8,5 +8,6 @@ class TERRAIN2_API UProceduralExpression_BiomeWeight : public UProceduralExpress
     GENERATED_BODY()
 public:
     UProceduralExpression_BiomeWeight();
+
 };
 

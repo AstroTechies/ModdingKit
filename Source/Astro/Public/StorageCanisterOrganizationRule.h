@@ -11,8 +11,9 @@ class UStorageCanisterOrganizationRule : public USlotOrganizationRule {
     GENERATED_BODY()
 public:
     UStorageCanisterOrganizationRule();
+
     UFUNCTION(BlueprintCallable)
-    void SetStoredItemTypeWhitelist(TArray<TSubclassOf<UItemType>> ItemTypes);
+    void SetStoredItemTypeWhitelist(TArray<TSubclassOf<UItemType>> itemTypes);
     
     UFUNCTION(BlueprintCallable)
     void SetIsInputRule(bool isInput);

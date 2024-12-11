@@ -1,7 +1,9 @@
 #include "PowerFlowLockingMechanismView.h"
 #include "Net/UnrealNetwork.h"
 
-class ULockingMechanism;
+UPowerFlowLockingMechanismView::UPowerFlowLockingMechanismView() {
+    this->CompletionRatio = 0.00f;
+}
 
 void UPowerFlowLockingMechanismView::OnRep_CompletionRatio() {
 }
@@ -15,7 +17,4 @@ void UPowerFlowLockingMechanismView::GetLifetimeReplicatedProps(TArray<FLifetime
     DOREPLIFETIME(UPowerFlowLockingMechanismView, CompletionRatio);
 }
 
-UPowerFlowLockingMechanismView::UPowerFlowLockingMechanismView() {
-    this->CompletionRatio = 0.00f;
-}
 

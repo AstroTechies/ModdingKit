@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
+#include "Engine/NetSerialization.h"
 #include "PhysicsMovementReplicatedInput.generated.h"
 
 USTRUCT(BlueprintType)

@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "InputCoreTypes.h"
 #include "EControlPanelNavigationDirection.h"
 #include "SignalDelegate.h"
 #include "ControlPanel.generated.h"
@@ -67,9 +67,10 @@ protected:
     uint8 bAutoOptimizeHierarchy: 1;
     
 public:
-    AControlPanel();
+    AControlPanel(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     bool OnSecondaryButtonPressedBP(APlayerController* Controller);

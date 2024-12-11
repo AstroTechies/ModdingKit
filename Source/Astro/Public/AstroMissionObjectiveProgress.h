@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
+#include "UObject/NoExportTypes.h"
 #include "EAstroMissionObjectiveProgressType.h"
 #include "EAstroMissionObjectiveType.h"
 #include "ENavpointGroup.h"
@@ -48,6 +48,9 @@ public:
     ENavpointGroup NavpointGroup;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    bool DeactivateNavpointGroupOnRemoval;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     EPlanetIdentifier Planet;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
@@ -67,6 +70,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bShowProgressUI: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    uint8 bSendTelemetryEvent: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     EAstroMissionObjectiveProgressType ProgressType;

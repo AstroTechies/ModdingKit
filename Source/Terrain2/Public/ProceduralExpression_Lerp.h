@@ -8,5 +8,6 @@ class TERRAIN2_API UProceduralExpression_Lerp : public UProceduralExpression {
     GENERATED_BODY()
 public:
     UProceduralExpression_Lerp();
+
 };
 

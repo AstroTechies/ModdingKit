@@ -26,6 +26,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ECameraControlMask ControlMask;
     
-    UYawControlModifierComponent();
+    UYawControlModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "Engine/EngineTypes.h"
 #include "EScannableType.h"
 #include "ScannableStatus.h"
 #include "ScannableComponent.generated.h"
@@ -26,7 +26,17 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float RecalculateSolarBodyDistanceSquared;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool StartDisabled;
+    
 public:
-    UScannableComponent();
+    UScannableComponent(const FObjectInitializer& ObjectInitializer);
+
+    UFUNCTION(BlueprintCallable)
+    void EnableComponent();
+    
+    UFUNCTION(BlueprintCallable)
+    void DisableComponent();
+    
 };
 

@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "EEmoteType.h"
 #include "CapturableSnail.generated.h"
 
 class AAstroCharacter;
@@ -35,7 +36,8 @@ protected:
     AActor* CurrSightTarget;
     
 public:
-    ACapturableSnail();
+    ACapturableSnail(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetOwningCaptureTerrarium(APhysicalItem* captureTerrarium);
     
@@ -46,7 +48,13 @@ public:
     void OnPlayerEnteredRelevance(AAstroCharacter* Player);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void OnPlayerEmotePlayed(EEmoteType EmoteType, APlayController* Player);
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnLeftAnyPlayerRelevance();
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void OnEmoteWheelOpenedOrClosed(bool bWheelOpen);
     
     UFUNCTION(BlueprintCallable)
     void OnEffectRelevanceChanged(bool IsInRelevancy);
@@ -59,6 +67,9 @@ private:
     void OnActorOnscreenChanged(AActor* Actor, bool bIsOnscreen, APlayController* Player);
     
 public:
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable, WithValidation)
+    void MULTI_OnEmoteWheelOpenedOrClosed(bool bWheelOpen, APlayController* Player);
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityStartCheckOnscreen();
     

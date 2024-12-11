@@ -1,8 +1,9 @@
 #include "ButtonInputManagerComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=InputComponent -FallbackName=InputComponent
+#include "Components/InputComponent.h"
 
-class APlayerController;
-class UButtonComponent;
+UButtonInputManagerComponent::UButtonInputManagerComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->InputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("ButtonInputManagerInputComponent"));
+}
 
 void UButtonInputManagerComponent::PushInputFocus(APlayerController* Controller) {
 }
@@ -19,7 +20,4 @@ void UButtonInputManagerComponent::Cancel() {
 void UButtonInputManagerComponent::AddButton(UButtonComponent* Button, TEnumAsByte<EButtonInput> InputType) {
 }
 
-UButtonInputManagerComponent::UButtonInputManagerComponent() {
-    this->InputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("ButtonInputManagerInputComponent"));
-}
 

@@ -20,5 +20,7 @@ UAstroUIStylingDatabase::UAstroUIStylingDatabase() {
     this->ServerAdminTabBarButtonClass = NULL;
     this->ServerInfoTabBarButtonClass = NULL;
     this->ServerListTabBarButtonClass = NULL;
+    this->CustomGamesTabBarButtonClass = NULL;
 }
+
 

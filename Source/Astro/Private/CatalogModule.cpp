@@ -1,9 +1,23 @@
 #include "CatalogModule.h"
+#include "Components/InputComponent.h"
 #include "Templates/SubclassOf.h"
 #include "TooltipComponent.h"
 
-class UItemCatalogCategoryDefinition;
-class UItemType;
+ACatalogModule::ACatalogModule(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->InputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("CatalogInput"));
+    this->ItemCatalog = NULL;
+    this->ActiveCatalogEntryDisplayIndex = -1;
+    this->ActiveCatalogCategory = NULL;
+    this->ActiveCatalogEntryIndex = -1;
+    this->MaximumCatalogEntryScrollSpeed = 2.00f;
+    this->ActiveItemTypeVariantType = EItemVariantType::Pioneer;
+    this->ActiveVariantItemTypeIndex = -1;
+    this->MaximumVariantItemTypeScrollSpeed = 3.00f;
+    this->DefaultSelectedItemType = NULL;
+    this->TooltipComponent = CreateDefaultSubobject<UTooltipComponent>(TEXT("ToolTip"));
+    this->IsCreativeCatalog = false;
+    this->AllCatalogItemsCategory = NULL;
+}
 
 void ACatalogModule::UnlockedItemsChanged(const TArray<TSubclassOf<UItemType>>& NewUnlockedItems) {
 }
@@ -37,6 +51,7 @@ void ACatalogModule::OnTooltipOverrideChanged() {
 
 
 
+
 void ACatalogModule::OnCreativeModeCatalogUnlockedChanged() {
 }
 
@@ -47,6 +62,9 @@ void ACatalogModule::OnCategoryLeft() {
 }
 
 void ACatalogModule::KnownItemsChanged(const TArray<TSubclassOf<UItemType>>& newKnownItems) {
+}
+
+void ACatalogModule::HackedItemsChanged(const TArray<TSubclassOf<UItemType>>& hackedItems) {
 }
 
 ESelectedItemUnlockState ACatalogModule::GetSelectedItemUnlockState() const {
@@ -64,18 +82,4 @@ UClass* ACatalogModule::GetSelectedItemPickupClass() {
 void ACatalogModule::ApplyPendingDisplayChanges() {
 }
 
-ACatalogModule::ACatalogModule() {
-    this->ItemCatalog = NULL;
-    this->ActiveCatalogEntryDisplayIndex = -1;
-    this->ActiveCatalogCategory = NULL;
-    this->ActiveCatalogEntryIndex = -1;
-    this->MaximumCatalogEntryScrollSpeed = 2.00f;
-    this->ActiveItemTypeVariantType = EItemVariantType::Pioneer;
-    this->ActiveVariantItemTypeIndex = -1;
-    this->MaximumVariantItemTypeScrollSpeed = 3.00f;
-    this->DefaultSelectedItemType = NULL;
-    this->TooltipComponent = CreateDefaultSubobject<UTooltipComponent>(TEXT("ToolTip"));
-    this->IsCreativeCatalog = false;
-    this->AllCatalogItemsCategory = NULL;
-}
 

@@ -1,6 +1,15 @@
 #include "OxygenatorComponent.h"
 #include "Net/UnrealNetwork.h"
 
+UOxygenatorComponent::UOxygenatorComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->bRequiresPower = true;
+    this->bSuppliesOxygenToContainedCharactersOnly = false;
+    this->bIsSupplyingOxygen = false;
+    this->bIsOxygenSupplyEnabled = true;
+    this->OwnerItem = NULL;
+}
+
 void UOxygenatorComponent::OnRep_IsSupplyingOxygen() {
 }
 
@@ -31,11 +40,4 @@ void UOxygenatorComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
     DOREPLIFETIME(UOxygenatorComponent, bIsSupplyingOxygen);
 }
 
-UOxygenatorComponent::UOxygenatorComponent() {
-    this->bRequiresPower = true;
-    this->bSuppliesOxygenToContainedCharactersOnly = false;
-    this->bIsSupplyingOxygen = false;
-    this->bIsOxygenSupplyEnabled = true;
-    this->OwnerItem = NULL;
-}
 

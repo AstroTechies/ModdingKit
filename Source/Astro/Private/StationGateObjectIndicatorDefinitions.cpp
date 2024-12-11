@@ -5,3 +5,4 @@ UStationGateObjectIndicatorDefinitions::UStationGateObjectIndicatorDefinitions()
     this->EngineStationIndicatorDefinition = NULL;
 }
 
+

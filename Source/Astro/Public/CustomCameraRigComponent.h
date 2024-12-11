@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ViewTargetTransitionParams -FallbackName=ViewTargetTransitionParams
+#include "Camera/PlayerCameraManager.h"
 #include "CameraMode.h"
 #include "Templates/SubclassOf.h"
 #include "CustomCameraRigComponent.generated.h"
@@ -29,7 +29,8 @@ private:
     UCameraContext* ContextInstance;
     
 public:
-    UCustomCameraRigComponent();
+    UCustomCameraRigComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void SetMode(FName Mode, const FViewTargetTransitionParams& params);
     

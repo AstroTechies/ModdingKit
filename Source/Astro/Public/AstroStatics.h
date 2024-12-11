@@ -1,24 +1,25 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=DateTime -FallbackName=DateTime
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=IntPoint -FallbackName=IntPoint
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EPhysicalSurface -FallbackName=EPhysicalSurface
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EWindowMode -FallbackName=EWindowMode
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=PostProcessSettings -FallbackName=PostProcessSettings
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize100 -FallbackName=Vector_NetQuantize100
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
-//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
-//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=SlateColor -FallbackName=SlateColor
-//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=SlateFontInfo -FallbackName=SlateFontInfo
-//CROSS-MODULE INCLUDE V2: -ModuleName=UMG -ObjectName=ESlateVisibility -FallbackName=ESlateVisibility
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "Kismet/BlueprintFunctionLibrary.h"
+#include "Engine/EngineTypes.h"
+#include "GameFramework/GameUserSettings.h"
+#include "Engine/EngineTypes.h"
+#include "Engine/Scene.h"
+#include "Engine/EngineTypes.h"
+#include "Engine/NetSerialization.h"
+#include "Engine/NetSerialization.h"
+#include "InputCoreTypes.h"
+#include "Styling/SlateColor.h"
+#include "Fonts/SlateFontInfo.h"
+#include "Components/SlateWrapperTypes.h"
+#include "AstroClientProperties.h"
 #include "AstroDiscreteInputDefinition.h"
 #include "AstroSaveFileInformation.h"
 #include "EAstroColor.h"
@@ -36,12 +37,16 @@
 #include "AstroStatics.generated.h"
 
 class AActor;
+class AAstroCustomGameManager;
 class AAstroGameMode;
 class AAstroGameState;
 class AAstroMissionsManager;
+class AAstroPlayerController;
 class APawn;
 class APlayerController;
 class UActorComponent;
+//class UAstroDlcManager;
+class UAstroEmoteDefinition;
 class UAstroGameInstance;
 class UAstroSaveAsset;
 class UAudioComponent;
@@ -66,6 +71,7 @@ class ASTRO_API UAstroStatics : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     UAstroStatics();
+
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static FVector2D WorldLocationToScreenLocationOffset(UObject* WorldContextObject, const FVector& WorldLocation, const FVector2D& WorldOffset);
     
@@ -145,6 +151,9 @@ public:
     static void SetPostProcessLensFlare(const FPostProcessSettings& InSettings, FPostProcessSettings& OutSettings, float Value);
     
     UFUNCTION(BlueprintCallable)
+    static bool SetPlayerPropertiesForCustomGame(AAstroCustomGameManager* CustomGameManager, AAstroPlayerController* PlayerController, const FAstroClientProperties& clientProperties);
+    
+    UFUNCTION(BlueprintCallable)
     static void SetNearClippingPlane(float Distance);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
@@ -196,6 +205,9 @@ public:
     static void SetActorCollisionEnabled(AActor* Actor, bool Enabled);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
+    static void SetActiveSaveFileForCustomGame(UObject* WorldContextObject, const FString& Name);
+    
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void SaveGameNoCloudSave(UObject* WorldContextObject, const FString& Name, FOnAstroSaveCompletedDynamic OnCompletedDelegate);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
@@ -214,7 +226,7 @@ public:
     static int32 RollIntegerDecrement(int32 Value, int32 Max);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    static bool ReturnToTitleScreen(UObject* WorldContextObject);
+    static bool ReturnToTitleScreen(UObject* WorldContextObject, bool DisplayOutOfLivesPrompt);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static bool RenameSaveFile(UObject* WorldContextObject, const FString& CurrSaveName, const FString& newDescriptiveSaveName, FOnAstroRenameSaveCompletedDynamic OnCompletedDelegate);
@@ -224,6 +236,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 ReinterpretFloatToInt(float Float);
+    
+    UFUNCTION(BlueprintCallable)
+    static void PreviewEmoteLocally(USkeletalMeshComponent* targetMesh, UAstroEmoteDefinition* emoteDefinition);
     
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool PredictIfActiveSaveFileIsTooLargeToSave(UObject* WorldContextObject, FString& outSaveName, int32& outSaveSize);
@@ -363,6 +378,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsAsyncSaveInProgress();
     
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
+    static bool IsAnalyticsEnabled(UObject* WorldContextObject);
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static float InterpToRange(float Min, float Max, float CurrentValue, float TargetLerp, float DeltaTime, float Speed);
     
@@ -485,6 +503,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     static TEnumAsByte<EWindowMode::Type> GetFullscreenMode();
+    
+//    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
+//    static UAstroDlcManager* GetDlcManager(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FAstroDiscreteInputDefinition GetDiscreteAstroInputDefinition(EAstroDiscreteInputOptionPlayerFacing DiscretePlayerFacingInputOption);

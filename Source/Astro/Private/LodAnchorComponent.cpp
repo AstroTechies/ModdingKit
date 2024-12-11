@@ -1,6 +1,11 @@
 #include "LodAnchorComponent.h"
 #include "Net/UnrealNetwork.h"
 
+ULodAnchorComponent::ULodAnchorComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->IsAnchored = ELodAnchorState::Invalid;
+    this->bIsActivated = false;
+}
+
 bool ULodAnchorComponent::UpdateInternal(const FVector& NewPosition) {
     return false;
 }
@@ -35,8 +40,4 @@ void ULodAnchorComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& 
     DOREPLIFETIME(ULodAnchorComponent, IsAnchored);
 }
 
-ULodAnchorComponent::ULodAnchorComponent() {
-    this->IsAnchored = ELodAnchorState::Invalid;
-    this->bIsActivated = false;
-}
 

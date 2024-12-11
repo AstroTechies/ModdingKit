@@ -15,9 +15,10 @@ protected:
     TSubclassOf<UItemType> ItemType;
     
 public:
-    UTradeShipDockComponent_ItemType();
+    UTradeShipDockComponent_ItemType(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnRep_ItemType();

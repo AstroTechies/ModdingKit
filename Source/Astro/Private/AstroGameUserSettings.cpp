@@ -1,7 +1,40 @@
 #include "AstroGameUserSettings.h"
 
-class APlayerController;
-class UAstroGameUserSettings;
+UAstroGameUserSettings::UAstroGameUserSettings() {
+    this->Brightness = 0;
+    this->CloudQuality = 0;
+    this->MouseSensitivity = 11;
+    this->MasterVol = 0.80f;
+    this->MusicVol = 0.80f;
+    this->SoundFXVol = 0.80f;
+    this->VoiceVol = 0.80f;
+    this->AmbientVol = 0.80f;
+    this->InvertedCameraYAxixMouse = false;
+    this->bHoldToSprintMouse = true;
+    this->bHoldToOrbitCamera = true;
+    this->InvertedCameraYAxisGamepad = false;
+    this->bHoldToSprintGamepad = false;
+    this->bHoldToVirtualCursorGamepad = true;
+    this->bUseLegacyAddMode = false;
+    this->bSelectionWheelRequiresHold = true;
+    this->bVehiclesUseAbsoluteSteering = true;
+    this->bVehiclesUseYawAirControls = false;
+    this->MaxPlayers = 4;
+    this->NumTimesCreativeTutorialShown = 3;
+    this->NumTimesAdventureTutorialShown = 3;
+    this->AllowInitialPlanetSelection = false;
+    this->FOVOffset = 0;
+    this->HQTerrain = false;
+    this->HQTerrainDithering = false;
+    this->HQLighting = 0;
+    this->HQViewDistance = 0;
+    this->HQDetail = 0;
+    this->HQShadowCasting = 0;
+    this->AllowPS4CrossNetworkPlay = false;
+    this->CompassCameraTilt = 25.00f;
+    this->CompassScale = 1.00f;
+    this->IgnoreBindingKeys.AddDefaulted(11);
+}
 
 void UAstroGameUserSettings::UpdateHQTerrainMaterials() {
 }
@@ -337,39 +370,4 @@ void UAstroGameUserSettings::ApplyQualitySettingsConsole() {
 void UAstroGameUserSettings::ApplyAudioSettings() {
 }
 
-UAstroGameUserSettings::UAstroGameUserSettings() {
-    this->Brightness = 0;
-    this->CloudQuality = 0;
-    this->MouseSensitivity = 11;
-    this->MasterVol = 0.00f;
-    this->MusicVol = 0.80f;
-    this->SoundFXVol = 0.80f;
-    this->VoiceVol = 0.80f;
-    this->AmbientVol = 0.80f;
-    this->InvertedCameraYAxixMouse = false;
-    this->bHoldToSprintMouse = true;
-    this->bHoldToOrbitCamera = true;
-    this->InvertedCameraYAxisGamepad = false;
-    this->bHoldToSprintGamepad = false;
-    this->bHoldToVirtualCursorGamepad = true;
-    this->bUseLegacyAddMode = false;
-    this->bSelectionWheelRequiresHold = true;
-    this->bVehiclesUseAbsoluteSteering = true;
-    this->bVehiclesUseYawAirControls = false;
-    this->MaxPlayers = 4;
-    this->NumTimesCreativeTutorialShown = 3;
-    this->NumTimesAdventureTutorialShown = 3;
-    this->AllowInitialPlanetSelection = false;
-    this->FOVOffset = 0;
-    this->HQTerrain = false;
-    this->HQTerrainDithering = false;
-    this->HQLighting = 0;
-    this->HQViewDistance = 0;
-    this->HQDetail = 0;
-    this->HQShadowCasting = 0;
-    this->AllowPS4CrossNetworkPlay = false;
-    this->CompassCameraTilt = 25.00f;
-    this->CompassScale = 1.00f;
-    this->IgnoreBindingKeys.AddDefaulted(11);
-}
 

@@ -7,6 +7,8 @@ UAstroNotificationDatabase::UAstroNotificationDatabase() {
     this->RetainedBiomeToastExperationDelay = 0.00f;
     this->SuitUnlockNotifIconColor = EAstroColor::None;
     this->SuitUnlockNotifIcon = NULL;
+    this->EmoteUnlockNotifIconColor = EAstroColor::None;
+    this->EmoteUnlockNotifIcon = NULL;
     this->VisorUnlockNotifIconColor = EAstroColor::None;
     this->VisorUnlockNotifIcon = NULL;
     this->BundleUnlockNotifIconColor = EAstroColor::None;
@@ -26,4 +28,5 @@ UAstroNotificationDatabase::UAstroNotificationDatabase() {
     this->AstroNotificationToastWidgetClass = NULL;
     this->AstroNotificationBiomeToastWidgetClass = NULL;
 }
+
 

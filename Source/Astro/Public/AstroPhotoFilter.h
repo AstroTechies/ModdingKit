@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
+#include "ECharacterCustomizationVisibility.h"
 #include "Templates/SubclassOf.h"
 #include "AstroPhotoFilter.generated.h"
 
@@ -14,8 +15,12 @@ public:
     FText DisplayName;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    ECharacterCustomizationVisibility DisplayVisibility;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UUserWidget> FilterWidget;
     
     UAstroPhotoFilter();
+
 };
 

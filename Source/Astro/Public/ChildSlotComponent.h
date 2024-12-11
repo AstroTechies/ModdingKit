@@ -31,6 +31,9 @@ public:
     ESlottableItemsFiltrationListBehavior SlottableItemsFiltrationListBehavior;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 AcceptInputItems: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 SlotVisible: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -81,7 +84,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<URewardSelectionTemplate> StartingRewardSelection;
     
-    UChildSlotComponent();
+    UChildSlotComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void SetChildSlotClass(TSubclassOf<AItemSlot> InClass);
     

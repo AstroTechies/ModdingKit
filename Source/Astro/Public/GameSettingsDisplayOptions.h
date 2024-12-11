@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=IntPoint -FallbackName=IntPoint
+#include "UObject/NoExportTypes.h"
 #include "EAstroWindowMode.h"
 #include "GameSettingsDisplayOptions.generated.h"
 

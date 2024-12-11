@@ -13,5 +13,6 @@ public:
     UStreamingPowerSystem* StreamingPowerSystem;
     
     UAstroStreamingPowerTickTaskManager();
+
 };
 

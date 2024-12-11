@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
-//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=ESlateBrushDrawType -FallbackName=ESlateBrushDrawType
-//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=SlateBrush -FallbackName=SlateBrush
-//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=SlateColor -FallbackName=SlateColor
+#include "UObject/NoExportTypes.h"
+#include "UObject/Object.h"
+#include "UObject/NoExportTypes.h"
+#include "Styling/SlateBrush.h"
+#include "Styling/SlateBrush.h"
+#include "Styling/SlateColor.h"
 #include "AstroPopupBadgeAuthoringData.h"
 #include "EAstroUIAudioEventKey.h"
 #include "Templates/SubclassOf.h"
@@ -25,6 +25,7 @@ class UAstroUIStatics : public UObject {
     GENERATED_BODY()
 public:
     UAstroUIStatics();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FSlateBrush SlateBrushWithNewSlateColor(FSlateBrush SlateBrush, FSlateColor SlateColor);
     
@@ -55,8 +56,8 @@ public:
     UFUNCTION(BlueprintCallable)
     static void SetAllUserFocus(UWidget* WidgetToFocus);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
-    static UAstroUIStylingDatabase* GetAstroUIStylingDatabase();
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
+    static UAstroUIStylingDatabase* GetAstroUIStylingDatabase(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FString GetAstroUIAudioEvent(EAstroUIAudioEventKey AudioEventKey);

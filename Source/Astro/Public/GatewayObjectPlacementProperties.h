@@ -1,13 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "Templates/SubclassOf.h"
 #include "GatewayObjectPlacementProperties.generated.h"
 
 class AGateChamber;
 class AGateEngine;
 class UPlanetGateObjectIndicatorDefinitions;
+class UStationGateObjectIndicatorDefinitions;
 
 USTRUCT(BlueprintType)
 struct FGatewayObjectPlacementProperties {
@@ -54,6 +55,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UPlanetGateObjectIndicatorDefinitions* GateObjectIndicators;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UStationGateObjectIndicatorDefinitions* StationIndicatorDefinitions;
     
     ASTRO_API FGatewayObjectPlacementProperties();
 };

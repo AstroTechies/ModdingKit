@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
+#include "Engine/EngineBaseTypes.h"
 #include "OnVehicleMannedStatusChangedDelegate.h"
 #include "PerformAuxSignalDelegate.h"
 #include "PhysicalItem.h"
@@ -38,9 +38,10 @@ protected:
     UStorageChassisComponent* storage;
     
 public:
-    AVehicleBase();
+    AVehicleBase(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void VehicleLostPilotInSeat(AAstroPlayerController* Driver, ASeatBase* Seat);
     

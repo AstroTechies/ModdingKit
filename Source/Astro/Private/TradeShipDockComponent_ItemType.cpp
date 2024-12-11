@@ -2,7 +2,9 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class UItemType;
+UTradeShipDockComponent_ItemType::UTradeShipDockComponent_ItemType(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->ItemType = NULL;
+}
 
 void UTradeShipDockComponent_ItemType::OnRep_ItemType() {
 }
@@ -16,7 +18,4 @@ void UTradeShipDockComponent_ItemType::GetLifetimeReplicatedProps(TArray<FLifeti
     DOREPLIFETIME(UTradeShipDockComponent_ItemType, ItemType);
 }
 
-UTradeShipDockComponent_ItemType::UTradeShipDockComponent_ItemType() {
-    this->ItemType = NULL;
-}
 

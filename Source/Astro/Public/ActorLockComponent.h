@@ -25,7 +25,8 @@ protected:
     TArray<ULockingMechanismView*> LockingMechanismViews;
     
 public:
-    UActorLockComponent();
+    UActorLockComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void OnAuthorityLockingMechanismStateChanged(ULockingMechanism* changedLockingMechanism, const FLockChangedEventMetadata& EventData);
     

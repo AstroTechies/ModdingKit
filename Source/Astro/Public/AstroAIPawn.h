@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Pawn -FallbackName=Pawn
+#include "UObject/NoExportTypes.h"
+#include "GameFramework/Pawn.h"
 #include "AstroAIPawn.generated.h"
 
 class UAstroActionComponent;
@@ -31,6 +31,7 @@ protected:
     UAstroActionComponent* ActionComponent;
     
 public:
-    AAstroAIPawn();
+    AAstroAIPawn(const FObjectInitializer& ObjectInitializer);
+
 };
 

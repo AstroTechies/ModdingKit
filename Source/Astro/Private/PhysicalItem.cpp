@@ -11,12 +11,50 @@
 #include "TooltipComponent.h"
 #include "WorldGravity.h"
 
-class APawn;
-class APhysicalItem;
-class UChildSlotComponent;
-class UItemType;
-class UPrimitiveComponent;
-class USceneComponent;
+APhysicalItem::APhysicalItem(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+//    this->bSaveGameRelevant = true;
+    this->bReplicateMovement = true;
+    this->bReplicates = true;
+//    const FProperty* p_RemoteRole = GetClass()->FindPropertyByName("RemoteRole");
+//    (*p_RemoteRole->ContainerPtrToValuePtr<TEnumAsByte<ENetRole>>(this)) = ROLE_SimulatedProxy;
+    this->RootComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Root"));
+    this->ItemComponent = CreateDefaultSubobject<UItemComponent>(TEXT("Item"));
+    this->EntityLinkComponent = CreateDefaultSubobject<UActorEntityLinkComponent>(TEXT("EntityLinkComponent"));
+    this->terrainComponent = CreateDefaultSubobject<UTerrainPhysicsComponent>(TEXT("Terrain Physics"));
+    this->PlaceholderPrimitive = NULL;
+    this->StaticMeshComponent = (UStaticMeshComponent*)RootComponent;
+    this->GravityComponent = CreateDefaultSubobject<UWorldGravity>(TEXT("Gravity"));
+    this->ClickableComponent = CreateDefaultSubobject<UClickableComponent>(TEXT("ItemClickableComponent"));
+    this->SlotsComponent = CreateDefaultSubobject<USlotsComponent>(TEXT("SlotsComponent"));
+    this->TooltipComponent = CreateDefaultSubobject<UTooltipComponent>(TEXT("TooltipComponent"));
+    this->ProceduralState = CreateDefaultSubobject<UProceduralStateComponent>(TEXT("ProceduralStateComponent"));
+    // Can this item be directly attached to the body of an object (like packagers and dynamite do)?
+    this->SlotQueryAllowBodyPlacement = false;
+    this->OffsetOddTiers = false;
+    // no idea
+    this->HoverHeight = 110.00f;
+    this->IndicatorUseAnimInstance = false;
+    this->WeldAsChild = true;
+    this->UseHoverForward = true;
+    // no idea
+    this->IgnoreBodySlotForHover = false;
+    // The height of the printer, overrides the default determined height value if defined
+    this->PrinterHeight = 0.00f;
+    // The tier of the object. 1 = T1, 2 = T2, etc. Controls fallback slot size, default package size, as well as walking speed
+    this->ToolMoveTier = 1;
+    this->PlacementSnapToGroundHeight = 0.00f;
+    // Can this item be picked up and moved around with the cursor?
+    this->IsMovable = true;
+    this->AlwaysMovePhysical = false;
+    this->ItemWorldScale = 1.00f;
+    this->SlotScale = 1.00f;
+    this->bDestroyWhenDrained = false;
+    this->PrintSpeedOverride = 0.00f;
+    this->MostRecentNetOwner = NULL;
+    // Can this item be slotted?
+    this->IsUnslottable = false;
+    this->bIsAttachedToTerrain = false;
+}
 
 void APhysicalItem::StartItemInWorld() {
 }
@@ -96,6 +134,7 @@ void APhysicalItem::PickUpFromWorld(bool PhysicalMovement) {
 }
 
 
+
 void APhysicalItem::OnRep_ItemState() {
 }
 
@@ -125,6 +164,10 @@ bool APhysicalItem::IsLarge_Implementation() {
     return false;
 }
 
+bool APhysicalItem::IsFakeTerrainObject_Implementation() {
+    return false;
+}
+
 void APhysicalItem::HandleIsBuriedChanged(UTerrainPhysicsComponent* terrainComp) {
 }
 
@@ -140,6 +183,7 @@ UItemType* APhysicalItem::GetStoredSubItemTypeCDO() const {
     return NULL;
 }
 
+// The height of the printer, overrides the default determined height value if defined
 float APhysicalItem::GetPrinterHeight() const {
     return 0.0f;
 }
@@ -204,6 +248,10 @@ bool APhysicalItem::CanNeverBeSlotted() const {
     return false;
 }
 
+bool APhysicalItem::AcceptsFakeTerrainObjectsAsTerrain_Implementation() {
+    return false;
+}
+
 void APhysicalItem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
     
@@ -211,34 +259,4 @@ void APhysicalItem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLif
     DOREPLIFETIME(APhysicalItem, ReplicatedState);
 }
 
-APhysicalItem::APhysicalItem() {
-    this->ItemComponent = CreateDefaultSubobject<UItemComponent>(TEXT("Item"));
-    this->EntityLinkComponent = CreateDefaultSubobject<UActorEntityLinkComponent>(TEXT("EntityLinkComponent"));
-    this->terrainComponent = CreateDefaultSubobject<UTerrainPhysicsComponent>(TEXT("Terrain Physics"));
-    this->PlaceholderPrimitive = NULL;
-    this->StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Root"));
-    this->GravityComponent = CreateDefaultSubobject<UWorldGravity>(TEXT("Gravity"));
-    this->ClickableComponent = CreateDefaultSubobject<UClickableComponent>(TEXT("ItemClickableComponent"));
-    this->SlotsComponent = CreateDefaultSubobject<USlotsComponent>(TEXT("SlotsComponent"));
-    this->TooltipComponent = CreateDefaultSubobject<UTooltipComponent>(TEXT("TooltipComponent"));
-    this->ProceduralState = CreateDefaultSubobject<UProceduralStateComponent>(TEXT("ProceduralStateComponent"));
-    this->SlotQueryAllowBodyPlacement = false;
-    this->OffsetOddTiers = false;
-    this->HoverHeight = 110.00f;
-    this->IndicatorUseAnimInstance = false;
-    this->WeldAsChild = true;
-    this->UseHoverForward = true;
-    this->IgnoreBodySlotForHover = false;
-    this->PrinterHeight = 0.00f;
-    this->ToolMoveTier = 1;
-    this->PlacementSnapToGroundHeight = 0.00f;
-    this->IsMovable = true;
-    this->AlwaysMovePhysical = false;
-    this->ItemWorldScale = 1.00f;
-    this->SlotScale = 1.00f;
-    this->bDestroyWhenDrained = false;
-    this->MostRecentNetOwner = NULL;
-    this->IsUnslottable = false;
-    this->bIsAttachedToTerrain = false;
-}
 

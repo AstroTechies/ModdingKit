@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "Engine/EngineTypes.h"
 #include "CrackedReplicationData.h"
 #include "ECrackableActorMethod.h"
 #include "ECrackableActorNetworkingPolicy.h"
@@ -94,9 +94,10 @@ protected:
     FTransform StartingRelativeTransform;
     
 public:
-    UCrackableActorComponent();
+    UCrackableActorComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void UpdateScreenScaleRatioAndCameraSpaceOffset(float ratio, FVector Offset);

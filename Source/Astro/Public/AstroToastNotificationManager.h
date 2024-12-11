@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
+#include "UObject/Object.h"
+#include "Engine/EngineTypes.h"
 #include "AstroNotificationToastAuthoringData.h"
 #include "AstroToastNotificationManager.generated.h"
 
@@ -29,6 +29,7 @@ private:
     
 public:
     UAstroToastNotificationManager();
+
 private:
     UFUNCTION(BlueprintCallable)
     void HandleNotificationSpawnTimerTick();

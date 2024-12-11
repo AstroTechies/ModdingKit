@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=DateTime -FallbackName=DateTime
+#include "UObject/NoExportTypes.h"
 #include "AstroSaveFileInformation.generated.h"
 
 USTRUCT(BlueprintType)
@@ -24,6 +24,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bHasBeenFlaggedAsCreativeModeSave: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bIsGlitchwalkersExpansion: 1;
     
     ASTRO_API FAstroSaveFileInformation();
 };

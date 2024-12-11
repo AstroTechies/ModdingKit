@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
+#include "Kismet/BlueprintFunctionLibrary.h"
 #include "BitfieldBitValue.h"
 #include "PackedParameterValue.h"
 #include "AstroMaterialStatics.generated.h"
@@ -12,6 +12,7 @@ class ASTRO_API UAstroMaterialStatics : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     UAstroMaterialStatics();
+
     UFUNCTION(BlueprintCallable)
     static void ToggleBitfieldParameterBits(UMaterialInstanceDynamic* Mid, FName ParameterName, const TArray<int32>& BitIndices);
     

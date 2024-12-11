@@ -20,9 +20,10 @@ private:
     UActorAttachmentsComponent* ActorAttachmentsComponent;
     
 public:
-    ASeatBase();
+    ASeatBase(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 private:
     UFUNCTION(BlueprintCallable)
     void HandleSeatReleasedFromSlot(bool NewOwner);

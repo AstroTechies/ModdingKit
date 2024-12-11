@@ -6,11 +6,35 @@
 #include "StorageChassisComponent.h"
 #include "Templates/SubclassOf.h"
 
-class APhysicalItem;
-class UAstroAction;
-class UItemType;
-class UPrimitiveComponent;
-class UStaticMesh;
+AResourceExtractor::AResourceExtractor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->ManagerIndex = 4294967295;
+    this->HammerDroppedHeight = 218.00f;
+    this->HammerTopHeight = 459.00f;
+    this->Radius = 1500.00f;
+    this->PostPoundHoldTime = 1.00f;
+    this->CycleTime = 10.00f;
+    this->MaxLowPowerCycleTime = 0.00f;
+    this->ResetTime = 1.00f;
+    this->NuggetsPerNode = 2.00f;
+    this->ThumpsPerNugget = 6;
+    this->FullMeterThreshold = 150;
+    this->PowerComponent = CreateDefaultSubobject<UPowerComponent>(TEXT("PowerComponent"));
+    this->ActionComponent = CreateDefaultSubobject<UAstroActionComponent>(TEXT("ActionComponent"));
+    this->VacuumLocationComponent = NULL;
+    this->NodesInArea = 0;
+    this->ResourceCache = CreateDefaultSubobject<UResourceCacheComponent>(TEXT("ResourceCache"));
+    this->SkeletalMesh = NULL;
+    this->StorageChassis = CreateDefaultSubobject<UStorageChassisComponent>(TEXT("StorageChassis"));
+    this->ActivateAnimation = NULL;
+    this->DeactivateAnimation = NULL;
+    this->HammerDropMontage = NULL;
+    this->FillBarMaterial = NULL;
+    this->AnimProgress = 0.00f;
+    this->PowerRatio = 0.00f;
+    this->AnimStage = EExtractorAnimStage::Holding;
+    this->OpStage = EExtractorOperationStage::Paused;
+    this->bIsTurnedOn = false;
+}
 
 void AResourceExtractor::OnStorageChassisSlotEventSignal(APhysicalItem* Item) {
 }
@@ -62,33 +86,4 @@ void AResourceExtractor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
     DOREPLIFETIME(AResourceExtractor, bIsTurnedOn);
 }
 
-AResourceExtractor::AResourceExtractor() {
-    this->ManagerIndex = 4294967295;
-    this->HammerDroppedHeight = 218.00f;
-    this->HammerTopHeight = 459.00f;
-    this->Radius = 1500.00f;
-    this->PostPoundHoldTime = 1.00f;
-    this->CycleTime = 10.00f;
-    this->MaxLowPowerCycleTime = 0.00f;
-    this->ResetTime = 1.00f;
-    this->NuggetsPerNode = 2.00f;
-    this->ThumpsPerNugget = 6;
-    this->FullMeterThreshold = 150;
-    this->PowerComponent = CreateDefaultSubobject<UPowerComponent>(TEXT("PowerComponent"));
-    this->ActionComponent = CreateDefaultSubobject<UAstroActionComponent>(TEXT("ActionComponent"));
-    this->VacuumLocationComponent = NULL;
-    this->NodesInArea = 0;
-    this->ResourceCache = CreateDefaultSubobject<UResourceCacheComponent>(TEXT("ResourceCache"));
-    this->SkeletalMesh = NULL;
-    this->StorageChassis = CreateDefaultSubobject<UStorageChassisComponent>(TEXT("StorageChassis"));
-    this->ActivateAnimation = NULL;
-    this->DeactivateAnimation = NULL;
-    this->HammerDropMontage = NULL;
-    this->FillBarMaterial = NULL;
-    this->AnimProgress = 0.00f;
-    this->PowerRatio = 0.00f;
-    this->AnimStage = EExtractorAnimStage::Holding;
-    this->OpStage = EExtractorOperationStage::Paused;
-    this->bIsTurnedOn = false;
-}
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "Engine/EngineTypes.h"
 #include "Components/SceneComponent.h"
 #include "CustomGravityVolumeComponent.generated.h"
 
@@ -22,7 +22,8 @@ protected:
     UPrimitiveComponent* GravityVolume;
     
 public:
-    UCustomGravityVolumeComponent();
+    UCustomGravityVolumeComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void OnComponentExitedCustomGravityVolume(UPrimitiveComponent* volumeComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex);
     

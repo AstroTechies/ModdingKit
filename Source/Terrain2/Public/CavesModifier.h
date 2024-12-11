@@ -29,5 +29,6 @@ public:
     float WalkVariation;
     
     UCavesModifier();
+
 };
 

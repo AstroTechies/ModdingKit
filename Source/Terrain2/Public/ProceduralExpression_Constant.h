@@ -8,5 +8,6 @@ class TERRAIN2_API UProceduralExpression_Constant : public UProceduralExpression
     GENERATED_BODY()
 public:
     UProceduralExpression_Constant();
+
 };
 

@@ -8,5 +8,6 @@ class ASTRO_API UAstroAssetManager : public UAssetManager {
     GENERATED_BODY()
 public:
     UAstroAssetManager();
+
 };
 

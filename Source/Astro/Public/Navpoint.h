@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "ENavpointGroup.h"
 #include "ENavpointType.h"
 #include "Navpoint.generated.h"
@@ -14,7 +14,7 @@ USTRUCT(BlueprintType)
 struct FNavpoint {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<AActor> TrackedActor;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

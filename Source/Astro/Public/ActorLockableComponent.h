@@ -13,7 +13,8 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FEnableSignal OnIsUnlockedChangedAuthority;
     
-    UActorLockableComponent();
+    UActorLockableComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void OnAuthorityLockedStateChanged(FAstroDatumRef lockableComponentRef, const FLockChangedEventMetadata& EventData);
     

@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "GameFramework/Actor.h"
 #include "ItemPadActor.generated.h"
 
@@ -18,7 +18,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, SaveGame, meta=(AllowPrivateAccess=true))
     UItemPad* OwnerComponent;
     
-    AItemPadActor();
+    AItemPadActor(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool ShouldDestroyOnPickup();
     

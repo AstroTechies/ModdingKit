@@ -1,14 +1,22 @@
 #include "ControlComponent.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
-class APhysicalItem;
-class APlayerController;
-class UControlComponent;
-class UControlSymbol;
-class UControlSymbolEvents;
-class UObject;
-class UStaticMesh;
+UControlComponent::UControlComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->PlayerActivation = NULL;
+    this->UsingActivation = NULL;
+    this->IsTool = false;
+    this->PassToolToParent = false;
+    this->ToolMaxDistance = 1000.00f;
+    this->bAppliesToolTierOverride = false;
+    this->ToolTierOverride = 0;
+    this->MultiToolMode = EMultitoolMode::Multitool;
+    this->OnlyTraceTerrain = false;
+    this->AttachPing = true;
+    this->WidgetComponent = NULL;
+    this->AttachOwner = NULL;
+    this->controlOwner = NULL;
+    this->LastController = NULL;
+}
 
 void UControlComponent::SetMoveInputs(APlayerController* Controller, const FVector& Direction) {
 }
@@ -76,20 +84,4 @@ UControlSymbolEvents* UControlComponent::EnableControlSymbol(TSubclassOf<UContro
     return NULL;
 }
 
-UControlComponent::UControlComponent() {
-    this->PlayerActivation = NULL;
-    this->UsingActivation = NULL;
-    this->IsTool = false;
-    this->PassToolToParent = false;
-    this->ToolMaxDistance = 1000.00f;
-    this->bAppliesToolTierOverride = false;
-    this->ToolTierOverride = 0;
-    this->MultiToolMode = EMultitoolMode::Multitool;
-    this->OnlyTraceTerrain = false;
-    this->AttachPing = true;
-    this->WidgetComponent = NULL;
-    this->AttachOwner = NULL;
-    this->controlOwner = NULL;
-    this->LastController = NULL;
-}
 

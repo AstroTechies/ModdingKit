@@ -1,8 +1,21 @@
 #include "ButtonComponent.h"
 
-class UMaterialInstanceDynamic;
-class UMaterialInterface;
-class UPrimitiveComponent;
+UButtonComponent::UButtonComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->IconMesh = NULL;
+    this->IconMesh_Static = NULL;
+    this->IconAnimation = NULL;
+    this->SpinIcon = true;
+    this->UseToolTip = false;
+    this->DoServerClick = true;
+    this->ClientEnableAllowed = false;
+    this->Shape = ButtonShape::Rectangle;
+    this->shellComponent = NULL;
+    this->collisionComponent = NULL;
+    this->Icon = NULL;
+    this->ToolTipScene = NULL;
+    this->TextRenderer = NULL;
+    this->ShellMaterial = NULL;
+}
 
 void UButtonComponent::SetShellComponent(UPrimitiveComponent* NewShellComponent) {
 }
@@ -42,20 +55,4 @@ UMaterialInstanceDynamic* UButtonComponent::CreateShellDynamicMaterialInstance(i
     return NULL;
 }
 
-UButtonComponent::UButtonComponent() {
-    this->IconMesh = NULL;
-    this->IconMesh_Static = NULL;
-    this->IconAnimation = NULL;
-    this->SpinIcon = true;
-    this->UseToolTip = false;
-    this->DoServerClick = true;
-    this->ClientEnableAllowed = false;
-    this->Shape = ButtonShape::Rectangle;
-    this->shellComponent = NULL;
-    this->collisionComponent = NULL;
-    this->Icon = NULL;
-    this->ToolTipScene = NULL;
-    this->TextRenderer = NULL;
-    this->ShellMaterial = NULL;
-}
 

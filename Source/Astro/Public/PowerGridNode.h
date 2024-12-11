@@ -7,6 +7,7 @@ UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class UPowerGridNode : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPowerGridNode();
+    UPowerGridNode(const FObjectInitializer& ObjectInitializer);
+
 };
 

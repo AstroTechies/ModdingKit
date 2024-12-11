@@ -5,12 +5,39 @@
 #include "Net/UnrealNetwork.h"
 #include "PowerComponent.h"
 
-class AAstroPlanet;
-class AAstroPlayerController;
-class APhysicalItem;
-class AVehicleDrill;
-class UMaterialInterface;
-class UStorageChassisComponent;
+AVehicleDrill::AVehicleDrill(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->SedimentDeformationRatio = 0.00f;
+    this->NeutralDotProdBetweenCameraAndRoverUp = 0.00f;
+    this->DeformationTier = 0.00f;
+    this->FoliageDestructionMassThreshold = 1000.00f;
+    this->DestructionRadiusScaleFromDeformSize = 1.00f;
+    this->ExcessTerrainCollectedThresholdForBurnoffEffect = 0;
+    this->CameraPitchToDrillPitchMapping = NULL;
+    this->SteeringAngleToDrillRollMapping = NULL;
+    this->MaximumRollAdjustment = 0.00f;
+    this->SteeringAngleToDrillYawMapping = NULL;
+    this->BirdsEyeDotVal = 0.00f;
+    this->WormsEyeDotVal = 0.00f;
+    this->MaxSlope = 45.00f;
+    this->MaxDrillSlope = 40.00f;
+    this->ControlComponent = CreateDefaultSubobject<UControlComponent>(TEXT("Control"));
+    this->DeformEventReceiver = CreateDefaultSubobject<UDeformEventReceiver>(TEXT("DeformEventReceiver"));
+    this->PowerComponent = CreateDefaultSubobject<UPowerComponent>(TEXT("PowerComponent"));
+    this->DeformVisualizer = NULL;
+    this->FoliageDestructionVisualizer = NULL;
+    this->ExcavationDeformationOriginMarker = CreateDefaultSubobject<USceneComponent>(TEXT("ExcavationDeformationOriginMarker"));
+    this->TunnelBoringUI_Wrapper = NULL;
+    this->PivotingUI_Wrapper = NULL;
+    this->TerrainDeformationParticles = NULL;
+    this->TiltIndicatorWrapper = NULL;
+    this->TiltUpIndicatorWrapper = NULL;
+    this->TiltDownIndicatorWrapper = NULL;
+    this->SlopeGaugeExtent = 0.00f;
+    this->TunnelBoringRover = NULL;
+    this->CraneSubclass = NULL;
+    this->ConsumedSedimentDebt = 0;
+    this->ExcavationDeformationOriginMarker->SetupAttachment(RootComponent);
+}
 
 void AVehicleDrill::UpdateTerrainDeformationParticles(bool SystemEnabled, int32 HardnessDelta) {
 }
@@ -102,36 +129,4 @@ void AVehicleDrill::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLif
     DOREPLIFETIME(AVehicleDrill, VehicleDrillReplicatedSedimentState);
 }
 
-AVehicleDrill::AVehicleDrill() {
-    this->SedimentDeformationRatio = 0.00f;
-    this->NeutralDotProdBetweenCameraAndRoverUp = 0.00f;
-    this->DeformationTier = 0.00f;
-    this->FoliageDestructionMassThreshold = 1000.00f;
-    this->DestructionRadiusScaleFromDeformSize = 1.00f;
-    this->ExcessTerrainCollectedThresholdForBurnoffEffect = 0;
-    this->CameraPitchToDrillPitchMapping = NULL;
-    this->SteeringAngleToDrillRollMapping = NULL;
-    this->MaximumRollAdjustment = 0.00f;
-    this->SteeringAngleToDrillYawMapping = NULL;
-    this->BirdsEyeDotVal = 0.00f;
-    this->WormsEyeDotVal = 0.00f;
-    this->MaxSlope = 45.00f;
-    this->MaxDrillSlope = 40.00f;
-    this->ControlComponent = CreateDefaultSubobject<UControlComponent>(TEXT("Control"));
-    this->DeformEventReceiver = CreateDefaultSubobject<UDeformEventReceiver>(TEXT("DeformEventReceiver"));
-    this->PowerComponent = CreateDefaultSubobject<UPowerComponent>(TEXT("PowerComponent"));
-    this->DeformVisualizer = NULL;
-    this->FoliageDestructionVisualizer = NULL;
-    this->ExcavationDeformationOriginMarker = CreateDefaultSubobject<USceneComponent>(TEXT("ExcavationDeformationOriginMarker"));
-    this->TunnelBoringUI_Wrapper = NULL;
-    this->PivotingUI_Wrapper = NULL;
-    this->TerrainDeformationParticles = NULL;
-    this->TiltIndicatorWrapper = NULL;
-    this->TiltUpIndicatorWrapper = NULL;
-    this->TiltDownIndicatorWrapper = NULL;
-    this->SlopeGaugeExtent = 0.00f;
-    this->TunnelBoringRover = NULL;
-    this->CraneSubclass = NULL;
-    this->ConsumedSedimentDebt = 0;
-}
 

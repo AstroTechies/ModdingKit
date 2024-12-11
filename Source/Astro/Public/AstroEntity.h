@@ -19,10 +19,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TSubclassOf<AActor> ViewActorType;
     
-    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<AActor> ViewActorTemplate;
     
-    UPROPERTY(EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<AActor> ViewActor;
     
     ASTRO_API FAstroEntity();

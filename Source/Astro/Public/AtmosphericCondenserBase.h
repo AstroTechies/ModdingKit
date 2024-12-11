@@ -70,9 +70,10 @@ private:
     UDynamicWhitelistOrganizationRule* OutputOrganizationRule;
     
 public:
-    AAtmosphericCondenserBase();
+    AAtmosphericCondenserBase(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 private:
     UFUNCTION(BlueprintCallable)
     void OnReplicationDataChanged();

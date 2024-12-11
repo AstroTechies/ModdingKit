@@ -10,6 +10,7 @@ class ASTRO_API UAstropediaCarouselWidget : public UUserWidgetBlueprintDesignabl
     GENERATED_BODY()
 public:
     UAstropediaCarouselWidget();
+
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void InitializeAstropedia(EAstroGameMenuTutorialSlideDeckKey deck, EAstroGameMenuTutoriaSlideCardKey card);
     

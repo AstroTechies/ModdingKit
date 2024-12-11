@@ -12,5 +12,6 @@ public:
     TArray<FSlottedItemRequirement> SlottedItemRequirements;
     
     USlottedItemLockingMechanismDefinition();
+
 };
 

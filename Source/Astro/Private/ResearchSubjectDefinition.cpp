@@ -5,3 +5,4 @@ UResearchSubjectDefinition::UResearchSubjectDefinition() {
     this->TotalResearchSecondsPerInstance = 0.00f;
 }
 
+

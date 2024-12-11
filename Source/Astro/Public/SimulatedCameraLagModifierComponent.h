@@ -20,6 +20,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxLagVelocity;
     
-    USimulatedCameraLagModifierComponent();
+    USimulatedCameraLagModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

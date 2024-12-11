@@ -10,6 +10,7 @@ class ASTRO_API UResearchPointGrantComponentContainer : public UAstroEntityCompo
     GENERATED_BODY()
 public:
     UResearchPointGrantComponentContainer();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FResearchPointGrantComponent GetResearchPointGrantComponent(FAstroDatumRef ResearchPointGrantComponentRef, bool& bOutSuccess);
     

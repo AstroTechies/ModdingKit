@@ -14,6 +14,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnBiomeSampleUpdated OnBiomeSampleUpdated;
     
-    UBiomeSamplerComponent();
+    UBiomeSamplerComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

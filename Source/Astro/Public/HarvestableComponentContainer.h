@@ -10,6 +10,7 @@ class ASTRO_API UHarvestableComponentContainer : public UAstroEntityComponentCon
     GENERATED_BODY()
 public:
     UHarvestableComponentContainer();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FHarvestableComponent GetHarvestableComponent(FAstroDatumRef HarvestableComponentRef, bool& bOutSuccess);
     

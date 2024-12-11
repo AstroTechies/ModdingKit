@@ -8,5 +8,6 @@ class ASTRO_API UAstroEntitySceneComponentTaskManager : public UAstroEntityTaskM
     GENERATED_BODY()
 public:
     UAstroEntitySceneComponentTaskManager();
+
 };
 

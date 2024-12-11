@@ -7,6 +7,7 @@ UCLASS(Blueprintable)
 class ASTRO_API AGateEngine : public AGateObject {
     GENERATED_BODY()
 public:
-    AGateEngine();
+    AGateEngine(const FObjectInitializer& ObjectInitializer);
+
 };
 

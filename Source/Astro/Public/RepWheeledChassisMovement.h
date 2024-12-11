@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=RepMovement -FallbackName=RepMovement
+#include "Engine/EngineTypes.h"
 #include "RepLinkedChassisMovement.h"
 #include "RepWheeledChassisMovement.generated.h"
 

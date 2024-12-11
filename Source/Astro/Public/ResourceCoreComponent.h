@@ -16,7 +16,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UInstancedStaticMeshComponent* MeshComponent;
     
-    UResourceCoreComponent();
+    UResourceCoreComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void OnItemChange();
     

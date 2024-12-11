@@ -52,9 +52,10 @@ private:
     float ConsumptionProgress;
     
 public:
-    UMissionItemConsumptionComponent();
+    UMissionItemConsumptionComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 private:
     UFUNCTION(BlueprintCallable)
     void OnRep_RequestsState(EMissionItemRequestState prevState);

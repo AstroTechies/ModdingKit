@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "BeaconManager.generated.h"
 
 class AAstroCharacter;
@@ -34,6 +34,7 @@ private:
     
 public:
     UBeaconManager();
+
 private:
     UFUNCTION(BlueprintCallable)
     void OnLocalSolarBodyChanged(ASolarBody* newBody);

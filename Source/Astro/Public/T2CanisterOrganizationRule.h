@@ -11,8 +11,9 @@ class UT2CanisterOrganizationRule : public USlotOrganizationRule {
     GENERATED_BODY()
 public:
     UT2CanisterOrganizationRule();
+
     UFUNCTION(BlueprintCallable)
-    void SetStoredItemTypeWhitelist(TArray<TSubclassOf<UItemType>> ItemTypes);
+    void SetStoredItemTypeWhitelist(TArray<TSubclassOf<UItemType>> itemTypes);
     
     UFUNCTION(BlueprintCallable)
     void SetMode(bool isDispensing);

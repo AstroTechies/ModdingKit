@@ -35,6 +35,7 @@ protected:
     
 public:
     USelectionWheelWidget();
+
 protected:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void SetOptionWidgets(const TArray<USelectionWheelOptionWidget*>& widgets);

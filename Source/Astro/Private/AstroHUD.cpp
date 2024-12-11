@@ -1,6 +1,21 @@
 #include "AstroHUD.h"
 
-class UAstropediaCarouselWidget;
+AAstroHUD::AAstroHUD(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->DebugDisplay.AddDefaulted(1);
+    this->PlayWidget = NULL;
+    this->CreativeDroneOverlayClass = NULL;
+//    this->StoreWidgetClass = NULL;
+    this->AstropediaWidgetClass = NULL;
+    this->ReconnectWidgetClass = NULL;
+    this->EmoteWheelWidgetClass = NULL;
+    this->ActionWheelWidgetClass = NULL;
+//    this->StoreWidgetInstance = NULL;
+    this->StoreIsLoading = false;
+    this->PlayWidgetInstance = NULL;
+    this->CreativeDroneOverlayInstance = NULL;
+    this->ReconnectWidgetInstance = NULL;
+    this->MOTDBackgroundTexture = NULL;
+}
 
 bool AAstroHUD::IsStoreActive() {
     return false;
@@ -26,15 +41,4 @@ UAstropediaCarouselWidget* AAstroHUD::CreateAstropediaWidget(EAstroGameMenuTutor
     return NULL;
 }
 
-AAstroHUD::AAstroHUD() {
-    this->PlayWidget = NULL;
-    this->CreativeDroneOverlayClass = NULL;
-    this->AstropediaWidgetClass = NULL;
-    this->ReconnectWidgetClass = NULL;
-    this->ActionWheelWidgetClass = NULL;
-    this->PlayWidgetInstance = NULL;
-    this->CreativeDroneOverlayInstance = NULL;
-    this->ReconnectWidgetInstance = NULL;
-    this->MOTDBackgroundTexture = NULL;
-}
 

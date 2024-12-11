@@ -1,10 +1,9 @@
 #include "ControlSymbol.h"
 
-class AActor;
+UControlSymbol::UControlSymbol() {
+}
 
 void UControlSymbol::ApplyToIconActor(AActor* Actor) {
 }
 
-UControlSymbol::UControlSymbol() {
-}
 

@@ -1,11 +1,20 @@
 #include "ActuatorComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class AActor;
-class APlayController;
-class UClickQuery;
-class UObject;
-class UPrimitiveComponent;
+UActuatorComponent::UActuatorComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->bUseShapeCast = false;
+    this->CableMeshes = NULL;
+    this->CableMaterial = NULL;
+    this->ConnectorMeshes = NULL;
+    this->ConnectorMaterial = NULL;
+    this->RerouteNodeMeshes = NULL;
+    this->RerouteNodeMaterial = NULL;
+    this->Bounds = NULL;
+    this->SlotsComponent = NULL;
+    this->RerouteNodeTooltip = NULL;
+    this->RerouteNodeTooltipAnchor = NULL;
+}
 
 void UActuatorComponent::OnRerouteNodeEndCursorOver(UPrimitiveComponent* TouchedComponent) {
 }
@@ -52,17 +61,4 @@ void UActuatorComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
     DOREPLIFETIME(UActuatorComponent, Connections);
 }
 
-UActuatorComponent::UActuatorComponent() {
-    this->bUseShapeCast = false;
-    this->CableMeshes = NULL;
-    this->CableMaterial = NULL;
-    this->ConnectorMeshes = NULL;
-    this->ConnectorMaterial = NULL;
-    this->RerouteNodeMeshes = NULL;
-    this->RerouteNodeMaterial = NULL;
-    this->Bounds = NULL;
-    this->SlotsComponent = NULL;
-    this->RerouteNodeTooltip = NULL;
-    this->RerouteNodeTooltipAnchor = NULL;
-}
 

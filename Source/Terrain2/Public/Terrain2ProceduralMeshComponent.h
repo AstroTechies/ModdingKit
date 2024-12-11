@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Interface_CollisionDataProvider -FallbackName=Interface_CollisionDataProvider
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=MeshComponent -FallbackName=MeshComponent
+#include "Interfaces/Interface_CollisionDataProvider.h"
+#include "Components/MeshComponent.h"
 #include "T2ProcMeshSection.h"
 #include "Terrain2ProceduralMeshComponent.generated.h"
 
@@ -29,8 +29,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FT2ProcMeshSection> ProcMeshSections;
     
-    UTerrain2ProceduralMeshComponent();
-    
+    UTerrain2ProceduralMeshComponent(const FObjectInitializer& ObjectInitializer);
+
+
     // Fix for true pure virtual functions not being implemented
 };
 

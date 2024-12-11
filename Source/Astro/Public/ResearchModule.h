@@ -22,6 +22,7 @@ protected:
     UAdaptiveTickComponent* AdaptiveTickComponent;
     
 public:
-    AResearchModule();
+    AResearchModule(const FObjectInitializer& ObjectInitializer);
+
 };
 

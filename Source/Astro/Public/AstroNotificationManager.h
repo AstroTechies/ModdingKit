@@ -23,6 +23,7 @@ private:
     uint8 NotificationsDisabled: 1;
     
 public:
-    UAstroNotificationManager();
+    UAstroNotificationManager(const FObjectInitializer& ObjectInitializer);
+
 };
 

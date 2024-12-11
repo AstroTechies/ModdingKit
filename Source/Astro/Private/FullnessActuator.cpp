@@ -2,6 +2,15 @@
 #include "ActuatorComponent.h"
 #include "Net/UnrealNetwork.h"
 
+AFullnessActuator::AFullnessActuator(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->ActuatorComponent = CreateDefaultSubobject<UActuatorComponent>(TEXT("Actuator"));
+    this->MostRecentEvent = EFullnessActuatorEventType::None;
+    this->bWasEmpty = false;
+    this->bWasFull = false;
+    this->EventTypeFlags = 0;
+    this->FullnessResponseMode = EFullnessActuatorResponseMode::FullOrEmpty;
+}
+
 void AFullnessActuator::OnRep_TargetItem() {
 }
 
@@ -31,12 +40,4 @@ void AFullnessActuator::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
     DOREPLIFETIME(AFullnessActuator, FullnessResponseMode);
 }
 
-AFullnessActuator::AFullnessActuator() {
-    this->ActuatorComponent = CreateDefaultSubobject<UActuatorComponent>(TEXT("Actuator"));
-    this->MostRecentEvent = EFullnessActuatorEventType::None;
-    this->bWasEmpty = false;
-    this->bWasFull = false;
-    this->EventTypeFlags = 0;
-    this->FullnessResponseMode = EFullnessActuatorResponseMode::FullOrEmpty;
-}
 

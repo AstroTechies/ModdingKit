@@ -8,5 +8,6 @@ class UPersistentLocalPlayerDataSave : public USaveGame {
     GENERATED_BODY()
 public:
     UPersistentLocalPlayerDataSave();
+
 };
 

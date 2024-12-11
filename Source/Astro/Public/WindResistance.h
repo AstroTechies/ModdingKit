@@ -10,6 +10,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SurfaceArea;
     
-    UWindResistance();
+    UWindResistance(const FObjectInitializer& ObjectInitializer);
+
 };
 

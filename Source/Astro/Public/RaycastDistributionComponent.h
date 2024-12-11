@@ -75,6 +75,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FActorSpecifier> Actors;
     
-    URaycastDistributionComponent();
+    URaycastDistributionComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

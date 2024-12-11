@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "Kismet/BlueprintFunctionLibrary.h"
 #include "ESlottableItemsFiltrationListBehavior.h"
 #include "EUseContext.h"
 #include "Recipe.h"
@@ -21,14 +21,15 @@ class ASTRO_API UItemStatics : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     UItemStatics();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    static bool WillCraftItem(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& ItemTypes);
+    static bool WillCraftItem(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& itemTypes);
     
     UFUNCTION(BlueprintCallable)
-    static int32 TryCraftItemDelta(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& ItemTypes, float Rate, float DeltaTime);
+    static int32 TryCraftItemDelta(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& itemTypes, float Rate, float DeltaTime);
     
     UFUNCTION(BlueprintCallable)
-    static int32 TryCraftItem(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& ItemTypes, float Rate);
+    static int32 TryCraftItem(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& itemTypes, float Rate);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static APhysicalItem* SpawnDeployablePackagedItem(const UObject* WorldContextObject, TSubclassOf<APhysicalItem> PhysicalItemClassPackagedItemWillContain, FTransform SpawnTransform);
@@ -61,7 +62,7 @@ public:
     static FRecipe MakeItemRecipeFromSlots(const TArray<FSlotReference>& itemSlots);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    static FRecipe MakeItemRecipe(const TArray<TSubclassOf<UItemType>>& ItemTypes);
+    static FRecipe MakeItemRecipe(const TArray<TSubclassOf<UItemType>>& itemTypes);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 ItemUnitAmount();
@@ -102,7 +103,7 @@ public:
     static FText GetCraftingSourcesTooltipDescription(TSubclassOf<UItemType> Item);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    static TSubclassOf<UItemType> FindRecipeTarget(const FRecipe& Recipe, const TArray<TSubclassOf<UItemType>>& ItemTypes);
+    static TSubclassOf<UItemType> FindRecipeTarget(const FRecipe& Recipe, const TArray<TSubclassOf<UItemType>>& itemTypes);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     static void DestroyItemAndAllSlottedItemsRecursively(APhysicalItem* ItemToDestroy);

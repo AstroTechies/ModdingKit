@@ -19,6 +19,7 @@ protected:
     
 public:
     UWhitelistOrganizationRule();
+
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetShowIndicators(bool showIndicators);
     

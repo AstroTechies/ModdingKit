@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
+#include "Engine/DataAsset.h"
 #include "AstroGameMenuTutorialSlide.h"
 #include "AstroGameMenuTutorialSlideDeck.h"
 #include "EAstroGameMenuTutoriaSlideCardKey.h"
@@ -18,5 +18,6 @@ public:
     TMap<EAstroGameMenuTutorialSlideDeckKey, FAstroGameMenuTutorialSlideDeck> TutorialSlideDecks;
     
     UAstroGameMenuTutorialSlideDeckDatabase();
+
 };
 

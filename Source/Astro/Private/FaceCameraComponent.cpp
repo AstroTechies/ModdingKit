@@ -1,6 +1,7 @@
 #include "FaceCameraComponent.h"
 
-UFaceCameraComponent::UFaceCameraComponent() {
+UFaceCameraComponent::UFaceCameraComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->MaintainUp = false;
 }
+
 

@@ -1,6 +1,10 @@
 #include "AuxSlotItemTooltipComponent.h"
 
-class AAstroPlayerController;
+UAuxSlotItemTooltipComponent::UAuxSlotItemTooltipComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->TooltipTimeoutDuration = 2.00f;
+    this->bOverrideInputActionName = false;
+}
 
 void UAuxSlotItemTooltipComponent::TooltipTimeout() {
 }
@@ -23,7 +27,4 @@ void UAuxSlotItemTooltipComponent::HandleReleasedFromSlot(bool NewOwner) {
 void UAuxSlotItemTooltipComponent::HandlePlacedInSlot() {
 }
 
-UAuxSlotItemTooltipComponent::UAuxSlotItemTooltipComponent() {
-    this->TooltipTimeoutDuration = 2.00f;
-}
 

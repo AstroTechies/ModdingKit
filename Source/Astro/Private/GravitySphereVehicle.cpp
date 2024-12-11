@@ -4,11 +4,16 @@
 #include "ControlComponent.h"
 #include "PlanetEffect.h"
 
-class AActor;
-class AAstroPlayerController;
-class APhysicalItem;
-class UActorAttachmentsComponent;
-class USceneComponent;
+AGravitySphereVehicle::AGravitySphereVehicle(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->TurningInputBias = 5.00f;
+    this->SeatFacingInputDirectionBias = 0.75f;
+    this->EVA_ItemType = NULL;
+    this->MaxSpeedThresholdForTopSpeedObjective = 0.90f;
+    this->ControlComponent = CreateDefaultSubobject<UControlComponent>(TEXT("ControlComponent"));
+    this->PlanetEffect = CreateDefaultSubobject<UPlanetEffect>(TEXT("Planet Effect"));
+    this->AdaptiveTickComponent = CreateDefaultSubobject<UAdaptiveTickComponent>(TEXT("AdaptiveTickComponent"));
+    this->MovementComponent = CreateDefaultSubobject<UBallPhysicsMovementComponent>(TEXT("BallPhysicsMovementComponent"));
+}
 
 void AGravitySphereVehicle::SetupComponentReferences(UActorAttachmentsComponent* attachmentComponent, USceneComponent* seatRoot, USceneComponent* cameraTargetNode) {
 }
@@ -45,14 +50,4 @@ EGravitySphereControllerType AGravitySphereVehicle::GetAttachedControllerType() 
 void AGravitySphereVehicle::AuthorityHandlePickedUp(bool PhysicalMovement) {
 }
 
-AGravitySphereVehicle::AGravitySphereVehicle() {
-    this->TurningInputBias = 5.00f;
-    this->SeatFacingInputDirectionBias = 0.75f;
-    this->EVA_ItemType = NULL;
-    this->MaxSpeedThresholdForTopSpeedObjective = 0.90f;
-    this->ControlComponent = CreateDefaultSubobject<UControlComponent>(TEXT("ControlComponent"));
-    this->PlanetEffect = CreateDefaultSubobject<UPlanetEffect>(TEXT("Planet Effect"));
-    this->AdaptiveTickComponent = CreateDefaultSubobject<UAdaptiveTickComponent>(TEXT("AdaptiveTickComponent"));
-    this->MovementComponent = CreateDefaultSubobject<UBallPhysicsMovementComponent>(TEXT("BallPhysicsMovementComponent"));
-}
 

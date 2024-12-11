@@ -1,6 +1,15 @@
 #include "TerrainAnalyzerComponent.h"
 #include "Net/UnrealNetwork.h"
 
+UTerrainAnalyzerComponent::UTerrainAnalyzerComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->AnalyzedTerrainRetainsHardness = false;
+    this->BaseFillRate = 0.40f;
+    this->bAnalysisHasStarted = false;
+    this->bAnalysisIsComplete = false;
+    this->bAnalysisInProgress = false;
+}
+
 void UTerrainAnalyzerComponent::TryGetTerrainFromColor(bool completeIfSuccessful) {
 }
 
@@ -44,11 +53,4 @@ void UTerrainAnalyzerComponent::GetLifetimeReplicatedProps(TArray<FLifetimePrope
     DOREPLIFETIME(UTerrainAnalyzerComponent, AnalyzedTerrainMaterialSample);
 }
 
-UTerrainAnalyzerComponent::UTerrainAnalyzerComponent() {
-    this->AnalyzedTerrainRetainsHardness = false;
-    this->BaseFillRate = 0.40f;
-    this->bAnalysisHasStarted = false;
-    this->bAnalysisIsComplete = false;
-    this->bAnalysisInProgress = false;
-}
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+#include "UObject/NoExportTypes.h"
 #include "ControlSymbol.h"
 #include "EAstroGameMenuTutoriaSlideCardKey.h"
 #include "EItemStorageBehavior.h"
@@ -24,15 +24,19 @@ public:
     uint8 bDestroyOnAddDeformation: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // Is this indestructible?
     uint8 Indestructible: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // Whether or not the item contributes to an explosion, like Hydrazine does
     uint8 IsVolatile: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // Is this a power resource?
     uint8 IsPower: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // Is this an oxygen resource?
     uint8 IsOxygen: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -42,12 +46,14 @@ public:
     uint8 UseSquareIconBackground: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // Can this be put into a shredder?
     uint8 bCanBeScrapped: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bApplyTintToHarvestActors: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // Can this item not be packaged with a packager?
     uint8 bIsUnrepackageable: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -57,9 +63,11 @@ public:
     FName ItemRepackageAudioSwitch;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // What items can go into this container?
     TArray<TSubclassOf<UItemType>> ContainerSubtypeWhitelist;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // Not needed
     FLinearColor MaterialColor;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -72,15 +80,18 @@ public:
     UStaticMesh* TerrainVolumeMesh;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // The Actor (PhysicalItem) that this ItemType represents
     TSubclassOf<AActor> PickupActor;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemType> DefaultContainerType;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // Bundle --> Individual
     TSubclassOf<UItemType> UnbundleType;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // Individual --> Bundle
     TSubclassOf<UItemType> BundleType;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -116,6 +127,7 @@ public:
     UTexture2D* WidgetIcon;
     
     UItemType();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FRecipe GetConstructionRecipe() const;
     

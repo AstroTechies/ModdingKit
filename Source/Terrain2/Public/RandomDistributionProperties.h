@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=FloatInterval -FallbackName=FloatInterval
+#include "UObject/NoExportTypes.h"
 #include "EPlacementOrientation.h"
 #include "EPlacementType.h"
 #include "RandomDistributionProperties.generated.h"

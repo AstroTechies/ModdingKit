@@ -1,15 +1,8 @@
 #include "AstroUIStatics.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
-class UAstroPopupBadgeDatabase;
-class UAstroUIStylingDatabase;
-class UBorder;
-class UImage;
-class UItemType;
-class UObject;
-class UWidget;
-class UWidgetAnimation;
+UAstroUIStatics::UAstroUIStatics() {
+}
 
 FSlateBrush UAstroUIStatics::SlateBrushWithNewSlateColor(FSlateBrush SlateBrush, FSlateColor SlateColor) {
     return FSlateBrush{};
@@ -43,7 +36,7 @@ void UAstroUIStatics::SetBorderBrushDrawAs(UBorder* Border, TEnumAsByte<ESlateBr
 void UAstroUIStatics::SetAllUserFocus(UWidget* WidgetToFocus) {
 }
 
-UAstroUIStylingDatabase* UAstroUIStatics::GetAstroUIStylingDatabase() {
+UAstroUIStylingDatabase* UAstroUIStatics::GetAstroUIStylingDatabase(const UObject* WorldContextObject) {
     return NULL;
 }
 
@@ -68,6 +61,4 @@ void UAstroUIStatics::DisplayPopupBadge(AActor* OwningActor, const FAstroPopupBa
 void UAstroUIStatics::ClearAllUserFocus() {
 }
 
-UAstroUIStatics::UAstroUIStatics() {
-}
 

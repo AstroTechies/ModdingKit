@@ -1,6 +1,6 @@
 #include "WindPowerComponent.h"
 
-UWindPowerComponent::UWindPowerComponent() {
+UWindPowerComponent::UWindPowerComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->MinExposure = 0.25f;
     this->MinPowerOutput = 0.00f;
     this->MaxPowerOutput = 2.00f;
@@ -9,4 +9,5 @@ UWindPowerComponent::UWindPowerComponent() {
     this->CastDistance = 5000.00f;
     this->PowerComponent = NULL;
 }
+
 

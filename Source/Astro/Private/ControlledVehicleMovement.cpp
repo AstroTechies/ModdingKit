@@ -1,7 +1,17 @@
 #include "ControlledVehicleMovement.h"
 #include "Net/UnrealNetwork.h"
 
-class APlayerController;
+UControlledVehicleMovement::UControlledVehicleMovement(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->MovingValue = 0.00f;
+    this->TargetMovingValue = 0.00f;
+    this->DoNotBindInputToControlComponent = false;
+    this->RawThrottleValue = 0.00f;
+    this->bAuthoritativeEnabled = false;
+    this->bEnabled = false;
+    this->bPhysicsEnabledCached = false;
+    this->WheeledChassis = NULL;
+}
 
 void UControlledVehicleMovement::SetControlled(bool IsControlled) {
 }
@@ -24,14 +34,4 @@ void UControlledVehicleMovement::GetLifetimeReplicatedProps(TArray<FLifetimeProp
     DOREPLIFETIME(UControlledVehicleMovement, bAuthoritativeEnabled);
 }
 
-UControlledVehicleMovement::UControlledVehicleMovement() {
-    this->MovingValue = 0.00f;
-    this->TargetMovingValue = 0.00f;
-    this->DoNotBindInputToControlComponent = false;
-    this->RawThrottleValue = 0.00f;
-    this->bAuthoritativeEnabled = false;
-    this->bEnabled = false;
-    this->bPhysicsEnabledCached = false;
-    this->WheeledChassis = NULL;
-}
 

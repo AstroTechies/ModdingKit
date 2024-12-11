@@ -1,11 +1,23 @@
 #include "Backpack.h"
+#include "Components/InputComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class AActor;
-class AAstroCharacter;
-class APhysicalItem;
-class UChildActorComponent;
-class UCrackableActorComponent;
+ABackpack::ABackpack(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->InputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("BackpackInputComponent"));
+    this->CreativeDrone = NULL;
+    this->CreativeDroneClass = NULL;
+    this->VirtualLightComponent = NULL;
+    this->PendingDronePaletteMaterial = NULL;
+    this->CatalogCrackable = NULL;
+    this->CatalogCrackableCreative = NULL;
+    this->MissionLogCrackable = NULL;
+    this->CachedDeformTool = NULL;
+    this->CatalogActor = NULL;
+    this->MissionLogActor = NULL;
+    this->CatalogActorPrev = NULL;
+    this->CatalogCreativeActor = NULL;
+    this->CatalogCreativeActorPrev = NULL;
+}
 
 void ABackpack::ToggleOpen() {
 }
@@ -114,19 +126,4 @@ void ABackpack::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetim
     DOREPLIFETIME(ABackpack, OxygenTankPropertiesOverride);
 }
 
-ABackpack::ABackpack() {
-    this->CreativeDrone = NULL;
-    this->CreativeDroneClass = NULL;
-    this->VirtualLightComponent = NULL;
-    this->PendingDronePaletteMaterial = NULL;
-    this->CatalogCrackable = NULL;
-    this->CatalogCrackableCreative = NULL;
-    this->MissionLogCrackable = NULL;
-    this->CachedDeformTool = NULL;
-    this->CatalogActor = NULL;
-    this->MissionLogActor = NULL;
-    this->CatalogActorPrev = NULL;
-    this->CatalogCreativeActor = NULL;
-    this->CatalogCreativeActorPrev = NULL;
-}
 

@@ -1,8 +1,9 @@
 #include "ResourceCacheComponent.h"
 #include "Templates/SubclassOf.h"
 
-class AAstroCharacter;
-class UItemType;
+UResourceCacheComponent::UResourceCacheComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->DeformEventReceiver = NULL;
+}
 
 void UResourceCacheComponent::SwapResources(TSubclassOf<UItemType> MineralType) {
 }
@@ -28,7 +29,4 @@ bool UResourceCacheComponent::ApplyOxygen(int32 Amount) {
     return false;
 }
 
-UResourceCacheComponent::UResourceCacheComponent() {
-    this->DeformEventReceiver = NULL;
-}
 

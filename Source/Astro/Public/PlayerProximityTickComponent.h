@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "Engine/EngineTypes.h"
 #include "PlayerProximityTickComponent.generated.h"
 
 class AActor;
@@ -47,7 +47,8 @@ protected:
     TArray<uint8> AutoManagedComponentFlags;
     
 public:
-    UPlayerProximityTickComponent();
+    UPlayerProximityTickComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void SetProximitySphere(float Radius);
     

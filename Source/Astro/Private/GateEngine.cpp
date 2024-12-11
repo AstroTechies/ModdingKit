@@ -1,5 +1,6 @@
 #include "GateEngine.h"
 
-AGateEngine::AGateEngine() {
+AGateEngine::AGateEngine(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

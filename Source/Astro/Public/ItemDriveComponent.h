@@ -1,9 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
+//#include "AstroPlayFabEventData.h"
+//#include "AstroPlayFabItemDriveStage.h"
 #include "Components/ActorComponent.h"
 #include "ItemDriveReward.h"
 #include "PendingInGameItemRewards.h"
+#include "PlayFabPPlayerStatisticRefreshedDelegateDelegate.h"
 #include "ProgressPredictionData.h"
+#include "SignalDelegate.h"
 #include "SlotReference.h"
 #include "Templates/SubclassOf.h"
 #include "ItemDriveComponent.generated.h"
@@ -19,11 +23,23 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SendEventEvery;
     
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FSignal OnPlayFabTitleDataRefreshed;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FPlayFabPPlayerStatisticRefreshedDelegate OnPlayFabStatisticRefreshed;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSubclassOf<UItemType>, int32> ItemValues;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FItemDriveReward> Rewards;
+    
+//    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+//    FAstroPlayFabEventData ActiveEvent;
+    
+//    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+//    FAstroPlayFabItemDriveStage ActiveEventItemDriveStage;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UTexture2D*> ItemDriveStageIcons;
@@ -48,9 +64,10 @@ protected:
     FProgressPredictionData PredictedProgress;
     
 public:
-    UItemDriveComponent();
+    UItemDriveComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void UpdateActiveItemDriveStage();
     

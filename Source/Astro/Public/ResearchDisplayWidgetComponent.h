@@ -14,6 +14,7 @@ protected:
     UResearchDisplayWidget* ResearchDisplayWidget;
     
 public:
-    UResearchDisplayWidgetComponent();
+    UResearchDisplayWidgetComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

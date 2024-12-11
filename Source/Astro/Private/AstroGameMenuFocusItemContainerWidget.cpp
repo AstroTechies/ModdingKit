@@ -1,6 +1,9 @@
 #include "AstroGameMenuFocusItemContainerWidget.h"
 
-class UAstroGameMenuFocusItemWidget;
+UAstroGameMenuFocusItemContainerWidget::UAstroGameMenuFocusItemContainerWidget() {
+    this->CurrentlyFocusedItem = NULL;
+    this->LastUsedItem = NULL;
+}
 
 void UAstroGameMenuFocusItemContainerWidget::RemoveMouseFocusSuppression(EMouseFocusChangeSuppressionSource MouseSuppression) {
 }
@@ -47,8 +50,4 @@ FEventReply UAstroGameMenuFocusItemContainerWidget::AttemptToCancelDragOrEditFoc
 void UAstroGameMenuFocusItemContainerWidget::AddMouseFocusSuppression(EMouseFocusChangeSuppressionSource MouseSuppression) {
 }
 
-UAstroGameMenuFocusItemContainerWidget::UAstroGameMenuFocusItemContainerWidget() {
-    this->CurrentlyFocusedItem = NULL;
-    this->LastUsedItem = NULL;
-}
 

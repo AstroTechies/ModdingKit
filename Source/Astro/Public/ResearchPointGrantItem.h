@@ -14,7 +14,8 @@ protected:
     UActorResearchPointGrantComponent* ResearchPointGrantComponent;
     
 public:
-    AResearchPointGrantItem();
+    AResearchPointGrantItem(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnUsed();

@@ -21,9 +21,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_VisualizationData, meta=(AllowPrivateAccess=true))
     FStreamingPowerCableVisualizationData StreamingPowerCableVisualizationData;
     
-    UActorStreamingPowerCableComponent();
+    UActorStreamingPowerCableComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void SetDirectionalConnectionSplitRatio(float ratio);
     

@@ -1,7 +1,8 @@
 #include "DamageComponent.h"
 
-class AActor;
-class UDamageComponent;
+UDamageComponent::UDamageComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->Indestructible = false;
+}
 
 bool UDamageComponent::Kill(bool ignoreIndestructible) {
     return false;
@@ -17,7 +18,4 @@ UDamageComponent* UDamageComponent::ActorDamageComponent(AActor* Actor) {
     return NULL;
 }
 
-UDamageComponent::UDamageComponent() {
-    this->Indestructible = false;
-}
 

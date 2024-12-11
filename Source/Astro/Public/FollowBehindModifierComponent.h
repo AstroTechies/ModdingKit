@@ -19,6 +19,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaximumTargetSpeed;
     
-    UFollowBehindModifierComponent();
+    UFollowBehindModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

@@ -20,6 +20,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString EjectAudioEvent;
     
-    USlotResourceBehaviorComponent();
+    USlotResourceBehaviorComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

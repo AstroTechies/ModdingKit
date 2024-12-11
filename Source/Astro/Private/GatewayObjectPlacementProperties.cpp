@@ -12,5 +12,6 @@ FGatewayObjectPlacementProperties::FGatewayObjectPlacementProperties() {
     this->SamePlanetChambersRequiredForEngineActivation = 0;
     this->SolarSystemChambersRequiredForEngineActivation = 0;
     this->GateObjectIndicators = NULL;
+    this->StationIndicatorDefinitions = NULL;
 }
 

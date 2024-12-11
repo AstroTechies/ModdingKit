@@ -67,7 +67,8 @@ protected:
     UItemCatalogCategoryDefinition* AllCatalogItemsCategory;
     
 public:
-    ACatalogModule();
+    ACatalogModule(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void UnlockedItemsChanged(const TArray<TSubclassOf<UItemType>>& NewUnlockedItems);
     
@@ -106,6 +107,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnResearchPointBalanceChanged(float NewResearchPointBalance);
     
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void OnHackedItemsChanged(const TArray<TSubclassOf<UItemType>>& hackedItems);
+    
     UFUNCTION(BlueprintCallable)
     void OnCreativeModeCatalogUnlockedChanged();
     
@@ -119,6 +123,9 @@ protected:
 public:
     UFUNCTION(BlueprintCallable)
     void KnownItemsChanged(const TArray<TSubclassOf<UItemType>>& newKnownItems);
+    
+    UFUNCTION(BlueprintCallable)
+    void HackedItemsChanged(const TArray<TSubclassOf<UItemType>>& hackedItems);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     ESelectedItemUnlockState GetSelectedItemUnlockState() const;

@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "AstroChickenBitsControls.generated.h"
 
 UCLASS(Blueprintable)
@@ -8,6 +8,7 @@ class UAstroChickenBitsControls : public UObject {
     GENERATED_BODY()
 public:
     UAstroChickenBitsControls();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetCvar_Vehicles_ShowDrillDebugVis();
     

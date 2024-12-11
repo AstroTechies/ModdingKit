@@ -6,5 +6,6 @@ UENUM(BlueprintType)
 enum class EScannableType : uint8 {
     None,
     Probe,
+    EXO_Vault,
 };
 

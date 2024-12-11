@@ -1,22 +1,6 @@
 #include "TerrainBrush.h"
 
-void ATerrainBrush::ShowBrushElements(EDeformType deformType, bool showElement) {
-}
-
-void ATerrainBrush::SetResourceTooltipSuppression(bool SuppressResourceTooltip) {
-}
-
-
-
-
-void ATerrainBrush::ManageTerrainHardnessTexture() {
-}
-
-
-void ATerrainBrush::ChangeBrushOperation(EDeformType NewType) {
-}
-
-ATerrainBrush::ATerrainBrush() {
+ATerrainBrush::ATerrainBrush(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->ActiveOperation = EDeformType::Subtract;
     this->LastTerrainHardness = 0;
     this->BrushIndicatorScale = 0.01f;
@@ -48,4 +32,21 @@ ATerrainBrush::ATerrainBrush() {
     this->ColorPickerBrushComponent = NULL;
     this->ColorPaintBrushComponent = NULL;
 }
+
+void ATerrainBrush::ShowBrushElements(EDeformType deformType, bool showElement) {
+}
+
+void ATerrainBrush::SetResourceTooltipSuppression(bool SuppressResourceTooltip) {
+}
+
+
+
+
+void ATerrainBrush::ManageTerrainHardnessTexture() {
+}
+
+
+void ATerrainBrush::ChangeBrushOperation(EDeformType NewType) {
+}
+
 

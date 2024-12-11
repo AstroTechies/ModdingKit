@@ -8,5 +8,6 @@ class TERRAIN2_API UProceduralExpression_Levels : public UProceduralExpression {
     GENERATED_BODY()
 public:
     UProceduralExpression_Levels();
+
 };
 

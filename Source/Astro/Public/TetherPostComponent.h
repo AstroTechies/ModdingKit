@@ -33,7 +33,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UDistanceLightFaderComponent* LightFader;
     
-    UTetherPostComponent();
+    UTetherPostComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void SetPlacing(bool newPlacing);
     

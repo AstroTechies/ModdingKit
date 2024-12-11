@@ -5,6 +5,7 @@ public class MessageOfTheDay : ModuleRules {
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
         
         PublicDependencyModuleNames.AddRange(new string[] {
+            "Astro",
             "Core",
             "CoreUObject",
             "Engine",

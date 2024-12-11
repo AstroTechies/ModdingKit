@@ -10,6 +10,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CollisionSphereRadius;
     
-    USimpleCollisionModifierComponent();
+    USimpleCollisionModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

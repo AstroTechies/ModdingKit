@@ -5,3 +5,4 @@ UAstroErrorWidget::UAstroErrorWidget() : UUserWidget(FObjectInitializer::Get()) 
     this->DefaultTimeToDisplay = 10.00f;
 }
 
+

@@ -1,8 +1,16 @@
 #include "RoverBase.h"
 #include "ControlledVehicleMovement.h"
 
-class AAstroPlayerController;
-class USceneComponent;
+ARoverBase::ARoverBase(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->TunnelBoringDeformerBaseScale = 0.00f;
+    this->MaximumDisplaySeatedFlipPromptVelocity = 100.00f;
+    this->MinimumSeatedHideFlipPromptVelocity = 1000.00f;
+    this->ControlledVehicleMovement = CreateDefaultSubobject<UControlledVehicleMovement>(TEXT("ControlledVehicleMovement"));
+    this->WheeledChassisComponent = NULL;
+    this->StorageChassisComponent = NULL;
+    this->UseSuppressionID = TEXT("RoverBase");
+    this->bIsFlipped = false;
+}
 
 void ARoverBase::UpdateUseSuppression_Implementation(bool ShouldBeSuppressed) {
 }
@@ -43,14 +51,4 @@ bool ARoverBase::Authority_GetSeatExitOverriddenWithFlip() const {
     return false;
 }
 
-ARoverBase::ARoverBase() {
-    this->TunnelBoringDeformerBaseScale = 0.00f;
-    this->MaximumDisplaySeatedFlipPromptVelocity = 100.00f;
-    this->MinimumSeatedHideFlipPromptVelocity = 1000.00f;
-    this->ControlledVehicleMovement = CreateDefaultSubobject<UControlledVehicleMovement>(TEXT("ControlledVehicleMovement"));
-    this->WheeledChassisComponent = NULL;
-    this->StorageChassisComponent = NULL;
-    this->UseSuppressionID = TEXT("RoverBase");
-    this->bIsFlipped = false;
-}
 

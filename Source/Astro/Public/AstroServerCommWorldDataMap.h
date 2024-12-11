@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "AstroServerCommWorldData.h"
 #include "AstroServerCommWorldDataMap.generated.h"
 
@@ -11,6 +11,10 @@ public:
     UPROPERTY(EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<uint64, FAstroServerCommWorldData> Map;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    FAstroServerCommWorldData CustomGameManagerServerComm;
+    
     UAstroServerCommWorldDataMap();
+
 };
 

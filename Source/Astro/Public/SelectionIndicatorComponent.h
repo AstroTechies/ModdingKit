@@ -18,6 +18,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool Indicate;
     
-    USelectionIndicatorComponent();
+    USelectionIndicatorComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

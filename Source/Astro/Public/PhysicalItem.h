@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "GameFramework/Actor.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize100 -FallbackName=Vector_NetQuantize100
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
+#include "Engine/EngineTypes.h"
+#include "Engine/NetSerialization.h"
+#include "Engine/NetSerialization.h"
 #include "EPhysicalItemMotionState.h"
 #include "EmplacementData.h"
 #include "ItemDropInWorldDelegateDelegate.h"
@@ -143,6 +143,7 @@ public:
     FText ItemName;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // Can this item be directly attached to the body of an object (like packagers and dynamite do)?
     bool SlotQueryAllowBodyPlacement;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -155,6 +156,7 @@ public:
     FVector HoverAxis;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // no idea
     float HoverHeight;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -170,18 +172,22 @@ public:
     FVector HoverForward;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // no idea
     bool IgnoreBodySlotForHover;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // The height of the printer, overrides the default determined height value if defined
     float PrinterHeight;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // The tier of the object. 1 = T1, 2 = T2, etc. Controls fallback slot size, default package size, as well as walking speed
     int32 ToolMoveTier;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float PlacementSnapToGroundHeight;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    // Can this item be picked up and moved around with the cursor?
     bool IsMovable;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -195,6 +201,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bDestroyWhenDrained: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float PrintSpeedOverride;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnPerformAuxUseOverride AuxUseOverride;
@@ -210,6 +219,7 @@ protected:
     APawn* MostRecentNetOwner;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    // Can this item be slotted?
     bool IsUnslottable;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_ItemState, meta=(AllowPrivateAccess=true))
@@ -229,9 +239,10 @@ private:
     uint8 bIsAttachedToTerrain: 1;
     
 public:
-    APhysicalItem();
+    APhysicalItem(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void StartItemInWorld();
     
@@ -299,6 +310,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void PickedUpFromWorld();
     
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void OnServerQuickClick();
+    
 private:
     UFUNCTION(BlueprintCallable)
     void OnRep_ItemState();
@@ -328,6 +342,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool IsLarge();
     
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    bool IsFakeTerrainObject();
+    
 private:
     UFUNCTION(BlueprintCallable)
     void HandleIsBuriedChanged(UTerrainPhysicsComponent* terrainComp);
@@ -343,6 +360,7 @@ public:
     UItemType* GetStoredSubItemTypeCDO() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    // The height of the printer, overrides the default determined height value if defined
     float GetPrinterHeight() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -392,6 +410,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanNeverBeSlotted() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    bool AcceptsFakeTerrainObjectsAsTerrain();
     
 };
 

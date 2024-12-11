@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "RewardSet.h"
 #include "Templates/SubclassOf.h"
 #include "RewardTable.generated.h"
@@ -18,5 +18,6 @@ public:
     TArray<FRewardSet> RewardSets;
     
     URewardTable();
+
 };
 

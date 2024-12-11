@@ -1,6 +1,7 @@
 #include "AstroMaterialStatics.h"
 
-class UMaterialInstanceDynamic;
+UAstroMaterialStatics::UAstroMaterialStatics() {
+}
 
 void UAstroMaterialStatics::ToggleBitfieldParameterBits(UMaterialInstanceDynamic* Mid, FName ParameterName, const TArray<int32>& BitIndices) {
 }
@@ -24,6 +25,4 @@ bool UAstroMaterialStatics::GetBitfieldParameterBit(UMaterialInstanceDynamic* Mi
     return false;
 }
 
-UAstroMaterialStatics::UAstroMaterialStatics() {
-}
 

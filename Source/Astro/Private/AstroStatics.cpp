@@ -1,31 +1,8 @@
 #include "AstroStatics.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
-class AAstroGameMode;
-class AAstroGameState;
-class AAstroMissionsManager;
-class APawn;
-class APlayerController;
-class UActorComponent;
-class UAstroGameInstance;
-class UAstroSaveAsset;
-class UAudioComponent;
-class UChildActorComponent;
-class UCreativeModeData;
-class UMaterial;
-class UMaterialInstanceDynamic;
-class UMaterialInterface;
-class UObject;
-class UPanelWidget;
-class UPhysicsConstraintComponent;
-class UPostProcessComponent;
-class UPrimitiveComponent;
-class USceneComponent;
-class USkeletalMeshComponent;
-class USoundBase;
-class UUserWidget;
-class UWidget;
+UAstroStatics::UAstroStatics() {
+}
 
 FVector2D UAstroStatics::WorldLocationToScreenLocationOffset(UObject* WorldContextObject, const FVector& WorldLocation, const FVector2D& WorldOffset) {
     return FVector2D{};
@@ -118,6 +95,10 @@ void UAstroStatics::SetPostProcessVignetting(const FPostProcessSettings& InSetti
 void UAstroStatics::SetPostProcessLensFlare(const FPostProcessSettings& InSettings, FPostProcessSettings& OutSettings, float Value) {
 }
 
+bool UAstroStatics::SetPlayerPropertiesForCustomGame(AAstroCustomGameManager* CustomGameManager, AAstroPlayerController* PlayerController, const FAstroClientProperties& clientProperties) {
+    return false;
+}
+
 void UAstroStatics::SetNearClippingPlane(float Distance) {
 }
 
@@ -170,6 +151,9 @@ void UAstroStatics::SetActorForward(AActor* Actor, const FVector& Forward) {
 void UAstroStatics::SetActorCollisionEnabled(AActor* Actor, bool Enabled) {
 }
 
+void UAstroStatics::SetActiveSaveFileForCustomGame(UObject* WorldContextObject, const FString& Name) {
+}
+
 void UAstroStatics::SaveGameNoCloudSave(UObject* WorldContextObject, const FString& Name, FOnAstroSaveCompletedDynamic OnCompletedDelegate) {
 }
 
@@ -191,7 +175,7 @@ int32 UAstroStatics::RollIntegerDecrement(int32 Value, int32 Max) {
     return 0;
 }
 
-bool UAstroStatics::ReturnToTitleScreen(UObject* WorldContextObject) {
+bool UAstroStatics::ReturnToTitleScreen(UObject* WorldContextObject, bool DisplayOutOfLivesPrompt) {
     return false;
 }
 
@@ -205,6 +189,9 @@ float UAstroStatics::ReinterpretIntToFloat(int32 Int) {
 
 int32 UAstroStatics::ReinterpretFloatToInt(float Float) {
     return 0;
+}
+
+void UAstroStatics::PreviewEmoteLocally(USkeletalMeshComponent* targetMesh, UAstroEmoteDefinition* emoteDefinition) {
 }
 
 bool UAstroStatics::PredictIfActiveSaveFileIsTooLargeToSave(UObject* WorldContextObject, FString& outSaveName, int32& outSaveSize) {
@@ -380,6 +367,10 @@ bool UAstroStatics::IsAsyncSaveInProgress() {
     return false;
 }
 
+bool UAstroStatics::IsAnalyticsEnabled(UObject* WorldContextObject) {
+    return false;
+}
+
 float UAstroStatics::InterpToRange(float Min, float Max, float CurrentValue, float TargetLerp, float DeltaTime, float Speed) {
     return 0.0f;
 }
@@ -543,6 +534,10 @@ UAstroGameInstance* UAstroStatics::GetGameInstance(const UObject* WorldContextOb
 TEnumAsByte<EWindowMode::Type> UAstroStatics::GetFullscreenMode() {
     return EWindowMode::Fullscreen;
 }
+
+//UAstroDlcManager* UAstroStatics::GetDlcManager(const UObject* WorldContextObject) {
+//    return NULL;
+//}
 
 FAstroDiscreteInputDefinition UAstroStatics::GetDiscreteAstroInputDefinition(EAstroDiscreteInputOptionPlayerFacing DiscretePlayerFacingInputOption) {
     return FAstroDiscreteInputDefinition{};
@@ -760,6 +755,4 @@ bool UAstroStatics::ActorOnClickedBound(AActor* Actor) {
 void UAstroStatics::ActorCallOnClicked(AActor* Actor) {
 }
 
-UAstroStatics::UAstroStatics() {
-}
 

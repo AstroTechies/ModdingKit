@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
-//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "UObject/NoExportTypes.h"
+#include "InputCoreTypes.h"
 #include "SolarBody.h"
 #include "GateStation.generated.h"
 
@@ -57,7 +57,8 @@ protected:
     UStationGateObjectIndicatorDefinitions* StationIndicatorDefinitions;
     
 public:
-    AGateStation();
+    AGateStation(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void OnOutroCinematicStarted();
     

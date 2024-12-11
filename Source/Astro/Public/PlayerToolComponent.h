@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "InputCoreTypes.h"
 #include "PlayerToolComponent.generated.h"
 
 class AActor;
@@ -38,9 +38,10 @@ private:
     uint8 m_activated: 1;
     
 public:
-    UPlayerToolComponent();
+    UPlayerToolComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void OnRep_Activated();
     

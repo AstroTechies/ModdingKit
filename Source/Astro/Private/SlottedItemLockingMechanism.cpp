@@ -1,6 +1,7 @@
 #include "SlottedItemLockingMechanism.h"
 
-class APhysicalItem;
+USlottedItemLockingMechanism::USlottedItemLockingMechanism() {
+}
 
 void USlottedItemLockingMechanism::OnItemSetInRelevantSlot(APhysicalItem* Item) {
 }
@@ -8,6 +9,4 @@ void USlottedItemLockingMechanism::OnItemSetInRelevantSlot(APhysicalItem* Item) 
 void USlottedItemLockingMechanism::OnItemReleasedFromRelevantSlot(APhysicalItem* Item) {
 }
 
-USlottedItemLockingMechanism::USlottedItemLockingMechanism() {
-}
 

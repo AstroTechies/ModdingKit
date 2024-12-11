@@ -10,5 +10,7 @@ enum class EAstroGameMenuContext : uint8 {
     OutroCinematic,
     ExitingGame,
     DropshipSpawned,
+    TitleMenuOutOfRespawnTokens,
+    FMotDDisplayed,
 };
 

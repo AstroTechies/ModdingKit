@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=PrimitiveComponent -FallbackName=PrimitiveComponent
-//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "Components/PrimitiveComponent.h"
+#include "InputCoreTypes.h"
 #include "ButtonShape.h"
 #include "ComponentOnButtonClickedDelegate.h"
 #include "ButtonComponent.generated.h"
@@ -68,7 +68,8 @@ private:
     UMaterialInstanceDynamic* ShellMaterial;
     
 public:
-    UButtonComponent();
+    UButtonComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void SetShellComponent(UPrimitiveComponent* NewShellComponent);
     

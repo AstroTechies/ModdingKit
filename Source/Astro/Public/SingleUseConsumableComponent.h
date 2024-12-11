@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "Engine/EngineTypes.h"
 #include "SingleUseConsumableComponent.generated.h"
 
 class UParticleSystem;
@@ -36,9 +36,10 @@ protected:
     FString ConsumptionAudioEventName;
     
 public:
-    USingleUseConsumableComponent();
+    USingleUseConsumableComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnRep_HasBeenConsumed(bool bWasConsumed);

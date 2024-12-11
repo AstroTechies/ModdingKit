@@ -1,6 +1,6 @@
 #include "OrbitControlModifierComponent.h"
 
-UOrbitControlModifierComponent::UOrbitControlModifierComponent() {
+UOrbitControlModifierComponent::UOrbitControlModifierComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->UsePlanetUp = false;
     this->AffectRotation = false;
     this->PitchRate = 360.00f;
@@ -10,4 +10,5 @@ UOrbitControlModifierComponent::UOrbitControlModifierComponent() {
     this->GamepadSmoothingFactor = 0.00f;
     this->LookatHeightOffset = 0.00f;
 }
+
 

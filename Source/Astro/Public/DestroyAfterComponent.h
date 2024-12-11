@@ -28,7 +28,8 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FDestroySequenceParticlesStarted OnParticlesStarted;
     
-    UDestroyAfterComponent();
+    UDestroyAfterComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void StartTimer();
     

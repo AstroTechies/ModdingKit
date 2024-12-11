@@ -58,6 +58,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float PostActivationEasePeriod;
     
-    UCameraModifierComponent();
+    UCameraModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

@@ -8,6 +8,5 @@ enum class EHandState : uint8 {
     HS_Grabbing,
     HS_Holding,
     HS_Releasing,
-    HS_MAX UMETA(Hidden),
 };
 

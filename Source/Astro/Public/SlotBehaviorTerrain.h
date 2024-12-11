@@ -31,6 +31,7 @@ private:
     
 public:
     USlotBehaviorTerrain();
+
 private:
     UFUNCTION(BlueprintCallable)
     void OnParentDeformed(const FDeformationParamsT2& params);

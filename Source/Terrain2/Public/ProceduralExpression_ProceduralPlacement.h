@@ -8,5 +8,6 @@ class TERRAIN2_API UProceduralExpression_ProceduralPlacement : public UProcedura
     GENERATED_BODY()
 public:
     UProceduralExpression_ProceduralPlacement();
+
 };
 

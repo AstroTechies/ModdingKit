@@ -1,11 +1,8 @@
 #include "AstroNotificationStatics.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
-class UAstroNotificationDatabase;
-class UItemType;
-class UObject;
-class USceneComponent;
+UAstroNotificationStatics::UAstroNotificationStatics() {
+}
 
 void UAstroNotificationStatics::SetShouldRetainBiomeToastNotification(UObject* WorldContextObject, bool bShouldRetain) {
 }
@@ -39,6 +36,4 @@ FAstroNotificationTagAuthoringData UAstroNotificationStatics::CreateNotification
     return FAstroNotificationTagAuthoringData{};
 }
 
-UAstroNotificationStatics::UAstroNotificationStatics() {
-}
 

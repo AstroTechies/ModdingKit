@@ -8,5 +8,6 @@ class UVehicleCameraContext : public UCameraContext {
     GENERATED_BODY()
 public:
     UVehicleCameraContext();
+
 };
 

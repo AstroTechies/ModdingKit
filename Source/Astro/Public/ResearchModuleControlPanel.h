@@ -17,7 +17,8 @@ protected:
     TArray<UResearchDisplayWidgetComponent*> ResearchDisplayComponents;
     
 public:
-    AResearchModuleControlPanel();
+    AResearchModuleControlPanel(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateForNewResearchReplicationData(const FResearchReplicationData& ReplicationData);

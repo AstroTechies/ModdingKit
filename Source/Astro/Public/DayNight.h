@@ -1,8 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-#include "Components/SkyLightComponent.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "GameFramework/Actor.h"
 #include "SolarBodyRelativeTransforms.h"
 #include "DayNight.generated.h"
@@ -57,9 +56,10 @@ private:
     float TargetSkyVisibility;
     
 public:
-    ADayNight();
+    ADayNight(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy);

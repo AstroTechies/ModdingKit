@@ -10,6 +10,7 @@ class ASTRO_API UAstroEntitySceneComponentContainer : public UAstroEntityCompone
     GENERATED_BODY()
 public:
     UAstroEntitySceneComponentContainer();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FAstroEntitySceneComponent GetEntitySceneComponent(FAstroDatumRef SceneComponentRef, bool& bOutSuccess);
     

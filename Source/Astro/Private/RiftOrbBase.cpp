@@ -1,6 +1,12 @@
 #include "RiftOrbBase.h"
 #include "Net/UnrealNetwork.h"
 
+ARiftOrbBase::ARiftOrbBase(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->ParentTarget = NULL;
+    this->OrbState = ERiftOrbState::Scattering;
+    this->OrbGameType = ERiftTrackerGameType::Random;
+}
+
 void ARiftOrbBase::MulticastSetRiftOrbState_Implementation(ERiftOrbState NewState) {
 }
 
@@ -20,9 +26,4 @@ void ARiftOrbBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLife
     DOREPLIFETIME(ARiftOrbBase, OrbGameType);
 }
 
-ARiftOrbBase::ARiftOrbBase() {
-    this->ParentTarget = NULL;
-    this->OrbState = ERiftOrbState::Scattering;
-    this->OrbGameType = ERiftTrackerGameType::Random;
-}
 

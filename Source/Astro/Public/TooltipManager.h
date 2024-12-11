@@ -33,7 +33,8 @@ private:
     uint8 BelongsToLocalController: 1;
     
 public:
-    UTooltipManager();
+    UTooltipManager(const FObjectInitializer& ObjectInitializer);
+
 private:
     UFUNCTION(BlueprintCallable)
     void OnTooltipPrimitiveEndCursorOver(UPrimitiveComponent* TooltipPrimitive);

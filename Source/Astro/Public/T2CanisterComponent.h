@@ -31,14 +31,15 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ItemTransferRate;
     
-    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<UT2CanisterOrganizationRule> OrganizationRule;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> InputSlotRefs;
     
 public:
-    UT2CanisterComponent();
+    UT2CanisterComponent(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnSlottedItemsChanged(APhysicalItem* changedItem);

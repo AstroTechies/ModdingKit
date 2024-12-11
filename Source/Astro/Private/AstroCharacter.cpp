@@ -6,15 +6,89 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
-class AAstroPlanet;
-class ABackpack;
-class ADroneBase;
-class APlayController;
-class ASolarBody;
-class UChildActorComponent;
-class UControlSymbol;
-class UItemType;
+AAstroCharacter::AAstroCharacter(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->RootComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("CapsuleCollision"));
+    this->MeshUsedAsIcon = NULL;
+    this->FallDampening = 0.50f;
+    this->CurrentSpeed = 0.00f;
+    this->Driving = false;
+    this->Dying = false;
+    this->Walking = false;
+    this->SwappingItem = false;
+    this->DrivingActor = NULL;
+    this->AttachOwner = NULL;
+    this->Jumped = false;
+    this->JumpInputReceived = false;
+    this->Sprinting = false;
+    this->HoldingIndicatorMesh = NULL;
+    this->HoldingIndicatorMaterial = NULL;
+    this->HoldingIndicatorDirMesh = NULL;
+    this->HoldingIndicatorDirMaterial = NULL;
+    this->ActuatorRerouteHelper = NULL;
+    this->HoldingIndicatorMeshComponent = NULL;
+    this->HoldingIndicatorDirMeshComponent = NULL;
+    this->HeldItem = NULL;
+    this->grabAnimSpeed = 1.50f;
+    this->Focusing = false;
+    this->FocusingRotation = false;
+    this->PingFocusing = false;
+    this->bEnableHeadlook = true;
+    this->HoldingTool = false;
+    this->IsHeavyCarrying = false;
+    this->BackpackRaised = false;
+    this->AccentMaterialIndex = 255;
+    this->LastGestureTime = 0.00f;
+    this->AstroMovementComponent = NULL;
+    this->CapsuleComponent = (UCapsuleComponent*)RootComponent;
+    this->MeshComponent = NULL;
+    this->WindParticles = NULL;
+    this->ItemSpawnPreviewLocation = NULL;
+    this->ItemSpawnPreviewSlot = NULL;
+    this->ReplicatedMovementMode = 0;
+    this->FoliageSoundCollisionRadius = 0.00f;
+    this->DisableLight = false;
+    this->LocalSolarBody = NULL;
+    this->backpackChildActorComponent = NULL;
+    this->LastHeldItem = NULL;
+    this->ActionComponent = CreateDefaultSubobject<UAstroActionComponent>(TEXT("ActionComponent"));
+    this->PointActionType = UAstroPlayMontageAction::StaticClass();
+    this->AddBrushIndicator = NULL;
+    this->SubtractBrushIndicator = NULL;
+    this->FlattenBrushIndicator = NULL;
+    this->ColorPickerIndicator = NULL;
+    this->PaintBrushIndicator = NULL;
+    this->BrushIndicatorMaterial = NULL;
+    this->BrushIndicatorMID = NULL;
+    this->BrushIndicatorMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BrushIndicatorMesh"));
+    this->bIsOxygenFilling = false;
+    this->bIsTired = false;
+    this->bHaveLifeSupport = false;
+    this->bBreathing = false;
+    this->bIsSuffocating = false;
+    this->bIsAlive = true;
+    this->bIsPowered = false;
+    this->bIsLightsOn = true;
+    this->bInvincible = true;
+    this->bFreeOxygenDebug = false;
+    this->bIsImmuneToDamage = false;
+    this->bSimulationStarted = false;
+    this->bFreeOxygen = false;
+    this->bOnHoverboard = false;
+    this->OxygenUseMultiplier = 1.00f;
+    this->FatigueLevel = 1.00f;
+    this->OxygenLevel = 0.00f;
+    this->Health = 1.00f;
+    this->MaxHealth = 1.00f;
+    this->DeathAnim = 0;
+    this->StormEncumbrance = 0.00f;
+    this->LightIntensity = 0.00f;
+    this->FilterBundleType = NULL;
+    this->StoredOxygenType = NULL;
+    this->OxygenType = NULL;
+    this->SafeZoneRadius = 0.00f;
+    this->RelativeBackpackUnbundleRayCastOrigins.AddDefaulted(2);
+    this->BrushIndicatorMeshComponent->SetupAttachment(RootComponent);
+}
 
 void AAstroCharacter::UpdatePlayerIndex() {
 }
@@ -79,6 +153,9 @@ bool AAstroCharacter::ServerDropHeavyCarriedItems_Validate() {
     return true;
 }
 
+void AAstroCharacter::ReapplySavedCharacterCustomization() {
+}
+
 
 
 void AAstroCharacter::PointItem(TSubclassOf<UItemType> ItemType, TSubclassOf<UControlSymbol> PingSymbol, const FVector& Location, const FVector& Normal) {
@@ -88,9 +165,6 @@ void AAstroCharacter::PlayDamageSound_Implementation() {
 }
 
 
-
-void AAstroCharacter::OnRep_OneTimeTooltipList() {
-}
 
 void AAstroCharacter::OnRep_LocalSolarBody(ASolarBody* oldSolarBody) {
 }
@@ -102,6 +176,9 @@ void AAstroCharacter::OnRep_IsPowered() {
 void AAstroCharacter::OnRep_Health() {
 }
 
+
+void AAstroCharacter::OnRep_CharacterCustomization() {
+}
 
 
 void AAstroCharacter::OnImmunityInitiatorDestroyed(AActor* destroyedInitiator) {
@@ -178,6 +255,22 @@ ADroneBase* AAstroCharacter::GetCreativeDrone() const {
     return NULL;
 }
 
+UAstroVisorMaterial* AAstroCharacter::GetCharacterVisorMaterial() const {
+    return NULL;
+}
+
+UAstroCharacterSuit* AAstroCharacter::GetCharacterSuit() const {
+    return NULL;
+}
+
+UAstroCharacterPalette* AAstroCharacter::GetCharacterPalette() const {
+    return NULL;
+}
+
+UAstroCharacterHat* AAstroCharacter::GetCharacterHat(ECharacterHatCategory Category) const {
+    return NULL;
+}
+
 ABackpack* AAstroCharacter::GetBackpack() const {
     return NULL;
 }
@@ -207,6 +300,28 @@ void AAstroCharacter::AuthoritySetLocalSolarBody(ASolarBody* SolarBody) {
 void AAstroCharacter::AuthoritySetIsImmuneToDamage(bool bNewIsImmuneToDamage, AActor* immunityInitiator) {
 }
 
+void AAstroCharacter::AuthoritySetCharacterVisorMaterial(UAstroVisorMaterial* visorColor) {
+}
+
+void AAstroCharacter::AuthoritySetCharacterSuit(UAstroCharacterSuit* Suit) {
+}
+
+void AAstroCharacter::AuthoritySetCharacterPalette(UAstroCharacterPalette* Palette) {
+}
+
+void AAstroCharacter::AuthoritySetCharacterOverlayPattern(UAstroCharacterOverlayPattern* OverlayPattern) {
+}
+
+void AAstroCharacter::AuthoritySetCharacterHat(UAstroCharacterHat* Hat, ECharacterHatCategory Category) {
+}
+
+void AAstroCharacter::AuthoritySetCharacterCustomization(const FAstroCharacterCustomization& Customization) {
+}
+
+
+void AAstroCharacter::AttachEffectsToCustomizationMesh(ECharacterCustomizationType customizationType, UAstroCustomizationItem* customizationItem, UMeshComponent* targetMesh, bool forDummy) {
+}
+
 
 
 
@@ -225,7 +340,7 @@ void AAstroCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     DOREPLIFETIME(AAstroCharacter, MissionsSeen);
     DOREPLIFETIME(AAstroCharacter, MissionsTracked);
     DOREPLIFETIME(AAstroCharacter, DataLogEntriesSeen);
-    DOREPLIFETIME(AAstroCharacter, TriggeredOneTimeItemTooltips);
+    DOREPLIFETIME(AAstroCharacter, CurrentCustomization);
     DOREPLIFETIME(AAstroCharacter, bIsOxygenFilling);
     DOREPLIFETIME(AAstroCharacter, bIsTired);
     DOREPLIFETIME(AAstroCharacter, bHaveLifeSupport);
@@ -245,84 +360,4 @@ void AAstroCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     DOREPLIFETIME(AAstroCharacter, StormEncumbrance);
 }
 
-AAstroCharacter::AAstroCharacter() {
-    this->MeshUsedAsIcon = NULL;
-    this->FallDampening = 0.50f;
-    this->CurrentSpeed = 0.00f;
-    this->Driving = false;
-    this->Dying = false;
-    this->Walking = false;
-    this->SwappingItem = false;
-    this->DrivingActor = NULL;
-    this->AttachOwner = NULL;
-    this->Jumped = false;
-    this->JumpInputReceived = false;
-    this->Sprinting = false;
-    this->HoldingIndicatorMesh = NULL;
-    this->HoldingIndicatorMaterial = NULL;
-    this->HoldingIndicatorDirMesh = NULL;
-    this->HoldingIndicatorDirMaterial = NULL;
-    this->ActuatorRerouteHelper = NULL;
-    this->HoldingIndicatorMeshComponent = NULL;
-    this->HoldingIndicatorDirMeshComponent = NULL;
-    this->HeldItem = NULL;
-    this->grabAnimSpeed = 1.50f;
-    this->Focusing = false;
-    this->FocusingRotation = false;
-    this->PingFocusing = false;
-    this->bEnableHeadlook = true;
-    this->HoldingTool = false;
-    this->IsHeavyCarrying = false;
-    this->BackpackRaised = false;
-    this->AccentMaterialIndex = 255;
-    this->LastGestureTime = 0.00f;
-    this->AstroMovementComponent = NULL;
-    this->CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("CapsuleCollision"));
-    this->MeshComponent = NULL;
-    this->WindParticles = NULL;
-    this->ItemSpawnPreviewLocation = NULL;
-    this->ItemSpawnPreviewSlot = NULL;
-    this->ReplicatedMovementMode = 0;
-    this->FoliageSoundCollisionRadius = 0.00f;
-    this->DisableLight = false;
-    this->LocalSolarBody = NULL;
-    this->backpackChildActorComponent = NULL;
-    this->LastHeldItem = NULL;
-    this->ActionComponent = CreateDefaultSubobject<UAstroActionComponent>(TEXT("ActionComponent"));
-    this->PointActionType = UAstroPlayMontageAction::StaticClass();
-    this->AddBrushIndicator = NULL;
-    this->SubtractBrushIndicator = NULL;
-    this->FlattenBrushIndicator = NULL;
-    this->ColorPickerIndicator = NULL;
-    this->PaintBrushIndicator = NULL;
-    this->BrushIndicatorMaterial = NULL;
-    this->BrushIndicatorMID = NULL;
-    this->BrushIndicatorMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BrushIndicatorMesh"));
-    this->bIsOxygenFilling = false;
-    this->bIsTired = false;
-    this->bHaveLifeSupport = false;
-    this->bBreathing = false;
-    this->bIsSuffocating = false;
-    this->bIsAlive = true;
-    this->bIsPowered = false;
-    this->bIsLightsOn = true;
-    this->bInvincible = true;
-    this->bIsImmuneToDamage = false;
-    this->bSimulationStarted = false;
-    this->bFreeOxygen = false;
-    this->bOnHoverboard = false;
-    this->OxygenUseMultiplier = 1.00f;
-    this->FatigueLevel = 1.00f;
-    this->OxygenLevel = 0.00f;
-    this->Health = 1.00f;
-    this->MaxHealth = 1.00f;
-    this->DeathAnim = 0;
-    this->StormEncumbrance = 0.00f;
-    this->LightIntensity = 0.00f;
-    this->FilterBundleType = NULL;
-    this->StoredOxygenType = NULL;
-    this->OxygenType = NULL;
-    this->SafeZoneRadius = 0.00f;
-    this->RelativeBackpackUnbundleRayCastOrigins.AddDefaulted(2);
-}
 

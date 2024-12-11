@@ -7,5 +7,6 @@ FInitialClientStateParams::FInitialClientStateParams() {
     this->IsHostDedicatedServer = false;
     this->IsJoiningCreativeModeGame = false;
     this->IsJoiningGameWithCreativeModeActive = false;
+    this->IsJoiningCustomGame = false;
 }
 

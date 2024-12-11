@@ -56,7 +56,8 @@ private:
     TArray<FSlotReference> DestinationSlots;
     
 public:
-    UFuelConsumerComponent();
+    UFuelConsumerComponent(const FObjectInitializer& ObjectInitializer);
+
 private:
     UFUNCTION(BlueprintCallable)
     void OnItemSlotted(APhysicalItem* Item);

@@ -1,6 +1,8 @@
 #include "Activation.h"
 
-class UActivation;
+UActivation::UActivation() {
+    this->m_bActive = false;
+}
 
 bool UActivation::Update(bool Active) {
     return false;
@@ -25,7 +27,4 @@ void UActivation::BindTo(UActivation* Other) {
 void UActivation::Activate() {
 }
 
-UActivation::UActivation() {
-    this->m_bActive = false;
-}
 

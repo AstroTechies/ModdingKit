@@ -2,16 +2,10 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
-class AAstroPlayerController;
-class APhysicalItem;
-class ASlotConnection;
-class UAstroSaveCustomArchiveProxy;
-class UItemType;
-class USlotBehavior;
-class USlotDelegates;
-class USlotsComponent;
-class UStaticMeshComponent;
+USlotsComponent::USlotsComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->bPreserveLegacyVisuals = true;
+}
 
 bool USlotsComponent::TakeSlotItemOfTypeFromOther(FSlotReference Slot, FSlotReference Other, TSubclassOf<UItemType> Type) {
     return false;
@@ -269,7 +263,4 @@ void USlotsComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     DOREPLIFETIME(USlotsComponent, ReplicatedSlotRuleStatus);
 }
 
-USlotsComponent::USlotsComponent() {
-    this->bPreserveLegacyVisuals = true;
-}
 

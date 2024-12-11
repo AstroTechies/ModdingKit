@@ -14,16 +14,20 @@ struct FResearchProgressionComponent : public FAstroEntityComponent {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
-    TArray<TSubclassOf<UItemType>> KnownItemTypes;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
-    TArray<TSubclassOf<UItemType>> UnlockedItemTypes;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FName> CompletedBonusTimelines;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FCumulativeResearchTracker TotalResearch;
+    
+protected:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    TArray<TSubclassOf<UItemType>> UnlockedItemTypes;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    TArray<TSubclassOf<UItemType>> KnownItemTypes;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    TArray<TSubclassOf<UItemType>> HackedItemTypes;
     
 private:
     UPROPERTY(EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
@@ -44,6 +48,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnItemTypeListChanged OnUnlockedItemsChanged;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnItemTypeListChanged OnHackedItemsChanged;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TMap<FName, FCumulativeResearchTracker> ActiveBonusTimelineProgress;

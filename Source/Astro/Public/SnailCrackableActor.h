@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "Engine/EngineTypes.h"
 #include "SnailCrackableActor.generated.h"
 
 UCLASS(Blueprintable)
@@ -23,6 +23,7 @@ public:
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FComponentReference SlotsComponentRef;
     
-    ASnailCrackableActor();
+    ASnailCrackableActor(const FObjectInitializer& ObjectInitializer);
+
 };
 

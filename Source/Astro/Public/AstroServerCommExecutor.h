@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "AstroServerCommExecutor.generated.h"
 
 UCLASS(Blueprintable)
@@ -8,6 +8,7 @@ class ASTRO_API UAstroServerCommExecutor : public UObject {
     GENERATED_BODY()
 public:
     UAstroServerCommExecutor();
+
     UFUNCTION(BlueprintCallable, Exec)
     void TestProxyTimeoutIndex(int32 timeoutIndex);
     

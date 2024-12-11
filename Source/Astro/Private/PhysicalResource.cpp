@@ -1,5 +1,9 @@
 #include "PhysicalResource.h"
 
+APhysicalResource::APhysicalResource(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->DestroyOnDrain = true;
+}
+
 
 void APhysicalResource::PostDrained() {
 }
@@ -17,7 +21,4 @@ float APhysicalResource::GetFullness() {
     return 0.0f;
 }
 
-APhysicalResource::APhysicalResource() {
-    this->DestroyOnDrain = true;
-}
 

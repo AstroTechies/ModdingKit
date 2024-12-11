@@ -10,7 +10,7 @@ USTRUCT(BlueprintType)
 struct FResearchSubjectComponent : public FAstroEntityComponent {
     GENERATED_BODY()
 public:
-    UPROPERTY(EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<UResearchSubjectDefinition> ResearchSubjectDefinition;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))

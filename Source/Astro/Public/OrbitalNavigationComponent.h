@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
 #include "OrbitalReplicatedData.h"
 #include "ReplicatedOrbitalTimeData.h"
@@ -157,9 +157,10 @@ protected:
     float MinOrbitSpeedScalar;
     
 public:
-    UOrbitalNavigationComponent();
+    UOrbitalNavigationComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void SetPlanetSelection(bool Enable);
     

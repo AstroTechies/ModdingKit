@@ -1,6 +1,7 @@
 #include "AstroMissionData.h"
 
 FAstroMissionData::FAstroMissionData() {
+    this->IsEventMission = false;
     this->NotificationColor = EAstroColor::None;
     this->NotificationIcon = NULL;
     this->KeyItemType = NULL;
@@ -14,5 +15,7 @@ FAstroMissionData::FAstroMissionData() {
     this->bSuppressActivationNotification = false;
     this->bReclaimableReward = false;
     this->DeliveryType = EAstroMissionRewardDeliveryType::SupplyDrop;
+    this->RequiresGlitchWalkersEntitlement = false;
+//    this->EngagementStateToSetOnActivation = FAstroGWExpansionEngagementState::GW_NotEngaged;
 }
 

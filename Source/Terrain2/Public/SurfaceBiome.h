@@ -1,5 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "GameplayTagContainer.h"
+#include "GameplayTagContainer.h"
 #include "SurfaceLayer.h"
 #include "SurfaceBiome.generated.h"
 
@@ -11,6 +13,12 @@ struct TERRAIN2_API FSurfaceBiome {
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName Name;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    FGameplayTag CustomGameTag;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    FGameplayTagContainer CustomGameTags;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 Priority;

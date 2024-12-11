@@ -1,6 +1,7 @@
 #include "BatteryActuator.h"
 
-class APhysicalItem;
+ABatteryActuator::ABatteryActuator(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+}
 
 void ABatteryActuator::OnAuthorityFullyCharged() {
 }
@@ -20,6 +21,4 @@ void ABatteryActuator::AuthorityHandleTargetStorageSlotsReset() {
 void ABatteryActuator::AuthorityHandleAttachedStorageSlotEvent(APhysicalItem* movedItem) {
 }
 
-ABatteryActuator::ABatteryActuator() {
-}
 

@@ -7,6 +7,7 @@ UCLASS(Abstract, Blueprintable)
 class ASTRO_API AControlSlot : public AItemSlot {
     GENERATED_BODY()
 public:
-    AControlSlot();
+    AControlSlot(const FObjectInitializer& ObjectInitializer);
+
 };
 

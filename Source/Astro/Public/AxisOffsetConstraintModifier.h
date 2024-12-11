@@ -43,6 +43,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float RightCorrectionSpeed;
     
-    UAxisOffsetConstraintModifier();
+    UAxisOffsetConstraintModifier(const FObjectInitializer& ObjectInitializer);
+
 };
 

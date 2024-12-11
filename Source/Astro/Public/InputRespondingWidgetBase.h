@@ -8,6 +8,7 @@ class ASTRO_API UInputRespondingWidgetBase : public UUserWidgetBlueprintDesignab
     GENERATED_BODY()
 public:
     UInputRespondingWidgetBase();
+
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void InputStarted(FName ActionOrAxisName);
     

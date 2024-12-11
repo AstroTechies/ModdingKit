@@ -4,6 +4,8 @@
 #include "OnThemeActiveStatusChangedDelegate.h"
 #include "AstroThemeNotificationComponent.generated.h"
 
+class AActor;
+
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UAstroThemeNotificationComponent : public UActorComponent {
     GENERATED_BODY()
@@ -19,9 +21,16 @@ protected:
     uint8 OnlyDestroyBurried: 1;
     
 public:
-    UAstroThemeNotificationComponent();
+    UAstroThemeNotificationComponent(const FObjectInitializer& ObjectInitializer);
+
+    UFUNCTION(BlueprintCallable)
+    void ValidateThemesStatus();
+    
     UFUNCTION(BlueprintCallable)
     void OnThemeStatusChanged();
+    
+    UFUNCTION(BlueprintCallable)
+    void CloneToActor(AActor* Actor);
     
 };
 

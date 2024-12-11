@@ -14,7 +14,8 @@ UCLASS(Blueprintable, NonTransient)
 class ASTRO_API AGatesGameMode : public AAstroGameMode {
     GENERATED_BODY()
 public:
-    AGatesGameMode();
+    AGatesGameMode(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     AGateStation* TryGetGateStationActor() const;
     
@@ -23,6 +24,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     AGateChamber* TryGetGateChamberActor(AAstroPlanet* chamberPlanet, int32 ChamberCoordinateIndex) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    AGateChamber* TryGetChamberAsGateStationChamberActor() const;
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void StationSpawned();

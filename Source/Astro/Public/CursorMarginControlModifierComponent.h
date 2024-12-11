@@ -39,6 +39,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ECameraControlMask ControlMask;
     
-    UCursorMarginControlModifierComponent();
+    UCursorMarginControlModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

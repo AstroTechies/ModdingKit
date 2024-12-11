@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
 #include "TestColorCycleComponent.generated.h"
 
@@ -17,6 +17,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor MaxColor;
     
-    UTestColorCycleComponent();
+    UTestColorCycleComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

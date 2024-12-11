@@ -1,6 +1,6 @@
 #include "JetpackMovementOverrideComponent.h"
 
-UJetpackMovementOverrideComponent::UJetpackMovementOverrideComponent() {
+UJetpackMovementOverrideComponent::UJetpackMovementOverrideComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->AllJetpacksThrustVertical = 70.00f;
     this->SingleJetpackThrustVertical = 110.00f;
     this->AllJetpacksThrustForward = 70.00f;
@@ -17,4 +17,5 @@ UJetpackMovementOverrideComponent::UJetpackMovementOverrideComponent() {
     this->CustomGravityScaler = 0.00f;
     this->UseCustomGravityScalar = true;
 }
+
 

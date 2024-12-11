@@ -8,5 +8,6 @@ class UCraneCameraContext : public UCameraContext {
     GENERATED_BODY()
 public:
     UCraneCameraContext();
+
 };
 

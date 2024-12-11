@@ -26,6 +26,7 @@ protected:
     
 public:
     UAstroNotificationTagWidget();
+
 protected:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateAnimationVisuals(float DeltaTime);

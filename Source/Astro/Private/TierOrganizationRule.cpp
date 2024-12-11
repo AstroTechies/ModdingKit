@@ -4,3 +4,4 @@ UTierOrganizationRule::UTierOrganizationRule() {
     this->RequestedItemTier = 1;
 }
 
+

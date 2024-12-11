@@ -15,6 +15,7 @@ protected:
     
 public:
     UAstroSlateFocusWidgetContainer();
+
 protected:
     UFUNCTION(BlueprintCallable)
     void RestoreLastFocus();

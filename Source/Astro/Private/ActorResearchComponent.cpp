@@ -1,7 +1,19 @@
 #include "ActorResearchComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class APlayController;
+UActorResearchComponent::UActorResearchComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->ResearchPowerRequired = 4.00f;
+    this->MinimumResearchPowerFraction = 1.00f;
+    this->MinimumResearchRateMultiplier = 1.00f;
+    this->UnderPoweredResearchRateCurve = NULL;
+    this->MaximumResearchPowerMultiplier = 1.00f;
+    this->MaximumResearchRateMutliplier = 1.00f;
+    this->OverPoweredResearchRateCurve = NULL;
+    this->bResearchSlotsUnclickableWhileActive = true;
+    this->bDestroyActiveResearchSubjectsOnInterruption = true;
+    this->ExpiredResearchSubjectDestructionDelay = 3.00f;
+}
 
 void UActorResearchComponent::OnRep_ResearchData() {
 }
@@ -22,16 +34,4 @@ void UActorResearchComponent::GetLifetimeReplicatedProps(TArray<FLifetimePropert
     DOREPLIFETIME(UActorResearchComponent, ResearchReplicationData);
 }
 
-UActorResearchComponent::UActorResearchComponent() {
-    this->ResearchPowerRequired = 4.00f;
-    this->MinimumResearchPowerFraction = 1.00f;
-    this->MinimumResearchRateMultiplier = 1.00f;
-    this->UnderPoweredResearchRateCurve = NULL;
-    this->MaximumResearchPowerMultiplier = 1.00f;
-    this->MaximumResearchRateMutliplier = 1.00f;
-    this->OverPoweredResearchRateCurve = NULL;
-    this->bResearchSlotsUnclickableWhileActive = true;
-    this->bDestroyActiveResearchSubjectsOnInterruption = true;
-    this->ExpiredResearchSubjectDestructionDelay = 3.00f;
-}
 

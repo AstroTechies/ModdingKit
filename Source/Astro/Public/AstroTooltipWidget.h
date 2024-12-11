@@ -41,6 +41,7 @@ protected:
     
 public:
     UAstroTooltipWidget();
+
 protected:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateUseInteractionVisiblityOverride();

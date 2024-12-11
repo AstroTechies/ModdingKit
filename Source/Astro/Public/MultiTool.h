@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
+#include "Engine/EngineBaseTypes.h"
+#include "Engine/NetSerialization.h"
 #include "ClickResult.h"
 #include "InteractionTarget.h"
 #include "SlotClickResult.h"
@@ -171,9 +171,10 @@ protected:
     uint8 ClickablesSuppressionCount;
     
 public:
-    UMultiTool();
+    UMultiTool(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void UnSuppressClickables();
     

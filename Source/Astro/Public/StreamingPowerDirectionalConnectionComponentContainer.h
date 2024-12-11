@@ -10,6 +10,7 @@ class ASTRO_API UStreamingPowerDirectionalConnectionComponentContainer : public 
     GENERATED_BODY()
 public:
     UStreamingPowerDirectionalConnectionComponentContainer();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FStreamingPowerDirectionalConnectionComponent GetStreamingPowerConnectionComponent(FAstroDatumRef StreamingPowerConnectionComponentRef, bool& bOutSuccess);
     

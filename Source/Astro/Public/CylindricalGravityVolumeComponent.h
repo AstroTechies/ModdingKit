@@ -18,6 +18,7 @@ protected:
     bool bApplyGravityOutward;
     
 public:
-    UCylindricalGravityVolumeComponent();
+    UCylindricalGravityVolumeComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

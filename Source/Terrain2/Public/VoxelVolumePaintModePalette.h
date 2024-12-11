@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "PaintModeMaterial.h"
 #include "VoxelVolumePaintModePalette.generated.h"
 
@@ -17,5 +17,6 @@ protected:
     
 public:
     UVoxelVolumePaintModePalette();
+
 };
 

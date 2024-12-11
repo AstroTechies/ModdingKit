@@ -1,7 +1,26 @@
 #include "Scanner.h"
 #include "Net/UnrealNetwork.h"
 
-class AAstroPlayerController;
+AScanner::AScanner(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->ScannerMode = EScannerMode::Asleep;
+    this->TargetDistance = EScannerTargetDistance::NoTarget;
+    this->MidRangeDistancePercentage = 0.00f;
+    this->PitchAnimationValue = 0.00f;
+    this->YawAnimationValue = 0.00f;
+    this->ScanCooldownTimeSeconds = 0.00f;
+    this->ShortRangeMaxDistance = 0.00f;
+    this->MidRangeMaxDistance = 0.00f;
+    this->PitchAlphaCurve = NULL;
+    this->ShortRangeScanDurationSeconds = 0.00f;
+    this->LongRangeScanDurationSeconds = 0.00f;
+    this->MidRangeScanSpeedTransitionCurve = NULL;
+    this->MidRangeScanSpeedSelectionCurve = NULL;
+    this->MidRangeScanSweepCount = 0;
+    this->ObfuscationYawOffsetCurve = NULL;
+    this->ObfuscationYawOffsetCurveFrequency = 0.00f;
+    this->MaxObfuscationYawOffsetMultiplier = 0.00f;
+    this->MidRangeScanIntroAnimationLengthSeconds = 0.00f;
+}
 
 void AScanner::OnRep_UsingCharacter() {
 }
@@ -49,24 +68,4 @@ void AScanner::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetime
     DOREPLIFETIME(AScanner, UsingCharacter);
 }
 
-AScanner::AScanner() {
-    this->ScannerMode = EScannerMode::Asleep;
-    this->TargetDistance = EScannerTargetDistance::NoTarget;
-    this->MidRangeDistancePercentage = 0.00f;
-    this->PitchAnimationValue = 0.00f;
-    this->YawAnimationValue = 0.00f;
-    this->ScanCooldownTimeSeconds = 0.00f;
-    this->ShortRangeMaxDistance = 0.00f;
-    this->MidRangeMaxDistance = 0.00f;
-    this->PitchAlphaCurve = NULL;
-    this->ShortRangeScanDurationSeconds = 0.00f;
-    this->LongRangeScanDurationSeconds = 0.00f;
-    this->MidRangeScanSpeedTransitionCurve = NULL;
-    this->MidRangeScanSpeedSelectionCurve = NULL;
-    this->MidRangeScanSweepCount = 0;
-    this->ObfuscationYawOffsetCurve = NULL;
-    this->ObfuscationYawOffsetCurveFrequency = 0.00f;
-    this->MaxObfuscationYawOffsetMultiplier = 0.00f;
-    this->MidRangeScanIntroAnimationLengthSeconds = 0.00f;
-}
 

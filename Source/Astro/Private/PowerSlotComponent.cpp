@@ -1,5 +1,6 @@
 #include "PowerSlotComponent.h"
 
-UPowerSlotComponent::UPowerSlotComponent() {
+UPowerSlotComponent::UPowerSlotComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

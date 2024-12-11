@@ -1,7 +1,10 @@
 #include "DynamicWhitelistOrganizationRule.h"
 #include "Templates/SubclassOf.h"
 
-class UItemType;
+UDynamicWhitelistOrganizationRule::UDynamicWhitelistOrganizationRule() {
+    this->bEjectUnwantedItems = true;
+    this->bRequireLiteralItemType = false;
+}
 
 void UDynamicWhitelistOrganizationRule::SetWhitelist(const TArray<TSubclassOf<UItemType>>& Whitelist) {
 }
@@ -15,7 +18,4 @@ void UDynamicWhitelistOrganizationRule::SetRequireNonFullItems(bool requireNonFu
 void UDynamicWhitelistOrganizationRule::SetRequireLiteralItemType(bool requireLiteralItemType) {
 }
 
-UDynamicWhitelistOrganizationRule::UDynamicWhitelistOrganizationRule() {
-    this->bRequireLiteralItemType = false;
-}
 
