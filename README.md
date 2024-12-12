@@ -5,7 +5,7 @@ This is a modding kit made for modding Astroneer. It should be fairly up to date
 ## Usage Guide
 You may find further information on using this kit on the [astroneermodding.readthedocs.io website](https://astroneermodding.readthedocs.io/en/latest/guides/kitSetup.html)
 
-## Source Build Guide
+## Kit Generation Guide
 If you are interested in re-generating the Source directory on your own, e.g. for updating it to a future version, the process is as follows. This is not needed to make mods, and should only be done by advanced users.
 1. Dump a set of UHT-compatible headers with UE4SS. You may wish to reference this guide for further information: [https://docs.ue4ss.com/guides/generating-uht-compatible-headers.html](https://docs.ue4ss.com/guides/generating-uht-compatible-headers.html).
 
