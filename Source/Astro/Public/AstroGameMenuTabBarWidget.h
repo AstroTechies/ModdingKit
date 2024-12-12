@@ -12,6 +12,7 @@ public:
     FAstroGameMenuTabBarAuthoringData AuthoringData;
     
     UAstroGameMenuTabBarWidget();
+
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
     float GetWidthOfTabBar() const;
     

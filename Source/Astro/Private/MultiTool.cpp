@@ -1,18 +1,51 @@
 #include "MultiTool.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=InputComponent -FallbackName=InputComponent
+#include "Components/InputComponent.h"
 #include "Activation.h"
 #include "Net/UnrealNetwork.h"
 
-class AActor;
-class APhysicalItem;
-class APlayController;
-class ASlotConnection;
-class UActuatorComponent;
-class UClickableComponent;
-class UCrackableActorComponent;
-class UPrimitiveComponent;
-class USceneComponent;
-class UTooltipComponent;
+UMultiTool::UMultiTool(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->PlayerPointSymbol = NULL;
+    this->LerpSpeed = 3.00f;
+    this->ActionReadyRatio = 0.33f;
+    this->GamepadCursorSpeed = 800.00f;
+    this->SmallItemMaxDistance = 3800.00f;
+    this->FocusMinDistance = 400.00f;
+    this->IndicatorScale = 0.00f;
+    this->TraceDistance = 10000.00f;
+    this->PlanetTraceDistance = 10000000.00f;
+    this->PlanetSelectDistance = 3000000.00f;
+    this->IndicatorClass = NULL;
+    this->BaseToolTier = 4;
+    this->MaxDistance = 2800.00f;
+    this->MaxInteractionWidgetDistance = 1000.00f;
+    this->DisplayInteractionWidgetsWhenUsingCursor = false;
+    this->SelectionRotateSpeed = 180.00f;
+    this->SelectionRotateAcceleration = 360.00f;
+    this->DrivingInteractionTooltipExpansionSpeedMultiplier = 4.00f;
+    this->Indicator = NULL;
+    this->ActionReadySelectionAmount = 0.00f;
+    this->CursorOverCursorNotifyActor = NULL;
+    this->CursorOverCursorNotifySecondaryActor = NULL;
+    this->CursorOverCursorNotifyComponent = NULL;
+    this->ShowCursor = true;
+    this->CameraContext = NULL;
+    this->ObjectSelectedInputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("ObjectSelectedInputComponent"));
+    this->InteractionWidgetInputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("InteractionWidgetInputComponent"));
+    this->PlayerDrivingInputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("PlayerDrivingInputComponent"));
+    this->FocusedTooltipInputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("FocusedTooltipInputComponent"));
+    this->CharacterControlActivator = NULL;
+    this->m_currentSelection = NULL;
+    this->PreviousRepSelection = NULL;
+    this->ToolActive = CreateDefaultSubobject<UActivation>(TEXT("usingTool"));
+    this->CurrentSelectionComponent = NULL;
+    this->CurrentDrivingActor = NULL;
+    this->CurrentFocusedTooltip = NULL;
+    this->DrivingTooltip = NULL;
+    this->SwapItemNewItem = NULL;
+    this->SwapItemCurrentlyHeld = NULL;
+    this->ClickablesSuppressionCount = 0;
+}
 
 void UMultiTool::UnSuppressClickables() {
 }
@@ -287,46 +320,4 @@ void UMultiTool::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifeti
     DOREPLIFETIME(UMultiTool, m_currentSelection);
 }
 
-UMultiTool::UMultiTool() {
-    this->PlayerPointSymbol = NULL;
-    this->LerpSpeed = 3.00f;
-    this->ActionReadyRatio = 0.33f;
-    this->GamepadCursorSpeed = 800.00f;
-    this->SmallItemMaxDistance = 3800.00f;
-    this->FocusMinDistance = 400.00f;
-    this->IndicatorScale = 0.00f;
-    this->TraceDistance = 10000.00f;
-    this->PlanetTraceDistance = 10000000.00f;
-    this->PlanetSelectDistance = 3000000.00f;
-    this->IndicatorClass = NULL;
-    this->BaseToolTier = 4;
-    this->MaxDistance = 2800.00f;
-    this->MaxInteractionWidgetDistance = 1000.00f;
-    this->DisplayInteractionWidgetsWhenUsingCursor = false;
-    this->SelectionRotateSpeed = 180.00f;
-    this->SelectionRotateAcceleration = 360.00f;
-    this->DrivingInteractionTooltipExpansionSpeedMultiplier = 4.00f;
-    this->Indicator = NULL;
-    this->ActionReadySelectionAmount = 0.00f;
-    this->CursorOverCursorNotifyActor = NULL;
-    this->CursorOverCursorNotifySecondaryActor = NULL;
-    this->CursorOverCursorNotifyComponent = NULL;
-    this->ShowCursor = true;
-    this->CameraContext = NULL;
-    this->ObjectSelectedInputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("ObjectSelectedInputComponent"));
-    this->InteractionWidgetInputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("InteractionWidgetInputComponent"));
-    this->PlayerDrivingInputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("PlayerDrivingInputComponent"));
-    this->FocusedTooltipInputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("FocusedTooltipInputComponent"));
-    this->CharacterControlActivator = NULL;
-    this->m_currentSelection = NULL;
-    this->PreviousRepSelection = NULL;
-    this->ToolActive = CreateDefaultSubobject<UActivation>(TEXT("usingTool"));
-    this->CurrentSelectionComponent = NULL;
-    this->CurrentDrivingActor = NULL;
-    this->CurrentFocusedTooltip = NULL;
-    this->DrivingTooltip = NULL;
-    this->SwapItemNewItem = NULL;
-    this->SwapItemCurrentlyHeld = NULL;
-    this->ClickablesSuppressionCount = 0;
-}
 

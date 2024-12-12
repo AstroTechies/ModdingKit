@@ -1,6 +1,7 @@
 #include "AstroNotificationManager.h"
 
-UAstroNotificationManager::UAstroNotificationManager() {
+UAstroNotificationManager::UAstroNotificationManager(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->NotificationsDisabled = false;
 }
+
 

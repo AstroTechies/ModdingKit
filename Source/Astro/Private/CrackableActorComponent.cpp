@@ -1,7 +1,24 @@
 #include "CrackableActorComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class UCrackableActorComponent;
+UCrackableActorComponent::UCrackableActorComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->CrackingSpeed = 10.00f;
+    this->Method = ECrackableActorMethod::Hover;
+    this->NetworkingPolicy = ECrackableActorNetworkingPolicy::LocalOnlyNoNetworking;
+    this->bEncapsulateClicksWhenClosed = true;
+    this->bDisableComponentClicksWhenClosed = true;
+    this->bCracked = false;
+    this->bClickToClose = true;
+    this->bCloseOnUnhandledClick = true;
+    this->bCloseWhenParentCrackableStateChanges = true;
+    this->bExaminable = false;
+    this->bCracksOnlyOnExamine = false;
+    this->ClientScaleWhenCracked = 1.00f;
+    this->ScreenScaleRatio = 0.00f;
+    this->HoverHeight = 250.00f;
+    this->HideThreshold = 0.03f;
+    this->PivotAngle = 3.14f;
+}
 
 void UCrackableActorComponent::UpdateScreenScaleRatioAndCameraSpaceOffset(float ratio, FVector Offset) {
 }
@@ -59,22 +76,4 @@ void UCrackableActorComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProper
     DOREPLIFETIME(UCrackableActorComponent, StartingRelativeTransform);
 }
 
-UCrackableActorComponent::UCrackableActorComponent() {
-    this->CrackingSpeed = 10.00f;
-    this->Method = ECrackableActorMethod::Hover;
-    this->NetworkingPolicy = ECrackableActorNetworkingPolicy::LocalOnlyNoNetworking;
-    this->bEncapsulateClicksWhenClosed = true;
-    this->bDisableComponentClicksWhenClosed = true;
-    this->bCracked = false;
-    this->bClickToClose = true;
-    this->bCloseOnUnhandledClick = true;
-    this->bCloseWhenParentCrackableStateChanges = true;
-    this->bExaminable = false;
-    this->bCracksOnlyOnExamine = false;
-    this->ClientScaleWhenCracked = 1.00f;
-    this->ScreenScaleRatio = 0.00f;
-    this->HoverHeight = 250.00f;
-    this->HideThreshold = 0.03f;
-    this->PivotAngle = 3.14f;
-}
 

@@ -4,3 +4,4 @@ UDeformToolCameraContext::UDeformToolCameraContext() {
     this->DeformTool = NULL;
 }
 
+

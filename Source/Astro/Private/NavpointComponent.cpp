@@ -1,5 +1,9 @@
 #include "NavpointComponent.h"
 
+UNavpointComponent::UNavpointComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bShouldRegisterNavpoint = true;
+}
+
 void UNavpointComponent::HandleNavpointOwnershipChanged(const FGuid& NewNavpointID) {
 }
 
@@ -15,7 +19,4 @@ void UNavpointComponent::AuthoritySetShouldRegisterNavpoint(bool bShouldRegister
 void UNavpointComponent::AuthoritySetNavpointEnabled(bool bNavpointEnabled) {
 }
 
-UNavpointComponent::UNavpointComponent() {
-    this->bShouldRegisterNavpoint = true;
-}
 

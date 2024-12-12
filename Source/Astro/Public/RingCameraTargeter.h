@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
 #include "SlotReference.h"
 #include "RingCameraTargeter.generated.h"
@@ -41,7 +41,8 @@ private:
     FSlotReference Slot;
     
 public:
-    URingCameraTargeter();
+    URingCameraTargeter(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void SnapToTargetLocation(const FVector& TargetLocation);
     

@@ -10,6 +10,7 @@ class ASTRO_API UGateObjectComponentContainer : public UAstroEntityComponentCont
     GENERATED_BODY()
 public:
     UGateObjectComponentContainer();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FGateObjectComponent GetGateObjectComponent(FAstroDatumRef GateObjectComponentRef, bool& bOutSuccess);
     

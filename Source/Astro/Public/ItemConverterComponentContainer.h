@@ -10,6 +10,7 @@ class ASTRO_API UItemConverterComponentContainer : public UAstroEntityComponentC
     GENERATED_BODY()
 public:
     UItemConverterComponentContainer();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FItemConverterComponent GetItemConverterComponent(FAstroDatumRef ItemConverterComponentRef, bool& bOutSuccess);
     

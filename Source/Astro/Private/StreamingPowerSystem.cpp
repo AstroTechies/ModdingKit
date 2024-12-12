@@ -1,6 +1,8 @@
 #include "StreamingPowerSystem.h"
 
-class AActor;
+UStreamingPowerSystem::UStreamingPowerSystem() {
+    this->TaskManager = NULL;
+}
 
 void UStreamingPowerSystem::SplitMergedConnectionBetweenStreamingPowerNodesOnActors(AActor* thisActor, AActor* OtherActor) {
 }
@@ -16,7 +18,4 @@ bool UStreamingPowerSystem::AddPoweredItemToActorsPowerNode(AActor* gridNodeOwne
     return false;
 }
 
-UStreamingPowerSystem::UStreamingPowerSystem() {
-    this->TaskManager = NULL;
-}
 

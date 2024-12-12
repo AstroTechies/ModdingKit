@@ -28,5 +28,6 @@ public:
     FUserWidgetSignal OnTileUnhovered;
     
     UAstroInteractableTileWidget();
+
 };
 

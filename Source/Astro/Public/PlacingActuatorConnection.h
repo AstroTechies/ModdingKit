@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "SignalDelegate.h"
 #include "SlotConnection.h"
 #include "SourceRerouteNode.h"
@@ -60,9 +60,10 @@ protected:
     FSourceRerouteNode SourceRerouteNode;
     
 public:
-    APlacingActuatorConnection();
+    APlacingActuatorConnection(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerPlaceRerouteNode(UPrimitiveComponent* Component, const FVector Location, const FVector Normal);

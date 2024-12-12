@@ -9,7 +9,8 @@ UCLASS(Abstract, Blueprintable)
 class ASTRO_API AGenericSliderControlPanel : public AControlPanel {
     GENERATED_BODY()
 public:
-    AGenericSliderControlPanel();
+    AGenericSliderControlPanel(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void ProcessSliderInput();

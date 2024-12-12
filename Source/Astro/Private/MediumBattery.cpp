@@ -1,6 +1,13 @@
 #include "MediumBattery.h"
 #include "Net/UnrealNetwork.h"
 
+AMediumBattery::AMediumBattery(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->RingMaterial = NULL;
+    this->PowerComponent = NULL;
+    this->RingMeshComponent = NULL;
+    this->CurrentChargePercent = 0.00f;
+}
+
 void AMediumBattery::OnRep() {
 }
 
@@ -13,10 +20,4 @@ void AMediumBattery::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLi
     DOREPLIFETIME(AMediumBattery, CurrentChargePercent);
 }
 
-AMediumBattery::AMediumBattery() {
-    this->RingMaterial = NULL;
-    this->PowerComponent = NULL;
-    this->RingMeshComponent = NULL;
-    this->CurrentChargePercent = 0.00f;
-}
 

@@ -15,6 +15,7 @@ enum class EDeformType : uint8 {
     FlattenAddOnly,
     TrueFlatStamp,
     PlatformSurface,
+    RevertModifications,
     Count,
 };
 

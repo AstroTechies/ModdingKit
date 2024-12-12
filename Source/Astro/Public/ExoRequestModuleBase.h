@@ -63,9 +63,10 @@ protected:
     uint8 bCanClaimPendingRewardForFree: 1;
     
 public:
-    AExoRequestModuleBase();
+    AExoRequestModuleBase(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void UpdateScore();
     
@@ -102,6 +103,11 @@ protected:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasUnclaimedPhysicalItemRewards(APlayController* PlayController) const;
     
+public:
+    UFUNCTION(BlueprintCallable)
+    bool HasShip() const;
+    
+protected:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     UTexture* GetEventInputIcon() const;
     

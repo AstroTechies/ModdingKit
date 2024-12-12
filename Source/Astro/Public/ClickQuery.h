@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
+#include "UObject/NoExportTypes.h"
 #include "ClickParams.h"
 #include "ClickResult.h"
 #include "EClickBehavior.h"
@@ -24,6 +25,7 @@ public:
     FClickResult Result;
     
     UClickQuery();
+
     UFUNCTION(BlueprintCallable)
     void SetResultTertiary(AActor* Actor, AActor* ViewActor, EClickBehavior Behavior);
     
@@ -77,6 +79,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetInteractingActor() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    FVector GetHitLocation() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     UPrimitiveComponent* GetHitComponent() const;

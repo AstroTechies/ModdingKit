@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
+#include "Engine/EngineTypes.h"
 #include "EAugmentProperty.h"
 #include "SignalDelegate.h"
 #include "AugmentComponent.generated.h"
@@ -51,9 +51,10 @@ private:
     FTimerHandle ReactivationTimer;
     
 public:
-    UAugmentComponent();
+    UAugmentComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 private:
     UFUNCTION(BlueprintCallable)
     void UnblockReactivation();

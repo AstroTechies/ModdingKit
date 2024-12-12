@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+#include "UObject/NoExportTypes.h"
 #include "AstroNotificationUnlockAuthoringData.generated.h"
 
 class UObject;

@@ -1,6 +1,8 @@
 #include "AstroSlateFocusWidgetContainer.h"
 
-class UAstroSlateFocusWidget;
+UAstroSlateFocusWidgetContainer::UAstroSlateFocusWidgetContainer() {
+    this->ChildWidgetWithFocusHighlight = NULL;
+}
 
 void UAstroSlateFocusWidgetContainer::RestoreLastFocus() {
 }
@@ -8,7 +10,4 @@ void UAstroSlateFocusWidgetContainer::RestoreLastFocus() {
 void UAstroSlateFocusWidgetContainer::ChildWidgetFocusHighlightChanged(UAstroSlateFocusWidget* FocusWidget) {
 }
 
-UAstroSlateFocusWidgetContainer::UAstroSlateFocusWidgetContainer() {
-    this->ChildWidgetWithFocusHighlight = NULL;
-}
 

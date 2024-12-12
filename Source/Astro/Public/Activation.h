@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "EnableSignalDelegate.h"
 #include "SignalActivationBinding.h"
 #include "SignalDelegate.h"
@@ -30,6 +30,7 @@ protected:
     
 public:
     UActivation();
+
     UFUNCTION(BlueprintCallable)
     bool Update(bool Active);
     

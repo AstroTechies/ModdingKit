@@ -1,5 +1,6 @@
 #include "FixedTargetOffsetModifierComponent.h"
 
-UFixedTargetOffsetModifierComponent::UFixedTargetOffsetModifierComponent() {
+UFixedTargetOffsetModifierComponent::UFixedTargetOffsetModifierComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

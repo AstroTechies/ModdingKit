@@ -1,6 +1,7 @@
 #include "StorageActuator.h"
 
-class APhysicalItem;
+AStorageActuator::AStorageActuator(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+}
 
 void AStorageActuator::AuthorityHandleLeadRailCarReleasedFromSlot(bool NewOwner) {
 }
@@ -14,6 +15,4 @@ void AStorageActuator::AuthorityHandleAttachStorageSlotEvent(APhysicalItem* move
 void AStorageActuator::AuthorityHandleAttachStorageItemAmountEvent() {
 }
 
-AStorageActuator::AStorageActuator() {
-}
 

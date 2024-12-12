@@ -1,5 +1,6 @@
 #include "EmptyLobbyGameMode.h"
 
-AEmptyLobbyGameMode::AEmptyLobbyGameMode() {
+AEmptyLobbyGameMode::AEmptyLobbyGameMode(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

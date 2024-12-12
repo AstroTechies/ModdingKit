@@ -1,8 +1,5 @@
 #include "SlotBehaviorTerrain.h"
 
-void USlotBehaviorTerrain::OnParentDeformed(const FDeformationParamsT2& params) {
-}
-
 USlotBehaviorTerrain::USlotBehaviorTerrain() {
     this->AllowBodies = false;
     this->HoverHeight = 0.00f;
@@ -11,4 +8,8 @@ USlotBehaviorTerrain::USlotBehaviorTerrain() {
     this->bHighlightChildrenOfTarget = false;
     this->Parent = NULL;
 }
+
+void USlotBehaviorTerrain::OnParentDeformed(const FDeformationParamsT2& params) {
+}
+
 

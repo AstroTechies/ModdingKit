@@ -4,3 +4,4 @@ URewardTable::URewardTable() {
     this->InitiallyUnlockedItems = NULL;
 }
 
+

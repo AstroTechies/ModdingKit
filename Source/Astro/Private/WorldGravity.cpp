@@ -1,6 +1,12 @@
 #include "WorldGravity.h"
 
-class UPrimitiveComponent;
+UWorldGravity::UWorldGravity(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->Enable = true;
+    this->DisableIfNoTerrain = true;
+    this->bAdhocPhysicsGeneration = false;
+    this->bIsSleeping = false;
+    this->TerrainLODAtLastSleep = 255;
+}
 
 void UWorldGravity::OnComponentSleep(UPrimitiveComponent* SleepingComponent, FName BoneName) {
 }
@@ -8,11 +14,4 @@ void UWorldGravity::OnComponentSleep(UPrimitiveComponent* SleepingComponent, FNa
 void UWorldGravity::OnComponentAwake(UPrimitiveComponent* WakingComponent, FName BoneName) {
 }
 
-UWorldGravity::UWorldGravity() {
-    this->Enable = true;
-    this->DisableIfNoTerrain = true;
-    this->bAdhocPhysicsGeneration = false;
-    this->bIsSleeping = false;
-    this->TerrainLODAtLastSleep = 255;
-}
 

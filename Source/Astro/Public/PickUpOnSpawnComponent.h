@@ -9,7 +9,8 @@ UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UPickUpOnSpawnComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UPickUpOnSpawnComponent();
+    UPickUpOnSpawnComponent(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerOnHandledLocalPickUp();

@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "Components/SceneComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "InputCoreTypes.h"
 #include "ECrackableMethod.h"
 #include "SignalDelegate.h"
 #include "Crackable.generated.h"
@@ -92,7 +92,8 @@ protected:
     TArray<UChildActorComponent*> ChildActors;
     
 public:
-    UCrackable();
+    UCrackable(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void ToggleCracked();
     

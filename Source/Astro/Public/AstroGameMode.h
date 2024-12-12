@@ -1,11 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=GameMode -FallbackName=GameMode
-#include "CharacterSelectSignalDelegate.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "GameFramework/GameMode.h"
+#include "GameplayTagContainer.h"
+#include "CharacterSelectSignalDelegate.h"
 #include "EGameLifecycleState.h"
+#include "EPlanetIdentifier.h"
 #include "OnGameLifecycleStateChangedDelegate.h"
 #include "OnSessionsSearchCompleteNotifyDelegate.h"
 #include "PlayerJoinSignalDelegate.h"
@@ -18,6 +19,8 @@
 class AActor;
 class APlayController;
 class ASolarBody;
+class UAstroCGMModifierCategoryDefaultValuesDatabase;
+class UAstroCustomGameSettingsTags;
 class UItemList;
 class ULevelSequencePlayer;
 class USolarSystem;
@@ -49,6 +52,27 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<UWorld> NewGameMap;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSoftObjectPtr<UWorld> BaseGameMap;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSoftObjectPtr<UWorld> ExpansionGameMap;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FGameplayTag> CustomGameModifiersExcludedFromSwitchTruncation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAstroCGMModifierCategoryDefaultValuesDatabase* CustomGameModifiersDefaultValueDatabase;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAstroCustomGameSettingsTags* CustomGameSettingsTags;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    bool IsFirstLaunch;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool IsInExpansionEnvironment;
+    
 protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemList> InitialKnownItemTypeList;
@@ -58,6 +82,12 @@ protected:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UItemList> InitialItemTypeUnlockList;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<UItemList> InitialHackedItemTypeList;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<TSubclassOf<UItemList>> VirusProtectionLevelsUnhackedItemTypeLists;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 InitialResearchPointBalance;
@@ -103,7 +133,8 @@ private:
     ULevelSequencePlayer* IntroSequencePlayer;
     
 public:
-    AAstroGameMode();
+    AAstroGameMode(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void UnregisterSpawnPointActorAttachmentsComponent(UStorageChassisComponent* spawnPoint);
     
@@ -118,6 +149,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void SetMultiplayerEnabled(bool bIsEnabled);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetIsInExpansion(bool inExpansion);
     
     UFUNCTION(BlueprintCallable, Exec)
     void ServerSaveGameName(const FString& Name);
@@ -140,6 +174,9 @@ public:
     UFUNCTION(BlueprintCallable)
     void RegisterSpawnPointActorAttachmentsComponent(UStorageChassisComponent* spawnPoint);
     
+    UFUNCTION(BlueprintCallable)
+    bool PlanetHasStartingPointCandidate(EPlanetIdentifier planetID);
+    
 private:
     UFUNCTION(BlueprintCallable)
     void OnOutroCinematicComplete();
@@ -159,6 +196,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void MovePlayersToSpawnPositions();
+    
+    UFUNCTION(BlueprintCallable)
+    void LoadMap(TSoftObjectPtr<UWorld> Map);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsPackagedBuild();

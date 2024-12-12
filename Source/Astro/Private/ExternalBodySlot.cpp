@@ -1,5 +1,6 @@
 #include "ExternalBodySlot.h"
 
-UExternalBodySlot::UExternalBodySlot() {
+UExternalBodySlot::UExternalBodySlot(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

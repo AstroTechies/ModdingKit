@@ -10,6 +10,7 @@ class ASTRO_API USolarPowerGeneratorComponentContainer : public UAstroEntityComp
     GENERATED_BODY()
 public:
     USolarPowerGeneratorComponentContainer();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FSolarPowerGeneratorComponent GetSolarPowerGeneratorComponent(FAstroDatumRef SolarPowerGeneratorComponentRef, bool& bOutSuccess);
     

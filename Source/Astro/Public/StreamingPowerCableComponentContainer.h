@@ -10,6 +10,7 @@ class ASTRO_API UStreamingPowerCableComponentContainer : public UAstroEntityComp
     GENERATED_BODY()
 public:
     UStreamingPowerCableComponentContainer();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FStreamingPowerCableComponent GetStreamingPowerCableComponent(FAstroDatumRef StreamingPowerCableComponentRef, bool& bOutSuccess);
     

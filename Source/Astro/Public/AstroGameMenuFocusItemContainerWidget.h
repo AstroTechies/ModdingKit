@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
-//CROSS-MODULE INCLUDE V2: -ModuleName=UMG -ObjectName=EventReply -FallbackName=EventReply
+#include "UObject/NoExportTypes.h"
+#include "Components/SlateWrapperTypes.h"
 #include "EFocusItemFocusChangeCause.h"
 #include "EMouseFocusChangeSuppressionSource.h"
 #include "UserWidgetBlueprintDesignable.h"
@@ -32,6 +32,7 @@ private:
     
 public:
     UAstroGameMenuFocusItemContainerWidget();
+
     UFUNCTION(BlueprintCallable)
     void RemoveMouseFocusSuppression(EMouseFocusChangeSuppressionSource MouseSuppression);
     

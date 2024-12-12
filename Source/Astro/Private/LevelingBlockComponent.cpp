@@ -1,6 +1,14 @@
 #include "LevelingBlockComponent.h"
 #include "Net/UnrealNetwork.h"
 
+ULevelingBlockComponent::ULevelingBlockComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->StampSize = 230.00f;
+    this->PreviewMesh = NULL;
+    this->BehaviorTerrain = NULL;
+    this->particles = NULL;
+    this->VisibilityPlaced = false;
+}
+
 void ULevelingBlockComponent::SetPreviewVisibility(bool IsVisible, ELevelingBlockVizSource sourceId) {
 }
 
@@ -26,11 +34,4 @@ void ULevelingBlockComponent::GetLifetimeReplicatedProps(TArray<FLifetimePropert
     DOREPLIFETIME(ULevelingBlockComponent, VisibilityPlaced);
 }
 
-ULevelingBlockComponent::ULevelingBlockComponent() {
-    this->StampSize = 230.00f;
-    this->PreviewMesh = NULL;
-    this->BehaviorTerrain = NULL;
-    this->particles = NULL;
-    this->VisibilityPlaced = false;
-}
 

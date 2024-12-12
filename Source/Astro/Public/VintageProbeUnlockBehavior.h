@@ -8,5 +8,6 @@ class ASTRO_API UVintageProbeUnlockBehavior : public UUnlockBehavior {
     GENERATED_BODY()
 public:
     UVintageProbeUnlockBehavior();
+
 };
 

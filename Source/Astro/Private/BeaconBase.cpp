@@ -1,6 +1,6 @@
 #include "BeaconBase.h"
 
-ABeaconBase::ABeaconBase() {
+ABeaconBase::ABeaconBase(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->HoverPointComponent = NULL;
     this->PlanetDistance = 1000000.00f;
     this->MinViewDistance = 2500.00f;
@@ -12,4 +12,5 @@ ABeaconBase::ABeaconBase() {
     this->IconRootComponent = NULL;
     this->bBeaconVisible = true;
 }
+
 

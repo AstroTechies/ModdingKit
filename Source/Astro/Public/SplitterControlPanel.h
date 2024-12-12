@@ -9,7 +9,8 @@ UCLASS(Abstract, Blueprintable)
 class ASTRO_API ASplitterControlPanel : public AControlPanel {
     GENERATED_BODY()
 public:
-    ASplitterControlPanel();
+    ASplitterControlPanel(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void ProcessSplitterControlPanelInput();

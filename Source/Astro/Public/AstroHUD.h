@@ -1,13 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HUD -FallbackName=HUD
 #include "GameFramework/HUD.h"
 #include "EAstroGameMenuTutoriaSlideCardKey.h"
 #include "EAstroGameMenuTutorialSlideDeckKey.h"
 #include "Templates/SubclassOf.h"
 #include "AstroHUD.generated.h"
 
-class UAstroStoreMenuWidget;
+//class UAstroStoreMenuWidget;
 class UAstropediaCarouselWidget;
 class UPlayWidget;
 class UReconnectWidget;
@@ -26,6 +25,9 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UUserWidget> CreativeDroneOverlayClass;
     
+//    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+//    TSubclassOf<UAstroStoreMenuWidget> StoreWidgetClass;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UAstropediaCarouselWidget> AstropediaWidgetClass;
     
@@ -33,9 +35,18 @@ protected:
     TSubclassOf<UReconnectWidget> ReconnectWidgetClass;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<USelectionWheelWidget> EmoteWheelWidgetClass;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<USelectionWheelWidget> ActionWheelWidgetClass;
     
 public:
+//    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+//    UAstroStoreMenuWidget* StoreWidgetInstance;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool StoreIsLoading;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPlayWidget* PlayWidgetInstance;
     
@@ -51,7 +62,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UTexture2DDynamic* MOTDBackgroundTexture;
     
-    AAstroHUD();
+    AAstroHUD(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     bool IsStoreActive();
     

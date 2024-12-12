@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "EResourceExtractorActivationFlags.h"
 #include "ExtractorGroupResourceCache.h"
 #include "ResourceExtractorState.h"
@@ -33,6 +33,7 @@ private:
     
 public:
     UResourceExtractorManager();
+
 private:
     UFUNCTION(BlueprintCallable)
     void OnHammerDroppped(AResourceExtractor* Extractor);

@@ -13,6 +13,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ExclusionRadius;
     
-    UTerrainPlacementComponent();
+    UTerrainPlacementComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

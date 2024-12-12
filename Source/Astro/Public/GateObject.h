@@ -14,6 +14,9 @@ UCLASS(Abstract, Blueprintable)
 class ASTRO_API AGateObject : public AActor {
     GENERATED_BODY()
 public:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool IsGatewayStationStandin;
+    
 protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* StaticMesh;
@@ -31,7 +34,8 @@ protected:
     ASolarBody* LocalSolarBody;
     
 public:
-    AGateObject();
+    AGateObject(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnSolarSystemInitialized(USolarSystem* SolarSystem);

@@ -8,5 +8,6 @@ class UAstroReplicationGraphNode_ActorListFrequencyBuckets : public UReplication
     GENERATED_BODY()
 public:
     UAstroReplicationGraphNode_ActorListFrequencyBuckets();
+
 };
 

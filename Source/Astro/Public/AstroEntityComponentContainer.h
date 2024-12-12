@@ -10,6 +10,7 @@ class ASTRO_API UAstroEntityComponentContainer : public UAstroDatumContainer {
     GENERATED_BODY()
 public:
     UAstroEntityComponentContainer();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FAstroEntityComponent GetEntityComponent(FAstroDatumRef ComponentRef, bool& bOutSuccess);
     

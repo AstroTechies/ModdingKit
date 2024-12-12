@@ -8,5 +8,6 @@ class TERRAIN2_API UProceduralExpression_Remap : public UProceduralExpression {
     GENERATED_BODY()
 public:
     UProceduralExpression_Remap();
+
 };
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
+#include "Engine/DataAsset.h"
 #include "IndicatorMeshDefinition.h"
 #include "GateObjectIndicatorDefinition.generated.h"
 
@@ -33,5 +33,6 @@ public:
     FName PlayerIndicatorSocketName;
     
     UGateObjectIndicatorDefinition();
+
 };
 

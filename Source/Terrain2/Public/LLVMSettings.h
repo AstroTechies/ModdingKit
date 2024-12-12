@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DeveloperSettings -FallbackName=DeveloperSettings
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=FilePath -FallbackName=FilePath
+#include "Engine/DeveloperSettings.h"
+#include "Engine/EngineTypes.h"
 #include "LLVMSettings.generated.h"
 
-UCLASS(Blueprintable, Config=Engine, DefaultConfig, Config=Game)
+UCLASS(Blueprintable, DefaultConfig, Config=Game)
 class TERRAIN2_API ULLVMSettings : public UDeveloperSettings {
     GENERATED_BODY()
 public:
@@ -32,5 +32,6 @@ private:
     
 public:
     ULLVMSettings();
+
 };
 

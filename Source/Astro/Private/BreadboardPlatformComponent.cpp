@@ -1,6 +1,16 @@
 #include "BreadboardPlatformComponent.h"
 #include "Net/UnrealNetwork.h"
 
+UBreadboardPlatformComponent::UBreadboardPlatformComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->LockdownSpikes = NULL;
+    this->AnimationCurve = NULL;
+    this->REP_LockdownEnabled = false;
+    this->LockdownAnimationDuration = 0.33f;
+    this->LockdownAnimationTravelDistance = 40.00f;
+    this->OwningItem = NULL;
+}
+
 void UBreadboardPlatformComponent::OnRep_LockdownEnabledChanged() {
 }
 
@@ -13,12 +23,4 @@ void UBreadboardPlatformComponent::GetLifetimeReplicatedProps(TArray<FLifetimePr
     DOREPLIFETIME(UBreadboardPlatformComponent, REP_LockdownEnabled);
 }
 
-UBreadboardPlatformComponent::UBreadboardPlatformComponent() {
-    this->LockdownSpikes = NULL;
-    this->AnimationCurve = NULL;
-    this->REP_LockdownEnabled = false;
-    this->LockdownAnimationDuration = 0.33f;
-    this->LockdownAnimationTravelDistance = 40.00f;
-    this->OwningItem = NULL;
-}
 

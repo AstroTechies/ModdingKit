@@ -1,9 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EPhysicalSurface -FallbackName=EPhysicalSurface
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=SceneComponent -FallbackName=SceneComponent
+#include "UObject/NoExportTypes.h"
+#include "Engine/EngineTypes.h"
+#include "Components/SceneComponent.h"
+#include "GameplayTagContainer.h"
 #include "ChildModifierCacheEntry.h"
+#include "CustomGameBiomeData.h"
+#include "CustomGameModifierCollection.h"
+#include "CustomGameModifierData.h"
 #include "DeferredObjectCreationNodeData.h"
 #include "DeformableInterfaceT2.h"
 #include "DeformationParamsT2.h"
@@ -56,6 +60,9 @@ private:
     bool ClientsWaitForSeed;
     
 public:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    int32 CustomGameSeed;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float VolumeRadius;
     
@@ -143,6 +150,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FT2MaterialCache MaterialCache;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    bool IsCustomGame;
+    
 private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UTerrain2ProceduralMeshComponent*> m_LODInProgressMeshes;
@@ -190,11 +200,30 @@ private:
     UTerrain2ProceduralMeshComponent* m_proxyMesh;
     
 public:
-    UVoxelVolumeComponent();
+    UVoxelVolumeComponent(const FObjectInitializer& ObjectInitializer);
+
+    UFUNCTION(BlueprintCallable)
+    void SetCustomGameSeed(int32 newCustomGameSeed);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetCustomGameBiomeModifiersData(FCustomGameModifierData& modifierData);
+    
+    UFUNCTION(BlueprintCallable)
+    void LogCustomGameBiomeModifiersData();
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintPure)
     float GetSurfaceHeightAtLocation(FVector Location) const;
     
+    UFUNCTION(BlueprintCallable)
+    void GetCustomGameBiomesData(TArray<FCustomGameBiomeData>& outData);
     
+    UFUNCTION(BlueprintCallable)
+    void GetCustomGameBiomeModifiersData(FGameplayTagContainer biomeTags, FCustomGameModifierCollection& outData);
+    
+    UFUNCTION(BlueprintCallable)
+    void ClearCustomGameState();
+    
+
     // Fix for true pure virtual functions not being implemented
 };
 

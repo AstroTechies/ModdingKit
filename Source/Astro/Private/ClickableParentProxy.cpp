@@ -1,5 +1,6 @@
 #include "ClickableParentProxy.h"
 
-UClickableParentProxy::UClickableParentProxy() {
+UClickableParentProxy::UClickableParentProxy(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

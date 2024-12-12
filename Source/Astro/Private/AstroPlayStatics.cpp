@@ -1,19 +1,8 @@
 #include "AstroPlayStatics.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
-class AAstroCharacter;
-class AAstroPlanet;
-class APhysicalItem;
-class APlayController;
-class APlayerController;
-class UChildActorComponent;
-class UControlSymbol;
-class UItemType;
-class UObject;
-class UPrimitiveComponent;
-class USceneComponent;
-class UTexture;
+UAstroPlayStatics::UAstroPlayStatics() {
+}
 
 void UAstroPlayStatics::WeldToPreserveContraints(AActor* Actor, UPrimitiveComponent* Parent) {
 }
@@ -113,6 +102,14 @@ UItemType* UAstroPlayStatics::GetItemTypeDefault(TSubclassOf<UItemType> Type) {
     return NULL;
 }
 
+UAstroEmoteDefinition* UAstroPlayStatics::GetDisplayedEmoteViaIndex(int32 Index, bool& bOutSuccess) {
+    return NULL;
+}
+
+TSubclassOf<UAstroPlayMontageAction> UAstroPlayStatics::GetDefaultEmoteActionType() {
+    return NULL;
+}
+
 APlayerController* UAstroPlayStatics::GetCurrentInputController() {
     return NULL;
 }
@@ -125,8 +122,16 @@ TArray<APhysicalItem*> UAstroPlayStatics::GetConsumedInputItemsForTradeOutput(TS
     return TArray<APhysicalItem*>();
 }
 
-TArray<APlayController*> UAstroPlayStatics::GetAllPlayControllers(UObject* WorldContextObject) {
+TArray<APlayController*> UAstroPlayStatics::GetAllPlayControllers(const UObject* WorldContextObject) {
     return TArray<APlayController*>();
+}
+
+TArray<UAstroEmoteDefinition*> UAstroPlayStatics::GetAllEmoteDefinitions(bool& bOutSuccess) {
+    return TArray<UAstroEmoteDefinition*>();
+}
+
+AAstroPlayerController* UAstroPlayStatics::FindPlayerControllerOnServerByBackendId(const UObject* WorldContextObject, const FString& BackendPlayerId) {
+    return NULL;
 }
 
 FVoxelMaterial UAstroPlayStatics::DowncastTerrainMaterial(UObject* WorldContextObject, const FVector& Location) {
@@ -169,6 +174,4 @@ void UAstroPlayStatics::AuthorityPopNavpointGroupSetting(FGuid settingID) {
 void UAstroPlayStatics::AddComponentForceAtLocation(USceneComponent* Component, const FVector& force, const FVector& Location) {
 }
 
-UAstroPlayStatics::UAstroPlayStatics() {
-}
 

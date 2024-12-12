@@ -34,7 +34,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSlotReference PowerSlot;
     
-    UVehicleSlotComponent();
+    UVehicleSlotComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<UVehicleSlotComponent*> GetConnectedVehicles();
     

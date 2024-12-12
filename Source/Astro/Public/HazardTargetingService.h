@@ -1,6 +1,5 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=AIModule -ObjectName=BTService -FallbackName=BTService
 #include "BehaviorTree/BTService.h"
 #include "HazardTargetingService.generated.h"
 
@@ -18,5 +17,6 @@ public:
     float MaximumTargetDistance;
     
     UHazardTargetingService();
+
 };
 

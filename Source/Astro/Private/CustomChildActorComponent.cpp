@@ -1,5 +1,6 @@
 #include "CustomChildActorComponent.h"
 
-UCustomChildActorComponent::UCustomChildActorComponent() {
+UCustomChildActorComponent::UCustomChildActorComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

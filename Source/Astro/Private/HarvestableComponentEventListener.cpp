@@ -1,6 +1,7 @@
 #include "HarvestableComponentEventListener.h"
 
-class APhysicalItem;
+UHarvestableComponentEventListener::UHarvestableComponentEventListener() {
+}
 
 void UHarvestableComponentEventListener::OnSecondaryHarvestableItemReleased(APhysicalItem* Item) {
 }
@@ -14,6 +15,4 @@ void UHarvestableComponentEventListener::OnHarvestableUprooted() {
 void UHarvestableComponentEventListener::OnHarvestableBuried() {
 }
 
-UHarvestableComponentEventListener::UHarvestableComponentEventListener() {
-}
 

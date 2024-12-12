@@ -4,8 +4,8 @@
 
 UENUM()
 enum class ELodAnchorState : int8 {
-    Invalid = -0x1,
-    NotAnchored,
+    Invalid = -1,
+    NotAnchored = 0,
     Anchored,
 };
 

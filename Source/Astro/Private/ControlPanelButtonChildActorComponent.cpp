@@ -1,5 +1,10 @@
 #include "ControlPanelButtonChildActorComponent.h"
 
+UControlPanelButtonChildActorComponent::UControlPanelButtonChildActorComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->ChildButtonClass = NULL;
+    this->ButtonActor = NULL;
+}
+
 void UControlPanelButtonChildActorComponent::SpoofButtonPress() {
 }
 
@@ -20,8 +25,4 @@ bool UControlPanelButtonChildActorComponent::GetArmed() {
     return false;
 }
 
-UControlPanelButtonChildActorComponent::UControlPanelButtonChildActorComponent() {
-    this->ChildButtonClass = NULL;
-    this->ButtonActor = NULL;
-}
 

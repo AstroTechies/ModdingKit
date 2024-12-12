@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=RuntimeFloatCurve -FallbackName=RuntimeFloatCurve
+#include "Curves/CurveFloat.h"
 #include "HarvestableItemSpawnerDefinition.h"
 #include "ActorHarvestableComponent.generated.h"
 
@@ -24,6 +24,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRuntimeFloatCurve SecondaryItemNumberNoPrimaryItemsProbabilityCurve;
     
-    UActorHarvestableComponent();
+    UActorHarvestableComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

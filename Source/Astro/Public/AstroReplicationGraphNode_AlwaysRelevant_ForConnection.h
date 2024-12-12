@@ -15,5 +15,6 @@ private:
     
 public:
     UAstroReplicationGraphNode_AlwaysRelevant_ForConnection();
+
 };
 

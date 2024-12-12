@@ -1,8 +1,13 @@
 #include "ActorGateObjectComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class AActor;
-class UPrimitiveComponent;
+UActorGateObjectComponent::UActorGateObjectComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->bHasPlayerProximityEvent = false;
+    this->bAnimatesInOutroCinematic = false;
+    this->PlayerProximityEventTriggerDistance = 0.00f;
+    this->ProximitySphereComponent = NULL;
+}
 
 void UActorGateObjectComponent::OnRep_ReplicationData() {
 }
@@ -25,10 +30,4 @@ void UActorGateObjectComponent::GetLifetimeReplicatedProps(TArray<FLifetimePrope
     DOREPLIFETIME(UActorGateObjectComponent, ReplicationData);
 }
 
-UActorGateObjectComponent::UActorGateObjectComponent() {
-    this->bHasPlayerProximityEvent = false;
-    this->bAnimatesInOutroCinematic = false;
-    this->PlayerProximityEventTriggerDistance = 0.00f;
-    this->ProximitySphereComponent = NULL;
-}
 

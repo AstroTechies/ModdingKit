@@ -9,7 +9,8 @@ UCLASS(Abstract, Blueprintable)
 class ASTRO_API APowerSlot : public AItemSlot {
     GENERATED_BODY()
 public:
-    APowerSlot();
+    APowerSlot(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void SetPoweredTrue();
     

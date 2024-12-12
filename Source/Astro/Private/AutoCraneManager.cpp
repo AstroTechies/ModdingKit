@@ -1,7 +1,9 @@
 #include "AutoCraneManager.h"
 
-class AAutoCrane;
-class ASolarBody;
+UAutoCraneManager::UAutoCraneManager() {
+    this->PlayControllerCache = NULL;
+    this->AstroCharacterCache = NULL;
+}
 
 void UAutoCraneManager::OnTransferItemSet(AAutoCrane* Crane) {
 }
@@ -36,8 +38,4 @@ void UAutoCraneManager::OnClientTransferProgressChanged(AAutoCrane* Crane) {
 void UAutoCraneManager::OnClientCraneStateChanged(AAutoCrane* Crane) {
 }
 
-UAutoCraneManager::UAutoCraneManager() {
-    this->PlayControllerCache = NULL;
-    this->AstroCharacterCache = NULL;
-}
 

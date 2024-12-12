@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "Engine/EngineTypes.h"
 #include "BreadboardPrinterAnimationReplicationData.h"
 #include "EnableSignalDelegate.h"
 #include "SignalDelegate.h"
@@ -149,9 +149,10 @@ private:
     TSet<APhysicalItem*> PlatformsInRange;
     
 public:
-    UBreadboardPrinterComponent();
+    UBreadboardPrinterComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void ValidatePackageableItemsInRange();

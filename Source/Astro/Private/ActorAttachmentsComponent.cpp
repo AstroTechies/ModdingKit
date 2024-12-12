@@ -1,13 +1,24 @@
 #include "ActorAttachmentsComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class AActor;
-class APlayController;
-class APlayerController;
-class UActorAttachmentsComponent;
-class UAstroSaveCustomArchiveProxy;
-class USceneComponent;
-class UStorageChassisComponent;
+UActorAttachmentsComponent::UActorAttachmentsComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->MaxAttachedPlayerCount = 0;
+    this->UsePlanetCameraUp = false;
+    this->AllowFreeCam = false;
+    this->DisableViewTargetChangeOnExit = false;
+    this->EntryInterpolationTime = 1.25f;
+    this->EntryInterpolationEaseOutExponent = 3.00f;
+    this->ExitInterpolationTime = 0.75f;
+    this->ExitInterpolationEaseOutExponent = 3.00f;
+    this->DetachGroundedTrace = 0.00f;
+    this->CanEnter = true;
+    this->ExitSuppressionCount = 0;
+}
+
+AAstroPlayerController* UActorAttachmentsComponent::TryGetFirstAttachedPlayer(bool bIgnoreExiting) {
+    return NULL;
+}
 
 bool UActorAttachmentsComponent::TogglePlayerAttachedStorage(APlayerController* Controller, UStorageChassisComponent* storage, bool& Toggled, bool bImmediate, bool bForce) {
     return false;
@@ -103,17 +114,4 @@ void UActorAttachmentsComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProp
     DOREPLIFETIME(UActorAttachmentsComponent, AttachmentStates);
 }
 
-UActorAttachmentsComponent::UActorAttachmentsComponent() {
-    this->MaxAttachedPlayerCount = 0;
-    this->UsePlanetCameraUp = false;
-    this->AllowFreeCam = false;
-    this->DisableViewTargetChangeOnExit = false;
-    this->EntryInterpolationTime = 1.25f;
-    this->EntryInterpolationEaseOutExponent = 3.00f;
-    this->ExitInterpolationTime = 0.75f;
-    this->ExitInterpolationEaseOutExponent = 3.00f;
-    this->DetachGroundedTrace = 0.00f;
-    this->CanEnter = true;
-    this->ExitSuppressionCount = 0;
-}
 

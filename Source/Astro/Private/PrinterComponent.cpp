@@ -2,13 +2,35 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
-class AControlPanel;
-class APhysicalItem;
-class UAstroSaveCustomArchiveProxy;
-class UClickQuery;
-class UItemType;
-class UPrinterComponent;
+UPrinterComponent::UPrinterComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->CurrentBlueprintIndex = -1;
+    this->CurrentPackageableItem = NULL;
+    this->CurrentRepackageableItemIndex = 0;
+    this->DefaultBlueprintPrinterCatagory = NULL;
+    this->RecipesRequireProgression = true;
+    this->RequireResources = true;
+    this->HideIndicatorWithoutFullRecipe = false;
+    this->RequiresPower = true;
+    this->StreamsPower = false;
+    this->ConsumeFromStorageSlots = false;
+    this->AllowPrintCompletionWithoutPower = true;
+    this->RequiredPowerOffset = 0.00f;
+    this->PrintSpeed = 0.25f;
+    this->PackageUpPrintedItems = false;
+    this->ShortcutButtons = true;
+    this->EmplaceItemAfterPrint = true;
+    this->InteractionEnabled = false;
+    this->LocalIsVisible = true;
+    this->PrintingActive = false;
+    this->ValidatePrintAreaOpen = false;
+    this->PrintAreaClearRadius = 500.00f;
+    this->Progress = 0.00f;
+    this->ProgressOverride = -1.00f;
+    this->SlotIndicatorIndex = -1;
+    this->RepackageModeEngaged = false;
+    this->PrintingMaterialDynamic = NULL;
+}
 
 void UPrinterComponent::UnlockedItemsChanged(const TArray<TSubclassOf<UItemType>>& NewUnlockedItems) {
 }
@@ -201,32 +223,4 @@ void UPrinterComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
     DOREPLIFETIME(UPrinterComponent, REP_PrinterState);
 }
 
-UPrinterComponent::UPrinterComponent() {
-    this->CurrentBlueprintIndex = -1;
-    this->CurrentPackageableItem = NULL;
-    this->CurrentRepackageableItemIndex = 0;
-    this->DefaultBlueprintPrinterCatagory = NULL;
-    this->RecipesRequireProgression = true;
-    this->RequireResources = true;
-    this->HideIndicatorWithoutFullRecipe = false;
-    this->RequiresPower = true;
-    this->StreamsPower = false;
-    this->ConsumeFromStorageSlots = false;
-    this->AllowPrintCompletionWithoutPower = true;
-    this->RequiredPowerOffset = 0.00f;
-    this->PrintSpeed = 0.25f;
-    this->PackageUpPrintedItems = false;
-    this->ShortcutButtons = true;
-    this->EmplaceItemAfterPrint = true;
-    this->InteractionEnabled = false;
-    this->LocalIsVisible = true;
-    this->PrintingActive = false;
-    this->ValidatePrintAreaOpen = false;
-    this->PrintAreaClearRadius = 500.00f;
-    this->Progress = 0.00f;
-    this->ProgressOverride = -1.00f;
-    this->SlotIndicatorIndex = -1;
-    this->RepackageModeEngaged = false;
-    this->PrintingMaterialDynamic = NULL;
-}
 

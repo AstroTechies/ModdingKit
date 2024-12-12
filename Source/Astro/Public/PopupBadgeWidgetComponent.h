@@ -14,6 +14,7 @@ protected:
     UAstroPopupBadgeWidget* PopupBadgeWidget;
     
 public:
-    UPopupBadgeWidgetComponent();
+    UPopupBadgeWidgetComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

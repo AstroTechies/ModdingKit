@@ -1,7 +1,10 @@
 #include "InterruptPowerConnectionComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class ASlotConnection;
+UInterruptPowerConnectionComponent::UInterruptPowerConnectionComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->bConnectionInterrupted = false;
+}
 
 void UInterruptPowerConnectionComponent::ToggleInterrupt(bool bInterrupt) {
 }
@@ -18,7 +21,4 @@ void UInterruptPowerConnectionComponent::GetLifetimeReplicatedProps(TArray<FLife
     DOREPLIFETIME(UInterruptPowerConnectionComponent, bConnectionInterrupted);
 }
 
-UInterruptPowerConnectionComponent::UInterruptPowerConnectionComponent() {
-    this->bConnectionInterrupted = false;
-}
 

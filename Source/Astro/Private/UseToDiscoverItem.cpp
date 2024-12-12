@@ -1,11 +1,12 @@
 #include "UseToDiscoverItem.h"
 #include "SingleUseConsumableComponent.h"
 
-void AUseToDiscoverItem::OnUsed() {
-}
-
-AUseToDiscoverItem::AUseToDiscoverItem() {
+AUseToDiscoverItem::AUseToDiscoverItem(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->ItemTypeDiscoveredOnUse = NULL;
     this->ConsumableComponent = CreateDefaultSubobject<USingleUseConsumableComponent>(TEXT("ConsumableComponent"));
 }
+
+void AUseToDiscoverItem::OnUsed() {
+}
+
 

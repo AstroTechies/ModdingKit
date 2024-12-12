@@ -4,7 +4,7 @@
 
 UENUM(BlueprintType)
 enum class EItemVariantType : uint8 {
-    Pioneer,
-    Engineer,
+    Pioneer UMETA(DisplayName = "Left"),
+    Engineer UMETA(DisplayName = "Right"),
 };
 

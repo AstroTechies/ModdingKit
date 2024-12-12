@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "UObject/NoExportTypes.h"
 #include "OrbitalReplicatedData.generated.h"
 
 class ASolarBody;

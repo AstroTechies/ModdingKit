@@ -17,6 +17,7 @@ private:
     
 public:
     ULockingMechanism();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsOpen() const;
     

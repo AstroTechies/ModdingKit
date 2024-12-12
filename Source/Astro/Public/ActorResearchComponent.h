@@ -80,9 +80,10 @@ protected:
     TArray<FSlotReference> ResearchSlotRefs;
     
 public:
-    UActorResearchComponent();
+    UActorResearchComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void OnRep_ResearchData();
     

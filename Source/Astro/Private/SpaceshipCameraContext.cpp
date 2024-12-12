@@ -4,3 +4,4 @@ USpaceshipCameraContext::USpaceshipCameraContext() {
     this->OrbitalNavComponent = NULL;
 }
 
+

@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "Engine/EngineTypes.h"
 #include "SignalDelegate.h"
 #include "Templates/SubclassOf.h"
 #include "WandererRealityTearComponent.generated.h"
@@ -44,9 +44,10 @@ protected:
     FSignal OnActivatingPlayerSet;
     
 public:
-    UWandererRealityTearComponent();
+    UWandererRealityTearComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool WasActivatedByPlayer(const APlayerController* Player);
     

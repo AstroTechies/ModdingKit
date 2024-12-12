@@ -1,6 +1,6 @@
 #include "RaycastDistributionComponent.h"
 
-URaycastDistributionComponent::URaycastDistributionComponent() {
+URaycastDistributionComponent::URaycastDistributionComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->Seed = -1;
     this->Radius = 1000.00f;
     this->Depth = 0.00f;
@@ -20,4 +20,5 @@ URaycastDistributionComponent::URaycastDistributionComponent() {
     this->ActorScaleMax = 1.00f;
     this->Actor = NULL;
 }
+
 

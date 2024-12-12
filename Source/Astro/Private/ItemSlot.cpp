@@ -1,24 +1,9 @@
 #include "ItemSlot.h"
+#include "Components/SceneComponent.h"
 #include "ClickableComponent.h"
 
-class APhysicalItem;
-class ASlotConnection;
-class UChildSlotComponent;
-
-
-
-void AItemSlot::OnConnectionDestroyed_Implementation(UChildSlotComponent* Other, bool IsSource) {
-}
-
-void AItemSlot::OnConnectionBuilt_Implementation(ASlotConnection* Connection, bool IsSource) {
-}
-
-
-bool AItemSlot::AcceptsItem_Implementation(APhysicalItem* Item) {
-    return false;
-}
-
-AItemSlot::AItemSlot() {
+AItemSlot::AItemSlot(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
     this->slotType = ESlotType::Inert;
     this->BaseClassType = NULL;
     this->Subslot = NULL;
@@ -38,4 +23,18 @@ AItemSlot::AItemSlot() {
     this->ClickableComponent = CreateDefaultSubobject<UClickableComponent>(TEXT("SlotClickableComponent"));
     this->CanAcceptItems = true;
 }
+
+
+
+void AItemSlot::OnConnectionDestroyed_Implementation(UChildSlotComponent* Other, bool IsSource) {
+}
+
+void AItemSlot::OnConnectionBuilt_Implementation(ASlotConnection* Connection, bool IsSource) {
+}
+
+
+bool AItemSlot::AcceptsItem_Implementation(APhysicalItem* Item) {
+    return false;
+}
+
 

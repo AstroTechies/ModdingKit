@@ -1,6 +1,7 @@
 #include "FixedFOVModifierComponent.h"
 
-UFixedFOVModifierComponent::UFixedFOVModifierComponent() {
+UFixedFOVModifierComponent::UFixedFOVModifierComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->FOV = 0.00f;
 }
+
 

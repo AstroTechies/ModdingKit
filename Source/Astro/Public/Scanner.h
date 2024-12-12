@@ -95,13 +95,14 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     FScannableStatus CurrentTarget;
     
-    UPROPERTY(EditAnywhere, ReplicatedUsing=OnRep_UsingCharacter, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_UsingCharacter, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<AAstroCharacter> UsingCharacter;
     
 public:
-    AScanner();
+    AScanner(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnRep_UsingCharacter();

@@ -20,7 +20,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UActuatorComponent* ActuatorComponent;
     
-    UPROPERTY(EditAnywhere, Transient, ReplicatedUsing=OnRep_TargetItem, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_TargetItem, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<APhysicalItem> TargetItem;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_MostRecentEvent, meta=(AllowPrivateAccess=true))
@@ -60,9 +60,10 @@ protected:
     TArray<FFullnessActuatorResponseModeStrings> ResponseModeStrings;
     
 public:
-    AFullnessActuator();
+    AFullnessActuator(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 private:
     UFUNCTION(BlueprintCallable)
     void OnRep_TargetItem();

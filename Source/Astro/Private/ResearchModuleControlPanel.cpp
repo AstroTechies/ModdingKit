@@ -1,6 +1,7 @@
 #include "ResearchModuleControlPanel.h"
 
-class UActorResearchComponent;
+AResearchModuleControlPanel::AResearchModuleControlPanel(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+}
 
 
 void AResearchModuleControlPanel::OnResearchSubjectListChanged(const TArray<FResearchSubjectReplicationData>& CurrentResearchSubjects, const TArray<FResearchSubjectReplicationData>& PrevResearchSubjects) {
@@ -13,6 +14,4 @@ UActorResearchComponent* AResearchModuleControlPanel::GetControlledResearchCompo
     return NULL;
 }
 
-AResearchModuleControlPanel::AResearchModuleControlPanel() {
-}
 

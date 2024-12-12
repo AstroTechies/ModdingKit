@@ -1,6 +1,7 @@
 #include "UprightToPlanetModifierComponent.h"
 
-UUprightToPlanetModifierComponent::UUprightToPlanetModifierComponent() {
+UUprightToPlanetModifierComponent::UUprightToPlanetModifierComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->bUseTargetLocation = false;
 }
+
 

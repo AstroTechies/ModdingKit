@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "AstroSaveAsset.generated.h"
 
 class UWorld;
@@ -16,5 +16,6 @@ public:
     TArray<uint8> SaveData;
     
     UAstroSaveAsset();
+
 };
 

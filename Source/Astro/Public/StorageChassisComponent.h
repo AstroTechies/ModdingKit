@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "Engine/EngineTypes.h"
 #include "EnterExitSignalDelegate.h"
 #include "OnSlotEventSignalDelegate.h"
 #include "SignalDelegate.h"
@@ -72,7 +72,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UStorageChassisComponent*> ChildStorageChassis;
     
-    UPROPERTY(EditAnywhere, Export, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, SaveGame, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<UStorageChassisComponent> OverrideParentStorage;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
@@ -116,9 +116,10 @@ private:
     TArray<UActorAttachmentsComponent*> PrevActorAttachments;
     
 public:
-    UStorageChassisComponent();
+    UStorageChassisComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void TertiaryUse(APlayerController* Controller);
     

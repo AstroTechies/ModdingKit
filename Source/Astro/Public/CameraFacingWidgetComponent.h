@@ -14,6 +14,7 @@ protected:
     USceneComponent* WorldPositioningAnchor;
     
 public:
-    UCameraFacingWidgetComponent();
+    UCameraFacingWidgetComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

@@ -1,6 +1,7 @@
 #include "HoverComponent.h"
 
-UHoverComponent::UHoverComponent() {
+UHoverComponent::UHoverComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->SpinSpeed = 0.10f;
 }
+
 

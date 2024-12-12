@@ -1,10 +1,27 @@
 #include "TeleportationBubble.h"
+#include "Components/SceneComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "ActorAttachmentsComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class AActor;
-class AAstroCharacter;
+ATeleportationBubble::ATeleportationBubble(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicateMovement = true;
+    this->bReplicates = true;
+//    const FProperty* p_RemoteRole = GetClass()->FindPropertyByName("RemoteRole");
+//    (*p_RemoteRole->ContainerPtrToValuePtr<TEnumAsByte<ENetRole>>(this)) = ROLE_SimulatedProxy;
+    this->RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
+    this->ActorAttachComponent = CreateDefaultSubobject<UActorAttachmentsComponent>(TEXT("ActorAttachments"));
+    this->BubbleMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BubbleMesh"));
+    this->ProxyBubbleMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ArrivalCollision"));
+    this->BubbleExpansionTime = 0.00f;
+    this->BubbleExpansionCurve = NULL;
+    this->CharacterBeingTeleported = NULL;
+    this->DestinationType = ETeleportationDestinationType::ExactLocation;
+    this->TeleportationState = ETeleportationBubbleState::Uninitialized;
+    this->BubbleExpansionTimeRemaining = 0.00f;
+    this->BubbleMesh->SetupAttachment(RootComponent);
+    this->ProxyBubbleMesh->SetupAttachment(RootComponent);
+}
 
 bool ATeleportationBubble::TickPostArrivalEffects_Implementation() {
     return false;
@@ -47,15 +64,4 @@ void ATeleportationBubble::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
     DOREPLIFETIME(ATeleportationBubble, ReplicationData);
 }
 
-ATeleportationBubble::ATeleportationBubble() {
-    this->ActorAttachComponent = CreateDefaultSubobject<UActorAttachmentsComponent>(TEXT("ActorAttachments"));
-    this->BubbleMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BubbleMesh"));
-    this->ProxyBubbleMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ArrivalCollision"));
-    this->BubbleExpansionTime = 0.00f;
-    this->BubbleExpansionCurve = NULL;
-    this->CharacterBeingTeleported = NULL;
-    this->DestinationType = ETeleportationDestinationType::ExactLocation;
-    this->TeleportationState = ETeleportationBubbleState::Uninitialized;
-    this->BubbleExpansionTimeRemaining = 0.00f;
-}
 

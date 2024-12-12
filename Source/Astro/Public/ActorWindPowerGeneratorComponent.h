@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
 #include "WindPowerGeneratorReplicationData.h"
 #include "ActorWindPowerGeneratorComponent.generated.h"
@@ -38,9 +38,10 @@ private:
     FWindPowerGeneratorReplicationData WindPowerAnimationData;
     
 public:
-    UActorWindPowerGeneratorComponent();
+    UActorWindPowerGeneratorComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 private:
     UFUNCTION(BlueprintCallable)
     void OnRep_AnimatedWindVec();

@@ -12,6 +12,7 @@ private:
     float OffsetAmount;
     
 public:
-    UJourneyOffsetComponent();
+    UJourneyOffsetComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

@@ -1,5 +1,6 @@
 #include "PhysicsMovementPawn.h"
 
-APhysicsMovementPawn::APhysicsMovementPawn() {
+APhysicsMovementPawn::APhysicsMovementPawn(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

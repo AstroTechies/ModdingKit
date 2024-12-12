@@ -8,6 +8,7 @@ class UAstroSlateFocusWidget : public UUserWidgetBlueprintDesignable {
     GENERATED_BODY()
 public:
     UAstroSlateFocusWidget();
+
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void GrantFocus();
     

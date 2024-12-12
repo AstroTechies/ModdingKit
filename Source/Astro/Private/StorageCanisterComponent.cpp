@@ -1,9 +1,11 @@
 #include "StorageCanisterComponent.h"
 #include "Templates/SubclassOf.h"
 
-class APhysicalItem;
-class UItemComponent;
-class UItemType;
+UStorageCanisterComponent::UStorageCanisterComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->CanReingestFromOuputSlot = false;
+    this->CurrentOuterMostChassis = NULL;
+    this->ItemTransferRate = 1.00f;
+}
 
 void UStorageCanisterComponent::OnSlottedItemsChanged(APhysicalItem* changedItem) {
 }
@@ -23,6 +25,10 @@ void UStorageCanisterComponent::HandleOnReleasedFromSlot(bool NewOwner) {
 void UStorageCanisterComponent::HandleOnPlacedInSlot() {
 }
 
+bool UStorageCanisterComponent::GetIsDispensing() const {
+    return false;
+}
+
 bool UStorageCanisterComponent::CanMoveItems() const {
     return false;
 }
@@ -33,8 +39,4 @@ void UStorageCanisterComponent::AuthoritySetIsDispensing(bool isDispensing) {
 void UStorageCanisterComponent::AuthorityQueueStopDispensingWhenItemComplete() {
 }
 
-UStorageCanisterComponent::UStorageCanisterComponent() {
-    this->CurrentOuterMostChassis = NULL;
-    this->ItemTransferRate = 1.00f;
-}
 

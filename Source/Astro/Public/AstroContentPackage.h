@@ -12,5 +12,6 @@ public:
     FAstroEncryptionOptions EncryptionOptions;
     
     UAstroContentPackage();
+
 };
 

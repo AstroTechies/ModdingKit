@@ -1,6 +1,13 @@
 #include "RailPostStationComponent.h"
 #include "Net/UnrealNetwork.h"
 
+URailPostStationComponent::URailPostStationComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->StopMode = EStationStopState::EInert;
+    this->LoadMode = EStationLoadingState::EInert;
+    this->CurrentInternalConnectionID = -1;
+    this->lastStoppedCar = NULL;
+}
+
 void URailPostStationComponent::OnRep_StationSettings() {
 }
 
@@ -29,10 +36,4 @@ void URailPostStationComponent::GetLifetimeReplicatedProps(TArray<FLifetimePrope
     DOREPLIFETIME(URailPostStationComponent, CurrentInternalConnectionID);
 }
 
-URailPostStationComponent::URailPostStationComponent() {
-    this->StopMode = EStationStopState::EInert;
-    this->LoadMode = EStationLoadingState::EInert;
-    this->CurrentInternalConnectionID = -1;
-    this->lastStoppedCar = NULL;
-}
 

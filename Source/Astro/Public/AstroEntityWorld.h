@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "AstroDatumRef.h"
 #include "AstroEntityWorld.generated.h"
 
@@ -39,6 +39,7 @@ private:
     
 public:
     UAstroEntityWorld();
+
 private:
     UFUNCTION(BlueprintCallable)
     void SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy);

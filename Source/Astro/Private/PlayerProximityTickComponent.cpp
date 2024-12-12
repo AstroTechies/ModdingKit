@@ -1,10 +1,12 @@
 #include "PlayerProximityTickComponent.h"
 
-class AActor;
-class UActorComponent;
-class UPlayerProximityTickComponent;
-class UPrimitiveComponent;
-class UShapeComponent;
+UPlayerProximityTickComponent::UPlayerProximityTickComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->InitialSphereRadius = 3000.00f;
+    this->bManageActorTick = true;
+    this->bCanIgnoreCreativeModeHazardInvisibility = false;
+    this->bAutoHandleCriticalComponents = true;
+    this->ProximityShape = NULL;
+}
 
 void UPlayerProximityTickComponent::SetProximitySphere(float Radius) {
 }
@@ -42,11 +44,4 @@ void UPlayerProximityTickComponent::AddManagedComponents(const TArray<UActorComp
 void UPlayerProximityTickComponent::AddManagedComponent(UActorComponent* Component) {
 }
 
-UPlayerProximityTickComponent::UPlayerProximityTickComponent() {
-    this->InitialSphereRadius = 3000.00f;
-    this->bManageActorTick = true;
-    this->bCanIgnoreCreativeModeHazardInvisibility = false;
-    this->bAutoHandleCriticalComponents = true;
-    this->ProximityShape = NULL;
-}
 

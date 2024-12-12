@@ -1,6 +1,13 @@
 #include "AstroTakePictureAction.h"
 
-class APlayerController;
+UAstroTakePictureAction::UAstroTakePictureAction() {
+    this->RequiredResources = 4;
+    this->PhotoWidgetType = NULL;
+    this->PictureImageCaptureDelay = 0.00f;
+    this->PhotoWidgetDisplayDelay = 0.00f;
+    this->bPhotoWidgetForInstigatorOnly = false;
+    this->DisplayPhotoWidgetForPlayersWithinDistance = 5000.00f;
+}
 
 void UAstroTakePictureAction::SetInstigator(APlayerController* Instigator) {
 }
@@ -17,11 +24,4 @@ void UAstroTakePictureAction::OnPhotoWidgetDisplayDelayComplete() {
 void UAstroTakePictureAction::BroadcastTakePictureCountdownPing() {
 }
 
-UAstroTakePictureAction::UAstroTakePictureAction() {
-    this->PhotoWidgetType = NULL;
-    this->PictureImageCaptureDelay = 0.00f;
-    this->PhotoWidgetDisplayDelay = 0.00f;
-    this->bPhotoWidgetForInstigatorOnly = false;
-    this->DisplayPhotoWidgetForPlayersWithinDistance = 5000.00f;
-}
 

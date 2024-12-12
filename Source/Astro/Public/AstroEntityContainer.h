@@ -8,5 +8,6 @@ class ASTRO_API UAstroEntityContainer : public UAstroDatumContainer {
     GENERATED_BODY()
 public:
     UAstroEntityContainer();
+
 };
 

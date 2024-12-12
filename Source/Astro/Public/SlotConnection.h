@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "GameFramework/Actor.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
-//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "Engine/EngineTypes.h"
+#include "InputCoreTypes.h"
 #include "OnApproximateSplineMeshLengthChangedDelegate.h"
 #include "PreDisconnectedDelegate.h"
 #include "SignalDelegate.h"
@@ -285,9 +285,10 @@ private:
     FSlotReference LastHoverSlot;
     
 public:
-    ASlotConnection();
+    ASlotConnection(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 private:
     UFUNCTION(BlueprintCallable, Server, Unreliable, WithValidation)
     void ServerUpdateClientMotion(FSlotConnectionClientMotionData motionData);

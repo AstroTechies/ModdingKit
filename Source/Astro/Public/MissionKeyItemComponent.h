@@ -10,6 +10,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FName missionId;
     
-    UMissionKeyItemComponent();
+    UMissionKeyItemComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

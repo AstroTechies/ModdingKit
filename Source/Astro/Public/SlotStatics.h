@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "Kismet/BlueprintFunctionLibrary.h"
 #include "EAuxSlotType.h"
 #include "SlotReference.h"
 #include "Templates/SubclassOf.h"
@@ -23,6 +23,7 @@ class ASTRO_API USlotStatics : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     USlotStatics();
+
     UFUNCTION(BlueprintCallable)
     static bool WillTakePhysicalItemToSlotArray(const TArray<FSlotReference>& Slots, APhysicalItem* Item);
     

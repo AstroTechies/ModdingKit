@@ -25,9 +25,10 @@ protected:
     UItemTeleportHelperComponent* TeleportComp;
     
 public:
-    ARiftTargetBase();
+    ARiftTargetBase(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnRep_SpawnedOrbs();

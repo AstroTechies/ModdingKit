@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
 #include "ClickableDelegateNewDelegate.h"
 #include "EUseContext.h"
@@ -135,9 +135,10 @@ private:
     FInteractionRedirect InteractionRedirect;
     
 public:
-    UClickableComponent();
+    UClickableComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void SetInteractionRedirectActor(AActor* Actor, USceneComponent* PivotComponent);
     

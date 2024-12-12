@@ -1,11 +1,13 @@
 #include "DeployableItemPackageComponent.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
-class APhysicalItem;
-class UItemType;
-class UPrimitiveComponent;
-class UTexture;
+UDeployableItemPackageComponent::UDeployableItemPackageComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->PackagePreviewIndicatorSlotWrapper = NULL;
+    this->PackageVisualsWrapper = NULL;
+    this->OwningItem = NULL;
+    this->UnpackIndicatorRoot = NULL;
+    this->DoNotAutoDestroyOnUnpack = false;
+}
 
 void UDeployableItemPackageComponent::SetupPackagedItem(TSubclassOf<UItemType> ItemTypeToDeploy) {
 }
@@ -62,11 +64,4 @@ void UDeployableItemPackageComponent::ClearHideIndicatorTimer() {
 void UDeployableItemPackageComponent::BeginCursorOver(AActor* Actor) {
 }
 
-UDeployableItemPackageComponent::UDeployableItemPackageComponent() {
-    this->PackagePreviewIndicatorSlotWrapper = NULL;
-    this->PackageVisualsWrapper = NULL;
-    this->OwningItem = NULL;
-    this->UnpackIndicatorRoot = NULL;
-    this->DoNotAutoDestroyOnUnpack = false;
-}
 

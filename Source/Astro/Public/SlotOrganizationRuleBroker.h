@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "SlotOrganizationRulesState.h"
 #include "SlotOrganizationRuleBroker.generated.h"
 
@@ -16,5 +16,6 @@ private:
     
 public:
     USlotOrganizationRuleBroker();
+
 };
 

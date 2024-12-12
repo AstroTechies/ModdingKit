@@ -8,3 +8,4 @@ UWheeledChassisAnimInstance::UWheeledChassisAnimInstance() {
     this->MovementComponent = NULL;
 }
 
+

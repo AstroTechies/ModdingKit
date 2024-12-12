@@ -2,12 +2,15 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
-class AAstroPlayerController;
-class APhysicalItem;
-class APlayerController;
-class UItemType;
-class UWorld;
+AAstroMissionsManager::AAstroMissionsManager(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+//    this->bSaveGameRelevant = true;
+    this->bAlwaysRelevant = true;
+    this->bReplicates = true;
+//    const FProperty* p_RemoteRole = GetClass()->FindPropertyByName("RemoteRole");
+//    (*p_RemoteRole->ContainerPtrToValuePtr<TEnumAsByte<ENetRole>>(this)) = ROLE_SimulatedProxy;
+    this->bMissionsDisabled = false;
+    this->bMissionsIntitialized = false;
+}
 
 void AAstroMissionsManager::ToggleEventsDebug(UWorld* World) {
 }
@@ -53,6 +56,12 @@ void AAstroMissionsManager::OnRep_CompletedMissions() {
 }
 
 void AAstroMissionsManager::OnRep_ActiveMissions() {
+}
+
+void AAstroMissionsManager::OnDLCLicenseUpdated() {
+}
+
+void AAstroMissionsManager::OnDLCLicenseAdded(EAstroDlcName Name) {
 }
 
 void AAstroMissionsManager::MulticastNotifyRewardClamed_Implementation(const FName missionId) {
@@ -122,7 +131,8 @@ TArray<FAstroMissionState> AAstroMissionsManager::GetActiveMissions() const {
 void AAstroMissionsManager::DelayedTryActivateNavpointGroup(FName missionId) {
 }
 
-void AAstroMissionsManager::AuthoritySetRewardClaimedMission(const FName missionId) {
+bool AAstroMissionsManager::AuthoritySetRewardClaimedMission(const FName missionId) {
+    return false;
 }
 
 void AAstroMissionsManager::AuthoritySetReclaimableRewardUnclaimed(AAstroPlayerController* Controller, APhysicalItem* Item) {
@@ -140,6 +150,9 @@ void AAstroMissionsManager::AuthorityNotifyKeyItemCreated(FName missionId, APhys
 void AAstroMissionsManager::AuthorityGrantResearchItemRewardMission(const FAstroMissionData& MissionData) {
 }
 
+void AAstroMissionsManager::AuthorityGrantPlayFabReward(const FAstroMissionData& MissionData) {
+}
+
 void AAstroMissionsManager::AuthorityGrantByteRewardMission(const FAstroMissionData& MissionData) {
 }
 
@@ -150,7 +163,7 @@ AActor* AAstroMissionsManager::AuthorityGetReclaimableRewardItem(const AAstroPla
 void AAstroMissionsManager::AuthorityCompleteMission(const FName missionId) {
 }
 
-void AAstroMissionsManager::AuthorityActivateMission(const FName missionId, const FString& EventName) {
+void AAstroMissionsManager::AuthorityActivateMission(const FName missionId, const FString& EventName, bool ignorePrerequisites) {
 }
 
 void AAstroMissionsManager::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {
@@ -164,8 +177,4 @@ void AAstroMissionsManager::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>
     DOREPLIFETIME(AAstroMissionsManager, bMissionsIntitialized);
 }
 
-AAstroMissionsManager::AAstroMissionsManager() {
-    this->bMissionsDisabled = false;
-    this->bMissionsIntitialized = false;
-}
 

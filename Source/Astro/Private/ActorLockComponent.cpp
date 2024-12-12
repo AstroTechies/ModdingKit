@@ -1,6 +1,8 @@
 #include "ActorLockComponent.h"
 
-class ULockingMechanism;
+UActorLockComponent::UActorLockComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+}
 
 void UActorLockComponent::OnAuthorityLockingMechanismStateChanged(ULockingMechanism* changedLockingMechanism, const FLockChangedEventMetadata& EventData) {
 }
@@ -8,6 +10,4 @@ void UActorLockComponent::OnAuthorityLockingMechanismStateChanged(ULockingMechan
 void UActorLockComponent::OnAuthorityLockedStateChanged(FAstroDatumRef lockComponentRef, const FLockChangedEventMetadata& EventData) {
 }
 
-UActorLockComponent::UActorLockComponent() {
-}
 

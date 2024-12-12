@@ -1,6 +1,11 @@
 #include "RailPostTurntableComponent.h"
 #include "Net/UnrealNetwork.h"
 
+URailPostTurntableComponent::URailPostTurntableComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->CurrentCarSlotConnectionState = 0;
+    this->CurrentCarSlotConnectionID = -1;
+}
+
 void URailPostTurntableComponent::OnRep_CurrentConnection() {
 }
 
@@ -17,8 +22,4 @@ void URailPostTurntableComponent::GetLifetimeReplicatedProps(TArray<FLifetimePro
     DOREPLIFETIME(URailPostTurntableComponent, CurrentCarSlotConnectionID);
 }
 
-URailPostTurntableComponent::URailPostTurntableComponent() {
-    this->CurrentCarSlotConnectionState = 0;
-    this->CurrentCarSlotConnectionID = -1;
-}
 

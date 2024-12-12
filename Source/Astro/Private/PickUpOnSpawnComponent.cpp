@@ -1,6 +1,8 @@
 #include "PickUpOnSpawnComponent.h"
 
-class APlayController;
+UPickUpOnSpawnComponent::UPickUpOnSpawnComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+}
 
 void UPickUpOnSpawnComponent::ServerOnHandledLocalPickUp_Implementation() {
 }
@@ -17,6 +19,4 @@ bool UPickUpOnSpawnComponent::MulticastSetOwningPlayer_Validate(APlayController*
 void UPickUpOnSpawnComponent::HandleOwnerChanged() {
 }
 
-UPickUpOnSpawnComponent::UPickUpOnSpawnComponent() {
-}
 

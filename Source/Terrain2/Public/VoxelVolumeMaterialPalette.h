@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EPhysicalSurface -FallbackName=EPhysicalSurface
+#include "UObject/Object.h"
+#include "Engine/EngineTypes.h"
 #include "CreativePaintMaterialMapping.h"
 #include "VoxelMaterial.h"
 #include "VoxelVolumeMaterialPalette.generated.h"
@@ -30,5 +30,6 @@ protected:
     
 public:
     UVoxelVolumeMaterialPalette();
+
 };
 

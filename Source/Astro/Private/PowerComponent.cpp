@@ -1,9 +1,34 @@
 #include "PowerComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class AActor;
-class UPowerComponent;
-class USceneComponent;
+UPowerComponent::UPowerComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->bIsGenerator = false;
+    this->bIsLoad = false;
+    this->ShouldReplicate = false;
+    this->SelfDischargeOnly = false;
+    this->IsIntegratedBattery = false;
+    this->QueryPower = false;
+    this->Enabled = true;
+    this->StorageCapacity = 0.00f;
+    this->DischargeRate = 0.00f;
+    this->ChargeRate = 0.00f;
+    this->CurrentChargeRate = 0.00f;
+    this->NetActualLoad = 0.00f;
+    this->CurrentAvailablePower = 0.00f;
+    this->CurrentMaximumLoad = 0.00f;
+    this->DiscreteDelta = 0.00f;
+    this->UIComponent = NULL;
+    this->WhilePowered = NULL;
+    this->WhileGeneratingPower = NULL;
+    this->WhileDischarging = NULL;
+    this->WhileFullCharge = NULL;
+    this->WhileEmptyCharge = NULL;
+    this->WhileFullyPowered = NULL;
+    this->PowerID = 0;
+    this->NetPowerOutput = 0.00f;
+    this->CurrentCharge = 0.00f;
+}
 
 void UPowerComponent::SetSuppliedVisibility(USceneComponent* Component) {
 }
@@ -97,31 +122,4 @@ void UPowerComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     DOREPLIFETIME(UPowerComponent, ReplicatedState);
 }
 
-UPowerComponent::UPowerComponent() {
-    this->bIsGenerator = false;
-    this->bIsLoad = false;
-    this->ShouldReplicate = false;
-    this->SelfDischargeOnly = false;
-    this->IsIntegratedBattery = false;
-    this->QueryPower = false;
-    this->Enabled = true;
-    this->StorageCapacity = 0.00f;
-    this->DischargeRate = 0.00f;
-    this->ChargeRate = 0.00f;
-    this->CurrentChargeRate = 0.00f;
-    this->NetActualLoad = 0.00f;
-    this->CurrentAvailablePower = 0.00f;
-    this->CurrentMaximumLoad = 0.00f;
-    this->DiscreteDelta = 0.00f;
-    this->UIComponent = NULL;
-    this->WhilePowered = NULL;
-    this->WhileGeneratingPower = NULL;
-    this->WhileDischarging = NULL;
-    this->WhileFullCharge = NULL;
-    this->WhileEmptyCharge = NULL;
-    this->WhileFullyPowered = NULL;
-    this->PowerID = 0;
-    this->NetPowerOutput = 0.00f;
-    this->CurrentCharge = 0.00f;
-}
 

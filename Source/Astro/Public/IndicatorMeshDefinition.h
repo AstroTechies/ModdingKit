@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
+#include "UObject/NoExportTypes.h"
 #include "IndicatorMeshDefinition.generated.h"
 
 class UStaticMesh;

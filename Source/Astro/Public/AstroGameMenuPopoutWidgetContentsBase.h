@@ -29,6 +29,7 @@ protected:
     
 public:
     UAstroGameMenuPopoutWidgetContentsBase();
+
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void HandleWrapperFocusIndexChanged(int32 NewFocusIndex);
     

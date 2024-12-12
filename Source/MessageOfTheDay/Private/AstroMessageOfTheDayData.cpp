@@ -1,6 +1,6 @@
 #include "AstroMessageOfTheDayData.h"
 
 FAstroMessageOfTheDayData::FAstroMessageOfTheDayData() {
-    this->Version = (EAstroMessageOfTheDayVersion)0;
+    this->version = (EAstroMessageOfTheDayVersion)0;
 }
 

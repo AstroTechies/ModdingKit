@@ -8,5 +8,6 @@ class UAstroReplicationGraphNode_GridSpatialization3D : public UReplicationGraph
     GENERATED_BODY()
 public:
     UAstroReplicationGraphNode_GridSpatialization3D();
+
 };
 

@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "Kismet/BlueprintFunctionLibrary.h"
+#include "Engine/EngineTypes.h"
 #include "VoxelMaterial.h"
 #include "ENavpointGroup.h"
 #include "Navpoint.h"
@@ -15,9 +15,12 @@
 class AActor;
 class AAstroCharacter;
 class AAstroPlanet;
+class AAstroPlayerController;
 class APhysicalItem;
 class APlayController;
 class APlayerController;
+class UAstroEmoteDefinition;
+class UAstroPlayMontageAction;
 class UChildActorComponent;
 class UControlSymbol;
 class UItemType;
@@ -31,6 +34,7 @@ class ASTRO_API UAstroPlayStatics : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     UAstroPlayStatics();
+
     UFUNCTION(BlueprintCallable)
     static void WeldToPreserveContraints(AActor* Actor, UPrimitiveComponent* Parent);
     
@@ -109,6 +113,12 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static UItemType* GetItemTypeDefault(TSubclassOf<UItemType> Type);
     
+    UFUNCTION(BlueprintCallable)
+    static UAstroEmoteDefinition* GetDisplayedEmoteViaIndex(int32 Index, bool& bOutSuccess);
+    
+    UFUNCTION(BlueprintCallable)
+    static TSubclassOf<UAstroPlayMontageAction> GetDefaultEmoteActionType();
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static APlayerController* GetCurrentInputController();
     
@@ -119,7 +129,13 @@ public:
     static TArray<APhysicalItem*> GetConsumedInputItemsForTradeOutput(TSubclassOf<UItemType> InputItemType, TSubclassOf<UItemType> OutputItemType, int32 TargetOutputAmount, const TArray<APhysicalItem*>& InputItems);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    static TArray<APlayController*> GetAllPlayControllers(UObject* WorldContextObject);
+    static TArray<APlayController*> GetAllPlayControllers(const UObject* WorldContextObject);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static TArray<UAstroEmoteDefinition*> GetAllEmoteDefinitions(bool& bOutSuccess);
+    
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
+    static AAstroPlayerController* FindPlayerControllerOnServerByBackendId(const UObject* WorldContextObject, const FString& BackendPlayerId);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static FVoxelMaterial DowncastTerrainMaterial(UObject* WorldContextObject, const FVector& Location);

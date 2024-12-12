@@ -3,6 +3,7 @@
 UItemCatalogData::UItemCatalogData() {
     this->bIsCreativeModeOnly = false;
     this->bCreativeSpawnPackaged = false;
+    this->bPlayFabAccountBound = false;
     this->bHiddenUntilUnlocked = false;
     this->bHiddenUntilUnlockedCreativeMode = false;
     this->UnlockCost = 1000;
@@ -14,4 +15,5 @@ UItemCatalogData::UItemCatalogData() {
     this->VariationSequenceNumber = 0;
     this->CatalogMesh = NULL;
 }
+
 

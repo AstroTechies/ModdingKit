@@ -37,9 +37,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName OverrideBuryPhysicsProfile;
     
-    UTerrainPhysicsComponent();
+    UTerrainPhysicsComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void SetWorldPhysics();
     
@@ -69,7 +70,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetIsBuried() const;
     
-    
+
     // Fix for true pure virtual functions not being implemented
 };
 

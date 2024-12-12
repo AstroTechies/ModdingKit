@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
+#include "GameFramework/Actor.h"
 #include "AstroFoliageActor.generated.h"
 
 class UAstroFoliageType;
@@ -14,6 +14,7 @@ private:
     TArray<UAstroFoliageType*> FoliageTypes;
     
 public:
-    AAstroFoliageActor();
+    AAstroFoliageActor(const FObjectInitializer& ObjectInitializer);
+
 };
 

@@ -1,10 +1,9 @@
 #include "GatesGameMode.h"
+#include "GatesGameState.h"
 
-class AAstroPlanet;
-class AGateChamber;
-class AGateEngine;
-class AGateStation;
-class USolarSystem;
+AGatesGameMode::AGatesGameMode(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->GameStateClass = AGatesGameState::StaticClass();
+}
 
 AGateStation* AGatesGameMode::TryGetGateStationActor() const {
     return NULL;
@@ -15,6 +14,10 @@ AGateEngine* AGatesGameMode::TryGetGateEngineActor(AAstroPlanet* enginePlanet) c
 }
 
 AGateChamber* AGatesGameMode::TryGetGateChamberActor(AAstroPlanet* chamberPlanet, int32 ChamberCoordinateIndex) const {
+    return NULL;
+}
+
+AGateChamber* AGatesGameMode::TryGetChamberAsGateStationChamberActor() const {
     return NULL;
 }
 
@@ -37,6 +40,4 @@ void AGatesGameMode::InitializeGatesForSolarSystem(USolarSystem* SolarSystem) {
 
 
 
-AGatesGameMode::AGatesGameMode() {
-}
 

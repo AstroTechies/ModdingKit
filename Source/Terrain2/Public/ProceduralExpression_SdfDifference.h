@@ -8,5 +8,6 @@ class TERRAIN2_API UProceduralExpression_SdfDifference : public UProceduralExpre
     GENERATED_BODY()
 public:
     UProceduralExpression_SdfDifference();
+
 };
 

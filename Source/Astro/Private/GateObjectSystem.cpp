@@ -1,6 +1,7 @@
 #include "GateObjectSystem.h"
 
-class AActor;
+UGateObjectSystem::UGateObjectSystem() {
+}
 
 bool UGateObjectSystem::BP_TryActivateGateObject(AActor* gateObjectActor) {
     return false;
@@ -9,6 +10,4 @@ bool UGateObjectSystem::BP_TryActivateGateObject(AActor* gateObjectActor) {
 void UGateObjectSystem::BP_SetGateObjectCanBeActivated(AActor* gateObjectActor, bool bCanBeActivated) {
 }
 
-UGateObjectSystem::UGateObjectSystem() {
-}
 

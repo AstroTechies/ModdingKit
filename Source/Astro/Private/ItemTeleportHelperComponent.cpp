@@ -1,20 +1,6 @@
 #include "ItemTeleportHelperComponent.h"
 
-class AActor;
-
-bool UItemTeleportHelperComponent::FindValidSpawnLocationNearSelf(const FVector& targetLoc, const TArray<AActor*>& ActorsToIgnore, ELineOfSightBehavior faceTarget, FVector& outLoc, FRotator& outRot) {
-    return false;
-}
-
-bool UItemTeleportHelperComponent::FindValidSpawnLocationAroundTarget(AActor* Target, const TArray<AActor*>& ActorsToIgnore, ELineOfSightBehavior faceTarget, FVector& outLoc, FRotator& outRot) {
-    return false;
-}
-
-bool UItemTeleportHelperComponent::FindValidSpawnLocation(const FVector& targetLoc, const FVector& currLoc, const TArray<AActor*>& ActorsToIgnore, ELineOfSightBehavior faceTarget, FVector& outLoc, FRotator& outRot) {
-    return false;
-}
-
-UItemTeleportHelperComponent::UItemTeleportHelperComponent() {
+UItemTeleportHelperComponent::UItemTeleportHelperComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->MinLocationDistance = 4500.00f;
     this->MaxLocationDistance = 5500.00f;
     this->MaxTeleportHeight = 2000.00f;
@@ -29,4 +15,17 @@ UItemTeleportHelperComponent::UItemTeleportHelperComponent() {
     this->MaxFindAttempts = 10;
     this->ShowTrace = EDrawDebugTrace::None;
 }
+
+bool UItemTeleportHelperComponent::FindValidSpawnLocationNearSelf(const FVector& targetLoc, const TArray<AActor*>& ActorsToIgnore, ELineOfSightBehavior faceTarget, FVector& outLoc, FRotator& outRot) {
+    return false;
+}
+
+bool UItemTeleportHelperComponent::FindValidSpawnLocationAroundTarget(AActor* Target, const TArray<AActor*>& ActorsToIgnore, ELineOfSightBehavior faceTarget, FVector& outLoc, FRotator& outRot) {
+    return false;
+}
+
+bool UItemTeleportHelperComponent::FindValidSpawnLocation(const FVector& targetLoc, const FVector& currLoc, const TArray<AActor*>& ActorsToIgnore, ELineOfSightBehavior faceTarget, FVector& outLoc, FRotator& outRot) {
+    return false;
+}
+
 

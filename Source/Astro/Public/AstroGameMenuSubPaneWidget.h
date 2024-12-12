@@ -10,7 +10,11 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bFullScreen;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool BackNavigationRequiresConfirmation;
+    
     UAstroGameMenuSubPaneWidget();
+
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void NavigatedAwayFrom(bool isNavigateBack);
     

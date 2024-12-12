@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "TetherNetwork.generated.h"
 
 class ASlotConnection;
@@ -33,6 +33,7 @@ private:
     
 public:
     UTetherNetwork();
+
     UFUNCTION(BlueprintCallable)
     void RemoveOxygenator(UOxygenatorComponent* oxygenator);
     

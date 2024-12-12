@@ -6,13 +6,14 @@ UENUM(BlueprintType)
 enum class ENavpointGroup : uint8 {
     None,
     SnailBuff,
-    SnailMission = 0x4,
-    RailMissionsA = 0x8,
+    SnailMission = 4,
+    RailMissionsA = 8,
     RailMissionsA1,
     RailMissionsA2,
     RailMissionsB,
     RailMissionsB1,
     RailMissionsB2,
     RailMissionsC,
+    ALTE_Puzzles,
 };
 

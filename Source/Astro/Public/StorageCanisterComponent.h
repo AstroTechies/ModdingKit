@@ -32,16 +32,19 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> OutputSlotNames;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool CanReingestFromOuputSlot;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UStorageChassisComponent* CurrentOuterMostChassis;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ItemTransferRate;
     
-    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<UStorageCanisterOrganizationRule> InputOrganizationRule;
     
-    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<UStorageCanisterOrganizationRule> OutputOrganizationRule;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -51,7 +54,8 @@ protected:
     TArray<FSlotReference> OutputSlotRefs;
     
 public:
-    UStorageCanisterComponent();
+    UStorageCanisterComponent(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnSlottedItemsChanged(APhysicalItem* changedItem);
@@ -70,6 +74,9 @@ protected:
     
     UFUNCTION(BlueprintCallable)
     void HandleOnPlacedInSlot();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetIsDispensing() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanMoveItems() const;

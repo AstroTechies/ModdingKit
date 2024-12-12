@@ -9,7 +9,7 @@ struct MESSAGEOFTHEDAY_API FAstroMessageOfTheDayData {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    EAstroMessageOfTheDayVersion Version;
+    EAstroMessageOfTheDayVersion version;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FString, FAstroMessageOfTheDayLocalizedContent> Content;

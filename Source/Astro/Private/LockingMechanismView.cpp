@@ -1,7 +1,11 @@
 #include "LockingMechanismView.h"
 #include "Net/UnrealNetwork.h"
 
-class ULockingMechanism;
+ULockingMechanismView::ULockingMechanismView() {
+    this->bIsOpen = false;
+    this->LinkedLockingMechanism = NULL;
+    this->Definition = NULL;
+}
 
 void ULockingMechanismView::OnRep_IsOpen() {
 }
@@ -15,9 +19,4 @@ void ULockingMechanismView::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>
     DOREPLIFETIME(ULockingMechanismView, bIsOpen);
 }
 
-ULockingMechanismView::ULockingMechanismView() {
-    this->bIsOpen = false;
-    this->LinkedLockingMechanism = NULL;
-    this->Definition = NULL;
-}
 

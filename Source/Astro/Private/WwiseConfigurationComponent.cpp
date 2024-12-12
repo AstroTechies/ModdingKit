@@ -1,5 +1,6 @@
 #include "WwiseConfigurationComponent.h"
 
-UWwiseConfigurationComponent::UWwiseConfigurationComponent() {
+UWwiseConfigurationComponent::UWwiseConfigurationComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

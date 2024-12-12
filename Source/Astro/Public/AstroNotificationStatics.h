@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
+#include "Kismet/BlueprintFunctionLibrary.h"
 #include "AstroNotificationTagAuthoringData.h"
 #include "AstroNotificationToastAuthoringData.h"
 #include "AstroNotificationUnlockAuthoringData.h"
@@ -18,6 +18,7 @@ class ASTRO_API UAstroNotificationStatics : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     UAstroNotificationStatics();
+
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void SetShouldRetainBiomeToastNotification(UObject* WorldContextObject, bool bShouldRetain);
     

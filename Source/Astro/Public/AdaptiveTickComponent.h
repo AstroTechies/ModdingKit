@@ -19,6 +19,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float NearTickDistance;
     
-    UAdaptiveTickComponent();
+    UAdaptiveTickComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

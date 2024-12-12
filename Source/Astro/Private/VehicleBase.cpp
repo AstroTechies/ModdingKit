@@ -1,8 +1,9 @@
 #include "VehicleBase.h"
 #include "Net/UnrealNetwork.h"
 
-class AAstroPlayerController;
-class ASeatBase;
+AVehicleBase::AVehicleBase(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->storage = NULL;
+}
 
 
 
@@ -29,7 +30,4 @@ void AVehicleBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLife
     DOREPLIFETIME(AVehicleBase, VehicleBaseReplicationData);
 }
 
-AVehicleBase::AVehicleBase() {
-    this->storage = NULL;
-}
 

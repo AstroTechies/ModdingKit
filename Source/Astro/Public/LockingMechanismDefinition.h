@@ -14,5 +14,6 @@ public:
     uint8 bAutoClosesAfterOpening: 1;
     
     ULockingMechanismDefinition();
+
 };
 

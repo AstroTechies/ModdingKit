@@ -10,6 +10,7 @@ class ASTRO_API ULockComponentContainer : public UAstroEntityComponentContainer 
     GENERATED_BODY()
 public:
     ULockComponentContainer();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FLockComponent GetLockComponent(FAstroDatumRef lockComponentRef, bool& bOutSuccess);
     

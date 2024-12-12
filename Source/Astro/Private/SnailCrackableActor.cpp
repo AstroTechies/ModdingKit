@@ -1,5 +1,6 @@
 #include "SnailCrackableActor.h"
 
-ASnailCrackableActor::ASnailCrackableActor() {
+ASnailCrackableActor::ASnailCrackableActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

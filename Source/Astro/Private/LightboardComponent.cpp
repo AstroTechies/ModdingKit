@@ -1,10 +1,9 @@
 #include "LightboardComponent.h"
 
-class APlayController;
+ULightboardComponent::ULightboardComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+}
 
 void ULightboardComponent::HandleSlotActuateEvent(FSlotReference pinSlot, APlayController* Instigator) {
 }
 
-ULightboardComponent::ULightboardComponent() {
-}
 

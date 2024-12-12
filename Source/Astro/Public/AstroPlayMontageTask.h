@@ -22,7 +22,11 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnCompleted;
     
+//    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+//    FOnSingleAnimCustomNotify OnSingleAnimCustomNotify;
+    
     UAstroPlayMontageTask();
+
 protected:
     UFUNCTION(BlueprintCallable)
     void RouteSingleAnimCustomNotify(FName NotifyName);

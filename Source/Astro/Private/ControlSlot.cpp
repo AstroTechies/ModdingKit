@@ -1,5 +1,6 @@
 #include "ControlSlot.h"
 
-AControlSlot::AControlSlot() {
+AControlSlot::AControlSlot(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "UObject/NoExportTypes.h"
 #include "GameplayTask.h"
 #include "TransformCompletedDelegate.h"
 #include "AstroApplyTransformTask.generated.h"
@@ -19,6 +19,7 @@ public:
     FTransformCompleted OnTransformCompleted;
     
     UAstroApplyTransformTask();
+
     UFUNCTION(BlueprintCallable)
     void SetTargetRelativeTransform(const FTransform& TargetRelativeTransform, UCurveFloat* relativeTransformProgressCurve);
     

@@ -31,6 +31,7 @@ private:
     
 public:
     UAstroNotificationUnlockWidget();
+
 private:
     UFUNCTION(BlueprintCallable)
     void MarkNotificationForDestruction();

@@ -1,7 +1,9 @@
 #include "VehicleSlotComponent.h"
 
-class AActor;
-class UVehicleSlotComponent;
+UVehicleSlotComponent::UVehicleSlotComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->AutoSlotDistance = 2500.00f;
+    this->MaxConnectedVehicles = 6;
+}
 
 TArray<UVehicleSlotComponent*> UVehicleSlotComponent::GetConnectedVehicles() {
     return TArray<UVehicleSlotComponent*>();
@@ -11,8 +13,4 @@ UVehicleSlotComponent* UVehicleSlotComponent::ActorVehicleSlotComponent(AActor* 
     return NULL;
 }
 
-UVehicleSlotComponent::UVehicleSlotComponent() {
-    this->AutoSlotDistance = 2500.00f;
-    this->MaxConnectedVehicles = 6;
-}
 

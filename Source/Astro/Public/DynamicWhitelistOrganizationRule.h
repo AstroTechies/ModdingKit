@@ -19,6 +19,7 @@ protected:
     
 public:
     UDynamicWhitelistOrganizationRule();
+
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetWhitelist(const TArray<TSubclassOf<UItemType>>& Whitelist);
     

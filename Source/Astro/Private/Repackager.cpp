@@ -1,13 +1,21 @@
 #include "Repackager.h"
 #include "AstroActionComponent.h"
 #include "Net/UnrealNetwork.h"
+#include "Templates/SubclassOf.h"
 
-class AActor;
+ARepackager::ARepackager(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->ActionComponent = CreateDefaultSubobject<UAstroActionComponent>(TEXT("ActionComponent"));
+    this->TargetState = ERepackagingTargetState::None;
+    this->RepackActionType = NULL;
+}
 
 void ARepackager::UpdateRepackagingTarget() {
 }
 
 
+
+void ARepackager::OnAttachedItemStoredItemTypeChanged(UItemComponent* changedItemComponent, TSubclassOf<UItemType> NewItemType) {
+}
 
 void ARepackager::InitiateRepackaging() {
 }
@@ -21,9 +29,4 @@ void ARepackager::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifet
     DOREPLIFETIME(ARepackager, TargetState);
 }
 
-ARepackager::ARepackager() {
-    this->ActionComponent = CreateDefaultSubobject<UAstroActionComponent>(TEXT("ActionComponent"));
-    this->TargetState = ERepackagingTargetState::None;
-    this->RepackActionType = NULL;
-}
 

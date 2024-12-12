@@ -8,6 +8,7 @@
 #include "Templates/SubclassOf.h"
 #include "AstroPlayerState.generated.h"
 
+class AAstroCharacter;
 class UActorEntityLinkComponent;
 class UItemType;
 
@@ -30,9 +31,16 @@ public:
     FHelpMenuStateUpdate OnHelpMenuUpdated;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    // The PlayFab ID of a player. Seemingly only accessible on dedicated servers.
     FString BackendPlayerId;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    TArray<float> StatusModifierValues;
+    
 private:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    TArray<float> PrevStatusModifierValues;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
     EPlayerPlatform Platform;
     
@@ -67,9 +75,16 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     uint8 bIsWaitingForOutro: 1;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    uint8 bHasPlayerExitedStartingDropship: 1;
+    
 public:
-    AAstroPlayerState();
+    AAstroPlayerState(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
+    UFUNCTION(BlueprintCallable)
+    void SetPlayerExitedStartingDropship();
     
     UFUNCTION(BlueprintCallable)
     void SetHelpMenuState(bool HelpMenuOpen);
@@ -87,6 +102,9 @@ public:
     bool IsPlayerOffworld() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool HasPlayerExitedStartingDropship() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EPlayerPlatform GetPlayerPlatform() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -100,6 +118,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void BroadcastKnownItemTypesChanged();
+    
+    UFUNCTION(BlueprintCallable)
+    void AuthorityStatusModifierValuesUpdated(AAstroCharacter* Character);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityNotifyAcquiredTerrainTool();

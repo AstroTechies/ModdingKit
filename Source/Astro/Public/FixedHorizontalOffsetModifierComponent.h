@@ -13,6 +13,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LowerLimit;
     
-    UFixedHorizontalOffsetModifierComponent();
+    UFixedHorizontalOffsetModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

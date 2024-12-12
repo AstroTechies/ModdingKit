@@ -1,6 +1,6 @@
 #include "RaycastTerrainSurfaceComponent.h"
 
-URaycastTerrainSurfaceComponent::URaycastTerrainSurfaceComponent() {
+URaycastTerrainSurfaceComponent::URaycastTerrainSurfaceComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->RandomOrientation = 0.00f;
     this->Orientation = ESurfaceOrientation::TerrainNormal;
     this->bApplyOffsetDownFromHit = false;
@@ -10,4 +10,5 @@ URaycastTerrainSurfaceComponent::URaycastTerrainSurfaceComponent() {
     this->bUseVoxelTrace = false;
     this->VoxelTraceAccuracy = 10.00f;
 }
+
 

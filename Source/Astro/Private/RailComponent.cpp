@@ -1,7 +1,10 @@
 #include "RailComponent.h"
 
-class AActor;
-class APhysicalItem;
+URailComponent::URailComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->MoveSpeed = 400.00f;
+    this->OwnerConnection = NULL;
+}
 
 bool URailComponent::SendItem(APhysicalItem* Item, AActor* Source) {
     return false;
@@ -10,8 +13,4 @@ bool URailComponent::SendItem(APhysicalItem* Item, AActor* Source) {
 void URailComponent::MulticastSendRail_Implementation(bool Immediate) {
 }
 
-URailComponent::URailComponent() {
-    this->MoveSpeed = 400.00f;
-    this->OwnerConnection = NULL;
-}
 

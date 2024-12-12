@@ -7,7 +7,7 @@ enum class EUseType : uint8 {
     None,
     Tooltip,
     Aux,
-    Actuator = 0x4,
-    All = 0x7,
+    Actuator = 4,
+    All = 7,
 };
 

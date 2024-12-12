@@ -16,6 +16,7 @@ protected:
     
 public:
     USlottedItemLockingMechanism();
+
     UFUNCTION(BlueprintCallable)
     void OnItemSetInRelevantSlot(APhysicalItem* Item);
     

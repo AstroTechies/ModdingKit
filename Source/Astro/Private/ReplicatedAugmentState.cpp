@@ -9,5 +9,6 @@ FReplicatedAugmentState::FReplicatedAugmentState() {
     this->AugmentedHardnessTier = 0.00f;
     this->AugmentedTerrainHardness = 0.00f;
     this->AugmentedTerrainSurfaceType = SurfaceType_Default;
+    this->RevertModifications = false;
 }
 

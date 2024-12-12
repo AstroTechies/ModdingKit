@@ -10,6 +10,7 @@ class ASTRO_API UStreamingPowerMergedConnectionComponentContainer : public UAstr
     GENERATED_BODY()
 public:
     UStreamingPowerMergedConnectionComponentContainer();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FStreamingPowerMergedConnectionComponent GetStreamingPowerMergedConnectionComponent(FAstroDatumRef StreamingPowerMergedConnectionComponentRef, bool& bOutSuccess);
     

@@ -1,6 +1,7 @@
 #include "JourneyOffsetComponent.h"
 
-UJourneyOffsetComponent::UJourneyOffsetComponent() {
+UJourneyOffsetComponent::UJourneyOffsetComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->OffsetAmount = 400.00f;
 }
+
 

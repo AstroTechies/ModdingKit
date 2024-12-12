@@ -1,9 +1,31 @@
 #include "AstroGameMode.h"
+#include "AstroGameState.h"
+#include "AstroPlayerState.h"
 
-class AActor;
-class APlayController;
-class USolarSystem;
-class UStorageChassisComponent;
+AAstroGameMode::AAstroGameMode(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->GameStateClass = AAstroGameState::StaticClass();
+    this->PlayerStateClass = AAstroPlayerState::StaticClass();
+    this->bUseSeamlessTravel = true;
+    this->CustomGameModifiersDefaultValueDatabase = NULL;
+    this->CustomGameSettingsTags = NULL;
+    this->IsFirstLaunch = true;
+    this->IsInExpansionEnvironment = false;
+    this->InitialKnownItemTypeList = NULL;
+    this->CreativeModeForceKnownItemTypeList = NULL;
+    this->InitialItemTypeUnlockList = NULL;
+    this->InitialHackedItemTypeList = NULL;
+    this->InitialResearchPointBalance = 0;
+    this->bPlayerStartsWithTerrainTool = true;
+    this->bAllowsMultiplayer = true;
+    this->bIsTutorialMode = false;
+    this->bDeferStartListenServer = false;
+    this->NewGamesUseIntroCinematic = false;
+    this->PlayIntroOnce = false;
+    this->NewGamesUseTitleMenu = false;
+    this->EnableSavedGamesAutomatically = true;
+    this->DefaultSpawnPoint = NULL;
+    this->IntroSequencePlayer = NULL;
+}
 
 void AAstroGameMode::UnregisterSpawnPointActorAttachmentsComponent(UStorageChassisComponent* spawnPoint) {
 }
@@ -18,6 +40,9 @@ void AAstroGameMode::SetPlayerHasSeenIntro(bool playerHasSeenIntro) {
 }
 
 void AAstroGameMode::SetMultiplayerEnabled(bool bIsEnabled) {
+}
+
+void AAstroGameMode::SetIsInExpansion(bool inExpansion) {
 }
 
 void AAstroGameMode::ServerSaveGameName(const FString& Name) {
@@ -42,6 +67,10 @@ void AAstroGameMode::RespawnPlayer(APlayController* Player, FVector locationOnDe
 void AAstroGameMode::RegisterSpawnPointActorAttachmentsComponent(UStorageChassisComponent* spawnPoint) {
 }
 
+bool AAstroGameMode::PlanetHasStartingPointCandidate(EPlanetIdentifier planetID) {
+    return false;
+}
+
 void AAstroGameMode::OnOutroCinematicComplete() {
 }
 
@@ -58,6 +87,9 @@ void AAstroGameMode::OnFullLicenseDetected() {
 }
 
 void AAstroGameMode::MovePlayersToSpawnPositions() {
+}
+
+void AAstroGameMode::LoadMap(TSoftObjectPtr<UWorld> Map) {
 }
 
 bool AAstroGameMode::IsPackagedBuild() {
@@ -101,20 +133,4 @@ void AAstroGameMode::AuthorityAddStartingPointCandiateActor(const AActor* candid
 void AAstroGameMode::AddTerrainResolutionPoint(float X, float Y, float Z, float Radius) {
 }
 
-AAstroGameMode::AAstroGameMode() {
-    this->InitialKnownItemTypeList = NULL;
-    this->CreativeModeForceKnownItemTypeList = NULL;
-    this->InitialItemTypeUnlockList = NULL;
-    this->InitialResearchPointBalance = 0;
-    this->bPlayerStartsWithTerrainTool = true;
-    this->bAllowsMultiplayer = true;
-    this->bIsTutorialMode = false;
-    this->bDeferStartListenServer = false;
-    this->NewGamesUseIntroCinematic = false;
-    this->PlayIntroOnce = false;
-    this->NewGamesUseTitleMenu = false;
-    this->EnableSavedGamesAutomatically = true;
-    this->DefaultSpawnPoint = NULL;
-    this->IntroSequencePlayer = NULL;
-}
 

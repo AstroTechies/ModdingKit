@@ -1,11 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=NetworkPredictionInterface -FallbackName=NetworkPredictionInterface
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize10 -FallbackName=Vector_NetQuantize10
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize100 -FallbackName=Vector_NetQuantize100
 #include "Interfaces/NetworkPredictionInterface.h"
+#include "Engine/NetSerialization.h"
+#include "Engine/NetSerialization.h"
 #include "AstroCharacterActiveOverrides.h"
 #include "AstroCharacterEncumbrance.h"
 #include "AstroMovementMode.h"
@@ -199,7 +198,8 @@ protected:
     float CreativeModeFlightSpeedScalar;
     
 public:
-    UAstroCharacterMovementComponent();
+    UAstroCharacterMovementComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void ZeroVelocity();
     
@@ -267,7 +267,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void AddAcceleration(FVector NewAcceleration);
     
-    
+
     // Fix for true pure virtual functions not being implemented
 };
 

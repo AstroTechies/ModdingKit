@@ -1,20 +1,18 @@
 #include "ItemStatics.h"
 #include "Templates/SubclassOf.h"
 
-class APhysicalItem;
-class UItemList;
-class UItemType;
-class UObject;
+UItemStatics::UItemStatics() {
+}
 
-bool UItemStatics::WillCraftItem(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& ItemTypes) {
+bool UItemStatics::WillCraftItem(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& itemTypes) {
     return false;
 }
 
-int32 UItemStatics::TryCraftItemDelta(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& ItemTypes, float Rate, float DeltaTime) {
+int32 UItemStatics::TryCraftItemDelta(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& itemTypes, float Rate, float DeltaTime) {
     return 0;
 }
 
-int32 UItemStatics::TryCraftItem(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& ItemTypes, float Rate) {
+int32 UItemStatics::TryCraftItem(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& itemTypes, float Rate) {
     return 0;
 }
 
@@ -58,7 +56,7 @@ FRecipe UItemStatics::MakeItemRecipeFromSlots(const TArray<FSlotReference>& item
     return FRecipe{};
 }
 
-FRecipe UItemStatics::MakeItemRecipe(const TArray<TSubclassOf<UItemType>>& ItemTypes) {
+FRecipe UItemStatics::MakeItemRecipe(const TArray<TSubclassOf<UItemType>>& itemTypes) {
     return FRecipe{};
 }
 
@@ -110,7 +108,7 @@ FText UItemStatics::GetCraftingSourcesTooltipDescription(TSubclassOf<UItemType> 
     return FText::GetEmpty();
 }
 
-TSubclassOf<UItemType> UItemStatics::FindRecipeTarget(const FRecipe& Recipe, const TArray<TSubclassOf<UItemType>>& ItemTypes) {
+TSubclassOf<UItemType> UItemStatics::FindRecipeTarget(const FRecipe& Recipe, const TArray<TSubclassOf<UItemType>>& itemTypes) {
     return NULL;
 }
 
@@ -137,6 +135,4 @@ int32 UItemStatics::AmountFromRate(float Rate, float DeltaSeconds) {
     return 0;
 }
 
-UItemStatics::UItemStatics() {
-}
 

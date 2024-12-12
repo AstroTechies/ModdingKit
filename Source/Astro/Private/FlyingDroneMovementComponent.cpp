@@ -1,6 +1,19 @@
 #include "FlyingDroneMovementComponent.h"
 #include "Net/UnrealNetwork.h"
 
+UFlyingDroneMovementComponent::UFlyingDroneMovementComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->MaxAcceleration = 5000.00f;
+    this->MinCreativeModeFlightSpeedScalar = 1.00f;
+    this->MaxCreativeModeFlightSpeedScalar = 5.00f;
+    this->CreativeModeFlightSpeedScalar = 1.00f;
+    this->DepenetrationStrength = 10.00f;
+    this->UpdatedComponent = NULL;
+    this->DroneOwner = NULL;
+    this->RotationSpeed = 360.00f;
+    this->GravitySourceInterpolationTime = 0.50f;
+    this->PlayerCamera = NULL;
+}
+
 void UFlyingDroneMovementComponent::SetCreativeModeFlightSpeedScalarNormalized(float NormalizedCreativeModeFlightSpeedScalar) {
 }
 
@@ -20,16 +33,4 @@ void UFlyingDroneMovementComponent::GetLifetimeReplicatedProps(TArray<FLifetimeP
     DOREPLIFETIME(UFlyingDroneMovementComponent, ClientMovementInputVector);
 }
 
-UFlyingDroneMovementComponent::UFlyingDroneMovementComponent() {
-    this->MaxAcceleration = 5000.00f;
-    this->MinCreativeModeFlightSpeedScalar = 1.00f;
-    this->MaxCreativeModeFlightSpeedScalar = 5.00f;
-    this->CreativeModeFlightSpeedScalar = 1.00f;
-    this->DepenetrationStrength = 10.00f;
-    this->UpdatedComponent = NULL;
-    this->DroneOwner = NULL;
-    this->RotationSpeed = 360.00f;
-    this->GravitySourceInterpolationTime = 0.50f;
-    this->PlayerCamera = NULL;
-}
 

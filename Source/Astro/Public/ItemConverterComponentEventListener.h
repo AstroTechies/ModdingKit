@@ -10,6 +10,7 @@ class UItemConverterComponentEventListener : public UAstroEntityComponentSubobje
     GENERATED_BODY()
 public:
     UItemConverterComponentEventListener();
+
     UFUNCTION(BlueprintCallable)
     void OnItemStateChangedInExternalResourceSlot(APhysicalItem* Item);
     

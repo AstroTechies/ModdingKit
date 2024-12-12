@@ -8,5 +8,6 @@ class ASTRO_API UItemCraftingFormula : public UItemConversionFormula {
     GENERATED_BODY()
 public:
     UItemCraftingFormula();
+
 };
 

@@ -1,8 +1,10 @@
 #include "RewardSystem.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
-class UItemType;
+URewardSystem::URewardSystem() {
+    this->RewardState = NULL;
+    this->RewardTable = NULL;
+}
 
 FRewardResult URewardSystem::SelectReward(const FRewardSelectionParameters& params) {
     return FRewardResult{};
@@ -20,8 +22,4 @@ bool URewardSystem::GrantDurable(TSubclassOf<UItemType> itemToUnlock) {
     return false;
 }
 
-URewardSystem::URewardSystem() {
-    this->RewardState = NULL;
-    this->RewardTable = NULL;
-}
 

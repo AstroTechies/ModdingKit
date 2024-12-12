@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "SlotReference.h"
 #include "SlotBehavior.generated.h"
 
@@ -12,5 +12,6 @@ public:
     FSlotReference Slot;
     
     USlotBehavior();
+
 };
 

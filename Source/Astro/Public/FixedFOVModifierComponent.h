@@ -10,6 +10,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FOV;
     
-    UFixedFOVModifierComponent();
+    UFixedFOVModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

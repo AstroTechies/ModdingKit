@@ -17,6 +17,7 @@ private:
     UTetherNetwork* PreviousTetherNetwork;
     
 public:
-    UVehicleTetherAttachComponent();
+    UVehicleTetherAttachComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

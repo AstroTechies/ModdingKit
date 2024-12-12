@@ -1,11 +1,22 @@
 #include "TooltipComponent.h"
 
-class AActor;
-class UCrackableActorComponent;
-class UItemType;
-class UObject;
-class UPrimitiveComponent;
-class USceneComponent;
+UTooltipComponent::UTooltipComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bIsActorDefaultTooltip = true;
+    this->TooltipArchetype = ETooltipArchetype::Custom;
+    this->VisibilityControl = ETooltipVisibilityControl::ShowOnFocus;
+    this->bRemainsVisibleWhenHeld = false;
+    this->bSuppressOtherTooltipsWhenExpanded = false;
+    this->bAlwaysShowLiteralItemType = false;
+    this->bSuppressTooltipUse = false;
+    this->AnchorReferenceComponent = NULL;
+    this->bCanDisplayWhenCracked = false;
+    this->ToolTipWidget = NULL;
+    this->PrimaryProximitySphereBadge = NULL;
+    this->SecondaryProximitySphereBadge = NULL;
+    this->ProximitySphereDetails = NULL;
+    this->InputRespondingCollider = NULL;
+    this->LocalPawnDisplayingProximityTooltip = NULL;
+}
 
 void UTooltipComponent::UpdateWidgetOverrideDisplayData(FName overrideName, const FTooltipWidgetDisplayData& DisplayData) {
 }
@@ -136,21 +147,4 @@ AActor* UTooltipComponent::GetActorThisTooltipIsFor() {
 void UTooltipComponent::FullyPresentTooltip() {
 }
 
-UTooltipComponent::UTooltipComponent() {
-    this->bIsActorDefaultTooltip = true;
-    this->TooltipArchetype = ETooltipArchetype::Custom;
-    this->VisibilityControl = ETooltipVisibilityControl::ShowOnFocus;
-    this->bRemainsVisibleWhenHeld = false;
-    this->bSuppressOtherTooltipsWhenExpanded = false;
-    this->bAlwaysShowLiteralItemType = false;
-    this->bSuppressTooltipUse = false;
-    this->AnchorReferenceComponent = NULL;
-    this->bCanDisplayWhenCracked = false;
-    this->ToolTipWidget = NULL;
-    this->PrimaryProximitySphereBadge = NULL;
-    this->SecondaryProximitySphereBadge = NULL;
-    this->ProximitySphereDetails = NULL;
-    this->InputRespondingCollider = NULL;
-    this->LocalPawnDisplayingProximityTooltip = NULL;
-}
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
+#include "Kismet/BlueprintFunctionLibrary.h"
 #include "GameSettingsAudioOptions.h"
 #include "GameSettingsControlsOptions.h"
 #include "GameSettingsDisplayOptions.h"
@@ -12,6 +12,7 @@ class ASTRO_API UGameSettingsDataStatics : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     UGameSettingsDataStatics();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FGameSettingsGraphicsOptions GetGraphicsOptions();
     

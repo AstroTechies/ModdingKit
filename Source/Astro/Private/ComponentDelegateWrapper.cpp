@@ -1,7 +1,7 @@
 #include "ComponentDelegateWrapper.h"
 
-class AActor;
-class UPrimitiveComponent;
+UComponentDelegateWrapper::UComponentDelegateWrapper() {
+}
 
 void UComponentDelegateWrapper::OnComponentHit(UPrimitiveComponent* ThisComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit) {
 }
@@ -9,6 +9,4 @@ void UComponentDelegateWrapper::OnComponentHit(UPrimitiveComponent* ThisComp, AA
 void UComponentDelegateWrapper::OnActorClick(AActor* Actor, FKey Key) {
 }
 
-UComponentDelegateWrapper::UComponentDelegateWrapper() {
-}
 

@@ -16,12 +16,13 @@ protected:
     TMap<FName, FName> ActuateSlotMapping;
     
 public:
-    ULightboardComponent();
+    ULightboardComponent(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable)
     void HandleSlotActuateEvent(FSlotReference pinSlot, APlayController* Instigator);
     
-    
+
     // Fix for true pure virtual functions not being implemented
 };
 

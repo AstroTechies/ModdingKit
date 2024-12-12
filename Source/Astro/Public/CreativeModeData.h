@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/Object.h"
+#include "UObject/NoExportTypes.h"
 #include "CreativeModeTerrainData.h"
 #include "CreativeModeData.generated.h"
 
@@ -21,6 +21,7 @@ public:
     FVector PlayerRefPos;
     
     UCreativeModeData();
+
     UFUNCTION(BlueprintCallable)
     FString GetTerrainPaintStatus();
     

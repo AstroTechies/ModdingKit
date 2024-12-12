@@ -12,7 +12,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UActuatorComponent* ActuatorComponent;
     
-    AReroutePlacementHelper();
+    AReroutePlacementHelper(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerTryDeleteNode();
     

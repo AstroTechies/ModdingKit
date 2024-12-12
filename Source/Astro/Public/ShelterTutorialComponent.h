@@ -36,7 +36,8 @@ private:
     TArray<AResourceInfo*> PlatformCableIndicators;
     
 public:
-    UShelterTutorialComponent();
+    UShelterTutorialComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void StopCableTutorial();
     

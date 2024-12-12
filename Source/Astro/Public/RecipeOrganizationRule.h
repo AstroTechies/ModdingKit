@@ -13,6 +13,7 @@ class URecipeOrganizationRule : public USlotOrganizationRule {
     GENERATED_BODY()
 public:
     URecipeOrganizationRule();
+
     UFUNCTION(BlueprintCallable)
     void SetRecipe(FRecipe Recipe);
     

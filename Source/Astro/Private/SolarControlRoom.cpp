@@ -5,8 +5,25 @@
 #include "ClickableComponent.h"
 #include "TooltipComponent.h"
 
-class AActor;
-class USolarSystem;
+ASolarControlRoom::ASolarControlRoom(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+//    const FProperty* p_RemoteRole = GetClass()->FindPropertyByName("RemoteRole");
+//    (*p_RemoteRole->ContainerPtrToValuePtr<TEnumAsByte<ENetRole>>(this)) = ROLE_SimulatedProxy;
+    this->RootComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ControlRoomMesh"));
+    this->GateStationOrbitDistance = 0.00f;
+    this->UnlockingMissionID = TEXT("Chronos002");
+    this->SelectedAudioEvent = TEXT("play_planetselect_sun_target");
+    this->ControlRoomMesh = (UStaticMeshComponent*)RootComponent;
+    this->ClickableComponent = CreateDefaultSubobject<UClickableComponent>(TEXT("clickable"));
+    this->TooltipComponent = CreateDefaultSubobject<UTooltipComponent>(TEXT("ToolTip"));
+    this->ClickCollisionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("ClickCollisionSphere"));
+    this->ProxyMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProxyMesh"));
+    this->ProxyRoot = CreateDefaultSubobject<USceneComponent>(TEXT("ProxyRoot"));
+    this->ProxyMeshScale = 10.00f;
+    this->ClickCollisionSphere->SetupAttachment(ProxyMesh);
+    this->ProxyMesh->SetupAttachment(ProxyRoot);
+    this->ProxyRoot->SetupAttachment(RootComponent);
+}
 
 void ASolarControlRoom::UnlockSolarControlRoom() {
 }
@@ -35,16 +52,4 @@ bool ASolarControlRoom::GetIsUnlocked() {
     return false;
 }
 
-ASolarControlRoom::ASolarControlRoom() {
-    this->GateStationOrbitDistance = 0.00f;
-    this->UnlockingMissionID = TEXT("Chronos002");
-    this->SelectedAudioEvent = TEXT("play_planetselect_sun_target");
-    this->ControlRoomMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ControlRoomMesh"));
-    this->ClickableComponent = CreateDefaultSubobject<UClickableComponent>(TEXT("clickable"));
-    this->TooltipComponent = CreateDefaultSubobject<UTooltipComponent>(TEXT("ToolTip"));
-    this->ClickCollisionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("ClickCollisionSphere"));
-    this->ProxyMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProxyMesh"));
-    this->ProxyRoot = CreateDefaultSubobject<USceneComponent>(TEXT("ProxyRoot"));
-    this->ProxyMeshScale = 10.00f;
-}
 

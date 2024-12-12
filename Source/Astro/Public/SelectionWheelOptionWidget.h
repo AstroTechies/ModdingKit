@@ -9,6 +9,7 @@ class USelectionWheelOptionWidget : public UUserWidgetBlueprintDesignable {
     GENERATED_BODY()
 public:
     USelectionWheelOptionWidget();
+
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void SetSelected(bool isSelected);
     

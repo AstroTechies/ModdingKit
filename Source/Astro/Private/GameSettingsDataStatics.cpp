@@ -1,5 +1,8 @@
 #include "GameSettingsDataStatics.h"
 
+UGameSettingsDataStatics::UGameSettingsDataStatics() {
+}
+
 FGameSettingsGraphicsOptions UGameSettingsDataStatics::GetGraphicsOptions() {
     return FGameSettingsGraphicsOptions{};
 }
@@ -16,6 +19,4 @@ FGameSettingsAudioOptions UGameSettingsDataStatics::GetAudioOptions() {
     return FGameSettingsAudioOptions{};
 }
 
-UGameSettingsDataStatics::UGameSettingsDataStatics() {
-}
 

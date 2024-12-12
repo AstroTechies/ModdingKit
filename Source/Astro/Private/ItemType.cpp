@@ -1,9 +1,5 @@
 #include "ItemType.h"
 
-FRecipe UItemType::GetConstructionRecipe() const {
-    return FRecipe{};
-}
-
 UItemType::UItemType() {
     this->bDestroyOnAddDeformation = true;
     this->Indestructible = false;
@@ -32,4 +28,9 @@ UItemType::UItemType() {
     this->CrateOverlayTexture = NULL;
     this->WidgetIcon = NULL;
 }
+
+FRecipe UItemType::GetConstructionRecipe() const {
+    return FRecipe{};
+}
+
 

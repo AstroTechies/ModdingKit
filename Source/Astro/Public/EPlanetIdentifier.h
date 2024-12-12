@@ -12,5 +12,8 @@ enum class EPlanetIdentifier : uint8 {
     Arid,
     Tundra,
     Radiated,
+    GlitchPlanet,
+    GlitchMoon,
+    CountPlusOne,
 };
 

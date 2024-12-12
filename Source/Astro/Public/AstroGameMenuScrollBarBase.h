@@ -23,6 +23,7 @@ protected:
     
 public:
     UAstroGameMenuScrollBarBase();
+
     UFUNCTION(BlueprintCallable)
     void SetScrollBarHandlePositionNormalized(float NormalizedPosition);
     

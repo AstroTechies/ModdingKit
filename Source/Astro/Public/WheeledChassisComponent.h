@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "Engine/EngineTypes.h"
 #include "RepWheeledChassisMovement.h"
 #include "SignalDelegate.h"
 #include "VehicleFacingSetDelegate.h"
@@ -129,9 +129,10 @@ private:
     uint8 REP_bUprightFlipComplete: 1;
     
 public:
-    UWheeledChassisComponent();
+    UWheeledChassisComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void WakePhysics();
     

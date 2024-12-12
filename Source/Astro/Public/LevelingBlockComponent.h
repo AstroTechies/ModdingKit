@@ -29,9 +29,10 @@ private:
     uint8 VisibilityPlaced: 1;
     
 public:
-    ULevelingBlockComponent();
+    ULevelingBlockComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     void SetPreviewVisibility(bool IsVisible, ELevelingBlockVizSource sourceId);
     

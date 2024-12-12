@@ -20,9 +20,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_ConnectionInterrupted, meta=(AllowPrivateAccess=true))
     uint8 bConnectionInterrupted: 1;
     
-    UInterruptPowerConnectionComponent();
+    UInterruptPowerConnectionComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void ToggleInterrupt(bool bInterrupt);
     

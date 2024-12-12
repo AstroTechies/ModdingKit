@@ -15,6 +15,6 @@ enum class EAugmentProperty : uint8 {
     AP_PowerLevel,
     AP_Alignment,
     AP_HardnessTier,
-    AP_MAX UMETA(Hidden),
+    AP_DeformationReversion,
 };
 

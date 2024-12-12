@@ -1,14 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "GameplayTagContainer.h"
+#include "CustomGameModifierCollection.h"
+#include "CustomGameModifierData.h"
 #include "DeformationParamsT2.h"
 #include "VoxelMaterial.h"
 #include "AtmosphericResource.h"
+#include "CustomGamePlanetTags.h"
 #include "EPlanetIdentifier.h"
 #include "GatewayObjectPlacementProperties.h"
 #include "SolarBody.h"
+#include "StormSpawnConfigurationData.h"
 #include "Templates/SubclassOf.h"
 #include "AstroPlanet.generated.h"
 
@@ -45,6 +50,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<UObject*> CachedT2Deformables;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    FCustomGamePlanetTags CustomGamePlanetTags;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     int32 Seed;
@@ -90,6 +98,21 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WindIntensityModifier;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    FGameplayTagContainer AppliedCustomGamePlanetModifiers;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    FCustomGameModifierData CustomGameGravityModifier;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    FCustomGameModifierData CustomGameSeedModifier;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    FCustomGameModifierData CustomGameAmbientWindRateModifier;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    FCustomGameModifierData CustomGameRandomWindRateModifier;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FLinearColor AmbientColor;
@@ -176,7 +199,28 @@ public:
     float MaxFlightHeightAdjustment;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float WindIntensityDebugScalar;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float AmbientWindDebugOverride;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool isStartingPlanet;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    FStormSpawnConfigurationData StormConfiguration;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGatewayObjectPlacementProperties GatewayObjectPlacementProperties;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<AActor> CrustFirewallClass;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<AActor> MantleFirewallClass;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<AActor> CoreFirewallClass;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UMaterial* FogMaterial;
@@ -189,6 +233,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool IsLocallyVisible;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    FGameplayTagContainer CustomGameTags;
     
 protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
@@ -223,14 +270,27 @@ private:
     ANavpointManagerActor* NavpointManagerOwner;
     
 public:
-    AAstroPlanet();
+    AAstroPlanet(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 private:
     UFUNCTION(BlueprintCallable)
     void UpdateHasPlayersOnPlanet(ASolarBody* SolarBody);
     
 public:
+    UFUNCTION(BlueprintCallable)
+    void SetIsStartingPlanet(bool NewIsStartingPlanet);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetCustomGamePlanetModifierData(FCustomGameModifierData& modifierData);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetCustomGameModifiersFromGameState();
+    
+    UFUNCTION(BlueprintCallable)
+    void SetCustomGameModifiers(FCustomGameModifierCollection& ModifierCollection);
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FLinearColor SampleFog(const FVector& Origin, const FVector& Ray);
     
@@ -239,6 +299,9 @@ private:
     void OnDeformationComplete(const FDeformationParamsT2& params);
     
 public:
+    UFUNCTION(BlueprintCallable)
+    void LogCustomGameBiomeModifiersData();
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool LocationInAtmosphere(const FVector& Location);
     
@@ -267,6 +330,7 @@ public:
     FTransform GetPlanetToProxyTransform();
     
     UFUNCTION(BlueprintCallable)
+    // Returns a vector that points North
     FVector GetNorthVector();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -274,6 +338,12 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     ADayNight* GetDayNightActor() const;
+    
+    UFUNCTION(BlueprintCallable)
+    void GetCustomGamePlanetModifierData(FCustomGameModifierCollection& outData);
+    
+    UFUNCTION(BlueprintCallable)
+    void ClearCustomGameState();
     
 };
 

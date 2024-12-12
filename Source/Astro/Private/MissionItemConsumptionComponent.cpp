@@ -1,7 +1,14 @@
 #include "MissionItemConsumptionComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class APhysicalItem;
+UMissionItemConsumptionComponent::UMissionItemConsumptionComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->ConsumptionRate = 1.00f;
+    this->ConsumptionSlotEjectionForce = 250000.00f;
+    this->ConsumptionSlotOrganizationRule = NULL;
+    this->RequestState = EMissionItemRequestState::RequestsUninitalized;
+    this->ConsumptionProgress = 0.00f;
+}
 
 void UMissionItemConsumptionComponent::OnRep_RequestsState(EMissionItemRequestState prevState) {
 }
@@ -45,11 +52,4 @@ void UMissionItemConsumptionComponent::GetLifetimeReplicatedProps(TArray<FLifeti
     DOREPLIFETIME(UMissionItemConsumptionComponent, ConsumptionProgress);
 }
 
-UMissionItemConsumptionComponent::UMissionItemConsumptionComponent() {
-    this->ConsumptionRate = 1.00f;
-    this->ConsumptionSlotEjectionForce = 250000.00f;
-    this->ConsumptionSlotOrganizationRule = NULL;
-    this->RequestState = EMissionItemRequestState::RequestsUninitalized;
-    this->ConsumptionProgress = 0.00f;
-}
 

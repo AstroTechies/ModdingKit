@@ -15,6 +15,7 @@ protected:
     
 public:
     UAstroUnpackAction();
+
     UFUNCTION(BlueprintCallable)
     void SetDeployableItem(UDeployableItemPackageComponent* DeployableItemPackageComponent);
     

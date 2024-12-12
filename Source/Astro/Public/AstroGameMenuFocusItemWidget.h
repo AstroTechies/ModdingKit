@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
+#include "UObject/NoExportTypes.h"
 #include "OnEditingItemUnhandledKeyPressDelegate.h"
 #include "OnFocusItemDragMovedDelegate.h"
 #include "OnFocusItemFocusStateChangedDelegate.h"
@@ -77,6 +77,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bDiscreteEditCannotBeCommittedWithButtonInput: 1;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool OverrideMenuPopoutHeight;
+    
 protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     uint8 bIsFocused: 1;
@@ -92,6 +95,7 @@ protected:
     
 public:
     UAstroGameMenuFocusItemWidget();
+
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void SetInteractionBlocked(bool NewIsInteractionBlocked);
     

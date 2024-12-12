@@ -1,5 +1,6 @@
 #include "ResourceSlot.h"
 
-AResourceSlot::AResourceSlot() {
+AResourceSlot::AResourceSlot(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

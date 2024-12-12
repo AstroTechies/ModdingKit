@@ -8,6 +8,7 @@ class ASTRO_API UAstroTakePictureTask : public UGameplayTask {
     GENERATED_BODY()
 public:
     UAstroTakePictureTask();
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnPhotoWidgetClosed();

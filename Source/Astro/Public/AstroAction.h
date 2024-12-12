@@ -1,7 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
-//CROSS-MODULE INCLUDE V2: -ModuleName=GameplayTasks -ObjectName=GameplayTaskOwnerInterface -FallbackName=GameplayTaskOwnerInterface
+#include "UObject/Object.h"
 #include "GameplayTaskOwnerInterface.h"
 #include "AstroActionContext.h"
 #include "AstroActionIdentifier.h"
@@ -42,7 +41,8 @@ protected:
     
 public:
     UAstroAction();
-    
+
+
     // Fix for true pure virtual functions not being implemented
 };
 

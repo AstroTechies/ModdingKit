@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
+#include "UObject/NoExportTypes.h"
 #include "AstroPackagingAction.h"
 #include "SlotReference.h"
 #include "Templates/SubclassOf.h"
@@ -61,6 +61,7 @@ protected:
     
 public:
     UAstroRepackAction();
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnInterpolationToTopOfTargetFinished();

@@ -14,7 +14,8 @@ protected:
     UItemDriveComponent* ItemDriveComponent;
     
 public:
-    UTradeShipDockComponent_ItemDrive();
+    UTradeShipDockComponent_ItemDrive(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void HandleActiveEventChanged();
     

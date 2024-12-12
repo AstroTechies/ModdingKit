@@ -10,6 +10,7 @@ class UHarvestableComponentEventListener : public UAstroEntityComponentSubobject
     GENERATED_BODY()
 public:
     UHarvestableComponentEventListener();
+
     UFUNCTION(BlueprintCallable)
     void OnSecondaryHarvestableItemReleased(APhysicalItem* Item);
     

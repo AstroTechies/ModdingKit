@@ -12,6 +12,7 @@ class UBlueprintableSlotOrganizationRule : public USlotOrganizationRule {
     GENERATED_BODY()
 public:
     UBlueprintableSlotOrganizationRule();
+
 protected:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     TArray<APhysicalItem*> AuthorityGetWantedItems_Blueprint(const TArray<APhysicalItem*>& availableItems) const;

@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TimerHandle -FallbackName=TimerHandle
+#include "Engine/EngineTypes.h"
 #include "SignalDelegate.h"
 #include "HoverDelayComponent.generated.h"
 
@@ -29,7 +29,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool Hovering;
     
-    UHoverDelayComponent();
+    UHoverDelayComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void OnTimerEnd();
     

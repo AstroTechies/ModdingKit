@@ -1,6 +1,7 @@
 #include "ExplodableNonPhysicalItemComponent.h"
 
-UExplodableNonPhysicalItemComponent::UExplodableNonPhysicalItemComponent() {
+UExplodableNonPhysicalItemComponent::UExplodableNonPhysicalItemComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->ToolMoveTier = 1;
 }
+
 

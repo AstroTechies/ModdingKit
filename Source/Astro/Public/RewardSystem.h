@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "RewardResult.h"
 #include "RewardSelectionParameters.h"
 #include "Templates/SubclassOf.h"
@@ -24,6 +24,7 @@ private:
     
 public:
     URewardSystem();
+
     UFUNCTION(BlueprintCallable)
     FRewardResult SelectReward(const FRewardSelectionParameters& params);
     

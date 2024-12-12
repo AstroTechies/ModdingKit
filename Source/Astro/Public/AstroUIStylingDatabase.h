@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
-//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=Margin -FallbackName=Margin
-//CROSS-MODULE INCLUDE V2: -ModuleName=SlateCore -ObjectName=SlateFontInfo -FallbackName=SlateFontInfo
+#include "Engine/DataAsset.h"
+#include "Layout/Margin.h"
+#include "Fonts/SlateFontInfo.h"
 #include "AstroGameMenuAuthoringDefinition.h"
 #include "ColorPaletteGameMenuTabBarButton.h"
 #include "EAstroColor.h"
@@ -118,6 +118,9 @@ public:
     TSubclassOf<UAstroGameMenuTabBarButtonWidget> ServerListTabBarButtonClass;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<UAstroGameMenuTabBarButtonWidget> CustomGamesTabBarButtonClass;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FMargin StandardMenuEntryWidgetMargin;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -136,5 +139,6 @@ public:
     FText CosmeticUnlockFailedCodeAlreadyUsedMsg;
     
     UAstroUIStylingDatabase();
+
 };
 

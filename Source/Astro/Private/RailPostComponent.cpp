@@ -2,9 +2,20 @@
 #include "ActuatorComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class APhysicalItem;
-class UClickQuery;
-class UPrimitiveComponent;
+URailPostComponent::URailPostComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->GaugeDynamicMaterialIndex = -1;
+    this->RecallStartSound = TEXT("play_recall_start");
+    this->RecallCancelSound = TEXT("play_recall_cancelled");
+    this->RecallFailSound = TEXT("play_recall_failed");
+    this->RecallCompleteSound = TEXT("play_recall_complete");
+    this->ActuatorComponent = CreateDefaultSubobject<UActuatorComponent>(TEXT("Actuator"));
+    this->GaugeMaterial = NULL;
+    this->CalledCar = NULL;
+    this->bIsMovable = true;
+    this->bShouldStopOnArrival = false;
+    this->bHasBeenInitialized = false;
+}
 
 void URailPostComponent::ServerSetIsSnappedToRail_Implementation() {
 }
@@ -74,17 +85,4 @@ void URailPostComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
     DOREPLIFETIME(URailPostComponent, bShouldStopOnArrival);
 }
 
-URailPostComponent::URailPostComponent() {
-    this->GaugeDynamicMaterialIndex = -1;
-    this->RecallStartSound = TEXT("play_recall_start");
-    this->RecallCancelSound = TEXT("play_recall_cancelled");
-    this->RecallFailSound = TEXT("play_recall_failed");
-    this->RecallCompleteSound = TEXT("play_recall_complete");
-    this->ActuatorComponent = CreateDefaultSubobject<UActuatorComponent>(TEXT("Actuator"));
-    this->GaugeMaterial = NULL;
-    this->CalledCar = NULL;
-    this->bIsMovable = true;
-    this->bShouldStopOnArrival = false;
-    this->bHasBeenInitialized = false;
-}
 

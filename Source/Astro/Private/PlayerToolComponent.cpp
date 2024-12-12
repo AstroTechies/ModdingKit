@@ -1,7 +1,15 @@
 #include "PlayerToolComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class AActor;
+UPlayerToolComponent::UPlayerToolComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->UnencapsulateChildrenWhileActive = false;
+    this->HeldTool = false;
+    this->AttachLocationComponent = NULL;
+    this->TableComponent = NULL;
+    this->CrackedValue = 0.00f;
+    this->m_activated = false;
+}
 
 void UPlayerToolComponent::OnRep_Activated() {
 }
@@ -21,12 +29,4 @@ void UPlayerToolComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
     DOREPLIFETIME(UPlayerToolComponent, m_activated);
 }
 
-UPlayerToolComponent::UPlayerToolComponent() {
-    this->UnencapsulateChildrenWhileActive = false;
-    this->HeldTool = false;
-    this->AttachLocationComponent = NULL;
-    this->TableComponent = NULL;
-    this->CrackedValue = 0.00f;
-    this->m_activated = false;
-}
 

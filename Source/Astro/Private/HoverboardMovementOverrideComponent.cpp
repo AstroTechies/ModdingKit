@@ -1,6 +1,6 @@
 #include "HoverboardMovementOverrideComponent.h"
 
-UHoverboardMovementOverrideComponent::UHoverboardMovementOverrideComponent() {
+UHoverboardMovementOverrideComponent::UHoverboardMovementOverrideComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->MaxSpeedScalar = 0.00f;
     this->MaxThrust = 0.00f;
     this->DismountDelayTime = 1.00f;
@@ -9,4 +9,5 @@ UHoverboardMovementOverrideComponent::UHoverboardMovementOverrideComponent() {
     this->MinImpactSlopeAngle = 30.00f;
     this->bImmuneToFallDamage = false;
 }
+
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
 #include "HoverComponent.generated.h"
 
@@ -14,6 +14,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector RotateAxis;
     
-    UHoverComponent();
+    UHoverComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

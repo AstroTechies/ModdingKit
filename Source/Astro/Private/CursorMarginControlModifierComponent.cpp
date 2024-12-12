@@ -1,6 +1,6 @@
 #include "CursorMarginControlModifierComponent.h"
 
-UCursorMarginControlModifierComponent::UCursorMarginControlModifierComponent() {
+UCursorMarginControlModifierComponent::UCursorMarginControlModifierComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->ControlledDOF = ECameraDOF::Yaw;
     this->bInverted = false;
     this->LeftMargin = 0.20f;
@@ -12,4 +12,5 @@ UCursorMarginControlModifierComponent::UCursorMarginControlModifierComponent() {
     this->MinTargetValue = -1000.00f;
     this->ControlMask = ECameraControlMask::All;
 }
+
 

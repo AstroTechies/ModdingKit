@@ -1,17 +1,70 @@
 #include "DeformTool.h"
+#include "Components/InputComponent.h"
 #include "DeformEventReceiver.h"
 #include "DeformToolCameraContext.h"
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class AAstroPlanet;
-class APhysicalItem;
-class APlayController;
-class UAugmentComponent;
-class UClickQuery;
-class UDeformTargetComponent;
-class UItemType;
-class UMaterialInterface;
+ADeformTool::ADeformTool(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->InputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("DeformToolInputComponent"));
+    this->AudioSurfaceTypeSwitchState.AddDefaulted(9);
+    this->DeformFXActor = NULL;
+    this->TerrainBrushActor = NULL;
+    this->bSedimentTankReservesState = EDeformToolSedimentTankReservesState::NoReserves;
+    this->usingTool = NULL;
+    this->OwningController = NULL;
+    this->OwningCharacter = NULL;
+    this->TerrainBrush = NULL;
+    this->FXSpawnComponent = NULL;
+    this->EventReceiver = CreateDefaultSubobject<UDeformEventReceiver>(TEXT("EventReceiver"));
+    this->PowerComponent = NULL;
+    this->BaseBrushDeformationScale = 600.00f;
+    this->BaseBrushIndicatorScale = 1.00f;
+    this->BaseDeformationItensity = 1.00f;
+    this->BaseCreativeDeformationIntensity = 1.00f;
+    this->CreativeBaseDeformationIntensityMin = 1.00f;
+    this->CreativeBaseDeformationIntensityMax = 1.00f;
+    this->CreativeBaseBrushDeformationScaleMin = 1.00f;
+    this->CreativeBaseBrushDeformationScaleMax = 1.00f;
+    this->CreativeToolRangeMax = 1.00f;
+    this->CreativeBaseBrushDeformationIntensityAdjustmentIncrement = 1.00f;
+    this->CreativeBaseBrushDeformationScaleAdjustmentIncrement = 1.00f;
+    this->SphereCastRatio = 0.25f;
+    this->LerpRate = 0.25f;
+    this->PlayerSafeZone = 200.00f;
+    this->ToolRange = 1500.00f;
+    this->LowPowerMultiplier = 0.30f;
+    this->SedimentBaseRate = 0.33f;
+    this->SedimentDeformationRatio = 0.00f;
+    this->SedimentFullySuppliedAmount = 0.20f;
+    this->FXFrequency = 8.00f;
+    this->FXSubtractVelocity = 100.00f;
+    this->FXAddVelocity = 100.00f;
+    this->FXRadialVelocity = 10.00f;
+    this->FXSubtractVelocityRandomness = 0.50f;
+    this->FXScale = 0.20f;
+    this->FXScaleRandomness = 0.20f;
+    this->FXSubtractSpawnHeight = 100.00f;
+    this->FXAddSpawnHeight = 500.00f;
+    this->MiningValue = 0.00f;
+    this->DeformEffectComponent = NULL;
+    this->BurnoffEffectComponent = NULL;
+    this->CameraContext = CreateDefaultSubobject<UDeformToolCameraContext>(TEXT("DeformToolCameraContext"));
+    this->BrushMaterialIndex = 4294967295;
+    this->TotalSedimentAvailable = 0.00f;
+    this->TotalSedimentCapacity = 0.00f;
+    this->SedimentDeformationDelta = 0.00f;
+    this->DeformTier = 0.00f;
+    this->Operation = EDeformType::Subtract;
+    this->bDeformationActive = false;
+    this->bDeformationFullPower = true;
+    this->bCreativeModeIgnoreHardness = false;
+    this->IsOwnedTool = true;
+    this->ToolActive = false;
+    this->TerrainStreamEffectsActive = false;
+    this->AudioBurnOffPlaying = false;
+    this->MinedMineral = false;
+}
 
 bool ADeformTool::UpdateTerrainSample(AAstroPlanet* Planet, const FVector& Location) {
     return false;
@@ -137,8 +190,9 @@ bool ADeformTool::HasSpaceLeftInTanks() {
     return false;
 }
 
-void ADeformTool::HandleTerrainTool(APlayController* Controller, const FHitResult& toolHit, const FClickResult& ClickResult, bool startedInteraction, bool isUsingTool, bool justActivated, bool canUse) {
+void ADeformTool::HandleTerrainTool(APlayController* Controller, const FHitResult& toolHit, const FClickResult& ClickResult, bool startedInteraction, bool endedInteraction, bool isUsingTool, bool justActivated, bool canUse) {
 }
+
 
 float ADeformTool::GetSedimentFlowRate() {
     return 0.0f;
@@ -225,6 +279,10 @@ float ADeformTool::GetBrushSizeModifierFromAugment() {
     return 0.0f;
 }
 
+bool ADeformTool::GetAugmentStateRevertModifications() {
+    return false;
+}
+
 float ADeformTool::GetAugmentedTerrainHardness() {
     return 0.0f;
 }
@@ -276,63 +334,4 @@ void ADeformTool::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifet
     DOREPLIFETIME(ADeformTool, bCreativeModeIgnoreHardness);
 }
 
-ADeformTool::ADeformTool() {
-    this->AudioSurfaceTypeSwitchState.AddDefaulted(9);
-    this->DeformFXActor = NULL;
-    this->TerrainBrushActor = NULL;
-    this->bSedimentTankReservesState = EDeformToolSedimentTankReservesState::NoReserves;
-    this->usingTool = NULL;
-    this->OwningController = NULL;
-    this->OwningCharacter = NULL;
-    this->TerrainBrush = NULL;
-    this->FXSpawnComponent = NULL;
-    this->EventReceiver = CreateDefaultSubobject<UDeformEventReceiver>(TEXT("EventReceiver"));
-    this->PowerComponent = NULL;
-    this->BaseBrushDeformationScale = 600.00f;
-    this->BaseBrushIndicatorScale = 1.00f;
-    this->BaseDeformationItensity = 1.00f;
-    this->BaseCreativeDeformationIntensity = 1.00f;
-    this->CreativeBaseDeformationIntensityMin = 1.00f;
-    this->CreativeBaseDeformationIntensityMax = 1.00f;
-    this->CreativeBaseBrushDeformationScaleMin = 1.00f;
-    this->CreativeBaseBrushDeformationScaleMax = 1.00f;
-    this->CreativeToolRangeMax = 1.00f;
-    this->CreativeBaseBrushDeformationIntensityAdjustmentIncrement = 1.00f;
-    this->CreativeBaseBrushDeformationScaleAdjustmentIncrement = 1.00f;
-    this->SphereCastRatio = 0.25f;
-    this->LerpRate = 0.25f;
-    this->PlayerSafeZone = 200.00f;
-    this->ToolRange = 1500.00f;
-    this->LowPowerMultiplier = 0.30f;
-    this->SedimentBaseRate = 0.33f;
-    this->SedimentDeformationRatio = 0.00f;
-    this->SedimentFullySuppliedAmount = 0.20f;
-    this->FXFrequency = 8.00f;
-    this->FXSubtractVelocity = 100.00f;
-    this->FXAddVelocity = 100.00f;
-    this->FXRadialVelocity = 10.00f;
-    this->FXSubtractVelocityRandomness = 0.50f;
-    this->FXScale = 0.20f;
-    this->FXScaleRandomness = 0.20f;
-    this->FXSubtractSpawnHeight = 100.00f;
-    this->FXAddSpawnHeight = 500.00f;
-    this->MiningValue = 0.00f;
-    this->DeformEffectComponent = NULL;
-    this->BurnoffEffectComponent = NULL;
-    this->CameraContext = CreateDefaultSubobject<UDeformToolCameraContext>(TEXT("DeformToolCameraContext"));
-    this->BrushMaterialIndex = 4294967295;
-    this->TotalSedimentAvailable = 0.00f;
-    this->TotalSedimentCapacity = 0.00f;
-    this->SedimentDeformationDelta = 0.00f;
-    this->DeformTier = 0.00f;
-    this->Operation = EDeformType::Subtract;
-    this->bDeformationActive = false;
-    this->bDeformationFullPower = true;
-    this->bCreativeModeIgnoreHardness = false;
-    this->IsOwnedTool = true;
-    this->ToolActive = false;
-    this->TerrainStreamEffectsActive = false;
-    this->AudioBurnOffPlaying = false;
-    this->MinedMineral = false;
-}
 

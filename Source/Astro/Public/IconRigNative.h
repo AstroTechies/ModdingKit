@@ -45,7 +45,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* BackpackIcon;
     
-    AIconRigNative();
+    AIconRigNative(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void DoTeriaryIcons(bool astroVisible, bool backpackVisible, bool astroSeated);
     

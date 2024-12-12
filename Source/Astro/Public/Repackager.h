@@ -9,6 +9,8 @@ class AActor;
 class UAstroAction;
 class UAstroActionComponent;
 class UAstroRepackAction;
+class UItemComponent;
+class UItemType;
 
 UCLASS(Abstract, Blueprintable)
 class ASTRO_API ARepackager : public APhysicalItem {
@@ -18,7 +20,10 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAstroActionComponent* ActionComponent;
     
-    UPROPERTY(EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    TWeakObjectPtr<APhysicalItem> PreviousRepackagingTarget;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<APhysicalItem> RepackagingTarget;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRepackagingTargetStateChanged, meta=(AllowPrivateAccess=true))
@@ -28,9 +33,10 @@ protected:
     TSubclassOf<UAstroRepackAction> RepackActionType;
     
 public:
-    ARepackager();
+    ARepackager(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void UpdateRepackagingTarget();
@@ -40,6 +46,9 @@ protected:
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnRepackageActionFinishedAuthority(UAstroAction* repackageAction);
+    
+    UFUNCTION(BlueprintCallable)
+    void OnAttachedItemStoredItemTypeChanged(UItemComponent* changedItemComponent, TSubclassOf<UItemType> NewItemType);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void InitiateRepackaging();

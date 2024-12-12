@@ -6,3 +6,4 @@ UPlanetGateObjectIndicatorDefinitions::UPlanetGateObjectIndicatorDefinitions() {
     this->PlanetIndicatorDefinition = NULL;
 }
 
+

@@ -4,3 +4,4 @@ UCraftingInputWhitelistOrganizationRule::UCraftingInputWhitelistOrganizationRule
     this->CraftingOutputItemList = NULL;
 }
 
+

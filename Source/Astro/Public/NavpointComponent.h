@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
 #include "EnableSignalDelegate.h"
 #include "Navpoint.h"
@@ -24,7 +24,8 @@ protected:
     FEnableSignal OnNavpointEnabledChanged;
     
 public:
-    UNavpointComponent();
+    UNavpointComponent(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable)
     void HandleNavpointOwnershipChanged(const FGuid& NewNavpointID);

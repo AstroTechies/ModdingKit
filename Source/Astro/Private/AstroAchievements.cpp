@@ -1,9 +1,8 @@
 #include "AstroAchievements.h"
 #include "Templates/SubclassOf.h"
 
-class APlayerController;
-class UItemType;
-class UObject;
+UAstroAchievements::UAstroAchievements() {
+}
 
 void UAstroAchievements::IncrementAchievementProgressForAllPlayers(EAstroAchievementKeys Achievement, int32 AddedProgress, UObject* WorldContextObject) {
 }
@@ -29,6 +28,4 @@ void UAstroAchievements::AddAchievementCollectionItemForAllPlayers(EAstroAchieve
 void UAstroAchievements::AddAchievementCollectionItem(EAstroAchievementKeys Achievement, TSubclassOf<UItemType> Item, APlayerController* Player) {
 }
 
-UAstroAchievements::UAstroAchievements() {
-}
 

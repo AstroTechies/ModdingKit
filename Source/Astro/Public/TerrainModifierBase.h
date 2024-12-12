@@ -19,6 +19,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 EdgeEvaluationDepth;
     
-    UTerrainModifierBase();
+    UTerrainModifierBase(const FObjectInitializer& ObjectInitializer);
+
 };
 

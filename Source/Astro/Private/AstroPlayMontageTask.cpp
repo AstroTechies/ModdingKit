@@ -1,8 +1,7 @@
 #include "AstroPlayMontageTask.h"
 
-class UAnimMontage;
-class UAstroAction;
-class UAstroPlayMontageTask;
+UAstroPlayMontageTask::UAstroPlayMontageTask() : UGameplayTask(FObjectInitializer()) {
+}
 
 void UAstroPlayMontageTask::RouteSingleAnimCustomNotify(FName NotifyName) {
 }
@@ -17,6 +16,4 @@ UAstroPlayMontageTask* UAstroPlayMontageTask::CreateAstroPlayMontageTask(UAstroA
     return NULL;
 }
 
-UAstroPlayMontageTask::UAstroPlayMontageTask() : UGameplayTask(FObjectInitializer()) {
-}
 

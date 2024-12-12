@@ -26,7 +26,8 @@ private:
     TArray<FSlotReference> TapperSlots;
     
 public:
-    UTappableObjectComponent();
+    UTappableObjectComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void UnregisterTapperSlot(FSlotReference tapperSlot);
     
@@ -35,6 +36,9 @@ public:
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintPure)
     float GetCurrentTappingEfficiency();
+    
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    void AwakenSlottedItems();
     
 };
 

@@ -8,5 +8,6 @@ class UOutputOrganizationRule : public USlotOrganizationRule {
     GENERATED_BODY()
 public:
     UOutputOrganizationRule();
+
 };
 

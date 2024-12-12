@@ -36,6 +36,7 @@ protected:
     
 public:
     UAstroTakePictureAction();
+
     UFUNCTION(BlueprintCallable)
     void SetInstigator(APlayerController* Instigator);
     

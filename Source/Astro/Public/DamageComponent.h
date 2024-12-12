@@ -21,7 +21,8 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal KillSignal;
     
-    UDamageComponent();
+    UDamageComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     bool Kill(bool ignoreIndestructible);
     

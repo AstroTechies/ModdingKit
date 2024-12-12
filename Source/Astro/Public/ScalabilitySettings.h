@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DeveloperSettings -FallbackName=DeveloperSettings
+#include "Engine/DeveloperSettings.h"
 #include "PlatformScalability.h"
 #include "ScalabilitySettings.generated.h"
 
-UCLASS(Blueprintable, Config=Engine, DefaultConfig, Config=Game)
+UCLASS(Blueprintable, DefaultConfig, Config=Game)
 class ASTRO_API UScalabilitySettings : public UDeveloperSettings {
     GENERATED_BODY()
 public:
@@ -21,5 +21,6 @@ public:
     FPlatformScalability XboxOneSettings;
     
     UScalabilitySettings();
+
 };
 

@@ -7,6 +7,7 @@ UCLASS(Blueprintable)
 class ASTRO_API AAstroPlayLevelScriptActor : public AAstroLevelScriptActor {
     GENERATED_BODY()
 public:
-    AAstroPlayLevelScriptActor();
+    AAstroPlayLevelScriptActor(const FObjectInitializer& ObjectInitializer);
+
 };
 

@@ -13,6 +13,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float VelocityScaleDivisor;
     
-    UYawCollisionAvoidanceModifierComponent();
+    UYawCollisionAvoidanceModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

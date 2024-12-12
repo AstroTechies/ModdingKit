@@ -8,5 +8,6 @@ class TERRAIN2_API UProceduralExpression_ModifierOutput : public UProceduralExpr
     GENERATED_BODY()
 public:
     UProceduralExpression_ModifierOutput();
+
 };
 

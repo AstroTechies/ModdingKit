@@ -29,8 +29,9 @@ private:
     int32 TetherPostUpdateIndex;
     
 public:
-    ATetherManager();
+    ATetherManager(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 };
 

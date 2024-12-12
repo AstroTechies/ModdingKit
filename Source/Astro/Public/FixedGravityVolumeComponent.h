@@ -15,6 +15,7 @@ protected:
     bool bApplyGravityUpward;
     
 public:
-    UFixedGravityVolumeComponent();
+    UFixedGravityVolumeComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

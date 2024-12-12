@@ -33,6 +33,7 @@ private:
     UPowerComponent* PowerComponent;
     
 public:
-    UWindPowerComponent();
+    UWindPowerComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

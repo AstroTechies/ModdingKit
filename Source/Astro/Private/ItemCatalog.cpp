@@ -5,3 +5,4 @@ UItemCatalog::UItemCatalog() {
     this->AllCatalogItemsCategory = NULL;
 }
 
+

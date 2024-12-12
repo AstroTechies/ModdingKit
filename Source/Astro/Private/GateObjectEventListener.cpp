@@ -1,10 +1,9 @@
 #include "GateObjectEventListener.h"
 
-class AActor;
+UGateObjectEventListener::UGateObjectEventListener() {
+}
 
 void UGateObjectEventListener::OnPlayerCharacterInProximityDestroyed(AActor* playerCharacter) {
 }
 
-UGateObjectEventListener::UGateObjectEventListener() {
-}
 

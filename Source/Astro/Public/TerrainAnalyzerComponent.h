@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EPhysicalSurface -FallbackName=EPhysicalSurface
+#include "Engine/EngineTypes.h"
 #include "VoxelMaterialProperties.h"
 #include "TerrainAnalyzerComponent.generated.h"
 
@@ -30,9 +30,10 @@ private:
     FVoxelMaterialProperties AnalyzedTerrainMaterialSample;
     
 public:
-    UTerrainAnalyzerComponent();
+    UTerrainAnalyzerComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 private:
     UFUNCTION(BlueprintCallable)
     void TryGetTerrainFromColor(bool completeIfSuccessful);

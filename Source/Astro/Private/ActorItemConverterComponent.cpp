@@ -2,9 +2,29 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class AAstroCharacter;
-class APhysicalItem;
-class UItemType;
+UActorItemConverterComponent::UActorItemConverterComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->ConversionFormulaType = NULL;
+    this->OutputItemTypeList = NULL;
+    this->MinPowerUnitProductionTime = 60.00f;
+    this->MaxPowerUnitProductionTime = 15.00f;
+    this->DefaultOutputEjectionType = EOutputEjectionType::None;
+    this->OutputItemEjectionForce = 25000.00f;
+    this->InputSlotsOrganizationRuleType = EInputManagementType::None;
+    this->bCannotProcessConversionsInParallel = false;
+    this->bShouldLoopProduction = false;
+    this->bInputSlotsAreUnclickable = false;
+    this->bOutputSlotIsUnclickable = true;
+    this->bDetonatesVolatileInputItems = false;
+    this->bShowOutputIndicatorsWhenSelectingRecipe = false;
+    this->bForceRecipeSelection = false;
+    this->bCanUseActorItemComponentAsInput = false;
+    this->bProduceOutputsToUniqueSlots = false;
+    this->bKeepPartialOutputBetweenSaves = false;
+    this->bRefundInputResourcesOnCancel = false;
+    this->bIgnoresPower = false;
+    this->bPushUnwantedInputItems = true;
+}
 
 void UActorItemConverterComponent::OnReplicationDataChanged() {
 }
@@ -79,26 +99,4 @@ void UActorItemConverterComponent::GetLifetimeReplicatedProps(TArray<FLifetimePr
     DOREPLIFETIME(UActorItemConverterComponent, ReplicationData);
 }
 
-UActorItemConverterComponent::UActorItemConverterComponent() {
-    this->ConversionFormulaType = NULL;
-    this->OutputItemTypeList = NULL;
-    this->MinPowerUnitProductionTime = 60.00f;
-    this->MaxPowerUnitProductionTime = 15.00f;
-    this->DefaultOutputEjectionType = EOutputEjectionType::None;
-    this->OutputItemEjectionForce = 25000.00f;
-    this->InputSlotsOrganizationRuleType = EInputManagementType::None;
-    this->bCannotProcessConversionsInParallel = false;
-    this->bShouldLoopProduction = false;
-    this->bInputSlotsAreUnclickable = false;
-    this->bOutputSlotIsUnclickable = true;
-    this->bDetonatesVolatileInputItems = false;
-    this->bShowOutputIndicatorsWhenSelectingRecipe = false;
-    this->bForceRecipeSelection = false;
-    this->bCanUseActorItemComponentAsInput = false;
-    this->bProduceOutputsToUniqueSlots = false;
-    this->bKeepPartialOutputBetweenSaves = false;
-    this->bRefundInputResourcesOnCancel = false;
-    this->bIgnoresPower = false;
-    this->bPushUnwantedInputItems = true;
-}
 

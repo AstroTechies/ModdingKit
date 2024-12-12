@@ -10,6 +10,7 @@ class ASTRO_API UTestEntityColorCycleContainer : public UAstroEntityComponentCon
     GENERATED_BODY()
 public:
     UTestEntityColorCycleContainer();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FTestEntityColorCycleComponent GetTestEntityColorCycleComponent(FAstroDatumRef ColorCycleComponentRef, bool& bOutSuccess);
     

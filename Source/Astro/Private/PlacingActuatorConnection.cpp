@@ -1,7 +1,19 @@
 #include "PlacingActuatorConnection.h"
 #include "Net/UnrealNetwork.h"
 
-class UPrimitiveComponent;
+APlacingActuatorConnection::APlacingActuatorConnection(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+//    this->bSaveGameRelevant = false;
+    this->bNoProximitySlotSelect = true;
+    this->RerouteNodeMesh = NULL;
+    this->ActuatorConnectorPlacementOffset = 1.00f;
+    this->RerouteNodePlacementOffset = 2.00f;
+    this->MaxActuatorCablesPerSlot = 8;
+    this->ActuateFlashCount = 3;
+    this->ActuateFlashDuration = 1.00f;
+    this->ActuatorPinSlotClass = NULL;
+    this->AttachItemTypeBlacklist = NULL;
+    this->ConnectorMaterial = NULL;
+}
 
 void APlacingActuatorConnection::ServerPlaceRerouteNode_Implementation(UPrimitiveComponent* Component, const FVector Location, const FVector Normal) {
 }
@@ -30,15 +42,4 @@ void APlacingActuatorConnection::GetLifetimeReplicatedProps(TArray<FLifetimeProp
     DOREPLIFETIME(APlacingActuatorConnection, SourceRerouteNode);
 }
 
-APlacingActuatorConnection::APlacingActuatorConnection() {
-    this->RerouteNodeMesh = NULL;
-    this->ActuatorConnectorPlacementOffset = 1.00f;
-    this->RerouteNodePlacementOffset = 2.00f;
-    this->MaxActuatorCablesPerSlot = 8;
-    this->ActuateFlashCount = 3;
-    this->ActuateFlashDuration = 1.00f;
-    this->ActuatorPinSlotClass = NULL;
-    this->AttachItemTypeBlacklist = NULL;
-    this->ConnectorMaterial = NULL;
-}
 

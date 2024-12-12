@@ -18,11 +18,12 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     APhysicalItem* ItemBeingConsumed;
     
-    UPROPERTY(EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<APawn> ItemConsumptionInstigator;
     
 public:
     UResourceConsumptionLockingMechanism();
+
     UFUNCTION(BlueprintCallable)
     void OnItemSetInResourceConsumptionSlot(APhysicalItem* Item);
     

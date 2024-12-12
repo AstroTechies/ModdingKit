@@ -29,7 +29,8 @@ protected:
     FSignal OnLoopSoundStopped;
     
 public:
-    UHornComponent();
+    UHornComponent(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void OneOffSoundPlayed();

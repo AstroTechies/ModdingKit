@@ -17,7 +17,8 @@ protected:
     FAstroDatumRef EntityRef;
     
 public:
-    UActorEntityLinkComponent();
+    UActorEntityLinkComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsSpawnedFromEntity() const;
     

@@ -1,5 +1,8 @@
 #include "UserWidgetBlueprintDesignable.h"
 
+UUserWidgetBlueprintDesignable::UUserWidgetBlueprintDesignable() : UUserWidget(FObjectInitializer::Get()) {
+}
+
 
 void UUserWidgetBlueprintDesignable::PostLayoutWidget_Implementation() {
 }
@@ -15,6 +18,4 @@ bool UUserWidgetBlueprintDesignable::GetStylingDataSetupComplete() {
     return false;
 }
 
-UUserWidgetBlueprintDesignable::UUserWidgetBlueprintDesignable() : UUserWidget(FObjectInitializer::Get()) {
-}
 

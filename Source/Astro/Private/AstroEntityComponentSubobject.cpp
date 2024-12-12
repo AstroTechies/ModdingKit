@@ -4,3 +4,4 @@ UAstroEntityComponentSubobject::UAstroEntityComponentSubobject() {
     this->Definition = NULL;
 }
 
+

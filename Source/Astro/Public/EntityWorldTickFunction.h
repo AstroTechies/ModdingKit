@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=TickFunction -FallbackName=TickFunction
+#include "Engine/EngineBaseTypes.h"
 #include "EntityWorldTickFunction.generated.h"
 
 USTRUCT(BlueprintType)

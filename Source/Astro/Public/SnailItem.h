@@ -1,9 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
-//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "UObject/NoExportTypes.h"
+#include "Engine/EngineTypes.h"
+#include "InputCoreTypes.h"
 #include "ECrackableActorNetworkingPolicy.h"
+#include "EEmoteType.h"
 #include "ESnailBehaviorTriggerType.h"
 #include "ESnailFoodType.h"
 #include "OnSnailFedChangedDelegate.h"
@@ -14,6 +15,7 @@
 #include "SnailItem.generated.h"
 
 class AActor;
+class APlayController;
 class ASnailCrackableActor;
 class UAdaptiveTickComponent;
 class UChildActorComponent;
@@ -100,9 +102,10 @@ private:
     TArray<AActor*> OverlappingPlayers;
     
 public:
-    ASnailItem();
+    ASnailItem(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UpdateSnailBuffDuration(float DeltaSeconds);
@@ -122,6 +125,9 @@ private:
     
     UFUNCTION(BlueprintCallable)
     void OnRep_OnSnailIsInteractableChanged();
+    
+    UFUNCTION(BlueprintCallable)
+    void OnPlayerEmotePlayed(EEmoteType EmoteType, APlayController* Player);
     
 protected:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)

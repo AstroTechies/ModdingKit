@@ -7,3 +7,4 @@ UAstroPopupBadgeDatabase::UAstroPopupBadgeDatabase() {
     this->PowerPingRange = 0.00f;
 }
 
+

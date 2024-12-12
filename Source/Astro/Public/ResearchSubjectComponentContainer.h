@@ -10,6 +10,7 @@ class ASTRO_API UResearchSubjectComponentContainer : public UAstroEntityComponen
     GENERATED_BODY()
 public:
     UResearchSubjectComponentContainer();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FResearchSubjectComponent GetResearchSubjectComponent(FAstroDatumRef ResearchSubjectComponentRef, bool& bOutSuccess);
     

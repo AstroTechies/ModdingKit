@@ -18,6 +18,7 @@ private:
     uint8 PopupBadgesDisabled: 1;
     
 public:
-    UAstroPopupBadgeManager();
+    UAstroPopupBadgeManager(const FObjectInitializer& ObjectInitializer);
+
 };
 

@@ -1,7 +1,7 @@
 #include "AstroAudioStatics.h"
 
-class AActor;
-class UObject;
+UAstroAudioStatics::UAstroAudioStatics() {
+}
 
 void UAstroAudioStatics::SetSwitch(FName SwitchGroup, FName SwitchState, AActor* Actor) {
 }
@@ -24,6 +24,4 @@ int32 UAstroAudioStatics::PostEvent(const FString& EventName, AActor* Actor, boo
     return 0;
 }
 
-UAstroAudioStatics::UAstroAudioStatics() {
-}
 

@@ -10,6 +10,7 @@ class ASTRO_API UUnlockBehavior : public UAstroEntityComponentSubobject {
     GENERATED_BODY()
 public:
     UUnlockBehavior();
+
     UFUNCTION(BlueprintCallable)
     void RespondToLockedStateChanged(FAstroDatumRef changedLockableComponent, const FLockChangedEventMetadata& EventData);
     

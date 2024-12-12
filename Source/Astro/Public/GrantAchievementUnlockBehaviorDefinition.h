@@ -12,5 +12,6 @@ public:
     EAstroAchievementKeys Achievement;
     
     UGrantAchievementUnlockBehaviorDefinition();
+
 };
 

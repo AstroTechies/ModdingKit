@@ -7,5 +7,6 @@ enum class EGateObjectType : uint8 {
     Chamber,
     Engine,
     Station,
+    ChamberAsStation,
 };
 

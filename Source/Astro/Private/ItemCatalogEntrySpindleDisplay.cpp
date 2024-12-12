@@ -1,8 +1,14 @@
 #include "ItemCatalogEntrySpindleDisplay.h"
 
-class UMeshComponent;
-class UPrimitiveComponent;
-class UStaticMeshComponent;
+UItemCatalogEntrySpindleDisplay::UItemCatalogEntrySpindleDisplay() {
+    this->bItemIconMeshesAreClickable = true;
+    this->UnavailableItemIconMaterial = NULL;
+    this->AvailableItemIconMaterial = NULL;
+    this->UnlockedItemIconMaterial = NULL;
+    this->HackedItemIconMaterial = NULL;
+    this->ItemIconMeshParent = NULL;
+    this->SelectedItemContinuousIndex = 0;
+}
 
 void UItemCatalogEntrySpindleDisplay::SetItemIconMeshComponents(UMeshComponent* newItemIconMeshParent, const TArray<UStaticMeshComponent*>& newItemIconMeshComponents) {
 }
@@ -14,12 +20,4 @@ int32 UItemCatalogEntrySpindleDisplay::ContinuousIndexToItemIconMeshIndex(const 
     return 0;
 }
 
-UItemCatalogEntrySpindleDisplay::UItemCatalogEntrySpindleDisplay() {
-    this->bItemIconMeshesAreClickable = true;
-    this->UnavailableItemIconMaterial = NULL;
-    this->AvailableItemIconMaterial = NULL;
-    this->UnlockedItemIconMaterial = NULL;
-    this->ItemIconMeshParent = NULL;
-    this->SelectedItemContinuousIndex = 0;
-}
 

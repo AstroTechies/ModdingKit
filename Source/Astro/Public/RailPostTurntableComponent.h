@@ -15,9 +15,10 @@ protected:
     int32 CurrentCarSlotConnectionID;
     
 public:
-    URailPostTurntableComponent();
+    URailPostTurntableComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnRep_CurrentConnection();

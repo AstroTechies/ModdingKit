@@ -20,7 +20,8 @@ private:
     UInputComponent* InputComponent;
     
 public:
-    UButtonInputManagerComponent();
+    UButtonInputManagerComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void PushInputFocus(APlayerController* Controller);
     

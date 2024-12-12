@@ -1,7 +1,15 @@
 #include "DeployRetractComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class UAstroAction;
+UDeployRetractComponent::UDeployRetractComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->bIsDeployed = false;
+    this->bPendingDeployed = false;
+    this->DeployMontage = NULL;
+    this->RetractMontage = NULL;
+    this->DeployedCollision = NULL;
+    this->RetractedCollision = NULL;
+}
 
 void UDeployRetractComponent::OnRep_PendingDeployed() {
 }
@@ -25,12 +33,4 @@ void UDeployRetractComponent::GetLifetimeReplicatedProps(TArray<FLifetimePropert
     DOREPLIFETIME(UDeployRetractComponent, bPendingDeployed);
 }
 
-UDeployRetractComponent::UDeployRetractComponent() {
-    this->bIsDeployed = false;
-    this->bPendingDeployed = false;
-    this->DeployMontage = NULL;
-    this->RetractMontage = NULL;
-    this->DeployedCollision = NULL;
-    this->RetractedCollision = NULL;
-}
 

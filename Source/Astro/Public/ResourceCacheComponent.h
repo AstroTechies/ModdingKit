@@ -27,7 +27,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UDeformEventReceiver* DeformEventReceiver;
     
-    UResourceCacheComponent();
+    UResourceCacheComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void SwapResources(TSubclassOf<UItemType> MineralType);
     

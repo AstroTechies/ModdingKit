@@ -19,6 +19,7 @@ protected:
     
 public:
     UAstroGameMenuPopoutWidget();
+
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     UPanelWidget* GetPopoutPanelWrapper() const;
     

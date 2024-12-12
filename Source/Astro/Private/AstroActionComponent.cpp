@@ -1,7 +1,8 @@
 #include "AstroActionComponent.h"
 #include "Templates/SubclassOf.h"
 
-class UAstroAction;
+UAstroActionComponent::UAstroActionComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+}
 
 bool UAstroActionComponent::StartActionInstance(UAstroAction* Action, EAstroActionNetworking Networking) {
     return false;
@@ -48,6 +49,4 @@ bool UAstroActionComponent::ClientDenyStartActionRequest_Validate(const FAstroAc
     return true;
 }
 
-UAstroActionComponent::UAstroActionComponent() : UGameplayTasksComponent(FObjectInitializer()) {
-}
 

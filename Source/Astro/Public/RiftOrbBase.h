@@ -26,9 +26,10 @@ protected:
     FOnRiftOrbStateChanged OnRiftOrbStateChanged;
     
 public:
-    ARiftOrbBase();
+    ARiftOrbBase(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastSetRiftOrbState(ERiftOrbState NewState);
     

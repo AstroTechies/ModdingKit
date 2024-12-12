@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "Engine/EngineTypes.h"
 #include "GateObjectReplicationData.h"
 #include "PlayerProximityEventCallbackDelegate.h"
 #include "SignalDelegate.h"
@@ -54,9 +54,10 @@ protected:
     TArray<USkeletalMeshComponent*> SkeletalMeshes;
     
 public:
-    UActorGateObjectComponent();
+    UActorGateObjectComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnRep_ReplicationData();

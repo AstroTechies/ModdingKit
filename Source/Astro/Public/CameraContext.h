@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "CameraContextSignalDelegate.h"
 #include "CameraContext.generated.h"
 
@@ -20,5 +20,6 @@ public:
     uint8 Priority;
     
     UCameraContext();
+
 };
 

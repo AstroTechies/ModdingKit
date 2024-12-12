@@ -1,8 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
+#include "UObject/NoExportTypes.h"
+#include "UObject/Object.h"
+#include "UObject/NoExportTypes.h"
+#include "CombinedRuntimeCustomizationContent.h"
 #include "SimpleFocusTooltipWidgetAuthoringData.h"
 #include "Templates/SubclassOf.h"
 #include "AstroGameSingleton.generated.h"
@@ -15,6 +16,7 @@ class ARailNetwork;
 class AResourceInfo;
 class AResourceInfoNeeded;
 class UAchievementDefinitionTable;
+class UAstroCharacterCustomizationGlobals;
 class UAstroColorDatabase;
 class UAstroDiscreteInputDefinitionDatabase;
 class UAstroEntityWorldConfig;
@@ -23,8 +25,10 @@ class UAstroGameMenuPopoutWidget;
 class UAstroGameMenuTutorialSlideDeckDatabase;
 class UAstroGameMenuWidget;
 class UAstroGameSingleton;
+//class UAstroMicroTxnStoreGlobals;
 class UAstroNotificationDatabase;
 class UAstroPlanetDisplayNameDatabase;
+//class UAstroPlatformSpecificCustomizationContent;
 class UAstroPopupBadgeDatabase;
 class UAstroTooltipWidget;
 class UAstroUIAudioDatabase;
@@ -33,6 +37,7 @@ class UControlSymbol;
 class UCraftingDependencyMapList;
 class UDeployableItemPackageCatalog;
 class UDestructionDefinitionTable;
+class UEmoteTable;
 class UFont;
 class UGameplayGlobals;
 class UInputKeyToIconMapping;
@@ -96,6 +101,9 @@ public:
     UResearchProgressionTable* ResearchProgressionTable;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UEmoteTable* EmoteTable;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     USuitTable* SuitTable;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -147,7 +155,33 @@ public:
     float DefaultHoldInputCancelTreshold;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAstroCharacterCustomizationGlobals* CharacterCustomizationGlobals;
+    
+//    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+//    UAstroMicroTxnStoreGlobals* MicroTxnStoreGlobals;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ARailNetwork> RailNetworkType;
+    
+private:
+//    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+//    UAstroPlatformSpecificCustomizationContent* PlatformSpecificCustomizationContent;
+    
+//    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+//    UAstroPlatformSpecificCustomizationContent* WindowsSpecificCustomizationContent;
+    
+//    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+//    UAstroPlatformSpecificCustomizationContent* XboxSpecificCustomizationContent;
+    
+//    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+//    UAstroPlatformSpecificCustomizationContent* PS4SpecificCustomizationContent;
+    
+//    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+//    UAstroPlatformSpecificCustomizationContent* SwitchSpecificCustomizationContent;
+    
+public:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    FCombinedRuntimeCustomizationContent RuntimeCustomizationContent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText IndicatorRequestItemOverrideSubtitle;
@@ -244,6 +278,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAstroUIStylingDatabase* AstroUIStylingDatabase;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAstroUIStylingDatabase* AstroGlitchwalkersUIStylingDatabase;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAstroUIAudioDatabase* AstroUIAudioDatabase;
@@ -357,6 +394,7 @@ public:
     TSubclassOf<AActor> CurrentLTERocket;
     
     UAstroGameSingleton();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static UAstroGameSingleton* GetAstroGameSingleton();
     

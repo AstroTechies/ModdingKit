@@ -1,5 +1,8 @@
 #include "StreamingPowerMergedConnectionComponentContainer.h"
 
+UStreamingPowerMergedConnectionComponentContainer::UStreamingPowerMergedConnectionComponentContainer() {
+}
+
 FStreamingPowerMergedConnectionComponent UStreamingPowerMergedConnectionComponentContainer::GetStreamingPowerMergedConnectionComponent(FAstroDatumRef StreamingPowerMergedConnectionComponentRef, bool& bOutSuccess) {
     return FStreamingPowerMergedConnectionComponent{};
 }
@@ -8,6 +11,4 @@ FStreamingPowerMergedConnectionComponent UStreamingPowerMergedConnectionComponen
     return FStreamingPowerMergedConnectionComponent{};
 }
 
-UStreamingPowerMergedConnectionComponentContainer::UStreamingPowerMergedConnectionComponentContainer() {
-}
 

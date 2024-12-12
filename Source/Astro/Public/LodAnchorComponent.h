@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "Engine/EngineTypes.h"
 #include "DeformationParamsT2.h"
 #include "ELodAnchorState.h"
 #include "LodAnchorComponent.generated.h"
@@ -22,9 +22,10 @@ private:
     uint8 bIsActivated: 1;
     
 public:
-    ULodAnchorComponent();
+    ULodAnchorComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     bool UpdateInternal(const FVector& NewPosition);
     

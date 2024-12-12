@@ -2,7 +2,14 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class UItemType;
+UItemDriveComponent::UItemDriveComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->SendEventEvery = 60.00f;
+    this->ExoRequestRocketClass = NULL;
+    this->TradeShipDatabase = NULL;
+    this->PredictedItemDriveProgress = 0;
+    this->OfficialItemDriveProgress = -1;
+}
 
 void UItemDriveComponent::UpdateActiveItemDriveStage() {
 }
@@ -59,11 +66,4 @@ void UItemDriveComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& 
     DOREPLIFETIME(UItemDriveComponent, PredictedProgress);
 }
 
-UItemDriveComponent::UItemDriveComponent() {
-    this->SendEventEvery = 60.00f;
-    this->ExoRequestRocketClass = NULL;
-    this->TradeShipDatabase = NULL;
-    this->PredictedItemDriveProgress = 0;
-    this->OfficialItemDriveProgress = -1;
-}
 

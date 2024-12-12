@@ -2,26 +2,28 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
-class AAstroCharacter;
-class AAstroPlanet;
-class APhysicalItem;
-class UControlSymbol;
-class UItemType;
-class UObject;
-class UPrimitiveComponent;
-class UPrinterComponent;
-class UVoxelVolumeComponent;
-
-void AAstroPlayerController::WouldCompleteCollection_RespondToServer_Implementation(bool response, int32 RequestID) {
+AAstroPlayerController::AAstroPlayerController(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bAttachToPawn = true;
+    this->ClickEventKeys.AddDefaulted(1);
+    this->EnableEscapeMenuToggle = true;
+    this->CurrentHelpMenu = NULL;
+    this->FireworksAchievementLaunchCountKey = TEXT("LaunchCount");
+    this->FireworksAchievementLaunchWindowKey = TEXT("LaunchWindow");
+    this->ControlledVehicle = NULL;
+    this->PersistentLocalData = NULL;
+    this->MotionBlurQuality = 4;
+    this->CurrentDebugMenu = NULL;
 }
-bool AAstroPlayerController::WouldCompleteCollection_RespondToServer_Validate(bool response, int32 RequestID) {
+
+void AAstroPlayerController::WouldCompleteCollection_RespondToServer_Implementation(bool response, int32 RequestId) {
+}
+bool AAstroPlayerController::WouldCompleteCollection_RespondToServer_Validate(bool response, int32 RequestId) {
     return true;
 }
 
-void AAstroPlayerController::WouldCompleteCollection_RequestFromClient_Implementation(EAstroAchievementKeys collectionAchievement, TSubclassOf<UItemType> newCollectionItem, int32 RequestID) {
+void AAstroPlayerController::WouldCompleteCollection_RequestFromClient_Implementation(EAstroAchievementKeys collectionAchievement, TSubclassOf<UItemType> newCollectionItem, int32 RequestId) {
 }
-bool AAstroPlayerController::WouldCompleteCollection_RequestFromClient_Validate(EAstroAchievementKeys collectionAchievement, TSubclassOf<UItemType> newCollectionItem, int32 RequestID) {
+bool AAstroPlayerController::WouldCompleteCollection_RequestFromClient_Validate(EAstroAchievementKeys collectionAchievement, TSubclassOf<UItemType> newCollectionItem, int32 RequestId) {
     return true;
 }
 
@@ -97,6 +99,15 @@ bool AAstroPlayerController::ServerUseActor_Validate(AActor* Actor, FName Action
     return true;
 }
 
+void AAstroPlayerController::ServerSyncPlayfabBackendID_Implementation(const FString& BackendPlayerId) {
+}
+bool AAstroPlayerController::ServerSyncPlayfabBackendID_Validate(const FString& BackendPlayerId) {
+    return true;
+}
+
+void AAstroPlayerController::ServerSyncOneTimeTooltipSystemState_Implementation() {
+}
+
 void AAstroPlayerController::ServerStartPrint_Implementation(UPrinterComponent* Component) {
 }
 bool AAstroPlayerController::ServerStartPrint_Validate(UPrinterComponent* Component) {
@@ -121,15 +132,21 @@ bool AAstroPlayerController::ServerSetNormalizedSunOrbitCreative_Validate(float 
     return true;
 }
 
+void AAstroPlayerController::ServerSetCharacterCustomization_Implementation(const FAstroCharacterCustomization& Customization) {
+}
+bool AAstroPlayerController::ServerSetCharacterCustomization_Validate(const FAstroCharacterCustomization& Customization) {
+    return true;
+}
+
 void AAstroPlayerController::ServerResetGameStateAchievementProgress_Implementation() {
 }
 bool AAstroPlayerController::ServerResetGameStateAchievementProgress_Validate() {
     return true;
 }
 
-void AAstroPlayerController::ServerRequestUnlockItem_Implementation(TSubclassOf<UItemType> ItemTypeToUnlock) {
+void AAstroPlayerController::ServerRequestUnlockItem_Implementation(TSubclassOf<UItemType> ItemTypeToUnlock, bool bAllowPlayFabBinding) {
 }
-bool AAstroPlayerController::ServerRequestUnlockItem_Validate(TSubclassOf<UItemType> ItemTypeToUnlock) {
+bool AAstroPlayerController::ServerRequestUnlockItem_Validate(TSubclassOf<UItemType> ItemTypeToUnlock, bool bAllowPlayFabBinding) {
     return true;
 }
 
@@ -262,6 +279,9 @@ bool AAstroPlayerController::ServerClick_Validate(UPrimitiveComponent* Primitive
     return true;
 }
 
+void AAstroPlayerController::ServerClearStatusModifiers_Implementation() {
+}
+
 void AAstroPlayerController::ServerClearDebugLocations_Implementation() {
 }
 
@@ -373,6 +393,12 @@ bool AAstroPlayerController::ServerAdminNewGame_Validate(const FString& Name) {
     return true;
 }
 
+//void AAstroPlayerController::ServerAdminNewCustomGame_Implementation(const FAstroCGMLibraryConfigEntryMetaData& MetaData) {
+//}
+//bool AAstroPlayerController::ServerAdminNewCustomGame_Validate(const FAstroCGMLibraryConfigEntryMetaData& MetaData) {
+//    return true;
+//}
+
 void AAstroPlayerController::ServerAdminLoadGame_Implementation(const FString& Name) {
 }
 bool AAstroPlayerController::ServerAdminLoadGame_Validate(const FString& Name) {
@@ -472,7 +498,16 @@ void AAstroPlayerController::RebuildNodeWithLoggingBM(const FString& locationCod
 void AAstroPlayerController::RebuildNodeWithLogging(const FString& locationCode) {
 }
 
+void AAstroPlayerController::PushPendingItemUnlock(const FString& itemUnlock) {
+}
+
+void AAstroPlayerController::PublishCGMConfigFromGameState() {
+}
+
 void AAstroPlayerController::PrintDebugLocations() {
+}
+
+void AAstroPlayerController::PersistCharacterCustomization() {
 }
 
 void AAstroPlayerController::OnRep_AchievementProgress() {
@@ -555,6 +590,10 @@ void AAstroPlayerController::GrantAllUnlocks() {
 void AAstroPlayerController::GrantAchievement(const FString& AchievementName) {
 }
 
+float AAstroPlayerController::GetStatusModifierValue(EStatusModifierType statusModifierType) {
+    return 0.0f;
+}
+
 bool AAstroPlayerController::GetIsReturningPlayer() const {
     return false;
 }
@@ -612,6 +651,15 @@ void AAstroPlayerController::ClientUnPossess_Implementation(AAstroCharacter* old
 }
 
 void AAstroPlayerController::ClientTerrainValidateChecksumsT2_Implementation(UVoxelVolumeComponent* voxelVolume, const TArray<FTerrainNodeNetChecksum>& checksums) {
+}
+
+void AAstroPlayerController::ClientSyncStateFromServer_Implementation(const FAstroCustomGameState& customGameState) {
+}
+
+void AAstroPlayerController::ClientSyncSettingsFromServer_Implementation(bool IsCustomGame, const FAstroCustomGameSettings& CustomGameSettings, const FAstroCustomGameState& customGameState, const TArray<AAstroPlanet*>& Planets, const TArray<FVector>& planetOffsets) {
+}
+
+void AAstroPlayerController::ClientSyncOneTimeTooltipSystemState_Implementation(const FAstroOneTimeTooltipState& stateToSync) {
 }
 
 void AAstroPlayerController::ClientStartChunkedTransmission_Implementation(uint32 transmissionID, uint8 dataType, uint32 chunkCount, uint32 uncompressedSize, UObject* keyObject) {
@@ -680,6 +728,21 @@ void AAstroPlayerController::ClientRecvChunkedDataCompletionSignal_Implementatio
 void AAstroPlayerController::ClientRecvChunkedData_Implementation(uint32 transmissionID, int32 chunkIndex, const TArray<int8>& Data, UObject* keyObject) {
 }
 
+//void AAstroPlayerController::ClientRecordPlayerEventWithCallback_Implementation(const FString& EventName, const TArray<FAnalyticsEventAttr>& Attributes) {
+//}
+
+//void AAstroPlayerController::ClientRecordPlayerEvent_Implementation(const FString& EventName, const TArray<FAnalyticsEventAttr>& Attributes) {
+//}
+
+void AAstroPlayerController::ClientNotifyPlayerMadeLandfall_Implementation(const FText& PlayerName, EPlanetIdentifier planetID) {
+}
+
+void AAstroPlayerController::ClientNotifyPlayerLeftSession_Implementation(const FText& PlayerName) {
+}
+
+void AAstroPlayerController::ClientNotifyPlayerJoinedSession_Implementation(const FText& PlayerName) {
+}
+
 void AAstroPlayerController::ClientNoInitialPlanetSignal_Implementation() {
 }
 
@@ -696,6 +759,9 @@ void AAstroPlayerController::ClientListGamesResponse_Implementation(const FGameL
 }
 
 void AAstroPlayerController::ClientKickPlayerResponse_Implementation(bool success) {
+}
+
+void AAstroPlayerController::ClientJoinedDedicatedServer_Implementation() {
 }
 
 void AAstroPlayerController::ClientGrantItems_Implementation(const TArray<FString>& ItemIds) {
@@ -746,10 +812,16 @@ bool AAstroPlayerController::ClientAddProxySessionReservations_Validate(const TA
     return true;
 }
 
+void AAstroPlayerController::ClientAddPlayFabCatalogItem_Implementation(const FString& unlockedItem) const {
+}
+
 void AAstroPlayerController::ClearDebugLocations() {
 }
 
 void AAstroPlayerController::AwardAchievementOffline(const FString& AchievementName) {
+}
+
+void AAstroPlayerController::AuthoritySetStatusModifier(EStatusModifierType statusModifierType, float _value) {
 }
 
 void AAstroPlayerController::AttemptEnableMultiplayer() {
@@ -775,14 +847,4 @@ void AAstroPlayerController::GetLifetimeReplicatedProps(TArray<FLifetimeProperty
     DOREPLIFETIME(AAstroPlayerController, PendingSelectionActor);
 }
 
-AAstroPlayerController::AAstroPlayerController() {
-    this->EnableEscapeMenuToggle = true;
-    this->CurrentHelpMenu = NULL;
-    this->FireworksAchievementLaunchCountKey = TEXT("LaunchCount");
-    this->FireworksAchievementLaunchWindowKey = TEXT("LaunchWindow");
-    this->ControlledVehicle = NULL;
-    this->PersistentLocalData = NULL;
-    this->MotionBlurQuality = 4;
-    this->CurrentDebugMenu = NULL;
-}
 

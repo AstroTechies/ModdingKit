@@ -17,6 +17,7 @@ protected:
     
 public:
     UPowerFlowLockingMechanism();
+
     UFUNCTION(BlueprintCallable)
     void OnFullyPowered();
     

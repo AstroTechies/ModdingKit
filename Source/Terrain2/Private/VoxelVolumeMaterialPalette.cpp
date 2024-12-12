@@ -4,3 +4,4 @@ UVoxelVolumeMaterialPalette::UVoxelVolumeMaterialPalette() {
     this->DefaultMaterial = NULL;
 }
 
+

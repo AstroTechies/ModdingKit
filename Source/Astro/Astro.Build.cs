@@ -3,13 +3,9 @@ using UnrealBuildTool;
 public class Astro : ModuleRules {
     public Astro(ReadOnlyTargetRules Target) : base(Target) {
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-        bLegacyPublicIncludePaths = false;
-        // ShadowVariableWarningLevel = WarningLevel.Warning;
         
         PublicDependencyModuleNames.AddRange(new string[] {
             "AIModule",
-            "AnalyticsBlueprintLibrary",
-            "Astro",
             "Core",
             "CoreUObject",
             "Engine",
@@ -18,12 +14,7 @@ public class Astro : ModuleRules {
             "InputCore",
             "LevelSequence",
             "MessageOfTheDay",
-            "MovieScene",
-            "MovieSceneTracks",
-            "NavigationSystem",
-            "PropertyPath",
             "ReplicationGraph",
-            "Slate",
             "SlateCore",
             "Terrain2",
             "UMG",

@@ -1,11 +1,6 @@
 #include "TerrainPlatformComponent.h"
 
-class AActor;
-
-void UTerrainPlatformComponent::OwnerDestroyed(AActor* DestroyedActor) {
-}
-
-UTerrainPlatformComponent::UTerrainPlatformComponent() {
+UTerrainPlatformComponent::UTerrainPlatformComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->RemoveTopHemisphere = true;
     this->Radius = 400.00f;
     this->SoftEdgeStartRadius = 0.00f;
@@ -15,4 +10,8 @@ UTerrainPlatformComponent::UTerrainPlatformComponent() {
     this->Enabled = true;
     this->m_planet = NULL;
 }
+
+void UTerrainPlatformComponent::OwnerDestroyed(AActor* DestroyedActor) {
+}
+
 

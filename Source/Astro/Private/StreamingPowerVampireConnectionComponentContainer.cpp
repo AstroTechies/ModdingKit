@@ -1,5 +1,8 @@
 #include "StreamingPowerVampireConnectionComponentContainer.h"
 
+UStreamingPowerVampireConnectionComponentContainer::UStreamingPowerVampireConnectionComponentContainer() {
+}
+
 FStreamingPowerVampireConnectionComponent UStreamingPowerVampireConnectionComponentContainer::GetStreamingPowerVampireConnectionComponent(FAstroDatumRef StreamingPowerVampireConnectionComponentRef, bool& bOutSuccess) {
     return FStreamingPowerVampireConnectionComponent{};
 }
@@ -8,6 +11,4 @@ FStreamingPowerVampireConnectionComponent UStreamingPowerVampireConnectionCompon
     return FStreamingPowerVampireConnectionComponent{};
 }
 
-UStreamingPowerVampireConnectionComponentContainer::UStreamingPowerVampireConnectionComponentContainer() {
-}
 

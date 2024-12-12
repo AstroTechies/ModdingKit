@@ -24,5 +24,6 @@ public:
     TArray<FCallback_DEPRECATED> BlueprintFixups;
     
     UAstroSave();
+
 };
 

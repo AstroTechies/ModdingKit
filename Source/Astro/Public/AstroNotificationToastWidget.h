@@ -25,6 +25,7 @@ private:
     
 public:
     UAstroNotificationToastWidget();
+
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void SetShouldStayPresented(bool bShouldRetainBiomeToast);
     

@@ -11,6 +11,7 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FControlPanelReadyEvent OnControlPanelAvailable;
     
-    UControlPanelItemComponent();
+    UControlPanelItemComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

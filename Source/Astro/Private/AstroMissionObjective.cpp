@@ -7,6 +7,7 @@ FAstroMissionObjective::FAstroMissionObjective() {
     this->StartingValue = 0.00f;
     this->ProgressNotifyThreshold = 0.00f;
     this->NavpointGroup = ENavpointGroup::None;
+    this->DeactivateNavpointGroupOnRemoval = false;
     this->Planet = EPlanetIdentifier::None;
     this->ObjectiveType = EAstroMissionObjectiveType::HarvestResource;
     this->bIsOverrideObjective = false;
@@ -14,6 +15,7 @@ FAstroMissionObjective::FAstroMissionObjective() {
     this->bIsHiddenObjective = false;
     this->bIsPlanetExclude = false;
     this->bShowProgressUI = false;
+    this->bSendTelemetryEvent = false;
     this->ProgressType = EAstroMissionObjectiveProgressType::Increment;
 }
 

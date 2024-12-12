@@ -10,6 +10,7 @@ class ASTRO_API UResearchProgressionComponentContainer : public UAstroEntityComp
     GENERATED_BODY()
 public:
     UResearchProgressionComponentContainer();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FResearchProgressionComponent GetResearchProgressionComponent(FAstroDatumRef ResearchProgressionComponentRef, bool& bOutSuccess);
     

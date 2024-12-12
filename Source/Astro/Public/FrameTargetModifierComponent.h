@@ -10,6 +10,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float HeightOffset;
     
-    UFrameTargetModifierComponent();
+    UFrameTargetModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

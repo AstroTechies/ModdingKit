@@ -1,6 +1,10 @@
 #include "HoverDelayComponent.h"
 
-class AActor;
+UHoverDelayComponent::UHoverDelayComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->HoverBeginDelay = 0.20f;
+    this->HoverEndDelay = 1.00f;
+    this->Hovering = false;
+}
 
 void UHoverDelayComponent::OnTimerEnd() {
 }
@@ -11,9 +15,4 @@ void UHoverDelayComponent::OnHoverEnd(AActor* Actor) {
 void UHoverDelayComponent::OnHoverBegin(AActor* Actor) {
 }
 
-UHoverDelayComponent::UHoverDelayComponent() {
-    this->HoverBeginDelay = 0.20f;
-    this->HoverEndDelay = 1.00f;
-    this->Hovering = false;
-}
 

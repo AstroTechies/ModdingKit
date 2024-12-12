@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "PlanetEffectRelevancyChangedDelegate.h"
+//#include "PlanetEffectRelevancyChangedDelegate.h"
 #include "PlanetEffect.generated.h"
 
 class AActor;
@@ -22,8 +22,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bAutoHandleCriticalComponents: 1;
     
-    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FPlanetEffectRelevancyChanged OnPlanetEffectRelevancyChanged;
+//    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+//    FPlanetEffectRelevancyChanged OnPlanetEffectRelevancyChanged;
     
 protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
@@ -36,7 +36,8 @@ protected:
     TArray<uint8> AutoManagedComponentFlags;
     
 public:
-    UPlanetEffect();
+    UPlanetEffect(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void TriggerUpdate();
     

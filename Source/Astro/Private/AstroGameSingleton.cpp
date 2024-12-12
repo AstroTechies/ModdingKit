@@ -1,11 +1,5 @@
 #include "AstroGameSingleton.h"
 
-class UAstroGameSingleton;
-
-UAstroGameSingleton* UAstroGameSingleton::GetAstroGameSingleton() {
-    return NULL;
-}
-
 UAstroGameSingleton::UAstroGameSingleton() {
     this->bIsExperimentalBuild = false;
     this->GameMenu = NULL;
@@ -19,6 +13,7 @@ UAstroGameSingleton::UAstroGameSingleton() {
     this->MasterItemList = NULL;
     this->ForcedPackageIncludes = NULL;
     this->ResearchProgressionTable = NULL;
+    this->EmoteTable = NULL;
     this->SuitTable = NULL;
     this->DeployableItemPackageCatalog = NULL;
     this->DestructionDefinitionTable = NULL;
@@ -36,7 +31,13 @@ UAstroGameSingleton::UAstroGameSingleton() {
     this->WindPowerActivationThreshold = 0.00f;
     this->DefaultHoldInputDuration = 0.00f;
     this->DefaultHoldInputCancelTreshold = 0.00f;
+    this->CharacterCustomizationGlobals = NULL;
+//    this->MicroTxnStoreGlobals = NULL;
     this->RailNetworkType = NULL;
+//    this->WindowsSpecificCustomizationContent = NULL;
+//    this->XboxSpecificCustomizationContent = NULL;
+//    this->PS4SpecificCustomizationContent = NULL;
+//    this->SwitchSpecificCustomizationContent = NULL;
     this->PlanetProxyActor = NULL;
     this->WindstormClass = NULL;
     this->RewardTable = NULL;
@@ -60,6 +61,7 @@ UAstroGameSingleton::UAstroGameSingleton() {
     this->PowerHotMaterial = NULL;
     this->AstroColorDatabase = NULL;
     this->AstroUIStylingDatabase = NULL;
+    this->AstroGlitchwalkersUIStylingDatabase = NULL;
     this->AstroUIAudioDatabase = NULL;
     this->NonFlashingButtonMaterial = NULL;
     this->FlashingButtonMaterial = NULL;
@@ -88,4 +90,9 @@ UAstroGameSingleton::UAstroGameSingleton() {
     this->ActuatorConnection = NULL;
     this->CurrentLTERocket = NULL;
 }
+
+UAstroGameSingleton* UAstroGameSingleton::GetAstroGameSingleton() {
+    return NULL;
+}
+
 

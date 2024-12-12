@@ -8,5 +8,6 @@ class TERRAIN2_API UProceduralExpression_SdfToDensity : public UProceduralExpres
     GENERATED_BODY()
 public:
     UProceduralExpression_SdfToDensity();
+
 };
 

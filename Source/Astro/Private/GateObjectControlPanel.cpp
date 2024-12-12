@@ -3,8 +3,23 @@
 #include "Net/UnrealNetwork.h"
 #include "TooltipComponent.h"
 
-class UPrimitiveComponent;
-class USolarSystem;
+AGateObjectControlPanel::AGateObjectControlPanel(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->DefaultInertIndicatorMaterial = NULL;
+    this->DefaultActiveIndicatorMaterial = NULL;
+    this->CenteredNodeRotationOffset = 45.00f;
+    this->ChamberIndicatorOffsetDistance = 500.00f;
+    this->SolarSystemViewRadius = 500.00f;
+    this->ScaleInterpolationDuration = 1.00f;
+    this->CurrentContext = EGateObjectControlPanelContext::Planet;
+    this->SelectedControlNodeIndex = -1;
+    this->CurrentLocationControlNodeIndex = -1;
+    this->CrackedRoot = CreateDefaultSubobject<USceneComponent>(TEXT("CrackedRoot"));
+    this->ControlNodeRoot = CreateDefaultSubobject<USceneComponent>(TEXT("ControlNodeRoot"));
+    this->TooltipComponent = CreateDefaultSubobject<UTooltipComponent>(TEXT("TooltipComponent"));
+    this->SunIndicatorComponent = NULL;
+    this->ControlNodeRoot->SetupAttachment(CrackedRoot);
+    this->CrackedRoot->SetupAttachment(RootComponent);
+}
 
 void AGateObjectControlPanel::SetContext(EGateObjectControlPanelContext newContext) {
 }
@@ -52,19 +67,4 @@ void AGateObjectControlPanel::GetLifetimeReplicatedProps(TArray<FLifetimePropert
     DOREPLIFETIME(AGateObjectControlPanel, CurrentLocationControlNodeIndex);
 }
 
-AGateObjectControlPanel::AGateObjectControlPanel() {
-    this->DefaultInertIndicatorMaterial = NULL;
-    this->DefaultActiveIndicatorMaterial = NULL;
-    this->CenteredNodeRotationOffset = 45.00f;
-    this->ChamberIndicatorOffsetDistance = 500.00f;
-    this->SolarSystemViewRadius = 500.00f;
-    this->ScaleInterpolationDuration = 1.00f;
-    this->CurrentContext = EGateObjectControlPanelContext::Planet;
-    this->SelectedControlNodeIndex = -1;
-    this->CurrentLocationControlNodeIndex = -1;
-    this->CrackedRoot = CreateDefaultSubobject<USceneComponent>(TEXT("CrackedRoot"));
-    this->ControlNodeRoot = CreateDefaultSubobject<USceneComponent>(TEXT("ControlNodeRoot"));
-    this->TooltipComponent = CreateDefaultSubobject<UTooltipComponent>(TEXT("TooltipComponent"));
-    this->SunIndicatorComponent = NULL;
-}
 

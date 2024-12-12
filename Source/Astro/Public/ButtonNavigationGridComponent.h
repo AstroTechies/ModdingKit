@@ -31,7 +31,8 @@ private:
     UInputComponent* InputComponent;
     
 public:
-    UButtonNavigationGridComponent();
+    UButtonNavigationGridComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void SetSelectedGridCell(int32 row, int32 column);
     

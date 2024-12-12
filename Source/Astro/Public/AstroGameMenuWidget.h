@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
-//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
-//CROSS-MODULE INCLUDE V2: -ModuleName=UMG -ObjectName=ESlateVisibility -FallbackName=ESlateVisibility
+#include "UObject/NoExportTypes.h"
+#include "InputCoreTypes.h"
+#include "Components/SlateWrapperTypes.h"
 #include "EAstroGameMenuContext.h"
 #include "EGameMenuNavigationCommand.h"
 #include "SignalDelegate.h"
@@ -27,12 +27,16 @@ class UAstroGameMenuWidget : public UUserWidgetBlueprintDesignable {
     GENERATED_BODY()
 public:
     DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMenuOpenClose, EAstroGameMenuContext, GameMenuContext);
+    DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnMenuNavigationBackWithConfirmation);
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FKey> WhitelistedKeys;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FKey> WhitelistedAxis;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnMenuNavigationBackWithConfirmation OnMenuNavigationBackWithConfirmation;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnMenuOpenClose OnMenuOpened;
@@ -82,6 +86,16 @@ protected:
     
 public:
     UAstroGameMenuWidget();
+
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void UseUpsellWidget();
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void UseFMOTDWidget();
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void ShowFMOTDWidget(bool FadeIn);
+    
 protected:
     UFUNCTION(BlueprintCallable)
     void RequestNavigation(EGameMenuNavigationCommand NavCommand);
@@ -95,6 +109,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void LockControls(bool bLockControls);
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void HideFMOTDWidget(bool FadeOut);
     
 private:
     UFUNCTION(BlueprintCallable)
@@ -130,6 +147,15 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     UOverlay* GetFullScreenPaneWrapper() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
+    UUserWidget* GetExperimentalSettingsWarningWidget() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
+    UUserWidget* GetCustomGameSwitchModifiersWarningWidget() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
+    UUserWidget* GetCustomGamePerformanceWarningWidget() const;
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
     FVector2D GetBoundedSizeOfMenu() const;

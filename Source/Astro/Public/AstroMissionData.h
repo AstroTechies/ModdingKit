@@ -1,5 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
+//#include "FAstroGWExpansionEngagementState.h"
 #include "AstroMissionObjective.h"
 #include "EAstroAchievementKeys.h"
 #include "EAstroColor.h"
@@ -7,6 +8,7 @@
 #include "Templates/SubclassOf.h"
 #include "AstroMissionData.generated.h"
 
+class UAstroCustomizationItem;
 class UItemType;
 class UObject;
 
@@ -19,6 +21,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName MissionCatagory;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool IsEventMission;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FAstroMissionObjective> Objectives;
@@ -60,6 +65,12 @@ public:
     TArray<TSubclassOf<UItemType>> ResearchRewards;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TMap<FString, TSoftObjectPtr<UAstroCustomizationItem>> PlayFabRewards;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TMap<FString, FText> PlayFabRewardsDisplayNames;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAstroAchievementKeys AchievementReward;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -85,6 +96,12 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAstroMissionRewardDeliveryType DeliveryType;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool RequiresGlitchWalkersEntitlement;
+    
+//    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+//    FAstroGWExpansionEngagementState EngagementStateToSetOnActivation;
     
     ASTRO_API FAstroMissionData();
 };

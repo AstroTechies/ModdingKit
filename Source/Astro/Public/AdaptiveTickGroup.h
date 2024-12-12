@@ -21,6 +21,7 @@ private:
     TArray<FTickingObject> m_staticObjects;
     
 public:
-    AAdaptiveTickGroup();
+    AAdaptiveTickGroup(const FObjectInitializer& ObjectInitializer);
+
 };
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "UObject/NoExportTypes.h"
+#include "Engine/EngineTypes.h"
 #include "EExtractorAnimStage.h"
 #include "EExtractorOperationStage.h"
 #include "PhysicalItem.h"
@@ -118,9 +118,10 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_ActivationState, meta=(AllowPrivateAccess=true))
     uint8 bIsTurnedOn: 1;
     
-    AResourceExtractor();
+    AResourceExtractor(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 private:
     UFUNCTION(BlueprintCallable)
     void OnStorageChassisSlotEventSignal(APhysicalItem* Item);

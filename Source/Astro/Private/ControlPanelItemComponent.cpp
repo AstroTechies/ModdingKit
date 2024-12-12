@@ -1,5 +1,6 @@
 #include "ControlPanelItemComponent.h"
 
-UControlPanelItemComponent::UControlPanelItemComponent() {
+UControlPanelItemComponent::UControlPanelItemComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

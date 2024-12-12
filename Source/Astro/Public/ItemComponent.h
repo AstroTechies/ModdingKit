@@ -22,6 +22,7 @@ public:
     bool Discrete;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    // If this is a canister, how much can it hold?
     float Capacity;
     
     UPROPERTY(BlueprintAssignable, BlueprintCallable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -63,9 +64,10 @@ private:
     int32 Amount;
     
 public:
-    UItemComponent();
+    UItemComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable)
     int32 TakeItemRateDelta(float Rate, float DeltaTime);
     

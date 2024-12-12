@@ -8,5 +8,6 @@ class ASTRO_API UPowerGenerationSystem : public UAstroEntitySystem {
     GENERATED_BODY()
 public:
     UPowerGenerationSystem();
+
 };
 

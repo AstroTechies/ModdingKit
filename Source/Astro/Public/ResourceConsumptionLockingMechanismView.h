@@ -15,6 +15,7 @@ public:
     FLockingMechanismSignal BeginFinalResourceConsumption;
     
     UResourceConsumptionLockingMechanismView();
+
     UFUNCTION(BlueprintCallable)
     void OnBeginFinalResourceConsumption(ULockingMechanism* LockingMechanism, const FLockChangedEventMetadata& EventData);
     

@@ -7,7 +7,8 @@ UCLASS(Abstract, Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableCompo
 class ASTRO_API UAstroCharacterMovementOverrideComponent : public UActorComponent {
     GENERATED_BODY()
 public:
-    UAstroCharacterMovementOverrideComponent();
+    UAstroCharacterMovementOverrideComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void TryRegisterOverride(bool bRegister);
     

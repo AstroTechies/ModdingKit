@@ -1,12 +1,28 @@
 #include "WheeledChassisComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class AActor;
-class APhysicalItem;
-class UAstroSaveCustomArchiveProxy;
-class UParticleSystemComponent;
-class USceneComponent;
-class UStaticMeshComponent;
+UWheeledChassisComponent::UWheeledChassisComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->MaxNetworkPositionErrorSquared = 40000.00f;
+    this->UprightFlipSpeed = 360.00f;
+    this->SpringStiffness = 0.01f;
+    this->SpringDamping = 500.00f;
+    this->PhysicsSleepSpeedThreshold = 20.00f;
+    this->PhysicsSleepDelay = 3.00f;
+    this->MyActivation = NULL;
+    this->Groundedness = 1.00f;
+    this->AnyGroundedness = 1.00f;
+    this->ImpactThreshold = 500000.00f;
+    this->LateralWheelFriction = 3000.00f;
+    this->MaxDepenetrationVelocity = 12.00f;
+    this->CenterOfMassAdjustment = -50.00f;
+    this->LinkedWheelCount = 0;
+    this->ItemOwner = NULL;
+    this->ControlledMovementCompt = NULL;
+    this->PhysicsMovementComp = NULL;
+    this->REP_bIsFlippingUpright = false;
+    this->REP_bUprightFlipComplete = false;
+}
 
 void UWheeledChassisComponent::WakePhysics() {
 }
@@ -76,25 +92,4 @@ void UWheeledChassisComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProper
     DOREPLIFETIME(UWheeledChassisComponent, REP_bUprightFlipComplete);
 }
 
-UWheeledChassisComponent::UWheeledChassisComponent() {
-    this->MaxNetworkPositionErrorSquared = 40000.00f;
-    this->UprightFlipSpeed = 360.00f;
-    this->SpringStiffness = 0.01f;
-    this->SpringDamping = 500.00f;
-    this->PhysicsSleepSpeedThreshold = 20.00f;
-    this->PhysicsSleepDelay = 3.00f;
-    this->MyActivation = NULL;
-    this->Groundedness = 1.00f;
-    this->AnyGroundedness = 1.00f;
-    this->ImpactThreshold = 500000.00f;
-    this->LateralWheelFriction = 3000.00f;
-    this->MaxDepenetrationVelocity = 12.00f;
-    this->CenterOfMassAdjustment = -50.00f;
-    this->LinkedWheelCount = 0;
-    this->ItemOwner = NULL;
-    this->ControlledMovementCompt = NULL;
-    this->PhysicsMovementComp = NULL;
-    this->REP_bIsFlippingUpright = false;
-    this->REP_bUprightFlipComplete = false;
-}
 

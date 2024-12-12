@@ -1,35 +1,8 @@
 #include "PhysicsMovementComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class AAstroPlayerController;
-class APlayerController;
-
-void UPhysicsMovementComponent::ServerUpdateClientMovementInput_Implementation(FPhysicsMovementReplicatedInput ClientSteeringInput) {
-}
-bool UPhysicsMovementComponent::ServerUpdateClientMovementInput_Validate(FPhysicsMovementReplicatedInput ClientSteeringInput) {
-    return true;
-}
-
-void UPhysicsMovementComponent::Move(APlayerController* Controller, const FVector2D& Value, float Multiplier) {
-}
-
-void UPhysicsMovementComponent::HandleVehicleUnmanned(AAstroPlayerController* OldPilot) {
-}
-
-void UPhysicsMovementComponent::HandleVehicleManned(AAstroPlayerController* NewPilot) {
-}
-
-void UPhysicsMovementComponent::ApplyResistanceLevel() {
-}
-
-void UPhysicsMovementComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {
-    Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-    
-    DOREPLIFETIME(UPhysicsMovementComponent, ReplicatedInput);
-    DOREPLIFETIME(UPhysicsMovementComponent, REP_ResistanceLevel);
-}
-
-UPhysicsMovementComponent::UPhysicsMovementComponent() {
+UPhysicsMovementComponent::UPhysicsMovementComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
     this->MaxSteerAngle = 40.00f;
     this->RotationForce = 40.00f;
     this->HeadingStabilization = 0.25f;
@@ -72,4 +45,30 @@ UPhysicsMovementComponent::UPhysicsMovementComponent() {
     this->CurrentOperatingController = NULL;
     this->REP_ResistanceLevel = 0;
 }
+
+void UPhysicsMovementComponent::ServerUpdateClientMovementInput_Implementation(FPhysicsMovementReplicatedInput ClientSteeringInput) {
+}
+bool UPhysicsMovementComponent::ServerUpdateClientMovementInput_Validate(FPhysicsMovementReplicatedInput ClientSteeringInput) {
+    return true;
+}
+
+void UPhysicsMovementComponent::Move(APlayerController* Controller, const FVector2D& Value, float Multiplier) {
+}
+
+void UPhysicsMovementComponent::HandleVehicleUnmanned(AAstroPlayerController* OldPilot) {
+}
+
+void UPhysicsMovementComponent::HandleVehicleManned(AAstroPlayerController* NewPilot) {
+}
+
+void UPhysicsMovementComponent::ApplyResistanceLevel() {
+}
+
+void UPhysicsMovementComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {
+    Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+    
+    DOREPLIFETIME(UPhysicsMovementComponent, ReplicatedInput);
+    DOREPLIFETIME(UPhysicsMovementComponent, REP_ResistanceLevel);
+}
+
 

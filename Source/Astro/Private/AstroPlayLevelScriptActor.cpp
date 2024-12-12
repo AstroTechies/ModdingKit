@@ -1,5 +1,6 @@
 #include "AstroPlayLevelScriptActor.h"
 
-AAstroPlayLevelScriptActor::AAstroPlayLevelScriptActor() {
+AAstroPlayLevelScriptActor::AAstroPlayLevelScriptActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

@@ -9,7 +9,8 @@ UCLASS(Blueprintable)
 class ASTRO_API ABatteryActuator : public AFullnessActuator {
     GENERATED_BODY()
 public:
-    ABatteryActuator();
+    ABatteryActuator(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnAuthorityFullyCharged();

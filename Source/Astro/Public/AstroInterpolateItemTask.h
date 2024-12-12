@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
+#include "UObject/NoExportTypes.h"
 #include "GameplayTask.h"
 #include "AstroInterpolateItemTask.generated.h"
 
@@ -14,6 +14,7 @@ class ASTRO_API UAstroInterpolateItemTask : public UGameplayTask {
     GENERATED_BODY()
 public:
     UAstroInterpolateItemTask();
+
     UFUNCTION(BlueprintCallable)
     void OnTargetItemMotionStateChanged();
     

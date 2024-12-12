@@ -10,6 +10,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FString> RequiredAudioBankNames;
     
-    UWwiseConfigurationComponent();
+    UWwiseConfigurationComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

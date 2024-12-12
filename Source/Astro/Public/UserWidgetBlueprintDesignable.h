@@ -8,6 +8,7 @@ class UUserWidgetBlueprintDesignable : public UUserWidget {
     GENERATED_BODY()
 public:
     UUserWidgetBlueprintDesignable();
+
 protected:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void SetupStylingData();

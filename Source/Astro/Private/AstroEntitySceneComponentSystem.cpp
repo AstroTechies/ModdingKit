@@ -4,3 +4,4 @@ UAstroEntitySceneComponentSystem::UAstroEntitySceneComponentSystem() {
     this->SceneComponentTaskManager = NULL;
 }
 
+

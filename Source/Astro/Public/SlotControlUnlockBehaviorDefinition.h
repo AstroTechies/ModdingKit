@@ -11,5 +11,6 @@ public:
     TArray<FName> ControlledSlotNames;
     
     USlotControlUnlockBehaviorDefinition();
+
 };
 

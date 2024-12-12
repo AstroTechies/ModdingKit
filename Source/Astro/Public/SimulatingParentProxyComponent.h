@@ -12,6 +12,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     AActor* proxy;
     
-    USimulatingParentProxyComponent();
+    USimulatingParentProxyComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

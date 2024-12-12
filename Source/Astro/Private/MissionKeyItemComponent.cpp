@@ -1,5 +1,6 @@
 #include "MissionKeyItemComponent.h"
 
-UMissionKeyItemComponent::UMissionKeyItemComponent() {
+UMissionKeyItemComponent::UMissionKeyItemComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

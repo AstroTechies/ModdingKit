@@ -1,6 +1,14 @@
 #include "AugmentComponent.h"
 #include "Net/UnrealNetwork.h"
 
+UAugmentComponent::UAugmentComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->AugmentIsEquipped = false;
+    this->AugmentIsActive = false;
+    this->AugmentIsEnabled = true;
+    this->SuppressClickableWhileDeactivated = true;
+}
+
 void UAugmentComponent::UnblockReactivation() {
 }
 
@@ -43,10 +51,4 @@ void UAugmentComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
     DOREPLIFETIME(UAugmentComponent, AugmentIsEnabled);
 }
 
-UAugmentComponent::UAugmentComponent() {
-    this->AugmentIsEquipped = false;
-    this->AugmentIsActive = false;
-    this->AugmentIsEnabled = true;
-    this->SuppressClickableWhileDeactivated = true;
-}
 

@@ -1,11 +1,10 @@
 #include "AstroUnpackAction.h"
 
-class UDeployableItemPackageComponent;
+UAstroUnpackAction::UAstroUnpackAction() {
+    this->DeployableItemComponent = NULL;
+}
 
 void UAstroUnpackAction::SetDeployableItem(UDeployableItemPackageComponent* DeployableItemPackageComponent) {
 }
 
-UAstroUnpackAction::UAstroUnpackAction() {
-    this->DeployableItemComponent = NULL;
-}
 

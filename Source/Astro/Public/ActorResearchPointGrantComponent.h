@@ -13,6 +13,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxPointsGranted;
     
-    UActorResearchPointGrantComponent();
+    UActorResearchPointGrantComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

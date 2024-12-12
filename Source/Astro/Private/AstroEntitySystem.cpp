@@ -4,3 +4,4 @@ UAstroEntitySystem::UAstroEntitySystem() {
     this->CachedEntityWorld = NULL;
 }
 
+

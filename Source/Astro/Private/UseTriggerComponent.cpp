@@ -1,7 +1,12 @@
 #include "UseTriggerComponent.h"
 
-class AActor;
-class UPrimitiveComponent;
+UUseTriggerComponent::UUseTriggerComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bTriggeredByPlayers = false;
+    this->TriggerItems = NULL;
+    this->CooldownTime = 1.00f;
+    this->TriggerItemList = NULL;
+    this->CurrentInstigator = NULL;
+}
 
 void UUseTriggerComponent::OnTriggerVolumeOverlapped(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) {
 }
@@ -9,11 +14,4 @@ void UUseTriggerComponent::OnTriggerVolumeOverlapped(UPrimitiveComponent* Overla
 void UUseTriggerComponent::OnCooldownCompleted() {
 }
 
-UUseTriggerComponent::UUseTriggerComponent() {
-    this->bTriggeredByPlayers = false;
-    this->TriggerItems = NULL;
-    this->CooldownTime = 1.00f;
-    this->TriggerItemList = NULL;
-    this->CurrentInstigator = NULL;
-}
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=DataAsset -FallbackName=DataAsset
+#include "Engine/DataAsset.h"
 #include "TetherSystemProperties.generated.h"
 
 class UMaterialInterface;
@@ -41,5 +41,6 @@ public:
     float AdjustDistance;
     
     UTetherSystemProperties();
+
 };
 

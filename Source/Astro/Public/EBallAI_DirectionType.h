@@ -6,6 +6,5 @@ UENUM(BlueprintType)
 enum class EBallAI_DirectionType : uint8 {
     Random,
     Uphill,
-    EBallAI_MAX UMETA(Hidden),
 };
 

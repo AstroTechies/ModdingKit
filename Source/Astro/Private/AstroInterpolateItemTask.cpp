@@ -1,9 +1,7 @@
 #include "AstroInterpolateItemTask.h"
 
-class APhysicalItem;
-class UAstroAction;
-class UAstroInterpolateItemTask;
-class UCurveFloat;
+UAstroInterpolateItemTask::UAstroInterpolateItemTask() : UGameplayTask(FObjectInitializer()) {
+}
 
 void UAstroInterpolateItemTask::OnTargetItemMotionStateChanged() {
 }
@@ -12,6 +10,4 @@ UAstroInterpolateItemTask* UAstroInterpolateItemTask::CreateAstroInterpolateItem
     return NULL;
 }
 
-UAstroInterpolateItemTask::UAstroInterpolateItemTask() : UGameplayTask(FObjectInitializer()) {
-}
 

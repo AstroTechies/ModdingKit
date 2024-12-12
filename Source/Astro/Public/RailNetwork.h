@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
+#include "UObject/NoExportTypes.h"
 #include "GameFramework/Actor.h"
 #include "DeformationParamsT2.h"
 #include "IndicatorHoloColors.h"
@@ -136,9 +136,10 @@ protected:
     TMap<TWeakObjectPtr<UCapsuleComponent>, int32> CapsulesToConnectionIDs;
     
 public:
-    ARailNetwork();
+    ARailNetwork(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnRep_RailConnections();

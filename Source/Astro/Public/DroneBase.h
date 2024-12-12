@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=ComponentReference -FallbackName=ComponentReference
+#include "Engine/EngineTypes.h"
 #include "EDroneFlightState.h"
 #include "PhysicalItem.h"
 #include "SignalDelegate.h"
@@ -93,9 +93,10 @@ protected:
     float LerpStrengthScaleFactor;
     
 public:
-    ADroneBase();
+    ADroneBase(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void ZoomOut();

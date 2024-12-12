@@ -1,11 +1,42 @@
 #include "OrbitalNavigationComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class AActor;
-class AAstroPlayerController;
-class ASolarBody;
-class UObject;
-class UOrbitalNavigationComponent;
+UOrbitalNavigationComponent::UOrbitalNavigationComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->bPreventRespawnWhileDriving = false;
+    this->LaunchLength = 15.00f;
+    this->DefaultOrbitSpeed = 0.04f;
+    this->MinOrbitSpeed = 0.01f;
+    this->MaxOrbitSpeed = 0.25f;
+    this->OrbitSpeedRangeStep = 0.20f;
+    this->OrbitSpeedTransitionRate = 0.00f;
+    this->OrbitSpeedInputRepeatDelay = 0.20f;
+    this->UseLaunchUpVector = true;
+    this->OrbitDistance = 1.69f;
+    this->EasePower = 5.00f;
+    this->LerpPower = 0.50f;
+    this->PhysicsDisabled = false;
+    this->SelectedTarget = NULL;
+    this->LaunchTime = 0.00f;
+    this->planetSelection = false;
+    this->shouldLaunchUpdate = false;
+    this->SourceTime = 0.00f;
+    this->TargetTime = 0.00f;
+    this->CurrentTime = 0.00f;
+    this->storage = NULL;
+    this->CurrOrbitGameSpeedScalarDegree = 0.00f;
+    this->REP_TargetOrbitGameSpeedScalarDegree = 0.12f;
+    this->Local_TargetOrbitGameSpeedScalarDegree = 0.00f;
+    this->DefaultOrbitSpeedScalarDegree = 0.12f;
+    this->InterplanetaryTravelRange = 3000000.00f;
+    this->SourceSolarBody = NULL;
+    this->TimeSinceLastOrbitSpeedChange = 0.00f;
+    this->CurrOrbitSpeedInput = 0;
+    this->DiscreteOrbitSpeedInput = 0;
+    this->AxisOrbitSpeedInput = 0;
+    this->MaxOrbitSpeedScalar = 0.00f;
+    this->MinOrbitSpeedScalar = 1.00f;
+}
 
 void UOrbitalNavigationComponent::SetPlanetSelection(bool Enable) {
 }
@@ -122,39 +153,4 @@ void UOrbitalNavigationComponent::GetLifetimeReplicatedProps(TArray<FLifetimePro
     DOREPLIFETIME(UOrbitalNavigationComponent, TimeData);
 }
 
-UOrbitalNavigationComponent::UOrbitalNavigationComponent() {
-    this->bPreventRespawnWhileDriving = false;
-    this->LaunchLength = 15.00f;
-    this->DefaultOrbitSpeed = 0.04f;
-    this->MinOrbitSpeed = 0.01f;
-    this->MaxOrbitSpeed = 0.25f;
-    this->OrbitSpeedRangeStep = 0.20f;
-    this->OrbitSpeedTransitionRate = 0.00f;
-    this->OrbitSpeedInputRepeatDelay = 0.20f;
-    this->UseLaunchUpVector = true;
-    this->OrbitDistance = 1.69f;
-    this->EasePower = 5.00f;
-    this->LerpPower = 0.50f;
-    this->PhysicsDisabled = false;
-    this->SelectedTarget = NULL;
-    this->LaunchTime = 0.00f;
-    this->planetSelection = false;
-    this->shouldLaunchUpdate = false;
-    this->SourceTime = 0.00f;
-    this->TargetTime = 0.00f;
-    this->CurrentTime = 0.00f;
-    this->storage = NULL;
-    this->CurrOrbitGameSpeedScalarDegree = 0.00f;
-    this->REP_TargetOrbitGameSpeedScalarDegree = 0.12f;
-    this->Local_TargetOrbitGameSpeedScalarDegree = 0.00f;
-    this->DefaultOrbitSpeedScalarDegree = 0.12f;
-    this->InterplanetaryTravelRange = 3000000.00f;
-    this->SourceSolarBody = NULL;
-    this->TimeSinceLastOrbitSpeedChange = 0.00f;
-    this->CurrOrbitSpeedInput = 0;
-    this->DiscreteOrbitSpeedInput = 0;
-    this->AxisOrbitSpeedInput = 0;
-    this->MaxOrbitSpeedScalar = 0.00f;
-    this->MinOrbitSpeedScalar = 1.00f;
-}
 

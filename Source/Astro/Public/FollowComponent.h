@@ -42,7 +42,8 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnArrived;
     
-    UFollowComponent();
+    UFollowComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void SetFollowComponent(USceneComponent* Component);
     

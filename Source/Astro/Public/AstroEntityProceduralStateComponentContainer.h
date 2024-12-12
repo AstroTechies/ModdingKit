@@ -8,5 +8,6 @@ class ASTRO_API UAstroEntityProceduralStateComponentContainer : public UAstroEnt
     GENERATED_BODY()
 public:
     UAstroEntityProceduralStateComponentContainer();
+
 };
 

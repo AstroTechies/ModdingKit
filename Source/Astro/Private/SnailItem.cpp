@@ -4,12 +4,24 @@
 #include "PlanetEffect.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
-class APhysicalItem;
-class UCrackableActorComponent;
-class UItemList;
-class UItemType;
-class UPrimitiveComponent;
+ASnailItem::ASnailItem(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->FedDuration = 600.00f;
+    this->CurrentFoodType = ESnailFoodType::InvalidFood;
+    this->AdjustedFedDuration = 0.00f;
+    this->ChildActorComponent = NULL;
+    this->ChildCrackableComponent = NULL;
+    this->ChildSnailSkeleton = NULL;
+    this->ChildTerrariumMesh = NULL;
+    this->RootTerrariumMesh = NULL;
+    this->ChildSlotComponent = NULL;
+    this->TerrariumChildActor = NULL;
+    this->bSnailIsInteractable = true;
+    this->PlanetEffect = CreateDefaultSubobject<UPlanetEffect>(TEXT("Planet Effect"));
+    this->AdaptiveTickComponent = CreateDefaultSubobject<UAdaptiveTickComponent>(TEXT("AdaptiveTickComponent"));
+    this->BehaviorTable = NULL;
+    this->bIsFed = false;
+    this->remainingBuffTime = 0.00f;
+}
 
 
 
@@ -19,6 +31,9 @@ void ASnailItem::OnSnailCrackedChanged(UCrackableActorComponent* CrackableActorC
 }
 
 void ASnailItem::OnRep_OnSnailIsInteractableChanged() {
+}
+
+void ASnailItem::OnPlayerEmotePlayed(EEmoteType EmoteType, APlayController* Player) {
 }
 
 
@@ -85,22 +100,4 @@ void ASnailItem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifeti
     DOREPLIFETIME(ASnailItem, remainingBuffTime);
 }
 
-ASnailItem::ASnailItem() {
-    this->FedDuration = 600.00f;
-    this->CurrentFoodType = ESnailFoodType::InvalidFood;
-    this->AdjustedFedDuration = 0.00f;
-    this->ChildActorComponent = NULL;
-    this->ChildCrackableComponent = NULL;
-    this->ChildSnailSkeleton = NULL;
-    this->ChildTerrariumMesh = NULL;
-    this->RootTerrariumMesh = NULL;
-    this->ChildSlotComponent = NULL;
-    this->TerrariumChildActor = NULL;
-    this->bSnailIsInteractable = true;
-    this->PlanetEffect = CreateDefaultSubobject<UPlanetEffect>(TEXT("Planet Effect"));
-    this->AdaptiveTickComponent = CreateDefaultSubobject<UAdaptiveTickComponent>(TEXT("AdaptiveTickComponent"));
-    this->BehaviorTable = NULL;
-    this->bIsFed = false;
-    this->remainingBuffTime = 0.00f;
-}
 

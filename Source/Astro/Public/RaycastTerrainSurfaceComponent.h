@@ -37,6 +37,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float VoxelTraceAccuracy;
     
-    URaycastTerrainSurfaceComponent();
+    URaycastTerrainSurfaceComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

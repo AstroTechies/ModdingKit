@@ -29,9 +29,10 @@ private:
     TArray<FSlotReference> CableSlotRefs;
     
 public:
-    AStreamingPowerSplitter();
+    AStreamingPowerSplitter(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 private:
     UFUNCTION(BlueprintCallable)
     void OnRep_SplitterData();

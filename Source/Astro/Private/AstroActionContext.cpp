@@ -2,7 +2,7 @@
 
 FAstroActionContext::FAstroActionContext() {
     this->Owner = NULL;
-    this->Avatar = NULL;
+    this->avatar = NULL;
     this->ActionComponent = NULL;
 }
 

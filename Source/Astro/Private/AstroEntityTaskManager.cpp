@@ -4,3 +4,4 @@ UAstroEntityTaskManager::UAstroEntityTaskManager() {
     this->EntityWorld = NULL;
 }
 
+

@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Guid -FallbackName=Guid
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
 #include "ItemDriveRequestComponent.generated.h"
 
@@ -16,6 +16,7 @@ protected:
     uint8 GuidInitialized: 1;
     
 public:
-    UItemDriveRequestComponent();
+    UItemDriveRequestComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

@@ -1,5 +1,6 @@
 #include "PersistRootComponent.h"
 
-UPersistRootComponent::UPersistRootComponent() {
+UPersistRootComponent::UPersistRootComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

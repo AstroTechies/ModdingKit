@@ -10,6 +10,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SpeedScalarOverride;
     
-    UFlightModeMovementOverrideComponent();
+    UFlightModeMovementOverrideComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

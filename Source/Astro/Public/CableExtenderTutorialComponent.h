@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=HitResult -FallbackName=HitResult
+#include "Engine/EngineTypes.h"
 #include "IndicatorCollection.h"
 #include "SlotReference.h"
 #include "Templates/SubclassOf.h"
@@ -53,7 +53,8 @@ private:
     TMap<TWeakObjectPtr<APhysicalItem>, FIndicatorCollection> CurrentIndicators;
     
 public:
-    UCableExtenderTutorialComponent();
+    UCableExtenderTutorialComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void StopTutorial();
     

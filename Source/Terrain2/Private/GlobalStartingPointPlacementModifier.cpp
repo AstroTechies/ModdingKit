@@ -3,3 +3,4 @@
 UGlobalStartingPointPlacementModifier::UGlobalStartingPointPlacementModifier() {
 }
 
+

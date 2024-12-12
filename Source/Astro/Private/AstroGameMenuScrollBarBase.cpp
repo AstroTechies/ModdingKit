@@ -1,7 +1,10 @@
 #include "AstroGameMenuScrollBarBase.h"
 
-class UAstroGameMenuFocusItemWidget;
-class UAstroGameMenuSubPaneWidget;
+UAstroGameMenuScrollBarBase::UAstroGameMenuScrollBarBase() {
+    this->ScrollBarTarget = NULL;
+    this->ScrollBarHandleWidget = NULL;
+    this->ScrollBarBGWidget = NULL;
+}
 
 void UAstroGameMenuScrollBarBase::SetScrollBarHandlePositionNormalized(float NormalizedPosition) {
 }
@@ -34,9 +37,4 @@ void UAstroGameMenuScrollBarBase::AddScrollDelta(float ScrollDelta) {
 void UAstroGameMenuScrollBarBase::ActivateScrollBar(float NewViewableHeightOfScrollTargetContainer, float VerticalPaddingOfScrollTargetContainer, UAstroGameMenuSubPaneWidget* NewScrollBarTarget) {
 }
 
-UAstroGameMenuScrollBarBase::UAstroGameMenuScrollBarBase() {
-    this->ScrollBarTarget = NULL;
-    this->ScrollBarHandleWidget = NULL;
-    this->ScrollBarBGWidget = NULL;
-}
 

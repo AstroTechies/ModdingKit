@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
 #include "ECableTutorialStep.h"
 #include "SignalDelegate.h"
@@ -70,7 +70,8 @@ private:
     UTooltipComponent* CurrentAttachTooltipComponent;
     
 public:
-    UCableTutorialComponent();
+    UCableTutorialComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void StopCableTutorial();
     

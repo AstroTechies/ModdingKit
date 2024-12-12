@@ -1,6 +1,7 @@
 #include "ItemConverterComponentEventListener.h"
 
-class APhysicalItem;
+UItemConverterComponentEventListener::UItemConverterComponentEventListener() {
+}
 
 void UItemConverterComponentEventListener::OnItemStateChangedInExternalResourceSlot(APhysicalItem* Item) {
 }
@@ -17,6 +18,4 @@ void UItemConverterComponentEventListener::OnItemReleasedFromInputSlot(APhysical
 void UItemConverterComponentEventListener::OnItemDestroyedInInputSlot(APhysicalItem* Item) {
 }
 
-UItemConverterComponentEventListener::UItemConverterComponentEventListener() {
-}
 

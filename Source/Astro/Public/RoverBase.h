@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EInputEvent -FallbackName=EInputEvent
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "Engine/EngineBaseTypes.h"
 #include "OnRoverMovementStateChangedDelegate.h"
 #include "SlotReference.h"
 #include "VehicleBase.h"
@@ -60,7 +60,8 @@ protected:
     bool bIsFlipped;
     
 public:
-    ARoverBase();
+    ARoverBase(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void UpdateUseSuppression(bool ShouldBeSuppressed);

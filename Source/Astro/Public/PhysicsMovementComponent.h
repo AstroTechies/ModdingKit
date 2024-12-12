@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector2D -FallbackName=Vector2D
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
 #include "EAirControlSecondaryType.h"
 #include "ERoverID.h"
@@ -169,9 +169,10 @@ private:
     int32 REP_ResistanceLevel;
     
 public:
-    UPhysicsMovementComponent();
+    UPhysicsMovementComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 private:
     UFUNCTION(BlueprintCallable, Server, Unreliable, WithValidation)
     void ServerUpdateClientMovementInput(FPhysicsMovementReplicatedInput ClientSteeringInput);

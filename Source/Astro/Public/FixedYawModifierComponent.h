@@ -22,6 +22,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bScaleSpeedWithSpeed: 1;
     
-    UFixedYawModifierComponent();
+    UFixedYawModifierComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

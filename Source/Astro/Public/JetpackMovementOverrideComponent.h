@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
 #include "AstroCharacterMovementOverrideComponent.h"
 #include "JetpackMovementOverrideComponent.generated.h"
 
@@ -56,6 +56,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 UseCustomGravityScalar: 1;
     
-    UJetpackMovementOverrideComponent();
+    UJetpackMovementOverrideComponent(const FObjectInitializer& ObjectInitializer);
+
 };
 

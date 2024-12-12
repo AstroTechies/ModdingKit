@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
 #include "Templates/SubclassOf.h"
 #include "ExplosiveComponent.generated.h"
@@ -50,7 +50,8 @@ protected:
     FVector CombinedLocation;
     
 public:
-    UExplosiveComponent();
+    UExplosiveComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetDetonationTimerPaused(bool bIsPaused);
     

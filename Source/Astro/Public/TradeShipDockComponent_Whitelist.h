@@ -15,6 +15,7 @@ protected:
     TArray<TSubclassOf<UItemType>> ItemTypeWhitelist;
     
 public:
-    UTradeShipDockComponent_Whitelist();
+    UTradeShipDockComponent_Whitelist(const FObjectInitializer& ObjectInitializer);
+
 };
 

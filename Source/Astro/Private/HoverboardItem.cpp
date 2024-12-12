@@ -1,6 +1,16 @@
 #include "HoverboardItem.h"
+#include "Components/InputComponent.h"
 #include "HoverboardMovementOverrideComponent.h"
 #include "Net/UnrealNetwork.h"
+
+AHoverboardItem::AHoverboardItem(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->InputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("Hoverboard Input Component"));
+    this->PowerComponent = NULL;
+    this->HoverboardMovementOverride = CreateDefaultSubobject<UHoverboardMovementOverrideComponent>(TEXT("Hoverboard Movement Override Component"));
+    this->AstroCharacter = NULL;
+    this->DoubleJumpInputWindow = 0.60f;
+    this->bHoverboardActive = false;
+}
 
 
 void AHoverboardItem::OnRep_HoverboardActive() {
@@ -52,11 +62,4 @@ void AHoverboardItem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     DOREPLIFETIME(AHoverboardItem, bHoverboardActive);
 }
 
-AHoverboardItem::AHoverboardItem() {
-    this->PowerComponent = NULL;
-    this->HoverboardMovementOverride = CreateDefaultSubobject<UHoverboardMovementOverrideComponent>(TEXT("Hoverboard Movement Override Component"));
-    this->AstroCharacter = NULL;
-    this->DoubleJumpInputWindow = 0.60f;
-    this->bHoverboardActive = false;
-}
 

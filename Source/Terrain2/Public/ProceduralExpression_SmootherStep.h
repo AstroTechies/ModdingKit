@@ -8,5 +8,6 @@ class TERRAIN2_API UProceduralExpression_SmootherStep : public UProceduralExpres
     GENERATED_BODY()
 public:
     UProceduralExpression_SmootherStep();
+
 };
 

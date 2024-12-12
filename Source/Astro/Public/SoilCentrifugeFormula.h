@@ -8,5 +8,6 @@ class ASTRO_API USoilCentrifugeFormula : public UItemConversionFormula {
     GENERATED_BODY()
 public:
     USoilCentrifugeFormula();
+
 };
 

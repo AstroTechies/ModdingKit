@@ -1,19 +1,24 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Quat -FallbackName=Quat
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Pawn -FallbackName=Pawn
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantize10 -FallbackName=Vector_NetQuantize10
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Vector_NetQuantizeNormal -FallbackName=Vector_NetQuantizeNormal
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
+#include "GameFramework/Pawn.h"
+#include "Engine/NetSerialization.h"
+#include "Engine/NetSerialization.h"
+#include "DeformableInterfaceT2.h"
+#include "VoxelMaterial.h"
+#include "AstroCharacterCustomization.h"
+#include "ECharacterCustomizationType.h"
+#include "ECharacterHatCategory.h"
 #include "EDroneControlState.h"
 #include "LightValuesChangedDelegate.h"
 #include "OnCreativeDroneFlightStateChangedDelegate.h"
 #include "OnLandedOnGroundDelegate.h"
-#include "OneTimeTooltipList.h"
-#include "DeformableInterfaceT2.h"
-#include "VoxelMaterial.h"
+#include "OnStatusModifierActivatedDelegate.h"
+#include "OnStatusModifierDeactivatedDelegate.h"
+#include "OnStatusModifierUpdatedDelegate.h"
 #include "OnlineNicknameStateChangedDelegate.h"
 #include "OxygenLevelThresholdChangedDelegate.h"
 #include "PoweredStateChangedDelegate.h"
@@ -34,8 +39,14 @@ class APlayController;
 class AReroutePlacementHelper;
 class ASolarBody;
 class UAstroActionComponent;
+class UAstroCharacterHat;
 class UAstroCharacterMovementComponent;
+class UAstroCharacterOverlayPattern;
+class UAstroCharacterPalette;
+class UAstroCharacterSuit;
+class UAstroCustomizationItem;
 class UAstroPlayMontageAction;
+class UAstroVisorMaterial;
 class UCapsuleComponent;
 class UChildActorComponent;
 class UChildSlotComponent;
@@ -43,6 +54,7 @@ class UControlSymbol;
 class UItemType;
 class UMaterialInstanceDynamic;
 class UMaterialInterface;
+class UMeshComponent;
 class UParticleSystemComponent;
 class UPrimitiveComponent;
 class USceneComponent;
@@ -95,6 +107,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool JumpInputReceived;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FSignal OnCharacterCustomizationChanged;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnDrivingStatusChanged;
@@ -279,15 +294,24 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FName> DataLogEntriesSeen;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_OneTimeTooltipList, meta=(AllowPrivateAccess=true))
-    TArray<FOneTimeTooltipList> TriggeredOneTimeItemTooltips;
-    
 public:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_CharacterCustomization, meta=(AllowPrivateAccess=true))
+    FAstroCharacterCustomization CurrentCustomization;
+    
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnLandedOnGround OnLanded;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnSkeletalMeshSet;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnStatusModifierActivated OnStatusModifierActivated;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnStatusModifierDeactivated OnStatusModifierDeactivated;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnStatusModifierUpdated OnStatusModifierUpdated;
     
 protected:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -331,6 +355,9 @@ protected:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bInvincible: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bFreeOxygenDebug: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_IsImmuneToDamage, meta=(AllowPrivateAccess=true))
     uint8 bIsImmuneToDamage: 1;
@@ -390,9 +417,10 @@ protected:
     TSet<AActor*> DamageImmunityInitiators;
     
 public:
-    AAstroCharacter();
+    AAstroCharacter(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
     void UpdatePlayerIndex();
@@ -446,6 +474,9 @@ public:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerDropHeavyCarriedItems();
     
+    UFUNCTION(BlueprintCallable)
+    void ReapplySavedCharacterCustomization();
+    
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void QuickItemClickView(APhysicalItem* Item);
     
@@ -465,11 +496,6 @@ protected:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnRep_OnHoverboard();
     
-public:
-    UFUNCTION(BlueprintCallable)
-    void OnRep_OneTimeTooltipList();
-    
-protected:
     UFUNCTION(BlueprintCallable)
     void OnRep_LocalSolarBody(ASolarBody* oldSolarBody);
     
@@ -484,6 +510,9 @@ protected:
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnRep_FreeOxygen();
+    
+    UFUNCTION(BlueprintCallable)
+    void OnRep_CharacterCustomization();
     
 public:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
@@ -560,6 +589,18 @@ public:
     ADroneBase* GetCreativeDrone() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    UAstroVisorMaterial* GetCharacterVisorMaterial() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UAstroCharacterSuit* GetCharacterSuit() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UAstroCharacterPalette* GetCharacterPalette() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UAstroCharacterHat* GetCharacterHat(ECharacterHatCategory Category) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ABackpack* GetBackpack() const;
     
     UFUNCTION(BlueprintCallable)
@@ -594,8 +635,29 @@ public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthoritySetIsImmuneToDamage(bool bNewIsImmuneToDamage, AActor* immunityInitiator);
     
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    void AuthoritySetCharacterVisorMaterial(UAstroVisorMaterial* visorColor);
+    
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    void AuthoritySetCharacterSuit(UAstroCharacterSuit* Suit);
+    
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    void AuthoritySetCharacterPalette(UAstroCharacterPalette* Palette);
+    
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    void AuthoritySetCharacterOverlayPattern(UAstroCharacterOverlayPattern* OverlayPattern);
+    
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    void AuthoritySetCharacterHat(UAstroCharacterHat* Hat, ECharacterHatCategory Category);
+    
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    void AuthoritySetCharacterCustomization(const FAstroCharacterCustomization& Customization);
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintImplementableEvent)
     void AuthorityForceKillAstro();
+    
+    UFUNCTION(BlueprintCallable)
+    void AttachEffectsToCustomizationMesh(ECharacterCustomizationType customizationType, UAstroCustomizationItem* customizationItem, UMeshComponent* targetMesh, bool forDummy);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     float ApplyPowerExternal(int32 Amount);
@@ -603,7 +665,11 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     int32 ApplyOxygenExternal(int32 Amount);
     
+protected:
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void ApplyCharacterCustomization(const FAstroCharacterCustomization& Customization);
     
+
     // Fix for true pure virtual functions not being implemented
 };
 

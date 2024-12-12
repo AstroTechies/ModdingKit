@@ -1,6 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+//#include "AstroPlayFabClientData.h"
+//#include "FAstroCGMLibraryConfigEntryType.h"
+#include "UObject/Object.h"
+#include "AstroCustomGameConfigurationStore.h"
+#include "AstroCustomGameSettings.h"
 #include "SignalDelegate.h"
 #include "PersistentLocalPlayerData.generated.h"
 
@@ -27,11 +31,21 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint8 LastUpdateCutsceneVersionSeen;
     
+//    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+//    FAstroPlayFabClientData OfflinePlayFabClientData;
+    
     UPROPERTY(EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<uint32> EarnedItemDrivePhysicalRewardHashes;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    TArray<FAstroCustomGameSettings> LocalCGMConfigs;
+    
+//    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+//    TMap<FAstroCGMLibraryConfigEntryType, FAstroCustomGameConfigurationStore> CustomGameConfigurationLocalStorage;
+    
 public:
     UPersistentLocalPlayerData();
+
     UFUNCTION(BlueprintCallable)
     void NotifySkippedTutorial();
     

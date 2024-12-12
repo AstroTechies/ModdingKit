@@ -17,5 +17,6 @@ public:
     float RimIntensity;
     
     UCratersModifier();
+
 };
 

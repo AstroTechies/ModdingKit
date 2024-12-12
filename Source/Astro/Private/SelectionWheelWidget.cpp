@@ -1,6 +1,10 @@
 #include "SelectionWheelWidget.h"
 
-class APlayController;
+USelectionWheelWidget::USelectionWheelWidget() {
+    this->bIsFocusable = true;
+    this->OptionWidgetClass = NULL;
+    this->CurrentSelection = 0;
+}
 
 
 void USelectionWheelWidget::SetCurrentSelection(int32 Selection) {
@@ -16,8 +20,4 @@ void USelectionWheelWidget::InitializeOptionWidget(int32 OptionIndex) {
 void USelectionWheelWidget::HandleSelectionMade(int32 SelectionIndex) {
 }
 
-USelectionWheelWidget::USelectionWheelWidget() {
-    this->OptionWidgetClass = NULL;
-    this->CurrentSelection = 0;
-}
 

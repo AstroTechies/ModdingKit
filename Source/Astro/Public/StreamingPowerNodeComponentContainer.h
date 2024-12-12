@@ -10,6 +10,7 @@ class ASTRO_API UStreamingPowerNodeComponentContainer : public UAstroEntityCompo
     GENERATED_BODY()
 public:
     UStreamingPowerNodeComponentContainer();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FStreamingPowerNodeComponent GetStreamingPowerNodeComponent(FAstroDatumRef StreamingPowerNodeComponentRef, bool& bOutSuccess);
     

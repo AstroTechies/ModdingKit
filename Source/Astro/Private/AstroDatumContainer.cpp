@@ -1,5 +1,8 @@
 #include "AstroDatumContainer.h"
 
+UAstroDatumContainer::UAstroDatumContainer() {
+}
+
 FAstroDatumRef UAstroDatumContainer::MakeDatumRef_DO_NOT_USE_FROM_CPP(const FAstroDatum& Datum) {
     return FAstroDatumRef{};
 }
@@ -8,6 +11,4 @@ bool UAstroDatumContainer::IsDatumRefValid_DO_NOT_USE_FROM_CPP(FAstroDatumRef Da
     return false;
 }
 
-UAstroDatumContainer::UAstroDatumContainer() {
-}
 

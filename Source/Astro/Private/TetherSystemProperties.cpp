@@ -13,3 +13,4 @@ UTetherSystemProperties::UTetherSystemProperties() {
     this->AdjustDistance = 4.00f;
 }
 
+

@@ -8,5 +8,6 @@ class ASTRO_API UPuzzleSystem : public UAstroEntitySystem {
     GENERATED_BODY()
 public:
     UPuzzleSystem();
+
 };
 

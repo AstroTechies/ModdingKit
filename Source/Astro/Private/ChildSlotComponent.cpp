@@ -1,19 +1,11 @@
 #include "ChildSlotComponent.h"
 #include "Templates/SubclassOf.h"
 
-class AItemSlot;
-
-void UChildSlotComponent::SetChildSlotClass(TSubclassOf<AItemSlot> InClass) {
-}
-
-FSlotReference UChildSlotComponent::MakeReference() {
-    return FSlotReference{};
-}
-
-UChildSlotComponent::UChildSlotComponent() {
+UChildSlotComponent::UChildSlotComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->ChildSlotClass = NULL;
     this->SlottableItemsFiltrationList = NULL;
     this->SlottableItemsFiltrationListBehavior = ESlottableItemsFiltrationListBehavior::Ignore;
+    this->AcceptInputItems = true;
     this->SlotVisible = true;
     this->Unclickable = false;
     this->Breakable = false;
@@ -32,4 +24,12 @@ UChildSlotComponent::UChildSlotComponent() {
     this->StartingActorList = NULL;
     this->StartingRewardSelection = NULL;
 }
+
+void UChildSlotComponent::SetChildSlotClass(TSubclassOf<AItemSlot> InClass) {
+}
+
+FSlotReference UChildSlotComponent::MakeReference() {
+    return FSlotReference{};
+}
+
 

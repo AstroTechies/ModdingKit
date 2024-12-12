@@ -11,19 +11,23 @@ class ASTRO_API UNavpointManager : public UActorComponent {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_Navpoints, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FNavpoint> Navpoints;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_RelevantNavpoints, meta=(AllowPrivateAccess=true))
+    TArray<FNavpoint> PlayerRelevantNavpoints;
     
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TWeakObjectPtr<AActor>> SnailNavpointBuffTargets;
     
 public:
-    UNavpointManager();
+    UNavpointManager(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 protected:
     UFUNCTION(BlueprintCallable)
-    void OnRep_Navpoints();
+    void OnRep_RelevantNavpoints();
     
 };
 

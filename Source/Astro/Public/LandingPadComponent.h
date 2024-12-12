@@ -47,7 +47,8 @@ protected:
     uint8 bSkyObstructed: 1;
     
 public:
-    ULandingPadComponent();
+    ULandingPadComponent(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnOwnerItemMotionStateChanged();

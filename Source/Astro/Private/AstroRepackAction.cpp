@@ -1,8 +1,5 @@
 #include "AstroRepackAction.h"
 
-void UAstroRepackAction::OnInterpolationToTopOfTargetFinished() {
-}
-
 UAstroRepackAction::UAstroRepackAction() {
     this->bMoveRepackingItemAboveTarget = false;
     this->InterpolateToTopOfTargetDuration = 0.00f;
@@ -15,4 +12,8 @@ UAstroRepackAction::UAstroRepackAction() {
     this->PackageTypeToSpawn = NULL;
     this->PackagedItemType = NULL;
 }
+
+void UAstroRepackAction::OnInterpolationToTopOfTargetFinished() {
+}
+
 

@@ -1,6 +1,24 @@
 #include "FlyingVtolMovementComponent.h"
 #include "Net/UnrealNetwork.h"
 
+UFlyingVtolMovementComponent::UFlyingVtolMovementComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->MaxAcceleration = 5000.00f;
+    this->MinFlightSpeedScalar = 1.00f;
+    this->MaxFlightSpeedScalar = 5.00f;
+    this->FullSpeedPercent = 0.90f;
+    this->CruisingModeFullSpeedStartTime = 3.00f;
+    this->CruisingModeFullSpeedEndTime = 6.00f;
+    this->CruisingModeAirBrakeTime = 1.00f;
+    this->NearGroundAirBrakeDelay = 1.00f;
+    this->DepenetrationStrength = 10.00f;
+    this->UpdatedComponent = NULL;
+    this->VTOLOwner = NULL;
+    this->RotationSpeed = 360.00f;
+    this->CruisingModeRotationSpeed = 180.00f;
+    this->RotationSpeedLerpRate = 90.00f;
+    this->GravitySourceInterpolationTime = 0.50f;
+    this->PlayerCamera = NULL;
+}
 
 void UFlyingVtolMovementComponent::SetFlightSpeedScalarNormalized(float normalizedFlightSpeedScalar) {
 }
@@ -27,22 +45,4 @@ void UFlyingVtolMovementComponent::GetLifetimeReplicatedProps(TArray<FLifetimePr
     DOREPLIFETIME(UFlyingVtolMovementComponent, ClientMovementInputVector);
 }
 
-UFlyingVtolMovementComponent::UFlyingVtolMovementComponent() {
-    this->MaxAcceleration = 5000.00f;
-    this->MinFlightSpeedScalar = 1.00f;
-    this->MaxFlightSpeedScalar = 5.00f;
-    this->FullSpeedPercent = 0.90f;
-    this->CruisingModeFullSpeedStartTime = 3.00f;
-    this->CruisingModeFullSpeedEndTime = 6.00f;
-    this->CruisingModeAirBrakeTime = 1.00f;
-    this->NearGroundAirBrakeDelay = 1.00f;
-    this->DepenetrationStrength = 10.00f;
-    this->UpdatedComponent = NULL;
-    this->VTOLOwner = NULL;
-    this->RotationSpeed = 360.00f;
-    this->CruisingModeRotationSpeed = 180.00f;
-    this->RotationSpeedLerpRate = 90.00f;
-    this->GravitySourceInterpolationTime = 0.50f;
-    this->PlayerCamera = NULL;
-}
 

@@ -1,5 +1,13 @@
 #include "ControlPanelButton.h"
 
+AControlPanelButton::AControlPanelButton(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bHasCover = false;
+    this->bCloseCoverOnUnHover = false;
+    this->bCoverOpenedWhenEnabled = false;
+    this->bButtonEnabled = false;
+    this->bButtonArmed = false;
+}
+
 void AControlPanelButton::SetButtonEnabled(bool Enabled) {
 }
 
@@ -23,11 +31,4 @@ void AControlPanelButton::DoHoverButton() {
 void AControlPanelButton::DoButtonPress() {
 }
 
-AControlPanelButton::AControlPanelButton() {
-    this->bHasCover = false;
-    this->bCloseCoverOnUnHover = false;
-    this->bCoverOpenedWhenEnabled = false;
-    this->bButtonEnabled = false;
-    this->bButtonArmed = false;
-}
 

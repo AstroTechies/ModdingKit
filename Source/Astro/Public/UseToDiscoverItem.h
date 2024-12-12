@@ -19,7 +19,8 @@ protected:
     USingleUseConsumableComponent* ConsumableComponent;
     
 public:
-    AUseToDiscoverItem();
+    AUseToDiscoverItem(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable)
     void OnUsed();

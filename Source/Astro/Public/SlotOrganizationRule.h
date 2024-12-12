@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "EIndicatorTooltipType.h"
 #include "SlotReference.h"
 #include "SlotOrganizationRule.generated.h"
@@ -39,8 +39,9 @@ protected:
     
 public:
     USlotOrganizationRule();
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetUnwantedItemsEjectionForce(float ejectionForce);
     

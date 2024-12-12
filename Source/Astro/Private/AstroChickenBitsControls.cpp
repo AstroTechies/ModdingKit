@@ -1,5 +1,8 @@
 #include "AstroChickenBitsControls.h"
 
+UAstroChickenBitsControls::UAstroChickenBitsControls() {
+}
+
 int32 UAstroChickenBitsControls::GetCvar_Vehicles_ShowDrillDebugVis() {
     return 0;
 }
@@ -32,6 +35,4 @@ int32 UAstroChickenBitsControls::GetCvar_Controls_UseActiveGrab() {
     return 0;
 }
 
-UAstroChickenBitsControls::UAstroChickenBitsControls() {
-}
 

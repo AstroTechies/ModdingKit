@@ -1,7 +1,13 @@
 #include "ControlActivatorComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class AActor;
+UControlActivatorComponent::UControlActivatorComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    this->ActiveControl = NULL;
+    this->ControlledToolActor = NULL;
+    this->PassengerToolActor = NULL;
+    this->ChangedControlActor = false;
+}
 
 void UControlActivatorComponent::OnRep_ControlledToolActor(AActor* oldActor) {
 }
@@ -13,10 +19,4 @@ void UControlActivatorComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProp
     DOREPLIFETIME(UControlActivatorComponent, PassengerToolActor);
 }
 
-UControlActivatorComponent::UControlActivatorComponent() {
-    this->ActiveControl = NULL;
-    this->ControlledToolActor = NULL;
-    this->PassengerToolActor = NULL;
-    this->ChangedControlActor = false;
-}
 

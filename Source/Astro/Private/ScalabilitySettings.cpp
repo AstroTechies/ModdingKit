@@ -5,3 +5,4 @@ UScalabilitySettings::UScalabilitySettings() {
     this->MinDecoratorLODDistance = 12000.00f;
 }
 
+

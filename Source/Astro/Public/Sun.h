@@ -25,7 +25,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UDirectionalLightComponent* SunLight;
     
-    ASun();
+    ASun(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void SetSunMaterialInstance(UMaterialInstanceDynamic* Instance);
     

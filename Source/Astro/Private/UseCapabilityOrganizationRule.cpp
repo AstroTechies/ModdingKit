@@ -4,3 +4,4 @@ UUseCapabilityOrganizationRule::UUseCapabilityOrganizationRule() {
     this->RequestedUseType = EUseType::Actuator;
 }
 
+

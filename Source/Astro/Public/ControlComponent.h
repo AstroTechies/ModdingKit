@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Transform -FallbackName=Transform
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
 #include "ClickQueryDelegateDelegate.h"
 #include "ControlSwitchDelegate.h"
@@ -117,7 +117,8 @@ private:
     APlayerController* LastController;
     
 public:
-    UControlComponent();
+    UControlComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void SetMoveInputs(APlayerController* Controller, const FVector& Direction);
     

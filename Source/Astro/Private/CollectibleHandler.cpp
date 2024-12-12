@@ -4,3 +4,4 @@ UCollectibleHandler::UCollectibleHandler() {
     this->RenderActor = NULL;
 }
 
+

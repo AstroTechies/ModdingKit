@@ -1,8 +1,13 @@
 #include "ButtonNavigationGridComponent.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=InputComponent -FallbackName=InputComponent
+#include "Components/InputComponent.h"
 
-class APlayerController;
-class UButtonComponent;
+UButtonNavigationGridComponent::UButtonNavigationGridComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->InitialSelectedRow = 0;
+    this->InitialSelectedColumn = 0;
+    this->bAutoClickAndBounceBack = false;
+    this->AnalogThreshold = 0.50f;
+    this->InputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("ButtonNavigationInputComponent"));
+}
 
 void UButtonNavigationGridComponent::SetSelectedGridCell(int32 row, int32 column) {
 }
@@ -43,11 +48,4 @@ void UButtonNavigationGridComponent::AnalogHorizontal(float X) {
 void UButtonNavigationGridComponent::AddButton(UButtonComponent* Button, int32 row, int32 column) {
 }
 
-UButtonNavigationGridComponent::UButtonNavigationGridComponent() {
-    this->InitialSelectedRow = 0;
-    this->InitialSelectedColumn = 0;
-    this->bAutoClickAndBounceBack = false;
-    this->AnalogThreshold = 0.50f;
-    this->InputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("ButtonNavigationInputComponent"));
-}
 

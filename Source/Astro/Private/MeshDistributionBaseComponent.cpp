@@ -1,6 +1,6 @@
 #include "MeshDistributionBaseComponent.h"
 
-UMeshDistributionBaseComponent::UMeshDistributionBaseComponent() {
+UMeshDistributionBaseComponent::UMeshDistributionBaseComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->Radius = 1000.00f;
     this->ScaleFromCenterDistance = true;
     this->Mesh = NULL;
@@ -15,4 +15,5 @@ UMeshDistributionBaseComponent::UMeshDistributionBaseComponent() {
     this->Collision = false;
     this->TerrainOverlap = false;
 }
+
 
