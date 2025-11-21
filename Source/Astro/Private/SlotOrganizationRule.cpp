@@ -2,11 +2,13 @@
 #include "Net/UnrealNetwork.h"
 
 USlotOrganizationRule::USlotOrganizationRule() {
+    this->AllowedStorageChassis = NULL;
     this->Priority = 3;
     this->IndicatorType = EIndicatorTooltipType::ResourceRequest;
     this->bPushUnwantedItems = true;
     this->bEjectUnwantedItems = false;
     this->bIsEnabled = true;
+    this->bShouldFillAllSlots = false;
     this->UnwantedItemEjectionForce = 25000.00f;
 }
 

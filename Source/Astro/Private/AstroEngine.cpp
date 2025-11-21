@@ -9,7 +9,7 @@ UAstroEngine::UAstroEngine() {
     this->HLODColorationColors.AddDefaulted(7);
     this->StreamingAccuracyColors.AddDefaulted(5);
     this->StatColorMappings.AddDefaulted(3);
-    this->ActiveClassRedirects.AddDefaulted(7);
+    this->ActiveClassRedirects.AddDefaulted(6);
     this->NetDriverDefinitions.AddDefaulted(2);
 }
 

@@ -8,7 +8,9 @@ enum class EGamePlatform : uint8 {
     UniversalWindows,
     XboxOne,
     PS4,
+    PS5,
     Linux,
     Switch,
+    WinGDK,
 };
 

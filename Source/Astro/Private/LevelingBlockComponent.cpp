@@ -5,7 +5,7 @@ ULevelingBlockComponent::ULevelingBlockComponent(const FObjectInitializer& Objec
     this->StampSize = 230.00f;
     this->PreviewMesh = NULL;
     this->BehaviorTerrain = NULL;
-    this->particles = NULL;
+    this->Particles = NULL;
     this->VisibilityPlaced = false;
 }
 

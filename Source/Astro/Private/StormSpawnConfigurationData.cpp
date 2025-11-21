@@ -1,6 +1,7 @@
 #include "StormSpawnConfigurationData.h"
 
 FStormSpawnConfigurationData::FStormSpawnConfigurationData() {
+    this->StormSpawningEnabled = false;
     this->InfiniteStormLifetime = false;
     this->UseFixedIDsFromStorms = false;
     this->BaseLifetime = 0.00f;

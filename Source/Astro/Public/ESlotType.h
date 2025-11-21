@@ -18,5 +18,7 @@ enum class ESlotType : uint8 {
     Unpowered,
     RailConnection,
     RailCar,
+    SplineConnection,
+    MegaModule,
 };
 

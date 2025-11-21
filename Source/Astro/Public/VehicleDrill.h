@@ -15,9 +15,9 @@
 #include "VehicleDrillSedimentReplicationData.h"
 #include "VehicleDrill.generated.h"
 
-class AAstroPlanet;
 class AAstroPlayerController;
 class ARoverBase;
+class ASolarBody;
 class AVehicleDrill;
 class UControlComponent;
 class UCurveFloat;
@@ -193,7 +193,7 @@ public:
     
 protected:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
-    void ServerRequestNewMaterialWithTerrainProperties(AAstroPlanet* Planet, const FVoxelMaterialProperties& TerrainProperties, UMaterialInterface* CustomMaterial, int32 creativeModePaintMaterialIndex);
+    void ServerRequestNewMaterialWithTerrainProperties(ASolarBody* SolarBody, const FVoxelMaterialProperties& TerrainProperties, const FVector& InLocation, UMaterialInterface* CustomMaterial, int32 creativeModePaintMaterialIndex);
     
     UFUNCTION(BlueprintCallable)
     void ResetExcessTerrainCollectionFlag();

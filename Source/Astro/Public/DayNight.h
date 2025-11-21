@@ -37,7 +37,7 @@ public:
     
 protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
-    TArray<ASolarBody*> SolarBodies;
+    TArray<ASolarBody*> solarBodies;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TMap<ASolarBody*, FSolarBodyRelativeTransforms> SolarBodyReleativeTransforms;

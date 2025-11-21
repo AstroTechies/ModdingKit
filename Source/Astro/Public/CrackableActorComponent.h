@@ -51,7 +51,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bDisableComponentClicksWhenClosed: 1;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_Cracked, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_CrackedAndExaminable, meta=(AllowPrivateAccess=true))
     FCrackedReplicationData ReplicationData;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -104,6 +104,9 @@ protected:
     
 public:
     UFUNCTION(BlueprintCallable)
+    void SetExaminable(bool bNewExaminable);
+    
+    UFUNCTION(BlueprintCallable)
     void SetCracked(bool cracked);
     
     UFUNCTION(BlueprintCallable)
@@ -115,7 +118,7 @@ protected:
     
 public:
     UFUNCTION(BlueprintCallable)
-    void OnRep_Cracked();
+    void OnRep_CrackedAndExaminable();
     
     UFUNCTION(BlueprintCallable)
     void OnParentCrackedChanged(UCrackableActorComponent* parentCrackableActorComponent, bool bParentCracked);

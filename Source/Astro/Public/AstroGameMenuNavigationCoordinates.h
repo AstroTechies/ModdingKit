@@ -17,7 +17,10 @@ public:
     int32 TabBarSelectionIndex;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TSubclassOf<UAstroGameMenuSubPaneWidget> SubPane;
+    TSubclassOf<UAstroGameMenuSubPaneWidget> SubPaneLeft;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<UAstroGameMenuSubPaneWidget> SubPaneRight;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 SubPaneItemSelectionIndex;

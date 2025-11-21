@@ -167,23 +167,25 @@ def process(dump_path, log = False):
             process_modifiers(file_path, file_data, this_modifier)
 
     # modify *.Build.cs files to remove dependencies on banned modules
+    # also, manually remove "Astro" dependency from MessageOfTheDay.Build.cs to prevent circular dependency
     if log: print("Correcting *.Build.cs files")
-    pathlist2 = glob.glob(os.path.join(".", "Source", "**", "*.build.cs"), recursive=True)
+    pathlist2 = glob.glob(os.path.join(".", "Source", "**", "*.Build.cs"), recursive=True)
     for file_path in pathlist2:
+        isMOTD = ("MessageOfTheDay.Build.cs" in file_path)
         with open(file_path, 'r') as file_handle:
             file_data = file_handle.readlines()
         i = 0
         while i < len(file_data): # we avoid using a for loop so that we compute len every time
             for banned_module in BANNED_MODULES:
-                if banned_module in file_data[i]:
+                if banned_module in file_data[i] or (isMOTD and "\"Astro\"" in file_data[i]):
                     del file_data[i]
                     i -= 1
                     break
             i += 1
 
         with open(file_path, 'w') as file_handle:
-            file_handle.write(''.join(file_data)) # \n characters are already in the strings
-    
+            file_handle.write(''.join(file_data)) # \n characters are already in the strings  
+
     if log: print("All done!")
 
 if __name__ == "__main__":

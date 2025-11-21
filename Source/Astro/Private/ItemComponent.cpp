@@ -3,7 +3,6 @@
 #include "Templates/SubclassOf.h"
 
 UItemComponent::UItemComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->StartingAmount = 0.00f;
     this->Discrete = false;
     // If this is a canister, how much can it hold?

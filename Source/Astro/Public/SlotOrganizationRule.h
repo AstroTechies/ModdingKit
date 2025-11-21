@@ -5,6 +5,8 @@
 #include "SlotReference.h"
 #include "SlotOrganizationRule.generated.h"
 
+class UStorageChassisComponent;
+
 UCLASS(Blueprintable, EditInlineNew)
 class USlotOrganizationRule : public UObject {
     GENERATED_BODY()
@@ -14,6 +16,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> ManagedSlots;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UStorageChassisComponent* AllowedStorageChassis;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 Priority;
@@ -30,6 +35,9 @@ protected:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     uint8 bIsEnabled: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bShouldFillAllSlots: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float UnwantedItemEjectionForce;

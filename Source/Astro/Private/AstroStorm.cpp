@@ -2,6 +2,7 @@
 #include "Net/UnrealNetwork.h"
 
 AAstroStorm::AAstroStorm(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+//    this->bSaveGameRelevant = true;
     this->StormID = -1;
     this->StateIndex = 0;
     this->Age = -1.00f;
@@ -13,24 +14,16 @@ AAstroStorm::AAstroStorm(const FObjectInitializer& ObjectInitializer) : Super(Ob
     this->OuterGameplayRadius = 0.00f;
     this->InnerGameplayRadius = 0.00f;
     this->PlayerGameplayRadius = 0.00f;
-    this->OuterEdgeFogRadius = 0.00f;
-    this->InnerEdgeFogRadius = 0.00f;
-    this->OuterEyeFogRadius = 0.00f;
-    this->InnerEyeFogRadius = 0.00f;
-    this->InStormFogMaxOpacity = 0.00f;
-    this->EyeFogMaxOpacity = 0.00f;
-    this->InStormFogDensity = 0.00f;
-    this->EyeFogDensity = 0.00f;
-    this->PlayerFogRadius = 0.00f;
+    this->WindPowerScalar = 0.00f;
     this->PlayerGlitchWallApproachDistance = 0.00f;
     this->LocalPointSpawnedFXEnabled = false;
-    this->SpawnedFXStatesInitialized = false;
+    this->SpawnedFXStateContainersInitialized = false;
     this->StormVisualActor = NULL;
 }
 
 
 
-UParticleSystemComponent* AAstroStorm::SpawnLocalPointSpawnedFX(UParticleSystem* ParticleTemplate, FVector Position, FTransform SpawnTransform) {
+UParticleSystemComponent* AAstroStorm::SpawnLocalPointSpawnedFX(UParticleSystem* ParticleTemplate, FVector Position, FTransform SpawnTransform, float NewAge) {
     return NULL;
 }
 
@@ -52,13 +45,10 @@ bool AAstroStorm::ServerPlayerEnteredStorm_Validate(AAstroPlayerController* Play
 void AAstroStorm::RegisterPlayerForStormEffectsTracking(AAstroPlayerController* PlayerController) {
 }
 
-void AAstroStorm::OnRep_SpawnedFXStates() {
+void AAstroStorm::OnVirusProtectionUpdated() {
 }
 
-void AAstroStorm::OnPlanetVirusProtectionUpdated(EPlanetIdentifier planetID) {
-}
-
-void AAstroStorm::OnParticleSystemFinished(UParticleSystemComponent* FinishedComponent) {
+void AAstroStorm::OnRep_SpawnedFXStateContainers() {
 }
 
 bool AAstroStorm::IsSafeSpawnedFXLocation(FVector Location, float Radius) {
@@ -109,7 +99,7 @@ void AAstroStorm::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifet
     DOREPLIFETIME(AAstroStorm, Age);
     DOREPLIFETIME(AAstroStorm, Lifetime);
     DOREPLIFETIME(AAstroStorm, PlayerStormEffectsInfo);
-    DOREPLIFETIME(AAstroStorm, SpawnedFXStates);
+    DOREPLIFETIME(AAstroStorm, SpawnedFXStateContainers);
 }
 
 

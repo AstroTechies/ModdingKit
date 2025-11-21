@@ -8,6 +8,7 @@
 #include "Engine/EngineTypes.h"
 #include "VoxelMaterial.h"
 #include "ENavpointGroup.h"
+#include "EStationTierState.h"
 #include "Navpoint.h"
 #include "Templates/SubclassOf.h"
 #include "AstroPlayStatics.generated.h"
@@ -19,6 +20,7 @@ class AAstroPlayerController;
 class APhysicalItem;
 class APlayController;
 class APlayerController;
+class ASolarBody;
 class UAstroEmoteDefinition;
 class UAstroPlayMontageAction;
 class UChildActorComponent;
@@ -27,6 +29,7 @@ class UItemType;
 class UObject;
 class UPrimitiveComponent;
 class USceneComponent;
+class USlotOrganizationRule;
 class UTexture;
 
 UCLASS(Blueprintable)
@@ -51,7 +54,7 @@ public:
     static void RestoreInputModeToGameFromUI(UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
-    static bool RaycastVoxels(AAstroPlanet* Planet, const FVector& RayStart, const FVector& RayEnd, FHitResult& OutHit, float Accuracy);
+    static bool RaycastVoxels(ASolarBody* SolarBody, const FVector& RayStart, const FVector& RayEnd, FHitResult& OutHit, float Accuracy);
     
     UFUNCTION(BlueprintCallable)
     static void PlaySurfaceFoley(const FString& SoundEvent, USceneComponent* AttachToComponent, FName AttachPointName, bool bStopWhenAttachedToDestroyed);
@@ -148,6 +151,9 @@ public:
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     static FGuid AuthorityTrackNavpointOnCurrentPlanet(const FNavpoint& newNavpoint);
+    
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    static void AuthoritySetTierForSlotOrgRule(USlotOrganizationRule* inSlotOrgRule, const EStationTierState inTierState);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     static void AuthoritySetNavpointOverrideIconOnCurrentPlanet(FGuid NavpointID, UTexture* Icon);

@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UActorGateObjectComponent::UActorGateObjectComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->bHasPlayerProximityEvent = false;
     this->bAnimatesInOutroCinematic = false;
     this->PlayerProximityEventTriggerDistance = 0.00f;

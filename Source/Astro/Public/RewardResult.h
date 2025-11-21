@@ -10,7 +10,7 @@ struct FRewardResult {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TSubclassOf<UItemType> RewardType;
+    TSubclassOf<UItemType> rewardType;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bIsDurableUnlock: 1;

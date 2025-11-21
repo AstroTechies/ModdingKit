@@ -3,7 +3,6 @@
 #include "Templates/SubclassOf.h"
 
 UPrinterComponent::UPrinterComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->CurrentBlueprintIndex = -1;
     this->CurrentPackageableItem = NULL;
     this->CurrentRepackageableItemIndex = 0;
@@ -23,6 +22,7 @@ UPrinterComponent::UPrinterComponent(const FObjectInitializer& ObjectInitializer
     this->InteractionEnabled = false;
     this->LocalIsVisible = true;
     this->PrintingActive = false;
+    this->bPullFromPlayerBackpack = true;
     this->ValidatePrintAreaOpen = false;
     this->PrintAreaClearRadius = 500.00f;
     this->Progress = 0.00f;
@@ -66,13 +66,19 @@ void UPrinterComponent::SetItemsAvailableToRepackage(TArray<TWeakObjectPtr<APhys
 void UPrinterComponent::SetCanUse(bool bCanUse) {
 }
 
-void UPrinterComponent::SetBlueprints(TArray<TSubclassOf<APhysicalItem>> newBlueprints) {
+void UPrinterComponent::SetBlueprints(const TArray<TSubclassOf<APhysicalItem>>& newBlueprints) {
+}
+
+void UPrinterComponent::SetBaseItemTypeFilters(TArray<TSubclassOf<UItemType>> baseItemTypes) {
 }
 
 void UPrinterComponent::SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy) {
 }
 
 void UPrinterComponent::RemoveIgnoredActorForPrintAreaValidation(AActor* ignoredActor) {
+}
+
+void UPrinterComponent::RemoveBaseItemTypeFilter(TSubclassOf<UItemType> BaseItemType) {
 }
 
 bool UPrinterComponent::PrinterClickQuery(UClickQuery* Query) {
@@ -98,6 +104,9 @@ void UPrinterComponent::OnPrinterDestroyed(AActor* DestroyedActor) {
 }
 
 void UPrinterComponent::OnAuthorityControlPanelCrackedChanged(AControlPanel* ControlPanel) {
+}
+
+void UPrinterComponent::InitializeBlueprintRows() {
 }
 
 void UPrinterComponent::IncrementBlueprintRow(bool doServerIncrement) {
@@ -194,10 +203,15 @@ void UPrinterComponent::DecrementBlueprint(bool doServerIncrement) {
 void UPrinterComponent::DeactivateBlueprint() {
 }
 
-void UPrinterComponent::CreateIndicatorFromItem(APhysicalItem* Owner) {
+int32 UPrinterComponent::CreateIndicatorFromItem(APhysicalItem* Owner) {
+    return 0;
 }
 
-void UPrinterComponent::CreateIndicatorFromClass(TSubclassOf<APhysicalItem> Class) {
+int32 UPrinterComponent::CreateIndicatorFromClass(TSubclassOf<APhysicalItem> Class) {
+    return 0;
+}
+
+void UPrinterComponent::ClearBaseItemTypeFilters() {
 }
 
 bool UPrinterComponent::CanReserveSlotsAcceptItemForActiveRecipe(APhysicalItem* Item) {
@@ -207,7 +221,13 @@ bool UPrinterComponent::CanReserveSlotsAcceptItemForActiveRecipe(APhysicalItem* 
 void UPrinterComponent::CancelPrint(bool restoreIngredients) {
 }
 
+void UPrinterComponent::AuthorityUpdateSelectedBlueprintIndex() {
+}
+
 void UPrinterComponent::AddIgnoredActorForPrintAreaValidation(AActor* ignoredActor) {
+}
+
+void UPrinterComponent::AddBaseItemTypeFilter(TSubclassOf<UItemType> BaseItemType) {
 }
 
 UPrinterComponent* UPrinterComponent::ActorPrinterComponent(AActor* Actor) {
@@ -220,6 +240,7 @@ void UPrinterComponent::ActivateBlueprint() {
 void UPrinterComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
     
+    DOREPLIFETIME(UPrinterComponent, HideIndicatorWithoutFullRecipe);
     DOREPLIFETIME(UPrinterComponent, REP_PrinterState);
 }
 

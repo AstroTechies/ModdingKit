@@ -14,5 +14,6 @@ enum class EPrimitiveShapeType : uint8 {
     CappedCone,
     HexagonalPrism,
     TriangularPrism,
+    Spiral,
 };
 

@@ -75,6 +75,9 @@ public:
     UPrimitiveComponent* GetPrimaryComponent() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    EClickBehavior GetPrimaryClickBehavior() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AActor* GetPrimaryActor() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)

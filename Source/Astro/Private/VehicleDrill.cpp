@@ -55,9 +55,9 @@ bool AVehicleDrill::ServerUpdateToolState_Validate(bool ToolIsActive, EVehicleDr
     return true;
 }
 
-void AVehicleDrill::ServerRequestNewMaterialWithTerrainProperties_Implementation(AAstroPlanet* Planet, const FVoxelMaterialProperties& TerrainProperties, UMaterialInterface* CustomMaterial, int32 creativeModePaintMaterialIndex) {
+void AVehicleDrill::ServerRequestNewMaterialWithTerrainProperties_Implementation(ASolarBody* SolarBody, const FVoxelMaterialProperties& TerrainProperties, const FVector& InLocation, UMaterialInterface* CustomMaterial, int32 creativeModePaintMaterialIndex) {
 }
-bool AVehicleDrill::ServerRequestNewMaterialWithTerrainProperties_Validate(AAstroPlanet* Planet, const FVoxelMaterialProperties& TerrainProperties, UMaterialInterface* CustomMaterial, int32 creativeModePaintMaterialIndex) {
+bool AVehicleDrill::ServerRequestNewMaterialWithTerrainProperties_Validate(ASolarBody* SolarBody, const FVoxelMaterialProperties& TerrainProperties, const FVector& InLocation, UMaterialInterface* CustomMaterial, int32 creativeModePaintMaterialIndex) {
     return true;
 }
 

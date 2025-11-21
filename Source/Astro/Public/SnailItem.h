@@ -186,6 +186,12 @@ public:
     
 private:
     UFUNCTION(BlueprintCallable)
+    void EnableLightbar();
+    
+    UFUNCTION(BlueprintCallable)
+    void DisableLightbar();
+    
+    UFUNCTION(BlueprintCallable)
     void ChangeChildNetworkingPolicy(ECrackableActorNetworkingPolicy newPolicy);
     
 public:

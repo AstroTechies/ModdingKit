@@ -32,10 +32,10 @@ ARailCarBase::ARailCarBase(const FObjectInitializer& ObjectInitializer) : Super(
 void ARailCarBase::ServerHandleDriverInput_Implementation(float SteeringInput, float ThrottleInput, bool isCameraBackwards) {
 }
 
-void ARailCarBase::RouteAux2ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType) {
+void ARailCarBase::RouteAux2ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> EventType) {
 }
 
-void ARailCarBase::RouteAux1ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType) {
+void ARailCarBase::RouteAux1ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> EventType) {
 }
 
 void ARailCarBase::OnRep_MovementData(FRailCarMovementReplicatedData Previous) {
@@ -86,7 +86,7 @@ void ARailCarBase::HandleCarReleasedFromCaravanSlot(APhysicalItem* Item) {
 void ARailCarBase::HandleCarPlacedInCaravanSlot(APhysicalItem* Item) {
 }
 
-void ARailCarBase::HandleActuateUse(TEnumAsByte<EInputEvent> InputEvent) {
+void ARailCarBase::HandleActuateUse(TEnumAsByte<EInputEvent> InputEvent, const UActuatorComponent* InActuatorComponent) {
 }
 
 float ARailCarBase::GetTotalCaravanPowerDraw() const {

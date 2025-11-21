@@ -2,6 +2,8 @@
 #include "CoreMinimal.h"
 #include "EStationLoadingState.h"
 #include "EStationStopState.h"
+#include "EStationTierState.h"
+#include "OnBeforeApplySlotOrgRuleToCarDelegate.h"
 #include "RailPostComponent.h"
 #include "SignalDelegate.h"
 #include "RailPostStationComponent.generated.h"
@@ -15,6 +17,9 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnStationSettingsChanged;
     
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnBeforeApplySlotOrgRuleToCar OnBeforeApplySlotOrgRuleToCar;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName CarPushSlotRuleName;
     
@@ -27,6 +32,9 @@ protected:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_StationSettings, meta=(AllowPrivateAccess=true))
     EStationLoadingState LoadMode;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_StationSettings, meta=(AllowPrivateAccess=true))
+    EStationTierState CurrentTierMode;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, SaveGame, meta=(AllowPrivateAccess=true))
     int32 CurrentInternalConnectionID;
@@ -45,10 +53,16 @@ protected:
     
 public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    EStationTierState GetCurrentTierMode() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     EStationStopState GetCurrentStopMode();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     EStationLoadingState GetCurrentLoadMode();
+    
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    void AuthoritySetTierMode(EStationTierState newTierMode);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthoritySetStopMode(EStationStopState Mode);

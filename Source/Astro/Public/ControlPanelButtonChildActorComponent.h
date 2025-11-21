@@ -36,10 +36,10 @@ public:
     
 protected:
     UFUNCTION(BlueprintCallable)
-    void RerouteOnPressed();
+    void RerouteOnPressed(AControlPanelButton* Actor);
     
     UFUNCTION(BlueprintCallable)
-    void RerouteOnArmedChanged(bool IsArmed);
+    void RerouteOnArmedChanged(bool IsArmed, AControlPanelButton* Actor);
     
 public:
     UFUNCTION(BlueprintCallable, BlueprintPure)

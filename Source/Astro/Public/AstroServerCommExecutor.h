@@ -94,7 +94,7 @@ public:
     void DSRemote(const FString& consoleCommand);
     
     UFUNCTION(BlueprintCallable, Exec)
-    void DSNewGame(const FString& Name);
+    void DSNewGame(const FString& Name, bool isGlitchwalkersGame);
     
     UFUNCTION(BlueprintCallable, Exec)
     void DSLoadGame(const FString& Name);

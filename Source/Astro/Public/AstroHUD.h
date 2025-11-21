@@ -62,6 +62,15 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UTexture2DDynamic* MOTDBackgroundTexture;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UTexture2DDynamic* FullscreenMOTDBackgroundTexture;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FString> MarketingWidgetBackgroundCDNKeys;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TMap<FString, UTexture2DDynamic*> MarketingWidgetBackgroundTextures;
+    
     AAstroHUD(const FObjectInitializer& ObjectInitializer);
 
     UFUNCTION(BlueprintCallable)

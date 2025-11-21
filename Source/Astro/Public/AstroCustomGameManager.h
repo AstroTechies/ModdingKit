@@ -8,6 +8,7 @@
 #include "AstroCustomGameConfigurationCache.h"
 #include "AstroCustomGameSettings.h"
 #include "AstroCustomGameState.h"
+#include "AstroCustomGlitchWalkerSettings.h"
 #include "AstroCustomMultiToolSettings.h"
 #include "AstroCustomOxygenSettings.h"
 #include "AstroCustomPowerSettings.h"
@@ -198,6 +199,9 @@ public:
     void SetIsCustomGame(bool customGameState);
     
     UFUNCTION(BlueprintCallable)
+    void SetGlitchWalkerSettings(const FAstroCustomGlitchWalkerSettings& newSettings);
+    
+    UFUNCTION(BlueprintCallable)
     void SetCustomGameName(const FString& newCustomGameName);
     
 //    UFUNCTION(BlueprintCallable)
@@ -231,7 +235,7 @@ public:
     void PushStagedSettingsToActive();
     
 //    UFUNCTION(BlueprintCallable)
-//    void ParseCustomGameSettingsFromJson(const FString& configJsonString, const FAstroCGMLibraryConfigEntryMetaData& MetaData, FAstroCustomGameSettings& customGame);
+//    void ParseCustomGameSettingsFromJson(const FString& configJsonString, FAstroCGMLibraryConfigEntryMetaData& MetaData, FAstroCustomGameSettings& customGame);
     
 //    UFUNCTION(BlueprintCallable)
 //    void OnGetUGCItemSuccessGetConfigDataFromAzure(const FAstroCGMLibraryConfigEntryMetaData& MetaData, const FString& URL);

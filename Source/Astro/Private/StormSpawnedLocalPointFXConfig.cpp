@@ -6,6 +6,7 @@ FStormSpawnedLocalPointFXConfig::FStormSpawnedLocalPointFXConfig() {
     this->OuterGameplayRadiusSpawnOffset = 0.00f;
     this->Radius = 0.00f;
     this->Scale = 0.00f;
+    this->Lifetime = 0.00f;
     this->BaseSpawnDelay = 0.00f;
     this->BaseSpawnDelayVariance = 0.00f;
     this->maxCount = 0;

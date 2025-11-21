@@ -40,6 +40,7 @@ ASlotConnection::ASlotConnection(const FObjectInitializer& ObjectInitializer) : 
     this->TargetTetherLocation = false;
     this->clickable = true;
     this->BreakImmediate = false;
+    this->bShouldDeferBreak = false;
     this->CanConnectComponents = false;
     this->CanConnectSlots = true;
     this->bHighlightTargetedPhysicalItem = false;
@@ -122,6 +123,7 @@ void ASlotConnection::OnFullyRetracted() {
 
 void ASlotConnection::OnDisconnected_Implementation() {
 }
+
 
 void ASlotConnection::OnConnected_Implementation() {
 }

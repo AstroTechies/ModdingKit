@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UDecoratorInfoComponent::UDecoratorInfoComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->Planet = NULL;
 }
 

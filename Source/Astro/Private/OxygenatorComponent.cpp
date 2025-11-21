@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UOxygenatorComponent::UOxygenatorComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->bRequiresPower = true;
     this->bSuppliesOxygenToContainedCharactersOnly = false;
     this->bIsSupplyingOxygen = false;

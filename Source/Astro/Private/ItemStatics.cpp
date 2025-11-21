@@ -4,15 +4,15 @@
 UItemStatics::UItemStatics() {
 }
 
-bool UItemStatics::WillCraftItem(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& itemTypes) {
+bool UItemStatics::WillCraftItem(const TArray<FSlotReference>& InputSlots, FSlotReference OutputSlot, const TArray<TSubclassOf<UItemType>>& itemTypes) {
     return false;
 }
 
-int32 UItemStatics::TryCraftItemDelta(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& itemTypes, float Rate, float DeltaTime) {
+int32 UItemStatics::TryCraftItemDelta(const TArray<FSlotReference>& InputSlots, FSlotReference OutputSlot, const TArray<TSubclassOf<UItemType>>& itemTypes, float Rate, float DeltaTime) {
     return 0;
 }
 
-int32 UItemStatics::TryCraftItem(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& itemTypes, float Rate) {
+int32 UItemStatics::TryCraftItem(const TArray<FSlotReference>& InputSlots, FSlotReference OutputSlot, const TArray<TSubclassOf<UItemType>>& itemTypes, float Rate) {
     return 0;
 }
 
@@ -24,11 +24,23 @@ int32 UItemStatics::SmallItemAmountDelta() {
     return 0;
 }
 
+int32 UItemStatics::RestorePartialNuggetsForItem(APhysicalItem* inItem, const TSubclassOf<UItemType> inItemType) {
+    return 0;
+}
+
 bool UItemStatics::ResourcePassesFiltrationList(TSubclassOf<UItemType> ItemToTest, TSubclassOf<UItemList> FiltrationList, ESlottableItemsFiltrationListBehavior FiltrationBehavior) {
     return false;
 }
 
 bool UItemStatics::RemoveItemFromBundleAndPlaceOnGroundNearby(APhysicalItem* BundledItem, FVector OffsetForGroundUnbundling, bool bPretendAsIfInAuxSlot) {
+    return false;
+}
+
+APhysicalItem* UItemStatics::RemoveItemFromBundle(APhysicalItem* BundledItem, FVector OffsetForGroundUnbundling, bool bPretendAsIfInAuxSlot, bool bRequireTraceHit) {
+    return NULL;
+}
+
+bool UItemStatics::RefundNuggetsForItem(APhysicalItem* inItem, const TSubclassOf<UItemType> inItemType, const int32 inAmountToRefund, int32& outRemaining) {
     return false;
 }
 
@@ -104,7 +116,7 @@ FText UItemStatics::GetExamineVerb() {
     return FText::GetEmpty();
 }
 
-FText UItemStatics::GetCraftingSourcesTooltipDescription(TSubclassOf<UItemType> Item) {
+FText UItemStatics::GetCraftingSourcesTooltipDescription(TSubclassOf<UItemType> Item, UCraftingDependencyMapList* CraftingSources) {
     return FText::GetEmpty();
 }
 
@@ -119,12 +131,15 @@ int32 UItemStatics::ConvertDeformationDeltaToSedimentAmount(float deformationDel
     return 0;
 }
 
-bool UItemStatics::CanSwapHeldItemWithSlottedItem(const APhysicalItem* HeldItem, const APhysicalItem* SlottedItem) {
+bool UItemStatics::CanSwapHeldItemWithSlottedItem(const APhysicalItem* HeldItem, const APhysicalItem* slottedItem) {
     return false;
 }
 
 bool UItemStatics::CanHeldItemInteractWithTargetItem(const APhysicalItem* HeldItem, const APhysicalItem* hitItem, bool& outHighlightChildrenOfTarget) {
     return false;
+}
+
+void UItemStatics::AnalyticsRecordItemCraftedEvent(const APhysicalItem* craftedItem) {
 }
 
 int32 UItemStatics::AmountFromRecipe(float Amount) {

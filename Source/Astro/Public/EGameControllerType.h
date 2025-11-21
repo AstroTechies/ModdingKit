@@ -6,6 +6,7 @@ UENUM(BlueprintType)
 enum class EGameControllerType : uint8 {
     Xbox,
     PS4,
+    PS5,
     Switch,
     Undefined,
 };

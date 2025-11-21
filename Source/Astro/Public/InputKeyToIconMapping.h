@@ -16,6 +16,9 @@ public:
     TMap<FKey, FInputKeyToIconMappingEntry> KeyToIconMappingPS4;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TMap<FKey, FInputKeyToIconMappingEntry> KeyToIconMappingPS5;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FKey, FInputKeyToIconMappingEntry> KeyToIconMappingSwitch;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UPowerComponent::UPowerComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->bIsGenerator = false;
     this->bIsLoad = false;
     this->ShouldReplicate = false;

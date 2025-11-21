@@ -5,6 +5,7 @@
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "GameFramework/Actor.h"
+#include "VoxelMaterial.h"
 #include "EGravityType.h"
 #include "SolarBody.generated.h"
 
@@ -14,6 +15,7 @@ class UObject;
 class USceneComponent;
 class UStaticMesh;
 class UTexture2D;
+class UVoxelVolumeComponent;
 
 UCLASS(Blueprintable)
 class ASTRO_API ASolarBody : public AActor {
@@ -85,6 +87,12 @@ public:
     bool Stationary;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 IsFakeTerrainObject: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FVector ShuttleOrbitAxis;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector SolarVelocity;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -92,6 +100,12 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float OrbitDistance;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float OrbitAngle;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float SunExposureModifier;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnOrbitAxisUpdated OnOrbitAxisUpdated;
@@ -105,6 +119,21 @@ protected:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, Transient, meta=(AllowPrivateAccess=true))
     FVector OrbitAxisCreative;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bAllowsCreativeFlight: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    int32 Seed;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bRandomizeSeedForBuild;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bRandomizeSeedForPIE;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<int32> ExplicitSeeds;
     
 private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, Transient, meta=(AllowPrivateAccess=true))
@@ -151,7 +180,7 @@ public:
     void OnRep_OrbitAxis();
     
     UFUNCTION(BlueprintCallable)
-    void OnLocalPlayerPlanetSelectionEnd();
+    void OnLocalPlayerPlanetSelectionEnd(ASolarBody* newSolarBody);
     
     UFUNCTION(BlueprintCallable)
     void OnLocalPlayerPlanetSelectionBegin(ASolarBody* homeSolarBody);
@@ -164,6 +193,15 @@ protected:
     void OnCreativeModeEnabledChanged(bool CreativeModeEnabled);
     
 public:
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UVoxelVolumeComponent* GetVoxelVolumeComponent(const FVector& InLocation) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    FVoxelMaterial GetTerrainMaterial(const FVector& Location) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    float GetTerrainDensity(const FVector& Location) const;
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     USceneComponent* GetProxyComponent();
     

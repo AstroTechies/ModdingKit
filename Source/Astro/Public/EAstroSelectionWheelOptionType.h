@@ -10,6 +10,7 @@ enum class EAstroSelectionWheelOptionType : uint8 {
     OpenCompass,
     OpenTerrianToolMenu,
     OpenDrone,
+    ToggleHeadlamp,
     None,
 };
 

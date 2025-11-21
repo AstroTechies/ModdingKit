@@ -24,16 +24,20 @@ UAstroGameSingleton::UAstroGameSingleton() {
     this->SoilConversionTable = NULL;
     this->ItemTradeValueTable = NULL;
     this->CraftingSources = NULL;
+    this->CraftingSources_GW = NULL;
     this->InputKeyToIconMapping = NULL;
     this->DiscreteAstroInputDefinitionDatabase = NULL;
     this->TetherProperties = NULL;
     this->FoliageDestructionData = NULL;
+    this->OrbitalPlatformType = NULL;
     this->WindPowerActivationThreshold = 0.00f;
     this->DefaultHoldInputDuration = 0.00f;
     this->DefaultHoldInputCancelTreshold = 0.00f;
     this->CharacterCustomizationGlobals = NULL;
 //    this->MicroTxnStoreGlobals = NULL;
     this->RailNetworkType = NULL;
+    this->SplineNetworkType = NULL;
+    this->BuffDefinitions = NULL;
 //    this->WindowsSpecificCustomizationContent = NULL;
 //    this->XboxSpecificCustomizationContent = NULL;
 //    this->PS4SpecificCustomizationContent = NULL;
@@ -56,6 +60,7 @@ UAstroGameSingleton::UAstroGameSingleton() {
     this->InvalidIndicatorMaterial = NULL;
     this->ButtonMaterial = NULL;
     this->PrintingMaterial = NULL;
+    this->MegastructurePrintingMaterial = NULL;
     this->ASTROFONT = NULL;
     this->PowerColdMaterial = NULL;
     this->PowerHotMaterial = NULL;
@@ -89,6 +94,9 @@ UAstroGameSingleton::UAstroGameSingleton() {
     this->CreativeModePaintSpecialPaletteIndex = 4294967295;
     this->ActuatorConnection = NULL;
     this->CurrentLTERocket = NULL;
+    this->AstroLightBarDatabase = NULL;
+    this->AstroWwiseDatabase = NULL;
+    this->AstroPSActivitiesDatabase = NULL;
 }
 
 UAstroGameSingleton* UAstroGameSingleton::GetAstroGameSingleton() {

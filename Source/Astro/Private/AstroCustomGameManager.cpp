@@ -88,6 +88,9 @@ void AAstroCustomGameManager::SetMultiToolSettings(const FAstroCustomMultiToolSe
 void AAstroCustomGameManager::SetIsCustomGame(bool customGameState) {
 }
 
+void AAstroCustomGameManager::SetGlitchWalkerSettings(const FAstroCustomGlitchWalkerSettings& newSettings) {
+}
+
 void AAstroCustomGameManager::SetCustomGameName(const FString& newCustomGameName) {
 }
 
@@ -127,7 +130,7 @@ bool AAstroCustomGameManager::RemoveCGMModifierScalar(FGameplayTagContainer tags
 void AAstroCustomGameManager::PushStagedSettingsToActive() {
 }
 
-//void AAstroCustomGameManager::ParseCustomGameSettingsFromJson(const FString& configJsonString, const FAstroCGMLibraryConfigEntryMetaData& MetaData, FAstroCustomGameSettings& customGame) {
+//void AAstroCustomGameManager::ParseCustomGameSettingsFromJson(const FString& configJsonString, FAstroCGMLibraryConfigEntryMetaData& MetaData, FAstroCustomGameSettings& customGame) {
 //}
 
 //void AAstroCustomGameManager::OnGetUGCItemSuccessGetConfigDataFromAzure(const FAstroCGMLibraryConfigEntryMetaData& MetaData, const FString& URL) {

@@ -7,10 +7,10 @@ AVehicleBase::AVehicleBase(const FObjectInitializer& ObjectInitializer) : Super(
 
 
 
-void AVehicleBase::PerformVehicleAux2Action(AAstroPlayerController* OriginatingController, TEnumAsByte<EInputEvent> eventType) {
+void AVehicleBase::PerformVehicleAux2Action(AAstroPlayerController* OriginatingController, TEnumAsByte<EInputEvent> EventType) {
 }
 
-void AVehicleBase::PerformVehicleAux1Action(AAstroPlayerController* OriginatingController, TEnumAsByte<EInputEvent> eventType) {
+void AVehicleBase::PerformVehicleAux1Action(AAstroPlayerController* OriginatingController, TEnumAsByte<EInputEvent> EventType) {
 }
 
 void AVehicleBase::OnRep_VehicleBaseReplicationData() {

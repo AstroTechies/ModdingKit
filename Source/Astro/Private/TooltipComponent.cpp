@@ -18,10 +18,13 @@ UTooltipComponent::UTooltipComponent(const FObjectInitializer& ObjectInitializer
     this->LocalPawnDisplayingProximityTooltip = NULL;
 }
 
-void UTooltipComponent::UpdateWidgetOverrideDisplayData(FName overrideName, const FTooltipWidgetDisplayData& DisplayData) {
+void UTooltipComponent::UpdateWidgetOverrideSubtitleText(FName OverrideName, FText newSubtitle) {
 }
 
-void UTooltipComponent::UpdateWidgetOverrideDescriptionText(FName overrideName, FText newDescription) {
+void UTooltipComponent::UpdateWidgetOverrideDisplayData(FName OverrideName, const FTooltipWidgetDisplayData& DisplayData) {
+}
+
+void UTooltipComponent::UpdateWidgetOverrideDescriptionText(FName OverrideName, FText newDescription) {
 }
 
 void UTooltipComponent::UpdateCorrectedPivotLocation() {
@@ -36,7 +39,7 @@ void UTooltipComponent::StopCurrentHoldAction(bool InputActionSucceeded) {
 void UTooltipComponent::SetupTooltipReferenceAnchor() {
 }
 
-void UTooltipComponent::SetupTooltipForItemType(const UItemType* ItemType) {
+void UTooltipComponent::SetupTooltipForItemType(const UItemType* ItemType, float powerRequirement, float powerStorageCapacity) {
 }
 
 void UTooltipComponent::SetupTooltipForCurrentDisplaySettings() {
@@ -46,6 +49,9 @@ void UTooltipComponent::SetTooltipTitle(FText NewTitle) {
 }
 
 void UTooltipComponent::SetTooltipBadgeImage(UObject* ResourceObjectBadge) {
+}
+
+void UTooltipComponent::SetTooltipBadgeData(const UBadgeIconData* BadgeIconData) {
 }
 
 void UTooltipComponent::SetTooltipBadgeColor(FLinearColor NewBadgeColor) {
@@ -63,10 +69,10 @@ void UTooltipComponent::SetDesiredTooltipState(ETooltipState NewState) {
 void UTooltipComponent::SetCustomTooltipReferenceAnchor(USceneComponent* CustomReferenceAnchor) {
 }
 
-void UTooltipComponent::PushTooltipWidgetOverride(FName overrideName, ETooltipVisibilityControl overrideVisibilityControl, bool bInApplyAnchorReferenceOverride, FName AnchorReferenceOverride, bool bInApplyScreenOffsetOverride, FVector2D ScreenOffsetOverride, bool bInRemainsVisibleWhenHeld, bool bInSuppressOtherTooltipsWhenExpanded, bool bInOverrideUseAndExaminePrompts, const FTooltipWidgetDisplayData& DisplayData, const FTooltipProximityBadgeVisibilityData& proximityData) {
+void UTooltipComponent::PushTooltipWidgetOverride(FName OverrideName, ETooltipVisibilityControl overrideVisibilityControl, bool bInApplyAnchorReferenceOverride, FName AnchorReferenceOverride, bool bInApplyScreenOffsetOverride, FVector2D ScreenOffsetOverride, bool bInRemainsVisibleWhenHeld, bool bInSuppressOtherTooltipsWhenExpanded, bool bInOverrideUseAndExaminePrompts, const FTooltipWidgetDisplayData& DisplayData, const FTooltipProximityBadgeVisibilityData& proximityData) {
 }
 
-void UTooltipComponent::PopTooltipWidgetOverride(FName overrideName) {
+void UTooltipComponent::PopTooltipWidgetOverride(FName OverrideName) {
 }
 
 void UTooltipComponent::OnUseContextChanged(EUseContext UseContext) {
@@ -120,7 +126,7 @@ void UTooltipComponent::OnActionInputReleased(FName ActionName) {
 void UTooltipComponent::OnActionInputPressed(FName ActionName) {
 }
 
-bool UTooltipComponent::HasTooltipOverride(FName overrideName) {
+bool UTooltipComponent::HasTooltipOverride(FName OverrideName) {
     return false;
 }
 

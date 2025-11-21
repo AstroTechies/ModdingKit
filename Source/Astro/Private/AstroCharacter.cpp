@@ -180,6 +180,12 @@ void AAstroCharacter::OnRep_Health() {
 void AAstroCharacter::OnRep_CharacterCustomization() {
 }
 
+void AAstroCharacter::OnRep_bIsSuffocating() {
+}
+
+void AAstroCharacter::OnRep_bBreathing() {
+}
+
 
 void AAstroCharacter::OnImmunityInitiatorDestroyed(AActor* destroyedInitiator) {
 }

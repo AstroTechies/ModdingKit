@@ -15,6 +15,8 @@
 #include "DebugLocation.h"
 #include "EAchievementProgressionState.h"
 #include "EAstroAchievementKeys.h"
+#include "ECollectionReward.h"
+#include "EDonationReward.h"
 #include "EPlanetIdentifier.h"
 #include "EWandererRealityTearOpenState.h"
 #include "EnableSignalDelegate.h"
@@ -23,7 +25,9 @@
 #include "GlitchWalkersFinalEncounterResetDelegate.h"
 #include "GlitchWalkersFinalEncounterStartedDelegate.h"
 #include "ItemCollectionAchievementProgress.h"
+#include "OnCollectionRewardsChangedDelegate.h"
 #include "OnCurrentResearchPointBalanceChangedDelegate.h"
+#include "OnDonationRewardChangedDelegate.h"
 #include "OnItemTypeListChangedDelegate.h"
 #include "OutroSequenceActorCreatedDelegate.h"
 #include "PlanetFirewallStates.h"
@@ -32,7 +36,6 @@
 #include "ScannableStatus.h"
 #include "SignalDelegate.h"
 #include "StarterItemCreatedDelegate.h"
-#include "StormGenerationIDContainer.h"
 #include "StormState.h"
 #include "StormStates.h"
 #include "StormsEnabledStateChangedDelegate.h"
@@ -53,6 +56,9 @@ class AAstroStormSpawnLocationCandidate;
 class ALevelSequenceActor;
 class APhysicalItem;
 class ARailNetwork;
+class AShuttle;
+class ASolarBody;
+class ASplineNetwork;
 class UActivation;
 class UActorClassList;
 class UActorEntityLinkComponent;
@@ -61,6 +67,7 @@ class UAstroSaveCustomArchiveProxy;
 class UAstropediaAssetManager;
 class UItemType;
 class ULevelSequencePlayer;
+class UMegastructureManager;
 class UParticleSystem;
 class URewardState;
 class URewardSystem;
@@ -117,6 +124,12 @@ public:
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnOutroCinematicCompleted;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnDonationRewardChanged OnDonationRewardsChanged;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnCollectionRewardsChanged OnCollectionRewardsChanged;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UActivation* DeformToolActivation;
@@ -294,11 +307,17 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_RailNetwork, meta=(AllowPrivateAccess=true))
     ARailNetwork* RailNetwork;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_SplineNetwork, meta=(AllowPrivateAccess=true))
+    ASplineNetwork* SplineNetwork;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     URewardSystem* RewardSystem;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     URewardState* RewardState;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    UMegastructureManager* MegastructureManager;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_MissionsManager, meta=(AllowPrivateAccess=true))
     AAstroMissionsManager* MissionsManager;
@@ -311,29 +330,41 @@ private:
     
     // UPROPERTY(EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     // Missed Property: DeformationCompleteEvents
-    // FunctionSignature is nullptr, cannot deduce function for 'MulticastInlineDelegateProperty /Script/Astro.AstroGameState:DeformationCompleteEvents.DeformationCompleteEvents'
+    // FunctionSignature is nullptr, cannot deduce function for 'MulticastInlineDelegateProperty DeformationCompleteEvents./Script/Astro.AstroGameState:DeformationCompleteEvents'
 
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     bool PreventCompletedMissionPlacements;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
-    TMap<EPlanetIdentifier, FStormStates> PerPlanetStormStates;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
-    TMap<EPlanetIdentifier, FStormGenerationIDContainer> PerPlanetAvailableStormIDs;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, SaveGame, meta=(AllowPrivateAccess=true))
+    TArray<FStormStates> PerPlanetStormStates;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TMap<EPlanetIdentifier, FPlanetVirusProtectionKitState> PerPlanetVirusProtectionStates;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_PlanetVirusProtectionStates, meta=(AllowPrivateAccess=true))
+    TArray<FPlanetVirusProtectionKitState> PlanetVirusProtectionStates;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, SaveGame, meta=(AllowPrivateAccess=true))
     int32 InstalledRootKitCount;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TMap<EPlanetIdentifier, FPlanetFirewallStates> PerPlanetFirewallStates;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, SaveGame, meta=(AllowPrivateAccess=true))
+    TArray<FPlanetFirewallStates> PlanetFirewallStates;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, SaveGame, meta=(AllowPrivateAccess=true))
     bool StormsEnabled;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, SaveGame, meta=(AllowPrivateAccess=true))
+    bool StormsMissionBlocked;
+    
+    UPROPERTY(EditAnywhere, SaveGame, ReplicatedUsing=OnRep_DonationRewardsUpdated, meta=(AllowPrivateAccess=true))
+    uint32 EnabledDonationRewards;
+    
+    UPROPERTY(EditAnywhere, SaveGame, ReplicatedUsing=OnRep_CollectionRewardsUpdated, meta=(AllowPrivateAccess=true))
+    uint32 EnabledCollectionRewards;
     
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
@@ -341,6 +372,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, SaveGame, meta=(AllowPrivateAccess=true))
     bool IsInExpansionEnvironment;
+    
+    UPROPERTY(EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    uint32 ActiveDLCEntitlements;
     
     AAstroGameState(const FObjectInitializer& ObjectInitializer);
 
@@ -356,12 +390,6 @@ public:
     void UnregisterSpawnedStartingItem(APhysicalItem* Item);
     
     UFUNCTION(BlueprintCallable)
-    bool TrySubmitStormData(EPlanetIdentifier planetID, int32 StormID);
-    
-    UFUNCTION(BlueprintCallable)
-    bool TrySubmitRootKit(EPlanetIdentifier planetID, int32 StormID);
-    
-    UFUNCTION(BlueprintCallable)
     bool TrySubmitHackedGatewayComplete(EPlanetIdentifier planetID);
     
     UFUNCTION(BlueprintCallable)
@@ -369,6 +397,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void SyncSettingsFromServer(bool IsCustomGame, const FAstroCustomGameSettings& CustomGameSettings, const FAstroCustomGameState& customGameStateToSync);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetStormsMissionBlocked(bool NewState);
     
     UFUNCTION(BlueprintCallable)
     void SetStormsEnabled(bool NewState);
@@ -393,6 +424,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void SetFuelFreeCreative(bool FreeFuelEnabled);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetEntitledMegatechContentActivated();
     
     UFUNCTION(BlueprintCallable)
     void SetCurrentObjective(FName Name);
@@ -438,9 +472,18 @@ public:
     UFUNCTION(BlueprintCallable)
     void RegisterPlanetForStorms(AAstroPlanet* Planet, bool overrideExistingPlanetStormStates);
     
+    UFUNCTION(BlueprintCallable)
+    bool PlanetHasStormState(EPlanetIdentifier planetID);
+    
 protected:
     UFUNCTION(BlueprintCallable)
+    void OnRep_SplineNetwork(ASplineNetwork* previousValue) const;
+    
+    UFUNCTION(BlueprintCallable)
     void OnRep_RailNetwork(ARailNetwork* previousValue);
+    
+    UFUNCTION(BlueprintCallable)
+    void OnRep_PlanetVirusProtectionStates();
     
     UFUNCTION(BlueprintCallable)
     void OnRep_MissionsManager(AAstroMissionsManager* previousValue);
@@ -448,11 +491,20 @@ protected:
     UFUNCTION(BlueprintCallable)
     void OnRep_IsOutroCinematicActive();
     
+private:
+    UFUNCTION(BlueprintCallable)
+    void OnRep_DonationRewardsUpdated();
+    
+protected:
     UFUNCTION(BlueprintCallable)
     void OnRep_CustomGameManager(AAstroCustomGameManager* previousValue);
     
     UFUNCTION(BlueprintCallable)
     void OnRep_CreativeModeSettings();
+    
+private:
+    UFUNCTION(BlueprintCallable)
+    void OnRep_CollectionRewardsUpdated();
     
 public:
     UFUNCTION(BlueprintCallable)
@@ -491,10 +543,10 @@ public:
     void MulticastSyncCustomGameStateFromServer(const FAstroCustomGameState& customGameStateToSync);
     
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
-    void MulticastNewMaterialPalette(AAstroPlanet* Planet, const TArray<FPackedVoxelMaterialInfo>& dynamicMaterials);
+    void MulticastNewMaterialPalette(ASolarBody* SolarBody, const TArray<FPackedVoxelMaterialInfo>& dynamicMaterials, const FVector& InLocation);
     
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
-    void MulticastNewCreativeMaterialPalette(AAstroPlanet* Planet, const TArray<FPackedVoxelMaterialInfo>& dynamicMaterials, const TArray<FCreativePaintMaterialMapping>& creativePaintData);
+    void MulticastNewCreativeMaterialPalette(ASolarBody* SolarBody, const TArray<FPackedVoxelMaterialInfo>& dynamicMaterials, const TArray<FCreativePaintMaterialMapping>& creativePaintData, const FVector& InLocation);
     
     UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
     void MulticastExplosionEffects(const FTransform& Transform, AActor* Actor, const FName surfTypeSwitchName, const TArray<FString>& AudioEffects, const TArray<UParticleSystem*>& ParticleEffects, float Power);
@@ -533,7 +585,13 @@ public:
     bool IsFuelFreeCreative() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool IsDonationRewardActive(const EDonationReward inDonationReward) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsCreativeModeActive() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool IsCollectionRewardActive(const ECollectionReward inCollectionReward) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsCatalogUnlockedCreative() const;
@@ -574,6 +632,9 @@ public:
     FStormState GetStormState(AAstroStorm* storm);
     
     UFUNCTION(BlueprintCallable)
+    bool GetStormsMissionBlocked();
+    
+    UFUNCTION(BlueprintCallable)
     bool GetStormsEnabled();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -590,6 +651,15 @@ public:
     
     UFUNCTION(BlueprintCallable)
     FPlanetVirusProtectionKitState GetPlanetVirusProtectionKitState(EPlanetIdentifier planetID);
+    
+    UFUNCTION(BlueprintCallable)
+    FStormStates GetPlanetStormStatesById(EPlanetIdentifier planetID);
+    
+    UFUNCTION(BlueprintCallable)
+    FStormStates GetPlanetStormStates(AAstroPlanet* Planet);
+    
+    UFUNCTION(BlueprintCallable)
+    FPlanetFirewallStates GetPlanetFirewallStates(EPlanetIdentifier planetID);
     
     UFUNCTION(BlueprintCallable)
     TArray<FStormState> GetPlanetActiveStormStates(EPlanetIdentifier planetID);
@@ -611,6 +681,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     UActorClassList* GetMissionPlacementClasses(const FString& missionId);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UMegastructureManager* GetMegastructureManager() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetIsNewGameDropshipSequenceActive() const;
@@ -686,6 +759,12 @@ public:
     UFUNCTION(BlueprintCallable)
     void BroadcastHackedItemsChanged();
     
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    bool AuthorityTrySubmitStormData(EPlanetIdentifier planetID, int32 StormID);
+    
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    bool AuthorityTrySubmitRootKit(EPlanetIdentifier planetID, int32 StormID);
+    
     UFUNCTION(BlueprintCallable)
     void AuthoritySpawnFirewalls(AAstroPlanet* Planet);
     
@@ -693,22 +772,28 @@ public:
     void AuthoritySetWandererRealityTearOpenState(EWandererRealityTearOpenState State);
     
     UFUNCTION(BlueprintCallable)
-    void AuthorityRemoveStormSpawnLocationCandidate(AAstroStormSpawnLocationCandidate* candidate);
+    bool AuthorityRemoveStormSpawnLocationCandidate(AAstroStormSpawnLocationCandidate* candidate);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityRegisterFirewall(EPlanetIdentifier planetID, AActor* FirewallActor);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     EWandererRealityTearOpenState AuthorityGetWandererRealityTearOpenState() const;
     
     UFUNCTION(BlueprintCallable)
-    void AuthorityAddStormSpawnLocationCandidate(AAstroStormSpawnLocationCandidate* candidate);
+    bool AuthorityAddStormSpawnLocationCandidate(AAstroStormSpawnLocationCandidate* candidate);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool ArePlayerNamesVisible() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool AreBeaconsVisible() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool AreAnyShuttlesLost() const;
+    
+    UFUNCTION(BlueprintCallable)
+    void AddLostShuttle(AShuttle* InShuttle);
     
     UFUNCTION(BlueprintCallable)
     void AddAndPrioritizeNewPlayerSpawnLocation(AActor* Spawn);

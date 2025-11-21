@@ -2,6 +2,7 @@
 #include "ActorEntityLinkComponent.h"
 #include "ActuatorQueue.h"
 #include "AstropediaAssetManager.h"
+#include "MegastructureManager.h"
 #include "Net/UnrealNetwork.h"
 #include "RewardState.h"
 #include "RewardSystem.h"
@@ -39,14 +40,20 @@ AAstroGameState::AAstroGameState(const FObjectInitializer& ObjectInitializer) : 
     this->AstropediaAssetManager = CreateDefaultSubobject<UAstropediaAssetManager>(TEXT("AstropediaAssetManager"));
     this->ActuatorQueue = CreateDefaultSubobject<UActuatorQueue>(TEXT("ActuatorQueue"));
     this->RailNetwork = NULL;
+    this->SplineNetwork = NULL;
     this->RewardSystem = CreateDefaultSubobject<URewardSystem>(TEXT("PrimaryRewardSystem"));
     this->RewardState = CreateDefaultSubobject<URewardState>(TEXT("GameRewardState"));
+    this->MegastructureManager = CreateDefaultSubobject<UMegastructureManager>(TEXT("MegastructureManager"));
     this->MissionsManager = NULL;
     this->CustomGameManager = NULL;
     this->PreventCompletedMissionPlacements = false;
     this->InstalledRootKitCount = 0;
     this->StormsEnabled = false;
+    this->StormsMissionBlocked = true;
+    this->EnabledDonationRewards = 0;
+    this->EnabledCollectionRewards = 0;
     this->IsInExpansionEnvironment = false;
+    this->ActiveDLCEntitlements = 0;
 }
 
 void AAstroGameState::UpdateStormStates(float dt) {
@@ -58,14 +65,6 @@ void AAstroGameState::UpdateMaxStormCount(AAstroPlanet* Planet, int32 newMaxStor
 void AAstroGameState::UnregisterSpawnedStartingItem(APhysicalItem* Item) {
 }
 
-bool AAstroGameState::TrySubmitStormData(EPlanetIdentifier planetID, int32 StormID) {
-    return false;
-}
-
-bool AAstroGameState::TrySubmitRootKit(EPlanetIdentifier planetID, int32 StormID) {
-    return false;
-}
-
 bool AAstroGameState::TrySubmitHackedGatewayComplete(EPlanetIdentifier planetID) {
     return false;
 }
@@ -75,6 +74,9 @@ bool AAstroGameState::TrySubmitCounterhackKeySubmittedToGateway(EPlanetIdentifie
 }
 
 void AAstroGameState::SyncSettingsFromServer(bool IsCustomGame, const FAstroCustomGameSettings& CustomGameSettings, const FAstroCustomGameState& customGameStateToSync) {
+}
+
+void AAstroGameState::SetStormsMissionBlocked(bool NewState) {
 }
 
 void AAstroGameState::SetStormsEnabled(bool NewState) {
@@ -99,6 +101,9 @@ void AAstroGameState::SetInvincibleCreative(bool Invincible) {
 }
 
 void AAstroGameState::SetFuelFreeCreative(bool FreeFuelEnabled) {
+}
+
+void AAstroGameState::SetEntitledMegatechContentActivated() {
 }
 
 void AAstroGameState::SetCurrentObjective(FName Name) {
@@ -143,7 +148,17 @@ void AAstroGameState::RegisterSpawnedStartingItem(APhysicalItem* Item) {
 void AAstroGameState::RegisterPlanetForStorms(AAstroPlanet* Planet, bool overrideExistingPlanetStormStates) {
 }
 
+bool AAstroGameState::PlanetHasStormState(EPlanetIdentifier planetID) {
+    return false;
+}
+
+void AAstroGameState::OnRep_SplineNetwork(ASplineNetwork* previousValue) const {
+}
+
 void AAstroGameState::OnRep_RailNetwork(ARailNetwork* previousValue) {
+}
+
+void AAstroGameState::OnRep_PlanetVirusProtectionStates() {
 }
 
 void AAstroGameState::OnRep_MissionsManager(AAstroMissionsManager* previousValue) {
@@ -152,10 +167,16 @@ void AAstroGameState::OnRep_MissionsManager(AAstroMissionsManager* previousValue
 void AAstroGameState::OnRep_IsOutroCinematicActive() {
 }
 
+void AAstroGameState::OnRep_DonationRewardsUpdated() {
+}
+
 void AAstroGameState::OnRep_CustomGameManager(AAstroCustomGameManager* previousValue) {
 }
 
 void AAstroGameState::OnRep_CreativeModeSettings() {
+}
+
+void AAstroGameState::OnRep_CollectionRewardsUpdated() {
 }
 
 void AAstroGameState::OnAuthorityUnlockedItemsChanged(const TArray<TSubclassOf<UItemType>>& NewUnlockedItems) {
@@ -192,10 +213,10 @@ void AAstroGameState::MulticastSyncInitialCustomGameStateFromServer_Implementati
 void AAstroGameState::MulticastSyncCustomGameStateFromServer_Implementation(const FAstroCustomGameState& customGameStateToSync) {
 }
 
-void AAstroGameState::MulticastNewMaterialPalette_Implementation(AAstroPlanet* Planet, const TArray<FPackedVoxelMaterialInfo>& dynamicMaterials) {
+void AAstroGameState::MulticastNewMaterialPalette_Implementation(ASolarBody* SolarBody, const TArray<FPackedVoxelMaterialInfo>& dynamicMaterials, const FVector& InLocation) {
 }
 
-void AAstroGameState::MulticastNewCreativeMaterialPalette_Implementation(AAstroPlanet* Planet, const TArray<FPackedVoxelMaterialInfo>& dynamicMaterials, const TArray<FCreativePaintMaterialMapping>& creativePaintData) {
+void AAstroGameState::MulticastNewCreativeMaterialPalette_Implementation(ASolarBody* SolarBody, const TArray<FPackedVoxelMaterialInfo>& dynamicMaterials, const TArray<FCreativePaintMaterialMapping>& creativePaintData, const FVector& InLocation) {
 }
 
 void AAstroGameState::MulticastExplosionEffects_Implementation(const FTransform& Transform, AActor* Actor, const FName surfTypeSwitchName, const TArray<FString>& AudioEffects, const TArray<UParticleSystem*>& ParticleEffects, float Power) {
@@ -241,7 +262,15 @@ bool AAstroGameState::IsFuelFreeCreative() const {
     return false;
 }
 
+bool AAstroGameState::IsDonationRewardActive(const EDonationReward inDonationReward) const {
+    return false;
+}
+
 bool AAstroGameState::IsCreativeModeActive() const {
+    return false;
+}
+
+bool AAstroGameState::IsCollectionRewardActive(const ECollectionReward inCollectionReward) const {
     return false;
 }
 
@@ -289,6 +318,10 @@ FStormState AAstroGameState::GetStormState(AAstroStorm* storm) {
     return FStormState{};
 }
 
+bool AAstroGameState::GetStormsMissionBlocked() {
+    return false;
+}
+
 bool AAstroGameState::GetStormsEnabled() {
     return false;
 }
@@ -311,6 +344,18 @@ bool AAstroGameState::GetPreventCompletedMissionPlacements() const {
 
 FPlanetVirusProtectionKitState AAstroGameState::GetPlanetVirusProtectionKitState(EPlanetIdentifier planetID) {
     return FPlanetVirusProtectionKitState{};
+}
+
+FStormStates AAstroGameState::GetPlanetStormStatesById(EPlanetIdentifier planetID) {
+    return FStormStates{};
+}
+
+FStormStates AAstroGameState::GetPlanetStormStates(AAstroPlanet* Planet) {
+    return FStormStates{};
+}
+
+FPlanetFirewallStates AAstroGameState::GetPlanetFirewallStates(EPlanetIdentifier planetID) {
+    return FPlanetFirewallStates{};
 }
 
 TArray<FStormState> AAstroGameState::GetPlanetActiveStormStates(EPlanetIdentifier planetID) {
@@ -338,6 +383,10 @@ TMap<FString, UActorClassList*> AAstroGameState::GetMissionPlacementClassLists()
 }
 
 UActorClassList* AAstroGameState::GetMissionPlacementClasses(const FString& missionId) {
+    return NULL;
+}
+
+UMegastructureManager* AAstroGameState::GetMegastructureManager() const {
     return NULL;
 }
 
@@ -427,13 +476,22 @@ void AAstroGameState::BroadcastKnownItemsChanged() {
 void AAstroGameState::BroadcastHackedItemsChanged() {
 }
 
+bool AAstroGameState::AuthorityTrySubmitStormData(EPlanetIdentifier planetID, int32 StormID) {
+    return false;
+}
+
+bool AAstroGameState::AuthorityTrySubmitRootKit(EPlanetIdentifier planetID, int32 StormID) {
+    return false;
+}
+
 void AAstroGameState::AuthoritySpawnFirewalls(AAstroPlanet* Planet) {
 }
 
 void AAstroGameState::AuthoritySetWandererRealityTearOpenState(EWandererRealityTearOpenState State) {
 }
 
-void AAstroGameState::AuthorityRemoveStormSpawnLocationCandidate(AAstroStormSpawnLocationCandidate* candidate) {
+bool AAstroGameState::AuthorityRemoveStormSpawnLocationCandidate(AAstroStormSpawnLocationCandidate* candidate) {
+    return false;
 }
 
 void AAstroGameState::AuthorityRegisterFirewall(EPlanetIdentifier planetID, AActor* FirewallActor) {
@@ -443,7 +501,8 @@ EWandererRealityTearOpenState AAstroGameState::AuthorityGetWandererRealityTearOp
     return EWandererRealityTearOpenState::Closed;
 }
 
-void AAstroGameState::AuthorityAddStormSpawnLocationCandidate(AAstroStormSpawnLocationCandidate* candidate) {
+bool AAstroGameState::AuthorityAddStormSpawnLocationCandidate(AAstroStormSpawnLocationCandidate* candidate) {
+    return false;
 }
 
 bool AAstroGameState::ArePlayerNamesVisible() const {
@@ -452,6 +511,13 @@ bool AAstroGameState::ArePlayerNamesVisible() const {
 
 bool AAstroGameState::AreBeaconsVisible() const {
     return false;
+}
+
+bool AAstroGameState::AreAnyShuttlesLost() const {
+    return false;
+}
+
+void AAstroGameState::AddLostShuttle(AShuttle* InShuttle) {
 }
 
 void AAstroGameState::AddAndPrioritizeNewPlayerSpawnLocation(AActor* Spawn) {
@@ -484,7 +550,16 @@ void AAstroGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     DOREPLIFETIME(AAstroGameState, bCreativeAllCatalogItemsUnlocked);
     DOREPLIFETIME(AAstroGameState, bCreativeFreeFuelOn);
     DOREPLIFETIME(AAstroGameState, RailNetwork);
+    DOREPLIFETIME(AAstroGameState, SplineNetwork);
     DOREPLIFETIME(AAstroGameState, MissionsManager);
+    DOREPLIFETIME(AAstroGameState, PerPlanetStormStates);
+    DOREPLIFETIME(AAstroGameState, PlanetVirusProtectionStates);
+    DOREPLIFETIME(AAstroGameState, InstalledRootKitCount);
+    DOREPLIFETIME(AAstroGameState, PlanetFirewallStates);
+    DOREPLIFETIME(AAstroGameState, StormsEnabled);
+    DOREPLIFETIME(AAstroGameState, StormsMissionBlocked);
+    DOREPLIFETIME(AAstroGameState, EnabledDonationRewards);
+    DOREPLIFETIME(AAstroGameState, EnabledCollectionRewards);
     DOREPLIFETIME(AAstroGameState, IsInExpansionEnvironment);
 }
 

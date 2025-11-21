@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UDeployRetractComponent::UDeployRetractComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->bIsDeployed = false;
     this->bPendingDeployed = false;
     this->DeployMontage = NULL;

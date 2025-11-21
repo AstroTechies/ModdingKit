@@ -1,7 +1,9 @@
 #include "MessageOfTheDay.h"
 
 UMessageOfTheDay::UMessageOfTheDay() {
-    this->version = EAstroMessageOfTheDayVersion::Invalid;
+    this->Version = EAstroMessageOfTheDayVersion::Invalid;
+    this->AssociatedReleaseID = EAstroReleaseIDs::Invalid;
+    this->WidgetType = EMarketingWidgetType::Invalid;
 }
 
 

@@ -78,10 +78,10 @@ protected:
     void ServerReceiveSeatExitOverriddenWithFlip(bool ExitOverridden);
     
     UFUNCTION(BlueprintCallable)
-    void RouteAux2ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType);
+    void RouteAux2ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> EventType);
     
     UFUNCTION(BlueprintCallable)
-    void RouteAux1ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType);
+    void RouteAux1ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> EventType);
     
     UFUNCTION(BlueprintCallable)
     void HandleVehicleUnmanned(AAstroPlayerController* OldPilot);

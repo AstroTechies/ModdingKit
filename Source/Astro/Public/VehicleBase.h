@@ -49,10 +49,10 @@ public:
     void VehicleGainedPilotInSeat(AAstroPlayerController* Driver, ASeatBase* Seat);
     
     UFUNCTION(BlueprintCallable)
-    void PerformVehicleAux2Action(AAstroPlayerController* OriginatingController, TEnumAsByte<EInputEvent> eventType);
+    void PerformVehicleAux2Action(AAstroPlayerController* OriginatingController, TEnumAsByte<EInputEvent> EventType);
     
     UFUNCTION(BlueprintCallable)
-    void PerformVehicleAux1Action(AAstroPlayerController* OriginatingController, TEnumAsByte<EInputEvent> eventType);
+    void PerformVehicleAux1Action(AAstroPlayerController* OriginatingController, TEnumAsByte<EInputEvent> EventType);
     
 protected:
     UFUNCTION(BlueprintCallable)

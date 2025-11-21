@@ -4,7 +4,6 @@
 #include "Net/UnrealNetwork.h"
 
 UMultiTool::UMultiTool(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->PlayerPointSymbol = NULL;
     this->LerpSpeed = 3.00f;
     this->ActionReadyRatio = 0.33f;
@@ -150,15 +149,15 @@ bool UMultiTool::ServerCloseCrackableActorComponent_Validate(UCrackableActorComp
     return true;
 }
 
-void UMultiTool::ServerClickActuatorRerouteNode_Implementation(UActuatorComponent* Actuator, APhysicalItem* Item, const FVector StartPos, int32 ConnectionId) {
+void UMultiTool::ServerClickActuatorRerouteNode_Implementation(UActuatorComponent* Actuator, APhysicalItem* Item, const FVector StartPos, const FActuatorConnectorRef& connectorRef) {
 }
-bool UMultiTool::ServerClickActuatorRerouteNode_Validate(UActuatorComponent* Actuator, APhysicalItem* Item, const FVector StartPos, int32 ConnectionId) {
+bool UMultiTool::ServerClickActuatorRerouteNode_Validate(UActuatorComponent* Actuator, APhysicalItem* Item, const FVector StartPos, const FActuatorConnectorRef& connectorRef) {
     return true;
 }
 
-void UMultiTool::ServerClickActuatorCable_Implementation(UActuatorComponent* Actuator, int32 ConnectionId) {
+void UMultiTool::ServerClickActuatorCable_Implementation(UActuatorComponent* Actuator, const FActuatorCableRef& inCableRef) {
 }
-bool UMultiTool::ServerClickActuatorCable_Validate(UActuatorComponent* Actuator, int32 ConnectionId) {
+bool UMultiTool::ServerClickActuatorCable_Validate(UActuatorComponent* Actuator, const FActuatorCableRef& inCableRef) {
     return true;
 }
 

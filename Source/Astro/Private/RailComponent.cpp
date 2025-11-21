@@ -1,7 +1,6 @@
 #include "RailComponent.h"
 
 URailComponent::URailComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->MoveSpeed = 400.00f;
     this->OwnerConnection = NULL;
 }

@@ -86,6 +86,12 @@ float ASnailItem::GetElapsedBuffTime() {
     return 0.0f;
 }
 
+void ASnailItem::EnableLightbar() {
+}
+
+void ASnailItem::DisableLightbar() {
+}
+
 void ASnailItem::ChangeChildNetworkingPolicy(ECrackableActorNetworkingPolicy newPolicy) {
 }
 

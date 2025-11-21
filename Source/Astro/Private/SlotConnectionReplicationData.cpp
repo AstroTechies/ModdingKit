@@ -6,5 +6,6 @@ FSlotConnectionReplicationData::FSlotConnectionReplicationData() {
     this->Destroying = false;
     this->bIsRetracting = false;
     this->bIsCarryingOxygen = false;
+    this->bIsDeferredBroken = false;
 }
 

@@ -20,7 +20,7 @@ void UAstroPlayStatics::ServerClick(UPrimitiveComponent* Primitive) {
 void UAstroPlayStatics::RestoreInputModeToGameFromUI(UObject* WorldContextObject) {
 }
 
-bool UAstroPlayStatics::RaycastVoxels(AAstroPlanet* Planet, const FVector& RayStart, const FVector& RayEnd, FHitResult& OutHit, float Accuracy) {
+bool UAstroPlayStatics::RaycastVoxels(ASolarBody* SolarBody, const FVector& RayStart, const FVector& RayEnd, FHitResult& OutHit, float Accuracy) {
     return false;
 }
 
@@ -146,6 +146,9 @@ void UAstroPlayStatics::Click(UPrimitiveComponent* Primitive) {
 
 FGuid UAstroPlayStatics::AuthorityTrackNavpointOnCurrentPlanet(const FNavpoint& newNavpoint) {
     return FGuid{};
+}
+
+void UAstroPlayStatics::AuthoritySetTierForSlotOrgRule(USlotOrganizationRule* inSlotOrgRule, const EStationTierState inTierState) {
 }
 
 void UAstroPlayStatics::AuthoritySetNavpointOverrideIconOnCurrentPlanet(FGuid NavpointID, UTexture* Icon) {

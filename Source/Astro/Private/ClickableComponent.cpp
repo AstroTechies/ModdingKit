@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UClickableComponent::UClickableComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->PositioningComponent = NULL;
     this->PrimaryIndicatorMesh = NULL;
     this->SecondaryIndicatorMesh = NULL;
@@ -32,8 +31,12 @@ UClickableComponent::UClickableComponent(const FObjectInitializer& ObjectInitial
     this->HasInfoOnlyTooltipWhilePlayerDriving = false;
     this->UseActionRequriesHold = true;
     this->bUseOverridePivotOffset = false;
+    this->bClientCanOverrideAtRuntime = false;
     this->SecondaryInteractionTime = 0.33f;
     this->DefaultUseContext = EUseContext::UC_Use;
+}
+
+void UClickableComponent::ToggleUseCapabilityCategory(EUseType useType) {
 }
 
 void UClickableComponent::SetInteractionRedirectActor(AActor* Actor, USceneComponent* PivotComponent) {

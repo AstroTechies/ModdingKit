@@ -1,5 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "EActuatorChannel.h"
 #include "ActuatorConnectorRef.generated.h"
 
 USTRUCT(BlueprintType)
@@ -11,6 +12,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint8 bIsRerouteNode: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    EActuatorChannel ActuatorChannel;
     
     ASTRO_API FActuatorConnectorRef();
 };

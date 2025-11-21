@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "ActuatorConnectorRef.h"
+#include "EActuatorChannel.h"
 #include "SlotReference.h"
 #include "ActuatorCable.generated.h"
 
@@ -19,6 +20,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint8 bInUse: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    EActuatorChannel ActuatorChannel;
     
     ASTRO_API FActuatorCable();
 };

@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UActorResearchComponent::UActorResearchComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->ResearchPowerRequired = 4.00f;
     this->MinimumResearchPowerFraction = 1.00f;
     this->MinimumResearchRateMultiplier = 1.00f;

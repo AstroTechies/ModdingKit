@@ -8,7 +8,7 @@ UTerrainPlatformComponent::UTerrainPlatformComponent(const FObjectInitializer& O
     this->Intensity = 1.00f;
     this->UseOverrideMaterial = false;
     this->Enabled = true;
-    this->m_planet = NULL;
+    this->m_solarBody = NULL;
 }
 
 void UTerrainPlatformComponent::OwnerDestroyed(AActor* DestroyedActor) {

@@ -37,6 +37,7 @@ enum class EAstroMissionObjectiveType : uint8 {
     BeginLTE,
     AutoComplete,
     None,
+    SplineConnection,
     Count,
 };
 

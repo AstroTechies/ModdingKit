@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UWheeledChassisComponent::UWheeledChassisComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->MaxNetworkPositionErrorSquared = 40000.00f;
     this->UprightFlipSpeed = 360.00f;
     this->SpringStiffness = 0.01f;

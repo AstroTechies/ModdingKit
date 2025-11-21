@@ -3,6 +3,7 @@
 #include "FuelConsumerComponent.h"
 #include "JetpackMovementOverrideComponent.h"
 #include "Net/UnrealNetwork.h"
+#include "Templates/SubclassOf.h"
 
 AJetpackItem::AJetpackItem(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->InputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("Jetpack Input Component"));
@@ -61,7 +62,7 @@ void AJetpackItem::OnJumpingTick(float DeltaTime) {
 void AJetpackItem::OnItemSelectionChanged(APhysicalItem* Item) {
 }
 
-void AJetpackItem::OnItemDrained() {
+void AJetpackItem::OnItemDrained(TSubclassOf<UItemType> ItemType) {
 }
 
 void AJetpackItem::OnFuelRecipeAmountChanged(float Amount) {

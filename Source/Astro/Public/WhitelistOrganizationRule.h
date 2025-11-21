@@ -17,6 +17,9 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bShowIndicators: 1;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bIgnoreCanisterContents: 1;
+    
 public:
     UWhitelistOrganizationRule();
 

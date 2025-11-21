@@ -8,6 +8,7 @@
 #include "ActuatorCableLocalState.h"
 #include "ActuatorConnections.h"
 #include "ActuatorConnectorLocalState.h"
+#include "EActuatorChannel.h"
 #include "EAuxSlotType.h"
 #include "EFullnessActuatorEventType.h"
 #include "ItemHighlightInterface.h"
@@ -90,6 +91,12 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     USceneComponent* RerouteNodeTooltipAnchor;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FName> AllowedActuators;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EActuatorChannel ActuatorChannel;
+    
 public:
     UActuatorComponent(const FObjectInitializer& ObjectInitializer);
 
@@ -109,7 +116,7 @@ public:
     
 protected:
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
-    void MulticastOnActuate(EFullnessActuatorEventType eventType);
+    void MulticastOnActuate(EFullnessActuatorEventType EventType);
     
 private:
     UFUNCTION(BlueprintCallable)
@@ -137,6 +144,9 @@ protected:
     void HandleDestroyed(AActor* DestroyedActor);
     
 public:
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    TArray<FSlotReference> GetConnectors() const;
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AuthorityScheduleActuation(APlayController* Instigator, int32 tickDelay, EFullnessActuatorEventType FullnessActuatorEventType, const UObject* UniqueReference, bool makeUnique, EAuxSlotType slotTypeToTrigger);
     

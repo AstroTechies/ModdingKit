@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-#include "Engine/EngineTypes.h"
 #include "Components/SceneComponent.h"
 #include "GameplayTagContainer.h"
+#include "Chaos/ChaosEngineInterface.h"
 #include "ChildModifierCacheEntry.h"
 #include "CustomGameBiomeData.h"
 #include "CustomGameModifierCollection.h"
@@ -11,6 +11,7 @@
 #include "DeferredObjectCreationNodeData.h"
 #include "DeformableInterfaceT2.h"
 #include "DeformationParamsT2.h"
+#include "EOperationMode.h"
 #include "EPlanetOptimization.h"
 #include "EPolygonizerType.h"
 #include "GlobalBiome.h"
@@ -18,6 +19,7 @@
 #include "T2MaterialCache.h"
 #include "Templates/SubclassOf.h"
 #include "UndergroundBiome.h"
+#include "VoxelMaterial.h"
 #include "VoxelVolumeComponent.generated.h"
 
 class AActor;
@@ -25,6 +27,7 @@ class AAstroFoliageActor;
 class UAstroFoliageDestructionData;
 class UMaterialInterface;
 class UMaterialRemapTable;
+class UProceduralModifier;
 class UTerrain2ProceduralMeshComponent;
 class UVoxelVolumeMaterialPalette;
 
@@ -62,6 +65,9 @@ private:
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     int32 CustomGameSeed;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EOperationMode OperationMode;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float VolumeRadius;
@@ -125,6 +131,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ObjectRegistrationTimeslice;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UProceduralModifier* VoxelFunction;
     
     UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SurfaceBiomeHighWeightCutoff;
@@ -210,6 +219,12 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void LogCustomGameBiomeModifiersData();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool IsPointInsideVoxelVolume(const FVector& InLocation) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    FVoxelMaterial GetTerrainMaterial(const FVector& Location) const;
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintPure)
     float GetSurfaceHeightAtLocation(FVector Location) const;

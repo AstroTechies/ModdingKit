@@ -56,6 +56,9 @@ protected:
 public:
     UStorageCanisterComponent(const FObjectInitializer& ObjectInitializer);
 
+    UFUNCTION(BlueprintCallable)
+    void SetManuallyDisabled(const bool bInIsDisabled);
+    
 protected:
     UFUNCTION(BlueprintCallable)
     void OnSlottedItemsChanged(APhysicalItem* changedItem);
@@ -75,9 +78,11 @@ protected:
     UFUNCTION(BlueprintCallable)
     void HandleOnPlacedInSlot();
     
+public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetIsDispensing() const;
     
+protected:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanMoveItems() const;
     

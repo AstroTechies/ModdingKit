@@ -6,7 +6,9 @@ UItemType::UItemType() {
     this->IsVolatile = false;
     this->IsPower = false;
     this->IsOxygen = false;
+    this->bIsMegastructure = false;
     this->CreativeSpawnEmpty = false;
+    this->DLCEntitlementLock = EItemDLCEntitlementLock::None;
     this->UseSquareIconBackground = false;
     this->bCanBeScrapped = false;
     this->bApplyTintToHarvestActors = true;
@@ -22,11 +24,16 @@ UItemType::UItemType() {
     this->BundleType = NULL;
     this->DefaultContainerIndicatorType = NULL;
     this->AstropediaResourceType = EAstroGameMenuTutoriaSlideCardKey::Invalid;
+    this->MegastructureRecipe = NULL;
     this->bHasAltConstructionRecipe = false;
     this->CatalogData = NULL;
     this->ResearchSubjectDefinition = NULL;
     this->CrateOverlayTexture = NULL;
     this->WidgetIcon = NULL;
+}
+
+UMegastructureRecipe* UItemType::GetMegastructureRecipe() const {
+    return NULL;
 }
 
 FRecipe UItemType::GetConstructionRecipe() const {

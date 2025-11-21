@@ -17,8 +17,15 @@ ASolarBody::ASolarBody(const FObjectInitializer& ObjectInitializer) : Super(Obje
     this->SecondsPerSkyboxRevolution = 0.00f;
     this->FreezeOrbit = false;
     this->Stationary = false;
+    this->IsFakeTerrainObject = false;
     this->OrbitingBody = NULL;
     this->OrbitDistance = 0.00f;
+    this->OrbitAngle = 20.00f;
+    this->SunExposureModifier = 1.00f;
+    this->bAllowsCreativeFlight = false;
+    this->Seed = -1;
+    this->bRandomizeSeedForBuild = true;
+    this->bRandomizeSeedForPIE = false;
     this->LastCalculatedNormalizedDayTime = 0.00f;
     this->DayTimeBias = 0.00f;
     this->LastSetOrbitAxisRotation = 0.00f;
@@ -42,7 +49,7 @@ void ASolarBody::SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* proxy) {
 void ASolarBody::OnRep_OrbitAxis() {
 }
 
-void ASolarBody::OnLocalPlayerPlanetSelectionEnd() {
+void ASolarBody::OnLocalPlayerPlanetSelectionEnd(ASolarBody* newSolarBody) {
 }
 
 void ASolarBody::OnLocalPlayerPlanetSelectionBegin(ASolarBody* homeSolarBody) {
@@ -52,6 +59,18 @@ void ASolarBody::OnLocalPlayerLocalSolarBodyChanged(ASolarBody* newLocalSolarBod
 }
 
 void ASolarBody::OnCreativeModeEnabledChanged(bool CreativeModeEnabled) {
+}
+
+UVoxelVolumeComponent* ASolarBody::GetVoxelVolumeComponent(const FVector& InLocation) const {
+    return NULL;
+}
+
+FVoxelMaterial ASolarBody::GetTerrainMaterial(const FVector& Location) const {
+    return FVoxelMaterial{};
+}
+
+float ASolarBody::GetTerrainDensity(const FVector& Location) const {
+    return 0.0f;
 }
 
 USceneComponent* ASolarBody::GetProxyComponent() {

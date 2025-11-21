@@ -89,7 +89,7 @@ void AAstroGameMode::OnFullLicenseDetected() {
 void AAstroGameMode::MovePlayersToSpawnPositions() {
 }
 
-void AAstroGameMode::LoadMap(TSoftObjectPtr<UWorld> Map) {
+void AAstroGameMode::LoadMap(UObject* WorldContextObject, TSoftObjectPtr<UWorld> Map) {
 }
 
 bool AAstroGameMode::IsPackagedBuild() {
@@ -120,7 +120,7 @@ EGameLifecycleState AAstroGameMode::GetCurrentLifecycleState() {
 void AAstroGameMode::ClearCinematicTerrainPoints() {
 }
 
-void AAstroGameMode::AuthoritySetDefaultSpawnLocation(FVector spawnLocation) {
+void AAstroGameMode::AuthoritySetDefaultSpawnLocation(FVector SpawnLocation) {
 }
 
 bool AAstroGameMode::AuthoritySelectStartingPointFromCandiates(FVector& outStartingLocation, FRotator& outStartingRotation) {

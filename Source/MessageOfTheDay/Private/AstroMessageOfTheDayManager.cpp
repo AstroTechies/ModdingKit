@@ -18,6 +18,10 @@ void UAstroMessageOfTheDayManager::MarkLatestFullscreenMotDSeen() {
 void UAstroMessageOfTheDayManager::HideFullscreenMotD() {
 }
 
+UMarketingWidgetsData* UAstroMessageOfTheDayManager::GetMarketingWidgetsForCurrentCulture() {
+    return NULL;
+}
+
 UMessageOfTheDay* UAstroMessageOfTheDayManager::GetForCurrentCulture() {
     return NULL;
 }

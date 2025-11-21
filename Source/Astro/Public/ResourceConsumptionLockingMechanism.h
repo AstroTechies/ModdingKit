@@ -1,11 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "LockingMechanism.h"
+#include "Templates/SubclassOf.h"
 #include "ResourceConsumptionLockingMechanism.generated.h"
 
 class AActor;
 class APawn;
 class APhysicalItem;
+class UItemType;
 
 UCLASS(Blueprintable)
 class ASTRO_API UResourceConsumptionLockingMechanism : public ULockingMechanism {
@@ -28,7 +30,7 @@ public:
     void OnItemSetInResourceConsumptionSlot(APhysicalItem* Item);
     
     UFUNCTION(BlueprintCallable)
-    void OnItemBeingConsumedDrained();
+    void OnItemBeingConsumedDrained(TSubclassOf<UItemType> ItemType);
     
     UFUNCTION(BlueprintCallable)
     void OnItemBeingConsumedDestroyed(AActor* DestroyedActor);

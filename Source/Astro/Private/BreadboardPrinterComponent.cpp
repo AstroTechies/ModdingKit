@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UBreadboardPrinterComponent::UBreadboardPrinterComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->PrintShaderThickness = 35.00f;
     this->CanPrintToSelfPlatform = true;
     this->PrintSpeedScalar = 1.00f;

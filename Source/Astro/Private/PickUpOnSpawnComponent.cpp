@@ -1,7 +1,6 @@
 #include "PickUpOnSpawnComponent.h"
 
 UPickUpOnSpawnComponent::UPickUpOnSpawnComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
 }
 
 void UPickUpOnSpawnComponent::ServerOnHandledLocalPickUp_Implementation() {

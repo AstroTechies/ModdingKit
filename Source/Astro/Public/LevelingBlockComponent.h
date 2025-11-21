@@ -23,7 +23,7 @@ private:
     USlotBehaviorTerrain* BehaviorTerrain;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
-    UParticleSystemComponent* particles;
+    UParticleSystemComponent* Particles;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnReplicated_VisibilitySourceMask, meta=(AllowPrivateAccess=true))
     uint8 VisibilityPlaced: 1;

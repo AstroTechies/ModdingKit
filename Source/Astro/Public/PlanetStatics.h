@@ -5,11 +5,14 @@
 #include "AstroStatics.h"
 #include "AtmosphericResource.h"
 #include "EPlanetIdentifier.h"
+#include "ESolarBodyIdentifier.h"
 #include "PlanetStatics.generated.h"
 
 class AActor;
 class AAstroPlanet;
 class AGateStation;
+class AMiniPlanet;
+class AOrbitalPlatform;
 class ASolarBody;
 class ASun;
 class UObject;
@@ -60,11 +63,17 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static ASun* GetSun(UObject* WorldContextObject);
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static ESolarBodyIdentifier GetSolarBodyIdentifier(const AActor* Actor);
+    
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static ASolarBody* GetSolarBodyByLocation(const UObject* WorldContextObject, FVector Location, bool bDoBoundsCheck, bool bVisitableByPlayerOnly);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static ASolarBody* GetSolarBody(AActor* Actor, bool bBoundsCheck);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
+    static TArray<ASolarBody*> GetSolarBodies(UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static TArray<AAstroPlanet*> GetPlanets(UObject* WorldContextObject);
@@ -80,6 +89,15 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static AAstroPlanet* GetPlanet(AActor* Actor, bool bBoundsCheck);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static EPlanetIdentifier GetOrbitalPlatformAndPlanetIdentifier(AActor* Actor);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
+    static AOrbitalPlatform* GetOrbitalPlatform(UObject* WorldContextObject);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
+    static AMiniPlanet* GetMiniPlanet(UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static AGateStation* GetGateStation(UObject* WorldContextObject);

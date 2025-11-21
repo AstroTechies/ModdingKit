@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UControlledVehicleMovement::UControlledVehicleMovement(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->MovingValue = 0.00f;
     this->TargetMovingValue = 0.00f;
     this->DoNotBindInputToControlComponent = false;

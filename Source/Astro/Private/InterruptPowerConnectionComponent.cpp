@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UInterruptPowerConnectionComponent::UInterruptPowerConnectionComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->bConnectionInterrupted = false;
 }
 

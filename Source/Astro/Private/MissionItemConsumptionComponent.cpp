@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UMissionItemConsumptionComponent::UMissionItemConsumptionComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->ConsumptionRate = 1.00f;
     this->ConsumptionSlotEjectionForce = 250000.00f;
     this->ConsumptionSlotOrganizationRule = NULL;

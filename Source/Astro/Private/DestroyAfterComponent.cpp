@@ -11,7 +11,7 @@ UDestroyAfterComponent::UDestroyAfterComponent(const FObjectInitializer& ObjectI
 void UDestroyAfterComponent::StartTimer() {
 }
 
-void UDestroyAfterComponent::PlayDestroyParticlesAndDelete(UParticleSystemComponent* particles, float playParticlesAfter, float destroyAfter) {
+void UDestroyAfterComponent::PlayDestroyParticlesAndDelete(UParticleSystemComponent* Particles, float playParticlesAfter, float destroyAfter) {
 }
 
 

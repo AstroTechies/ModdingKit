@@ -2,5 +2,6 @@
 
 FCrackedReplicationData::FCrackedReplicationData() {
     this->bCracked = false;
+    this->bExaminable = false;
 }
 

@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UTerrainAnalyzerComponent::UTerrainAnalyzerComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->AnalyzedTerrainRetainsHardness = false;
     this->BaseFillRate = 0.40f;
     this->bAnalysisHasStarted = false;

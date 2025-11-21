@@ -1,6 +1,7 @@
 #include "ControlPanelButton.h"
 
 AControlPanelButton::AControlPanelButton(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->Name = TEXT("DefaultButton");
     this->bHasCover = false;
     this->bCloseCoverOnUnHover = false;
     this->bCoverOpenedWhenEnabled = false;

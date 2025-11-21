@@ -4,11 +4,11 @@
 #include "UObject/NoExportTypes.h"
 #include "GameFramework/Actor.h"
 #include "EAstroPlayerStormRadiusStates.h"
-#include "EPlanetIdentifier.h"
 #include "PlayerStormEffectsInfo.h"
 #include "PlayerStormRadiusStateChangeDelegateDelegate.h"
+#include "StormSpawnedLocalPointClientComponentContainer.h"
 #include "StormSpawnedLocalPointFXConfig.h"
-#include "StormSpawnedLocalPointFXState.h"
+#include "StormSpawnedLocalPointFXStateContainer.h"
 #include "Templates/SubclassOf.h"
 #include "AstroStorm.generated.h"
 
@@ -21,19 +21,19 @@ UCLASS(Blueprintable)
 class ASTRO_API AAstroStorm : public AActor {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, SaveGame, meta=(AllowPrivateAccess=true))
     int32 StormID;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, SaveGame, meta=(AllowPrivateAccess=true))
     int32 StateIndex;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, SaveGame, meta=(AllowPrivateAccess=true))
     float Age;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, SaveGame, meta=(AllowPrivateAccess=true))
     float Lifetime;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FPlayerStormEffectsInfo> PlayerStormEffectsInfo;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -58,55 +58,31 @@ public:
     float PlayerGameplayRadius;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float OuterEdgeFogRadius;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float InnerEdgeFogRadius;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float OuterEyeFogRadius;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float InnerEyeFogRadius;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float InStormFogMaxOpacity;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float EyeFogMaxOpacity;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float InStormFogDensity;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float EyeFogDensity;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float PlayerFogRadius;
+    float WindPowerScalar;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float PlayerGlitchWallApproachDistance;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     bool LocalPointSpawnedFXEnabled;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FStormSpawnedLocalPointFXConfig> SpawnedFXConfigs;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TMap<UParticleSystem*, int32> SpawnedFXConfigIndexMap;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_SpawnedFXStateContainers, meta=(AllowPrivateAccess=true))
+    TArray<FStormSpawnedLocalPointFXStateContainer> SpawnedFXStateContainers;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_SpawnedFXStates, meta=(AllowPrivateAccess=true))
-    TArray<FStormSpawnedLocalPointFXState> SpawnedFXStates;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    TArray<FStormSpawnedLocalPointClientComponentContainer> SpawnedLocalPointParticleSystemComponentContainers;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<FStormSpawnedLocalPointFXState> PrevSpawnedFXStates;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    TArray<FStormSpawnedLocalPointFXStateContainer> PrevSpawnedFXStateContainers;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FVector> ClientSpawnedFXActiveEmitterPositions;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    bool SpawnedFXStatesInitialized;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    bool SpawnedFXStateContainersInitialized;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FPlayerStormRadiusStateChangeDelegate PlayerEnteredStorm;
@@ -120,7 +96,7 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FPlayerStormRadiusStateChangeDelegate PlayerExitedEye;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     AAstroStormVisualBase* StormVisualActor;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -138,7 +114,7 @@ public:
     
 private:
     UFUNCTION(BlueprintCallable)
-    UParticleSystemComponent* SpawnLocalPointSpawnedFX(UParticleSystem* ParticleTemplate, FVector Position, FTransform SpawnTransform);
+    UParticleSystemComponent* SpawnLocalPointSpawnedFX(UParticleSystem* ParticleTemplate, FVector Position, FTransform SpawnTransform, float NewAge);
     
 public:
     UFUNCTION(BlueprintCallable)
@@ -153,16 +129,15 @@ public:
     UFUNCTION(BlueprintCallable)
     void RegisterPlayerForStormEffectsTracking(AAstroPlayerController* PlayerController);
     
-    UFUNCTION(BlueprintCallable)
-    void OnRep_SpawnedFXStates();
-    
 private:
     UFUNCTION(BlueprintCallable)
-    void OnPlanetVirusProtectionUpdated(EPlanetIdentifier planetID);
+    void OnVirusProtectionUpdated();
     
+public:
     UFUNCTION(BlueprintCallable)
-    void OnParticleSystemFinished(UParticleSystemComponent* FinishedComponent);
+    void OnRep_SpawnedFXStateContainers();
     
+private:
     UFUNCTION(BlueprintCallable)
     bool IsSafeSpawnedFXLocation(FVector Location, float Radius);
     

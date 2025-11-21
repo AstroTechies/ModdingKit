@@ -9,6 +9,7 @@ UAstroGameUserSettings::UAstroGameUserSettings() {
     this->SoundFXVol = 0.80f;
     this->VoiceVol = 0.80f;
     this->AmbientVol = 0.80f;
+    this->GamepadSpeakerVol = 0.80f;
     this->InvertedCameraYAxixMouse = false;
     this->bHoldToSprintMouse = true;
     this->bHoldToOrbitCamera = true;
@@ -19,9 +20,13 @@ UAstroGameUserSettings::UAstroGameUserSettings() {
     this->bSelectionWheelRequiresHold = true;
     this->bVehiclesUseAbsoluteSteering = true;
     this->bVehiclesUseYawAirControls = false;
+    this->bToggleSpeakerGamepad = true;
+    this->bToggleLightBarGamepad = true;
+    this->bToggleRumbleGamepad = true;
     this->MaxPlayers = 4;
     this->NumTimesCreativeTutorialShown = 3;
-    this->NumTimesAdventureTutorialShown = 3;
+    this->NumTimesAdventureTutorialShown = 25;
+    this->NumTimesGlitchwalkersTutorialShown = 3;
     this->AllowInitialPlanetSelection = false;
     this->FOVOffset = 0;
     this->HQTerrain = false;
@@ -33,6 +38,8 @@ UAstroGameUserSettings::UAstroGameUserSettings() {
     this->AllowPS4CrossNetworkPlay = false;
     this->CompassCameraTilt = 25.00f;
     this->CompassScale = 1.00f;
+    this->StormsDisabled = false;
+    this->bCableSnapWarning = false;
     this->IgnoreBindingKeys.AddDefaulted(11);
 }
 
@@ -58,6 +65,18 @@ void UAstroGameUserSettings::SetUseLegacyAddMode(bool inUseLegacyAddMode, APlaye
 }
 
 void UAstroGameUserSettings::SetupInputMappings(APlayerController* PlayController) {
+}
+
+void UAstroGameUserSettings::SetToggleSpeakerGamepad(bool InToggleSpeakerGamepad) {
+}
+
+void UAstroGameUserSettings::SetToggleRumbleGamepad(bool InToggleRumbleGamepad) {
+}
+
+void UAstroGameUserSettings::SetToggleLightBarGamepad(bool InToggleLightBarGamepad) {
+}
+
+void UAstroGameUserSettings::SetStormsDisabled(bool NewStormsDisabled) {
 }
 
 void UAstroGameUserSettings::SetSfxVolume(float InSfxVolume) {
@@ -123,6 +142,9 @@ void UAstroGameUserSettings::SetHoldToSprintGamepad(bool InHoldToSprint) {
 void UAstroGameUserSettings::SetHoldToOrbitCamera(bool InHoldToOrbitCamera) {
 }
 
+void UAstroGameUserSettings::SetGamepadSpeakerVolume(float InGamepadSpeakerVolume) {
+}
+
 void UAstroGameUserSettings::SetFpsLimit(float InFpsLimit) {
 }
 
@@ -136,6 +158,9 @@ void UAstroGameUserSettings::SetCompassCameraTilt(float NewCompassCameraTilt) {
 }
 
 void UAstroGameUserSettings::SetCloudQuality(int32 InCloudQuality) {
+}
+
+void UAstroGameUserSettings::SetCableSnapWarning(bool cableSnapWarning) {
 }
 
 void UAstroGameUserSettings::SetBrightness(int32 InBrightness) {
@@ -156,6 +181,9 @@ void UAstroGameUserSettings::SetAllowInitialPlanetSelection(bool InAllowInitialP
 void UAstroGameUserSettings::RestoreInputDefaults(APlayerController* PlayController, bool ForGamepad) {
 }
 
+void UAstroGameUserSettings::ResetNumTimesGlitchwalkersTutorialShown() {
+}
+
 void UAstroGameUserSettings::ResetNumTimesCreativeTutorialShown() {
 }
 
@@ -168,7 +196,10 @@ void UAstroGameUserSettings::RemoveInputAxisMapping(FKey Key, FName AxisName, fl
 void UAstroGameUserSettings::RemoveInputActionMapping(FKey Key, FName ActionName, bool ForGamepad) {
 }
 
-void UAstroGameUserSettings::PreviewAudioSettings(float NewMusicVol, float sfxVol, float NewVoiceVol, float NewAmbientVol) {
+void UAstroGameUserSettings::PreviewAudioSettings(float NewMusicVol, float sfxVol, float NewVoiceVol, float NewAmbientVol, float NewGamepadSpeakerVol) {
+}
+
+void UAstroGameUserSettings::IncrementNumTimesGlitchwalkersTutorialShown() {
 }
 
 void UAstroGameUserSettings::IncrementNumTimesCreativeTutorialShown() {
@@ -201,12 +232,32 @@ bool UAstroGameUserSettings::GetUseLegacyAddMode() const {
     return false;
 }
 
+bool UAstroGameUserSettings::GetToggleSpeakerGamepad() const {
+    return false;
+}
+
+bool UAstroGameUserSettings::GetToggleRumbleGamepad() const {
+    return false;
+}
+
+bool UAstroGameUserSettings::GetToggleLightBarGamepad() const {
+    return false;
+}
+
+bool UAstroGameUserSettings::GetStormsDisabled() const {
+    return false;
+}
+
 float UAstroGameUserSettings::GetSfxVolume() const {
     return 0.0f;
 }
 
 bool UAstroGameUserSettings::GetSelectionWheelRequiresHold() const {
     return false;
+}
+
+uint8 UAstroGameUserSettings::GetNumTimesGlitchwalkersTutorialShown() const {
+    return 0;
 }
 
 uint8 UAstroGameUserSettings::GetNumTimesCreativeTutorialShown() const {
@@ -301,6 +352,10 @@ bool UAstroGameUserSettings::GetHoldToOrbitCamera() const {
     return false;
 }
 
+float UAstroGameUserSettings::GetGamepadSpeakerVolume() const {
+    return 0.0f;
+}
+
 float UAstroGameUserSettings::GetFpsLimit() {
     return 0.0f;
 }
@@ -319,6 +374,10 @@ float UAstroGameUserSettings::GetCompassCameraTilt() const {
 
 int32 UAstroGameUserSettings::GetCloudQuality() const {
     return 0;
+}
+
+bool UAstroGameUserSettings::GetCableSnapWarningEnabled() const {
+    return false;
 }
 
 int32 UAstroGameUserSettings::GetBrightness() const {

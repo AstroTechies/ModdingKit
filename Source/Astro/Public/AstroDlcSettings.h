@@ -10,6 +10,12 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, GlobalConfig, meta=(AllowPrivateAccess=true))
     TArray<FString> GlitchwalkersId;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, GlobalConfig, meta=(AllowPrivateAccess=true))
+    TArray<FString> StarSeekerId;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, GlobalConfig, meta=(AllowPrivateAccess=true))
+    TArray<FString> MegatechId;
+    
     UAstroDlcSettings();
 
 };

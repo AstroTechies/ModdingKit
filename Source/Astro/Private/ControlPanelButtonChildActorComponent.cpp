@@ -11,10 +11,10 @@ void UControlPanelButtonChildActorComponent::SpoofButtonPress() {
 void UControlPanelButtonChildActorComponent::SetEnabled(bool Enabled) {
 }
 
-void UControlPanelButtonChildActorComponent::RerouteOnPressed() {
+void UControlPanelButtonChildActorComponent::RerouteOnPressed(AControlPanelButton* Actor) {
 }
 
-void UControlPanelButtonChildActorComponent::RerouteOnArmedChanged(bool IsArmed) {
+void UControlPanelButtonChildActorComponent::RerouteOnArmedChanged(bool IsArmed, AControlPanelButton* Actor) {
 }
 
 bool UControlPanelButtonChildActorComponent::GetEnabled() {

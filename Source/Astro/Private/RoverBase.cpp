@@ -25,10 +25,10 @@ bool ARoverBase::ServerReceiveSeatExitOverriddenWithFlip_Validate(bool ExitOverr
     return true;
 }
 
-void ARoverBase::RouteAux2ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType) {
+void ARoverBase::RouteAux2ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> EventType) {
 }
 
-void ARoverBase::RouteAux1ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType) {
+void ARoverBase::RouteAux1ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> EventType) {
 }
 
 void ARoverBase::HandleVehicleUnmanned(AAstroPlayerController* OldPilot) {

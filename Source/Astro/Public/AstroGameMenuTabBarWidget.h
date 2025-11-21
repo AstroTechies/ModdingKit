@@ -11,6 +11,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FAstroGameMenuTabBarAuthoringData AuthoringData;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool IsActive;
+    
     UAstroGameMenuTabBarWidget();
 
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)

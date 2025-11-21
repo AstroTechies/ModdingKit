@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UActorStreamingPowerNodeComponent::UActorStreamingPowerNodeComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->CanPropagateDirectionalConnectionSwaps = false;
     this->bSkipPacketLoopProtectionCheck = false;
 }

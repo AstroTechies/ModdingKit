@@ -3,6 +3,7 @@
 #include "GameFramework/Actor.h"
 #include "InputCoreTypes.h"
 #include "EControlPanelNavigationDirection.h"
+#include "ELogisticsComplexChannel.h"
 #include "SignalDelegate.h"
 #include "ControlPanel.generated.h"
 
@@ -62,6 +63,9 @@ protected:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AnalogStickNavigationThreshold;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    ELogisticsComplexChannel PadChannel;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bAutoOptimizeHierarchy: 1;

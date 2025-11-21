@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UActorStreamingPowerCableComponent::UActorStreamingPowerCableComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
 }
 
 void UActorStreamingPowerCableComponent::SetDirectionalConnectionSplitRatio(float ratio) {

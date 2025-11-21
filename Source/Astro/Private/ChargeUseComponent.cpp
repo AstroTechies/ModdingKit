@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UChargeUseComponent::UChargeUseComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->DischargeRate = 1.00f;
     this->canUse = false;
     this->Usable = false;

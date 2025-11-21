@@ -1,7 +1,7 @@
 {
     "STATICS": {
         "MODULES_TO_INCLUDE": ["Astro", "MessageOfTheDay", "Terrain2"],
-        "BANNED_MODULES": ["AstroOnline", "AstroPlayFab", "AstroPlayFabBPL", "AnalyticsBlueprintLibrary"],
+        "BANNED_MODULES": ["AstroOnline", "AstroPlayFab", "AstroPlayFabBPL", "AnalyticsBlueprintLibrary", "HockeySDK"],
         "FORCE_BAN_NAMES_WHEN_IMPORTED": [],
         "FORCE_BAN_NAMES": ["StoreWidgetClass", "StoreWidgetInstance", "SpecificCustomizationContent", "MicroTxnStoreGlobals", "AnalyticsEventAttr", "RawDistributionFloat", "PlanetEffectRelevancyChanged", "OnConfigPlayfabCacheUpdateFailedMulticastDelegate", "OnConfigMetaDataCachePlayfabUpdateFailedMulticastDelegate", "OnConfigCacheUpdatedDelegate", "OnCGMConfigPublishedDelegate", "OnConfigImportFailedMulticastDelegate", "OnConfigImportSucceededMulticastDelegate", "OnConfigLocalCacheUpdateFailedMulticastDelegate", "OnRespawnTokenCountUpdated", "OnIsCustomGameChanged", "OnCustomGameSettingsChanged", "OnCustomGameSettingModified"],
         "DELETE_ALL_FILES_CONTAINING_IN_TITLE": ["AstroStore", "AstroVirtualCurrency", "AstroMicroTxn", "AstroPlatformSpecificCustomizationContent", "AstroAnalytics", "DlcManager", "PlayFabTxnManager", "SegmentedInt", "SegmentedString"],
@@ -13,6 +13,9 @@
         },
         "FNetUnstableActorReference": {
             "SUBSTITUTE": "AActor*"
+        },
+        "ESaveGameOperationResult::Success": {
+            "SUBSTITUTE": "0"
         },
         "ESaveGameOperationResult": {
             "SUBSTITUTE": "uint8"
@@ -31,6 +34,9 @@
         },
         "const FProperty* p_RemoteRole": {
             "DELETE": [0, 1]
+        },
+        "void OnAsyncMapLoadStarted": {
+            "REMOVE_BP_ACCESS": true
         }
     },
     "AstroApplyTransformTask": {
@@ -64,6 +70,19 @@
     "AstroPlayerController": {
         "TEnumAsByte<EInputEvent>": {
             "SUBSTITUTE": "EInputEvent"
+        }
+    },
+    "PreviewDisplayComponent": {
+        "OnDeployReadyChanged": {
+            "DELETE": [-1, 0]
+        },
+        "OnIndicatorVisibleChanged": {
+            "DELETE": [-1, 0]
+        }
+    },
+    "DeployableItemPackageComponent": {
+        "OnAssignPackageMaterial": {
+            "DELETE": [-1, 0]
         }
     },
     "ItemCatalogData": {

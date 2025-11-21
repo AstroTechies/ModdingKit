@@ -27,6 +27,14 @@ FVector UAstroStatics::VelocityAtWorldLocation(UPrimitiveComponent* Component, F
 void UAstroStatics::UpdatePhysicsConstraintFrames(UPhysicsConstraintComponent* Component) {
 }
 
+UPSActivitiesManager* UAstroStatics::TryGetPSActivitiesManager(UObject* WorldContextObject) {
+    return NULL;
+}
+
+ULightBarManager* UAstroStatics::TryGetLightBarManager(UObject* WorldContextObject) {
+    return NULL;
+}
+
 UCreativeModeData* UAstroStatics::TryGetCreativeModeData(const UObject* WorldContextObject) {
     return NULL;
 }
@@ -84,6 +92,10 @@ FTimerHandle UAstroStatics::SetTimerFromFunctionWithDelay(UObject* Object, const
 }
 
 void UAstroStatics::SetStateFirstAvailableSaveSlot(UObject* WorldContextObject) {
+}
+
+APlayController* UAstroStatics::SetSolarSelection_PlanetOnly(UObject* WorldContextObject, const bool bInEnabled) {
+    return NULL;
 }
 
 void UAstroStatics::SetSkeletalMeshPlaybackRatio(USkeletalMeshComponent* Mesh, float PlaybackRatio, bool bFireNotifies) {
@@ -315,7 +327,15 @@ bool UAstroStatics::IsPlatformSwitch() {
     return false;
 }
 
+bool UAstroStatics::IsPlatformPS5() {
+    return false;
+}
+
 bool UAstroStatics::IsPlatformPS4() {
+    return false;
+}
+
+bool UAstroStatics::IsPlatformPS() {
     return false;
 }
 
@@ -373,6 +393,10 @@ bool UAstroStatics::IsAnalyticsEnabled(UObject* WorldContextObject) {
 
 float UAstroStatics::InterpToRange(float Min, float Max, float CurrentValue, float TargetLerp, float DeltaTime, float Speed) {
     return 0.0f;
+}
+
+uint8 UAstroStatics::ImportPS4SaveDataToPS5(UObject* WorldContextObject) {
+    return 0;
 }
 
 FTransform UAstroStatics::IdentityTransform() {
@@ -449,6 +473,10 @@ int32 UAstroStatics::GetPlatformSaveStorageLimit() {
 
 int32 UAstroStatics::GetPlatformLowFreeStorageSpaceThreshold() {
     return 0;
+}
+
+AActor* UAstroStatics::GetParentOfType(const AActor* Parent, const TSubclassOf<AActor> InClass) {
+    return NULL;
 }
 
 APlayerController* UAstroStatics::GetOwnerPlayerControllerForActor(const AActor* Actor) {
@@ -551,7 +579,7 @@ FString UAstroStatics::GetDedicatedServerSearchName(const UObject* WorldContextO
     return TEXT("");
 }
 
-bool UAstroStatics::GetCVar_Integer(const FString& cvarName, int32& outInteger) {
+bool UAstroStatics::GetCVar_Integer(const FString& CVarName, int32& outInteger) {
     return false;
 }
 
@@ -626,8 +654,24 @@ AActor* UAstroStatics::GetAttachParentActor(AActor* Actor) {
     return NULL;
 }
 
+FAstroActivityData UAstroStatics::GetAstroPSActivityData(EAstroPSActivity AstroPSActivity) {
+    return FAstroActivityData{};
+}
+
+UAstroPSActivitiesDatabase* UAstroStatics::GetAstroPSActivitiesDatabase() {
+    return NULL;
+}
+
 AAstroMissionsManager* UAstroStatics::GetAstroMissionsManager(const UObject* WorldContextObject) {
     return NULL;
+}
+
+FAstroLightBarData UAstroStatics::GetAstroLightBarData(EAstroLightBar AstroLightBar) {
+    return FAstroLightBarData{};
+}
+
+FString UAstroStatics::GetAstroGamepadWwiseDevice(EAstroWwiseDevice AstroWwiseDevice) {
+    return TEXT("");
 }
 
 FSlateColor UAstroStatics::GetAstroColorAsSlateColor(EAstroColor AstroColor) {
@@ -706,6 +750,10 @@ UMaterialInstanceDynamic* UAstroStatics::CreatePostprocessMaterialDynamic(int32 
     return NULL;
 }
 
+UPrimitiveComponent* UAstroStatics::CreateIndicatorMeshFromComponent(USceneComponent* Component, AActor* indicatorOwner, FTransform IndicatorTransform, bool& bOutRequireCollision) {
+    return NULL;
+}
+
 TArray<UMaterialInstanceDynamic*> UAstroStatics::CreateAllDynamicMaterialInstances(AActor* Actor, UMaterialInterface* Material) {
     return TArray<UMaterialInstanceDynamic*>();
 }
@@ -733,12 +781,15 @@ FVector UAstroStatics::ClosestPointOnLine(const FVector& LineStart, const FVecto
 void UAstroStatics::ChangeMultiplayerMode(const UObject* WorldContextObject) {
 }
 
-int32 UAstroStatics::CastPhysicalSurfaceToInteger(TEnumAsByte<EPhysicalSurface> surface) {
+int32 UAstroStatics::CastPhysicalSurfaceToInteger(TEnumAsByte<EPhysicalSurface> Surface) {
     return 0;
 }
 
 bool UAstroStatics::CanGetSavedGames(UObject* WorldContextObject) {
     return false;
+}
+
+void UAstroStatics::AuthoritySpawnOrbitalPlatform(const UObject* WorldContextObject, const EPlanetIdentifier inPlanetId) {
 }
 
 void UAstroStatics::AddPostProcessBlendableMaterial(const FPostProcessSettings& InSettings, FPostProcessSettings& OutSettings, UMaterial* Material) {

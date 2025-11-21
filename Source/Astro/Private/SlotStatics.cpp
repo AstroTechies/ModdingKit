@@ -60,7 +60,7 @@ int32 USlotStatics::TakeItemToSlotArray(const TArray<FSlotReference>& Slots, FSl
     return 0;
 }
 
-int32 USlotStatics::TakeItemRateDelta(FSlotReference Slot, TSubclassOf<UItemType> Type, float Rate, float DeltaTime) {
+int32 USlotStatics::TakeItemRateDelta(FSlotReference Slot, TSubclassOf<UItemType> Type, float Rate, float DeltaTime, float CanisterConsumptionRateMultiplier) {
     return 0;
 }
 
@@ -76,11 +76,23 @@ int32 USlotStatics::TakeItemFromSlotArrayRate(UObject* WorldContextObject, const
     return 0;
 }
 
+int32 USlotStatics::TakeItemFromSlotArrayExact(const TArray<FSlotReference>& Slots, TSubclassOf<UItemType> Type, int32 Amount) {
+    return 0;
+}
+
 int32 USlotStatics::TakeItemFromSlotArray(const TArray<FSlotReference>& Slots, TSubclassOf<UItemType> Type, int32 Amount) {
     return 0;
 }
 
-int32 USlotStatics::TakeItem(FSlotReference Slot, TSubclassOf<UItemType> Type, int32 Amount) {
+int32 USlotStatics::TakeItemExactAtRateDelta(FSlotReference SlotRef, TSubclassOf<UItemType> Type, float Rate, float DeltaTime) {
+    return 0;
+}
+
+int32 USlotStatics::TakeItemExact(FSlotReference Slot, TSubclassOf<UItemType> Type, int32 Amount) {
+    return 0;
+}
+
+int32 USlotStatics::TakeItem(FSlotReference Slot, TSubclassOf<UItemType> Type, int32 Amount, float CanisterConsumptionRateMultiplier) {
     return 0;
 }
 
@@ -156,6 +168,10 @@ FSlotReference USlotStatics::SlotArrayQueryBestEmptySlot(const TArray<FSlotRefer
     return FSlotReference{};
 }
 
+bool USlotStatics::SlotArrayHasItemRecursive(const TArray<FSlotReference>& inSlots, const TSubclassOf<UItemType> InType) {
+    return false;
+}
+
 bool USlotStatics::SlotArrayHasItem(const TArray<FSlotReference>& Slots, TSubclassOf<UItemType> Type) {
     return false;
 }
@@ -207,7 +223,11 @@ int32 USlotStatics::SlotArrayEmptyCount(const TArray<FSlotReference>& Slots) {
     return 0;
 }
 
-bool USlotStatics::MoveItemFromCurrentSlotToSlotArray(APhysicalItem* Item, const TArray<FSlotReference>& Slots) {
+bool USlotStatics::MoveItemFromCurrentSlotToSlotArray(APhysicalItem* Item, const TArray<FSlotReference>& Slots, const bool bInShouldFillAllSlots) {
+    return false;
+}
+
+bool USlotStatics::IsSlotReserved(const FSlotReference& SlotRef) {
     return false;
 }
 
@@ -219,11 +239,23 @@ bool USlotStatics::IsCompatibleWithType(FSlotReference Slot, TSubclassOf<UItemTy
     return false;
 }
 
+bool USlotStatics::IsBackpackSlot(const FSlotReference& SlotRef) {
+    return false;
+}
+
 bool USlotStatics::IsAPowerCableSlot(FSlotReference SlotRef) {
     return false;
 }
 
 bool USlotStatics::HasSpaceAvailableAtTier(FSlotReference SlotRef, int32 Tier, bool AsIndicator) {
+    return false;
+}
+
+bool USlotStatics::HasPartialItem(FSlotReference Slot, TSubclassOf<UItemType> Type) {
+    return false;
+}
+
+bool USlotStatics::HasItemRecursive(FSlotReference Slot, const TSubclassOf<UItemType> InType) {
     return false;
 }
 
@@ -257,6 +289,10 @@ TSubclassOf<UItemType> USlotStatics::GetStoredSubItemTypeClass(FSlotReference Sl
 
 UItemType* USlotStatics::GetStoredSubItemTypeCDO(FSlotReference SlotRef) {
     return NULL;
+}
+
+TArray<APhysicalItem*> USlotStatics::GetSortedItemsByPartials(const TArray<APhysicalItem*>& inItems, const TSubclassOf<UItemType>& InType) {
+    return TArray<APhysicalItem*>();
 }
 
 FVector USlotStatics::GetSlotRangeLocation(const FSlotReference& SlotRef) {
@@ -318,6 +354,10 @@ int32 USlotStatics::FindFirstAvailableSubslot(FSlotReference SlotRef, int32 Tier
 void USlotStatics::EjectAllItemsInSubslotAndChildSubslots(FSlotReference SlotRef, int32 SubslotIndex, bool NewOwner, bool FromTool, float RandomForce) {
 }
 
+int32 USlotStatics::CreateIndicatorFromClassInSlot(TSubclassOf<APhysicalItem> ItemClass, const FSlotReference& SlotRef) {
+    return 0;
+}
+
 APhysicalItem* USlotStatics::CloneItemIntoSlot(APhysicalItem* ItemToClone, FSlotReference SlotToSpawnCloneIn) {
     return NULL;
 }
@@ -328,6 +368,10 @@ bool USlotStatics::AttemptToPlacePrimaryItemInConnectedStorageSlotNetwork(FSlotR
 
 bool USlotStatics::AttemptToPlaceItemInConnectedStorageSlotNetwork(APhysicalItem* Item, AActor* ActorInStorageNetwork) {
     return false;
+}
+
+int32 USlotStatics::AddToSlotArraySorted(const TArray<FSlotReference>& Slots, TSubclassOf<UItemType> Type, int32 Amount) {
+    return 0;
 }
 
 int32 USlotStatics::AddToSlotArrayRateDelta(const TArray<FSlotReference>& Slots, TSubclassOf<UItemType> Type, float Rate, float DeltaTime) {

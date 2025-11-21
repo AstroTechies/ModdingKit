@@ -8,7 +8,7 @@
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
-#include "Engine/EngineTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=uint8 -FallbackName=uint8
 #include "GameFramework/GameUserSettings.h"
 #include "Engine/EngineTypes.h"
 #include "Engine/Scene.h"
@@ -16,18 +16,25 @@
 #include "Engine/NetSerialization.h"
 #include "Engine/NetSerialization.h"
 #include "InputCoreTypes.h"
+#include "Chaos/ChaosEngineInterface.h"
 #include "Styling/SlateColor.h"
 #include "Fonts/SlateFontInfo.h"
 #include "Components/SlateWrapperTypes.h"
+#include "AstroActivityData.h"
 #include "AstroClientProperties.h"
 #include "AstroDiscreteInputDefinition.h"
+#include "AstroLightBarData.h"
 #include "AstroSaveFileInformation.h"
 #include "EAstroColor.h"
 #include "EAstroDiscreteInputOptionPlayerFacing.h"
 #include "EAstroInputBindingNameMappings.h"
+#include "EAstroLightBar.h"
+#include "EAstroPSActivity.h"
+#include "EAstroWwiseDevice.h"
 #include "EGameControllerType.h"
 #include "EGamePlatform.h"
 #include "EPaintIndexType.h"
+#include "EPlanetIdentifier.h"
 #include "ESaveGameErrorType.h"
 #include "InteractionPromptEntryData.h"
 #include "OnAstroRenameSaveCompletedDynamicDelegate.h"
@@ -43,19 +50,23 @@ class AAstroGameState;
 class AAstroMissionsManager;
 class AAstroPlayerController;
 class APawn;
+class APlayController;
 class APlayerController;
 class UActorComponent;
 //class UAstroDlcManager;
 class UAstroEmoteDefinition;
 class UAstroGameInstance;
+class UAstroPSActivitiesDatabase;
 class UAstroSaveAsset;
 class UAudioComponent;
 class UChildActorComponent;
 class UCreativeModeData;
+class ULightBarManager;
 class UMaterial;
 class UMaterialInstanceDynamic;
 class UMaterialInterface;
 class UObject;
+class UPSActivitiesManager;
 class UPanelWidget;
 class UPhysicsConstraintComponent;
 class UPostProcessComponent;
@@ -89,6 +100,12 @@ public:
     
     UFUNCTION(BlueprintCallable)
     static void UpdatePhysicsConstraintFrames(UPhysicsConstraintComponent* Component);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
+    static UPSActivitiesManager* TryGetPSActivitiesManager(UObject* WorldContextObject);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
+    static ULightBarManager* TryGetLightBarManager(UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static UCreativeModeData* TryGetCreativeModeData(const UObject* WorldContextObject);
@@ -140,6 +157,9 @@ public:
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void SetStateFirstAvailableSaveSlot(UObject* WorldContextObject);
+    
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
+    static APlayController* SetSolarSelection_PlanetOnly(UObject* WorldContextObject, const bool bInEnabled);
     
     UFUNCTION(BlueprintCallable)
     static void SetSkeletalMeshPlaybackRatio(USkeletalMeshComponent* Mesh, float PlaybackRatio, bool bFireNotifies);
@@ -340,7 +360,13 @@ public:
     static bool IsPlatformSwitch();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    static bool IsPlatformPS5();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsPlatformPS4();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static bool IsPlatformPS();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsPlatformMKBEnabled();
@@ -383,6 +409,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static float InterpToRange(float Min, float Max, float CurrentValue, float TargetLerp, float DeltaTime, float Speed);
+    
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
+    static uint8 ImportPS4SaveDataToPS5(UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FTransform IdentityTransform();
@@ -440,6 +469,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetPlatformLowFreeStorageSpaceThreshold();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static AActor* GetParentOfType(const AActor* Parent, const TSubclassOf<AActor> InClass);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static APlayerController* GetOwnerPlayerControllerForActor(const AActor* Actor);
@@ -517,7 +549,7 @@ public:
     static FString GetDedicatedServerSearchName(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    static bool GetCVar_Integer(const FString& cvarName, int32& outInteger);
+    static bool GetCVar_Integer(const FString& CVarName, int32& outInteger);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 GetCvar_EnableBackpackTrickleCharge();
@@ -576,8 +608,20 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static AActor* GetAttachParentActor(AActor* Actor);
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static FAstroActivityData GetAstroPSActivityData(EAstroPSActivity AstroPSActivity);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static UAstroPSActivitiesDatabase* GetAstroPSActivitiesDatabase();
+    
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static AAstroMissionsManager* GetAstroMissionsManager(const UObject* WorldContextObject);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static FAstroLightBarData GetAstroLightBarData(EAstroLightBar AstroLightBar);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static FString GetAstroGamepadWwiseDevice(EAstroWwiseDevice AstroWwiseDevice);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FSlateColor GetAstroColorAsSlateColor(EAstroColor AstroColor);
@@ -643,6 +687,9 @@ public:
     static UMaterialInstanceDynamic* CreatePostprocessMaterialDynamic(int32 Index, UPostProcessComponent* PostProcess);
     
     UFUNCTION(BlueprintCallable)
+    static UPrimitiveComponent* CreateIndicatorMeshFromComponent(USceneComponent* Component, AActor* indicatorOwner, FTransform IndicatorTransform, bool& bOutRequireCollision);
+    
+    UFUNCTION(BlueprintCallable)
     static TArray<UMaterialInstanceDynamic*> CreateAllDynamicMaterialInstances(AActor* Actor, UMaterialInterface* Material);
     
     UFUNCTION(BlueprintCallable)
@@ -664,10 +711,13 @@ public:
     static void ChangeMultiplayerMode(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    static int32 CastPhysicalSurfaceToInteger(TEnumAsByte<EPhysicalSurface> surface);
+    static int32 CastPhysicalSurfaceToInteger(TEnumAsByte<EPhysicalSurface> Surface);
     
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool CanGetSavedGames(UObject* WorldContextObject);
+    
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, meta=(WorldContext="WorldContextObject"))
+    static void AuthoritySpawnOrbitalPlatform(const UObject* WorldContextObject, const EPlanetIdentifier inPlanetId);
     
     UFUNCTION(BlueprintCallable)
     static void AddPostProcessBlendableMaterial(const FPostProcessSettings& InSettings, FPostProcessSettings& OutSettings, UMaterial* Material);

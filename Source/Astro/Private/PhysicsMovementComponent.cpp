@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UPhysicsMovementComponent::UPhysicsMovementComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->MaxSteerAngle = 40.00f;
     this->RotationForce = 40.00f;
     this->HeadingStabilization = 0.25f;

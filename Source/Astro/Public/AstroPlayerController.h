@@ -53,8 +53,8 @@
 
 class AActor;
 class AAstroCharacter;
-class AAstroPlanet;
 class APhysicalItem;
+class ASolarBody;
 class UControlSymbol;
 class UItemType;
 class UObject;
@@ -96,6 +96,12 @@ public:
     FSignal OnMultiplayerDisabled;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FSignal OnPlayerJoinedSession;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FSignal OnPlayerLeftSession;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FPlayFabDataRefreshedDelegate OnPlayFabClientDataRefreshed;
     
 protected:
@@ -104,6 +110,9 @@ protected:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UPersistentLocalPlayerData* PersistentLocalData;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
+    bool HasGlitchwalkersEntitlement;
     
 private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -245,6 +254,12 @@ public:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSetSolarTimeScaleMultiplierCreative(float Scale);
     
+    UFUNCTION(BlueprintCallable, Reliable, Server)
+    void ServerSetPlayerOwnsMegaTech(bool ownsMegatech);
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server)
+    void ServerSetPlayerOwnsGlitchwalkers(bool ownsGlitchWalkers);
+    
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSetNormalizedTimeOfDayCreative(float Scale);
     
@@ -267,6 +282,9 @@ private:
     void ServerRequestTerrainCorrection(UVoxelVolumeComponent* voxelVolume, const TArray<uint64>& Nodes);
     
 public:
+    UFUNCTION(BlueprintCallable, Reliable, Server)
+    void ServerRequestOrbitalPlatformSeed();
+    
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerRequestFoliageDestruction(AActor* DestructionInstigator, FVector_NetQuantize100 Location, float Radius, float MassThreshold, bool bShouldCollectResourceNuggets);
     
@@ -339,6 +357,9 @@ public:
     void ServerClick(UPrimitiveComponent* Primitive, FTransform CameraTransform);
     
     UFUNCTION(BlueprintCallable, Reliable, Server)
+    void ServerClearStormEffects();
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server)
     void ServerClearStatusModifiers();
     
     UFUNCTION(BlueprintCallable, Reliable, Server)
@@ -396,7 +417,7 @@ public:
     void ServerAdminRenameGame(const FString& fromName, const FString& toName);
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
-    void ServerAdminNewGame(const FString& Name);
+    void ServerAdminNewGame(const FString& Name, bool newGlitchWalkersGame);
     
 //    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
 //    void ServerAdminNewCustomGame(const FAstroCGMLibraryConfigEntryMetaData& MetaData);
@@ -621,7 +642,7 @@ public:
     void ClientSyncStateFromServer(const FAstroCustomGameState& customGameState);
     
     UFUNCTION(BlueprintCallable, Client, Reliable)
-    void ClientSyncSettingsFromServer(bool IsCustomGame, const FAstroCustomGameSettings& CustomGameSettings, const FAstroCustomGameState& customGameState, const TArray<AAstroPlanet*>& Planets, const TArray<FVector>& planetOffsets);
+    void ClientSyncSettingsFromServer(const bool IsCustomGame, const FAstroCustomGameSettings& CustomGameSettings, const FAstroCustomGameState& customGameState, const TArray<ASolarBody*>& solarBodies, const TArray<FVector>& planetOffsets);
     
     UFUNCTION(BlueprintCallable, Client, Reliable)
     void ClientSyncOneTimeTooltipSystemState(const FAstroOneTimeTooltipState& stateToSync);
@@ -678,13 +699,16 @@ public:
     void ClientRenameGameResponse(bool copySuccess, bool removeSuccess, const FString& fromName, const FString& toName);
     
     UFUNCTION(BlueprintCallable, Client, Reliable)
+    void ClientRecvSeeds(const TArray<ASolarBody*>& solarBodies, const TArray<int32>& seeds, const TArray<FVector>& Offsets);
+    
+    UFUNCTION(BlueprintCallable, Client, Reliable)
     void ClientRecvPlayerState(const FInitialClientStateParams& params);
     
     UFUNCTION(BlueprintCallable, Client, Reliable)
-    void ClientRecvPlanetSeeds(const TArray<AAstroPlanet*>& Planets, const TArray<int32>& seeds, const TArray<FVector>& Offsets);
+    void ClientRecvPlanetMaterials(ASolarBody* Planet, const TArray<FPackedVoxelMaterialInfo>& Materials, const FVector& InLocation);
     
     UFUNCTION(BlueprintCallable, Client, Reliable)
-    void ClientRecvPlanetMaterials(AAstroPlanet* Planet, const TArray<FPackedVoxelMaterialInfo>& Materials);
+    void ClientRecvOrbitalPlatformSeed(const int32 Seed);
     
     UFUNCTION(Client, Unreliable)
     void ClientRecvChunkedDataCompletionSignal(uint32 transmissionID);

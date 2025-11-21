@@ -41,7 +41,7 @@ public:
     FCharacterHatPerSuitModifiers GetHatModifierForSuit(UAstroCharacterSuit* Suit, bool allowSuitSpecificOverrides) const;
     
     UFUNCTION(BlueprintCallable)
-    static void ApplyToMesh(UStaticMeshComponent* targetMesh, UAstroCharacterSuit* Suit, UAstroCharacterHat* hatDef, const UAstroCharacterPalette* Palette, bool bObfuscated, UMaterialInterface* ObfuscatedMaterial);
+    static void ApplyToMesh(UStaticMeshComponent* targetMesh, UAstroCharacterSuit* Suit, UAstroCharacterHat* hatDef, UAstroCharacterPalette* Palette, bool bObfuscated, UMaterialInterface* ObfuscatedMaterial);
     
 };
 

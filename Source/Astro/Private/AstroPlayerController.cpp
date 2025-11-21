@@ -11,6 +11,7 @@ AAstroPlayerController::AAstroPlayerController(const FObjectInitializer& ObjectI
     this->FireworksAchievementLaunchWindowKey = TEXT("LaunchWindow");
     this->ControlledVehicle = NULL;
     this->PersistentLocalData = NULL;
+    this->HasGlitchwalkersEntitlement = false;
     this->MotionBlurQuality = 4;
     this->CurrentDebugMenu = NULL;
 }
@@ -120,6 +121,12 @@ bool AAstroPlayerController::ServerSetSolarTimeScaleMultiplierCreative_Validate(
     return true;
 }
 
+void AAstroPlayerController::ServerSetPlayerOwnsMegaTech_Implementation(bool ownsMegatech) {
+}
+
+void AAstroPlayerController::ServerSetPlayerOwnsGlitchwalkers_Implementation(bool ownsGlitchWalkers) {
+}
+
 void AAstroPlayerController::ServerSetNormalizedTimeOfDayCreative_Implementation(float Scale) {
 }
 bool AAstroPlayerController::ServerSetNormalizedTimeOfDayCreative_Validate(float Scale) {
@@ -154,6 +161,9 @@ void AAstroPlayerController::ServerRequestTerrainCorrection_Implementation(UVoxe
 }
 bool AAstroPlayerController::ServerRequestTerrainCorrection_Validate(UVoxelVolumeComponent* voxelVolume, const TArray<uint64>& Nodes) {
     return true;
+}
+
+void AAstroPlayerController::ServerRequestOrbitalPlatformSeed_Implementation() {
 }
 
 void AAstroPlayerController::ServerRequestFoliageDestruction_Implementation(AActor* DestructionInstigator, FVector_NetQuantize100 Location, float Radius, float MassThreshold, bool bShouldCollectResourceNuggets) {
@@ -279,6 +289,9 @@ bool AAstroPlayerController::ServerClick_Validate(UPrimitiveComponent* Primitive
     return true;
 }
 
+void AAstroPlayerController::ServerClearStormEffects_Implementation() {
+}
+
 void AAstroPlayerController::ServerClearStatusModifiers_Implementation() {
 }
 
@@ -387,9 +400,9 @@ bool AAstroPlayerController::ServerAdminRenameGame_Validate(const FString& fromN
     return true;
 }
 
-void AAstroPlayerController::ServerAdminNewGame_Implementation(const FString& Name) {
+void AAstroPlayerController::ServerAdminNewGame_Implementation(const FString& Name, bool newGlitchWalkersGame) {
 }
-bool AAstroPlayerController::ServerAdminNewGame_Validate(const FString& Name) {
+bool AAstroPlayerController::ServerAdminNewGame_Validate(const FString& Name, bool newGlitchWalkersGame) {
     return true;
 }
 
@@ -656,7 +669,7 @@ void AAstroPlayerController::ClientTerrainValidateChecksumsT2_Implementation(UVo
 void AAstroPlayerController::ClientSyncStateFromServer_Implementation(const FAstroCustomGameState& customGameState) {
 }
 
-void AAstroPlayerController::ClientSyncSettingsFromServer_Implementation(bool IsCustomGame, const FAstroCustomGameSettings& CustomGameSettings, const FAstroCustomGameState& customGameState, const TArray<AAstroPlanet*>& Planets, const TArray<FVector>& planetOffsets) {
+void AAstroPlayerController::ClientSyncSettingsFromServer_Implementation(const bool IsCustomGame, const FAstroCustomGameSettings& CustomGameSettings, const FAstroCustomGameState& customGameState, const TArray<ASolarBody*>& solarBodies, const TArray<FVector>& planetOffsets) {
 }
 
 void AAstroPlayerController::ClientSyncOneTimeTooltipSystemState_Implementation(const FAstroOneTimeTooltipState& stateToSync) {
@@ -713,13 +726,16 @@ void AAstroPlayerController::ClientRequestFoliageDestruction_Implementation(AAct
 void AAstroPlayerController::ClientRenameGameResponse_Implementation(bool copySuccess, bool removeSuccess, const FString& fromName, const FString& toName) {
 }
 
+void AAstroPlayerController::ClientRecvSeeds_Implementation(const TArray<ASolarBody*>& solarBodies, const TArray<int32>& seeds, const TArray<FVector>& Offsets) {
+}
+
 void AAstroPlayerController::ClientRecvPlayerState_Implementation(const FInitialClientStateParams& params) {
 }
 
-void AAstroPlayerController::ClientRecvPlanetSeeds_Implementation(const TArray<AAstroPlanet*>& Planets, const TArray<int32>& seeds, const TArray<FVector>& Offsets) {
+void AAstroPlayerController::ClientRecvPlanetMaterials_Implementation(ASolarBody* Planet, const TArray<FPackedVoxelMaterialInfo>& Materials, const FVector& InLocation) {
 }
 
-void AAstroPlayerController::ClientRecvPlanetMaterials_Implementation(AAstroPlanet* Planet, const TArray<FPackedVoxelMaterialInfo>& Materials) {
+void AAstroPlayerController::ClientRecvOrbitalPlatformSeed_Implementation(const int32 Seed) {
 }
 
 void AAstroPlayerController::ClientRecvChunkedDataCompletionSignal_Implementation(uint32 transmissionID) {
@@ -844,6 +860,7 @@ void AAstroPlayerController::GetLifetimeReplicatedProps(TArray<FLifetimeProperty
     
     DOREPLIFETIME(AAstroPlayerController, AchievementReplicationData);
     DOREPLIFETIME(AAstroPlayerController, ControlledVehicle);
+    DOREPLIFETIME(AAstroPlayerController, HasGlitchwalkersEntitlement);
     DOREPLIFETIME(AAstroPlayerController, PendingSelectionActor);
 }
 

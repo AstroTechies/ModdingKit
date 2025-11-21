@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UOrbitalNavigationComponent::UOrbitalNavigationComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->bPreventRespawnWhileDriving = false;
     this->LaunchLength = 15.00f;
     this->DefaultOrbitSpeed = 0.04f;

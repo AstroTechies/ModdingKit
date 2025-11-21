@@ -1,7 +1,6 @@
 #include "TradeShipDockComponent.h"
 
 UTradeShipDockComponent::UTradeShipDockComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->bTradeInProgress = false;
     this->LaunchDelay = 30.00f;
 }

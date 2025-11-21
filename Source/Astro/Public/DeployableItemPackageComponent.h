@@ -1,8 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-#include "Components/ActorComponent.h"
 #include "Engine/EngineTypes.h"
+#include "PreviewData.h"
+#include "PreviewDisplayComponent.h"
+#include "PreviewDisplayComponent.h"
 #include "SignalDelegate.h"
 #include "SlotReference.h"
 #include "Templates/SubclassOf.h"
@@ -11,60 +13,44 @@
 class AActor;
 class APhysicalItem;
 class UItemType;
-class UMaterialInterface;
 class UPrimitiveComponent;
 class USceneComponent;
 class UTexture;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
-class ASTRO_API UDeployableItemPackageComponent : public UActorComponent {
+class ASTRO_API UDeployableItemPackageComponent : public UPreviewDisplayComponent {
     GENERATED_BODY()
 public:
-    DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FPackageReadyEvent, bool, DeployReady);
-    DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FPackageIndicatorEvent, bool, IndicatorVisible);
     DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FPackagedItemDeployedEvent, APhysicalItem*, DeployedItem);
-    DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAssignMaterialEvent, UMaterialInterface*, PackageMaterial);
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FSlotReference PackagePreviewIndicatorSlot;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnDeployComplete;
-    
-    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FPackagedItemDeployedEvent OnDeployedItemSpawned;
-    
-protected:
-    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FPackageReadyEvent OnDeployReadyChanged;
-    
-    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FPackageIndicatorEvent OnIndicatorVisibleChanged;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
-    USceneComponent* PackagePreviewIndicatorSlotWrapper;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* PackageVisualsWrapper;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FAssignMaterialEvent OnAssignPackageMaterial;
+    FPackagedItemDeployedEvent OnDeployedItemSpawned;
+    
+protected:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    USceneComponent* PackagePreviewIndicatorSlotWrapper;
     
 private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FSlotReference CurrentIndicatorSlot;
+    bool DoNotAutoDestroyOnUnpack;
+    
+//    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+//    UPreviewDisplayComponent::FAssignMaterialEvent OnAssignPackageMaterial;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     APhysicalItem* OwningItem;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
-    UPrimitiveComponent* UnpackIndicatorRoot;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
-    TArray<UMaterialInterface*> UnpackIndicatorRootOriginalMaterials;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FSlotReference CurrentIndicatorSlot;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    bool DoNotAutoDestroyOnUnpack;
+    FPreviewData PreviewData;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTimerHandle HideIndicatorTimer;

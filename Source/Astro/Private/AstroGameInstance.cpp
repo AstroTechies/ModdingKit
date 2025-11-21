@@ -188,6 +188,9 @@ FString UAstroGameInstance::GetActiveSaveFileDescriptiveName() const {
 void UAstroGameInstance::ForceRefreshMicroTxnStoreData() {
 }
 
+void UAstroGameInstance::DisplayOrQueueSessionError(const FString& Message) {
+}
+
 void UAstroGameInstance::DisplayLoadScreenWidget(TSubclassOf<UUserWidget> overrideWidget) {
 }
 

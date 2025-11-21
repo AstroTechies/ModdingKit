@@ -15,6 +15,7 @@ AAstroHUD::AAstroHUD(const FObjectInitializer& ObjectInitializer) : Super(Object
     this->CreativeDroneOverlayInstance = NULL;
     this->ReconnectWidgetInstance = NULL;
     this->MOTDBackgroundTexture = NULL;
+    this->FullscreenMOTDBackgroundTexture = NULL;
 }
 
 bool AAstroHUD::IsStoreActive() {

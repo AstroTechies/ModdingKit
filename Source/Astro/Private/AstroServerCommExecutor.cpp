@@ -87,7 +87,7 @@ void UAstroServerCommExecutor::DSRemoveFavorite(const FString& ServerName) {
 void UAstroServerCommExecutor::DSRemote(const FString& consoleCommand) {
 }
 
-void UAstroServerCommExecutor::DSNewGame(const FString& Name) {
+void UAstroServerCommExecutor::DSNewGame(const FString& Name, bool isGlitchwalkersGame) {
 }
 
 void UAstroServerCommExecutor::DSLoadGame(const FString& Name) {

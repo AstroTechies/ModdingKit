@@ -14,8 +14,10 @@ FAstroMissionData::FAstroMissionData() {
     this->bAutoCompleteOnExistingGames = false;
     this->bSuppressActivationNotification = false;
     this->bReclaimableReward = false;
+    this->bDestroyKeyItemOnMissionComplete = false;
     this->DeliveryType = EAstroMissionRewardDeliveryType::SupplyDrop;
     this->RequiresGlitchWalkersEntitlement = false;
+    this->RequiresMegatechEntitlement = false;
 //    this->EngagementStateToSetOnActivation = FAstroGWExpansionEngagementState::GW_NotEngaged;
 }
 

@@ -7,6 +7,7 @@
 #include "CharacterSelectSignalDelegate.h"
 #include "EGameLifecycleState.h"
 #include "EPlanetIdentifier.h"
+#include "OnCinematicTerrainPointsClearedDelegate.h"
 #include "OnGameLifecycleStateChangedDelegate.h"
 #include "OnSessionsSearchCompleteNotifyDelegate.h"
 #include "PlayerJoinSignalDelegate.h"
@@ -23,6 +24,7 @@ class UAstroCGMModifierCategoryDefaultValuesDatabase;
 class UAstroCustomGameSettingsTags;
 class UItemList;
 class ULevelSequencePlayer;
+class UObject;
 class USolarSystem;
 class UStorageChassisComponent;
 class UWorld;
@@ -36,6 +38,9 @@ public:
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnGameLifecycleStateChanged OnGameLifecycleStateChanged;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnCinematicTerrainPointsCleared OnCinematicTerrainPointsCleared;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnMatchStarted;
@@ -197,8 +202,8 @@ public:
     UFUNCTION(BlueprintCallable)
     void MovePlayersToSpawnPositions();
     
-    UFUNCTION(BlueprintCallable)
-    void LoadMap(TSoftObjectPtr<UWorld> Map);
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
+    void LoadMap(UObject* WorldContextObject, TSoftObjectPtr<UWorld> Map);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsPackagedBuild();
@@ -227,7 +232,7 @@ public:
     void ClearCinematicTerrainPoints();
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
-    void AuthoritySetDefaultSpawnLocation(FVector spawnLocation);
+    void AuthoritySetDefaultSpawnLocation(FVector SpawnLocation);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintPure)
     bool AuthoritySelectStartingPointFromCandiates(FVector& outStartingLocation, FRotator& outStartingRotation);

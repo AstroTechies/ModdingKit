@@ -45,6 +45,7 @@ FSlot::FSlot() {
     this->SlottableItemsFiltrationList = NULL;
     this->SlottableItemsFiltrationListBehavior = ESlottableItemsFiltrationListBehavior::Ignore;
     this->bAcceptsInputItems = false;
+    this->bIgnoreDuringSlotOrgRules = false;
     this->SlotTooltipComponent = NULL;
     this->SlotResourceInfo = NULL;
     this->TracePrimitive = NULL;

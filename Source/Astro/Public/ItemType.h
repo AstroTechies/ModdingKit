@@ -3,6 +3,7 @@
 #include "UObject/NoExportTypes.h"
 #include "ControlSymbol.h"
 #include "EAstroGameMenuTutoriaSlideCardKey.h"
+#include "EItemDLCEntitlementLock.h"
 #include "EItemStorageBehavior.h"
 #include "Recipe.h"
 #include "Templates/SubclassOf.h"
@@ -11,6 +12,7 @@
 class AActor;
 class UItemCatalogData;
 class UItemType;
+class UMegastructureRecipe;
 class UResearchSubjectDefinition;
 class UStaticMesh;
 class UTexture;
@@ -40,7 +42,13 @@ public:
     uint8 IsOxygen: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bIsMegastructure: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 CreativeSpawnEmpty: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EItemDLCEntitlementLock DLCEntitlementLock;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 UseSquareIconBackground: 1;
@@ -108,6 +116,9 @@ protected:
     FRecipe ConstructionRecipe;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMegastructureRecipe* MegastructureRecipe;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bHasAltConstructionRecipe;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -128,6 +139,9 @@ public:
     
     UItemType();
 
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UMegastructureRecipe* GetMegastructureRecipe() const;
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FRecipe GetConstructionRecipe() const;
     

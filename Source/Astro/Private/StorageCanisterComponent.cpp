@@ -7,6 +7,9 @@ UStorageCanisterComponent::UStorageCanisterComponent(const FObjectInitializer& O
     this->ItemTransferRate = 1.00f;
 }
 
+void UStorageCanisterComponent::SetManuallyDisabled(const bool bInIsDisabled) {
+}
+
 void UStorageCanisterComponent::OnSlottedItemsChanged(APhysicalItem* changedItem) {
 }
 

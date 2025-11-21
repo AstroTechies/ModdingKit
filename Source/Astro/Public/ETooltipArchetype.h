@@ -6,6 +6,7 @@ UENUM(BlueprintType)
 enum class ETooltipArchetype : uint8 {
     Custom,
     PhysicalItem,
+    PhysicalItemWithPower,
     ItemIndicator,
     ClickableSlot,
     Salvage,

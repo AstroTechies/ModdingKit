@@ -6,6 +6,7 @@
 #include "EUseContext.h"
 #include "EUseType.h"
 #include "InteractionRedirect.h"
+#include "SignalDelegate.h"
 #include "UseContextChangeDelegateDelegate.h"
 #include "UseStateChangeDelegateDelegate.h"
 #include "UseSuppressionState.h"
@@ -109,6 +110,9 @@ public:
     uint8 bUseOverridePivotOffset: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bClientCanOverrideAtRuntime: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SecondaryInteractionTime;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -116,6 +120,9 @@ public:
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FClickableDelegateNew OnQueryClickable;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FSignal OnLocalUse;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FUseStateChangeDelegate OnUseStateChanged;
@@ -139,6 +146,9 @@ public:
 
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
+    UFUNCTION(BlueprintCallable)
+    void ToggleUseCapabilityCategory(EUseType useType);
+    
     UFUNCTION(BlueprintCallable)
     void SetInteractionRedirectActor(AActor* Actor, USceneComponent* PivotComponent);
     

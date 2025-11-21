@@ -175,10 +175,16 @@ public:
     TArray<FAstroMissionState> GetCompletedMissions() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    TArray<FName> GetCompletedMissionIds() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TMap<FName, FAstroMissionData> GetAllMissions() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<FAstroMissionState> GetActiveMissions() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    TArray<FName> GetActiveMissionIds() const;
     
 private:
     UFUNCTION(BlueprintCallable)

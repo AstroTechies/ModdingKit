@@ -136,6 +136,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint8 BreakImmediate: 1;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bShouldDeferBreak: 1;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint8 CanConnectComponents: 1;
     
@@ -228,6 +231,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString DetachAudioEventName;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FString CableSnapAudioEventName;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString SlotHoverAudioEventName;
@@ -345,6 +351,11 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnDisconnected();
     
+protected:
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void OnDeferredBrokenChanged(bool bWillBreak);
+    
+public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnConnected();
     

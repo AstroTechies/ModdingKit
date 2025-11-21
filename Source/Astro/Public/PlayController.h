@@ -20,10 +20,14 @@
 #include "EClickBehavior.h"
 #include "EEmoteType.h"
 #include "EHandState.h"
+#include "EMegastructureType.h"
+#include "EPlanetIdentifier.h"
+#include "ESinkType.h"
 #include "EnableSignalDelegate.h"
 #include "InputDeviceChangedDelegate.h"
 #include "KeyboardNavigationChangedDelegate.h"
 #include "MouseZoomChangedDelegate.h"
+#include "OnPlanetSelectionEndedDelegate.h"
 #include "PendingInGameItemRewards.h"
 #include "PlayerEmoteSignalDelegate.h"
 #include "SelectionWheelOption.h"
@@ -41,9 +45,12 @@ class AAstroPlanet;
 class ACameraRigActor;
 class ACheatPlinthBase;
 class ACompassActor;
+class AMuseum;
+class AOrbitalPlatform;
 class APhysicalItem;
 class ASlotConnection;
 class ASolarBody;
+class AWreck;
 class UAstroCharacterHat;
 class UAstroCharacterPalette;
 class UAstroCharacterSuit;
@@ -57,6 +64,7 @@ class UBackpackCameraContext;
 class UBiomeSamplerComponent;
 class UCameraComponent;
 class UControlComponent;
+class UDeployableAnchorComponent;
 class UGameMenuPopoutCameraContext;
 class UItemType;
 class UMaterialInstanceDynamic;
@@ -222,7 +230,7 @@ public:
     FBodySelectionSignal OnPlanetSelectionBegin;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FSignal OnPlanetSelectionEnd;
+    FOnPlanetSelectionEnded OnPlanetSelectionEnd;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FBodySelectionSignal OnLandSelectionBegin;
@@ -528,7 +536,10 @@ public:
     void SetCharacterCustomizationServer(const FAstroCharacterCustomization& NewCustomization);
     
     UFUNCTION(BlueprintCallable)
-    void SetCameraZoom(float zoom);
+    void SetCameraZoom(float Zoom);
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server)
+    void ServerUnpackAnchor(UDeployableAnchorComponent* DeployableAnchorComponent);
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSpawnResourceNuggetDebug(UClass* ObjClass);
@@ -562,14 +573,41 @@ private:
     void ServerNotifyActorOnscreenStatusChanged(AActor* monitoredActor, bool bIsOnscreen);
     
 public:
+    UFUNCTION(BlueprintCallable, Reliable, Server)
+    void ServerMoveOrbitalPlatformToNewPlanet(AOrbitalPlatform* inOrbitalPlatform, ASolarBody* TargetBody);
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
+    void ServerLaunchAnchor(AWreck* Wreck, APhysicalItem* inDestinationLandingPad);
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server)
+    void ServerHandleOrbitalPlatformSpawn(AWreck* Wreck, EPlanetIdentifier planetID);
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server)
+    void ServerHandleOrbitalPlatformExtraStages(AWreck* Wreck);
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
+    void ServerHandleAnchorLoadUnload(AWreck* Wreck, const FString& inButtonPressedName);
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server)
+    void ServerEjectOrbitalPlatformAnchor(AWreck* Wreck);
+    
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerCreateNavpointManagerForPlanet(AAstroPlanet* Planet);
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerCompleteCustomMissionObjective(const FString& objectiveID);
     
+    UFUNCTION(BlueprintCallable, Reliable, Server)
+    void ServerClearButtonData(AMuseum* inMuseumActor);
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server)
+    void ServerClaimReward(AMuseum* inMuseumActor, const ESinkType inSinkType, const uint8 inMilestoneIndex, const FTransform inDropPosition);
+    
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerClaimNonPhysicalMissionRewards(const FName missionId);
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server)
+    void ServerCheckAnchorCanLaunch(AWreck* Wreck, EMegastructureType megastructureType, APhysicalItem* inDestinationLandingPad);
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerBranchConnectionFromActuatorRerouteNode(FSlotReference SourceSlot, int32 rerouteNodeId);
@@ -617,6 +655,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void OnReceiveUsePressed();
+    
+    UFUNCTION(BlueprintCallable)
+    void OnReceiveToggleHeadlamp();
     
     UFUNCTION(BlueprintCallable)
     void OnReceiveToggleDeformMenuPressed();
@@ -911,6 +952,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void CloseActionWheel();
+    
+    UFUNCTION(BlueprintCallable, Client, Reliable, WithValidation)
+    void ClientSetTimeDilation(float inNewSpeed);
     
     UFUNCTION(BlueprintCallable, Client, Reliable, WithValidation)
     void ClientPresentUnlockNotification(FAstroNotificationUnlockAuthoringData AuthoringData);

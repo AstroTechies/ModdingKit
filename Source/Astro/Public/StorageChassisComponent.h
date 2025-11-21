@@ -35,6 +35,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FSlotReference> ExcludeSlots;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FSlotReference> ExcludedChildSlots;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, ReplicatedUsing=OnRep_ActorAttachments, meta=(AllowPrivateAccess=true))
     TArray<UActorAttachmentsComponent*> ActorAttachments;
     
@@ -144,6 +147,9 @@ private:
     void OnOwnerDestroyed(AActor* Owner);
     
 public:
+    UFUNCTION(BlueprintCallable)
+    void ItemAmountChangeEventDrained(TSubclassOf<UItemType> ItemType);
+    
     UFUNCTION(BlueprintCallable)
     void ItemAmountChangeEvent();
     

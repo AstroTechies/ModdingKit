@@ -9,6 +9,7 @@ enum class EClickBehavior : uint8 {
     CrackableActor,
     Use,
     PhysicalItem,
+    ImmovablePhysicalItem,
     InteractionActor,
     Tool,
     Slot,

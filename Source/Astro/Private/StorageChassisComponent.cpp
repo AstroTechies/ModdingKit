@@ -3,7 +3,6 @@
 #include "Templates/SubclassOf.h"
 
 UStorageChassisComponent::UStorageChassisComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->CanExit = true;
     this->IndicateExit = true;
     this->OwnerFacingBack = false;
@@ -39,6 +38,9 @@ void UStorageChassisComponent::OnPlayerEnterExitAttachment(bool Entered) {
 }
 
 void UStorageChassisComponent::OnOwnerDestroyed(AActor* Owner) {
+}
+
+void UStorageChassisComponent::ItemAmountChangeEventDrained(TSubclassOf<UItemType> ItemType) {
 }
 
 void UStorageChassisComponent::ItemAmountChangeEvent() {

@@ -2,14 +2,16 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
-#include "Engine/EngineTypes.h"
+#include "Chaos/ChaosEngineInterface.h"
 #include "ERemainingFuelState.h"
 #include "PhysicalItem.h"
+#include "Templates/SubclassOf.h"
 #include "JetpackItem.generated.h"
 
 class AAstroCharacter;
 class ABackpack;
 class UFuelConsumerComponent;
+class UItemType;
 class UJetpackMovementOverrideComponent;
 
 UCLASS(Blueprintable)
@@ -117,7 +119,7 @@ private:
     void OnItemSelectionChanged(APhysicalItem* Item);
     
     UFUNCTION(BlueprintCallable)
-    void OnItemDrained();
+    void OnItemDrained(TSubclassOf<UItemType> ItemType);
     
     UFUNCTION(BlueprintCallable)
     void OnFuelRecipeAmountChanged(float Amount);

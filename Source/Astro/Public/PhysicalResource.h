@@ -1,7 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "PhysicalItem.h"
+#include "Templates/SubclassOf.h"
 #include "PhysicalResource.generated.h"
+
+class UItemType;
 
 UCLASS(Blueprintable)
 class ASTRO_API APhysicalResource : public APhysicalItem {
@@ -19,7 +22,7 @@ public:
     void PostDrained();
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    void OnDrained();
+    void OnDrained(TSubclassOf<UItemType> ItemType);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsFull();

@@ -3,6 +3,7 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "AstroMessageOfTheDayManager.generated.h"
 
+class UMarketingWidgetsData;
 class UMessageOfTheDay;
 
 UCLASS(Blueprintable)
@@ -25,6 +26,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     static void HideFullscreenMotD();
+    
+    UFUNCTION(BlueprintCallable)
+    static UMarketingWidgetsData* GetMarketingWidgetsForCurrentCulture();
     
     UFUNCTION(BlueprintCallable)
     static UMessageOfTheDay* GetForCurrentCulture();

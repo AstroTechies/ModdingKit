@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
-#include "Engine/EngineTypes.h"
+#include "Chaos/ChaosEngineInterface.h"
 #include "PaintIndex.h"
 #include "CreativeModeTerrainData.generated.h"
 

@@ -69,5 +69,8 @@ enum class EUseContext : uint8 {
     UC_Befriend,
     UC_EnableGathering,
     UC_EnterPortal,
+    UC_Open,
+    UC_Close,
+    UC_ClaimReward,
 };
 

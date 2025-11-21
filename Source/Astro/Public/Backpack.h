@@ -4,6 +4,7 @@
 #include "GameFramework/Actor.h"
 #include "BackpackOxygenTankOverride.h"
 #include "BackpackOxygenTankProperties.h"
+#include "EDonationReward.h"
 #include "SlotReference.h"
 #include "Templates/SubclassOf.h"
 #include "Backpack.generated.h"
@@ -115,6 +116,9 @@ protected:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnOxygenTankPropertiesChanged();
     
+    UFUNCTION(BlueprintCallable)
+    void OnMuseumPowerSatisfactionChanged(const float inPowerSatisfaction);
+    
 private:
     UFUNCTION(BlueprintCallable)
     void OnLeftAuxReleased();
@@ -125,6 +129,11 @@ private:
     UFUNCTION(BlueprintCallable)
     void OnItemInSlotChanged(APhysicalItem* Item);
     
+public:
+    UFUNCTION(BlueprintCallable)
+    void OnDonationRewardsChanged(const EDonationReward rewardTypeChanged);
+    
+private:
     UFUNCTION(BlueprintCallable)
     void OnDeformToolEquippedStateChanged(bool equipped);
     

@@ -15,6 +15,12 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bHasBeenFlaggedAsCreativeModeSave: 1;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bHasBeenFlaggedAsGlitchwalkersSave: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bHasBeenFlaggedAsMegatechSave: 1;
+    
     ASTRO_API FGameEntry();
 };
 

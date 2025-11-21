@@ -3,7 +3,6 @@
 #include "Templates/SubclassOf.h"
 
 UActorItemConverterComponent::UActorItemConverterComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->ConversionFormulaType = NULL;
     this->OutputItemTypeList = NULL;
     this->MinPowerUnitProductionTime = 60.00f;

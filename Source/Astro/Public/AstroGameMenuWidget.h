@@ -5,6 +5,10 @@
 #include "Components/SlateWrapperTypes.h"
 #include "EAstroGameMenuContext.h"
 #include "EGameMenuNavigationCommand.h"
+#include "EGameMenuWarningWidgetTypes.h"
+#include "ESubpaneIdentifier.h"
+#include "FAstroCGMPlayfabFailureReason.h"
+#include "GameMenuWarningData.h"
 #include "SignalDelegate.h"
 #include "UserWidgetBlueprintDesignable.h"
 #include "AstroGameMenuWidget.generated.h"
@@ -19,7 +23,6 @@ class UCanvasPanel;
 class UImage;
 class UOverlay;
 class USpacer;
-class UUserWidget;
 class UVerticalBox;
 
 UCLASS(Abstract, Blueprintable, EditInlineNew)
@@ -54,29 +57,59 @@ public:
     FSignal OnPopoutDismissed;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
-    USpacer* ScrollBarSpacer;
+    USpacer* ScrollBarSpacerLeft;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
-    UAstroGameMenuScrollBarBase* ScrollBarWidget;
+    USpacer* ScrollBarSpacerRight;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UAstroGameMenuScrollBarBase* ScrollBarWidgetLeft;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UAstroGameMenuScrollBarBase* ScrollBarWidgetRight;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAstroGameMenuSubPaneWidget* ActiveSubPaneWidget;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UAstroGameMenuSubPaneWidget* SubPaneWidgetLeft;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UAstroGameMenuSubPaneWidget* SubPaneWidgetRight;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FGameMenuWarningData GameMenuWarningData;
     
 protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAstroGameMenuTabBarWidget* ActiveTabBarWidget;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UAstroGameMenuTabBarWidget* TabBarWidgetLeft;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UAstroGameMenuTabBarWidget* TabBarWidgetRight;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAstroGameMenuPopoutWidget* ActivePopoutWidget;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UCanvasPanel* ActivePopoutWidgetAnchorPanel;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float MinimumMenuWidth;
+    float MinimumMenuWidthLeft;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float MinimumMenuWidthRight;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ScrollDelta;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
-    UAstroGameMenuFocusItemContainerWidget* ScrollBarContainerWidget;
+    UAstroGameMenuFocusItemContainerWidget* ScrollBarContainerWidgetLeft;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UAstroGameMenuFocusItemContainerWidget* ScrollBarContainerWidgetRight;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UImage* PopoutConnectorWidget;
@@ -88,13 +121,33 @@ public:
     UAstroGameMenuWidget();
 
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    void UseUpsellWidget();
-    
-    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void UseFMOTDWidget();
+    
+    UFUNCTION(BlueprintCallable)
+    void ShowWarningsMenuPane();
+    
+    UFUNCTION(BlueprintCallable)
+    void ShowMarketingMenuPane();
+    
+    UFUNCTION(BlueprintCallable)
+    void ShowGameMenuWarningWidget(EGameMenuWarningWidgetTypes warningType);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void ShowFMOTDWidget(bool FadeIn);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetSubpaneHoverTarget(ESubpaneIdentifier hoverTarget);
+    
+protected:
+    UFUNCTION(BlueprintCallable)
+    void SetSaveErrorText(FText saveErrorText);
+    
+public:
+    UFUNCTION(BlueprintCallable)
+    void SetRightPanelHidden(bool isHidden);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetCurrentPlayfabFailureReason(FAstroCGMPlayfabFailureReason failureReason);
     
 protected:
     UFUNCTION(BlueprintCallable)
@@ -110,6 +163,9 @@ public:
     UFUNCTION(BlueprintCallable)
     void LockControls(bool bLockControls);
     
+    UFUNCTION(BlueprintCallable)
+    void HideGameMenuWarningWidget(EGameMenuWarningWidgetTypes warningType);
+    
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void HideFMOTDWidget(bool FadeOut);
     
@@ -119,49 +175,85 @@ private:
     
 public:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
-    float GetVerticalPaddingForContentSubPaneRegion() const;
-    
-    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    UAstroGameMenuTabBarWidget* GetTabBarWidget() const;
-    
-    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    UBorder* GetSubPaneWrapper() const;
-    
-    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    UCanvasPanel* GetPopoutWrapper() const;
-    
-    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    FVector2D GetOriginOfActiveSubPaneContentsRegion() const;
+    float GetVerticalPaddingForContentSubPaneRegionRight() const;
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
-    UUserWidget* GetMOTDWidget() const;
+    float GetVerticalPaddingForContentSubPaneRegionLeft() const;
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    UVerticalBox* GetMenuContentsWrapper() const;
+    UCanvasPanel* GetTitleBannerWrapper() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    UAstroGameMenuTabBarWidget* GetTabBarWidgetRight() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    UAstroGameMenuTabBarWidget* GetTabBarWidgetLeft() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    UBorder* GetSubPaneWrapperRight() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    UBorder* GetSubPaneWrapperLeft() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    ESubpaneIdentifier GetSubpaneHoverTarget() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    UBorder* GetSubPaneCursorAwarenessBorderRight() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    UBorder* GetSubPaneCursorAwarenessBorderLeft() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    UCanvasPanel* GetPopoutWrapperRight() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    UCanvasPanel* GetPopoutWrapperLeft() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    FVector2D GetOriginOfActiveSubPaneContentsRegionRight() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    FVector2D GetOriginOfActiveSubPaneContentsRegionLeft() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    UVerticalBox* GetMenuContentsWrapperRight() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    UVerticalBox* GetMenuContentsWrapperLeft() const;
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
-    float GetMaxHeightOfContentSubPaneRegion() const;
+    float GetMaxHeightOfContentSubPaneRegionRight() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
+    float GetMaxHeightOfContentSubPaneRegionLeft() const;
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    float GetLowerBoundOfMenu() const;
+    float GetLowerBoundOfMenuRight() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    float GetLowerBoundOfMenuLeft() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetIsRightPanelHidden() const;
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     UOverlay* GetFullScreenPaneWrapper() const;
     
-    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
-    UUserWidget* GetExperimentalSettingsWarningWidget() const;
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    FVector2D GetCachedBoundedSizeOfMenuPanelRight() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    FVector2D GetCachedBoundedSizeOfMenuPanelLeft() const;
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
-    UUserWidget* GetCustomGameSwitchModifiersWarningWidget() const;
+    FVector2D GetBoundedSizeOfMenuPanelRight() const;
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
-    UUserWidget* GetCustomGamePerformanceWarningWidget() const;
+    FVector2D GetBoundedSizeOfMenuPanelLeft() const;
     
-    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
-    FVector2D GetBoundedSizeOfMenu() const;
-    
-    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, BlueprintPure)
-    UUserWidget* GetAchievementProgressionWarningWidget() const;
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetAnyGameMenuWarningVisible();
     
     UFUNCTION(BlueprintCallable, BlueprintCosmetic, BlueprintImplementableEvent)
     void BackToMainMenuHack();

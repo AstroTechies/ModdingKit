@@ -1,7 +1,6 @@
 #include "AuxSlotItemTooltipComponent.h"
 
 UAuxSlotItemTooltipComponent::UAuxSlotItemTooltipComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->TooltipTimeoutDuration = 2.00f;
     this->bOverrideInputActionName = false;
 }

@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UPlayerToolComponent::UPlayerToolComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->UnencapsulateChildrenWhileActive = false;
     this->HeldTool = false;
     this->AttachLocationComponent = NULL;

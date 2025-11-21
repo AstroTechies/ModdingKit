@@ -67,7 +67,7 @@ public:
     static int32 TakeItemToSlotArray(const TArray<FSlotReference>& Slots, FSlotReference Other, int32 Amount);
     
     UFUNCTION(BlueprintCallable)
-    static int32 TakeItemRateDelta(FSlotReference Slot, TSubclassOf<UItemType> Type, float Rate, float DeltaTime);
+    static int32 TakeItemRateDelta(FSlotReference Slot, TSubclassOf<UItemType> Type, float Rate, float DeltaTime, float CanisterConsumptionRateMultiplier);
     
     UFUNCTION(BlueprintCallable)
     static int32 TakeItemRate(FSlotReference Slot, TSubclassOf<UItemType> Type, float Rate);
@@ -79,10 +79,19 @@ public:
     static int32 TakeItemFromSlotArrayRate(UObject* WorldContextObject, const TArray<FSlotReference>& Slots, TSubclassOf<UItemType> Type, float Rate, int32 Max);
     
     UFUNCTION(BlueprintCallable)
+    static int32 TakeItemFromSlotArrayExact(const TArray<FSlotReference>& Slots, TSubclassOf<UItemType> Type, int32 Amount);
+    
+    UFUNCTION(BlueprintCallable)
     static int32 TakeItemFromSlotArray(const TArray<FSlotReference>& Slots, TSubclassOf<UItemType> Type, int32 Amount);
     
     UFUNCTION(BlueprintCallable)
-    static int32 TakeItem(FSlotReference Slot, TSubclassOf<UItemType> Type, int32 Amount);
+    static int32 TakeItemExactAtRateDelta(FSlotReference SlotRef, TSubclassOf<UItemType> Type, float Rate, float DeltaTime);
+    
+    UFUNCTION(BlueprintCallable)
+    static int32 TakeItemExact(FSlotReference Slot, TSubclassOf<UItemType> Type, int32 Amount);
+    
+    UFUNCTION(BlueprintCallable)
+    static int32 TakeItem(FSlotReference Slot, TSubclassOf<UItemType> Type, int32 Amount, float CanisterConsumptionRateMultiplier);
     
     UFUNCTION(BlueprintCallable)
     static int32 TakeComponentItemToSlot(FSlotReference SlotRef, UItemComponent* OtherComponent, int32 Amount);
@@ -139,6 +148,9 @@ public:
     static FSlotReference SlotArrayQueryBestEmptySlot(const TArray<FSlotReference> Slots, UClickQuery* Query);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    static bool SlotArrayHasItemRecursive(const TArray<FSlotReference>& inSlots, const TSubclassOf<UItemType> InType);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool SlotArrayHasItem(const TArray<FSlotReference>& Slots, TSubclassOf<UItemType> Type);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -178,7 +190,10 @@ public:
     static int32 SlotArrayEmptyCount(const TArray<FSlotReference>& Slots);
     
     UFUNCTION(BlueprintCallable)
-    static bool MoveItemFromCurrentSlotToSlotArray(APhysicalItem* Item, const TArray<FSlotReference>& Slots);
+    static bool MoveItemFromCurrentSlotToSlotArray(APhysicalItem* Item, const TArray<FSlotReference>& Slots, const bool bInShouldFillAllSlots);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static bool IsSlotReserved(const FSlotReference& SlotRef);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsSlotAnAuxSlot(FSlotReference Slot);
@@ -187,10 +202,19 @@ public:
     static bool IsCompatibleWithType(FSlotReference Slot, TSubclassOf<UItemType> ItemType);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    static bool IsBackpackSlot(const FSlotReference& SlotRef);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsAPowerCableSlot(FSlotReference SlotRef);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool HasSpaceAvailableAtTier(FSlotReference SlotRef, int32 Tier, bool AsIndicator);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static bool HasPartialItem(FSlotReference Slot, TSubclassOf<UItemType> Type);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static bool HasItemRecursive(FSlotReference Slot, const TSubclassOf<UItemType> InType);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool HasItem(FSlotReference Slot, TSubclassOf<UItemType> Type);
@@ -215,6 +239,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     UItemType* GetStoredSubItemTypeCDO(FSlotReference SlotRef);
+    
+    UFUNCTION(BlueprintCallable)
+    static TArray<APhysicalItem*> GetSortedItemsByPartials(const TArray<APhysicalItem*>& inItems, const TSubclassOf<UItemType>& InType);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector GetSlotRangeLocation(const FSlotReference& SlotRef);
@@ -261,6 +288,9 @@ public:
     UFUNCTION(BlueprintCallable)
     static void EjectAllItemsInSubslotAndChildSubslots(FSlotReference SlotRef, int32 SubslotIndex, bool NewOwner, bool FromTool, float RandomForce);
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static int32 CreateIndicatorFromClassInSlot(TSubclassOf<APhysicalItem> ItemClass, const FSlotReference& SlotRef);
+    
     UFUNCTION(BlueprintCallable)
     static APhysicalItem* CloneItemIntoSlot(APhysicalItem* ItemToClone, FSlotReference SlotToSpawnCloneIn);
     
@@ -269,6 +299,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     static bool AttemptToPlaceItemInConnectedStorageSlotNetwork(APhysicalItem* Item, AActor* ActorInStorageNetwork);
+    
+    UFUNCTION(BlueprintCallable)
+    static int32 AddToSlotArraySorted(const TArray<FSlotReference>& Slots, TSubclassOf<UItemType> Type, int32 Amount);
     
     UFUNCTION(BlueprintCallable)
     static int32 AddToSlotArrayRateDelta(const TArray<FSlotReference>& Slots, TSubclassOf<UItemType> Type, float Rate, float DeltaTime);

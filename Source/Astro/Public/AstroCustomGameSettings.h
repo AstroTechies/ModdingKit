@@ -2,6 +2,7 @@
 #include "CoreMinimal.h"
 //#include "FAstroCGMLibraryConfigEntryType.h"
 #include "CustomGameModifierCollection.h"
+#include "AstroCustomGlitchWalkerSettings.h"
 #include "AstroCustomMultiToolSettings.h"
 #include "AstroCustomOxygenSettings.h"
 #include "AstroCustomPowerSettings.h"
@@ -67,6 +68,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     bool IsGlitchWalkersConfiguration;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    FAstroCustomGlitchWalkerSettings GlitchWalkerSettings;
     
     ASTRO_API FAstroCustomGameSettings();
 };

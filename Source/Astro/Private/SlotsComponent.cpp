@@ -3,7 +3,6 @@
 #include "Templates/SubclassOf.h"
 
 USlotsComponent::USlotsComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->bPreserveLegacyVisuals = true;
 }
 
@@ -127,10 +126,10 @@ void USlotsComponent::SaveGameSerializeCustom(UAstroSaveCustomArchiveProxy* prox
 void USlotsComponent::ReleaseSlotItemForce(FSlotReference Slot, float RandomForce) {
 }
 
-void USlotsComponent::ReleaseItemWithEjectionImpulse(FSlotReference Slot, APhysicalItem* Item, bool NewOwner, bool FromTool, FVector ejectionImpulse, FVector ejectionImpulseOffset) {
+void USlotsComponent::ReleaseItemWithEjectionImpulse(FSlotReference Slot, APhysicalItem* Item, bool NewOwner, bool FromTool, FVector ejectionImpulse, FVector ejectionImpulseOffset, bool bUpdatePhysicsState) {
 }
 
-void USlotsComponent::ReleaseItem(FSlotReference Slot, APhysicalItem* Item, bool NewOwner, bool FromTool, float RandomForce) {
+void USlotsComponent::ReleaseItem(FSlotReference Slot, APhysicalItem* Item, bool NewOwner, bool FromTool, float RandomForce, bool bUpdatePhysicsState) {
 }
 
 void USlotsComponent::OnSlotItemDestroyed(AActor* Actor) {
@@ -151,7 +150,14 @@ void USlotsComponent::OnRep_SlotRuleStatus() {
 void USlotsComponent::OnRep_SlotClickability() {
 }
 
+void USlotsComponent::OnRep_SetSlotReserved() {
+}
+
 void USlotsComponent::MulticastCancelSlotBehaviorTerrainInterpolation_Implementation() {
+}
+
+FSlotReference USlotsComponent::MakeSlotFromExisting(const FSlotReference existingSlot, const FName& newSlotName, const FName sceneComponentName, const FName SocketName) {
+    return FSlotReference{};
 }
 
 FSlotReference USlotsComponent::MakeReference(FName SlotName) const {
@@ -254,6 +260,9 @@ void USlotsComponent::AuxUseAll(AAstroPlayerController* Controller, TEnumAsByte<
 void USlotsComponent::AuxUse(FSlotReference AuxSlot, AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> InputEvent) {
 }
 
+void USlotsComponent::AuthoritySetSlotReserved(const FSlotReference& inSlotRef, const bool bInIsReserved) {
+}
+
 void USlotsComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
     
@@ -261,6 +270,7 @@ void USlotsComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     DOREPLIFETIME(USlotsComponent, ReplicatedSlotClickability);
     DOREPLIFETIME(USlotsComponent, ReplicatedSlotsAcceptItems);
     DOREPLIFETIME(USlotsComponent, ReplicatedSlotRuleStatus);
+    DOREPLIFETIME(USlotsComponent, ReplicatedSlotReserveStatus);
 }
 
 

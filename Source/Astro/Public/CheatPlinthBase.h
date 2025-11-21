@@ -16,6 +16,9 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UItemList* SpawnableItems;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UItemList* SpawnableItems_GW;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_SelectionIndex, meta=(AllowPrivateAccess=true))
     int32 SelectionIndex;
     
@@ -24,6 +27,9 @@ protected:
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FCurrentlySelectedItemChanged OnCurrentlySelectedItemChanged;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UItemList* ActiveSpawnableItems;
     
 public:
     ACheatPlinthBase(const FObjectInitializer& ObjectInitializer);

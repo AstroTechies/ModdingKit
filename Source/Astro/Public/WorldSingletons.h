@@ -11,11 +11,14 @@ class UBeaconManager;
 class UCameraFacingManager;
 class UCollectibleHandler;
 class UCreativeModeData;
+class ULightBarManager;
 class UObject;
+class UPSActivitiesManager;
 class UResourceExtractorManager;
 class USlotOrganizationRuleBroker;
 class USolarSystem;
 class UVoxelVolumeComponent;
+class UWwiseManager;
 
 USTRUCT(BlueprintType)
 struct FWorldSingletons {
@@ -62,6 +65,15 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UVoxelVolumeComponent*> ActiveVoxelVolumes;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    ULightBarManager* LightBarManager;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    UWwiseManager* WwiseManager;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    UPSActivitiesManager* PSActivitiesManager;
     
     ASTRO_API FWorldSingletons();
 };

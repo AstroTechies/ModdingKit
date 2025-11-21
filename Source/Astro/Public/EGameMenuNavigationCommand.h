@@ -26,6 +26,8 @@ enum class EGameMenuNavigationCommand : uint8 {
     ToggleAstropedia,
     ToggleStore,
     OpenUpsell,
+    OpenStarSeekerUpsell,
+    OpenMegaTechUpsell,
     Null,
 };
 

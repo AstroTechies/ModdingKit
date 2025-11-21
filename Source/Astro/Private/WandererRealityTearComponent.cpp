@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UWandererRealityTearComponent::UWandererRealityTearComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->DestroyTimeoutSeconds = 0.00f;
     this->PhotoWidgetClass = NULL;
     this->DeformRadius = 1200.00f;

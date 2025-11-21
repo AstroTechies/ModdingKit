@@ -2,11 +2,10 @@
 #include "Templates/SubclassOf.h"
 
 UDeployableItemPackageComponent::UDeployableItemPackageComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->PackagePreviewIndicatorSlotWrapper = NULL;
     this->PackageVisualsWrapper = NULL;
-    this->OwningItem = NULL;
-    this->UnpackIndicatorRoot = NULL;
+    this->PackagePreviewIndicatorSlotWrapper = NULL;
     this->DoNotAutoDestroyOnUnpack = false;
+    this->OwningItem = NULL;
 }
 
 void UDeployableItemPackageComponent::SetupPackagedItem(TSubclassOf<UItemType> ItemTypeToDeploy) {

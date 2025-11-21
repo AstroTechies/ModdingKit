@@ -2,6 +2,7 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
+#include "Engine/EngineBaseTypes.h"
 #include "CalledCarState.h"
 #include "ERailPostConnectionState.h"
 #include "EnableSignalDelegate.h"
@@ -46,6 +47,9 @@ public:
 protected:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FEnableSignal OnShouldStopOnArrivalChanged;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    TWeakObjectPtr<UPrimitiveComponent> OverlapComponentOverride;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FRailPostCarSlot> CarSlots;
@@ -107,6 +111,11 @@ protected:
     UFUNCTION(BlueprintCallable)
     void OnRep_CalledCarState(FCalledCarState PreviousState);
     
+public:
+    UFUNCTION()
+    void OnAsyncMapLoadStarted(const FURL& URL);
+    
+protected:
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastSetConnectionState(ERailPostConnectionState ConnectionState);
     

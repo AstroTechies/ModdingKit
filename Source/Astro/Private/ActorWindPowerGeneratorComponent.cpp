@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UActorWindPowerGeneratorComponent::UActorWindPowerGeneratorComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->DebugLineWindVectorVerticalOffset = 150.00f;
     this->DebugLineWindDirectionScale = 150.00f;
     this->MinPowerOutput = 0.00f;

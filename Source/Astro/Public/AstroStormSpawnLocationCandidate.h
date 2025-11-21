@@ -28,6 +28,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool IsBossStorm;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    bool IsRegistered;
+    
     AAstroStormSpawnLocationCandidate(const FObjectInitializer& ObjectInitializer);
 
     UFUNCTION(BlueprintCallable)

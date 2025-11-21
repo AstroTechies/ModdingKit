@@ -9,6 +9,7 @@
 #include "Templates/SubclassOf.h"
 #include "AstroUIStylingDatabase.generated.h"
 
+class UAstroGameMenuSubPaneWidget;
 class UAstroGameMenuTabBarButtonWidget;
 
 UCLASS(Blueprintable)
@@ -119,6 +120,15 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UAstroGameMenuTabBarButtonWidget> CustomGamesTabBarButtonClass;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<UAstroGameMenuSubPaneWidget> WarningsSubPaneClass;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<UAstroGameMenuSubPaneWidget> MarketingSubPaneClass;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<UAstroGameMenuSubPaneWidget> FriendsListSubPaneClass;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FMargin StandardMenuEntryWidgetMargin;

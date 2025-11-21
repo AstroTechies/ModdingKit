@@ -5,6 +5,8 @@ USolarSystem::USolarSystem() {
     this->Sun = NULL;
     this->GateStation = NULL;
     this->SolarControlRoom = NULL;
+    this->OrbitalPlatform = NULL;
+    this->MiniPlanet = NULL;
     this->World = NULL;
 }
 

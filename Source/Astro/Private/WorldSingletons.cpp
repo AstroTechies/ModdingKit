@@ -14,5 +14,8 @@ FWorldSingletons::FWorldSingletons() {
     this->PictureRenderTargetLockedObject = NULL;
     this->FoliageDestructionManager = NULL;
     this->SlotOrganizationRuleBroker = NULL;
+    this->LightBarManager = NULL;
+    this->WwiseManager = NULL;
+    this->PSActivitiesManager = NULL;
 }
 

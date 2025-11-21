@@ -50,6 +50,9 @@ protected:
     float AmbientVol;
     
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float GamepadSpeakerVol;
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool InvertedCameraYAxixMouse;
     
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -80,6 +83,15 @@ protected:
     bool bVehiclesUseYawAirControls;
     
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bToggleSpeakerGamepad;
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bToggleLightBarGamepad;
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bToggleRumbleGamepad;
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 MaxPlayers;
     
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -87,6 +99,9 @@ protected:
     
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 NumTimesAdventureTutorialShown;
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 NumTimesGlitchwalkersTutorialShown;
     
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool AllowInitialPlanetSelection;
@@ -120,6 +135,12 @@ protected:
     
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CompassScale;
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool StormsDisabled;
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bCableSnapWarning;
     
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FInputActionKeyMapping> ActionMappings;
@@ -171,6 +192,18 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void SetupInputMappings(APlayerController* PlayController);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetToggleSpeakerGamepad(bool InToggleSpeakerGamepad);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetToggleRumbleGamepad(bool InToggleRumbleGamepad);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetToggleLightBarGamepad(bool InToggleLightBarGamepad);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetStormsDisabled(bool NewStormsDisabled);
     
     UFUNCTION(BlueprintCallable)
     void SetSfxVolume(float InSfxVolume);
@@ -236,6 +269,9 @@ public:
     void SetHoldToOrbitCamera(bool InHoldToOrbitCamera);
     
     UFUNCTION(BlueprintCallable)
+    void SetGamepadSpeakerVolume(float InGamepadSpeakerVolume);
+    
+    UFUNCTION(BlueprintCallable)
     void SetFpsLimit(float InFpsLimit);
     
     UFUNCTION(BlueprintCallable)
@@ -249,6 +285,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void SetCloudQuality(int32 InCloudQuality);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetCableSnapWarning(bool cableSnapWarning);
     
     UFUNCTION(BlueprintCallable)
     void SetBrightness(int32 InBrightness);
@@ -269,6 +308,9 @@ public:
     void RestoreInputDefaults(APlayerController* PlayController, bool ForGamepad);
     
     UFUNCTION(BlueprintCallable)
+    void ResetNumTimesGlitchwalkersTutorialShown();
+    
+    UFUNCTION(BlueprintCallable)
     void ResetNumTimesCreativeTutorialShown();
     
     UFUNCTION(BlueprintCallable)
@@ -281,7 +323,10 @@ public:
     void RemoveInputActionMapping(FKey Key, FName ActionName, bool ForGamepad);
     
     UFUNCTION(BlueprintCallable)
-    void PreviewAudioSettings(float NewMusicVol, float sfxVol, float NewVoiceVol, float NewAmbientVol);
+    void PreviewAudioSettings(float NewMusicVol, float sfxVol, float NewVoiceVol, float NewAmbientVol, float NewGamepadSpeakerVol);
+    
+    UFUNCTION(BlueprintCallable)
+    void IncrementNumTimesGlitchwalkersTutorialShown();
     
     UFUNCTION(BlueprintCallable)
     void IncrementNumTimesCreativeTutorialShown();
@@ -308,10 +353,25 @@ public:
     bool GetUseLegacyAddMode() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetToggleSpeakerGamepad() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetToggleRumbleGamepad() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetToggleLightBarGamepad() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetStormsDisabled() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetSfxVolume() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetSelectionWheelRequiresHold() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    uint8 GetNumTimesGlitchwalkersTutorialShown() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     uint8 GetNumTimesCreativeTutorialShown() const;
@@ -382,6 +442,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetHoldToOrbitCamera() const;
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    float GetGamepadSpeakerVolume() const;
+    
     UFUNCTION(BlueprintCallable)
     float GetFpsLimit();
     
@@ -396,6 +459,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetCloudQuality() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetCableSnapWarningEnabled() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetBrightness() const;

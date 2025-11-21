@@ -3,7 +3,6 @@
 #include "Templates/SubclassOf.h"
 
 UItemDriveComponent::UItemDriveComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->SendEventEvery = 60.00f;
     this->ExoRequestRocketClass = NULL;
     this->TradeShipDatabase = NULL;

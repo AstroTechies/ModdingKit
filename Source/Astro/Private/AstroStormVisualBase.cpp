@@ -1,11 +1,8 @@
 #include "AstroStormVisualBase.h"
 
 AAstroStormVisualBase::AAstroStormVisualBase(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->IsLocalPlayerRelevant = false;
+//    this->bSaveGameRelevant = true;
     this->StormID = 0;
-    this->OuterGameplayRadius = 0.00f;
-    this->InnerGameplayRadius = 0.00f;
-    this->PlayerGameplayRadius = 0.00f;
     this->OuterEdgeFogRadius = 0.00f;
     this->InnerEdgeFogRadius = 0.00f;
     this->OuterEyeFogRadius = 0.00f;
@@ -15,7 +12,6 @@ AAstroStormVisualBase::AAstroStormVisualBase(const FObjectInitializer& ObjectIni
     this->InStormFogDensity = 0.00f;
     this->EyeFogDensity = 0.00f;
     this->PlayerFogRadius = 0.00f;
-    this->PlayerGlitchWallApproachDistance = 0.00f;
     this->IsSpinningUp = false;
     this->IsSpinningDown = false;
 }

@@ -21,8 +21,8 @@
 
 class AActor;
 class AAstroCharacter;
-class AAstroPlanet;
 class APlayController;
+class ASolarBody;
 class ATerrainBrush;
 class UActivation;
 class UAugmentComponent;
@@ -272,7 +272,7 @@ public:
 
 private:
     UFUNCTION(BlueprintCallable)
-    bool UpdateTerrainSample(AAstroPlanet* Planet, const FVector& Location);
+    bool UpdateTerrainSample(ASolarBody* SolarBody, const FVector& Location);
     
     UFUNCTION(BlueprintCallable)
     void UpdateAugmentModifiedProperties();
@@ -310,7 +310,7 @@ private:
     void ServerSendBrushUpdates(const FReplicatedBrushState& repState);
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
-    void ServerRequestNewMaterialWithTerrainProperties(AAstroPlanet* Planet, const FVoxelMaterialProperties& TerrainProperties, UMaterialInterface* CustomMaterial, int32 creativeModePaintMaterialIndex);
+    void ServerRequestNewMaterialWithTerrainProperties(ASolarBody* SolarBody, const FVoxelMaterialProperties& TerrainProperties, const FVector InLocation, UMaterialInterface* CustomMaterial, int32 creativeModePaintMaterialIndex);
     
     UFUNCTION(BlueprintCallable, Server, Unreliable, WithValidation)
     void ServerEndDeforming();

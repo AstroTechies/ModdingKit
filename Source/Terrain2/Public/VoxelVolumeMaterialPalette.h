@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
-#include "Engine/EngineTypes.h"
+#include "Chaos/ChaosEngineInterface.h"
 #include "CreativePaintMaterialMapping.h"
 #include "VoxelMaterial.h"
 #include "VoxelVolumeMaterialPalette.generated.h"

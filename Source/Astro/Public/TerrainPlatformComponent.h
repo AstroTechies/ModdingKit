@@ -7,7 +7,7 @@
 #include "TerrainPlatformComponent.generated.h"
 
 class AActor;
-class AAstroPlanet;
+class ASolarBody;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class ASTRO_API UTerrainPlatformComponent : public USceneComponent {
@@ -43,7 +43,7 @@ protected:
     
 private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    AAstroPlanet* m_planet;
+    ASolarBody* m_solarBody;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<FDeformationParamsT2> BufferedT2Deforms;

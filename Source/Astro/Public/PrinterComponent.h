@@ -44,6 +44,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSubclassOf<APhysicalItem>> Blueprints;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    TArray<TSubclassOf<UItemType>> FilteredBaseItemTypes;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UItemCatalogCategoryDefinition* DefaultBlueprintPrinterCatagory;
     
@@ -56,7 +59,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool RequireResources;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     bool HideIndicatorWithoutFullRecipe;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -123,6 +126,9 @@ public:
     bool PrintingActive;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bPullFromPlayerBackpack;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool ValidatePrintAreaOpen;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -144,7 +150,6 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_PrinterStateAtomic, meta=(AllowPrivateAccess=true))
     FReplicatedPrinterState REP_PrinterState;
     
-private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FReplicatedPrinterState PrevReplicatedState;
     
@@ -208,7 +213,10 @@ public:
     void SetCanUse(bool bCanUse);
     
     UFUNCTION(BlueprintCallable)
-    void SetBlueprints(TArray<TSubclassOf<APhysicalItem>> newBlueprints);
+    void SetBlueprints(const TArray<TSubclassOf<APhysicalItem>>& newBlueprints);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetBaseItemTypeFilters(TArray<TSubclassOf<UItemType>> baseItemTypes);
     
 protected:
     UFUNCTION(BlueprintCallable)
@@ -219,9 +227,12 @@ public:
     void RemoveIgnoredActorForPrintAreaValidation(AActor* ignoredActor);
     
     UFUNCTION(BlueprintCallable)
+    void RemoveBaseItemTypeFilter(TSubclassOf<UItemType> BaseItemType);
+    
+    UFUNCTION(BlueprintCallable)
     bool PrinterClickQuery(UClickQuery* Query);
     
-private:
+protected:
     UFUNCTION(BlueprintCallable)
     void OnRep_Progress();
     
@@ -237,14 +248,18 @@ private:
     UFUNCTION(BlueprintCallable)
     void OnRep_CurrentBlueprintItem();
     
-protected:
+public:
     UFUNCTION(BlueprintCallable)
     void OnPrinterDestroyed(AActor* DestroyedActor);
     
-public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void OnAuthorityControlPanelCrackedChanged(AControlPanel* ControlPanel);
     
+protected:
+    UFUNCTION(BlueprintCallable)
+    void InitializeBlueprintRows();
+    
+public:
     UFUNCTION(BlueprintCallable)
     void IncrementBlueprintRow(bool doServerIncrement);
     
@@ -328,10 +343,13 @@ public:
     void DeactivateBlueprint();
     
     UFUNCTION(BlueprintCallable)
-    void CreateIndicatorFromItem(APhysicalItem* Owner);
+    int32 CreateIndicatorFromItem(APhysicalItem* Owner);
     
     UFUNCTION(BlueprintCallable)
-    void CreateIndicatorFromClass(TSubclassOf<APhysicalItem> Class);
+    int32 CreateIndicatorFromClass(TSubclassOf<APhysicalItem> Class);
+    
+    UFUNCTION(BlueprintCallable)
+    void ClearBaseItemTypeFilters();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanReserveSlotsAcceptItemForActiveRecipe(APhysicalItem* Item);
@@ -339,8 +357,16 @@ public:
     UFUNCTION(BlueprintCallable)
     void CancelPrint(bool restoreIngredients);
     
+protected:
+    UFUNCTION(BlueprintCallable)
+    void AuthorityUpdateSelectedBlueprintIndex();
+    
+public:
     UFUNCTION(BlueprintCallable)
     void AddIgnoredActorForPrintAreaValidation(AActor* ignoredActor);
+    
+    UFUNCTION(BlueprintCallable)
+    void AddBaseItemTypeFilter(TSubclassOf<UItemType> BaseItemType);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static UPrinterComponent* ActorPrinterComponent(AActor* Actor);

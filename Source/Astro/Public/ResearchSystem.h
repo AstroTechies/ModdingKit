@@ -62,7 +62,7 @@ public:
     static float GetCurrentResearchPointBalance(const APlayerController* PlayerController);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    static void AuthorityGrantResearchPoints(const UObject* WorldContextObject, int32 PointsToGrant);
+    static bool AuthorityGrantResearchPoints(const UObject* WorldContextObject, int32 pointsToGrant, const bool bInShouldSuppressNotification);
     
 };
 

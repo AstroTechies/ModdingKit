@@ -20,5 +20,9 @@ enum class EAstroGameMenuTutorialSlideDeckKey : uint8 {
     Flora,
     Rails,
     Expansion,
+    GW_QHResources,
+    GW_Tutorial,
+    MegaTech_Upsell,
+    MegaTech_Tutorial,
 };
 

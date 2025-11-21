@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UPhysicsComponent::UPhysicsComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
 }
 
 void UPhysicsComponent::SetTraceEnabled(bool Enabled) {

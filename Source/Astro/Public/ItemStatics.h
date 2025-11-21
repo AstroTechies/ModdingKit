@@ -12,6 +12,7 @@
 #include "ItemStatics.generated.h"
 
 class APhysicalItem;
+class UCraftingDependencyMapList;
 class UItemList;
 class UItemType;
 class UObject;
@@ -23,13 +24,13 @@ public:
     UItemStatics();
 
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    static bool WillCraftItem(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& itemTypes);
+    static bool WillCraftItem(const TArray<FSlotReference>& InputSlots, FSlotReference OutputSlot, const TArray<TSubclassOf<UItemType>>& itemTypes);
     
     UFUNCTION(BlueprintCallable)
-    static int32 TryCraftItemDelta(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& itemTypes, float Rate, float DeltaTime);
+    static int32 TryCraftItemDelta(const TArray<FSlotReference>& InputSlots, FSlotReference OutputSlot, const TArray<TSubclassOf<UItemType>>& itemTypes, float Rate, float DeltaTime);
     
     UFUNCTION(BlueprintCallable)
-    static int32 TryCraftItem(const TArray<FSlotReference>& InputSlots, FSlotReference outputSlot, const TArray<TSubclassOf<UItemType>>& itemTypes, float Rate);
+    static int32 TryCraftItem(const TArray<FSlotReference>& InputSlots, FSlotReference OutputSlot, const TArray<TSubclassOf<UItemType>>& itemTypes, float Rate);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static APhysicalItem* SpawnDeployablePackagedItem(const UObject* WorldContextObject, TSubclassOf<APhysicalItem> PhysicalItemClassPackagedItemWillContain, FTransform SpawnTransform);
@@ -37,11 +38,20 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 SmallItemAmountDelta();
     
+    UFUNCTION(BlueprintCallable)
+    static int32 RestorePartialNuggetsForItem(APhysicalItem* inItem, const TSubclassOf<UItemType> inItemType);
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool ResourcePassesFiltrationList(TSubclassOf<UItemType> ItemToTest, TSubclassOf<UItemList> FiltrationList, ESlottableItemsFiltrationListBehavior FiltrationBehavior);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     static bool RemoveItemFromBundleAndPlaceOnGroundNearby(APhysicalItem* BundledItem, FVector OffsetForGroundUnbundling, bool bPretendAsIfInAuxSlot);
+    
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    static APhysicalItem* RemoveItemFromBundle(APhysicalItem* BundledItem, FVector OffsetForGroundUnbundling, bool bPretendAsIfInAuxSlot, bool bRequireTraceHit);
+    
+    UFUNCTION(BlueprintCallable)
+    static bool RefundNuggetsForItem(APhysicalItem* inItem, const TSubclassOf<UItemType> inItemType, const int32 inAmountToRefund, int32& outRemaining);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static float RecipeFromAmount(int32 Amount);
@@ -100,7 +110,7 @@ public:
     static FText GetExamineVerb();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    static FText GetCraftingSourcesTooltipDescription(TSubclassOf<UItemType> Item);
+    static FText GetCraftingSourcesTooltipDescription(TSubclassOf<UItemType> Item, UCraftingDependencyMapList* CraftingSources);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static TSubclassOf<UItemType> FindRecipeTarget(const FRecipe& Recipe, const TArray<TSubclassOf<UItemType>>& itemTypes);
@@ -112,10 +122,13 @@ public:
     static int32 ConvertDeformationDeltaToSedimentAmount(float deformationDelta, float SedimentDeformationRatio);
     
     UFUNCTION(BlueprintCallable)
-    static bool CanSwapHeldItemWithSlottedItem(const APhysicalItem* HeldItem, const APhysicalItem* SlottedItem);
+    static bool CanSwapHeldItemWithSlottedItem(const APhysicalItem* HeldItem, const APhysicalItem* slottedItem);
     
     UFUNCTION(BlueprintCallable)
     static bool CanHeldItemInteractWithTargetItem(const APhysicalItem* HeldItem, const APhysicalItem* hitItem, bool& outHighlightChildrenOfTarget);
+    
+    UFUNCTION(BlueprintCallable)
+    static void AnalyticsRecordItemCraftedEvent(const APhysicalItem* craftedItem);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static int32 AmountFromRecipe(float Amount);

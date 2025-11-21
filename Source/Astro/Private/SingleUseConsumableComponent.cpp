@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 USingleUseConsumableComponent::USingleUseConsumableComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->bHasBeenConsumed = false;
     this->bSuppressUseAfterConsumption = true;
     this->bSuppressExamineAfterConsumption = true;

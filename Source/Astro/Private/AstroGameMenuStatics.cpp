@@ -16,7 +16,22 @@ bool UAstroGameMenuStatics::TryGetCurrentGameMenuContext(UObject* WorldContextOb
     return false;
 }
 
+void UAstroGameMenuStatics::ShowWarningPane(UObject* WorldContextObject) {
+}
+
+void UAstroGameMenuStatics::ShowMarketingPane(UObject* WorldContextObject) {
+}
+
+void UAstroGameMenuStatics::ShowGameMenuWarningWidget(UObject* WorldContextObject, EGameMenuWarningWidgetTypes warningType) {
+}
+
+void UAstroGameMenuStatics::SetRightMenuPanelHidden(UObject* WorldContextObject, bool isHidden) {
+}
+
 void UAstroGameMenuStatics::SetIsPreviewingCharacterCustomizationFromTitleScreen(UObject* WorldContextObject, bool IsPreviewing) {
+}
+
+void UAstroGameMenuStatics::SetCurrentPlayfabFailureReason(UObject* WorldContextObject, FAstroCGMPlayfabFailureReason failureReason) {
 }
 
 void UAstroGameMenuStatics::RestoreKeyboardFocusToGameMenu(UObject* WorldContextObject) {
@@ -38,7 +53,7 @@ UAstroGameMenuPopoutWidget* UAstroGameMenuStatics::PresentGameMenuPopoutWidgetPr
     return NULL;
 }
 
-UAstroGameMenuPopoutWidget* UAstroGameMenuStatics::PresentGameMenuPopoutWidget(UObject* WorldContextObject, UAstroGameMenuFocusItemWidget* OwningFocusItem, UAstroGameMenuPopoutWidgetContentsBase* PopoutContents, bool SkipInitialFocus, TSubclassOf<UAstroGameMenuPopoutWidget> OptionalCustomPopoutWrapper) {
+UAstroGameMenuPopoutWidget* UAstroGameMenuStatics::PresentGameMenuPopoutWidget(UObject* WorldContextObject, UAstroGameMenuFocusItemWidget* OwningFocusItem, UAstroGameMenuPopoutWidgetContentsBase* PopoutContents, bool SkipInitialFocus, TSubclassOf<UAstroGameMenuPopoutWidget> OptionalCustomPopoutWrapper, bool IsRightPanelPopout) {
     return NULL;
 }
 
@@ -66,6 +81,9 @@ bool UAstroGameMenuStatics::IsGameMenuTabBarAuthoringDataValid(const FAstroGameM
     return false;
 }
 
+void UAstroGameMenuStatics::HideGameMenuWarningWidget(UObject* WorldContextObject, EGameMenuWarningWidgetTypes warningType) {
+}
+
 EAstroGameMenuTutorialSlideDeckKey UAstroGameMenuStatics::GetTutorialSlideDeckForCard(UObject* WorldContextObject, EAstroGameMenuTutoriaSlideCardKey TutorialSlideCardKey) {
     return EAstroGameMenuTutorialSlideDeckKey::Invalid;
 }
@@ -78,12 +96,12 @@ bool UAstroGameMenuStatics::GetTutorialSlideCard(UObject* WorldContextObject, EA
     return false;
 }
 
-FVector2D UAstroGameMenuStatics::GetOriginOfActiveSubPaneContentsRegion(UObject* WorldContextObject) {
+FVector2D UAstroGameMenuStatics::GetOriginOfActiveSubPaneContentsRegionRight(UObject* WorldContextObject) {
     return FVector2D{};
 }
 
-UUserWidget* UAstroGameMenuStatics::GetMOTDWidget(UObject* WorldContextObject) {
-    return NULL;
+FVector2D UAstroGameMenuStatics::GetOriginOfActiveSubPaneContentsRegionLeft(UObject* WorldContextObject) {
+    return FVector2D{};
 }
 
 bool UAstroGameMenuStatics::GetKeybindingForDiscreteInputMapping(FAstroDiscreteInputDefinition DiscreteInputDefinition, FKey& OutKey, bool& OutIsAxis, bool ForGamepad) {
@@ -91,26 +109,6 @@ bool UAstroGameMenuStatics::GetKeybindingForDiscreteInputMapping(FAstroDiscreteI
 }
 
 UAstroGameMenuWidget* UAstroGameMenuStatics::GetGameMenuWidget(UObject* WorldContextObject) {
-    return NULL;
-}
-
-UUserWidget* UAstroGameMenuStatics::GetExperimentalSettingsWarningWidget(UObject* WorldContextObject) {
-    return NULL;
-}
-
-UUserWidget* UAstroGameMenuStatics::GetCustomGameSwitchModifiersWarningWidget(UObject* WorldContextObject) {
-    return NULL;
-}
-
-UUserWidget* UAstroGameMenuStatics::GetCustomGamePerformanceWarningWidget(UObject* WorldContextObject) {
-    return NULL;
-}
-
-FVector2D UAstroGameMenuStatics::GetCachedSizeOfGameMenu(UObject* WorldContextObject, bool IncludeScrollBarSize) {
-    return FVector2D{};
-}
-
-UUserWidget* UAstroGameMenuStatics::GetAchievementProgressionWarningWidget(UObject* WorldContextObject) {
     return NULL;
 }
 
@@ -132,7 +130,7 @@ void UAstroGameMenuStatics::DismissCurrentGameMenuPopoutWidget(UObject* WorldCon
 void UAstroGameMenuStatics::ClearGameMenuSelection(UObject* WorldContextObject) {
 }
 
-void UAstroGameMenuStatics::ChangeSubPaneOnTopOfNavigationStack(UObject* WorldContextObject, TSubclassOf<UAstroGameMenuSubPaneWidget> NewSubPane) {
+void UAstroGameMenuStatics::ChangeSubPaneOnTopOfNavigationStack(UObject* WorldContextObject, TSubclassOf<UAstroGameMenuSubPaneWidget> NewSubPaneLeft, TSubclassOf<UAstroGameMenuSubPaneWidget> NewSubPaneRight, int32 TabBarSelectionIndex) {
 }
 
 void UAstroGameMenuStatics::ChangeMenuContext(UObject* WorldContextObject, EAstroGameMenuContext NewMenuContext) {

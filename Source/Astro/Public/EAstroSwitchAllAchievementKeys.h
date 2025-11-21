@@ -14,5 +14,6 @@ enum class EAstroSwitchAllAchievementKeys : uint8 {
     BeatGame = 44,
     PlanetDance = 47,
     COUNT = 9,
+    ZeroInvalid = 0,
 };
 

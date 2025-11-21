@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UAugmentComponent::UAugmentComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->AugmentIsEquipped = false;
     this->AugmentIsActive = false;
     this->AugmentIsEnabled = true;

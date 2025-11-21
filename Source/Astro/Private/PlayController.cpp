@@ -208,7 +208,10 @@ bool APlayController::SetCharacterCustomizationServerInternal_Validate(const FAs
 void APlayController::SetCharacterCustomizationServer(const FAstroCharacterCustomization& NewCustomization) {
 }
 
-void APlayController::SetCameraZoom(float zoom) {
+void APlayController::SetCameraZoom(float Zoom) {
+}
+
+void APlayController::ServerUnpackAnchor_Implementation(UDeployableAnchorComponent* DeployableAnchorComponent) {
 }
 
 void APlayController::ServerSpawnResourceNuggetDebug_Implementation(UClass* ObjClass) {
@@ -271,6 +274,30 @@ bool APlayController::ServerNotifyActorOnscreenStatusChanged_Validate(AActor* mo
     return true;
 }
 
+void APlayController::ServerMoveOrbitalPlatformToNewPlanet_Implementation(AOrbitalPlatform* inOrbitalPlatform, ASolarBody* TargetBody) {
+}
+
+void APlayController::ServerLaunchAnchor_Implementation(AWreck* Wreck, APhysicalItem* inDestinationLandingPad) {
+}
+bool APlayController::ServerLaunchAnchor_Validate(AWreck* Wreck, APhysicalItem* inDestinationLandingPad) {
+    return true;
+}
+
+void APlayController::ServerHandleOrbitalPlatformSpawn_Implementation(AWreck* Wreck, EPlanetIdentifier planetID) {
+}
+
+void APlayController::ServerHandleOrbitalPlatformExtraStages_Implementation(AWreck* Wreck) {
+}
+
+void APlayController::ServerHandleAnchorLoadUnload_Implementation(AWreck* Wreck, const FString& inButtonPressedName) {
+}
+bool APlayController::ServerHandleAnchorLoadUnload_Validate(AWreck* Wreck, const FString& inButtonPressedName) {
+    return true;
+}
+
+void APlayController::ServerEjectOrbitalPlatformAnchor_Implementation(AWreck* Wreck) {
+}
+
 void APlayController::ServerCreateNavpointManagerForPlanet_Implementation(AAstroPlanet* Planet) {
 }
 bool APlayController::ServerCreateNavpointManagerForPlanet_Validate(AAstroPlanet* Planet) {
@@ -283,10 +310,19 @@ bool APlayController::ServerCompleteCustomMissionObjective_Validate(const FStrin
     return true;
 }
 
+void APlayController::ServerClearButtonData_Implementation(AMuseum* inMuseumActor) {
+}
+
+void APlayController::ServerClaimReward_Implementation(AMuseum* inMuseumActor, const ESinkType inSinkType, const uint8 inMilestoneIndex, const FTransform inDropPosition) {
+}
+
 void APlayController::ServerClaimNonPhysicalMissionRewards_Implementation(const FName missionId) {
 }
 bool APlayController::ServerClaimNonPhysicalMissionRewards_Validate(const FName missionId) {
     return true;
+}
+
+void APlayController::ServerCheckAnchorCanLaunch_Implementation(AWreck* Wreck, EMegastructureType megastructureType, APhysicalItem* inDestinationLandingPad) {
 }
 
 void APlayController::ServerBranchConnectionFromActuatorRerouteNode_Implementation(FSlotReference SourceSlot, int32 rerouteNodeId) {
@@ -340,6 +376,9 @@ void APlayController::OpenEmoteWheel() {
 }
 
 void APlayController::OnReceiveUsePressed() {
+}
+
+void APlayController::OnReceiveToggleHeadlamp() {
 }
 
 void APlayController::OnReceiveToggleDeformMenuPressed() {
@@ -662,6 +701,12 @@ void APlayController::CloseAllSelectionWheels() {
 }
 
 void APlayController::CloseActionWheel() {
+}
+
+void APlayController::ClientSetTimeDilation_Implementation(float inNewSpeed) {
+}
+bool APlayController::ClientSetTimeDilation_Validate(float inNewSpeed) {
+    return true;
 }
 
 void APlayController::ClientPresentUnlockNotification_Implementation(FAstroNotificationUnlockAuthoringData AuthoringData) {

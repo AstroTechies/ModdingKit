@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-#include "Engine/EngineTypes.h"
+#include "Chaos/ChaosEngineInterface.h"
 #include "ReplicatedAugmentState.generated.h"
 
 USTRUCT(BlueprintType)

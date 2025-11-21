@@ -7,7 +7,7 @@ ULocalizedTerrainReversionComponent::ULocalizedTerrainReversionComponent(const F
     this->Intensity = 1.00f;
     this->UseOverrideMaterial = false;
     this->Enabled = true;
-    this->m_planet = NULL;
+    this->m_solarBody = NULL;
 }
 
 void ULocalizedTerrainReversionComponent::OwnerDestroyed(AActor* DestroyedActor) {

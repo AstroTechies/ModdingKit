@@ -1,7 +1,6 @@
 #include "TetherAttachComponent.h"
 
 UTetherAttachComponent::UTetherAttachComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->CanAttach = true;
     this->AttachToConnections = false;
     this->HaveConnectedOxygen = false;

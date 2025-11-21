@@ -6,6 +6,7 @@ UChildSlotComponent::UChildSlotComponent(const FObjectInitializer& ObjectInitial
     this->SlottableItemsFiltrationList = NULL;
     this->SlottableItemsFiltrationListBehavior = ESlottableItemsFiltrationListBehavior::Ignore;
     this->AcceptInputItems = true;
+    this->bIgnoreDuringSlotOrgRules = false;
     this->SlotVisible = true;
     this->Unclickable = false;
     this->Breakable = false;

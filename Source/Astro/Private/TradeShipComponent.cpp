@@ -3,7 +3,6 @@
 #include "Templates/SubclassOf.h"
 
 UTradeShipComponent::UTradeShipComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->LaunchingPlayController = NULL;
     this->RejectedItemForce = 0.00f;
     this->OrbitalNav = NULL;

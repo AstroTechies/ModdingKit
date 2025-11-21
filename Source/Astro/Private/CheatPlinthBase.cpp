@@ -4,8 +4,10 @@
 
 ACheatPlinthBase::ACheatPlinthBase(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->SpawnableItems = NULL;
+    this->SpawnableItems_GW = NULL;
     this->SelectionIndex = 0;
     this->CurrentlySelectedItemType = NULL;
+    this->ActiveSpawnableItems = NULL;
 }
 
 void ACheatPlinthBase::OnRep_SelectionIndex() {

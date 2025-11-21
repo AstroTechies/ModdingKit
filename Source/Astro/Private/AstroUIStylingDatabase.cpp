@@ -21,6 +21,9 @@ UAstroUIStylingDatabase::UAstroUIStylingDatabase() {
     this->ServerInfoTabBarButtonClass = NULL;
     this->ServerListTabBarButtonClass = NULL;
     this->CustomGamesTabBarButtonClass = NULL;
+    this->WarningsSubPaneClass = NULL;
+    this->MarketingSubPaneClass = NULL;
+    this->FriendsListSubPaneClass = NULL;
 }
 
 

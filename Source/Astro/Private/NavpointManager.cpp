@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UNavpointManager::UNavpointManager(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
 }
 
 void UNavpointManager::OnRep_RelevantNavpoints() {

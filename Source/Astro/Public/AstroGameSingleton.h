@@ -3,18 +3,22 @@
 #include "UObject/NoExportTypes.h"
 #include "UObject/Object.h"
 #include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "CombinedRuntimeCustomizationContent.h"
+#include "EAstroGameMenuTutoriaSlideCardKey.h"
 #include "SimpleFocusTooltipWidgetAuthoringData.h"
 #include "Templates/SubclassOf.h"
 #include "AstroGameSingleton.generated.h"
 
 class AActor;
+class AOrbitalPlatform;
 class APhysicalItem;
 class APlacingActuatorConnection;
 class APlanetProxyActor;
 class ARailNetwork;
 class AResourceInfo;
 class AResourceInfoNeeded;
+class ASplineNetwork;
 class UAchievementDefinitionTable;
 class UAstroCharacterCustomizationGlobals;
 class UAstroColorDatabase;
@@ -25,14 +29,17 @@ class UAstroGameMenuPopoutWidget;
 class UAstroGameMenuTutorialSlideDeckDatabase;
 class UAstroGameMenuWidget;
 class UAstroGameSingleton;
+class UAstroLightBarDatabase;
 //class UAstroMicroTxnStoreGlobals;
 class UAstroNotificationDatabase;
+class UAstroPSActivitiesDatabase;
 class UAstroPlanetDisplayNameDatabase;
 //class UAstroPlatformSpecificCustomizationContent;
 class UAstroPopupBadgeDatabase;
 class UAstroTooltipWidget;
 class UAstroUIAudioDatabase;
 class UAstroUIStylingDatabase;
+class UAstroWwiseDatabase;
 class UControlSymbol;
 class UCraftingDependencyMapList;
 class UDeployableItemPackageCatalog;
@@ -48,6 +55,7 @@ class ULocalizationCultureOptions;
 class UMaterialInstance;
 class UMaterialInterface;
 class UMessageOfTheDay;
+class UMuseumBuffDefinitions;
 class UResearchProgressionTable;
 class URewardTable;
 class UScrapConversionTable;
@@ -134,6 +142,9 @@ public:
     UCraftingDependencyMapList* CraftingSources;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UCraftingDependencyMapList* CraftingSources_GW;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UInputKeyToIconMapping* InputKeyToIconMapping;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -144,6 +155,12 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAstroFoliageDestructionData* FoliageDestructionData;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<AOrbitalPlatform> OrbitalPlatformType;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FVector OrbitalPlatformSpawnLocation;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WindPowerActivationThreshold;
@@ -162,6 +179,15 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<ARailNetwork> RailNetworkType;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<ASplineNetwork> SplineNetworkType;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMuseumBuffDefinitions* BuffDefinitions;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TMap<EAstroGameMenuTutoriaSlideCardKey, EAstroGameMenuTutoriaSlideCardKey> TutorialSlideDeckGlitchWalkerRedirectionTable;
     
 private:
 //    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -254,6 +280,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UMaterialInterface* PrintingMaterial;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInterface* MegastructurePrintingMaterial;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UFont* ASTROFONT;
@@ -392,6 +421,15 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<AActor> CurrentLTERocket;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAstroLightBarDatabase* AstroLightBarDatabase;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAstroWwiseDatabase* AstroWwiseDatabase;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UAstroPSActivitiesDatabase* AstroPSActivitiesDatabase;
     
     UAstroGameSingleton();
 

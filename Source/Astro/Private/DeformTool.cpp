@@ -66,7 +66,7 @@ ADeformTool::ADeformTool(const FObjectInitializer& ObjectInitializer) : Super(Ob
     this->MinedMineral = false;
 }
 
-bool ADeformTool::UpdateTerrainSample(AAstroPlanet* Planet, const FVector& Location) {
+bool ADeformTool::UpdateTerrainSample(ASolarBody* SolarBody, const FVector& Location) {
     return false;
 }
 
@@ -113,9 +113,9 @@ bool ADeformTool::ServerSendBrushUpdates_Validate(const FReplicatedBrushState& r
     return true;
 }
 
-void ADeformTool::ServerRequestNewMaterialWithTerrainProperties_Implementation(AAstroPlanet* Planet, const FVoxelMaterialProperties& TerrainProperties, UMaterialInterface* CustomMaterial, int32 creativeModePaintMaterialIndex) {
+void ADeformTool::ServerRequestNewMaterialWithTerrainProperties_Implementation(ASolarBody* SolarBody, const FVoxelMaterialProperties& TerrainProperties, const FVector InLocation, UMaterialInterface* CustomMaterial, int32 creativeModePaintMaterialIndex) {
 }
-bool ADeformTool::ServerRequestNewMaterialWithTerrainProperties_Validate(AAstroPlanet* Planet, const FVoxelMaterialProperties& TerrainProperties, UMaterialInterface* CustomMaterial, int32 creativeModePaintMaterialIndex) {
+bool ADeformTool::ServerRequestNewMaterialWithTerrainProperties_Validate(ASolarBody* SolarBody, const FVoxelMaterialProperties& TerrainProperties, const FVector InLocation, UMaterialInterface* CustomMaterial, int32 creativeModePaintMaterialIndex) {
     return true;
 }
 

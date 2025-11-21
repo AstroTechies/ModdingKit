@@ -23,6 +23,7 @@ AControlPanel::AControlPanel(const FObjectInitializer& ObjectInitializer) : Supe
     this->FirstNavigationRepeatDelay = 0.50f;
     this->NavigationRepetitionInterval = 0.15f;
     this->AnalogStickNavigationThreshold = 0.50f;
+    this->PadChannel = ELogisticsComplexChannel::None;
     this->bAutoOptimizeHierarchy = false;
     this->ControlPanelLight->SetupAttachment(RootComponent);
     this->StaticMesh->SetupAttachment(RootComponent);

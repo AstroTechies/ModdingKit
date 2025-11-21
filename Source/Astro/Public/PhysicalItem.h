@@ -10,6 +10,7 @@
 #include "EmplacementData.h"
 #include "ItemDropInWorldDelegateDelegate.h"
 #include "ItemDropInWorldTerrainDelegateDelegate.h"
+#include "OnMotionStateChangedExtendedInfoDelegate.h"
 #include "OnMovedDelegate.h"
 #include "OnPerformAuxUseOverrideDelegate.h"
 #include "OnPickedUpDelegate.h"
@@ -34,6 +35,7 @@ class UPrimitiveComponent;
 class UProceduralStateComponent;
 class USceneComponent;
 class USlotsComponent;
+class UStaticMesh;
 class UStaticMeshComponent;
 class UTerrainPhysicsComponent;
 class UTooltipComponent;
@@ -92,6 +94,9 @@ public:
     FSignal OnMotionStateChanged;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnMotionStateChangedExtendedInfo OnMotionStateChangedExtendedInfo;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnSetCardinalDirection;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -111,6 +116,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPrimitiveComponent* PlaceholderPrimitive;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UStaticMesh* PlaceholderMesh;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStaticMeshComponent* StaticMeshComponent;
@@ -184,6 +192,9 @@ public:
     int32 ToolMoveTier;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 SlotTierSpawnOverride;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float PlacementSnapToGroundHeight;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
@@ -200,6 +211,9 @@ public:
     float SlotScale;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float IndicatorScale;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bDestroyWhenDrained: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -214,11 +228,14 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnSelectionRotationStartOrStop OnPickedUpRotationStartOrStop;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FString> AutoWeldAllowedOverrideList;
+    
 protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     APawn* MostRecentNetOwner;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     // Can this item be slotted?
     bool IsUnslottable;
     
@@ -263,6 +280,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void SetNonSimulatingPhysics();
+    
+    UFUNCTION(BlueprintCallable)
+    void SetIsAttachedToTerrain(bool isAttachedToTerrain);
     
     UFUNCTION(BlueprintCallable)
     void SetIndicatorPhysics();
@@ -410,6 +430,10 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanNeverBeSlotted() const;
+    
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    // Can this item be slotted?
+    void AuthoritySetIsUnslottable(bool bIsUnslottable);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool AcceptsFakeTerrainObjectsAsTerrain();

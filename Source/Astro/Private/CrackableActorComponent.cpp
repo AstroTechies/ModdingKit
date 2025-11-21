@@ -23,6 +23,9 @@ UCrackableActorComponent::UCrackableActorComponent(const FObjectInitializer& Obj
 void UCrackableActorComponent::UpdateScreenScaleRatioAndCameraSpaceOffset(float ratio, FVector Offset) {
 }
 
+void UCrackableActorComponent::SetExaminable(bool bNewExaminable) {
+}
+
 void UCrackableActorComponent::SetCracked(bool cracked) {
 }
 
@@ -32,7 +35,7 @@ void UCrackableActorComponent::SetClosedRelativeTransform(const FTransform& Clos
 void UCrackableActorComponent::OnRep_StartingRelativeTransform() {
 }
 
-void UCrackableActorComponent::OnRep_Cracked() {
+void UCrackableActorComponent::OnRep_CrackedAndExaminable() {
 }
 
 void UCrackableActorComponent::OnParentCrackedChanged(UCrackableActorComponent* parentCrackableActorComponent, bool bParentCracked) {

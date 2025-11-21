@@ -47,6 +47,9 @@ void ABackpack::OnRep_Catalog() {
 }
 
 
+void ABackpack::OnMuseumPowerSatisfactionChanged(const float inPowerSatisfaction) {
+}
+
 void ABackpack::OnLeftAuxReleased() {
 }
 
@@ -54,6 +57,9 @@ void ABackpack::OnLeftAuxPressed() {
 }
 
 void ABackpack::OnItemInSlotChanged(APhysicalItem* Item) {
+}
+
+void ABackpack::OnDonationRewardsChanged(const EDonationReward rewardTypeChanged) {
 }
 
 void ABackpack::OnDeformToolEquippedStateChanged(bool equipped) {

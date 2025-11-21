@@ -48,6 +48,9 @@ private:
     UPROPERTY(EditAnywhere, Transient, ReplicatedUsing=OnRep_SlotRuleStatus, meta=(AllowPrivateAccess=true))
     TArray<uint32> ReplicatedSlotRuleStatus;
     
+    UPROPERTY(EditAnywhere, Transient, ReplicatedUsing=OnRep_SetSlotReserved, meta=(AllowPrivateAccess=true))
+    TArray<uint32> ReplicatedSlotReserveStatus;
+    
 public:
     USlotsComponent(const FObjectInitializer& ObjectInitializer);
 
@@ -155,10 +158,10 @@ public:
     static void ReleaseSlotItemForce(FSlotReference Slot, float RandomForce);
     
     UFUNCTION(BlueprintCallable)
-    static void ReleaseItemWithEjectionImpulse(FSlotReference Slot, APhysicalItem* Item, bool NewOwner, bool FromTool, FVector ejectionImpulse, FVector ejectionImpulseOffset);
+    static void ReleaseItemWithEjectionImpulse(FSlotReference Slot, APhysicalItem* Item, bool NewOwner, bool FromTool, FVector ejectionImpulse, FVector ejectionImpulseOffset, bool bUpdatePhysicsState);
     
     UFUNCTION(BlueprintCallable)
-    static void ReleaseItem(FSlotReference Slot, APhysicalItem* Item, bool NewOwner, bool FromTool, float RandomForce);
+    static void ReleaseItem(FSlotReference Slot, APhysicalItem* Item, bool NewOwner, bool FromTool, float RandomForce, bool bUpdatePhysicsState);
     
     UFUNCTION(BlueprintCallable)
     void OnSlotItemDestroyed(AActor* Actor);
@@ -179,9 +182,15 @@ protected:
     UFUNCTION(BlueprintCallable)
     void OnRep_SlotClickability();
     
+    UFUNCTION(BlueprintCallable)
+    void OnRep_SetSlotReserved();
+    
 public:
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastCancelSlotBehaviorTerrainInterpolation();
+    
+    UFUNCTION(BlueprintCallable)
+    FSlotReference MakeSlotFromExisting(const FSlotReference existingSlot, const FName& newSlotName, const FName sceneComponentName, const FName SocketName);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FSlotReference MakeReference(FName SlotName) const;
@@ -263,6 +272,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void AuxUse(FSlotReference AuxSlot, AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> InputEvent);
+    
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    void AuthoritySetSlotReserved(const FSlotReference& inSlotRef, const bool bInIsReserved);
     
 };
 

@@ -34,7 +34,7 @@ public:
     void StartTimer();
     
     UFUNCTION(BlueprintCallable)
-    void PlayDestroyParticlesAndDelete(UParticleSystemComponent* particles, float playParticlesAfter, float destroyAfter);
+    void PlayDestroyParticlesAndDelete(UParticleSystemComponent* Particles, float playParticlesAfter, float destroyAfter);
     
 };
 

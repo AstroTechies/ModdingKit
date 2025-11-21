@@ -14,6 +14,7 @@ enum class EPlanetIdentifier : uint8 {
     Radiated,
     GlitchPlanet,
     GlitchMoon,
+    OrbitalPlatform,
     CountPlusOne,
 };
 

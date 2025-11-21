@@ -3,6 +3,7 @@
 #include "UObject/NoExportTypes.h"
 #include "Engine/DataAsset.h"
 #include "AstroNotificationTagAuthoringData.h"
+#include "AstroNotificationToastAuthoringData.h"
 #include "AstroNotificationUnlockAuthoringData.h"
 #include "EAstroColor.h"
 #include "PlayerToastData.h"
@@ -210,6 +211,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FPlayerToastData PlayerLeftSessionToast;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FAstroNotificationToastAuthoringData MuseumMilestoneCompleteToastData;
     
     UAstroNotificationDatabase();
 

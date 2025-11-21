@@ -17,6 +17,7 @@ class APhysicalItem;
 class APlayController;
 class ARailNetwork;
 class ASeatBase;
+class UActuatorComponent;
 class UClickQuery;
 class UControlComponent;
 class UItemType;
@@ -173,10 +174,10 @@ protected:
     void ServerHandleDriverInput(float SteeringInput, float ThrottleInput, bool isCameraBackwards);
     
     UFUNCTION(BlueprintCallable)
-    void RouteAux2ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType);
+    void RouteAux2ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> EventType);
     
     UFUNCTION(BlueprintCallable)
-    void RouteAux1ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType);
+    void RouteAux1ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> EventType);
     
     UFUNCTION(BlueprintCallable)
     void OnRep_MovementData(FRailCarMovementReplicatedData Previous);
@@ -233,7 +234,7 @@ protected:
     void HandleCarPlacedInCaravanSlot(APhysicalItem* Item);
     
     UFUNCTION(BlueprintCallable)
-    void HandleActuateUse(TEnumAsByte<EInputEvent> InputEvent);
+    void HandleActuateUse(TEnumAsByte<EInputEvent> InputEvent, const UActuatorComponent* InActuatorComponent);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetTotalCaravanPowerDraw() const;

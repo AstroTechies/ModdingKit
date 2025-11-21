@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "OnItemDrainedDelegate.h"
 #include "OnItemTypeChangedDelegate.h"
 #include "SignalDelegate.h"
 #include "Templates/SubclassOf.h"
@@ -32,7 +33,7 @@ public:
     FSignal OnRecipeAmountChanged;
     
     UPROPERTY(BlueprintAssignable, BlueprintCallable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FSignal OnDrained;
+    FOnItemDrained OnDrained;
     
     UPROPERTY(BlueprintAssignable, BlueprintCallable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal PostDrained;

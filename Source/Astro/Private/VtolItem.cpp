@@ -77,10 +77,10 @@ bool AVtolItem::ServerConsumeFuel_Validate(float Time) {
     return true;
 }
 
-void AVtolItem::RouteAux2ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType) {
+void AVtolItem::RouteAux2ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> EventType) {
 }
 
-void AVtolItem::RouteAux1ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType) {
+void AVtolItem::RouteAux1ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> EventType) {
 }
 
 void AVtolItem::OnSlottedItemsChanged() {

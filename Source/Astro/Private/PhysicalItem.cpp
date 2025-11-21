@@ -13,7 +13,6 @@
 
 APhysicalItem::APhysicalItem(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 //    this->bSaveGameRelevant = true;
-    this->bReplicateMovement = true;
     this->bReplicates = true;
 //    const FProperty* p_RemoteRole = GetClass()->FindPropertyByName("RemoteRole");
 //    (*p_RemoteRole->ContainerPtrToValuePtr<TEnumAsByte<ENetRole>>(this)) = ROLE_SimulatedProxy;
@@ -22,6 +21,7 @@ APhysicalItem::APhysicalItem(const FObjectInitializer& ObjectInitializer) : Supe
     this->EntityLinkComponent = CreateDefaultSubobject<UActorEntityLinkComponent>(TEXT("EntityLinkComponent"));
     this->terrainComponent = CreateDefaultSubobject<UTerrainPhysicsComponent>(TEXT("Terrain Physics"));
     this->PlaceholderPrimitive = NULL;
+    this->PlaceholderMesh = NULL;
     this->StaticMeshComponent = (UStaticMeshComponent*)RootComponent;
     this->GravityComponent = CreateDefaultSubobject<UWorldGravity>(TEXT("Gravity"));
     this->ClickableComponent = CreateDefaultSubobject<UClickableComponent>(TEXT("ItemClickableComponent"));
@@ -42,12 +42,14 @@ APhysicalItem::APhysicalItem(const FObjectInitializer& ObjectInitializer) : Supe
     this->PrinterHeight = 0.00f;
     // The tier of the object. 1 = T1, 2 = T2, etc. Controls fallback slot size, default package size, as well as walking speed
     this->ToolMoveTier = 1;
+    this->SlotTierSpawnOverride = 0;
     this->PlacementSnapToGroundHeight = 0.00f;
     // Can this item be picked up and moved around with the cursor?
     this->IsMovable = true;
     this->AlwaysMovePhysical = false;
     this->ItemWorldScale = 1.00f;
     this->SlotScale = 1.00f;
+    this->IndicatorScale = 1.00f;
     this->bDestroyWhenDrained = false;
     this->PrintSpeedOverride = 0.00f;
     this->MostRecentNetOwner = NULL;
@@ -74,6 +76,9 @@ void APhysicalItem::SetPhysicsState(EPhysicalItemMotionState State, USceneCompon
 }
 
 void APhysicalItem::SetNonSimulatingPhysics() {
+}
+
+void APhysicalItem::SetIsAttachedToTerrain(bool isAttachedToTerrain) {
 }
 
 void APhysicalItem::SetIndicatorPhysics() {
@@ -248,6 +253,10 @@ bool APhysicalItem::CanNeverBeSlotted() const {
     return false;
 }
 
+// Can this item be slotted?
+void APhysicalItem::AuthoritySetIsUnslottable(bool bIsUnslottable) {
+}
+
 bool APhysicalItem::AcceptsFakeTerrainObjectsAsTerrain_Implementation() {
     return false;
 }
@@ -256,6 +265,8 @@ void APhysicalItem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLif
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
     
     DOREPLIFETIME(APhysicalItem, EmplacementData);
+    // Can this item be slotted?
+    DOREPLIFETIME(APhysicalItem, IsUnslottable);
     DOREPLIFETIME(APhysicalItem, ReplicatedState);
 }
 

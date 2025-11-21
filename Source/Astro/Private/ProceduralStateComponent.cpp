@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UProceduralStateComponent::UProceduralStateComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->ProceduralPlacementSaveID = 4294967295;
     this->bRuntimeGenerated = true;
     this->bApplyTintFromAttachParent = false;

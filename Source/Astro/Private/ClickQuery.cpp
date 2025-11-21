@@ -59,6 +59,10 @@ UPrimitiveComponent* UClickQuery::GetPrimaryComponent() const {
     return NULL;
 }
 
+EClickBehavior UClickQuery::GetPrimaryClickBehavior() const {
+    return EClickBehavior::None;
+}
+
 AActor* UClickQuery::GetPrimaryActor() const {
     return NULL;
 }

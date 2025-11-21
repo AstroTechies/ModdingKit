@@ -44,5 +44,12 @@ enum class EAstroGameMenuTutoriaSlideCardKey : uint8 {
     RailsBasic,
     RailsAdvanced,
     Expansion,
+    GW_ResourcesNatural,
+    GW_ResourcesRefined,
+    GW_ResourcesAtmospheric,
+    GW_ResourcesComposite,
+    GW_TutorialIntro,
+    MegaTech_Upsell,
+    MegaTech_TutorialIntro,
 };
 

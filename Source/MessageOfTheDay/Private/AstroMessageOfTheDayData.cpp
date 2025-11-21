@@ -1,6 +1,7 @@
 #include "AstroMessageOfTheDayData.h"
 
 FAstroMessageOfTheDayData::FAstroMessageOfTheDayData() {
-    this->version = (EAstroMessageOfTheDayVersion)0;
+    this->AssociatedReleaseID = EAstroReleaseIDs::Invalid;
+    this->WidgetType = EMarketingWidgetType::Invalid;
 }
 

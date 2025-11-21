@@ -1,7 +1,7 @@
 #include "RewardResult.h"
 
 FRewardResult::FRewardResult() {
-    this->RewardType = NULL;
+    this->rewardType = NULL;
     this->bIsDurableUnlock = false;
 }
 

@@ -7,6 +7,7 @@ AAstroStormSpawnLocationCandidate::AAstroStormSpawnLocationCandidate(const FObje
     this->FixedStormID = 0;
     this->IsEnabled = true;
     this->IsBossStorm = false;
+    this->IsRegistered = false;
 }
 
 AAstroStorm* AAstroStormSpawnLocationCandidate::SpawnStorm(int32 StormID, int32 StateIndex) {

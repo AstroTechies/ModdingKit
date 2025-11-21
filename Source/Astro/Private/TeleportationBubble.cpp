@@ -5,7 +5,6 @@
 #include "Net/UnrealNetwork.h"
 
 ATeleportationBubble::ATeleportationBubble(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicateMovement = true;
     this->bReplicates = true;
 //    const FProperty* p_RemoteRole = GetClass()->FindPropertyByName("RemoteRole");
 //    (*p_RemoteRole->ContainerPtrToValuePtr<TEnumAsByte<ENetRole>>(this)) = ROLE_SimulatedProxy;

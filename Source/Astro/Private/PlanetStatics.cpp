@@ -52,12 +52,20 @@ ASun* UPlanetStatics::GetSun(UObject* WorldContextObject) {
     return NULL;
 }
 
+ESolarBodyIdentifier UPlanetStatics::GetSolarBodyIdentifier(const AActor* Actor) {
+    return ESolarBodyIdentifier::None;
+}
+
 ASolarBody* UPlanetStatics::GetSolarBodyByLocation(const UObject* WorldContextObject, FVector Location, bool bDoBoundsCheck, bool bVisitableByPlayerOnly) {
     return NULL;
 }
 
 ASolarBody* UPlanetStatics::GetSolarBody(AActor* Actor, bool bBoundsCheck) {
     return NULL;
+}
+
+TArray<ASolarBody*> UPlanetStatics::GetSolarBodies(UObject* WorldContextObject) {
+    return TArray<ASolarBody*>();
 }
 
 TArray<AAstroPlanet*> UPlanetStatics::GetPlanets(UObject* WorldContextObject) {
@@ -77,6 +85,18 @@ AAstroPlanet* UPlanetStatics::GetPlanetByID(UObject* WorldContextObject, EPlanet
 }
 
 AAstroPlanet* UPlanetStatics::GetPlanet(AActor* Actor, bool bBoundsCheck) {
+    return NULL;
+}
+
+EPlanetIdentifier UPlanetStatics::GetOrbitalPlatformAndPlanetIdentifier(AActor* Actor) {
+    return EPlanetIdentifier::None;
+}
+
+AOrbitalPlatform* UPlanetStatics::GetOrbitalPlatform(UObject* WorldContextObject) {
+    return NULL;
+}
+
+AMiniPlanet* UPlanetStatics::GetMiniPlanet(UObject* WorldContextObject) {
     return NULL;
 }
 

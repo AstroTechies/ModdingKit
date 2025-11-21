@@ -4,6 +4,8 @@
 #include "Components/ActorComponent.h"
 #include "Engine/EngineBaseTypes.h"
 #include "Engine/NetSerialization.h"
+#include "ActuatorCableRef.h"
+#include "ActuatorConnectorRef.h"
 #include "ClickResult.h"
 #include "InteractionTarget.h"
 #include "SlotClickResult.h"
@@ -237,10 +239,10 @@ protected:
     
 public:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
-    void ServerClickActuatorRerouteNode(UActuatorComponent* Actuator, APhysicalItem* Item, const FVector StartPos, int32 ConnectionId);
+    void ServerClickActuatorRerouteNode(UActuatorComponent* Actuator, APhysicalItem* Item, const FVector StartPos, const FActuatorConnectorRef& connectorRef);
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
-    void ServerClickActuatorCable(UActuatorComponent* Actuator, int32 ConnectionId);
+    void ServerClickActuatorCable(UActuatorComponent* Actuator, const FActuatorCableRef& inCableRef);
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerClearSlotEmplacement(APhysicalItem* Item);

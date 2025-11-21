@@ -3,7 +3,6 @@
 #include "Net/UnrealNetwork.h"
 
 URailPostComponent::URailPostComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->GaugeDynamicMaterialIndex = -1;
     this->RecallStartSound = TEXT("play_recall_start");
     this->RecallCancelSound = TEXT("play_recall_cancelled");
@@ -27,6 +26,9 @@ void URailPostComponent::OnRep_IsMovable() {
 }
 
 void URailPostComponent::OnRep_CalledCarState(FCalledCarState PreviousState) {
+}
+
+void URailPostComponent::OnAsyncMapLoadStarted(const FURL& URL) {
 }
 
 void URailPostComponent::MulticastSetConnectionState_Implementation(ERailPostConnectionState ConnectionState) {

@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UActorAttachmentsComponent::UActorAttachmentsComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->MaxAttachedPlayerCount = 0;
     this->UsePlanetCameraUp = false;
     this->AllowFreeCam = false;

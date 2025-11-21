@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UBallPhysicsMovementComponent::UBallPhysicsMovementComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->SphereRadius = 1.00f;
     this->AngularDampingWhenInert = 50.00f;
     this->CollisionResetDelay = 0.30f;

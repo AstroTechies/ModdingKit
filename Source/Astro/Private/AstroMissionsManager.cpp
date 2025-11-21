@@ -120,12 +120,20 @@ TArray<FAstroMissionState> AAstroMissionsManager::GetCompletedMissions() const {
     return TArray<FAstroMissionState>();
 }
 
+TArray<FName> AAstroMissionsManager::GetCompletedMissionIds() const {
+    return TArray<FName>();
+}
+
 TMap<FName, FAstroMissionData> AAstroMissionsManager::GetAllMissions() const {
     return TMap<FName, FAstroMissionData>();
 }
 
 TArray<FAstroMissionState> AAstroMissionsManager::GetActiveMissions() const {
     return TArray<FAstroMissionState>();
+}
+
+TArray<FName> AAstroMissionsManager::GetActiveMissionIds() const {
+    return TArray<FName>();
 }
 
 void AAstroMissionsManager::DelayedTryActivateNavpointGroup(FName missionId) {

@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UActorProximityComponent::UActorProximityComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->ProximityEventTriggerDistance = 0.00f;
     this->ProximitySphereComponent = NULL;
 }

@@ -54,7 +54,8 @@ float UResearchSystem::GetCurrentResearchPointBalance(const APlayerController* P
     return 0.0f;
 }
 
-void UResearchSystem::AuthorityGrantResearchPoints(const UObject* WorldContextObject, int32 PointsToGrant) {
+bool UResearchSystem::AuthorityGrantResearchPoints(const UObject* WorldContextObject, int32 pointsToGrant, const bool bInShouldSuppressNotification) {
+    return false;
 }
 
 

@@ -10,5 +10,8 @@ FGameSettingsControlsOptions::FGameSettingsControlsOptions() {
     this->MouseSensitivity = 0;
     this->VehiclesUseAbosluteSteering = false;
     this->VehiclesUseYawAirControls = false;
+    this->ToggleSpeakerGamepad = false;
+    this->ToggleLightBarGamepad = false;
+    this->ToggleRumbleGamepad = false;
 }
 

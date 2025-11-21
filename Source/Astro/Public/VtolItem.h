@@ -166,10 +166,10 @@ protected:
     
 public:
     UFUNCTION(BlueprintCallable)
-    void RouteAux2ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType);
+    void RouteAux2ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> EventType);
     
     UFUNCTION(BlueprintCallable)
-    void RouteAux1ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> eventType);
+    void RouteAux1ToggleUse(AAstroPlayerController* Controller, TEnumAsByte<EInputEvent> EventType);
     
 protected:
     UFUNCTION(BlueprintCallable)

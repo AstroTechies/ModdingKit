@@ -1,28 +1,34 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "EnableSignalDelegate.h"
-#include "SignalDelegate.h"
 #include "ControlPanelButton.generated.h"
+
+class AControlPanelButton;
 
 UCLASS(Abstract, Blueprintable)
 class ASTRO_API AControlPanelButton : public AActor {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FSignal OnButtonPressed;
+    DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FButtonState, bool, Enable, AControlPanelButton*, Actor);
+    DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FButtonEvent, AControlPanelButton*, Actor);
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FEnableSignal OnButtonArmedChanged;
+    FButtonEvent OnButtonPressed;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FEnableSignal OnButtonHoveredChanged;
+    FButtonState OnButtonArmedChanged;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FEnableSignal OnButtonCoverHoveredChanged;
+    FButtonState OnButtonHoveredChanged;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FEnableSignal OnButtonEnabledChanged;
+    FButtonState OnButtonCoverHoveredChanged;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FButtonState OnButtonEnabledChanged;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FString Name;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     uint8 bHasCover: 1;

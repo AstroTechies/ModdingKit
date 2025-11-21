@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/CheatManager.h"
+#include "EPlanetIdentifier.h"
 #include "AstroCheatManager.generated.h"
 
 class UObject;
@@ -32,7 +33,19 @@ public:
     UFUNCTION(BlueprintCallable, Exec)
     void TestEventActivation(const FString& EventName, const FString& ThemeName, const FString& missionName);
     
+    UFUNCTION(BlueprintCallable, Exec)
+    void ShowGameMenuMarketingWidget(const FString& warningName);
+    
+    UFUNCTION(BlueprintCallable, Exec)
+    void SetCurrentPlayfabFailureReason(const FString& failureReason);
+    
 protected:
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
+    void ServerSlomo(float inNewSpeed) const;
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
+    void ServerRevealOrbitalPlatform(const bool bShouldPlayCutscene) const;
+    
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerRevealGateStation() const;
     
@@ -42,8 +55,14 @@ protected:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerResetResearchPoints() const;
     
+    UFUNCTION(BlueprintCallable, Reliable, Server)
+    void ServerPrinterSimplifyMegastructureRecipe(int32 Mode);
+    
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerPlayOutroCinematic() const;
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
+    void ServerMoveOrbitalPlatformToOtherPlanet(const EPlanetIdentifier inPlanetId) const;
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerGrantResearchPoints(int32 numResearchPoints) const;
@@ -52,8 +71,16 @@ public:
     UFUNCTION(BlueprintCallable, Exec)
     void OverrideEventData(const FString& titleData);
     
+protected:
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
+    void MulticastPrinterSimplifyMegastructureRecipe(int32 Mode);
+    
+public:
     UFUNCTION(BlueprintCallable, Exec)
     void LogPlayerSegments();
+    
+    UFUNCTION(BlueprintCallable, Exec)
+    void HideGameMenuMarketingWidget(const FString& warningName);
     
     UFUNCTION(BlueprintCallable, Exec)
     void CrashClient();
@@ -62,22 +89,31 @@ public:
     void AstroToggleWorldUI();
     
     UFUNCTION(BlueprintCallable, Exec)
-    void AstroToggleStormsEnabled(bool enableStorms);
-    
-    UFUNCTION(BlueprintCallable, Exec)
     void AstroToggleHUD();
     
     UFUNCTION(BlueprintCallable, Exec)
     void AstroToggle2DUI();
     
     UFUNCTION(BlueprintCallable, Exec)
+    void AstroSlomo(float inNewSpeed) const;
+    
+    UFUNCTION(BlueprintCallable, Exec)
     void AstroShowFullscreenMotD(bool forceDisplay);
+    
+    UFUNCTION(BlueprintCallable, Exec)
+    void AstroSetStormsMissionBlocked(bool enableStorms);
+    
+    UFUNCTION(BlueprintCallable, Exec)
+    void AstroSetStormsEnabled(bool enableStorms);
     
     UFUNCTION(BlueprintCallable, Exec)
     void AstroSetStormImmunity(bool isImmune);
     
     UFUNCTION(BlueprintCallable, Exec)
     void AstroSetHackedGatewayCompleteCount(int32 planetID, int32 Count);
+    
+    UFUNCTION(BlueprintCallable, Exec)
+    void AstroRevealOrbitalPlatform(const bool bShouldPlayCutscene) const;
     
     UFUNCTION(BlueprintCallable, Exec)
     void AstroRevealGateStation() const;
@@ -87,6 +123,9 @@ public:
     
     UFUNCTION(BlueprintCallable, Exec)
     void AstroResetResearchPoints() const;
+    
+    UFUNCTION(BlueprintCallable, Exec)
+    void AstroResetNumTimesGlitchwalkersTutorialShown() const;
     
     UFUNCTION(BlueprintCallable, Exec)
     void AstroResetNumTimesCreativeTutorialShown() const;
@@ -104,10 +143,16 @@ public:
     void AstroRemovePlayerSegment(const FString& SegmentId);
     
     UFUNCTION(BlueprintCallable, Exec)
+    void AstroPrinterSimplifyMegastructureRecipe(int32 Mode);
+    
+    UFUNCTION(BlueprintCallable, Exec)
     void AstroPlayOutroCinematic() const;
     
     UFUNCTION(BlueprintCallable, Exec)
     void AstroOverrideGlitchWalkersEngagementState(int32 StateId);
+    
+    UFUNCTION(BlueprintCallable, Exec)
+    void AstroMoveOrbitalPlatformToOtherPlanet(const EPlanetIdentifier inPlanetId) const;
     
     UFUNCTION(BlueprintCallable, Exec)
     void AstrologGlitchWalkersEngagementState();
@@ -138,6 +183,9 @@ public:
     
     UFUNCTION(BlueprintCallable, Exec)
     void AstroFindClosestStorm();
+    
+    UFUNCTION(BlueprintCallable, Exec)
+    void AstroFindActorsWithTag(FName Tag);
     
     UFUNCTION(BlueprintCallable, Exec)
     void AstroDebugFakeDeadlockAndCrash();

@@ -7,7 +7,6 @@
 #include "CustomGameModifierCollection.h"
 #include "CustomGameModifierData.h"
 #include "DeformationParamsT2.h"
-#include "VoxelMaterial.h"
 #include "AtmosphericResource.h"
 #include "CustomGamePlanetTags.h"
 #include "EPlanetIdentifier.h"
@@ -54,12 +53,6 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FCustomGamePlanetTags CustomGamePlanetTags;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
-    int32 Seed;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<int32> ExplicitSeeds;
-    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool VerticalZLandingZone;
     
@@ -82,19 +75,10 @@ public:
     bool CenterOrigin;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    bool RandomizeSeedForBuild;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    bool RandomizeSeedForPIE;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float LodMultiplier;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float VoxelSize;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float SunExposureModifier;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WindIntensityModifier;
@@ -199,6 +183,9 @@ public:
     float MaxFlightHeightAdjustment;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool UseWindIntensityDebugScalar;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float WindIntensityDebugScalar;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -292,7 +279,7 @@ public:
     void SetCustomGameModifiers(FCustomGameModifierCollection& ModifierCollection);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    FLinearColor SampleFog(const FVector& Origin, const FVector& Ray);
+    FLinearColor SampleFog(const FVector& Origin, const FVector& Ray) const;
     
 private:
     UFUNCTION(BlueprintCallable)
@@ -306,16 +293,10 @@ public:
     bool LocationInAtmosphere(const FVector& Location);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    FVector GetWindDirectionAt(const FVector& Location, float& Intensity);
+    FVector GetWindDirectionAt(const FVector& Location, float& Intensity, float& stormIntensity);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetTerrainNormal(const FVector& Location);
-    
-    UFUNCTION(BlueprintCallable, BlueprintPure)
-    FVoxelMaterial GetTerrainMaterial(const FVector& Location);
-    
-    UFUNCTION(BlueprintCallable, BlueprintPure)
-    float GetTerrainDensity(const FVector& Location);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetRadius() const;

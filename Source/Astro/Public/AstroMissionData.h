@@ -95,10 +95,16 @@ public:
     uint8 bReclaimableReward: 1;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 bDestroyKeyItemOnMissionComplete: 1;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAstroMissionRewardDeliveryType DeliveryType;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool RequiresGlitchWalkersEntitlement;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    uint8 RequiresMegatechEntitlement: 1;
     
 //    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
 //    FAstroGWExpansionEngagementState EngagementStateToSetOnActivation;

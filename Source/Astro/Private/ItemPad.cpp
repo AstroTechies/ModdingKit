@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UItemPad::UItemPad(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->AutoSpawn = true;
     this->HandleItemPadDugUp = true;
     this->ManuallyReplicatePadTransform = true;

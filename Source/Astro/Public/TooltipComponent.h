@@ -22,6 +22,7 @@
 class AActor;
 class APawn;
 class UAstroTooltipWidget;
+class UBadgeIconData;
 class UCrackableActorComponent;
 class UItemType;
 class UObject;
@@ -110,10 +111,13 @@ public:
     UTooltipComponent(const FObjectInitializer& ObjectInitializer);
 
     UFUNCTION(BlueprintCallable)
-    void UpdateWidgetOverrideDisplayData(FName overrideName, const FTooltipWidgetDisplayData& DisplayData);
+    void UpdateWidgetOverrideSubtitleText(FName OverrideName, FText newSubtitle);
     
     UFUNCTION(BlueprintCallable)
-    void UpdateWidgetOverrideDescriptionText(FName overrideName, FText newDescription);
+    void UpdateWidgetOverrideDisplayData(FName OverrideName, const FTooltipWidgetDisplayData& DisplayData);
+    
+    UFUNCTION(BlueprintCallable)
+    void UpdateWidgetOverrideDescriptionText(FName OverrideName, FText newDescription);
     
     UFUNCTION(BlueprintCallable)
     void UpdateCorrectedPivotLocation();
@@ -128,7 +132,7 @@ public:
     void SetupTooltipReferenceAnchor();
     
     UFUNCTION(BlueprintCallable)
-    void SetupTooltipForItemType(const UItemType* ItemType);
+    void SetupTooltipForItemType(const UItemType* ItemType, float powerRequirement, float powerStorageCapacity);
     
 protected:
     UFUNCTION(BlueprintCallable)
@@ -140,6 +144,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void SetTooltipBadgeImage(UObject* ResourceObjectBadge);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetTooltipBadgeData(const UBadgeIconData* BadgeIconData);
     
     UFUNCTION(BlueprintCallable)
     void SetTooltipBadgeColor(FLinearColor NewBadgeColor);
@@ -157,10 +164,10 @@ public:
     void SetCustomTooltipReferenceAnchor(USceneComponent* CustomReferenceAnchor);
     
     UFUNCTION(BlueprintCallable)
-    void PushTooltipWidgetOverride(FName overrideName, ETooltipVisibilityControl overrideVisibilityControl, bool bInApplyAnchorReferenceOverride, FName AnchorReferenceOverride, bool bInApplyScreenOffsetOverride, FVector2D ScreenOffsetOverride, bool bInRemainsVisibleWhenHeld, bool bInSuppressOtherTooltipsWhenExpanded, bool bInOverrideUseAndExaminePrompts, const FTooltipWidgetDisplayData& DisplayData, const FTooltipProximityBadgeVisibilityData& proximityData);
+    void PushTooltipWidgetOverride(FName OverrideName, ETooltipVisibilityControl overrideVisibilityControl, bool bInApplyAnchorReferenceOverride, FName AnchorReferenceOverride, bool bInApplyScreenOffsetOverride, FVector2D ScreenOffsetOverride, bool bInRemainsVisibleWhenHeld, bool bInSuppressOtherTooltipsWhenExpanded, bool bInOverrideUseAndExaminePrompts, const FTooltipWidgetDisplayData& DisplayData, const FTooltipProximityBadgeVisibilityData& proximityData);
     
     UFUNCTION(BlueprintCallable)
-    void PopTooltipWidgetOverride(FName overrideName);
+    void PopTooltipWidgetOverride(FName OverrideName);
     
 protected:
     UFUNCTION(BlueprintCallable)
@@ -216,7 +223,7 @@ public:
     void OnActionInputPressed(FName ActionName);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    bool HasTooltipOverride(FName overrideName);
+    bool HasTooltipOverride(FName OverrideName);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     ETooltipVisibilityControl GetVisibilityControl() const;

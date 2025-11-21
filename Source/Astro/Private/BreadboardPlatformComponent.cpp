@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UBreadboardPlatformComponent::UBreadboardPlatformComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->LockdownSpikes = NULL;
     this->AnimationCurve = NULL;
     this->REP_LockdownEnabled = false;

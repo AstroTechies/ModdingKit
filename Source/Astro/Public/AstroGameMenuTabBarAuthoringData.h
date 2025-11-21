@@ -3,6 +3,7 @@
 #include "Templates/SubclassOf.h"
 #include "AstroGameMenuTabBarAuthoringData.generated.h"
 
+class UAstroGameMenuSubPaneWidget;
 class UAstroGameMenuTabBarButtonWidget;
 
 USTRUCT(BlueprintType)
@@ -16,7 +17,13 @@ public:
     TArray<TSubclassOf<UAstroGameMenuTabBarButtonWidget>> RightTabBarGroupButtons;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TSubclassOf<UAstroGameMenuTabBarButtonWidget> DefaultTabClass;
+    TSubclassOf<UAstroGameMenuTabBarButtonWidget> DefaultTabClassLeft;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<UAstroGameMenuSubPaneWidget> DefaultSubPaneLeft;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<UAstroGameMenuSubPaneWidget> DefaultSubPaneRight;
     
     ASTRO_API FAstroGameMenuTabBarAuthoringData();
 };

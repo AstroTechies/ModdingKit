@@ -37,6 +37,7 @@
 class UAstroEmoteDefinition;
 //class UAstroPlayFabTxnManager;
 class UAstroServerCommExecutor;
+class UMarketingWidgetsData;
 class UMessageOfTheDay;
 class UObject;
 class UUserWidget;
@@ -47,6 +48,7 @@ class ASTRO_API UAstroGameInstance : public UGameInstance {
     GENERATED_BODY()
 public:
     DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FMessageOfTheDayUpdated, UMessageOfTheDay*, InMessageOfTheDay);
+    DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FMarketingWidgetsUpdated, UMarketingWidgetsData*, MarketingWidgetsData);
     DECLARE_DYNAMIC_MULTICAST_DELEGATE(FHideFullscreenMessageOfTheDay);
     DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDisplayFullscreenMessageOfTheDay);
     
@@ -154,6 +156,9 @@ public:
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FMessageOfTheDayUpdated OnMessageOfTheDayUpdated;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FMarketingWidgetsUpdated OnMarketingWidgetsUpdated;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FDisplayFullscreenMessageOfTheDay OnDisplayFullscreenMessageOfTheDay;
@@ -391,6 +396,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void ForceRefreshMicroTxnStoreData();
+    
+    UFUNCTION(BlueprintCallable)
+    void DisplayOrQueueSessionError(const FString& Message);
     
     UFUNCTION(BlueprintCallable)
     void DisplayLoadScreenWidget(TSubclassOf<UUserWidget> overrideWidget);

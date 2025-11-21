@@ -11,6 +11,7 @@ UVoxelVolumeComponent::UVoxelVolumeComponent(const FObjectInitializer& ObjectIni
     this->RandomizeSeedInPIE = true;
     this->ClientsWaitForSeed = true;
     this->CustomGameSeed = -1;
+    this->OperationMode = EOperationMode::Planet;
     this->VolumeRadius = 51200.00f;
     this->HighestDetailVoxelSize = 150.00f;
     this->HigestDetailRadius = 448.00f;
@@ -31,6 +32,7 @@ UVoxelVolumeComponent::UVoxelVolumeComponent(const FObjectInitializer& ObjectIni
     this->ObjectDestructionTimeslice = 0.00f;
     this->ObjectCreationTimeslice = 0.00f;
     this->ObjectRegistrationTimeslice = 0.00f;
+    this->VoxelFunction = NULL;
     this->SurfaceBiomeHighWeightCutoff = 0.80f;
     this->SurfaceBiomeLowWeightCutoff = 0.10f;
     this->IsCustomGame = false;
@@ -47,6 +49,14 @@ void UVoxelVolumeComponent::SetCustomGameBiomeModifiersData(FCustomGameModifierD
 }
 
 void UVoxelVolumeComponent::LogCustomGameBiomeModifiersData() {
+}
+
+bool UVoxelVolumeComponent::IsPointInsideVoxelVolume(const FVector& InLocation) const {
+    return false;
+}
+
+FVoxelMaterial UVoxelVolumeComponent::GetTerrainMaterial(const FVector& Location) const {
+    return FVoxelMaterial{};
 }
 
 float UVoxelVolumeComponent::GetSurfaceHeightAtLocation(FVector Location) const {

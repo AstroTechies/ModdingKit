@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UControlActivatorComponent::UControlActivatorComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->bReplicates = true;
     this->ActiveControl = NULL;
     this->ControlledToolActor = NULL;
     this->PassengerToolActor = NULL;

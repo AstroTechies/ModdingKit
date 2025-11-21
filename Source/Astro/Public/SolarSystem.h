@@ -7,6 +7,8 @@
 class AAstroPlanet;
 class ADayNight;
 class AGateStation;
+class AMiniPlanet;
+class AOrbitalPlatform;
 class ASolarBody;
 class ASolarControlRoom;
 class ASun;
@@ -18,6 +20,9 @@ class USolarSystem : public UObject {
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSignal OnGateStationSpawned;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FSignal OnOPSpawned;
     
 private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -33,10 +38,16 @@ private:
     ASolarControlRoom* SolarControlRoom;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    AOrbitalPlatform* OrbitalPlatform;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    AMiniPlanet* MiniPlanet;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<AAstroPlanet*> Planets;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<ASolarBody*> SolarBodies;
+    TArray<ASolarBody*> solarBodies;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UWorld* World;

@@ -10,7 +10,7 @@ FCharacterHatPerSuitModifiers UAstroCharacterHat::GetHatModifierForSuit(UAstroCh
     return FCharacterHatPerSuitModifiers{};
 }
 
-void UAstroCharacterHat::ApplyToMesh(UStaticMeshComponent* targetMesh, UAstroCharacterSuit* Suit, UAstroCharacterHat* hatDef, const UAstroCharacterPalette* Palette, bool bObfuscated, UMaterialInterface* ObfuscatedMaterial) {
+void UAstroCharacterHat::ApplyToMesh(UStaticMeshComponent* targetMesh, UAstroCharacterSuit* Suit, UAstroCharacterHat* hatDef, UAstroCharacterPalette* Palette, bool bObfuscated, UMaterialInterface* ObfuscatedMaterial) {
 }
 
 
