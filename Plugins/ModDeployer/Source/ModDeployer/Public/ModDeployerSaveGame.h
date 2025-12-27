@@ -21,7 +21,7 @@ public:
 
 	// The path to the folder where your mod assets are
 	UPROPERTY(EditAnywhere, SaveGame, Category = "Deployment Information", meta = (DisplayName = "Mod Folder"))
-	FString ModFolder = "Astro/Content/Mods/atenfyr/TestMod";
+	FString ModFolder = "Astro/Content/Mods/YourNameHere/TestMod";
 
 	// The path to the folder where the game loads .pak files
 	UPROPERTY(EditAnywhere, SaveGame, Category = "Deployment Information", meta = (DisplayName = "Output Paks Folder"))

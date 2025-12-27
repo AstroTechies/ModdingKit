@@ -61,7 +61,8 @@ void FModDeployerTask::RunPackage_Inner()
 	}
 
 	// package using repak
-	FString pakFileName = TEXT("998-") + (ParentModDeployer->DescriptorData->ModID) + "-" + (ParentModDeployer->DescriptorData->ModVersion) + TEXT("_P.pak");
+	// 9xx prefixes are reserved for external applications. we define 989 as being for "ModDeployer temporary mods"
+	FString pakFileName = TEXT("989-") + (ParentModDeployer->DescriptorData->ModID) + "-" + (ParentModDeployer->DescriptorData->ModVersion) + TEXT("_P.pak");
 	FString repakExe = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("repak"), TEXT("repak.exe")));
 	FString outPakPath = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("Intermediate"), pakFileName));
 	FString params = TEXT("pack --version V4 --compression Zlib \"") + modFolder + TEXT("\" \"") + outPakPath + TEXT("\"");
@@ -90,14 +91,14 @@ void FModDeployerTask::RunPackage_Inner()
 	ParentModDeployer->LogText += finalPakPath + "\n";
 	try
 	{
-		// delete all 998- files
+		// delete all 989- files
 		std::vector<std::filesystem::path> pathsToDelete;
 		for (const auto& entry : std::filesystem::directory_iterator(TCHAR_TO_UTF8(*paksFolder)))
 		{
 			if (entry.is_regular_file())
 			{
 				std::string fileName = entry.path().filename().string();
-				if (fileName.rfind("998-", 0) == 0)
+				if (fileName.rfind("989-", 0) == 0)
 				{
 					pathsToDelete.push_back(entry.path());
 				}
@@ -122,7 +123,7 @@ void FModDeployerTask::RunPackage_Inner()
 		ParentModDeployer->LogText += TEXT("Failed copying files for an unknown reason\n");
 		return;
 	}
-	ParentModDeployer->LogText += "All done\n";
+	ParentModDeployer->LogText += TEXT("All done\n");
 }
 void FModDeployerTask::RunIntegrate_Inner()
 {
@@ -147,6 +148,7 @@ void FModDeployerTask::RunIntegrate_Inner()
 	{
 		ParentModDeployer->LogText += integratorOutput + TEXT("\n");
 	}
+	ParentModDeployer->LogText += TEXT("All done\n");
 }
 void FModDeployerTask::RunLaunch_Inner()
 {

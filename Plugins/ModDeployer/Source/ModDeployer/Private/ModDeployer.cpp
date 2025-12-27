@@ -6,21 +6,23 @@
 #include "Misc/MessageDialog.h"
 #include "ToolMenus.h"
 #include "Widgets/Layout/SScrollBox.h"
-#include <Kismet/GameplayStatics.h>
+#include "Kismet/GameplayStatics.h"
+#include "LevelEditor.h"
 
 static const FName ModDeployerTabName("ModDeployer");
 
 #define LOCTEXT_NAMESPACE "FModDeployerModule"
 
 void FModDeployerModule::StartupModule()
-{
-	// This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
-	
+{	
 	FModDeployerStyle::Initialize();
 	FModDeployerStyle::ReloadTextures();
 
 	FModDeployerCommands::Register();
 	
+	const FLevelEditorModule& LevelEditor = FModuleManager::GetModuleChecked<FLevelEditorModule>("LevelEditor");
+	const TSharedRef<FUICommandList> LevelEditorCommands = LevelEditor.GetGlobalLevelEditorActions();
+
 	PluginCommands = MakeShareable(new FUICommandList);
 
 	PluginCommands->MapAction(
@@ -28,6 +30,14 @@ void FModDeployerModule::StartupModule()
 		FExecuteAction::CreateRaw(this, &FModDeployerModule::PluginButtonClicked),
 		FCanExecuteAction());
 	PluginCommands->MapAction(
+		FModDeployerCommands::Get().PluginActionQuick,
+		FExecuteAction::CreateRaw(this, &FModDeployerModule::PluginButtonClickedQuick),
+		FCanExecuteAction());
+	LevelEditorCommands->MapAction(
+		FModDeployerCommands::Get().PluginAction,
+		FExecuteAction::CreateRaw(this, &FModDeployerModule::PluginButtonClicked),
+		FCanExecuteAction());
+	LevelEditorCommands->MapAction(
 		FModDeployerCommands::Get().PluginActionQuick,
 		FExecuteAction::CreateRaw(this, &FModDeployerModule::PluginButtonClickedQuick),
 		FCanExecuteAction());
@@ -197,6 +207,11 @@ void FModDeployerModule::PluginButtonClicked()
 }
 void FModDeployerModule::PluginButtonClickedQuick()
 {
+	if (this->DescriptorData == nullptr)
+	{
+		this->DescriptorData = NewObject<UModDeployerDescriptorData>();
+		this->LoadDescriptorDataWithParam(false, true);
+	}
 	this->RunEverything();
 }
 

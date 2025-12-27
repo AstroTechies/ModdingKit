@@ -43,6 +43,7 @@ public class ModDeployer : ModuleRules
 				"Http",
 				"Json",
 				"JsonUtilities",
+				"LevelEditor",
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
