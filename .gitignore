@@ -3,3 +3,9 @@ Build/**
 Intermediate/**
 Saved/**
 .vs/**
+Plugins/*/Binaries
+Plugins/*/Build
+Plugins/*/Intermediate
+
+
+

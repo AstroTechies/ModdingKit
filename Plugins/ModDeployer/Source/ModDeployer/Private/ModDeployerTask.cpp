@@ -1,0 +1,169 @@
+#include "ModDeployerTask.h"
+#include "ModDeployer.h"
+#include <vector>
+
+void FModDeployerTask::RunCook_Inner()
+{
+	ParentModDeployer->LogText += "\nCooking\n";
+	if (ParentModDeployer->DescriptorData == nullptr) return;
+	FString exePath = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::EngineDir(), TEXT("Binaries"), TEXT("Win64"), TEXT("UE4Editor-Cmd.exe")));
+	FString params = TEXT("\"") + FPaths::ConvertRelativePathToFull(FPaths::GetProjectFilePath()) + TEXT("\" -run=cook -targetplatform=WindowsNoEditor -CrashForUAT -unattended");
+
+	ParentModDeployer->LogText += (exePath + " " + params + "\n");
+
+	FProcHandle handl = FPlatformProcess::CreateProc
+	(
+		*exePath,
+		*params,
+		false,
+		false,
+		false,
+		nullptr,
+		0,
+		nullptr,
+		nullptr
+	);
+	FPlatformProcess::WaitForProc(handl);
+	ParentModDeployer->LogText += TEXT("All done\n");
+}
+void FModDeployerTask::RunPackage_Inner()
+{
+	ParentModDeployer->LogText += TEXT("\nPackaging\n");
+
+	// copy folder to staging in Intermediate
+	FString modFolder = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("Intermediate"), TEXT("TempMod")));
+	FString sourceFolder = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Cooked"), TEXT("WindowsNoEditor"), ParentModDeployer->DescriptorData->ModFolder));
+	FString targetFolder = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("Intermediate"), TEXT("TempMod"), ParentModDeployer->DescriptorData->ModFolder));
+	FString targetMetadataFilePath = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("Intermediate"), TEXT("TempMod"), TEXT("metadata.json")));
+
+	// we use std here to copy files
+	try
+	{
+		std::filesystem::remove_all(TCHAR_TO_UTF8(*modFolder));
+		std::filesystem::create_directories(TCHAR_TO_UTF8(*targetFolder));
+		std::filesystem::copy(TCHAR_TO_UTF8(*sourceFolder), TCHAR_TO_UTF8(*targetFolder), std::filesystem::copy_options::overwrite_existing | std::filesystem::copy_options::recursive);
+		
+		std::string outText = TCHAR_TO_UTF8(*(ParentModDeployer->DescriptorData->metadata));
+		std::ofstream out(TCHAR_TO_UTF8(*targetMetadataFilePath), std::ios_base::out);
+		out.write(outText.c_str(), outText.length());
+		out.close();
+	}
+	catch (const std::runtime_error& err)
+	{
+		FString errMsg = UTF8_TO_TCHAR(err.what());
+		ParentModDeployer->LogText += TEXT("Failed copying files:\n") + errMsg + TEXT("\n");
+		return;
+	}
+	catch (...)
+	{
+		ParentModDeployer->LogText += TEXT("Failed copying files for an unknown reason\n");
+		return;
+	}
+
+	// package using repak
+	FString pakFileName = TEXT("998-") + (ParentModDeployer->DescriptorData->ModID) + "-" + (ParentModDeployer->DescriptorData->ModVersion) + TEXT("_P.pak");
+	FString repakExe = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("repak"), TEXT("repak.exe")));
+	FString outPakPath = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("Intermediate"), pakFileName));
+	FString params = TEXT("pack --version V4 --compression Zlib \"") + modFolder + TEXT("\" \"") + outPakPath + TEXT("\"");
+	ParentModDeployer->LogText += repakExe + " " + params + "\n";
+
+	FProcHandle handl = FPlatformProcess::CreateProc
+	(
+		*repakExe,
+		*params,
+		false,
+		true,
+		true,
+		nullptr,
+		0,
+		nullptr,
+		nullptr
+	);
+	FPlatformProcess::WaitForProc(handl);
+
+	ParentModDeployer->LogText += TEXT("Copying to paks directory\n");
+	FString localappdataConstStr(TEXT("%LOCALAPPDATA%"));
+	FString localappdata(getenv("LOCALAPPDATA"));
+
+	FString paksFolder = FPaths::ConvertRelativePathToFull((ParentModDeployer->DescriptorData->PaksFolder).Replace(*localappdataConstStr, *localappdata, ESearchCase::IgnoreCase));
+	FString finalPakPath = FPaths::ConvertRelativePathToFull(FPaths::Combine(paksFolder, pakFileName));
+	ParentModDeployer->LogText += finalPakPath + "\n";
+	try
+	{
+		// delete all 998- files
+		std::vector<std::filesystem::path> pathsToDelete;
+		for (const auto& entry : std::filesystem::directory_iterator(TCHAR_TO_UTF8(*paksFolder)))
+		{
+			if (entry.is_regular_file())
+			{
+				std::string fileName = entry.path().filename().string();
+				if (fileName.rfind("998-", 0) == 0)
+				{
+					pathsToDelete.push_back(entry.path());
+				}
+			}
+		}
+		for (const auto& pathToDelete : pathsToDelete)
+		{
+			std::filesystem::remove(pathToDelete);
+		}
+
+		// copy file
+		std::filesystem::copy(TCHAR_TO_UTF8(*outPakPath), TCHAR_TO_UTF8(*finalPakPath), std::filesystem::copy_options::overwrite_existing);
+	}
+	catch (const std::runtime_error& err)
+	{
+		FString errMsg = UTF8_TO_TCHAR(err.what());
+		ParentModDeployer->LogText += TEXT("Failed copying files:\n") + errMsg + TEXT("\n");
+		return;
+	}
+	catch (...)
+	{
+		ParentModDeployer->LogText += TEXT("Failed copying files for an unknown reason\n");
+		return;
+	}
+	ParentModDeployer->LogText += "All done\n";
+}
+void FModDeployerTask::RunIntegrate_Inner()
+{
+	// execute integrator
+	ParentModDeployer->LogText += TEXT("\nIntegrating\n");
+
+	FString localappdataConstStr(TEXT("%LOCALAPPDATA%"));
+	FString localappdata(getenv("LOCALAPPDATA"));
+
+	FString integratorVersion = ParentModDeployer->ExecuteIntegrator(TEXT("version"));
+	FModDeployerDownloader downloader = FModDeployerDownloader(this->ParentModDeployer, integratorVersion);
+	downloader.Download();
+	downloader.SyncEvent->Wait();
+
+	FString integratorOutput = ParentModDeployer->ExecuteIntegrator((ParentModDeployer->DescriptorData->PaksFolder).Replace(*localappdataConstStr, *localappdata, ESearchCase::IgnoreCase) + TEXT(" ") + ParentModDeployer->DescriptorData->InstallationPaksFolder);
+	if (integratorOutput.IsEmpty())
+	{
+		ParentModDeployer->LogText += TEXT("Integrator failed to execute! Aborting!");
+		return;
+	}
+	else
+	{
+		ParentModDeployer->LogText += integratorOutput + TEXT("\n");
+	}
+}
+void FModDeployerTask::RunLaunch_Inner()
+{
+	// launch game
+	ParentModDeployer->LogText += TEXT("\nLaunching\n");
+
+	if (ParentModDeployer->DescriptorData->Platform == EModDeployerPlatformType::Steam)
+	{
+		FPlatformProcess::LaunchURL(TEXT("steam://run/361420"), NULL, NULL);
+	}
+	else if (ParentModDeployer->DescriptorData->Platform == EModDeployerPlatformType::MicrosoftStore)
+	{
+		FPlatformProcess::LaunchURL(TEXT("shell:appsFolder\\SystemEraSoftworks.29415440E1269_ftk5pbg2rayv2!AppSystemEraSoftworks29415440E1269Shipping"), NULL, NULL);
+	}
+	else
+	{
+		ParentModDeployer->LogText += TEXT("Failed to launch game for unknown platform\n");
+	}
+	ParentModDeployer->LogText += TEXT("All done\n");
+}
