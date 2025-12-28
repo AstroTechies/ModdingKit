@@ -31,10 +31,10 @@ public:
 	UPROPERTY(EditAnywhere, SaveGame, Category = "Deployment Information", meta = (DisplayName = "Installation Paks Folder"))
 	FString InstallationPaksFolder = "D:\\Games\\steamapps\\common\\ASTRONEER\\Astro\\Content\\Paks";
 
-	UPROPERTY(EditAnywhere, SaveGame, Category = "Deployment Information", meta = (DisplayName = "Platform"))
+	UPROPERTY(EditAnywhere, SaveGame, Category = "Deployment Information", meta = (DisplayName = "Platform (for Launch)"))
 	EModDeployerPlatformType Platform = EModDeployerPlatformType::Steam;
 
-	// The full text of your metadata.json file
+	// The full text of your metadata.json file; see https://astroneermodding.readthedocs.io for more info
 	UPROPERTY(EditAnywhere, SaveGame, Category = "Metadata", meta = (DisplayName = "metadata.json", MultiLine = true))
 	FString metadata = "{\n    \"schema_version\": 2,\n    \"name\": \"Test Mod\",\n    \"mod_id\": \"TestMod\",\n    \"author\": \"You\",\n    \"description\": \"My test mod\",\n    \"version\": \"0.1.0\",\n    \"sync\": \"serverclient\",\n    \"homepage\": \"https://example.com\",\n    \"integrator\": {\n        \n    }\n}";
 

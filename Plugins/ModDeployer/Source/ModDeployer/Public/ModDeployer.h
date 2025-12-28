@@ -24,6 +24,7 @@ public:
 	FReply RunPackage();
 	FReply RunIntegrate();
 	FReply RunLaunch();
+	FReply RunHelp();
 	FText GetText() const;
 
 	FString ExecuteIntegrator(FString parms);
@@ -38,6 +39,7 @@ public:
 	TSharedRef<class SDockTab> OnSpawnPluginTab(const class FSpawnTabArgs& SpawnTabArgs);
 
 	TSharedPtr<class FUICommandList> PluginCommands;
-	FString LogText = "Welcome to the Mod Deployer. This tool allows you to rapidly deploy and test your mods.";
+	FString LogText = "Welcome to the Mod Deployer. This plugin is designed to assist in rapidly deploying and test mods for Astroneer.\nTo see more information about this plugin, press the \"Help\" button.";
 	UModDeployerDescriptorData* DescriptorData = nullptr;
+	bool HaveWeCheckedForIntegratorUpdatesAlready = 0; // reset back to zero on editor relaunch
 };

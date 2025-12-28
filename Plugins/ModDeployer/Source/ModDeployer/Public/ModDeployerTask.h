@@ -6,6 +6,7 @@
 #include "ModDeployerDownloader.h"
 #include <stdio.h>
 #include <fstream>
+#include <stdexcept>
 
 class FModDeployerModule;
 
@@ -41,17 +42,34 @@ public:
 			return;
 		}
 
-		ParentModDeployer->LogText = "";
-		if (TaskType == EModDeployerTaskType::RunCook || TaskType == EModDeployerTaskType::RunAll) RunCook_Inner();
-		if (TaskType == EModDeployerTaskType::RunPackage || TaskType == EModDeployerTaskType::RunAll) RunPackage_Inner();
-		if (TaskType == EModDeployerTaskType::RunIntegrate || TaskType == EModDeployerTaskType::RunAll) RunIntegrate_Inner();
-		if (TaskType == EModDeployerTaskType::RunLaunch || TaskType == EModDeployerTaskType::RunAll) RunLaunch_Inner();
+		try
+		{
+			bool continueExecution = true;
+			ParentModDeployer->LogText = "";
+			if (continueExecution && (TaskType == EModDeployerTaskType::RunCook || TaskType == EModDeployerTaskType::RunAll)) continueExecution = RunCook_Inner();
+			if (continueExecution && (TaskType == EModDeployerTaskType::RunPackage || TaskType == EModDeployerTaskType::RunAll)) continueExecution = RunPackage_Inner();
+			if (continueExecution && (TaskType == EModDeployerTaskType::RunIntegrate || TaskType == EModDeployerTaskType::RunAll)) continueExecution = RunIntegrate_Inner();
+			if (continueExecution && (TaskType == EModDeployerTaskType::RunLaunch || TaskType == EModDeployerTaskType::RunAll)) continueExecution = RunLaunch_Inner();
+			if (!continueExecution) ParentModDeployer->LogText += "Aborted task\n";
+		}
+		catch (const std::runtime_error& err)
+		{
+			FString errMsg = UTF8_TO_TCHAR(err.what());
+			ParentModDeployer->LogText += TEXT("Uncaught exception occurred during task:\n") + errMsg + TEXT("\n");
+			return;
+		}
+		catch (...)
+		{
+			ParentModDeployer->LogText += TEXT("Uncaught exception occurred during task: unknown\n");
+			return;
+		}
+
     }
 
-	void RunCook_Inner();
-	void RunPackage_Inner();
-	void RunIntegrate_Inner();
-	void RunLaunch_Inner();
+	bool RunCook_Inner();
+	bool RunPackage_Inner();
+	bool RunIntegrate_Inner();
+	bool RunLaunch_Inner();
 
     FORCEINLINE TStatId GetStatId() const
     {
