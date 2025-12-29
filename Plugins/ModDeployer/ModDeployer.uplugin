@@ -3,7 +3,7 @@
 	"Version": 1,
 	"VersionName": "1.0",
 	"FriendlyName": "ModDeployer",
-	"Description": "Automatically deploy mods for rapid iteration",
+	"Description": "Easily deploy mods for rapid iteration",
 	"Category": "Other",
 	"CreatedBy": "atenfyr",
 	"CreatedByURL": "",
