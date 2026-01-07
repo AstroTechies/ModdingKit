@@ -5,7 +5,7 @@
 UItemComponent::UItemComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->StartingAmount = 0.00f;
     this->Discrete = false;
-    // If this is a canister, how much can it hold?
+    // If this is a canister, how much can it hold? 
     this->Capacity = 1.00f;
     this->ItemType = NULL;
     this->storedSubItemType = NULL;

@@ -1,6 +1,7 @@
 #include "ItemType.h"
 
 UItemType::UItemType() {
+    // Safe to leave checked 
     this->bDestroyOnAddDeformation = true;
     this->Indestructible = false;
     this->IsVolatile = false;

@@ -23,7 +23,7 @@ public:
     bool Discrete;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
-    // If this is a canister, how much can it hold?
+    // If this is a canister, how much can it hold? 
     float Capacity;
     
     UPROPERTY(BlueprintAssignable, BlueprintCallable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

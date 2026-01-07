@@ -311,7 +311,7 @@ public:
     FTransform GetPlanetToProxyTransform();
     
     UFUNCTION(BlueprintCallable)
-    // Returns a vector that points North
+    // Returns a vector that points North 
     FVector GetNorthVector();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)

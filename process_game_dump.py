@@ -34,6 +34,8 @@ def process_modifiers(file_path, file_data, modifier):
     
     file_name = Path(file_path).stem
 
+    addAdvancedDisplayToAll = False
+
     # iterate through every line searching for places to make changes
     i = 0
     while i < len(file_data): # we avoid using a for loop so that we compute len every time
@@ -42,6 +44,12 @@ def process_modifiers(file_path, file_data, modifier):
             if criterion in line_data:
                 this_modifier_data = modifier[criterion]
                 if isinstance(this_modifier_data, str):
+                    if not ("!ADVANCED!" in this_modifier_data):
+                        addAdvancedDisplayToAll = True
+                        file_data[i - 1] = file_data[i - 1].replace("(BlueprintReadWrite, ", "(SimpleDisplay, BlueprintReadWrite, ")
+                        file_data[i - 1] = file_data[i - 1].replace("(BlueprintAssignable, ", "(SimpleDisplay, BlueprintAssignable, ")
+                    this_modifier_data = this_modifier_data.replace("!ADVANCED!", "")
+
                     # count num spaces
                     num_spaces = 0
                     for n in range(15):
@@ -105,6 +113,13 @@ def process_modifiers(file_path, file_data, modifier):
                     raise Exception("Unexpected type for comment data: " + str(type(this_modifier_data)))
         i += 1
     
+    if addAdvancedDisplayToAll:
+        i = 0
+        while i < len(file_data): # we avoid using a for loop so that we compute len every time
+            file_data[i] = file_data[i].replace("(BlueprintReadWrite, ", "(AdvancedDisplay, BlueprintReadWrite, ")
+            file_data[i] = file_data[i].replace("(BlueprintAssignable, ", "(AdvancedDisplay, BlueprintAssignable, ")
+            i += 1
+
     with open(file_path, 'w') as file_handle:
         file_handle.write(''.join(file_data)) # new lines already in the strings
 

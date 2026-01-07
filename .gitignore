@@ -6,6 +6,8 @@ Saved/**
 Plugins/*/Binaries
 Plugins/*/Build
 Plugins/*/Intermediate
-
+Plugins/ModDeployer/integrator/*.exe
+Plugins/ModDeployer/integrator/*.dll
+*.sln
 
 

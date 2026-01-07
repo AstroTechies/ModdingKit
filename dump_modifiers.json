@@ -106,7 +106,7 @@
         }
     },
     "ItemComponent": {
-        "Capacity": "If this is a canister, how much can it hold?"
+        "Capacity": "If this is a canister, how much can it hold? !ADVANCED!"
     },
     "PhysicalItem": {
         "HoverHeight": "no idea",
@@ -114,24 +114,39 @@
         "PrinterHeight": "The height of the printer, overrides the default determined height value if defined",
         "ToolMoveTier": "The tier of the object. 1 = T1, 2 = T2, etc. Controls fallback slot size, default package size, as well as walking speed",
         "IsMovable": "Can this item be picked up and moved around with the cursor?",
-        "IsUnslottable": "Can this item be slotted?",
-        "SlotQueryAllowBodyPlacement": "Can this item be directly attached to the body of an object (like packagers and dynamite do)?"
+        "bool IsUnslottable": "Can this item be slotted?",
+        "SlotQueryAllowBodyPlacement": "Can this item be directly attached to the body of an object (like packagers and dynamite do)?",
+        "UItemComponent* ItemComponent": "ItemComponent",
+        "UActorEntityLinkComponent* EntityLinkComponent": "EntityLinkComponent",
+        "UTerrainPhysicsComponent* terrainComponent": "terrainComponent",
+        "UStaticMeshComponent* StaticMeshComponent": "StaticMeshComponent",
+        "UWorldGravity* GravityComponent": "GravityComponent",
+        "UClickableComponent* ClickableComponent": "ClickableComponent",
+        "USlotsComponent* SlotsComponent": "SlotsComponent",
+        "UTooltipComponent* TooltipComponent": "TooltipComponent",
+        "UProceduralStateComponent* ProceduralState": "ProceduralState"
     },
     "ItemType": {
 		"uint8 Indestructible": "Is this indestructible?",
 		"uint8 IsVolatile": "Whether or not the item contributes to an explosion, like Hydrazine does",
-		"uint8 IsPower": "Is this a power resource?",
-		"uint8 IsOxygen": "Is this an oxygen resource?",
+		"uint8 IsPower": "Is this a power resource? Generally leave unchecked !ADVANCED!",
+		"uint8 IsOxygen": "Is this an oxygen resource? Generally leave unchecked !ADVANCED!",
 		"uint8 bCanBeScrapped": "Can this be put into a shredder?",
 		"uint8 bIsUnrepackageable": "Can this item not be packaged with a packager?",
+        "FLinearColor MaterialColor": "Can be generally left unspecified !ADVANCED!",
 		"TArray<TSubclassOf<UItemType>> ContainerSubtypeWhitelist": "What items can go into this container?",
-		"FLinearColor MaterialColor": "Not needed",
 		"TSubclassOf<AActor> PickupActor": "The Actor (PhysicalItem) that this ItemType represents",
 		"TSubclassOf<UItemType> UnbundleType": "Bundle --> Individual",
-		"TSubclassOf<UItemType> BundleType": "Individual --> Bundle"
+		"TSubclassOf<UItemType> BundleType": "Individual --> Bundle",
+        "FRecipe ConstructionRecipe": "Item recipe",
+        "UItemCatalogData* CatalogData": "Research catalog data",
+        "UResearchSubjectDefinition* ResearchSubjectDefinition": "Research subject definition, if this item can be placed into a Research Chamber",
+        "UTexture* CrateOverlayTexture": "CrateOverlayTexture",
+        "UTexture2D* WidgetIcon": "WidgetIcon",
+        "bDestroyOnAddDeformation": "Safe to leave checked !ADVANCED!"
     },
     "AstroPlanet": {
-        "FVector GetNorthVector()": "Returns a vector that points North"
+        "FVector GetNorthVector()": "Returns a vector that points North !ADVANCED!"
     },
     "PowerComponent": {
         "uint8 Enabled": "Take a guess",
@@ -146,6 +161,6 @@
 		"float DiscreteDelta": "Unsure, needs testing"
     },
     "AstroPlayerState": {
-        "FString BackendPlayerId": "The PlayFab ID of a player. Seemingly only accessible on dedicated servers."
+        "FString BackendPlayerId": "The PlayFab ID of a player. Seemingly only accessible on dedicated servers. !ADVANCED!"
     }
 }

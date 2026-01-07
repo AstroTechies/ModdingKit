@@ -31,7 +31,7 @@ public:
     FHelpMenuStateUpdate OnHelpMenuUpdated;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
-    // The PlayFab ID of a player. Seemingly only accessible on dedicated servers.
+    // The PlayFab ID of a player. Seemingly only accessible on dedicated servers. 
     FString BackendPlayerId;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))

@@ -53,7 +53,6 @@ APhysicalItem::APhysicalItem(const FObjectInitializer& ObjectInitializer) : Supe
     this->bDestroyWhenDrained = false;
     this->PrintSpeedOverride = 0.00f;
     this->MostRecentNetOwner = NULL;
-    // Can this item be slotted?
     this->IsUnslottable = false;
     this->bIsAttachedToTerrain = false;
 }
@@ -253,7 +252,6 @@ bool APhysicalItem::CanNeverBeSlotted() const {
     return false;
 }
 
-// Can this item be slotted?
 void APhysicalItem::AuthoritySetIsUnslottable(bool bIsUnslottable) {
 }
 
@@ -265,7 +263,6 @@ void APhysicalItem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLif
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
     
     DOREPLIFETIME(APhysicalItem, EmplacementData);
-    // Can this item be slotted?
     DOREPLIFETIME(APhysicalItem, IsUnslottable);
     DOREPLIFETIME(APhysicalItem, ReplicatedState);
 }
