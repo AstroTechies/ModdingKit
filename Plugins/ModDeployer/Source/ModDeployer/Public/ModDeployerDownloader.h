@@ -13,8 +13,11 @@ class FModDeployerDownloader
 public:
 	FModDeployerDownloader(FModDeployerModule* parent, FString currentIntegratorVersion);
 
+	UPROPERTY()
 	FModDeployerModule* ParentModule = nullptr;
+	UPROPERTY()
 	FString CurrentIntegratorVersion;
+	UPROPERTY()
 	FEvent* SyncEvent = FPlatformProcess::CreateSynchEvent(false);
 
 	void Download();

@@ -22,7 +22,9 @@ enum class EModDeployerTaskType : uint8
 class FModDeployerTask : public FNonAbandonableTask
 {
 public:
+	UPROPERTY()
 	EModDeployerTaskType TaskType;
+	UPROPERTY()
 	FModDeployerModule* ParentModDeployer;
 
     FModDeployerTask(EModDeployerTaskType taskType, FModDeployerModule* parentModDeployer)

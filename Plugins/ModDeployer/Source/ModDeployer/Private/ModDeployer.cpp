@@ -51,6 +51,8 @@ void FModDeployerModule::StartupModule()
 
 void FModDeployerModule::ShutdownModule()
 {
+	if (this->DescriptorData != nullptr) this->DescriptorData->RemoveFromRoot();
+
 	UToolMenus::UnRegisterStartupCallback(this);
 
 	UToolMenus::UnregisterOwner(this);
@@ -93,7 +95,7 @@ FReply FModDeployerModule::RunLaunch()
 
 FReply FModDeployerModule::RunHelp()
 {
-	FMessageDialog::Open(EAppMsgType::Ok, FText::FromString(TEXT("Welcome to the Mod Deployer plugin by atenfyr. This plugin is bundled with the AstroTechies ModdingKit for developing Astroneer mods.\n\nThis plugin is designed to assist in rapid mod iteration by providing a quick way to cook, package, integrate, and launch Astroneer mods for debugging purposes.\n\nTo set-up this plugin, fill out the fields in the top of the window as needed, including: your mod ID, version, the folder in which your mod assets are located, other deployment paths, and the full contents of your metadata.json file. You may hover over the name of any field to obtain more information about it. You may save these fields and load them again later using the Save config and Load config buttons, but they will also be saved automatically when closing the tab or executing a task. These saves are saved to disk and persist with editor and system restarts.\n\nTo execute the plugin, press the \"Run everything\" button. You may also execute specific tasks individually by pressing the other buttons, if desired.\n\nYou may return to this menu at any time by choosing \"Mod Deployer\" under the \"Window\" tab. You may also quickly execute the \"Run everything\" task with or without this menu open by choosing the \"Quick Deploy\" option, also under the \"Window\" tab, or by pressing the F5 key (by default). Your settings persist even with the menu closed.\n\nCopyright Â© 2025 atenfyr. See https://github.com/AstroTechies/ModdingKit/tree/master/Plugins/ModDeployer for more information.")));
+	FMessageDialog::Open(EAppMsgType::Ok, FText::FromString(TEXT("Welcome to the Mod Deployer plugin by atenfyr. This plugin is bundled with the AstroTechies ModdingKit for developing Astroneer mods.\n\nThis plugin is designed to assist in rapid mod iteration by providing a quick way to cook, package, integrate, and launch Astroneer mods for debugging purposes.\n\nTo set-up this plugin, fill out the fields in the top of the window as needed, including: your mod ID, version, the folder in which your mod assets are located, other deployment paths, and the full contents of your metadata.json file. You may hover over the name of any field to obtain more information about it. You may save these fields and load them again later using the Save config and Load config buttons, but they will also be saved automatically when closing the tab or executing a task. These saves are saved to disk and persist with editor and system restarts.\n\nTo execute the plugin, press the \"Run everything\" button. You may also execute specific tasks individually by pressing the other buttons, if desired.\n\nYou may return to this menu at any time by choosing \"Mod Deployer\" under the \"Window\" tab. You may also quickly execute the \"Run everything\" task with or without this menu open by choosing the \"Quick Deploy\" option, also under the \"Window\" tab, or by pressing the F5 key (by default). Your settings persist even with the menu closed.\n\nCopyright © 2025 atenfyr. See https://github.com/AstroTechies/ModdingKit/tree/master/Plugins/ModDeployer for more information.")));
 	return FReply::Handled();
 }
 
@@ -221,6 +223,7 @@ void FModDeployerModule::PluginButtonClickedQuick()
 	if (this->DescriptorData == nullptr)
 	{
 		this->DescriptorData = NewObject<UModDeployerDescriptorData>();
+		this->DescriptorData->AddToRoot();
 		this->LoadDescriptorDataWithParam(false, true);
 	}
 	(new FAsyncTask<FModDeployerTask>(EModDeployerTaskType::RunAll, this))->StartBackgroundTask();
@@ -231,6 +234,7 @@ TSharedRef<SDockTab> FModDeployerModule::OnSpawnPluginTab(const FSpawnTabArgs& S
 	if (this->DescriptorData == nullptr)
 	{
 		this->DescriptorData = NewObject<UModDeployerDescriptorData>();
+		this->DescriptorData->AddToRoot();
 		this->LoadDescriptorDataWithParam(false, true);
 	}
 

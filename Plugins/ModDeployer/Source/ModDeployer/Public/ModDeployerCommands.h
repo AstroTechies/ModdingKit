@@ -17,6 +17,8 @@ public:
 	virtual void RegisterCommands() override;
 
 public:
+	UPROPERTY()
 	TSharedPtr<FUICommandInfo> PluginAction;
+	UPROPERTY()
 	TSharedPtr<FUICommandInfo> PluginActionQuick;
 };
