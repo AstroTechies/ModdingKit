@@ -19,8 +19,8 @@ public:
 	UPROPERTY(EditAnywhere, SaveGame, Category = "Deployment Information", meta = (DisplayName = "Mod Version"))
 	FString ModVersion = "0.1.0";
 
-	// The path to the folder where your mod assets are
-	UPROPERTY(EditAnywhere, SaveGame, Category = "Deployment Information", meta = (DisplayName = "Mod Folder"))
+	// The path to the folder (or single file) where your mod assets are. You can add multiple folders by adding multiple lines
+	UPROPERTY(EditAnywhere, SaveGame, Category = "Deployment Information", meta = (DisplayName = "Mod Folder", MultiLine = true))
 	FString ModFolder = "Astro/Content/Mods/YourNameHere/TestMod";
 
 	// The path to the folder where the game loads .pak files
@@ -34,7 +34,7 @@ public:
 	UPROPERTY(EditAnywhere, SaveGame, Category = "Deployment Information", meta = (DisplayName = "Platform (for Launch)"))
 	EModDeployerPlatformType Platform = EModDeployerPlatformType::Steam;
 
-	// The full text of your metadata.json file; see https://astroneermodding.readthedocs.io for more info
+	// The full text of your metadata.json file; see astroneermodding.readthedocs.io for more info
 	UPROPERTY(EditAnywhere, SaveGame, Category = "Metadata", meta = (DisplayName = "metadata.json", MultiLine = true))
 	FString metadata = "{\n    \"schema_version\": 2,\n    \"name\": \"Test Mod\",\n    \"mod_id\": \"TestMod\",\n    \"author\": \"You\",\n    \"description\": \"My test mod\",\n    \"version\": \"0.1.0\",\n    \"sync\": \"serverclient\",\n    \"homepage\": \"https://example.com\",\n    \"integrator\": {\n        \n    }\n}";
 

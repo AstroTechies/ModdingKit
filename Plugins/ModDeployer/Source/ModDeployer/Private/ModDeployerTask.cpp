@@ -33,9 +33,10 @@ bool FModDeployerTask::RunPackage_Inner()
 	ParentModDeployer->LogText += TEXT("\nPackaging\n");
 
 	// copy folder to staging in Intermediate
+	TArray<FString> modFolderPaths;
+	(ParentModDeployer->DescriptorData->ModFolder).ParseIntoArrayLines(modFolderPaths);
+
 	FString modFolder = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("Intermediate"), TEXT("TempMod")));
-	FString sourceFolder = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Cooked"), TEXT("WindowsNoEditor"), ParentModDeployer->DescriptorData->ModFolder));
-	FString targetFolder = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("Intermediate"), TEXT("TempMod"), ParentModDeployer->DescriptorData->ModFolder));
 	FString staticAssetsFolder = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("ModStaticAssets"), ParentModDeployer->DescriptorData->ModID));
 	FString targetMetadataFilePath = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("Intermediate"), TEXT("TempMod"), TEXT("metadata.json")));
 
@@ -43,10 +44,69 @@ bool FModDeployerTask::RunPackage_Inner()
 	try
 	{
 		std::filesystem::remove_all(TCHAR_TO_UTF8(*modFolder));
-		std::filesystem::create_directories(TCHAR_TO_UTF8(*targetFolder));
 		std::filesystem::create_directories(TCHAR_TO_UTF8(*staticAssetsFolder));
-		std::filesystem::copy(TCHAR_TO_UTF8(*sourceFolder), TCHAR_TO_UTF8(*targetFolder), std::filesystem::copy_options::overwrite_existing | std::filesystem::copy_options::recursive);
-		
+	}
+	catch (const std::runtime_error& err)
+	{
+		FString errMsg = UTF8_TO_TCHAR(err.what());
+		ParentModDeployer->LogText += TEXT("Failed copying files:\n") + errMsg + TEXT("\n");
+		return false;
+	}
+	catch (...)
+	{
+		ParentModDeployer->LogText += TEXT("Failed copying files for an unknown reason\n");
+		return false;
+	}
+
+	try
+	{
+		for (FString folderPath : modFolderPaths)
+		{
+			FString sourceFolder = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Cooked"), TEXT("WindowsNoEditor"), folderPath));
+			FString targetFolder = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("Intermediate"), TEXT("TempMod"), folderPath));
+			
+			std::filesystem::path targetFolderAsPath = std::filesystem::path(TCHAR_TO_UTF8(*targetFolder));
+			std::string targetFolderExtension = targetFolderAsPath.extension().string(); // empty if folder
+
+			// make directory. if target is actually a file, instead make the parent directory
+			FString targetFolderActuallyFolder = targetFolder;
+			if (!targetFolderExtension.empty()) targetFolderActuallyFolder = UTF8_TO_TCHAR(targetFolderAsPath.parent_path().u8string().c_str());
+			std::filesystem::create_directories(TCHAR_TO_UTF8(*targetFolderActuallyFolder));
+
+			std::filesystem::copy(TCHAR_TO_UTF8(*sourceFolder), TCHAR_TO_UTF8(*targetFolder), std::filesystem::copy_options::overwrite_existing | std::filesystem::copy_options::recursive);
+			if (targetFolderExtension == ".uasset") // copy uexp and ubulk too if copying a uasset
+			{
+				{
+					FString folderPath2 = UTF8_TO_TCHAR(std::filesystem::path(TCHAR_TO_UTF8(*folderPath)).replace_extension(".uexp").u8string().c_str());
+					FString sourceFolder2 = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Cooked"), TEXT("WindowsNoEditor"), folderPath2));
+					FString targetFolder2 = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("Intermediate"), TEXT("TempMod"), folderPath2));
+					std::filesystem::copy(TCHAR_TO_UTF8(*sourceFolder2), TCHAR_TO_UTF8(*targetFolder2), std::filesystem::copy_options::overwrite_existing | std::filesystem::copy_options::recursive);
+				}
+				try
+				{
+					FString folderPath2 = UTF8_TO_TCHAR(std::filesystem::path(TCHAR_TO_UTF8(*folderPath)).replace_extension(".ubulk").u8string().c_str());
+					FString sourceFolder2 = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Cooked"), TEXT("WindowsNoEditor"), folderPath2));
+					FString targetFolder2 = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("Intermediate"), TEXT("TempMod"), folderPath2));
+					std::filesystem::copy(TCHAR_TO_UTF8(*sourceFolder2), TCHAR_TO_UTF8(*targetFolder2), std::filesystem::copy_options::overwrite_existing | std::filesystem::copy_options::recursive);
+				}
+				catch (...) {}
+			}
+		}
+	}
+	catch (const std::runtime_error& err)
+	{
+		FString errMsg = UTF8_TO_TCHAR(err.what());
+		ParentModDeployer->LogText += TEXT("Failed copying files:\n") + errMsg + TEXT("\n");
+		return false;
+	}
+	catch (...)
+	{
+		ParentModDeployer->LogText += TEXT("Failed copying files for an unknown reason\n");
+		return false;
+	}
+
+	try
+	{
 		// we want static assets to override our assets, so we copy it after
 		std::filesystem::copy(TCHAR_TO_UTF8(*staticAssetsFolder), TCHAR_TO_UTF8(*modFolder), std::filesystem::copy_options::overwrite_existing | std::filesystem::copy_options::recursive);
 
