@@ -7,7 +7,7 @@ bool FModDeployerTask::RunCook_Inner()
 	ParentModDeployer->LogText += "\nCooking\n";
 	if (ParentModDeployer->DescriptorData == nullptr) return false;
 	FString exePath = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::EngineDir(), TEXT("Binaries"), TEXT("Win64"), TEXT("UE4Editor-Cmd.exe")));
-	FString params = TEXT("\"") + FPaths::ConvertRelativePathToFull(FPaths::GetProjectFilePath()) + TEXT("\" -run=cook -targetplatform=WindowsNoEditor -CrashForUAT -unattended");
+	FString params = TEXT("\"") + FPaths::ConvertRelativePathToFull(FPaths::GetProjectFilePath()) + TEXT("\" -run=Cook -targetplatform=WindowsNoEditor -iterate -CrashForUAT -unattended");
 
 	ParentModDeployer->LogText += (exePath + " " + params + "\n");
 
