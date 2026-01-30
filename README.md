@@ -1,9 +1,12 @@
 # Astroneer ModdingKit
 
-This is a modding kit made for modding Astroneer. It should be fairly up to date with the latest game version.
+This is an SDK for modding Astroneer. It was last updated for Astroneer version 1.36.42.0 (MEGATECH).
 
 ## Usage Guide
-You may find further information on using this kit on the [astroneermodding.readthedocs.io website](https://astroneermodding.readthedocs.io/en/latest/guides/kitSetup.html)
+Visit the [astroneermodding.readthedocs.io website](https://astroneermodding.readthedocs.io/en/latest/guides/kitSetup.html) for more information on using this kit.
+
+## Contributions
+Please feel free to submit issues or pull requests to this project. It is requested that you modify the LICENSE.md file as part of your pull request to provide a license agreement for any files or directories that you contribute to the project.
 
 ## Kit Generation Guide
 If you are interested in re-generating the Source directory on your own, e.g. for updating it to a future version, the process is as follows. This is not needed to make mods, and should only be done by advanced users.
