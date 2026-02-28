@@ -98,7 +98,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org>
 ```
 
-### Content/Mods/TelmoFar
+### Content/Mods/UnknownMoons
 These mods were originally produced by TelmoFar.
 
 ```
