@@ -72,6 +72,11 @@
             "SUBSTITUTE": "EInputEvent"
         }
     },
+    "AstroCustomGameManager": {
+        "EndPlay": {
+            "DELETE": [-1, 1]
+        }
+    },
     "PreviewDisplayComponent": {
         "OnDeployReadyChanged": {
             "DELETE": [-1, 0]

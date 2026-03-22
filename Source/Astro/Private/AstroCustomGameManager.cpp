@@ -217,9 +217,9 @@ void AAstroCustomGameManager::ExtractLegacyConfigDataAndUpdate(FAstroCustomGameS
 
 void AAstroCustomGameManager::EnforceCustomGameSettingsRangeRestrictions(FAstroCustomGameSettings& NewCustomGameSettings) {
 }
-
-void AAstroCustomGameManager::EndPlay(const TEnumAsByte<EEndPlayReason::Type> EndPlayReason) {
-}
+//
+//void AAstroCustomGameManager::EndPlay(const TEnumAsByte<EEndPlayReason::Type> EndPlayReason) {
+//}
 
 //void AAstroCustomGameManager::CombineCloudAndDiskCaches(const FAstroCGMLibraryConfigEntryType cacheId) {
 //}

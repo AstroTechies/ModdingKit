@@ -309,9 +309,9 @@ public:
     UFUNCTION(BlueprintCallable)
     void EnforceCustomGameSettingsRangeRestrictions(FAstroCustomGameSettings& NewCustomGameSettings);
     
-    UFUNCTION(BlueprintCallable)
-    void EndPlay(const TEnumAsByte<EEndPlayReason::Type> EndPlayReason);
-    
+//    UFUNCTION(BlueprintCallable)
+//    void EndPlay(const TEnumAsByte<EEndPlayReason::Type> EndPlayReason);
+//    
 //    UFUNCTION(BlueprintCallable)
 //    void CombineCloudAndDiskCaches(const FAstroCGMLibraryConfigEntryType cacheId);
     

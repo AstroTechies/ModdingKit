@@ -56,9 +56,9 @@ void FModDeployerDownloader::RequestComplete(FHttpRequestPtr HttpRequest, FHttpR
 							{
 								const TSharedPtr<FJsonObject>* valueAsObject2;
 								FString outStr;
-								if ((*assetsArray)[i]->TryGetObject(valueAsObject2) && valueAsObject2->Get()->TryGetStringField(L"name", outStr) && outStr.Equals("ModIntegrator-win-x64.exe", ESearchCase::IgnoreCase))
+								if ((*assetsArray)[i]->TryGetObject(valueAsObject2) && valueAsObject2->Get()->TryGetStringField(TEXT("name"), outStr) && outStr.Equals("ModIntegrator-win-x64.exe", ESearchCase::IgnoreCase))
 								{
-									targetUrlFound = valueAsObject2->Get()->TryGetStringField(L"browser_download_url", targetUrl);
+									targetUrlFound = valueAsObject2->Get()->TryGetStringField(TEXT("browser_download_url"), targetUrl);
 								}
 							}
 						}

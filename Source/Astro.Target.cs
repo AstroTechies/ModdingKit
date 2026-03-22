@@ -9,5 +9,10 @@ public class AstroTarget : TargetRules {
 			"MessageOfTheDay",
 			"Terrain2"
 		});
+
+		if (Target.Platform == UnrealTargetPlatform.Linux)
+		{
+			DisablePlugins.Add("ModDeployer");
+		}
 	}
 }

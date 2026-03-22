@@ -24,6 +24,10 @@
 		{
 			"Name": "ReplicationGraph",
 			"Enabled": true
+		},
+		{
+			"Name": "ModDeployer",
+			"Enabled": true
 		}
 	]
 }
