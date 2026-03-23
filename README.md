@@ -25,7 +25,7 @@ It is possible to build the Unreal Engine for Linux (Ubuntu) and use the Modding
         tar --wildcards --transform='s#^.*/##' -xvf clang+llvm-11.0.1-*.tar.xz -C $NEW_LIBCPP_PATH **/libc++*
         ```
 
-        This will extract libc++ binaries from the .tar.xz file into the `~/.llvm-libcpp-11.0.1` directory. If you would like, you can change NEW_LLVM_PATH to point to a different directory, but you will have to modify the `Plugins/ModDeployer/Source/ModDeployer.Build.cs` file to reflect the change.
+        This will extract libc++ binaries from the .tar.xz file into the `~/.llvm-libcpp-11.0.1` directory. If you would like, you can change NEW_LLVM_PATH to point to a different directory, but you will have to modify the `NEW_LIBCPP_PATH` variable in the `Plugins/ModDeployer/Source/ModDeployer/ModDeployer.Build.cs` file to reflect the change.
     - Skip to step 6.
 
 5. If you would like to skip building the ModDeployer plugin, uncomment (remove the `//` at the start of) the line `DisablePlugins.Add("ModDeployer");` in `Source/Astro.Target.cs` and `Source/AstroEditor.Target.cs` and continue.
