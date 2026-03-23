@@ -56,10 +56,17 @@ void FModDeployerDownloader::RequestComplete(FHttpRequestPtr HttpRequest, FHttpR
 							{
 								const TSharedPtr<FJsonObject>* valueAsObject2;
 								FString outStr;
+#if PLATFORM_LINUX
+								if ((*assetsArray)[i]->TryGetObject(valueAsObject2) && valueAsObject2->Get()->TryGetStringField(TEXT("name"), outStr) && outStr.Equals("ModIntegrator-linux-x64", ESearchCase::IgnoreCase))
+								{
+									targetUrlFound = valueAsObject2->Get()->TryGetStringField(TEXT("browser_download_url"), targetUrl);
+								}
+#else
 								if ((*assetsArray)[i]->TryGetObject(valueAsObject2) && valueAsObject2->Get()->TryGetStringField(TEXT("name"), outStr) && outStr.Equals("ModIntegrator-win-x64.exe", ESearchCase::IgnoreCase))
 								{
 									targetUrlFound = valueAsObject2->Get()->TryGetStringField(TEXT("browser_download_url"), targetUrl);
 								}
+#endif
 							}
 						}
 					}
@@ -138,7 +145,11 @@ void FModDeployerDownloader::RequestComplete2(FHttpRequestPtr HttpRequest, FHttp
 			TArray<uint8> outputBytes = HttpResponse->GetContent();
 
 			FString targetPathFolder = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("integrator")));
+#if PLATFORM_LINUX
+			FString targetPath = FPaths::ConvertRelativePathToFull(FPaths::Combine(targetPathFolder, TEXT("ModIntegrator")));
+#else
 			FString targetPath = FPaths::ConvertRelativePathToFull(FPaths::Combine(targetPathFolder, TEXT("ModIntegrator.exe")));
+#endif
 
 			// just in case
 			std::filesystem::create_directories(TCHAR_TO_UTF8(*targetPathFolder));
@@ -148,21 +159,21 @@ void FModDeployerDownloader::RequestComplete2(FHttpRequestPtr HttpRequest, FHttp
 			fs.write(reinterpret_cast<char*>(outputBytes.GetData()), outputBytes.Num());
 			fs.close();
 
-			ParentModule->LogText += TEXT("Saved integrator .exe file to \"") + targetPath + TEXT("\"\n");
+			ParentModule->LogText += TEXT("Saved integrator executable file to \"") + targetPath + TEXT("\"\n");
 		}
 		else
 		{
-			ParentModule->LogText += TEXT("Failed to download integrator .exe file: HTTP response was invalid\n");
+			ParentModule->LogText += TEXT("Failed to download integrator executable file: HTTP response was invalid\n");
 		}
 	}
 	catch (const std::runtime_error& err)
 	{
 		FString errMsg = UTF8_TO_TCHAR(err.what());
-		ParentModule->LogText += TEXT("Failed to download integrator .exe file:\n") + errMsg + TEXT("\n");
+		ParentModule->LogText += TEXT("Failed to download integrator executable file:\n") + errMsg + TEXT("\n");
 	}
 	catch (...)
 	{
-		ParentModule->LogText += TEXT("Failed to download integrator .exe file for an unknown reason\n");
+		ParentModule->LogText += TEXT("Failed to download integrator executable file for an unknown reason\n");
 	}
 
 	SyncEvent->Trigger();

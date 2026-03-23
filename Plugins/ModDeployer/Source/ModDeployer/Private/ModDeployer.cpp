@@ -164,7 +164,11 @@ FReply FModDeployerModule::LoadDescriptorDataSlate()
 FString FModDeployerModule::ExecuteIntegrator(FString parms)
 {
 	FString targetPathFolder = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("integrator")));
+#if PLATFORM_LINUX
+	FString targetPath = FPaths::ConvertRelativePathToFull(FPaths::Combine(targetPathFolder, TEXT("ModIntegrator")));
+#else
 	FString targetPath = FPaths::ConvertRelativePathToFull(FPaths::Combine(targetPathFolder, TEXT("ModIntegrator.exe")));
+#endif
 
 	try
 	{
@@ -181,7 +185,7 @@ FString FModDeployerModule::ExecuteIntegrator(FString parms)
 			true,
 			nullptr,
 			0,
-			*targetPathFolder, // needed to load repak_bind correctly
+			*targetPathFolder, // needed to load repak_bind and log correctly
 			PipeWrite,
 			PipeRead
 		);

@@ -1,4 +1,6 @@
 using UnrealBuildTool;
+using System;
+using System.IO;
 
 public class ModDeployer : ModuleRules
 {
@@ -55,5 +57,16 @@ public class ModDeployer : ModuleRules
 				// ... add any modules that your module loads dynamically here ...
 			}
 			);
+
+		if (Target.Platform == UnrealTargetPlatform.Linux)
+		{
+			string NEW_LIBCPP_PATH = "$HOME/.llvm-libcpp-11.0.1";
+
+			NEW_LIBCPP_PATH = NEW_LIBCPP_PATH.Replace("$HOME", Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
+			NEW_LIBCPP_PATH = NEW_LIBCPP_PATH.Replace("~", Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
+			
+			PublicAdditionalLibraries.Add(Path.Combine(NEW_LIBCPP_PATH, "libc++.a"));
+			PublicAdditionalLibraries.Add(Path.Combine(NEW_LIBCPP_PATH, "libc++abi.a"));
+		}
 	}
 }

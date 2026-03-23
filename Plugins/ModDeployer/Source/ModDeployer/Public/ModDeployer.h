@@ -41,7 +41,7 @@ public:
 	UPROPERTY()
 	TSharedPtr<class FUICommandList> PluginCommands;
 	UPROPERTY()
-	FString LogText = "Welcome to the Mod Deployer. This plugin is designed to assist in rapidly deploying and test mods for Astroneer.\nTo see more information about this plugin, press the \"Help\" button.";
+	FString LogText = TEXT("Welcome to the Mod Deployer. This plugin is designed to assist in rapidly deploying and test mods for Astroneer.\nTo see more information about this plugin, press the \"Help\" button.");
 	UPROPERTY()
 	UModDeployerDescriptorData* DescriptorData = nullptr;
 	UPROPERTY()

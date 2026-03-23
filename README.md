@@ -15,10 +15,25 @@ It is possible to build the Unreal Engine for Linux (Ubuntu) and use the Modding
 
 3. In your directory of choice, execute `git clone https://github.com/AstroTechies/ModdingKit.git && cd ModdingKit`.
 
-4. Execute `/path/to/your/engine/directory/Engine/Build/BatchFiles/RunUAT.sh BuildCookRun -Build -Project=$(pwd)/Astro.uproject` on the command line. Replace `/path/to/your/engine/directory/` with the root path of your built copy of the Unreal Engine.
+4. If you would like to also build the ModDeployer plugin, additional steps are required. The required steps are provided below. Otherwise, skip to step 5.
+    - Download appropriate clang+llvm-11.0.1 binaries for LLVM 11.0.1 from GitHub for your particular distribution: https://github.com/llvm/llvm-project/releases/tag/llvmorg-11.0.1 (for latest Ubuntu, you can use the ubuntu-20.10.tar.xz binaries)
+    - Navigate to the folder where the .tar.gz was downloaded in a terminal window and execute the following commands:
+    
+        ```
+        export NEW_LIBCPP_PATH="$HOME/.llvm-libcpp-11.0.1"
+        mkdir -p $NEW_LIBCPP_PATH
+        tar --wildcards --transform='s#^.*/##' -xvf clang+llvm-11.0.1-*.tar.xz -C $NEW_LIBCPP_PATH **/libc++*
+        ```
 
-5. Launch the Unreal Editor as normal. If desired, you can do this either via the graphical user interface or via the command line: `/path/to/your/engine/directory/Engine/Binaries/Linux/UE4Editor $(pwd)/Astro.uproject`
-    - If you receive a prompt that "This project was made with a different version of the Unreal Engine," choose "More Options..." and "Skip conversion."
+        This will extract libc++ binaries from the .tar.xz file into the `~/.llvm-libcpp-11.0.1` directory. If you would like, you can change NEW_LLVM_PATH to point to a different directory, but you will have to modify the `Plugins/ModDeployer/Source/ModDeployer.Build.cs` file to reflect the change.
+    - Skip to step 6.
+
+5. If you would like to skip building the ModDeployer plugin, uncomment (remove the `//` at the start of) the line `DisablePlugins.Add("ModDeployer");` in `Source/Astro.Target.cs` and `Source/AstroEditor.Target.cs` and continue.
+
+6. Execute `/path/to/your/engine/directory/Engine/Build/BatchFiles/RunUAT.sh BuildCookRun -Build -Project=$(pwd)/Astro.uproject` on the command line. Replace `/path/to/your/engine/directory/` with the root path of your built copy of the Unreal Engine.
+
+7. Launch the Unreal Editor as normal. If desired, you can do this either via the graphical user interface or via the command line: `/path/to/your/engine/directory/Engine/Binaries/Linux/UE4Editor $(pwd)/Astro.uproject`
+    - If you receive a prompt that says "This project was made with a different version of the Unreal Engine," choose "More Options..." and "Skip conversion."
 
 ## Kit Generation Guide
 If you are interested in re-generating the Source directory on your own, e.g. for updating it to a future version, the process is as follows. This is not needed to make mods, and should only be done by advanced users.

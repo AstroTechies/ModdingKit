@@ -7,8 +7,11 @@ Saved/**
 Plugins/*/Binaries
 Plugins/*/Build
 Plugins/*/Intermediate
-Plugins/ModDeployer/integrator/*.exe
+Plugins/ModDeployer/integrator/ModIntegrator.exe
+Plugins/ModDeployer/integrator/ModIntegrator.log
+Plugins/ModDeployer/integrator/ModIntegrator
 Plugins/ModDeployer/integrator/*.dll
+Plugins/ModDeployer/integrator/*.so
 *.sln
 
 

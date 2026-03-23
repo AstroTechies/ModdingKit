@@ -12,7 +12,9 @@ public class AstroTarget : TargetRules {
 
 		if (Target.Platform == UnrealTargetPlatform.Linux)
 		{
-			DisablePlugins.Add("ModDeployer");
+			// uncomment to disable ModDeployer
+			
+			//DisablePlugins.Add("ModDeployer");
 		}
 	}
 }

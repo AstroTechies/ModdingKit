@@ -2,12 +2,51 @@
 #include "ModDeployer.h"
 #include <vector>
 
+void FModDeployerTask::DoWork()
+{
+	// sanity check: don't proceed if ModFolder is still the default
+	// mostly trying to avoid users accidentally pressing F5 (default keybind for Quick Deploy) when not appropriate
+	if (ParentModDeployer == nullptr || ParentModDeployer->DescriptorData == nullptr) return;
+	if (ParentModDeployer->DescriptorData->ModFolder == "Astro/Content/Mods/YourNameHere/TestMod")
+	{
+		ParentModDeployer->LogText = "Task canceled because ModFolder has not been changed from the default placeholder.\nPlease modify the fields above as needed for your mod before executing the Mod Deployer.\n";
+		return;
+	}
+
+	try
+	{
+		bool continueExecution = true;
+		ParentModDeployer->LogText = "";
+		if (continueExecution && (TaskType == EModDeployerTaskType::RunCook || TaskType == EModDeployerTaskType::RunAll)) continueExecution = RunCook_Inner();
+		if (continueExecution && (TaskType == EModDeployerTaskType::RunPackage || TaskType == EModDeployerTaskType::RunAll)) continueExecution = RunPackage_Inner();
+		if (continueExecution && (TaskType == EModDeployerTaskType::RunIntegrate || TaskType == EModDeployerTaskType::RunAll)) continueExecution = RunIntegrate_Inner();
+		if (continueExecution && (TaskType == EModDeployerTaskType::RunLaunch || TaskType == EModDeployerTaskType::RunAll)) continueExecution = RunLaunch_Inner();
+		if (!continueExecution) ParentModDeployer->LogText += "Aborted task\n";
+	}
+	catch (const std::runtime_error& err)
+	{
+		FString errMsg = UTF8_TO_TCHAR(err.what());
+		ParentModDeployer->LogText += TEXT("Uncaught exception occurred during task:\n") + errMsg + TEXT("\n");
+		return;
+	}
+	catch (...)
+	{
+		ParentModDeployer->LogText += TEXT("Uncaught exception occurred during task: unknown\n");
+		return;
+	}
+}
+
 bool FModDeployerTask::RunCook_Inner()
 {
 	ParentModDeployer->LogText += "\nCooking\n";
 	if (ParentModDeployer->DescriptorData == nullptr) return false;
+#if PLATFORM_LINUX
+	FString exePath = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::EngineDir(), TEXT("Binaries"), TEXT("Linux"), TEXT("UE4Editor-Cmd")));
+	FString params = TEXT("\"") + FPaths::ConvertRelativePathToFull(FPaths::GetProjectFilePath()) + TEXT("\" -run=Cook -targetplatform=LinuxNoEditor -iterate -CrashForUAT -unattended");
+#else
 	FString exePath = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::EngineDir(), TEXT("Binaries"), TEXT("Win64"), TEXT("UE4Editor-Cmd.exe")));
 	FString params = TEXT("\"") + FPaths::ConvertRelativePathToFull(FPaths::GetProjectFilePath()) + TEXT("\" -run=Cook -targetplatform=WindowsNoEditor -iterate -CrashForUAT -unattended");
+#endif
 
 	ParentModDeployer->LogText += (exePath + " " + params + "\n");
 
@@ -36,6 +75,12 @@ bool FModDeployerTask::RunPackage_Inner()
 	TArray<FString> modFolderPaths;
 	(ParentModDeployer->DescriptorData->ModFolder).ParseIntoArrayLines(modFolderPaths);
 
+#if PLATFORM_LINUX
+	FString platformName = TEXT("LinuxNoEditor");
+#else
+	FString platformName = TEXT("WindowsNoEditor");
+#endif
+
 	FString modFolder = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("Intermediate"), TEXT("TempMod")));
 	FString staticAssetsFolder = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("ModStaticAssets"), ParentModDeployer->DescriptorData->ModID));
 	FString targetMetadataFilePath = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("Intermediate"), TEXT("TempMod"), TEXT("metadata.json")));
@@ -62,7 +107,7 @@ bool FModDeployerTask::RunPackage_Inner()
 	{
 		for (FString folderPath : modFolderPaths)
 		{
-			FString sourceFolder = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Cooked"), TEXT("WindowsNoEditor"), folderPath));
+			FString sourceFolder = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Cooked"), platformName, folderPath));
 			FString targetFolder = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("Intermediate"), TEXT("TempMod"), folderPath));
 			
 			std::filesystem::path targetFolderAsPath = std::filesystem::path(TCHAR_TO_UTF8(*targetFolder));
@@ -78,14 +123,14 @@ bool FModDeployerTask::RunPackage_Inner()
 			{
 				{
 					FString folderPath2 = UTF8_TO_TCHAR(std::filesystem::path(TCHAR_TO_UTF8(*folderPath)).replace_extension(".uexp").u8string().c_str());
-					FString sourceFolder2 = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Cooked"), TEXT("WindowsNoEditor"), folderPath2));
+					FString sourceFolder2 = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Cooked"), platformName, folderPath2));
 					FString targetFolder2 = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("Intermediate"), TEXT("TempMod"), folderPath2));
 					std::filesystem::copy(TCHAR_TO_UTF8(*sourceFolder2), TCHAR_TO_UTF8(*targetFolder2), std::filesystem::copy_options::overwrite_existing | std::filesystem::copy_options::recursive);
 				}
 				try
 				{
 					FString folderPath2 = UTF8_TO_TCHAR(std::filesystem::path(TCHAR_TO_UTF8(*folderPath)).replace_extension(".ubulk").u8string().c_str());
-					FString sourceFolder2 = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Cooked"), TEXT("WindowsNoEditor"), folderPath2));
+					FString sourceFolder2 = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Cooked"), platformName, folderPath2));
 					FString targetFolder2 = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("Intermediate"), TEXT("TempMod"), folderPath2));
 					std::filesystem::copy(TCHAR_TO_UTF8(*sourceFolder2), TCHAR_TO_UTF8(*targetFolder2), std::filesystem::copy_options::overwrite_existing | std::filesystem::copy_options::recursive);
 				}
@@ -130,9 +175,13 @@ bool FModDeployerTask::RunPackage_Inner()
 	// package using repak
 	// 9xx prefixes are reserved for external applications. we define 989 as being for "ModDeployer temporary mods"
 	FString localappdataConstStr(TEXT("%LOCALAPPDATA%"));
+	FString homeConstStr(TEXT("~"));
+	FString homeConstStr2(TEXT("$HOME"));
+	FString homeConstStr3(TEXT("%HOME%"));
 	FString localappdata(getenv("LOCALAPPDATA"));
+	FString homeEnvVar(getenv("HOME"));
 	FString pakFileName = TEXT("989-") + (ParentModDeployer->DescriptorData->ModID) + "-" + (ParentModDeployer->DescriptorData->ModVersion) + TEXT("_P.pak");
-	FString paksFolder = FPaths::ConvertRelativePathToFull((ParentModDeployer->DescriptorData->PaksFolder).Replace(*localappdataConstStr, *localappdata, ESearchCase::IgnoreCase));
+	FString paksFolder = FPaths::ConvertRelativePathToFull((ParentModDeployer->DescriptorData->PaksFolder).Replace(*localappdataConstStr, *localappdata, ESearchCase::IgnoreCase).Replace(*homeConstStr, *homeEnvVar, ESearchCase::IgnoreCase).Replace(*homeConstStr2, *homeEnvVar, ESearchCase::IgnoreCase).Replace(*homeConstStr3, *homeEnvVar, ESearchCase::IgnoreCase));
 	FString finalPakPath = FPaths::ConvertRelativePathToFull(FPaths::Combine(paksFolder, pakFileName));
 
 	// delete all 989- files before packaging
@@ -168,7 +217,11 @@ bool FModDeployerTask::RunPackage_Inner()
 	}
 
 	// execute repak.exe
+#if PLATFORM_LINUX
+	FString repakExe = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("repak"), TEXT("repak")));
+#else
 	FString repakExe = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("ModDeployer"), TEXT("repak"), TEXT("repak.exe")));
+#endif
 	FString params = TEXT("pack --version V4 --compression Zlib \"") + modFolder + TEXT("\" \"") + finalPakPath + TEXT("\"");
 	ParentModDeployer->LogText += repakExe + " " + params + "\n";
 
@@ -205,7 +258,11 @@ bool FModDeployerTask::RunIntegrate_Inner()
 	ParentModDeployer->LogText += TEXT("\nIntegrating\n");
 
 	FString localappdataConstStr(TEXT("%LOCALAPPDATA%"));
+	FString homeConstStr(TEXT("~"));
+	FString homeConstStr2(TEXT("$HOME"));
+	FString homeConstStr3(TEXT("%HOME%"));
 	FString localappdata(getenv("LOCALAPPDATA"));
+	FString homeEnvVar(getenv("HOME"));
 
 	FString integratorVersion = ParentModDeployer->ExecuteIntegrator(TEXT("version"));
 	if (integratorVersion.IsEmpty() || !ParentModDeployer->HaveWeCheckedForIntegratorUpdatesAlready)
@@ -216,7 +273,7 @@ bool FModDeployerTask::RunIntegrate_Inner()
 		downloader.SyncEvent->Wait();
 	}
 
-	FString integratorOutput = ParentModDeployer->ExecuteIntegrator((ParentModDeployer->DescriptorData->PaksFolder).Replace(*localappdataConstStr, *localappdata, ESearchCase::IgnoreCase) + TEXT(" ") + ParentModDeployer->DescriptorData->InstallationPaksFolder);
+	FString integratorOutput = ParentModDeployer->ExecuteIntegrator(TEXT("-v --extract_lua --enable_custom_routines -i ") + (ParentModDeployer->DescriptorData->PaksFolder).Replace(*localappdataConstStr, *localappdata, ESearchCase::IgnoreCase).Replace(*homeConstStr, *homeEnvVar, ESearchCase::IgnoreCase).Replace(*homeConstStr2, *homeEnvVar, ESearchCase::IgnoreCase).Replace(*homeConstStr3, *homeEnvVar, ESearchCase::IgnoreCase) + TEXT(" -g ") + ParentModDeployer->DescriptorData->InstallationPaksFolder.Replace(*localappdataConstStr, *localappdata, ESearchCase::IgnoreCase).Replace(*homeConstStr, *homeEnvVar, ESearchCase::IgnoreCase).Replace(*homeConstStr2, *homeEnvVar, ESearchCase::IgnoreCase).Replace(*homeConstStr3, *homeEnvVar, ESearchCase::IgnoreCase));
 	if (integratorOutput.IsEmpty())
 	{
 		ParentModDeployer->LogText += TEXT("Integrator failed to execute! Aborting!");
