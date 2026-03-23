@@ -187,6 +187,8 @@ bool FModDeployerTask::RunPackage_Inner()
 	// delete all 989- files before packaging
 	try
 	{
+		std::filesystem::create_directories(TCHAR_TO_UTF8(*paksFolder));
+
 		std::vector<std::filesystem::path> pathsToDelete;
 		for (const auto& entry : std::filesystem::directory_iterator(TCHAR_TO_UTF8(*paksFolder)))
 		{
