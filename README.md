@@ -34,6 +34,8 @@ It is possible to build the Unreal Engine for Linux (Ubuntu) and use the Modding
 
 7. Launch the Unreal Editor as normal. If desired, you can do this either via the graphical user interface or via the command line: `/path/to/your/engine/directory/Engine/Binaries/Linux/UE4Editor $(pwd)/Astro.uproject`
     - If you receive a prompt that says "This project was made with a different version of the Unreal Engine," choose "More Options..." and "Skip conversion."
+    
+Note: material assets and mesh assets cooked on Linux often do not work properly in-game. A workaround is not currently known. It is currently recommended to only cook assets on Windows, if possible.
 
 ## Kit Generation Guide
 If you are interested in re-generating the Source directory on your own, e.g. for updating it to a future version, the process is as follows. This is not needed to make mods, and should only be done by advanced users.
