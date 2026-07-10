@@ -16,7 +16,7 @@
 	"Modules": [
 		{
 			"Name": "PlacementCreator",
-			"Type": "Developer",
+			"Type": "Editor",
 			"LoadingPhase": "Default"
 		}
 	]

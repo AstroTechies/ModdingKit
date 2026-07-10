@@ -39,7 +39,9 @@ public class PlacementCreator : ModuleRules
 				"Slate",
 				"SlateCore",
 				"UnrealEd",
-				"Terrain2"
+				"Terrain2",
+				"AssetTools",
+				"Astro"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
