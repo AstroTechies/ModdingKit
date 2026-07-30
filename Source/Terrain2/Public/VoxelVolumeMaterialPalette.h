@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
+#include "Engine/DataAsset.h" // Data Asset fix
 #include "Chaos/ChaosEngineInterface.h"
 #include "CreativePaintMaterialMapping.h"
 #include "VoxelMaterial.h"
@@ -8,8 +8,8 @@
 
 class UMaterialInterface;
 
-UCLASS(Blueprintable)
-class TERRAIN2_API UVoxelVolumeMaterialPalette : public UObject {
+UCLASS(Blueprintable, BlueprintType) 
+class TERRAIN2_API UVoxelVolumeMaterialPalette : public UDataAsset { 
     GENERATED_BODY()
 public:
 protected:
@@ -32,4 +32,3 @@ public:
     UVoxelVolumeMaterialPalette();
 
 };
-
