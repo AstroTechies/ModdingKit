@@ -20,7 +20,7 @@ UVoxelVolumeComponent::UVoxelVolumeComponent(const FObjectInitializer& ObjectIni
     this->bCastFarShadow = true;
     this->ManuallySetLODRanges = false;
     this->MaxOctreeDepth = 6;
-    this->LODRanges.AddDefaulted(7);
+    this->LODRanges.AddDefaulted(9);
     this->MultiplayerCorrectionRange = 512.00f;
     this->NodeCachingFactor = 5.00f;
     this->DefaultMaterial = NULL;
